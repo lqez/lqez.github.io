@@ -74,18 +74,24 @@ Ball.prototype.update = function( gravity ) {
     this.target.height( parseInt(this.radius*2) );
 }
 
+function update()
+{
+    if( ball )
+        ball.update( gravity );
+}
+
+function isiOS()
+{
+    return (navigator.userAgent.match(/(iPad|iPhone|iPod)/i) != null);
+}
+
 var gravity = new Vector3(0,10,10);
 var ball = null;
 var zone = new Vector3(0,0,0);
 var bounce = 0.4;
 var threshold = 0.5;
 var floorRate = 0.7;
-
-function update()
-{
-    if( ball )
-        ball.update( gravity );
-}
+var iOS = isiOS();
 
 $(function() {
     ball = new Ball( 32, $('#ball') );
@@ -94,11 +100,22 @@ $(function() {
     zone.z = zone.x;
 
     window.ondevicemotion = function(event) {
-        gravity = new Vector3( 
-            event.accelerationIncludingGravity.x,
-            -event.accelerationIncludingGravity.y,
-            -event.accelerationIncludingGravity.z
-        );
+        if( iOS )
+        {
+            gravity = new Vector3( 
+                event.accelerationIncludingGravity.x,
+                -event.accelerationIncludingGravity.y,
+                -event.accelerationIncludingGravity.z
+            );
+        }
+        else
+        {
+            gravity = new Vector3( 
+                -event.accelerationIncludingGravity.x,
+                event.accelerationIncludingGravity.y,
+                event.accelerationIncludingGravity.z
+            );
+        }
     }
     var timer = setInterval(update, 16);
 });
