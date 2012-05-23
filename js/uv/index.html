@@ -11,13 +11,14 @@ body {
 }
 #box {
     display: block;
-    margin: auto;
     background: #30303E;
     width: 100%;
     height: 100%;
     max-width: 640px;
     max-height: 640px;
     position: relative;
+    border: 4px solid #161620;
+    border-radius: 8px;
 }
 
 #logo {
@@ -27,7 +28,9 @@ body {
 }
 #logo img {
     display: block;
-    margin: auto;
+    position: relative;
+    top: 50%;
+    margin-top: -43px;
     width: 185px;
     height: 86px;
     opacity: 0.9;
@@ -38,6 +41,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
+    border-radius: 6px;
 }
 #uv1 {
     background:url('uv1.png') repeat;
@@ -45,6 +49,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
+    border-radius: 6px;
 }
 #uv2 {
     background:url('uv2.png') repeat;
@@ -52,6 +57,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
+    border-radius: 6px;
 }
 #uv3 {
     background:url('uv3.png') repeat;
@@ -59,13 +65,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-}
-#uv4 {
-    background:url('uv4.png') repeat;
-    background-size: 100px 100px;
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    border-radius: 6px;
 }
 .uv2 {
     -webkit-mask-size: 300% 150%;
@@ -102,9 +102,14 @@ body {
 </style>
 <script src="jquery.js"></script>
 <script language="javascript">
+function isiOS()
+{
+    return (navigator.userAgent.match(/(iPad|iPhone|iPod)/i) != null);
+}
 $(function() {
     var w = $('body').innerWidth();
     var h = $('body').innerHeight();
+    var iOS = isiOS();
 
     $('body').mousemove(function(e){ 
         var x = w - e.pageX*4;
@@ -140,12 +145,14 @@ $(function() {
 </script>
 </head>
 <body>
-<div id="box">
-    <div id="uv0"></div>
-    <div id="uv1" class="uvz"></div>
-    <div id="uv2" class="uv2"></div>
-    <div id="uv3" class="uv3"></div>
-    <div id="logo"><img src="smartstudy.png"/></div>
-</div>
+<table width="100%" height="100%" cellpadding="0"><tr><td align="center">
+    <div id="box">
+        <div id="uv0"></div>
+        <div id="uv1" class="uvz"></div>
+        <div id="uv2" class="uv2"></div>
+        <div id="uv3" class="uv3"></div>
+        <div id="logo"><img src="smartstudy.png"/></div>
+    </div>
+</td></tr></table>
 </body>
 </html>
