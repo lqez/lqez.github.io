@@ -122,9 +122,9 @@ $(function() {
         x = event.accelerationIncludingGravity.x;
         y = event.accelerationIncludingGravity.y;
         z = event.accelerationIncludingGravity.z;
-        x = w - w*x/10.0;
-        y = h - h*y/10.0;
-        z = w * z/10.0;
+        x = w*x/10.0;
+        y = h*y/10.0;
+        z = w*z/10.0;
         $('#uv1').css( '-webkit-mask-position', x+'px '+y+'px' );
         $('#uv2').css( '-webkit-mask-position', z+'px 0px' );
         $('#uv3').css( '-webkit-mask-position', -y+'px 0px' );
