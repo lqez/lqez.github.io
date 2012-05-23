@@ -112,8 +112,6 @@ $(function() {
     $('body').mousemove(function(e){ 
         var x = w - e.pageX*4;
         var y = h -e.pageY*2;
-        $('#x').html(x);
-        $('#y').html(y);
         $('#uv1').css( '-webkit-mask-position', y+x+'px '+y+'px' );
         $('#uv2').css( '-webkit-mask-position', x+'px 0px' );
         $('#uv3').css( '-webkit-mask-position', -y+'px 0px' );
@@ -124,12 +122,9 @@ $(function() {
         x = event.accelerationIncludingGravity.x;
         y = event.accelerationIncludingGravity.y;
         z = event.accelerationIncludingGravity.z;
-        x = w - w*x/30.0;
-        y = h - h*y/30.0;
-        z = w * z/30.0;
-        $('#x').html(x);
-        $('#y').html(y);
-        $('#z').html(z);
+        x = w - w*x/10.0;
+        y = h - h*y/10.0;
+        z = w * z/10.0;
         $('#uv1').css( '-webkit-mask-position', x+'px '+y+'px' );
         $('#uv2').css( '-webkit-mask-position', z+'px 0px' );
         $('#uv3').css( '-webkit-mask-position', -y+'px 0px' );
@@ -146,9 +141,6 @@ $(function() {
         <div id="uv3" class="uv3"></div>
         <div id="logo"><img src="smartstudy.png"/></div>
     </div>
-    x:<span id="x">x</span>
-    y:<span id="y">y</span>
-    z:<span id="z">z</span>
 </td></tr></table>
 </body>
 </html>
