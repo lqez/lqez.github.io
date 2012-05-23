@@ -119,6 +119,9 @@ $(function() {
         //$('#uv3').css( '-webkit-mask-position', -y+'px 0px' );
     });
 
+    var rx = 0;
+    var ry = 0;
+    var rz = 0;
     window.ondevicemotion = function(event) {
         var x,y,z;
         x = event.accelerationIncludingGravity.x;
@@ -127,9 +130,13 @@ $(function() {
         $('#x').html(x);
         $('#y').html(y);
         $('#z').html(z);
-        x = -w * (x+4) / 5.0;
-        z =  h * (z+4) / 5.0;
-        $('#uv1').css( '-webkit-mask-position', x+'px '+z+'px' );
+        x = -w * (x+5) / 4.0;
+        z =  h * (z+5) / 4.0;
+
+        rx = rx*0.6 + x*0.4;
+        ry = ry*0.6 + y*0.4;
+        ry = rz*0.6 + z*0.4;
+        $('#uv1').css( '-webkit-mask-position', rx+'px '+rz+'px' );
         //$('#uv2').css( '-webkit-mask-position', -y+'px 0px' );
         //$('#uv3').css( '-webkit-mask-position', z+'px 0px' );
     }
