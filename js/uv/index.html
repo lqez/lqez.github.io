@@ -17,9 +17,6 @@ body {
     max-width: 640px;
     max-height: 640px;
     position: relative;
-    border: 4px solid #161620;
-    border-radius: 8px;
-    padding: -4px;
 }
 
 #logo {
@@ -135,9 +132,9 @@ $(function() {
             y = event.accelerationIncludingGravity.y;
             z = event.accelerationIncludingGravity.z;
         }
-        x = w - w*x/10;
-        y = h - h*x/10;
-        z = w * z/10;
+        x = w - w*x/10.0;
+        y = h - h*x/10.0;
+        z = w * z/10.0;
         $('#uv1').css( '-webkit-mask-position', x+'px '+y+'px' );
         $('#uv2').css( '-webkit-mask-position', z+'px 0px' );
         $('#uv3').css( '-webkit-mask-position', -y+'px 0px' );
