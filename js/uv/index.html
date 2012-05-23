@@ -112,8 +112,6 @@ $(function() {
     $('body').mousemove(function(e){ 
         var x = w - e.pageX*4;
         var y = h -e.pageY*2;
-        $('#x').html(x);
-        $('#y').html(y);
         $('#uv1').css( '-webkit-mask-position', y+x+'px '+y+'px' );
         //$('#uv2').css( '-webkit-mask-position', x+'px 0px' );
         //$('#uv3').css( '-webkit-mask-position', -y+'px 0px' );
@@ -127,9 +125,6 @@ $(function() {
         x = event.accelerationIncludingGravity.x;
         y = event.accelerationIncludingGravity.y;
         z = event.accelerationIncludingGravity.z;
-        $('#x').html(x);
-        $('#y').html(y);
-        $('#z').html(z);
         x = -w * (x+5) / 4.0;
         z =  h * (z+5) / 4.0;
 
@@ -148,15 +143,10 @@ $(function() {
     <div id="box">
         <div id="uv0"></div>
         <div id="uv1" class="uvz"></div>
-        <!--
         <div id="uv2" class="uv2"></div>
         <div id="uv3" class="uv3"></div>
-        -->
         <div id="logo"><img src="smartstudy.png"/></div>
     </div>
-    X:<span id="x"></span><br>
-    Y:<span id="y"></span><br>
-    Z:<span id="z"></span>
 </td></tr></table>
 </body>
 </html>
