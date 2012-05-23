@@ -119,19 +119,9 @@ $(function() {
 
     window.ondevicemotion = function(event) {
         var x,y,z;
-
-        if( iOS )
-        {
-            x = event.accelerationIncludingGravity.x;
-            y = -event.accelerationIncludingGravity.y;
-            z = -event.accelerationIncludingGravity.z;
-        }
-        else
-        {
-            x = -event.accelerationIncludingGravity.x;
-            y = event.accelerationIncludingGravity.y;
-            z = event.accelerationIncludingGravity.z;
-        }
+        x = event.accelerationIncludingGravity.x;
+        y = event.accelerationIncludingGravity.y;
+        z = event.accelerationIncludingGravity.z;
         x = w - w*x/30.0;
         y = h - h*x/30.0;
         z = w * z/30.0;
