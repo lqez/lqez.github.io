@@ -125,9 +125,9 @@ $(function() {
         x = w*x/10.0;
         y = h*y/10.0;
         z = w*z/10.0;
-        $('#uv1').css( '-webkit-mask-position', x+'px '+y+'px' );
-        $('#uv2').css( '-webkit-mask-position', z+'px 0px' );
-        $('#uv3').css( '-webkit-mask-position', -y+'px 0px' );
+        $('#uv1').css( '-webkit-mask-position', x+'px '+-y+'px' );
+        $('#uv2').css( '-webkit-mask-position', -z+'px 0px' );
+        $('#uv3').css( '-webkit-mask-position', y+'px 0px' );
     }
 });
 </script>
