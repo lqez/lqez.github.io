@@ -93,9 +93,9 @@ body {
             color-stop(1.00,  rgba(0,0,0,0)));
 }
 .uvz {
-    -webkit-mask-size: 1000px 1000px;
+    -webkit-mask-size: 800px 800px;
     -webkit-mask-repeat: no-repeat;
-    -webkit-mask-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgba(0,0,0,0.9)), to(rgba(0,0,0,0)));
+    -webkit-mask-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 400, from(rgba(0,0,0,0.9)), to(rgba(0,0,0,0)));
 }
 </style>
 <script src="jquery.js"></script>
@@ -112,9 +112,11 @@ $(function() {
     $('body').mousemove(function(e){ 
         var x = w - e.pageX*4;
         var y = h -e.pageY*2;
+        $('#x').html(x);
+        $('#y').html(y);
         $('#uv1').css( '-webkit-mask-position', y+x+'px '+y+'px' );
-        $('#uv2').css( '-webkit-mask-position', x+'px 0px' );
-        $('#uv3').css( '-webkit-mask-position', -y+'px 0px' );
+        //$('#uv2').css( '-webkit-mask-position', x+'px 0px' );
+        //$('#uv3').css( '-webkit-mask-position', -y+'px 0px' );
     });
 
     window.ondevicemotion = function(event) {
@@ -125,6 +127,8 @@ $(function() {
         $('#x').html(x);
         $('#y').html(y);
         $('#z').html(z);
+        x = -w *  x    / 7.0;
+        y =  h * (y+4) / 7.0;
         //$('#uv1').css( '-webkit-mask-position', x+'px '+z+'px' );
         //$('#uv2').css( '-webkit-mask-position', -y+'px 0px' );
         //$('#uv3').css( '-webkit-mask-position', z+'px 0px' );
