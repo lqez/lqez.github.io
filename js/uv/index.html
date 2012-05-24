@@ -133,8 +133,8 @@ $(function() {
         ry = ry*0.6 + y*0.4;
         rz = rz*0.6 + z*0.4;
         $('#uv1').css( '-webkit-mask-position', rx+'px '+rz+'px' );
-        $('#uv2').css( '-webkit-mask-position', (rx/2+ry*1.5)+'px 0px' );
-        $('#uv3').css( '-webkit-mask-position', (rx/2+rz*1.5)+'px 0px' );
+        $('#uv2').css( '-webkit-mask-position', -(rx/2+ry*1.5)+'px 0px' );
+        $('#uv3').css( '-webkit-mask-position', -(rx+rz/2)+'px 0px' );
     }
 });
 </script>
