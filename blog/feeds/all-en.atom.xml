@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="/" rel="alternate"></link><link href="/feeds/all-en.atom.xml" rel="self"></link><id>/</id><updated>2012-11-11T23:33:17+01:00</updated><entry><title>the very first blogging via pelican.</title><link href="/the-first-blog-post-en.html" rel="alternate"></link><updated>2012-11-11T23:33:17+01:00</updated><author><name>lqez</name></author><id>tag:,2012-11-11:the-first-blog-post-en.html</id><summary type="html">&lt;p&gt;Ah, ha!&lt;/p&gt;
+</summary><category term="test"></category></entry></feed>
