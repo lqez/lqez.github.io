@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Feature creep designer</title>
+        <title>Spine + Poller 설정으로 cacti 성능 향상하기</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="./theme/css/main.css" type="text/css" />
         
@@ -31,29 +31,58 @@
                 
                 
                 
-                    <li ><a href="./category/misc.html">misc</a></li>
+                    <li class="active"><a href="./category/misc.html">misc</a></li>
                 
                 </ul></nav>
         </header><!-- /#banner -->
         
 <section id="content" class="body">
-<h1>Archives for Feature creep designer</h1>
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="spine-poller-seoljeongeuro-cacti-seongneung-hyangsanghagi.html" rel="bookmark"
+           title="Permalink to Spine + Poller 설정으로 cacti 성능 향상하기">Spine + Poller 설정으로 cacti 성능 향상하기</a></h1>
+      
+    </header>
 
-<dl>
+    <div class="entry-content">
+      <footer class="post-info">
+        <abbr class="published" title="2013-01-09T22:08:29">
+                Wed 09 January 2013
+        </abbr>
 
-    <dt>Wed 09 January 2013</dt>
-    <dd><a href="./django-with-sentry.html">Django with Sentry</a></dd>
+        
+        <address class="vcard author">
+                By <a class="url fn" href="./author/lqez.html">lqez</a>
+        </address>
+        
+<p>In <a href="./category/misc.html">misc</a>. </p>
 
-    <dt>Wed 09 January 2013</dt>
-    <dd><a href="./spine-poller-seoljeongeuro-cacti-seongneung-hyangsanghagi.html">Spine + Poller 설정으로 cacti 성능 향상하기</a></dd>
 
-    <dt>Wed 09 January 2013</dt>
-    <dd><a href="./using-nginx-with-ldap-authentication.html">Using Nginx with LDAP authentication</a></dd>
 
-    <dt>Sun 11 November 2012</dt>
-    <dd><a href="./the-first-blog-post-en.html">the very first blogging via pelican.</a></dd>
+</footer><!-- /.post-info -->
+      <p>Cacti에 대해서 잘 모를 때에 - 지금도 잘 모르지만 - "cacti는 크롤러가 단일 프로세스라서 짜증나요" 같은 얘기를 하고 다녔는데
+모두 취소.</p>
+<ol>
+<li>
+<p>Cacti에서 크롤러(poller) 역할을 하는 cmd.php를 단일 프로세스가 아니라, 여러 프로세스로 동작시킬 수 있다.</p>
+</li>
+<li>
+<p>그래도 성능이 부족한 경우 spine을 설치하여 multi process + multi thread 로 성능을 더 향상시킬 수 있다.</p>
+</li>
+</ol>
+<p>spine
+:<a href="http://www.cacti.net/spine_info.php">http://www.cacti.net/spine_info.php</a></p>
+<p><img alt="" src="static/Screen_Shot_2013-01-09_at_3.25.04_PM.png" /></p>
+<p>멀쩡하게 존재하는 concurrent 및 spine 관련 옵션.capture</p>
+<p>혹시라도 poller 속도에 불만을 가진 사람이라면 꼭 spine을 설치하지 않아도 Maximum Concurrent Poller
+Processes 값만 조정해도 퍼포먼스 향상이 될 듯.</p>
+<p>단일 프로세스로 수행하던 때에는 조금 지연되면 몇 분씩 걸리는 경우도 있었는데, 4 processes x 16 threads 로 사용하는
+지금은 10초 이내로 처리 끝.</p>
+    </div><!-- /.entry-content -->
+    
 
-</dl>
+  </article>
 </section>
 
         <section id="extras" class="body">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Feature creep designer</title>
+        <title>Django with Sentry</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="./theme/css/main.css" type="text/css" />
         
@@ -31,20 +31,22 @@
                 
                 
                 
-                    <li ><a href="./category/misc.html">misc</a></li>
+                    <li class="active"><a href="./category/misc.html">misc</a></li>
                 
                 </ul></nav>
         </header><!-- /#banner -->
-                
-
-            
-
         
-        
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="./django-with-sentry.html">Django with Sentry</a></h1> 
-                    <footer class="post-info">
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="django-with-sentry.html" rel="bookmark"
+           title="Permalink to Django with Sentry">Django with Sentry</a></h1>
+      
+    </header>
+
+    <div class="entry-content">
+      <footer class="post-info">
         <abbr class="published" title="2013-01-09T22:08:29">
                 Wed 09 January 2013
         </abbr>
@@ -58,7 +60,8 @@
 
 
 
-</footer><!-- /.post-info --><p>Sentry</p>
+</footer><!-- /.post-info -->
+      <p>Sentry</p>
 <p><a href="https://getsentry.com/">https://getsentry.com/</a></p>
 <blockquote>
 <p>Exceptional error aggregation.</p>
@@ -99,148 +102,11 @@ ry.readthedocs.org/en/latest/quickstart/index.html">http://sentry.readthedocs.or
 <p>애초에 Django 기반인데다, 자체적인 Sentry plugin 시스템도 제공하여 필요한 기능을 손쉽게 확장할 수 있다.</p>
 <p><a href="http://sentry.rea
 dthedocs.org/en/latest/plugins/index.html">http://sentry.readthedocs.org/en/latest/plugins/index.html</a></p>
-                </article>
-                
-            </aside><!-- /#featured -->
-            
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-            
-        
-        
-        
-            
-
-        
-         
-            
-            <li><article class="hentry">    
-                <header>
-                    <h1><a href="./spine-poller-seoljeongeuro-cacti-seongneung-hyangsanghagi.html" rel="bookmark"
-                           title="Permalink to Spine + Poller 설정으로 cacti 성능 향상하기">Spine + Poller 설정으로 cacti 성능 향상하기</a></h1>
-                </header>
-                
-                <div class="entry-content">
-                <footer class="post-info">
-        <abbr class="published" title="2013-01-09T22:08:29">
-                Wed 09 January 2013
-        </abbr>
-
-        
-        <address class="vcard author">
-                By <a class="url fn" href="./author/lqez.html">lqez</a>
-        </address>
-        
-<p>In <a href="./category/misc.html">misc</a>. </p>
-
-
-
-</footer><!-- /.post-info -->
-                <p>Cacti에 대해서 잘 모를 때에 - 지금도 잘 모르지만 - "cacti는 크롤러가 단일 프로세스라서 짜증나요" 같은 얘기를 하고 다녔는데
-모두 취소.</p>
-<ol>
-<li>
-<p>Cacti에서 크롤러(poller) 역할을 하는 cmd.php를 단일 프로세스가 아니라, 여러 프로세스로 동작시킬 수 있다.</p>
-</li>
-<li>
-<p>그래도 성능이 부족한 경우 spine을 설치하여 multi process + multi thread 로 성능을 더 향상시킬 수 있다 ...</p></li></ol>
-                <a class="readmore" href="./spine-poller-seoljeongeuro-cacti-seongneung-hyangsanghagi.html">read more</a>
-                
-                </div><!-- /.entry-content -->
-            </article></li>
-        
-        
-            
-
-        
-         
-            
-            <li><article class="hentry">    
-                <header>
-                    <h1><a href="./using-nginx-with-ldap-authentication.html" rel="bookmark"
-                           title="Permalink to Using Nginx with LDAP authentication">Using Nginx with LDAP authentication</a></h1>
-                </header>
-                
-                <div class="entry-content">
-                <footer class="post-info">
-        <abbr class="published" title="2013-01-09T22:08:29">
-                Wed 09 January 2013
-        </abbr>
-
-        
-        <address class="vcard author">
-                By <a class="url fn" href="./author/lqez.html">lqez</a>
-        </address>
-        
-<p>In <a href="./category/misc.html">misc</a>. </p>
-
-
-
-</footer><!-- /.post-info -->
-                <p>Nginx는 비동기 이벤트 기반 웹 서버다. 더 이상의 자세한 설명은 생략한다.</p>
-<ul>
-<li><a href="http://www.nginx.org/">http://www.nginx.org/</a></li>
-<li><a href="http://ko.wikipedia.org/wiki/Nginx">http://ko.wikipedia.org/wiki/Nginx</a></li>
-</ul>
-<p>사내외로 골고루 사용하던 Apache httpd 웹 서버 - 라 쓰고 종합 선물 세트라고 읽는다 - 를 대체하기 위해 Nginx 를 도입하던
-중, 대부분의 이슈를 해결하였으나 LDAP 인증이 기본 모듈에 없어, 애플리케이션 ...</p>
-                <a class="readmore" href="./using-nginx-with-ldap-authentication.html">read more</a>
-                
-                </div><!-- /.entry-content -->
-            </article></li>
-        
-        
-            
-
-        
-         
-            
-            <li><article class="hentry">    
-                <header>
-                    <h1><a href="./the-first-blog-post-en.html" rel="bookmark"
-                           title="Permalink to the very first blogging via pelican.">the very first blogging via pelican.</a></h1>
-                </header>
-                
-                <div class="entry-content">
-                <footer class="post-info">
-        <abbr class="published" title="2012-11-11T23:33:17">
-                Sun 11 November 2012
-        </abbr>
-
-        
-        <address class="vcard author">
-                By <a class="url fn" href="./author/lqez.html">lqez</a>
-        </address>
-        
-<p>In <a href="./category/misc.html">misc</a>. </p>
-<p>tags: <a href="./tag/test.html">test</a></p>
-
-
-</footer><!-- /.post-info -->
-                <p>Ah, ha!</p>
-
-                <a class="readmore" href="./the-first-blog-post-en.html">read more</a>
-                
-                </div><!-- /.entry-content -->
-            </article></li>
-        
-        
-            </ol><!-- /#posts-list -->
-            
-                
-<p class="paginator">
-    
-    Page 1 / 1
-    
-</p>
-
-            
-            </section><!-- /#content -->
-        
+    </div><!-- /.entry-content -->
     
 
+  </article>
+</section>
 
         <section id="extras" class="body">
         

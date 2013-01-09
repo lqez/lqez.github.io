@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="/" rel="alternate"></link><link href="/feeds/misc.atom.xml" rel="self"></link><id>/</id><updated>2013-01-09T22:08:29+01:00</updated><entry><title>Django with Sentry</title><link href="/django-with-sentry.html" rel="alternate"></link><updated>2013-01-09T22:08:29+01:00</updated><author><name>lqez</name></author><id>tag:,2013-01-09:django-with-sentry.html</id><summary type="html">&lt;p&gt;Sentry&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="/" rel="alternate"></link><link href="/feeds/all-ko.atom.xml" rel="self"></link><id>/</id><updated>2013-01-09T22:08:29+01:00</updated><entry><title>Django with Sentry</title><link href="/django-with-sentry.html" rel="alternate"></link><updated>2013-01-09T22:08:29+01:00</updated><author><name>lqez</name></author><id>tag:,2013-01-09:django-with-sentry.html</id><summary type="html">&lt;p&gt;Sentry&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://getsentry.com/"&gt;https://getsentry.com/&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Exceptional error aggregation.&lt;/p&gt;
@@ -171,5 +171,4 @@ ldap://ldap.foo.com/dc=foo,dc=com?uid?sub?(objectClass=person);&lt;/strong&gt;&l
 &lt;p&gt;그룹 등의 다양한 설정에 대해서는 다음 링크를 참조한다.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/kvspb/nginx-auth-
 ldap/blob/master/example.conf"&gt;https://github.com/kvspb/nginx-auth-
-ldap/blob/master/example.conf&lt;/a&gt;&lt;/p&gt;</summary></entry><entry><title>the very first blogging via pelican.</title><link href="/the-first-blog-post-en.html" rel="alternate"></link><updated>2012-11-11T23:33:17+01:00</updated><author><name>lqez</name></author><id>tag:,2012-11-11:the-first-blog-post-en.html</id><summary type="html">&lt;p&gt;Ah, ha!&lt;/p&gt;
-</summary><category term="test"></category></entry></feed>
+ldap/blob/master/example.conf&lt;/a&gt;&lt;/p&gt;</summary></entry></feed>
