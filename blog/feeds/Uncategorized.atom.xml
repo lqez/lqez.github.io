@@ -25,8 +25,8 @@
 &lt;p&gt;문장 중간에 &lt;code&gt;import os,sys&lt;/code&gt; 가 가능하지
 이건 그냥 링크 &lt;a href=""&gt;http://lqez.github.com&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://lqez.github.com/"&gt;http://lqez.github.com/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;single asterisks&lt;/em&gt;
-&lt;em&gt;single underscores&lt;/em&gt;
-&lt;strong&gt;double asterisks&lt;/strong&gt;
-&lt;strong&gt;double underscores&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;single asterisks&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;single underscores&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;double asterisks&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;double underscores&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="screenshot of htop" src="http://lqez.github.com/blog/static/images/test.png" title="optional title" /&gt;&lt;/p&gt;</summary></entry></feed>
