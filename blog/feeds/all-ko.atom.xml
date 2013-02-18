@@ -1,5 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="http://lqez.github.com/blog/" rel="alternate"></link><link href="http://lqez.github.com/blog/feeds/all-ko.atom.xml" rel="self"></link><id>http://lqez.github.com/blog/</id><updated>2013-01-06T00:00:00+09:00</updated><entry><title>펠리칸으로 작성하는 첫번째 블로그 포스트</title><link href="http://lqez.github.com/blog/the-first-blog-post.html" rel="alternate"></link><updated>2013-01-06T00:00:00+09:00</updated><author><name>lqez</name></author><id>tag:lqez.github.com/blog,2013-01-06:the-first-blog-post.html</id><summary type="html">&lt;h1&gt;H1 테스트&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="http://lqez.github.com/blog/" rel="alternate"></link><link href="http://lqez.github.com/blog/feeds/all-ko.atom.xml" rel="self"></link><id>http://lqez.github.com/blog/</id><updated>2013-01-06T00:00:00+09:00</updated><entry><title>펠리칸으로 작성하는 첫번째 블로그 포스트</title><link href="http://lqez.github.com/blog/the-first-blog-post.html" rel="alternate"></link><updated>2013-01-06T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.com/blog,2013-01-06:the-first-blog-post.html</id><summary type="html">&lt;h1&gt;H1 테스트&lt;/h1&gt;
+&lt;h2&gt;H2 테스트&lt;/h2&gt;
+&lt;h3&gt;이건 H3&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;인용구는 이렇게 
+처리하면 잘 나오겠지.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;리스트 아이템 1&lt;/li&gt;
+&lt;li&gt;리스트 아이템 2
+    두 줄짜리는 이렇게 되려나?&lt;/li&gt;
+&lt;li&gt;리스트 아이템 3&lt;ul&gt;
+&lt;li&gt;리스트B 아이템1&lt;/li&gt;
+&lt;li&gt;리스트B 아이템2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;일반 문단&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;문장 중간에 &lt;code&gt;import os,sys&lt;/code&gt; 가 가능하지
+이건 그냥 링크 &lt;a href=""&gt;http://lqez.github.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://lqez.github.com/"&gt;http://lqez.github.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;single asterisks&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;single underscores&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;double asterisks&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;double underscores&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="screenshot of htop" src="http://lqez.github.com/blog/static/images/test.png" title="optional title" /&gt;&lt;/p&gt;</summary><category term="Test"></category><category term="HTML"></category></entry><entry><title>펠리칸으로 작성하는 첫번째 블로그 포스트</title><link href="http://lqez.github.com/blog/the-first-blog-post-01.html" rel="alternate"></link><updated>2013-01-06T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.com/blog,2013-01-06:the-first-blog-post-01.html</id><summary type="html">&lt;h1&gt;H1 테스트&lt;/h1&gt;
+&lt;h2&gt;H2 테스트&lt;/h2&gt;
+&lt;h3&gt;이건 H3&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;인용구는 이렇게 
+처리하면 잘 나오겠지.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;리스트 아이템 1&lt;/li&gt;
+&lt;li&gt;리스트 아이템 2
+    두 줄짜리는 이렇게 되려나?&lt;/li&gt;
+&lt;li&gt;리스트 아이템 3&lt;ul&gt;
+&lt;li&gt;리스트B 아이템1&lt;/li&gt;
+&lt;li&gt;리스트B 아이템2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;일반 문단&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;문장 중간에 &lt;code&gt;import os,sys&lt;/code&gt; 가 가능하지
+이건 그냥 링크 &lt;a href=""&gt;http://lqez.github.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://lqez.github.com/"&gt;http://lqez.github.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;single asterisks&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;single underscores&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;double asterisks&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;double underscores&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="screenshot of htop" src="http://lqez.github.com/blog/static/images/test.png" title="optional title" /&gt;&lt;/p&gt;</summary></entry><entry><title>펠리칸으로 작성하는 첫번째 블로그 포스트</title><link href="http://lqez.github.com/blog/the-first-blog-post-02.html" rel="alternate"></link><updated>2013-01-06T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.com/blog,2013-01-06:the-first-blog-post-02.html</id><summary type="html">&lt;h1&gt;H1 테스트&lt;/h1&gt;
+&lt;h2&gt;H2 테스트&lt;/h2&gt;
+&lt;h3&gt;이건 H3&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;인용구는 이렇게 
+처리하면 잘 나오겠지.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;리스트 아이템 1&lt;/li&gt;
+&lt;li&gt;리스트 아이템 2
+    두 줄짜리는 이렇게 되려나?&lt;/li&gt;
+&lt;li&gt;리스트 아이템 3&lt;ul&gt;
+&lt;li&gt;리스트B 아이템1&lt;/li&gt;
+&lt;li&gt;리스트B 아이템2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;일반 문단&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;문장 중간에 &lt;code&gt;import os,sys&lt;/code&gt; 가 가능하지
+이건 그냥 링크 &lt;a href=""&gt;http://lqez.github.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://lqez.github.com/"&gt;http://lqez.github.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;single asterisks&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;single underscores&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;double asterisks&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;double underscores&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="screenshot of htop" src="http://lqez.github.com/blog/static/images/test.png" title="optional title" /&gt;&lt;/p&gt;</summary></entry><entry><title>펠리칸으로 작성하는 첫번째 블로그 포스트</title><link href="http://lqez.github.com/blog/the-first-blog-post-03.html" rel="alternate"></link><updated>2013-01-06T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.com/blog,2013-01-06:the-first-blog-post-03.html</id><summary type="html">&lt;h1&gt;H1 테스트&lt;/h1&gt;
+&lt;h2&gt;H2 테스트&lt;/h2&gt;
+&lt;h3&gt;이건 H3&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;인용구는 이렇게 
+처리하면 잘 나오겠지.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;리스트 아이템 1&lt;/li&gt;
+&lt;li&gt;리스트 아이템 2
+    두 줄짜리는 이렇게 되려나?&lt;/li&gt;
+&lt;li&gt;리스트 아이템 3&lt;ul&gt;
+&lt;li&gt;리스트B 아이템1&lt;/li&gt;
+&lt;li&gt;리스트B 아이템2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;일반 문단&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;문장 중간에 &lt;code&gt;import os,sys&lt;/code&gt; 가 가능하지
+이건 그냥 링크 &lt;a href=""&gt;http://lqez.github.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://lqez.github.com/"&gt;http://lqez.github.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;single asterisks&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;single underscores&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;double asterisks&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;double underscores&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="screenshot of htop" src="http://lqez.github.com/blog/static/images/test.png" title="optional title" /&gt;&lt;/p&gt;</summary></entry><entry><title>펠리칸으로 작성하는 첫번째 블로그 포스트</title><link href="http://lqez.github.com/blog/the-first-blog-post-04.html" rel="alternate"></link><updated>2013-01-06T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.com/blog,2013-01-06:the-first-blog-post-04.html</id><summary type="html">&lt;h1&gt;H1 테스트&lt;/h1&gt;
+&lt;h2&gt;H2 테스트&lt;/h2&gt;
+&lt;h3&gt;이건 H3&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;인용구는 이렇게 
+처리하면 잘 나오겠지.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;리스트 아이템 1&lt;/li&gt;
+&lt;li&gt;리스트 아이템 2
+    두 줄짜리는 이렇게 되려나?&lt;/li&gt;
+&lt;li&gt;리스트 아이템 3&lt;ul&gt;
+&lt;li&gt;리스트B 아이템1&lt;/li&gt;
+&lt;li&gt;리스트B 아이템2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;일반 문단&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;문장 중간에 &lt;code&gt;import os,sys&lt;/code&gt; 가 가능하지
+이건 그냥 링크 &lt;a href=""&gt;http://lqez.github.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://lqez.github.com/"&gt;http://lqez.github.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;single asterisks&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;single underscores&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;double asterisks&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;double underscores&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="screenshot of htop" src="http://lqez.github.com/blog/static/images/test.png" title="optional title" /&gt;&lt;/p&gt;</summary></entry><entry><title>펠리칸으로 작성하는 첫번째 블로그 포스트</title><link href="http://lqez.github.com/blog/the-first-blog-post-05.html" rel="alternate"></link><updated>2013-01-06T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.com/blog,2013-01-06:the-first-blog-post-05.html</id><summary type="html">&lt;h1&gt;H1 테스트&lt;/h1&gt;
+&lt;h2&gt;H2 테스트&lt;/h2&gt;
+&lt;h3&gt;이건 H3&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;인용구는 이렇게 
+처리하면 잘 나오겠지.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;리스트 아이템 1&lt;/li&gt;
+&lt;li&gt;리스트 아이템 2
+    두 줄짜리는 이렇게 되려나?&lt;/li&gt;
+&lt;li&gt;리스트 아이템 3&lt;ul&gt;
+&lt;li&gt;리스트B 아이템1&lt;/li&gt;
+&lt;li&gt;리스트B 아이템2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;일반 문단&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;문장 중간에 &lt;code&gt;import os,sys&lt;/code&gt; 가 가능하지
+이건 그냥 링크 &lt;a href=""&gt;http://lqez.github.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://lqez.github.com/"&gt;http://lqez.github.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;single asterisks&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;single underscores&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;double asterisks&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;double underscores&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="screenshot of htop" src="http://lqez.github.com/blog/static/images/test.png" title="optional title" /&gt;&lt;/p&gt;</summary></entry><entry><title>펠리칸으로 작성하는 첫번째 블로그 포스트</title><link href="http://lqez.github.com/blog/the-first-blog-post-06.html" rel="alternate"></link><updated>2013-01-06T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.com/blog,2013-01-06:the-first-blog-post-06.html</id><summary type="html">&lt;h1&gt;H1 테스트&lt;/h1&gt;
 &lt;h2&gt;H2 테스트&lt;/h2&gt;
 &lt;h3&gt;이건 H3&lt;/h3&gt;
 &lt;blockquote&gt;
