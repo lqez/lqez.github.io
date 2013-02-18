@@ -368,3 +368,7 @@ article {
 	
 	#add-comment input[type='submit'] {float: right; margin: 0 .5em;}
 	#add-comment * {margin-bottom: .5em;}
+
+.fb-comments, .fb-comments iframe[style], .fb-comments span {
+    width: 100% !important;
+}
