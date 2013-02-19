@@ -374,3 +374,8 @@ article {
 .fb-comments, .fb-comments iframe[style], .fb-comments span {
     width: 100% !important;
 }
+
+#theme a {
+    color: #444;
+    text-decoration: none;
+}
