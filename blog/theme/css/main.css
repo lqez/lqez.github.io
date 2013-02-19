@@ -169,19 +169,29 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 	/* Banner */
 	#banner h1 {
         font-family: serif;
-        font-size: 1em; 
+        font-size: 1.7em; 
         font-style: italic;
+        text-align: center;
+        color: #444;
+
+        padding-bottom: 1em;
+        margin-bottom: -0.5em;
+    }
+	
+	#banner h1 a {
+        color: #444;
+        text-decoration: none;
+    }
+
+	#banner h2 {
+        font-family: serif;
+        font-size: 1em; 
         text-align: center;
         color: #777;
 
         padding-bottom: 1em;
         margin-bottom: -0.5em;
         border-bottom: 1px dashed #DDD;
-    }
-	
-	#banner h1 a {
-        color: #777;
-        text-decoration: none;
     }
 
 /*
