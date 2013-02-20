@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Feature creep designer</title>
+    <title>Build vim with langauge support via Homebrew</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=0.8, minimum-scale=0.8" />
     <link rel="stylesheet" href="./theme/css/main.css" type="text/css" />
@@ -30,18 +30,21 @@
         <h1><a href="./">Feature creep designer </a></h1>
         <h2 id="greeting">Happy day.</h2>
     </header><!-- /#banner -->
-            
-            
+    <section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="./build-vim-with-langauge-support-via-homebrew.html" rel="bookmark"
+           title="Permalink to Build vim with langauge support via Homebrew">Build vim with langauge support via Homebrew</a></h1>
+          </header>
 
-                            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="./build-vim-with-langauge-support-via-homebrew.html">Build vim with langauge support via Homebrew</a></h1> 
-                    <footer class="post-info">
+    <div class="entry-content">
+      <footer class="post-info">
                 <abbr class="published" title="2013-02-20T00:00:00">
                 Wed 20 February 2013
         </abbr>
 
-</footer><!-- /.post-info --><p>Mac OS X에 기본 설치된 vim은 다른 언어를 위한 지원 옵션 없이 빌드되어, <a href="https://github.com/klen/python-mode">python-mode</a> 등을 사용할 수 없다.</p>
+</footer><!-- /.post-info -->      <p>Mac OS X에 기본 설치된 vim은 다른 언어를 위한 지원 옵션 없이 빌드되어, <a href="https://github.com/klen/python-mode">python-mode</a> 등을 사용할 수 없다.</p>
 <p>다행히도, Homebrew에 포함된 <a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/vim.rb">vim.rb</a>는 언어 지원을 위한 옵션을 포함하고 있어, 이를 이용해 편리하게 설치가 가능하다. 아래 명령으로 지원하는 옵션을 확인할 수 있다.</p>
 <div class="codehilite"><pre><span class="err">$</span> <span class="n">brew</span> <span class="n">options</span> <span class="n">vim</span>
 </pre></div>
@@ -52,25 +55,23 @@
 </pre></div>
 
 
-<p>vim.rb의 <a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/vim.rb#L25">25-31L</a>를 보면, <code>--with-&lt;langauge&gt;</code> 옵션은 configure 시에 <code>--enable-&lt;langauge&gt;interp</code> 옵션으로 변경된다.</p><footer class="post-info-footer">
+<p>vim.rb의 <a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/vim.rb#L25">25-31L</a>를 보면, <code>--with-&lt;langauge&gt;</code> 옵션은 configure 시에 <code>--enable-&lt;langauge&gt;interp</code> 옵션으로 변경된다.</p>
+      <footer class="post-info-footer">
                 <p>
         In <a href="./category/2013-02.html">2013-02</a>. 
                 </p>
-        <p>tags: <a href="./tag/vim.html" class="tag">vim</a><a href="./tag/python.html" class="tag">python</a><a href="./tag/homebrew.html" class="tag">homebrew</a></p></footer><!-- /.post-info -->                                        <div class="fb-comments" data-href="./build-vim-with-langauge-support-via-homebrew.html" data-width="0" data-num-posts="5"></div>
-                                    </article>
-                                    <p class="paginator">
-        Page 1 / 1
-    </p>
-                            </aside><!-- /#featured -->
-                                                </ol><!-- /#posts-list -->
-                        </section><!-- /#content -->
-                <section id="extras" class="body">
+        <p>tags: <a href="./tag/vim.html" class="tag">vim</a><a href="./tag/python.html" class="tag">python</a><a href="./tag/homebrew.html" class="tag">homebrew</a></p></footer><!-- /.post-info -->    </div><!-- /.entry-content -->
+            <div class="fb-comments" data-href="./build-vim-with-langauge-support-via-homebrew.html" data-width="0" data-num-posts="5"></div>
+    
+  </article>
+</section>
+    <section id="extras" class="body">
             </section><!-- /#extras -->
 
     <footer id="contentinfo" class="body">
     <!--
         <nav><ul>
-                                                    <li ><a href="./category/2013-02.html">2013-02</a></li>
+                                                    <li class="active"><a href="./category/2013-02.html">2013-02</a></li>
                 </ul></nav>
         -->
         <address id="about" class="vcard body">

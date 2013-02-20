@@ -55,7 +55,7 @@ a:hover, a:active {
 }
 	
 /* Paragraphs */
-p {margin-bottom: 0.143em;}
+p {margin-bottom: 0.143em; line-height:180%;}
 
 strong, b {font-weight: bold;}
 em, i {font-style: italic;}
@@ -208,7 +208,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 *****************/
 article {
     padding: 3em 1em 4em;
-    max-width: 860px;
+    max-width: 760px;
     margin: 0 auto;
     border-bottom: 1px solid #ddd;
 }

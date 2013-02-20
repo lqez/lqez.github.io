@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="http://lqez.github.com/blog/" rel="alternate"></link><link href="http://lqez.github.com/blog/feeds/misc.atom.xml" rel="self"></link><id>http://lqez.github.com/blog/</id><updated>2013-02-20T00:00:00+09:00</updated><entry><title>Build vim with python support via Homebrew</title><link href="http://lqez.github.com/blog/build-vim-with-python-support-via-homebrew.html" rel="alternate"></link><updated>2013-02-20T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.com/blog,2013-02-20:build-vim-with-python-support-via-homebrew.html</id><summary type="html">&lt;p&gt;vim에서 Python을 보다 편하기 쓰기 위해 https://github.com/klen/python-mode 를 설치하려다 보니, 사용중인 vim에 python 지원이 없음을 알게 되었다.&lt;/p&gt;
+&lt;p&gt;당연하지만, OS X 에 기본 설치되어 있는 vim은 language support가 빠진채 빌드되어 있다.&lt;/p&gt;
+&lt;p&gt;Homebrew에 포함된 vim.rb formula는 언어 지원을 위한 옵션을 포함하고 있는데, 아래 명령으로 지원하는 옵션을 확인할 수 있다.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;brew&lt;/span&gt; &lt;span class="n"&gt;options&lt;/span&gt; &lt;span class="n"&gt;vim&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Python 지원을 포함하려면 아래와 같이 설치한다.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;brew&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;vim&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;with&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;vim.rb의 25-31L를 보면, --with-&lt;langauge&gt; 옵션은 configure 시에 --enable-&lt;langauge&gt;interp 옵션으로 변경되어 들어간다.&lt;/p&gt;</summary><category term="vim"></category><category term="python"></category><category term="homebrew"></category></entry></feed>
