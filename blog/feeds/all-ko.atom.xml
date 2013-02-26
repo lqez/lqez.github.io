@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="http://lqez.github.com/blog/" rel="alternate"></link><link href="http://lqez.github.com/blog/feeds/all-ko.atom.xml" rel="self"></link><id>http://lqez.github.com/blog/</id><updated>2013-02-20T00:00:00+09:00</updated><entry><title>Build vim with language support via Homebrew</title><link href="http://lqez.github.com/blog/build-vim-with-language-support-via-homebrew.html" rel="alternate"></link><updated>2013-02-20T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.com/blog,2013-02-20:build-vim-with-language-support-via-homebrew.html</id><summary type="html">&lt;p&gt;Mac OS X에 기본 설치된 vim은 다른 언어를 위한 지원 옵션 없이 빌드되어, &lt;a href="https://github.com/klen/python-mode"&gt;python-mode&lt;/a&gt; 등을 사용할 수 없다.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="http://lqez.github.com/blog/" rel="alternate"></link><link href="http://lqez.github.com/blog/feeds/all-ko.atom.xml" rel="self"></link><id>http://lqez.github.com/blog/</id><updated>2013-02-26T00:00:00+09:00</updated><entry><title>Sync LDAP to Google Apps Account via GADS</title><link href="http://lqez.github.com/blog/sync-ldap-to-google-apps-account-via-gads.html" rel="alternate"></link><updated>2013-02-26T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.com/blog,2013-02-26:sync-ldap-to-google-apps-account-via-gads.html</id><summary type="html">&lt;p&gt;Google은 - 친절하게도 - Google Apps 계정을 외부 서버와 동기화할 수 있는 기능을 제공할 뿐 아니라, 이를 위한 도구도 배포하고 있다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://support.google.com/a/bin/answer.py?answer=172212"&gt;Google Apps Migration for Microsoft Exchange&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://support.google.com/a/bin/answer.py?answer=106368"&gt;Google Apps Directory Sync&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://support.google.com/a/bin/answer.py?answer=2611842"&gt;Google Apps Password Sync&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;스마트스터디는 사내 계정을 이미 LDAP으로 통합 운용중이라서, Google Apps Directory Sync(이하 GADS)를 선택하였다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.google.com/support/enterprise/static/gapps/docs/admin/en/gads/admin/"&gt;Google Apps Directory Sync Administration Guide(in PDF)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;GADS는 단방향 즉, LDAP에서 GADS로의 동기화만을 제공한다. 동기화 가능한 항목은 아래와 같다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Organizational Units&lt;/li&gt;
+&lt;li&gt;Users Accounts&lt;/li&gt;
+&lt;li&gt;Groups&lt;/li&gt;
+&lt;li&gt;User Profiles&lt;/li&gt;
+&lt;li&gt;Shared Contacts&lt;/li&gt;
+&lt;li&gt;Calendar Resources&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;GADS Configuration Tool은 자바를 이용한 GUI로 작성되어 있는데, 현재는 Windows / Linux 용만 제공된다. 이 툴을 통해 설정한 내용은 XML로 저장되고, 이 파일은 플랫폼 무관하게 사용할 수 있으므로, 일단 가상 머신의 Windows로 설정을 완료한 후에, 설정 파일을 복사하여 Linux에서 사용하였다.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Screen Shot of GADS" src="./static/images/gads_01.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Linux용 GADS는 커맨드라인에서 설치하면 동의항목이 HTML로 출력되지만, 계속 엔터키를 입력해 넘기며 진행하면 설치가 가능하다.
+root 계정으로 설치하는 경우에 /usr/local/GoogleAppsDirSync 에 설치가 되고, 이 디렉토리 아래에 있는 &lt;code&gt;sync-cmd&lt;/code&gt; 쉘 스크립트를 통해 동기화를 수행하면 된다.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sync&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;cmd&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;configuration_file&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xml&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;위와 같이 실행하면 비교만 하고, 실제로 동기화는 하지 않는 dry-run으로 실행되고,&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sync&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;cmd&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;configuration_file&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xml&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;-a&lt;/code&gt; 옵션을 추가해야 실제 동기화가 이뤄진다. 현재는 위 명령을 cron에 넣어 5분 마다 동기화 하도록 설정해두었다.&lt;/p&gt;</summary><category term="ldap"></category><category term="google"></category><category term="gads"></category><category term="sync"></category></entry><entry><title>Build vim with language support via Homebrew</title><link href="http://lqez.github.com/blog/build-vim-with-language-support-via-homebrew.html" rel="alternate"></link><updated>2013-02-20T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.com/blog,2013-02-20:build-vim-with-language-support-via-homebrew.html</id><summary type="html">&lt;p&gt;Mac OS X에 기본 설치된 vim은 다른 언어를 위한 지원 옵션 없이 빌드되어, &lt;a href="https://github.com/klen/python-mode"&gt;python-mode&lt;/a&gt; 등을 사용할 수 없다.&lt;/p&gt;
 &lt;p&gt;다행히도, Homebrew에 포함된 &lt;a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/vim.rb"&gt;vim.rb&lt;/a&gt;는 언어 지원을 위한 옵션을 포함하고 있어, 이를 이용해 편리하게 설치가 가능하다. 아래 명령으로 지원하는 옵션을 확인할 수 있다.&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;brew&lt;/span&gt; &lt;span class="n"&gt;options&lt;/span&gt; &lt;span class="n"&gt;vim&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;

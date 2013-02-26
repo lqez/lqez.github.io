@@ -155,8 +155,8 @@ aside, nav, article, figure {
 
 /***** Layout *****/
 .body {clear: both; margin: 0 auto; width: 100%;}
-img.right, figure.right {float: right; margin: 0 0 2em 2em;}
-img.left, figure.left {float: left; margin: 0 2em 2em 0;}
+figure.right {float: right; margin: 0 0 2em 2em;}
+figure.left {float: left; margin: 0 2em 2em 0;}
 
 /*
 	Header
@@ -211,6 +211,11 @@ article {
     max-width: 760px;
     margin: 0 auto;
     border-bottom: 1px solid #ddd;
+}
+
+article img {
+    width: 100%;
+    margin: 8px 0;
 }
 
 #content {
