@@ -7,19 +7,33 @@
 * {
     color: #777;
     font-family: 'Libre Baskerville', serif;
-    font-size: 12pt;
+    font-size: 11pt;
 }
 h1, h2 {
     color: #DDD;
+    text-shadow: 1px 1px 2px #000;
 }
 h1 {
-    font-size: 28pt;
-}
-h2 {
     font-size: 20pt;
 }
-li {
-    line-height: 130%;
+h2 {
+    font-size: 14pt;
+}
+ul {
+    list-style: none;
+    padding: 0 5%;
+}
+p, li {
+    line-height: 140%;
+    text-shadow: 1px 1px 1px #111;
+    margin-bottom: 5px;
+}
+li:before {
+    content: "• ";
+    color: #900;
+    font-size: 8pt;
+    line-height: 160%;
+    padding-right: 5px;
 }
 a {
     color: #BBB;
@@ -29,50 +43,87 @@ a:hover {
     text-decoration: underline;
 }
 body {
+    background: #111;
+    margin: 0;
+}
+
+.wrapper {
+    max-width: 800px;
+    min-height: 100%;
+    padding: 0 5% 5% 5%;
+    margin: auto;
     background: #222;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+}
+.profile {
+    padding-top: 5%;
+}
+.photo img {
+    float: right;
+    -webkit-border-radius: 500px;
+    -moz-border-radius: 500px;
+    border-radius: 500px;
+    border: 5px solid #DDD;
+    box-shadow: 0px 0px 5px #000;
+    width: 72px;
+    height: 72px;
+    background: #111;
 }
 </style>
 </head>
 <body>
-    <div class="profile">
-        <h1>
-            <img src="https://secure.gravatar.com/avatar/8495265d0f883004d3be2f81a73ad1ce?s=80">
-            Park Hyunwoo / lqez
-        </h1>
-        <p>A Lonely T-280 Space Construction Vehicle</p>
-        <ul>
-            <li>Seoul, Korea</li>
-            <li>I'm currently working for <a href="http://www.smartstudy.co.kr/">SMARTSTUDY</a> as Chief Technical Officer since Jun, 2010.</li>
-            <li>And also worked in NPLUTO, NHN and Hangame. Details are in my <a href="http://www.linkedin.com/pub/hyun-woo-park/25/a42/271">LinkedIn page</a>.</li>
-        </ul>
-    </div>
-    <div class="code">
-        <h2>Code</h2>
-        <ul>
-            <li><a href="https://github.com/lqez">GitHub</a> page</li>
-            <li><a href="https://github.com/lqez/npk">npk</a> - neat package system written in C</li>
-        </ul>
-    </div>
-    <div class="link">
-        <h2>Link</h2>
-        <ul>
-            <li><a href="http://lqez.github.com/blog/">Blog</a></li>
-            <li><a href="http://www.slideshare.net/lqez/presentations">Slideshare</a></li>
-            <li><a href="http://stackoverflow.com/users/366908/lqez">StackOverflow</a></li>
-            <li><a href="https://soundcloud.com/lqez">SoundCloud</a></li>
-            <li><a href="https://twitter.com/lqez">Twitter</a></li>
-            <li><a href="https://www.facebook.com/ez.amiryo">Facebook</a></li>
-            <li><a href="http://www.last.fm/user/lqez">Last.fm</a></li>
-            <li><a href="http://database.sarang.net/?criteria=mysql&keyword=lqez">database.sarang.net</a></li>
-            <li><a href="http://kin.naver.com/profile/ez_">Naver KIN</a></li>
-        </ul>
-    </div>
-    <div class="lab">
-        <h2>Lab</h2>
-        <ul>
-            <li><a href="./js/bounce/">bounce</a></li>
-            <li><a href="./js/uv/">uv</a></li>
-        </ul>
+    <div class="wrapper">
+        <div class="profile">
+            <div class="photo">
+                <img src="https://secure.gravatar.com/avatar/8495265d0f883004d3be2f81a73ad1ce?s=144" alt="Gravatar">
+            </div>
+            <h1>
+                Park Hyunwoo / lqez
+            </h1>
+            <p>A Lazy <a href="http://starcraft.wikia.com/wiki/T-280_space_construction_vehicle">T-280 Space Construction Vehicle</a></p>
+            <ul>
+                <li>Live in Seoul, Korea</li>
+                <li>I'm currently working for <a href="http://www.smartstudy.co.kr/">SMARTSTUDY</a> as Chief Technical Officer since Jun, 2010.</li>
+                <li>And also worked in NPLUTO, NHN and Hangame. Details are in my <a href="http://www.linkedin.com/pub/hyun-woo-park/25/a42/271">LinkedIn page</a>.</li>
+            </ul>
+        </div>
+        <div class="code">
+            <h2>Code</h2>
+            <ul>
+                <li><a href="https://github.com/lqez">GitHub</a> page</li>
+                <li><a href="https://github.com/lqez/npk">npk</a> - neat package system written in C</li>
+                <li><a href="https://code.google.com/p/minidom/">minidom</a> - a minimized dom/path library written in C++/STL</li>
+            </ul>
+        </div>
+        <div class="link">
+            <h2>Link</h2>
+            <ul>
+                <li><a href="http://lqez.github.com/blog/">Blog</a></li>
+                <li><a href="http://www.slideshare.net/lqez/presentations">Slideshare</a></li>
+                <li><a href="http://stackoverflow.com/users/366908/lqez">StackOverflow</a></li>
+                <li><a href="https://soundcloud.com/lqez">SoundCloud</a></li>
+                <li><a href="https://twitter.com/lqez">Twitter</a></li>
+                <li><a href="https://www.facebook.com/ez.amiryo">Facebook</a></li>
+                <li><a href="http://www.last.fm/user/lqez">Last.fm</a></li>
+                <li><a href="http://database.sarang.net/?criteria=mysql&keyword=lqez">database.sarang.net</a></li>
+                <li><a href="http://kin.naver.com/profile/ez_">Naver KIN</a></li>
+            </ul>
+        </div>
+        <div class="design">
+            <h2>Design works</h2>
+            <ul>
+                <li>Redmine theme, <a href="https://github.com/lqez/redmine-theme-basecamp-with-icon">Basecamp-with-icon</a></li>
+                <li>Pelican theme, <a href="https://github.com/lqez/42signals-pelican-theme">42 Signals</a></li>
+            </ul>
+        </div>
+        <div class="lab">
+            <h2>Lab</h2>
+            <ul>
+                <li><a href="./js/bounce/">Bouncing ball</a>, javascript</li>
+                <li><a href="./js/uv/">UV coating paper</a>, css/javascript</li>
+            </ul>
+        </div>
     </div>
 </body>
 </html>
