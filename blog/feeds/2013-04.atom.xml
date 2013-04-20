@@ -75,7 +75,7 @@
 &lt;p&gt;&lt;code&gt;14:52&lt;/code&gt; 또 걸어서 출근했더니 오전이 쉰내와 함께 갑자기 사라지고 말았다! 아무튼 점심 먹고 또 CSS에 빠져들었다. 툴팁 붙이고 신났다!
 이 때부터 &lt;code&gt;imgur&lt;/code&gt;에 올려서 IRC 에 링크도 올리고 했다. 슬슬 초기 버프가 떨어지고 재미가 없어지는 시점이었던거 같다.
 &lt;img alt="0416-01.jpg" src="./static/images/2013-04/0416-01.jpg" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;17:23&lt;/code&gt; 짬짬히 템플릿 코딩을 계속했다. 동료의 어께 너머로 배운 &lt;code&gt;Class based view&lt;/code&gt; 덕분에 뷰 코딩은 거의 안하고, 장식 예술에 빠질 수 있었다.
+&lt;p&gt;&lt;code&gt;17:23&lt;/code&gt; 짬짬히 템플릿 코딩을 계속했다. 동료의 어깨 너머로 배운 &lt;code&gt;Class based view&lt;/code&gt; 덕분에 뷰 코딩은 거의 안하고, 장식 예술에 빠질 수 있었다.
 &lt;code&gt;moot.it&lt;/code&gt;이 &lt;code&gt;disqus&lt;/code&gt;보다 예뻐보여 일단 넣어보았다. 넣기 정말 쉽긴 한데, 나중에 폰 뷰에서 제대로 안나오고 페이스북 로그인만 지원해서 빼버렸다.
 &lt;img alt="0416-02.jpg" src="./static/images/2013-04/0416-02.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;18:18&lt;/code&gt; 이제 대놓고 이것만 만들기 시작했다. 다음 주가 바로 컨퍼런스 일인데 너무 늦게 알리면 아무도 안 봐줄꺼고, 그러면 아쉬울까봐.
@@ -126,5 +126,5 @@
 마침 가고 싶었던 컨퍼런스를 위한 사이트가 마땅히 없는 상태에서 잘 만들면 일석 이조가 될 것이라 생각했다.&lt;/p&gt;
 &lt;p&gt;하지만 담당자로부터 컨퍼런스와 관련된 자료를 이용한 2차 저작물 제작을 허용하지 않는다는 얘기와 함께, 사이트를 내려 달라는 요청을 듣고,
 오픈했던 팬 페이지를 서너시간 만에 닫을 수 밖에 없었다. 이해는 가지만 아쉬운 마음은 숨기기 어려운 것 같다.&lt;/p&gt;
-&lt;p&gt;근 일주일 동안 즐겁게 작업했고, 간만에 원없이 CSS 질 한 것으로 만족해야겠다. 잠이 오지 않아, 뒤늦게 쓰려고 했던 제작 후기 글을 본의아니게 일찍 쓰게 되었다.&lt;/p&gt;
+&lt;p&gt;근 일주일 동안 즐겁게 작업했고, 간만에 원없이 CSS 질 한 것으로 만족해야겠다. 잠이 오지 않아, 뒤늦게 쓰려고 했던 제작 후기 글을 본의 아니게 일찍 쓰게 되었다.&lt;/p&gt;
 &lt;p&gt;Github link: &lt;a href="https://github.com/lqez/ndc13"&gt;https://github.com/lqez/ndc13&lt;/a&gt;&lt;/p&gt;</summary><category term="django"></category><category term="surplus"></category></entry></feed>
