@@ -40,6 +40,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h3, h4, h5, h6 { margin-top: .8em; }
+
+article h2, article h3 {
+    margin-top: 1em;
+}
 	
 hr { border:none; border-top: 1px solid #E0E0E0; margin: 3% 0; }
 
@@ -55,6 +59,7 @@ a:hover, a:active {
 	
 /* Paragraphs */
 p {margin-bottom: 0.5em; line-height:180%;}
+article > p {text-align:justify;}
 
 strong, b {font-weight: bold;}
 strong {
@@ -71,6 +76,7 @@ em, i {font-style: italic;}
 ul {
 	list-style: none;
 	padding: 0.5em 1em 0.5em 1.5em;
+    background-color: #fcfcfc;
     border: 1px solid #EEE;
     border-radius: 10px;
     margin: 0em 0 1.5em 0;
@@ -96,6 +102,8 @@ li {
 
 ul ul {
     margin: 0.25em 0 0.5em 1.5em;
+    border: 1px solid #e6e6e6;
+    background-color: #f5f5f5;
 }
 
 ul ul li {
@@ -250,8 +258,17 @@ article {
 
 article img {
     width: 100%;
-    margin: auto 0;
-    border: 1px solid #ddd;
+    display: block;
+    max-width: 500px;
+    height: auto;
+    border-radius: 5px;
+
+    border-style: solid;
+    border-width: 1px;
+    border-color: #EEE #DDD #BBB;
+    margin: 5px auto;
+    float: none;
+    box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 3px;
 }
 
 #content {
