@@ -98,3 +98,8 @@ small a {
     width: 120px;
     visibility: hidden;
 }
+@media (max-width: 480px) {
+    * {
+        letter-spacing: 0px;
+    }
+}
