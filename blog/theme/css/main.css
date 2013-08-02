@@ -48,14 +48,8 @@ article h2, article h3 {
 hr { border:none; border-top: 1px solid #E0E0E0; margin: 3% 0; }
 
 /* Anchors */
-a {outline: 0; color:#477b96; }
+a {outline: 0; color:#477b96; text-decoration: none;}
 a img {border: 0px; text-decoration: none;}
-a:link, a:visited {
-	text-decoration: underline;
-}
-a:hover, a:active {
-	text-decoration: none;
-}
 	
 /* Paragraphs */
 p {margin-bottom: 0.5em; line-height:180%;}
@@ -135,7 +129,7 @@ ul ul li:before {
 }
 
 .tag {
-    margin-left: 0.2em;
+    margin-left: 0.3em;
 }
 
 .readmore { 
@@ -256,6 +250,15 @@ article {
     border-bottom: 1px solid #ddd;
 }
 
+article p a:link, article p a:visited {
+	text-decoration: none;
+    border-bottom: 1px solid #cde3ee;
+}
+article p a:hover, article p a:active {
+	text-decoration: none;
+    border-bottom: 1px solid #477b96;
+}
+
 article img {
     width: 100%;
     display: block;
@@ -371,17 +374,10 @@ article img {
 }
 
 .entry-title a {
-    text-decoration: none;
-    color: #444;
-}
-
-.entry-title a:link, h1 a:visited {
-    text-decoration: none;
     color: #444;
 }
 
 .entry-title a:hover {
-    text-decoration: underline;
     color: #477b96;
 }
 
