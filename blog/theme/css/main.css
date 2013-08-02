@@ -250,11 +250,11 @@ article {
     border-bottom: 1px solid #ddd;
 }
 
-article p a:link, article p a:visited {
+article a:link, article a:visited {
 	text-decoration: none;
     border-bottom: 1px solid #cde3ee;
 }
-article p a:hover, article p a:active {
+article a:hover, article a:active {
 	text-decoration: none;
     border-bottom: 1px solid #477b96;
 }
@@ -373,12 +373,14 @@ article img {
     text-align: center;
 }
 
-.entry-title a {
+.entry-title a:link, .entry-title a:visited {
     color: #444;
+    border-bottom: none;
 }
 
-.entry-title a:hover {
+.entry-title a:hover, .entry-title a:active {
     color: #477b96;
+    border-bottom: none;
 }
 
 
