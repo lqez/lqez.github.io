@@ -1,5 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="http://lqez.github.io/blog/" rel="alternate"></link><link href="http://lqez.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>http://lqez.github.io/blog/</id><updated>2013-05-14T00:00:00+09:00</updated><entry><title>gittip.com and /for/korea</title><link href="http://lqez.github.io/blog/gittipcom-and-forkorea.html" rel="alternate"></link><updated>2013-05-14T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io/blog,2013-05-14:gittipcom-and-forkorea.html</id><summary type="html">&lt;p&gt;얼마 전, &lt;a href="http://www.kickstarter.com/projects/andrewgodwin/schema-migrations-for-django"&gt;Schema Migrations for Django&lt;/a&gt; 라는 오픈소스 프로젝트 계획에 대한 모금 활동이 킥스타터에서 큰 성공을 거뒀다. 이제까지 오픈소스를 사용하면서 개발한 이들에게 고마움을 표시하는 방법은 해당 프로젝트를 열심히 사용하며, 버그 제보, 번역, 기능 추가 또는 사용기 발표 정도 밖에 없다고 생각했는데, '금전적인' 후원도 가능하다는 것을 알게 되었다.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="http://lqez.github.io/blog/" rel="alternate"></link><link href="http://lqez.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>http://lqez.github.io/blog/</id><updated>2013-08-28T00:00:00+09:00</updated><entry><title>Happy birthday to me, 2013</title><link href="http://lqez.github.io/blog/happy-birthday-to-me-2013.html" rel="alternate"></link><updated>2013-08-28T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io/blog,2013-08-28:happy-birthday-to-me-2013.html</id><summary type="html">&lt;p&gt;&lt;img alt="A drawing on my birthday" src="./static/images/2013-08/birthday.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;언제부턴가 생일에 특별한 의미를 부여하거나, 챙겨서 뭘 하진 않게 되었다.
+어차피 날짜라는 건 연속적인 시간을 인간의 기준에 맞춰 불연속적인 개념으로 부르는 것일 뿐이라고 생각한다.
+하지만 오늘은 어쩐지 회사 창업 후 달라진 모습을 기록해보고 싶다.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;사실 거의 10년간 하나와 다를 바 없는 회사를 그만두고 지금의 일을 시작하는데 우아한 동기가 있거나 굳은 마음가짐 같은 건 없었다.
+그저 변하지 않는 주변의 모습과 마찬가지로 발전 없는 내 모습이, 그리고 크게 나아지지 않는 상황이 나를 다른 곳으로 이끌었을 뿐이다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;어쨌든 도망친 거다.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;새로운 회사에 참여하기 전에는 나 자신이 기존에 있었던 곳에서의 도망자, 패배자 그리고 낙오자라고 생각되었다.
+컴퓨터 게임 분야에서 성공하지 못했기에 다른 분야로 도망간 것뿐이다. 정말로 그렇게 생각했다.&lt;/p&gt;
+&lt;p&gt;그럼에도 불구하고 첫해에는 헛바람이 많이 들어갔다.
+모바일 시장이 열린다며 주변에서 웅성거리는 분위기가 꼭 나를 위한 것 같고, 나도 뭔가 해낼 수 있을 것 같았다.
+당연하게도 그런 일은 일어나지 않았다. 나는 여전히 무명이었으며, 우리 회사도 여전히 무명이었고 다른 이들은 계속 앞으로 나아가고 있었다.&lt;/p&gt;
+&lt;p&gt;마음만 급했지, 실제도 제대로 하는 일은 없었고, 주변에 아무런 도움이 되질 못 했다.&lt;/p&gt;
+&lt;p&gt;여전히 시장을 읽을 줄 몰랐고, 이상향만 꿈꾸며 현실적인 작업들은 주변의 사람들에게 미루기 일쑤였다.
+왜 예전만큼 능률이 오르지 않을까, 재미있을 줄 알고 시작했는데 왜 재미가 없을까...
+변명은 늘어갔고 벌여놓은 일들은 수습되지 않은 상태로 시간이 훅 지나가 버렸다.&lt;/p&gt;
+&lt;p&gt;애초에 인정하고 시작했으면 좋았을 것 같다.
+다른 사람에게는 "전 뛰어난 개발자가 아니고 그냥 딱풀 같은 존재입니다." 라고 얘기하곤 했지만, 내 마음속에서는 아니라고 말하고 있었다.
+나는 여전히 유능한 프로그래머여야 하고, 유능한 시스템 엔지니어와 데이터베이스 전문가일 뿐 아니라, 인터페이스 전문가이기를 꿈꿨다.
+그 와중에 회사가 빨리 성장했으면 좋겠고, 얼른 돈을 크게 벌어 영화에서 나오듯 돈 걱정 없이 좋은 집에,
+포르쉐를 타고 출퇴근하는 쿨한 엔지니어가 되기를 원했으니, 아무것도 되지 않는 게 어쩌면 당연한 결과였다.&lt;/p&gt;
+&lt;p&gt;아무리 좋은 아이디어가 있어도 구현하지 않으면 소용없고,
+그렇게 구현한 서비스가 아무리 뛰어나도 시장에서 원하지 않는 물건이라면 환영받지 못할 수 있는데,
+나는 그 어떤 것도 제대로 해내지 못했다.&lt;/p&gt;
+&lt;p&gt;그런 점에서 나보다 훨씬 뛰어나고 현실 감각이 좋은 사람들과 함께하게 된 것은 정말 행운이었다.
+내가 매일 꿈만 꾸고 있을 때, 실제로 일을 해내고 서비스를 만들어낸 사람들이 곁에 있어 정말 다행이었다.
+그들이 있어 아직 회사가 버티고 있을 뿐 아니라, 의미 있는 성과도 내고 있다.
+그 성과 덕분에 투자도 성공적으로 유치하여 더 큰 일을 할 수 있는 회사로 성장할 수 있는 발판도 마련할 수 있게 되었다.&lt;/p&gt;
+&lt;p&gt;지난 3년간 그들과 함께한 덕분에 작은 성공을 맛보기도 했지만, 더 소중한 것은 그들 덕분에, 그들을 통해,
+&lt;strong&gt;내가 어떤 사람이고 무엇을 할 수 있는 사람인지&lt;/strong&gt; 더 객관적으로 볼 수 있게 된 점이다.
+이제는 내가 할 수 있는 일이 무엇이고, 할 수 없는 일은 무엇인지 조금 더 알게 되었고 이를 바탕으로 조금이나마 도움이 되려고 노력하고 있다.&lt;/p&gt;
+&lt;p&gt;더불어, 회사를 옮긴 이후에 PC에서 모바일 플랫폼으로, 게임 시장에서 교육 및 멀티미디어 시장으로 '내려왔다'고 생각했는데, 정말 잘못된 생각이었다.
+이전보다도 오히려 더 높은 기술 수준과 완성도를 요구하는 일들이 즐비한 곳이었다.
+기존에 알고 있던 지식이 썩어 문드러지는 곳이 아니라, 오히려 겨우 익혀왔던 그 얇은 지식 위에 쌓이는 지식과 경험이 너무 많았다.&lt;/p&gt;
+&lt;p&gt;허황된 생각과 헛바람에 빠져 몇 년간을 지내왔지만, 나도 모르게 새로운 세상에 눈을 뜨게 되었다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Twitter와 IRC에서 만난 수 없이 많은 유능한 엔지니어들.&lt;/li&gt;
+&lt;li&gt;개발자 컨퍼런스에서 우연히 얻는 키워드들과 그곳에서 마주치는 사람들.&lt;/li&gt;
+&lt;li&gt;파이썬에 관심을 가지게 되면서 만난 사람들과 &lt;a href="https://www.facebook.com/groups/pythonkorea/"&gt;한국 파이썬 커뮤니티&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://perl.kr/"&gt;Seoul.pm&lt;/a&gt; 분들을 우연히 만나게 되어 알게 된 펄 커뮤니티와 그 세계.&lt;/li&gt;
+&lt;li&gt;번역 사이트 &lt;a href="http://looah.com/"&gt;Looah&lt;/a&gt;를 통해 공동으로 번역을 하고 공유하는 멋진 경험.&lt;/li&gt;
+&lt;li&gt;설명이 필요 없는 &lt;a href="https://github.com/"&gt;Github&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Google과 &lt;a href="https://stackoverflow.com/"&gt;StackOverflow&lt;/a&gt;에서 얻는 경험과 노하우.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://soundcloud.com/"&gt;Soundcloud&lt;/a&gt;를 통한 음악 공유의 세상.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://dribbble.com/"&gt;Dribbble&lt;/a&gt;을 통해 맛볼 수 있는 트렌디한 웹/앱 디자인들.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;스타트업을 시작하고 나서, 자신에 대해 더 잘 알게 되고, 더 많은 사람을 만나고, 더 넓은 세상을 알게 되어 행복하다.
+아직 스포츠카도 없고, 물질적으로 아주 풍요로운 삶을 누리게 된 것도 아니지만, 그보다 훨씬 더 큰 선물을 받은 것 같다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary><category term="diary"></category></entry><entry><title>gittip.com and /for/korea</title><link href="http://lqez.github.io/blog/gittipcom-and-forkorea.html" rel="alternate"></link><updated>2013-05-14T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io/blog,2013-05-14:gittipcom-and-forkorea.html</id><summary type="html">&lt;p&gt;얼마 전, &lt;a href="http://www.kickstarter.com/projects/andrewgodwin/schema-migrations-for-django"&gt;Schema Migrations for Django&lt;/a&gt; 라는 오픈소스 프로젝트 계획에 대한 모금 활동이 킥스타터에서 큰 성공을 거뒀다. 이제까지 오픈소스를 사용하면서 개발한 이들에게 고마움을 표시하는 방법은 해당 프로젝트를 열심히 사용하며, 버그 제보, 번역, 기능 추가 또는 사용기 발표 정도 밖에 없다고 생각했는데, '금전적인' 후원도 가능하다는 것을 알게 되었다.&lt;/p&gt;
 &lt;h2&gt;Gittip&lt;/h2&gt;
 &lt;p&gt;&lt;img alt="gittip.png" src="./static/images/2013-05/gittip.png" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.gittip.com"&gt;https://www.gittip.com&lt;/a&gt; 은 오픈소스 개발자나 오픈소스 그룹에게 정기적으로 후원을 할 수 있는 웹서비스이다. 앞서 언급한 킥스타터와는 달리, 한 번 기부하고 마는 것이 아니라 지정한 금액을 매주 목요일 기부하게 된다.
@@ -218,4 +266,34 @@ root 계정으로 설치하는 경우에 /usr/local/GoogleAppsDirSync 에 설치
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;vim.rb의 &lt;a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/vim.rb#L25"&gt;25-31L&lt;/a&gt;를 보면, &lt;code&gt;--with-&amp;lt;language&amp;gt;&lt;/code&gt; 옵션은 configure 시에 &lt;code&gt;--enable-&amp;lt;language&amp;gt;interp&lt;/code&gt; 옵션으로 변경된다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary><category term="vim"></category><category term="python"></category><category term="homebrew"></category></entry></feed>
+&lt;p&gt;vim.rb의 &lt;a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/vim.rb#L25"&gt;25-31L&lt;/a&gt;를 보면, &lt;code&gt;--with-&amp;lt;language&amp;gt;&lt;/code&gt; 옵션은 configure 시에 &lt;code&gt;--enable-&amp;lt;language&amp;gt;interp&lt;/code&gt; 옵션으로 변경된다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary><category term="vim"></category><category term="python"></category><category term="homebrew"></category></entry><entry><title>펠리칸으로 작성하는 첫번째 블로그 포스트</title><link href="http://lqez.github.io/blog/the-first-blog-post.html" rel="alternate"></link><updated>2013-01-06T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io/blog,2013-01-06:the-first-blog-post.html</id><summary type="html">&lt;h1&gt;H1 테스트&lt;/h1&gt;
+&lt;h2&gt;H2 테스트&lt;/h2&gt;
+&lt;h3&gt;이건 H3&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;인용구는 이렇게 
+처리하면 잘 나오겠지.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;리스트 아이템 1&lt;/li&gt;
+&lt;li&gt;리스트 아이템 2
+    두 줄짜리는 이렇게 되려나?&lt;/li&gt;
+&lt;li&gt;리스트 아이템 3&lt;ul&gt;
+&lt;li&gt;리스트B 아이템1&lt;/li&gt;
+&lt;li&gt;리스트B 아이템2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;일반 문단&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;문장 중간에 &lt;code&gt;import os,sys&lt;/code&gt; 가 가능하지
+이건 그냥 링크 &lt;a href=""&gt;http://lqez.github.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://lqez.github.com/"&gt;http://lqez.github.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;single asterisks&lt;/em&gt;
+&lt;em&gt;single underscores&lt;/em&gt;
+&lt;strong&gt;double asterisks&lt;/strong&gt;
+&lt;strong&gt;double underscores&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="screenshot of htop" src="|filename|/images/test.png" title="optional title" /&gt;&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary></entry></feed>

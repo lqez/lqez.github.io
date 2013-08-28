@@ -52,7 +52,7 @@ a {outline: 0; color:#477b96; text-decoration: none;}
 a img {border: 0px; text-decoration: none;}
 	
 /* Paragraphs */
-p {margin-bottom: 0.5em; line-height:180%;}
+p {margin-bottom: 1.0em; line-height:180%;}
 article > p {text-align:justify;}
 
 strong, b {font-weight: bold;}
