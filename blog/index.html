@@ -39,13 +39,81 @@
 
                             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://lqez.github.io/blog/lie-makes-worse-career.html">Lie makes worse career</a></h1> 
+                    <h1 class="entry-title"><a href="http://lqez.github.io/blog/fool-upstart.html">Fool Upstart</a></h1> 
                     <footer class="post-info">
+                <abbr class="published" title="2014-07-17T00:00:00">
+                Thu 17 July 2014
+        </abbr>
+
+</footer><!-- /.post-info --><h1>Upstart</h1>
+<p><a href="http://upstart.ubuntu.com/">Upstart</a>는 /sbin/init 를 대체하기 위한 우분투의 기본 서비스 관리자다.
+다양한 서비스를 daemon 형태로 관리하고, 죽은 경우에 자동으로 다시 실행할 수 있는 등 편리한 기능을 갖추고 있다.</p>
+<p>프로세스 ID를 받아 해당 프로세스가 잘 동작하는지 감시해야 하므로,
+해당 서비스가 어떤 형태로 시작되는지 알고 있어야 정확한 프로세스 ID를 얻을 수 있다.
+Upstart 설정 중, <a href="http://upstart.ubuntu.com/cookbook/#expect">expect stanza</a>가 이를 결정하며 일반적인 프로세스는 설정하지 않아도 동작하지만,
+해당 프로세스가 fork 되어 동작하거나 daemonize 되는 경우, 별도의 값을 지정해야 정확한 ID 확인이 가능하다.
+이 부분에 혼란을 겪은 사람이 꽤 많아, 홈페이지 에서 별도로 안내하고 있을 정도다.</p>
+<ul>
+<li><a href="http://upstart.ubuntu.com/cookbook/#implications-of-misspecifying-expect">6.13.5 Implications of Misspecifying expect</a></li>
+</ul>
+<h2>Symptom</h2>
+<p>보통은 이 값을 잘못 설정한 경우에 서비스가 제대로 감시되지 않거나, 종료되지 않는 등의 문제가 생기는데
+오늘은 해당 서비스를 재시작하면서 별다른 설정의 변경이 없었음에도 불구하고, 이상한 상태에 빠지고 말았다.</p>
+<div class="codehilite"><pre><span class="err">$</span> <span class="n">initctl</span> <span class="n">list</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">flower</span>
+<span class="n">one</span><span class="o">/</span><span class="n">flower</span> <span class="n">start</span><span class="o">/</span><span class="n">killed</span><span class="p">,</span> <span class="n">process</span> <span class="mi">14645</span>
+</pre></div>
+
+
+<p>이 상황에서는 <code>start</code> / <code>stop</code> 명령어가 전부 hang이 되어 서비스 재시작이나 종료가 불가능하다.
+<code>start/killed</code> 로 표시되는 프로세스 ID를 <code>ps</code>로 찾아보면 당연히 없는 프로세스 ID다.
+한참을 헤매다 혹시나 싶어 upstart configuration 파일을 복제하여 다른 이름으로 바꿨더니, 제대로 동작한다!</p>
+<div class="codehilite"><pre><span class="err">$</span> <span class="n">initctl</span> <span class="n">list</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">flower</span>
+<span class="n">one</span><span class="o">/</span><span class="n">flower</span> <span class="n">start</span><span class="o">/</span><span class="n">killed</span><span class="p">,</span> <span class="n">process</span> <span class="mi">14645</span>
+<span class="n">one</span><span class="o">/</span><span class="n">flower_dup</span> <span class="n">start</span><span class="o">/</span><span class="n">running</span><span class="p">,</span> <span class="n">process</span> <span class="mi">17171</span>
+</pre></div>
+
+
+<h2>Solution</h2>
+<p>시스템을 재시작하면 복구될 것 같았지만, 당장 재시작할 수 없는 프로덕션 시스템이라
+혹시나 하여 구글링을 계속하다보니 누군가 만들어둔 루비 스크립트를 찾게 되었다.</p>
+<ul>
+<li><a href="https://github.com/ion1/workaround-upstart-snafu">https://github.com/ion1/workaround-upstart-snafu</a></li>
+</ul>
+<p>프로세스가 <code>start/killed</code> 또는 <code>stop/killed</code> 상태일 때 사용할 수 있는 이 스크립트는,</p>
+<ol>
+<li>포크하여 프로세스 A를 하나 생성한다.</li>
+<li>프로세스 A에서 문제의 프로세스 ID를 받을 때까지 계속해서 자식 프로세스 B를 포크한다.</li>
+<li>지정된 ID를 얻으면 프로세스 A, B를 모두 종료한다.</li>
+<li>Upstart는 이것이 정상적인 프로세스 종료로 판단하고 혼란 상황에서 빠져나온다.</li>
+</ol>
+<p>우여곡절 끝에 문제 해결.</p>
+<div class="codehilite"><pre><span class="err">$</span> <span class="n">initctl</span> <span class="n">list</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">one</span>
+<span class="n">one</span><span class="o">/</span><span class="n">flower</span> <span class="n">start</span><span class="o">/</span><span class="n">running</span><span class="p">,</span> <span class="n">process</span> <span class="mi">14810</span>
+</pre></div><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script><footer class="post-info-footer">
+                <p>
+        In <a href="http://lqez.github.io/blog/category/2014-07.html">2014-07</a>. 
+                </p>
+        <p>tags: <a href="http://lqez.github.io/blog/tag/diary.html" class="tag">diary</a><a href="http://lqez.github.io/blog/tag/ubuntu.html" class="tag">ubuntu</a></p></footer><!-- /.post-info -->                                        <div class="fb-comments" data-href="http://lqez.github.io/blog/fool-upstart.html" data-width="0" data-num-posts="5"></div>
+                                    </article>
+                            </aside><!-- /#featured -->
+                            <section id="content" class="body">
+                    <ol id="posts-list" class="hfeed">
+                                                
+
+                 
+                        <li><article class="hentry">    
+                <header>
+                    <h1 class="entry-title"><a href="http://lqez.github.io/blog/lie-makes-worse-career.html" rel="bookmark"
+                           title="Permalink to Lie makes worse career">Lie makes worse career</a></h1>
+                </header>
+                
+                <div class="entry-content">
+                <footer class="post-info">
                 <abbr class="published" title="2014-07-16T00:00:00">
                 Wed 16 July 2014
         </abbr>
 
-</footer><!-- /.post-info --><p>구인 과정에서 있었던 불미스러운 일을 포스팅 하였으나,
+</footer><!-- /.post-info -->                <p>구인 과정에서 있었던 불미스러운 일을 포스팅 하였으나,
 이하와 같은 의견이 있어 당사자와 대화하고 내용을 수정하였습니다.</p>
 <ul>
 <li><a href="https://twitter.com/returned_momoko/status/489567277793017856">https://twitter.com/returned_momoko/status/489567277793017856</a></li>
@@ -53,16 +121,11 @@
 </ul>
 <p>당사자와의 문제를 끌어내 확대 해석 가능하도록 만든 점에 대해 사과드립니다.
 아래는 당사자와 대화한 내용을 동의하에 기록한 것입니다.</p>
-<p><img alt="conv.png" src="./static/images/2014-07/conv.png" /></p><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script><footer class="post-info-footer">
-                <p>
-        In <a href="http://lqez.github.io/blog/category/2014-07.html">2014-07</a>. 
-                </p>
-        <p>tags: <a href="http://lqez.github.io/blog/tag/diary.html" class="tag">diary</a></p></footer><!-- /.post-info -->                                        <div class="fb-comments" data-href="http://lqez.github.io/blog/lie-makes-worse-career.html" data-width="0" data-num-posts="5"></div>
-                                    </article>
-                            </aside><!-- /#featured -->
-                            <section id="content" class="body">
-                    <ol id="posts-list" class="hfeed">
-                                                
+<p><img alt="conv.png" src="./static/images/2014-07/conv.png" /></p><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                <a class="readmore" href="http://lqez.github.io/blog/lie-makes-worse-career.html">read more</a>
+                                </div><!-- /.entry-content -->
+            </article></li>
+                            
 
                  
                         <li><article class="hentry">    
@@ -134,33 +197,6 @@
 <p><img alt="gittip.png" src="./static/images/2013-05/gittip.png" /></p>
 <p><a href="https://www.gittip.com">https://www ...</a></p>
                 <a class="readmore" href="http://lqez.github.io/blog/gittipcom-and-forkorea.html">read more</a>
-                                </div><!-- /.entry-content -->
-            </article></li>
-                            
-
-                 
-                        <li><article class="hentry">    
-                <header>
-                    <h1 class="entry-title"><a href="http://lqez.github.io/blog/499px.html" rel="bookmark"
-                           title="Permalink to 499px">499px</a></h1>
-                </header>
-                
-                <div class="entry-content">
-                <footer class="post-info">
-                <abbr class="published" title="2013-05-08T00:00:00">
-                Wed 08 May 2013
-        </abbr>
-
-</footer><!-- /.post-info -->                <p><a href="https://twitter.com/drypot"><a href="https://twitter.com/drypot">@drypot</a></a> 님이 의지를 불태워 <a href="http://rapixel.com">http://rapixel.com</a> 을 만들고 있는 것에 감명받아,
-예전부터 만들고 싶었던 사진 저장/공유 사이트 아이디어를 구체화 해보았다.</p>
-<ul>
-<li>원본 사진을 보관한다.</li>
-<li>모바일 앱에서 바로 사진을 올릴 수 있다.</li>
-<li>모두에게 공유할 수도 있지만, 기본적으로는 나만 본다.</li>
-<li>이러한 공유 설정은 폴더 단위로 작동한다.</li>
-<li>폴더에 하위 폴더는 없다.</li>
-<li>특정 ...</li></ul>
-                <a class="readmore" href="http://lqez.github.io/blog/499px.html">read more</a>
                                 </div><!-- /.entry-content -->
             </article></li>
                             </ol><!-- /#posts-list -->

@@ -81,7 +81,7 @@ ol {
 	margin: 1em 0 1.5em 1.5em;
 }
 
-li:before {
+ul li:before {
     content: "• ";
     color: #679ba6;
     font-size: 8pt;
