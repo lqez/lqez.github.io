@@ -137,6 +137,7 @@ ul ul li:before {
     font-size: 100%;
     padding: 1em 0;
     display: block;
+    border: none;
 }
 
 .paginator { 
