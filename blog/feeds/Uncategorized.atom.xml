@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="http://lqez.github.io/blog/" rel="alternate"></link><link href="http://lqez.github.io/blog/feeds/Uncategorized.atom.xml" rel="self"></link><id>http://lqez.github.io/blog/</id><updated>2013-01-06T00:00:00+09:00</updated><entry><title>펠리칸으로 작성하는 첫번째 블로그 포스트</title><link href="http://lqez.github.io/blog/the-first-blog-post.html" rel="alternate"></link><updated>2013-01-06T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io/blog,2013-01-06:the-first-blog-post.html</id><summary type="html">&lt;h1&gt;H1 테스트&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="http://lqez.github.io/blog/" rel="alternate"></link><link href="http://lqez.github.io/blog/feeds/uncategorized.atom.xml" rel="self"></link><id>http://lqez.github.io/blog/</id><updated>2013-01-06T00:00:00+09:00</updated><entry><title>펠리칸으로 작성하는 첫번째 블로그 포스트</title><link href="http://lqez.github.io/blog/the-first-blog-post.html" rel="alternate"></link><published>2013-01-06T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2013-01-06:blog/the-first-blog-post.html</id><summary type="html">&lt;h1&gt;H1 테스트&lt;/h1&gt;
 &lt;h2&gt;H2 테스트&lt;/h2&gt;
 &lt;h3&gt;이건 H3&lt;/h3&gt;
 &lt;blockquote&gt;
@@ -18,7 +18,7 @@
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;p&gt;일반 문단&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="nn"&gt;sys&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
