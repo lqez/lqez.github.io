@@ -1,0 +1,94 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+
+* {
+    color: #777;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+h1, h2 {
+    font-weight: 700;
+    color: #000;
+    margin: 3% auto;
+}
+h1 {
+    font-size: 4rem;
+}
+h2 {
+    font-size: 2rem;
+}
+ul {
+    list-style: none;
+    padding: 0 3%;
+}
+p, li {
+    line-height: 160%;
+    margin-bottom: 5px;
+}
+li {
+    text-indent: -12px;
+    padding-left: 12px;
+}
+li:before {
+    content: "- ";
+    color: #aaa;
+    font-size: 1rem;
+    padding-right: 5px;
+}
+a {
+    color: #222;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+body {
+    margin: 0;
+}
+hr {
+    width: 80%;
+    border: 0;
+    border-bottom: 1px solid #eee;
+    padding: 16px 0;
+}
+small {
+    font-size: 12pt;
+}
+
+small a {
+    font-size: 12pt;
+}
+
+.wrapper {
+    max-width: 800px;
+    min-height: 100%;
+    border: 1px solid #eee;
+    border-radius: 25px;
+    padding: 0 5%;
+    margin: 3% auto;
+}
+.profile {
+    padding-top: 24px;
+}
+.photo {
+    float: right;
+    overflow: hidden;
+}
+.photo img {
+    width: 96px;
+    height: 96px;
+    border-radius: 500px;
+}
+.eof {
+    margin: 3%;
+    width: 120px;
+    visibility: hidden;
+}
+@media (max-width: 480px) {
+    .wrapper {
+        border: 0px;
+    }
+}
