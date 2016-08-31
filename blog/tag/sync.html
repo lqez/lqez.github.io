@@ -65,7 +65,7 @@
 <li>Calendar Resources</li>
 </ul>
 <p>GADS Configuration Tool은 자바를 이용한 GUI로 작성되어 있는데, 현재는 Windows / Linux 용만 제공된다. 이 툴을 통해 설정한 내용은 XML로 저장되고, 이 파일은 플랫폼 무관하게 사용할 수 있으므로, 일단 가상 머신의 Windows로 설정을 완료한 후에, 설정 파일을 복사하여 Linux에서 사용하였다.</p>
-<p><img alt="Screen Shot of GADS" src="./static/images/gads_01.png" /></p>
+<p><img alt="Screen Shot of GADS" src="./images/gads_01.png" /></p>
 <p>Linux용 GADS는 커맨드라인에서 설치하면 동의항목이 HTML로 출력되지만, 계속 엔터키를 입력해 넘기며 진행하면 설치가 가능하다.
 root 계정으로 설치하는 경우에 /usr/local/GoogleAppsDirSync 에 설치가 되고, 이 디렉토리 아래에 있는 <code>sync-cmd</code> 쉘 스크립트를 통해 동기화를 수행하면 된다.</p>
 <div class="highlight"><pre><span></span>$ ./sync-cmd -c &lt;configuration_file.xml&gt;
