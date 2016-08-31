@@ -22,7 +22,7 @@ h2 {
 }
 ul {
     list-style: none;
-    padding: 0 3%;
+    padding: 5px 3% 0 3%;
 }
 p, li {
     line-height: 160%;
