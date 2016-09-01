@@ -12,13 +12,14 @@
 h1, h2 {
     font-weight: 700;
     color: #000;
-    margin: 3% auto;
 }
 h1 {
-    font-size: 4rem;
+    font-size: 3rem;
+    margin: 0 auto 3%;
 }
 h2 {
     font-size: 2rem;
+    margin: 5% auto 0;
 }
 ul {
     list-style: none;
@@ -52,7 +53,7 @@ hr {
     width: 80%;
     border: 0;
     border-bottom: 1px solid #eee;
-    padding: 16px 0;
+    padding: 3% 0;
 }
 small {
     font-size: 12pt;
@@ -67,11 +68,8 @@ small a {
     min-height: 100%;
     border: 1px solid #eee;
     border-radius: 25px;
-    padding: 0 5%;
+    padding: 5%;
     margin: 3% auto;
-}
-.profile {
-    padding-top: 24px;
 }
 .photo {
     float: right;
@@ -87,7 +85,7 @@ small a {
     width: 120px;
     visibility: hidden;
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .wrapper {
         border: 0px;
     }
