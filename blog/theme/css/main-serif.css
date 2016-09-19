@@ -11,16 +11,14 @@
 @import url("reset.css");
 @import url("pygment.css");
 @import url("typogrify.css");
-@import url(http://fonts.googleapis.com/css?family=Lato:300);
 
 /***** Global *****/
 /* Body */
 body {
     background: transparent;
-    color: #444;
+    color: #333;
     font-size: 100%; /* Base font size: 14px */
-    font-family: sans-serif;
-    font-weight: 300;
+    font-family: serif;
     line-height: 1.429;
     margin: 0;
     padding: 0;
@@ -28,18 +26,16 @@ body {
 }
 
 /* Headings */
-h1 {font-size: 2.8em}
-h2 {font-size: 2.4em}
-h3 {font-size: 2.0em}
-h4 {font-size: 1.8em}
-h5 {font-size: 1.6em}
-h6 {font-size: 1.4em}
+h1 {font-size: 26px}
+h2 {font-size: 24px}
+h3 {font-size: 18px}
+h4 {font-size: 16px}
+h5 {font-size: 15px}
+h6 {font-size: 14px}
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Lato";
-	font-weight: 300;
-	line-height: 1.2;
-    letter-spacing: 1px;
+	font-weight: 400;
+	line-height: 1.1;
 	margin-bottom: .5em;
 }
 
@@ -49,7 +45,7 @@ article h2, article h3 {
     margin-top: 1em;
 }
 	
-hr { border:none; border-top: 1px solid #F0F0F0; margin: 3% 8%; }
+hr { border:none; border-top: 1px solid #E0E0E0; margin: 3% 0; }
 
 /* Anchors */
 a {outline: 0; color:#477b96; text-decoration: none;}
@@ -62,7 +58,7 @@ article > p {text-align:justify;}
 strong, b {font-weight: bold;}
 strong {
     background-color: #e2ebf5;
-    border-radius: 3px;
+    border-radius: 8px;
     padding: 2px 5px;
     margin: -2px 0px;
     border-right: 1px solid #c2cbd5;
@@ -76,7 +72,7 @@ ul {
 	padding: 0.5em 1em 0.5em 1.5em;
     background-color: #fcfcfc;
     border: 1px solid #EEE;
-    border-radius: 3px;
+    border-radius: 10px;
     margin: 0em 0 1.5em 0;
 }
 
@@ -114,10 +110,10 @@ ul ul li:before {
 
 .post-info {
     margin:10px;
-    font-size: 0.8em;
     padding:5px;
     color: #AAA;
-    text-align: right;
+    font-style: italic;
+    text-align: center;
 }
 
 .post-info > abbr, .author {
@@ -128,6 +124,7 @@ ul ul li:before {
     margin:10px;
     padding:5px;
     color: #AAA;
+    font-style: italic;
     text-align: right;
 }
 
@@ -136,6 +133,8 @@ ul ul li:before {
 }
 
 .readmore { 
+    font-style: italic;
+    font-size: 100%;
     padding: 1em 0;
     display: block;
     border: none !important;
@@ -158,10 +157,6 @@ blockquote {
     margin: 20px;
     font-style: italic;
 }
-
-address {
-}
-
 cite {}
 
 q {}
@@ -169,7 +164,7 @@ q {}
 div.note {
    float: right;
    margin: 5px;
-   font-size: 0.85em;
+   font-size: 85%;
    max-width: 300px;
 }
 
@@ -212,7 +207,9 @@ figure.left {float: left; margin: 0 2em 2em 0;}
 
 	/* Banner */
 	#banner h1 {
-        font-size: 1.4em; 
+        font-family: serif;
+        font-size: 1.7em; 
+        font-style: italic;
         text-align: center;
         color: #444;
 
@@ -226,6 +223,7 @@ figure.left {float: left; margin: 0 2em 2em 0;}
     }
 
 	#banner h2 {
+        font-family: serif;
         font-size: 1em; 
         text-align: center;
         color: #777;
@@ -249,7 +247,7 @@ figure.left {float: left; margin: 0 2em 2em 0;}
 *****************/
 article {
     padding: 3em 1em 4em;
-    max-width: 1080px;
+    max-width: 760px;
     margin: 0 auto;
     border-bottom: 1px solid #ddd;
 }
@@ -338,9 +336,8 @@ article img {
 	About
 *****************/
 #about {
-	margin: 1.5em auto;
+	margin: 2em auto;
 	text-align: center;
-    font-style: normal;
 }
 
 #about .primary {float: left; width: 165px;}
@@ -366,10 +363,11 @@ article img {
 .hentry img{display : none ;}
 
 .entry-title {
-    font-size: 4em;
+    font-size: 2.1em;
+    font-family: serif;
     margin-bottom: 10px;
     margin-top: 0;
-    text-align: left;
+    text-align: center;
 }
 
 .entry-title a:link, .entry-title a:visited {
