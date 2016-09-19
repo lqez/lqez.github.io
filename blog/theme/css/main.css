@@ -268,6 +268,7 @@ article img {
     display: block;
     max-width: 800px;
     height: auto;
+    border: 1px solid #FAFAFA;
     border-radius: 3px;
     margin: 5px auto;
     float: none;
