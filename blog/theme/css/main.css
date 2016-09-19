@@ -28,8 +28,8 @@ body {
 }
 
 /* Headings */
-h1 {font-size: 2.8em}
-h2 {font-size: 2.4em}
+h1 {font-size: 2.5em}
+h2 {font-size: 2.2em}
 h3 {font-size: 2.0em}
 h4 {font-size: 1.8em}
 h5 {font-size: 1.6em}
@@ -366,7 +366,7 @@ article img {
 .hentry img{display : none ;}
 
 .entry-title {
-    font-size: 4em;
+    font-size: 3em;
     margin-bottom: 10px;
     margin-top: 0;
     text-align: left;
