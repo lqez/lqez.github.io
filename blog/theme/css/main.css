@@ -249,7 +249,7 @@ figure.left {float: left; margin: 0 2em 2em 0;}
 *****************/
 article {
     padding: 3em 1em 4em;
-    max-width: 1080px;
+    max-width: 920px;
     margin: 0 auto;
     border-bottom: 1px solid #ddd;
 }
@@ -340,6 +340,7 @@ article img {
 *****************/
 #about {
 	margin: 1.5em auto;
+    font-size: 0.7em;
 	text-align: center;
     font-style: normal;
 }
