@@ -113,9 +113,8 @@ ul ul li:before {
 }
 
 .post-info {
-    margin:10px;
+    margin:10px 0 20px;
     font-size: 0.8em;
-    padding:5px;
     color: #AAA;
     text-align: right;
 }
