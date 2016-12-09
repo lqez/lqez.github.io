@@ -1,0 +1,69 @@
+<html>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>1 234 56 7 8 9</title>
+<style type='text/css'>
+body {
+    font-family: sans-serif;
+}
+
+img {
+    display: none;
+}
+
+#canvas {
+    max-width: 100%;
+}
+</style>
+<script type='text/javascript'>
+    function loadImage() {
+        var input, file, fr, img;
+
+        if (typeof window.FileReader !== 'function') {
+            alert("You cannot run this script on your browser.");
+            return;
+        }
+
+        input = document.getElementById('imgfile');
+        if (!input.files) {
+            alert("You cannot run this script on your browser.");
+        }
+        else {
+            file = input.files[0];
+            fr = new FileReader();
+            fr.onload = createImage;
+            fr.readAsDataURL(file);
+        }
+
+        function createImage() {
+            img = new Image();
+            img.onload = imageLoaded;
+            img.src = fr.result;
+        }
+
+        function imageLoaded() {
+            var canvas = document.getElementById("canvas")
+            canvas.width = img.width;
+            canvas.height = img.height;
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0);
+
+            var img1 = document.getElementById('fg');
+            ctx.globalAlpha = 0.2;
+            ctx.drawImage(img1, 0, 0, img1.width, img1.height, 0, 0, canvas.width, canvas.height);
+
+            var img2 = document.getElementById('bg');
+            ctx.globalAlpha = 0.2;
+            ctx.drawImage(img2, 0, 0, img2.width, img2.height, 0, 0, canvas.width, canvas.height);
+        }
+    }
+</script>
+</head>
+<body>
+    <form action="#" onsubmit="return false;">
+        <input type="file" id="imgfile" onchange="loadImage(this);"/>
+    </form>
+    <canvas id="canvas"></canvas>
+    <img id="fg" src="./123456789-fg.png" />
+    <img id="bg" src="./123456789-bg.png" />
+</body>
+</html>
