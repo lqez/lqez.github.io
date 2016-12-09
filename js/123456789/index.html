@@ -20,7 +20,7 @@ form > div
 
 .label {
     display: inline-block;
-    width: 100px;
+    width: 140px;
     margin: 0px;
 }
 
@@ -55,19 +55,40 @@ form > div
         }
 
         function imageLoaded() {
-            var canvas = document.getElementById("canvas")
-            canvas.width = img.width;
-            canvas.height = img.height;
+            var canvas = document.getElementById("canvas");
+            var crop = document.getElementById("crop").checked;
+            var width = img.width;
+            var height = img.height;
+
+            if (crop) {
+                if (width > height) {
+                    width = height;
+                } else {
+                    height = width;
+                }
+            }
+          
+            canvas.width = width;
+            canvas.height = height;
+
             var ctx = canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0);
+            if (crop) {
+                if (img.width > img.height) {
+                    ctx.drawImage(img, (img.width - img.height) / 2, 0, img.height, img.height, 0, 0, width, height);
+                } else {
+                    ctx.drawImage(img, 0, (img.height - img.width) / 2, 0, img.width, img.width, 0, 0, width, height);
+                }
+            } else {
+                ctx.drawImage(img, 0, 0);
+            }
 
             var img1 = document.getElementById('fg');
-            ctx.globalAlpha = parseInt(document.getElementById('fg-blend'));
-            ctx.drawImage(img1, 0, 0, img1.width, img1.height, 0, 0, canvas.width, canvas.height);
+            ctx.globalAlpha = parseFloat(document.getElementById('fg-blend').value);
+            ctx.drawImage(img1, 0, 0, img1.width, img1.height, 0, 0, width, height);
 
             var img2 = document.getElementById('bg');
-            ctx.globalAlpha = parseInt(document.getElementById('bg-blend'));
-            ctx.drawImage(img2, 0, 0, img2.width, img2.height, 0, 0, canvas.width, canvas.height);
+            ctx.globalAlpha = parseFloat(document.getElementById('bg-blend').value);
+            ctx.drawImage(img2, 0, 0, img2.width, img2.height, 0, 0, width, height);
         }
     }
 </script>
@@ -82,7 +103,9 @@ form > div
         <span class="label">Background</span><input type="text" id="bg-blend" value="0.25" />
       </div>
       <div>
-        <span class="label">Image</span>
+        <span class="label">Crop to square</span><input type="checkbox" id="crop" checked />
+      </div>
+      <div>
         <input type="file" id="imgfile" onchange="loadImage(this);"/>
       </div>
     </form>
