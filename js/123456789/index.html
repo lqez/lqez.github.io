@@ -24,13 +24,19 @@ form > div
     margin: 0px;
 }
 
+#saveimage {
+    display: none;
+}
+
 #canvas {
     max-width: 100%;
 }
 </style>
 <script type='text/javascript'>
+    var img;
+
     function loadImage() {
-        var input, file, fr, img;
+        var input, file, fr;
 
         if (typeof window.FileReader !== 'function') {
             alert("You cannot run this script on your browser.");
@@ -50,48 +56,60 @@ form > div
 
         function createImage() {
             img = new Image();
-            img.onload = imageLoaded;
+            img.onload = mixImage;
             img.src = fr.result;
         }
+    }
 
-        function imageLoaded() {
-            var canvas = document.getElementById("canvas");
-            var rotate = document.getElementById("rotate").checked;
-            var width = img.width;
-            var height = img.height;
+      function mixImage() {
+          if (img == undefined) {
+              return;
+          }
 
-            if (width > height) {
-                width = height;
-            } else {
-                height = width;
-            }
-          
-            canvas.width = width;
-            canvas.height = height;
+          var canvas = document.getElementById("canvas");
+          var rotate = document.getElementById("rotate").checked;
+          var width = img.width;
+          var height = img.height;
 
-            var ctx = canvas.getContext("2d");
-            if (rotate) {
-                ctx.transform(0, 1, -1, 0, height , 0);
-            }
+          if (width > height) {
+              width = height;
+          } else {
+              height = width;
+          }
+        
+          canvas.width = width;
+          canvas.height = height;
 
-            if (img.width > img.height) {
-                ctx.drawImage(img, (img.width - img.height) / 2, 0, img.height, img.height, 0, 0, width, height);
-            } else {
-                ctx.drawImage(img, 0, (img.height - img.width) / 2, 0, img.width, img.width, 0, 0, width, height);
-            }
+          var ctx = canvas.getContext("2d");
+          if (rotate) {
+              ctx.transform(0, 1, -1, 0, height , 0);
+          }
 
-            if (rotate) {
-                ctx.transform(0, -1, 1, 0, 0, width);
-            }
+          if (img.width > img.height) {
+              ctx.drawImage(img, (img.width - img.height) / 2, 0, img.height, img.height, 0, 0, width, height);
+          } else {
+              ctx.drawImage(img, 0, (img.height - img.width) / 2, 0, img.width, img.width, 0, 0, width, height);
+          }
 
-            var img1 = document.getElementById('fg');
-            ctx.globalAlpha = parseFloat(document.getElementById('fg-blend').value);
-            ctx.drawImage(img1, 0, 0, img1.width, img1.height, 0, 0, width, height);
+          if (rotate) {
+              ctx.transform(0, -1, 1, 0, 0, width);
+          }
 
-            var img2 = document.getElementById('bg');
-            ctx.globalAlpha = parseFloat(document.getElementById('bg-blend').value);
-            ctx.drawImage(img2, 0, 0, img2.width, img2.height, 0, 0, width, height);
-        }
+          var img1 = document.getElementById('fg');
+          ctx.globalAlpha = parseFloat(document.getElementById('fg-blend').value);
+          ctx.drawImage(img1, 0, 0, img1.width, img1.height, 0, 0, width, height);
+
+          var img2 = document.getElementById('bg');
+          ctx.globalAlpha = parseFloat(document.getElementById('bg-blend').value);
+          ctx.drawImage(img2, 0, 0, img2.width, img2.height, 0, 0, width, height);
+
+          document.getElementById("saveimage").style.display = "block";
+      }
+
+    function saveImage() {
+          var canvas = document.getElementById("canvas");
+          var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+          window.location.href=image;
     }
 </script>
 </head>
@@ -99,16 +117,19 @@ form > div
   <h1>1 234 56 7 8 9</h1>
     <form action="#" onsubmit="return false;">
       <div>
-        <span class="label">Opacity of Number</span><input type="text" id="fg-blend" value="0.25" />
+        <span class="label">Opacity of Number</span><input type="text" id="fg-blend" value="0.25" onchange="mixImage();" />
       </div>
       <div>
-        <span class="label">Opacity of BG</span><input type="text" id="bg-blend" value="0.25" />
+        <span class="label">Opacity of BG</span><input type="text" id="bg-blend" value="0.25" onchange="mixImage();" />
       </div>
       <div>
-        <span class="label">Rotate image</span><input type="checkbox" id="rotate" />
+        <span class="label">Rotate</span><input type="checkbox" id="rotate" onclick="mixImage();" />
       </div>
       <div>
-        <input type="file" id="imgfile" onchange="loadImage(this);"/>
+        <span class="label">Select an image</span><input type="file" id="imgfile" onchange="loadImage();"/>
+      </div>
+      <div>
+        <input id="saveimage" type="button" value="Save image" onclick="saveImage();"/>
       </div>
     </form>
     <canvas id="canvas"></canvas>
