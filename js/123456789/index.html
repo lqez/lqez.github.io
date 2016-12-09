@@ -61,55 +61,59 @@ form > div
         }
     }
 
-      function mixImage() {
-          if (img == undefined) {
-              return;
-          }
+    function mixImage() {
+        if (img == undefined) {
+            return;
+        }
 
-          var canvas = document.getElementById("canvas");
-          var rotate = document.getElementById("rotate").checked;
-          var width = img.width;
-          var height = img.height;
+        var canvas = document.getElementById("canvas");
+        var rotate = document.getElementById("rotate").checked;
+        var width = img.width;
+        var height = img.height;
 
-          if (width > height) {
-              width = height;
-          } else {
-              height = width;
-          }
-        
-          canvas.width = width;
-          canvas.height = height;
+        if (width > height) {
+            width = height;
+        } else {
+            height = width;
+        }
+      
+        canvas.width = width;
+        canvas.height = height;
 
-          var ctx = canvas.getContext("2d");
-          if (rotate) {
-              ctx.transform(0, 1, -1, 0, height , 0);
-          }
+        var ctx = canvas.getContext("2d");
+        if (rotate) {
+            ctx.transform(0, 1, -1, 0, height , 0);
+        }
 
-          if (img.width > img.height) {
-              ctx.drawImage(img, (img.width - img.height) / 2, 0, img.height, img.height, 0, 0, width, height);
-          } else {
-              ctx.drawImage(img, 0, (img.height - img.width) / 2, 0, img.width, img.width, 0, 0, width, height);
-          }
+        if (img.width > img.height) {
+            ctx.drawImage(img, (img.width - img.height) / 2, 0, img.height, img.height, 0, 0, width, height);
+        } else {
+            ctx.drawImage(img, 0, (img.height - img.width) / 2, 0, img.width, img.width, 0, 0, width, height);
+        }
 
-          if (rotate) {
-              ctx.transform(0, -1, 1, 0, 0, width);
-          }
+        if (rotate) {
+            ctx.transform(0, -1, 1, 0, 0, width);
+        }
 
-          var img1 = document.getElementById('fg');
-          ctx.globalAlpha = parseFloat(document.getElementById('fg-blend').value);
-          ctx.drawImage(img1, 0, 0, img1.width, img1.height, 0, 0, width, height);
+        var img1 = document.getElementById('fg');
+        ctx.globalAlpha = parseFloat(document.getElementById('fg-blend').value);
+        ctx.drawImage(img1, 0, 0, img1.width, img1.height, 0, 0, width, height);
 
-          var img2 = document.getElementById('bg');
-          ctx.globalAlpha = parseFloat(document.getElementById('bg-blend').value);
-          ctx.drawImage(img2, 0, 0, img2.width, img2.height, 0, 0, width, height);
+        var img2 = document.getElementById('bg');
+        ctx.globalAlpha = parseFloat(document.getElementById('bg-blend').value);
+        ctx.drawImage(img2, 0, 0, img2.width, img2.height, 0, 0, width, height);
 
-          document.getElementById("saveimage").style.display = "block";
-      }
+        document.getElementById("saveimage").style.display = "block";
+    }
 
     function saveImage() {
-          var canvas = document.getElementById("canvas");
-          var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-          window.location.href=image;
+        var image = new Image();
+        image.src = document.getElementById("canvas").toDataURL("image/png");
+        var anchor = document.createElement('a');
+
+        anchor.setAttribute('href', image.src);
+        anchor.setAttribute('download', 'image.png');
+        anchor.click();
     }
 </script>
 </head>
