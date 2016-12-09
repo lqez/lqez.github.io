@@ -3,12 +3,24 @@
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
 <title>1 234 56 7 8 9</title>
 <style type='text/css'>
-body {
+body, h1 {
     font-family: sans-serif;
+    margin: 0;
 }
 
 img {
     display: none;
+}
+
+form > div
+{
+    margin: 5px;
+}
+
+.label {
+    display: inline-block;
+    width: 100px;
+    margin: 0px;
 }
 
 #canvas {
@@ -49,19 +61,29 @@ img {
             ctx.drawImage(img, 0, 0);
 
             var img1 = document.getElementById('fg');
-            ctx.globalAlpha = 0.2;
+            ctx.globalAlpha = parseInt(document.getElementById('fg-blend'));
             ctx.drawImage(img1, 0, 0, img1.width, img1.height, 0, 0, canvas.width, canvas.height);
 
             var img2 = document.getElementById('bg');
-            ctx.globalAlpha = 0.2;
+            ctx.globalAlpha = parseInt(document.getElementById('bg-blend'));
             ctx.drawImage(img2, 0, 0, img2.width, img2.height, 0, 0, canvas.width, canvas.height);
         }
     }
 </script>
 </head>
 <body>
+  <h1>1 234 56 7 8 9</h1>
     <form action="#" onsubmit="return false;">
+      <div>
+        <span class="label">Foreground</span><input type="text" id="fg-blend" value="0.25" />
+      </div>
+      <div>
+        <span class="label">Background</span><input type="text" id="bg-blend" value="0.25" />
+      </div>
+      <div>
+        <span class="label">Image</span>
         <input type="file" id="imgfile" onchange="loadImage(this);"/>
+      </div>
     </form>
     <canvas id="canvas"></canvas>
     <img id="fg" src="./123456789-fg.png" />
