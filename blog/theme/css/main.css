@@ -17,14 +17,19 @@
 /* Body */
 body {
     background: transparent;
-    color: #444;
-    font-size: 100%; /* Base font size: 14px */
+    color: #333;
+    font-size: 15pt;
     font-family: sans-serif;
     font-weight: 300;
     line-height: 1.429;
     margin: 0;
     padding: 0;
     text-align: left;
+}
+html, body { 
+    height: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* Headings */
@@ -41,6 +46,7 @@ h1, h2, h3, h4, h5, h6 {
 	line-height: 1.2;
     letter-spacing: 1px;
 	margin-bottom: .5em;
+    word-break: keep-all;
 }
 
 h3, h4, h5, h6 { margin-top: .8em; }
@@ -57,7 +63,6 @@ a img {border: 0px; text-decoration: none;}
 	
 /* Paragraphs */
 p {margin-bottom: 1.0em; line-height:180%;}
-article > p {text-align:justify;}
 
 strong, b {font-weight: bold;}
 strong {
@@ -248,7 +253,7 @@ figure.left {float: left; margin: 0 2em 2em 0;}
 *****************/
 article {
     padding: 3em 1em 4em;
-    max-width: 920px;
+    max-width: 880px;
     margin: 0 auto;
     border-bottom: 1px solid #ddd;
 }
@@ -264,8 +269,6 @@ article a:hover, article a:active {
 
 article img {
     width: 100%;
-    display: block;
-    max-width: 800px;
     height: auto;
     border: 1px solid #FAFAFA;
     border-radius: 3px;

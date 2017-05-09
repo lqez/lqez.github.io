@@ -71,7 +71,7 @@
 &lt;/ul&gt;
 &lt;h2&gt;Review&lt;/h2&gt;
 &lt;p&gt;리뷰 팀은 커머스 서비스 기획자와 파덕님이 한 조가 되어 서비스에서 리뷰 기능을 개선하는 미션을 수행하였다.
-종이로 만든 프로토타이핑을 시작으로, 주문 단위 리뷰가 아닌, 주문 내 상품별 리뷰가 가능한 형태를 제안하고 &lt;a href="https://facebook.github.io/react/"&gt;리액트&lt;/a&gt;를 이용해 프로토타입을 완성하였다.&lt;/p&gt;
+종이로 만든 프로토타입을 시작으로, 주문 단위 리뷰가 아닌, 주문 내 상품별 리뷰가 가능한 형태를 제안하고 &lt;a href="https://facebook.github.io/react/"&gt;리액트&lt;/a&gt;를 이용해 프로토타입을 완성하였다.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="platance-11.jpg" src="./images/2016-09/platance-11.jpg" /&gt;
 &lt;img alt="platance-12.jpg" src="./images/2016-09/platance-12.jpg" /&gt;&lt;/p&gt;
 &lt;h2&gt;Sort&lt;/h2&gt;

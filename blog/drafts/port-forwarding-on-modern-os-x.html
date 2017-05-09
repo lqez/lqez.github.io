@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Begin an assistant for a python tutorial</title>
+    <title>Port forwarding on ‘modern’ OS X</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=0.82, minimum-scale=0.82" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta property="og:url" content="http://lqez.github.io/blog/drafts/begin-an-assistant-for-a-python-tutorial.html"/>
-    <meta property="og:title" content="Begin an assistant for a python tutorial"/>
+    <meta property="og:url" content="http://lqez.github.io/blog/drafts/port-forwarding-on-modern-os-x.html"/>
+    <meta property="og:title" content="Port forwarding on ‘modern’ OS X"/>
 
     <link rel="stylesheet" href="http://lqez.github.io/blog/theme/css/main.css" type="text/css" />
     <link href="http://lqez.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Feature creep designer Atom Feed" />
@@ -41,25 +41,45 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="http://lqez.github.io/blog/drafts/begin-an-assistant-for-a-python-tutorial.html" rel="bookmark"
-           title="Permalink to Begin an assistant for a python tutorial">Begin an assistant for a python tutorial</a></h1>
+        <a href="http://lqez.github.io/blog/drafts/port-forwarding-on-modern-os-x.html" rel="bookmark"
+           title="Permalink to Port forwarding on ‘modern’ OS X">Port forwarding on ‘modern’ OS X</a></h1>
     </header>
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2016-04-25T00:00:00+09:00">
-                Mon 25 April 2016
+        <abbr class="published" title="2016-11-15T00:00:00+09:00">
+                Tue 15 November 2016
         </abbr>
 
-</footer><!-- /.post-info -->      <p>차경묵(<a href="https://twitter.com/hannal">@hannal</a>)님이 2016년 2월 말, <a href="https://www.facebook.com/groups/pythonkorea/">파이썬 한국 사용자 모임</a>에 문득 파이썬 강의 조교 세 명을 모집한다는 글을 올렸다.
-사내에서도 파이썬 강의를 해보고 싶었던터라, 강사가 아닌 조교의 입장에서 수업을 듣는 사람들이 어떤 함정에 빠지고, 발표자는 어떤 맹점을 가지게 되는가 관찰할 수 있는 좋은 기회라 생각하여 바로 신청했다.
-신청하고 나서야 알게되었지만, 판교에 있는 넥슨에서 하는 파이썬 프로그래밍 과정이었고, 덕분에 일주일에 한 번씩 오후에 판교 나들이를 할 수 있어 좋았다.</p><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</footer><!-- /.post-info -->      <p>ipforwarding</p>
+<div class="highlight"><pre><span></span># sysctl net.inet.ip.forwarding=1
+# sysctl net.inet6.ip6.forwarding=1
+# sysctl -a | grep forwarding
+</pre></div>
+
+
+<p>alias</p>
+<h1>ifconfig lo0 172.16.6.225 alias</h1>
+<p>/etc/pf.anchors/com.forwarding
+rdr pass inet proto tcp from any to 172.16.6.225 port 11211 -&gt; 127.0.0.1 port 11211</p>
+<p>scrub-anchor "com.apple/<em>"                                         <br />
+nat-anchor "com.apple/</em>"                                           <br />
+rdr-anchor "com.apple/<em>"                                           <br />
+rdr-anchor "forwarding"                                            <br />
+dummynet-anchor "com.apple/</em>"                                      <br />
+anchor "com.apple/*"                                               <br />
+load anchor "com.apple" from "/etc/pf.anchors/com.apple"           <br />
+load anchor "forwarding" from "/etc/pf.anchors/com.forwarding"       </p>
+<p>verification
+$ pfctl -vnf /etc/pf.conf</p>
+<p>reload</p>
+<h1>pfctl -ef /etc/pf.conf</h1><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 <footer class="post-info-footer">
         <p>
-        In <a href="http://lqez.github.io/blog/category/2016-04.html">2016-04</a>. 
+        In <a href="http://lqez.github.io/blog/category/2016-11.html">2016-11</a>. 
         </p>
-<p>tags: <a href="http://lqez.github.io/blog/tag/python.html" class="tag">python</a><a href="http://lqez.github.io/blog/tag/nexon.html" class="tag">nexon</a></p></footer><!-- /.post-info -->    </div><!-- /.entry-content -->
-    <div class="fb-comments" data-href="http://lqez.github.io/blog/drafts/begin-an-assistant-for-a-python-tutorial.html" data-width="0" data-num-posts="5"></div>
+<p>tags: <a href="http://lqez.github.io/blog/tag/os-x.html" class="tag">os x</a><a href="http://lqez.github.io/blog/tag/port.html" class="tag">port</a><a href="http://lqez.github.io/blog/tag/forwarding.html" class="tag">forwarding</a><a href="http://lqez.github.io/blog/tag/pf.html" class="tag">pf</a></p></footer><!-- /.post-info -->    </div><!-- /.entry-content -->
+    <div class="fb-comments" data-href="http://lqez.github.io/blog/drafts/port-forwarding-on-modern-os-x.html" data-width="0" data-num-posts="5"></div>
 
   </article>
 </section>
