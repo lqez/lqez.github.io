@@ -126,6 +126,7 @@ ul ul li:before {
 
 .post-info > abbr, .author {
     display: block;
+    text-decoration: none;
 }
 
 .post-info-footer {
