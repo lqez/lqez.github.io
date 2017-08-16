@@ -64,14 +64,13 @@ a img {border: 0px; text-decoration: none;}
 /* Paragraphs */
 p {margin-bottom: 1.0em; line-height:180%;}
 
-strong, b {font-weight: bold;}
+strong, b {font-weight: 500;}
 strong {
-    background-color: #e2ebf5;
-    border-radius: 3px;
+    background-color: #fcfcfc;
+    border-radius: 4px;
     padding: 2px 5px;
     margin: -2px 0px;
-    border-right: 1px solid #c2cbd5;
-    border-bottom: 1px solid #c2cbd5;
+    border: 1px solid #eee;
 }
 em, i {font-style: italic;}
 
@@ -80,7 +79,7 @@ ul {
 	list-style: none;
 	padding: 0.5em 1em 0.5em 1.5em;
     background-color: #fcfcfc;
-    border: 1px solid #EEE;
+    border: 1px solid #eee;
     border-radius: 3px;
     margin: 0em 0 1.5em 0;
 }
@@ -160,7 +159,7 @@ pre{background-color:  rgb(238, 238, 238); padding: 10px; margin: 10px; overflow
 
 /* Quotes */
 blockquote {
-    margin: 20px;
+    margin: 40px;
     font-style: italic;
 }
 
