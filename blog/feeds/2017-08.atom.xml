@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="http://lqez.github.io/blog/" rel="alternate"></link><link href="http://lqez.github.io/blog/feeds/2017-08.atom.xml" rel="self"></link><id>http://lqez.github.io/blog/</id><updated>2017-08-16T00:00:00+09:00</updated><entry><title>PyCon Korea 2017 ended.</title><link href="http://lqez.github.io/blog/pycon-korea-2017-ended.html" rel="alternate"></link><published>2017-08-16T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2017-08-16:blog/pycon-korea-2017-ended.html</id><summary type="html">&lt;p&gt;&lt;img alt="pyconkr-2017-ended.jpg" src="./images/2017-08/pyconkr-2017-ended.jpg" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/2017-08.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2017-08-16T00:00:00+09:00</updated><entry><title>PyCon Korea 2017 ended.</title><link href="https://lqez.github.io/blog/pycon-korea-2017-ended.html" rel="alternate"></link><published>2017-08-16T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2017-08-16:blog/pycon-korea-2017-ended.html</id><summary type="html">&lt;p&gt;&lt;img alt="pyconkr-2017-ended.jpg" src="./images/2017-08/pyconkr-2017-ended.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;준비위원회 분들과 거의 반년을 준비해서 4일간 코엑스 그랜드볼룸에서 진행했던 &lt;a href="https://www.pycon.kr/2017/"&gt;파이콘 한국 2017&lt;/a&gt;이 어제 스프린트 진행을 마지막으로 끝났다.&lt;/p&gt;
 &lt;p&gt;많은 사람이 운동을 배울 때 자주 듣는 얘기는 &lt;strong&gt;몸에 힘을 빼라는 것&lt;/strong&gt;이다. 몸에 힘을 빼야 물에 뜰 수 있는 것처럼.
 어쩌면 거창한 목표나 불필요한 공명심 없이 시작했기 때문에 지금까지 이런저런 일이 많았음에도, 큰 탈 없이 해올 수 있었던 것 아닐까.&lt;/p&gt;
-&lt;p&gt;하지만, 처음보다는 분명 행사 운영에 대한 책임감과 부담감이 생겼고, 그로 인해 행사의 본질에 더 충실할 수 있는 부분도, 없는 부분도 있었다.
+&lt;p&gt;하지만, &lt;a href="https://www.slideshare.net/lqez/2017-back-to-the-basic-78779365"&gt;키노트 발표&lt;/a&gt;에서 얘기했던 것 처럼 처음보다는 분명 행사 운영에 대한 책임감과 부담감이 생겼고, 그로 인해 행사의 본질에 더 충실할 수 있는 부분도, 없는 부분도 있었다.
 새롭게 시도하는 것들은 우리가 생각했던 대로 잘 되진 않았고, 고쳐야 했다고 생각했던 부분은 제대로 고쳐지지 않아 같은 문제를 다시 만나기도 했다.&lt;/p&gt;
 &lt;p&gt;이번 행사를 마무리하며 돌이켜보니, 결국 준비하는 사람이 얼마나, 어떻게 준비하냐 보다는 어떤 사람이 참가하느냐가 그 행사를 결정한다고 생각한다.
 준비하는 사람은 어떻게 잘할까 보다는 다양한 사람과 주제가 오고 가는 장소에서 사고 없이 &lt;strong&gt;작지만 옳은&lt;/strong&gt; 진전을 만들어 내느냐에 집중하는 것이 좋다고 본다.&lt;/p&gt;
+&lt;p&gt;작년에는 CI에 대한 발표 이후에 튜토리얼 진행까지 이어서 하는 것에 노력했다면,
+올해는 &lt;a href="https://www.pycon.kr/2017/program/sprint/3"&gt;스프린트&lt;/a&gt;를 진행하면서 오픈소스를 처음 접해보는 분들에게 기여하는 방법을 알려드리고, 긍정적인 경험을 나누고 싶었다.
+운이 좋았는지, 썸머노트를 작성한 홍영택(&lt;a href="https://twitter.com/hackerwins"&gt;@hackerwins&lt;/a&gt;)님도 마침 시간이 맞아 &lt;a href="https://github.com/summernote/django-summernote"&gt;django-summernote&lt;/a&gt; 뿐 아니라 &lt;a href="https://github.com/summernote/summernote"&gt;summernote&lt;/a&gt; 에 대한 스프린트를 같이 진행할 수 있었다.&lt;/p&gt;
+&lt;p&gt;큰 문제를 해결하기 보다는, 스프린트에 참가한 분들이 각자 적어도 하나의 커밋이라도 머지되는 경험을 드리고 싶었는데, 다행히 기존 프로젝트에 많은 문제가 있어(?) 많은 분들이 처음 스프린트를 경험했음에도 불구, 소기의 성과를 거둘 수 있었다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/summernote/django-summernote/pulls?q=is%3Apr+is%3Aclosed+label%3Apyconkr2017"&gt;django-summernote에서 현재까지 머지된 4개의 PR&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/summernote/summernote/pull/2409"&gt;summernote의 오래된 이슈를 스프린트 참가자가 해결&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/summernote/summernote/pull/2413"&gt;많은 문제를 직접 해결하고 스프린트 기간에 summernote의 새 버전을 릴리즈&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;무엇보다 올해는 준비위원회에 새로 들어오시거나, 새롭게 더 많은 책임을 진 사람들이 주도적으로 준비하면서 이전보다 더 나은 결과를 내는 것을 볼 수 있어 좋았다.
 마지막으로, 비영리 컨퍼런스를 다른 자원봉사자들과 함께 운영하면서 배웠던 가장 큰 부분이 같이 준비했던 예지님이 보낸 이메일에 적혀있어, 동의를 구하고 이 곳에 인용해본다.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -16,7 +25,7 @@
 물어볼 수도 있고, 그 물어보는 것에 대해서 다른 의견을 낼 수도, 그렇게 하지 말라고 할 수는 있습니다.
 그러나, 그 사람이 다르게 처리했다고 해서 우리는 비난할 수 없습니다.
 모든 자리에서 무슨 일을 하든지 우리는 그것을 지지하고 응원해주어야, 다음에 일하는 사람들이 더 열심히, 잘할 수 있다고 생각합니다.&lt;/p&gt;
-&lt;/blockquote&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary></entry><entry><title>Processing of photos</title><link href="http://lqez.github.io/blog/processing-of-photos.html" rel="alternate"></link><published>2017-08-01T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2017-08-01:blog/processing-of-photos.html</id><summary type="html">&lt;p&gt;어제 어떤 분이 페이스북에서 &lt;a href="http://www.screw-bar.com/"&gt;구닥&lt;/a&gt;으로 찍은 사진을 ‘무보정 원본’ 이라는 글과 함께 올려놓은 것을 보았다.
+&lt;/blockquote&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary></entry><entry><title>Processing of photos</title><link href="https://lqez.github.io/blog/processing-of-photos.html" rel="alternate"></link><published>2017-08-01T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2017-08-01:blog/processing-of-photos.html</id><summary type="html">&lt;p&gt;어제 어떤 분이 페이스북에서 &lt;a href="http://www.screw-bar.com/"&gt;구닥&lt;/a&gt;으로 찍은 사진을 ‘무보정 원본’ 이라는 글과 함께 올려놓은 것을 보았다.
 구닥이 만든 결과물을 그 이후에 별도의 보정 없이 올렸으니까 그런 표현을 쓰셨다고 생각한다.
 이미 구닥이 엄청난 보정을 한 사진인데, 그것을 ‘무보정’이라고 표현하는게 조금 이상하다고 생각했지만,
 동시에 과연 어느 정도의 사진을 무보정이라고 할 수 있는가? 에 대한 의문도 동시에 들었다.&lt;/p&gt;
