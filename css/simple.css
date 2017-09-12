@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
 
 * {
     color: #777;
@@ -14,11 +14,11 @@ h1, h2 {
     color: #000;
 }
 h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     margin: 0 auto 3%;
 }
 h2 {
-    font-size: 2rem;
+    font-size: 1.6rem;
     margin: 5% auto 0;
 }
 ul {
