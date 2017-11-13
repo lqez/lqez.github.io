@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Feature creep designer - 2014-07</title>
+    <title>Feature creep designer - 2017-11</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=0.82, minimum-scale=0.82" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -40,65 +40,53 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://lqez.github.io/blog/segfault-by-ssl_session_cache-in-nginx.html">segfault by ssl_session_cache in Nginx</a></h1> 
+                    <h1 class="entry-title"><a href="https://lqez.github.io/blog/the-curse-of-understanding.html">The Curse of Understanding</a></h1> 
 <footer class="post-info">
-        <abbr class="published" title="2014-07-22T00:00:00+09:00">
-                Tue 22 July 2014
+        <abbr class="published" title="2017-11-13T00:00:00+09:00">
+                Mon 13 November 2017
         </abbr>
 
-</footer><!-- /.post-info --><p>과거에는 SSL 웹서비스를 위해서 도메인 별로 다른 IP를 써야만 했었다.
-하지만 <a href="http://en.wikipedia.org/wiki/Server_Name_Indication">Server Name Indication</a>이 등장한 이후로,
-하나의 물리 IP에 여러 도메인의 SSL 웹 서비스가 가능해졌는데, 이를 위해 웹 서버 뿐 아니라 클라이언트에서의 지원도 필요하다.
-대표적으로 Internet Explorer 6 등은 SNI를 지원하지 않는다.</p>
+</footer><!-- /.post-info --><blockquote>
+<p>The curse of the monad is that once you get the epiphany, once you understand, 
+you lose the ability to explain it to anybody else.</p>
+<p>Douglas Crockford - <a href="https://www.youtube.com/watch?v=dkZFtimgAcM">‘Monads &amp; Gonads’ at YUIConf 2012</a></p>
+</blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Monad_(functional_programming)">모나드</a>는 함수형 프로그래밍 언어에 대해서 얘기할 때 거의 매번 언급되는 주제이다.
+모나드라는 개념이 절차형 프로그래밍 언어에 익숙한 사람들에게는 익숙한 개념이 아니기 때문에, 
+<a href="https://e.xtendo.org/haskell/ko/monad_fear/slide">모나드 괴담</a> 같은 글이 쓰여질 정도다. (해당 문서는 매우 훌륭하다!)</p>
+<p>어떤 개념을 비로소 깨닫는 순간을 <a href="https://www.merriam-webster.com/dictionary/aha%20moment">‘Aha moment’</a>라 부르기도 하는데,
+더글라스 크록포드의 말을 인용하자면, 모나드를 이해하는 Aha moment를 겪는 순간,
+다른 사람에게 모나드를 설명할 수 없게 되는 <a href="https://stackoverflow.com/questions/19544794/what-is-crockfords-law">저주</a>에 걸린다고 한다.</p>
+<p>그런데, 모나드만 그러한가? 세상의 많은 이해와 문제들이 비슷한 상황에 놓여 있다.
+간략화한 적당한 비유를 통해 설명하는게 처음 접하는 사람들에게 쉽게 느껴지겠지만, 대부분의 경우는 결국 불필요한 오해를 가져온다.
+<em>프로그래밍이란 무엇인가요?</em> <em>캐시(cache)는 쓰면 좋은가요?</em> 정확하게 이해하려면 많은 정보와 이해를 필요로 하지만 과연 어디서부터 얼만큼 설명할 것인가?
+한 개인이 이해한 것을 다른 사람에게 설명하는 일은 매우 어렵다. 이해와 사전 지식이 다르기 때문에 자신이 어떤 문제에 대해 깨달은 길을 그대로 다른 사람에게 걷게 해도, 그 사람은 깨닫거나 이해하지 못할 수 있다.</p>
+<p>도리어 경험과 노력이 부족하여 충분히 이해하지 못하거나 깨닫지 못한 ‘가짜 전문가’가 더 많이 얘기하고 설명하는 경우도 보게 된다.
+이런 사람은 틀린 정보를 거부감 없이 받아들이고, 해석하려고 하지 않으며, 흘려 들은 정보를 마음대로 가공하여 다른 사람에게 조언하거나 추천하기도 한다.
+상대적으로 많은 것을 제대로 알고 있는 사람은 다음의 문제를 겪기도 한다.</p>
 <ul>
-<li><a href="http://en.wikipedia.org/wiki/Server_Name_Indication#Client_side">SNI를 지원하지 않는 클라이언트 목록</a></li>
+<li>문제에 대해 설명하는 경우<ul>
+<li>많은 사람을 위해 온전히 설명하면 충분히 쉽게 말하지 못해 ‘잘 모르는 사람’ 취급을 받는다.</li>
+<li>자세한 것을 건너뛰고 핵심만 말하면 엉뚱한 얘기를 하는 ‘잘 모르는 사람’이 된다.</li>
 </ul>
-<p>회사에서도 SNI를 지원하는 Nginx를 통해 여러 SSL 웹서비스를 운영하고 있는데,
-특정 클라이언트로 접속한 경우에 Nginx 가 종료되는 문제가 발생하였다.
-최적화를 위해 도입한 <code>ssl_session_cache</code> directive를 추가한 이후에 발생한 문제였는데,
-검색해보니 동일한 증상이 Nginx Trac에 보고되어 있다.</p>
-<ul>
-<li><a href="http://trac.nginx.org/nginx/ticket/235">http://trac.nginx.org/nginx/ticket/235</a></li>
+</li>
+<li>설명하지 않고 침묵하는 경우<ul>
+<li>마찬가지로 ‘잘 모르는 사람’ 취급을 받는다.</li>
 </ul>
-<p>덧) 이 글을 처음 썼던 시점으로부터 1년이 지나 2015년 10월에서야 수정되어 Nginx 1.9.6에 반영되었다.</p>
-<ul>
-<li><a href="https://trac.nginx.org/nginx/timeline?from=2015-10-20T16%3A38%3A08Z&amp;precision=second">https://trac.nginx.org/nginx/timeline?from=2015-10-20T16%3A38%3A08Z&amp;precision=second</a></li>
-</ul><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script><footer class="post-info-footer">
+</li>
+</ul>
+<p>나는 이런 문제들을 일반화하여 <strong>이해의 저주(The Curse of Understanding)</strong>라고 부르고 싶다.</p>
+<p>덧) 이 생각을 <a href="https://twitter.com/lqez/status/759061524820299776">트윗</a>으로 썼더니, <a href="https://twitter.com/tebica">@tebica</a> 님이 이에 공감하여 블로그 <a href="http://earlybird.kr/1938">포스팅</a>을 남겼다. </p><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script><footer class="post-info-footer">
         <p>
-        In <a href="https://lqez.github.io/blog/category/2014-07.html">2014-07</a>. 
+        In <a href="https://lqez.github.io/blog/category/2017-11.html">2017-11</a>. 
         </p>
-<p>tags: <a href="https://lqez.github.io/blog/tag/nginx.html" class="tag">nginx</a><a href="https://lqez.github.io/blog/tag/openssl.html" class="tag">openssl</a></p></footer><!-- /.post-info -->                    <div class="fb-comments" data-href="https://lqez.github.io/blog/segfault-by-ssl_session_cache-in-nginx.html" data-width="0" data-num-posts="5"></div>
+</footer><!-- /.post-info -->                    <div class="fb-comments" data-href="https://lqez.github.io/blog/the-curse-of-understanding.html" data-width="0" data-num-posts="5"></div>
                 </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <ol id="posts-list" class="hfeed">
-        
-
- 
-            <li><article class="hentry">    
-                <header>
-                    <h1 class="entry-title"><a href="https://lqez.github.io/blog/fool-upstart.html" rel="bookmark"
-                           title="Permalink to Fool Upstart">Fool Upstart</a></h1>
-                </header>
-                
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2014-07-17T00:00:00+09:00">
-                Thu 17 July 2014
-        </abbr>
-
-</footer><!-- /.post-info -->                <h1>Upstart</h1>
-<p><a href="http://upstart.ubuntu.com/">Upstart</a>는 /sbin/init 를 대체하기 위한 우분투의 기본 서비스 관리자다.
-다양한 서비스를 daemon 형태로 관리하고, 죽은 경우에 자동으로 다시 실행할 수 있는 등 편리한 기능을 갖추고 있다.</p>
-<p>프로세스 ID를 받아 해당 프로세스가 잘 동작하는지 감시해야 하므로,
-해당 서비스가 어떤 형태로 시작되는지 알고 있어야 정확한 프로세스 ID를 얻을 수 ...</p>
-                <a class="readmore" href="https://lqez.github.io/blog/fool-upstart.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-            </ol><!-- /#posts-list -->
 <p class="paginator">
     Page 1 / 1
 </p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
             </section><!-- /#content -->
     <section id="extras" class="body">
     </section><!-- /#extras -->
@@ -111,13 +99,13 @@
             <li ><a href="https://lqez.github.io/blog/category/2013-05.html">2013-05</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2013-08.html">2013-08</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2013-10.html">2013-10</a></li>
-            <li class="active"><a href="https://lqez.github.io/blog/category/2014-07.html">2014-07</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2014-07.html">2014-07</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2016-08.html">2016-08</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2016-09.html">2016-09</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2017-05.html">2017-05</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2017-08.html">2017-08</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2017-10.html">2017-10</a></li>
-            <li ><a href="https://lqez.github.io/blog/category/2017-11.html">2017-11</a></li>
+            <li class="active"><a href="https://lqez.github.io/blog/category/2017-11.html">2017-11</a></li>
             <li ><a href="https://lqez.github.io/blog/category/uncategorized.html">Uncategorized</a></li>
         </ul></nav>
         -->
