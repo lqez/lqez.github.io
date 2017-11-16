@@ -64,6 +64,11 @@ but while the email field is reasonably long (75), the 30 characters for the use
 &lt;li&gt;&lt;a href="https://code.djangoproject.com/ticket/20631"&gt;https://code.djangoproject.com/ticket/20631&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://stackoverflow.com/questions/386294/what-is-the-maximum-length-of-a-valid-email-address"&gt;What is the maximum length of a valid email address?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://tools.ietf.org/html/rfc5321#section-4.5.3"&gt;RFC5321 #4.5.3.1, Size Limits and Minimums&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;덧3) MySQL의 InnoDB 엔진에서 문자열에 대한 인덱스는 767바이트로 제한되어 있고,
+1글자에 4바이트를 사용하는 &lt;code&gt;utf8mb4&lt;/code&gt; 인코딩에서는 767 ÷ 4 ≈ 191 이기 때문에 191자로 제한된다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-conversion.html"&gt;https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-conversion.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary></entry><entry><title>The Curse of Understanding</title><link href="https://lqez.github.io/blog/the-curse-of-understanding.html" rel="alternate"></link><published>2017-11-13T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2017-11-13:blog/the-curse-of-understanding.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;The curse of the monad is that once you get the epiphany, once you understand, 
 you lose the ability to explain it to anybody else.&lt;/p&gt;
