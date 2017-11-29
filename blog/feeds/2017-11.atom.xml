@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/2017-11.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2017-11-30T00:00:00+09:00</updated><entry><title>Under-stand-ing</title><link href="https://lqez.github.io/blog/under-stand-ing.html" rel="alternate"></link><published>2017-11-30T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2017-11-30:blog/under-stand-ing.html</id><summary type="html">&lt;p&gt;지난 주 금요일에 있었던 &lt;a href="https://www.facebook.com/publyteam/posts/2199237843435880"&gt;어떤 모임&lt;/a&gt;에서, 이런 얘기를 들었다.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/2017-11.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2017-11-30T00:00:00+09:00</updated><entry><title>Under-stand-ing</title><link href="https://lqez.github.io/blog/under-stand-ing.html" rel="alternate"></link><published>2017-11-30T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2017-11-30:blog/under-stand-ing.html</id><summary type="html">&lt;p&gt;지난 주 금요일에 있었던 &lt;a href="https://www.facebook.com/publyteam/posts/2199237843435880"&gt;어떤 모임&lt;/a&gt;에서, 이런 얘기를 들었다. (정확히 기억나지는 않지만)&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;“프로그래머분이 뭐라고 얘기하는지 잘 모르겠어서, 대화를 더 잘 하기 위해서 저도 프로그래밍을 좀 배워야겠다는 생각이 들었어요. 잘 할 수 있을까요?”&lt;/p&gt;
+&lt;p&gt;“프로그래머분이 이해할 수 없는 단어를 자꾸 써가며 얘기해서 대화하기가 어려운데, 의사소통을 더 잘 하기 위해 저도 프로그래밍을 좀 배워야겠다는 생각이 들었어요. 도움이 될까요?”&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;나는 프로그래밍을 배운다고 해서 – 프로그래밍도 범위가 너무 넓어서 어떤 것을 배우시겠다는 것인진 잘 모르겠지만 – 
 프로그래밍을 주 업무로 하는 사람과의 의사소통이 막연히 개선될 것이라는 기대는 버리는게 좋다고 생각한다.
