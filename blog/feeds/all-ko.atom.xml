@@ -4,12 +4,12 @@
 &lt;p&gt;이번에 만든 CLI 프로그램인 &lt;a href="https://github.com/lqez/rogrepos"&gt;rogrepos&lt;/a&gt;는 GitHub에서 오픈소스 활동을 오래 하다 보면
 수정사항을 작성하기 위한 목적으로 &lt;a href="https://en.wikipedia.org/wiki/Fork_(software_development)"&gt;포크&lt;/a&gt;했다가
 더는 사용되지 않고 방치된 저장소들이 쌓이는데, 이들을 손쉽게 정리하기 위한 도구이다.&lt;/p&gt;
-&lt;p&gt;GitHub에서 저장소를 삭제하기 위해서는 확인 및 안전 차원에서 저장소 이름을 다시 한 번 입력받도록 하고 있는데,
+&lt;p&gt;GitHub에서 저장소를 삭제하기 위해서는 확인 및 안전 차원에서 저장소 이름을 다시 한 번 입력해야 하는데,
 정리해야 하는 저장소가 많으면 이 작업을 반복하는 것이 여간 귀찮은 일이 아니다.
 rogrepos를 처음에는 기존처럼 비동기 처리 없이 단일 스레드로 작성하였는데 &lt;a href="https://developer.github.com/"&gt;GitHub API&lt;/a&gt; 호출이 여간 느린 게 아니라,
 실제로 쓰기에는 실용적이지 못했다. 저장소 목록을 얻어오는 것은 오래 걸리더라도 한 번 기다리면 되니까 괜찮지만,
 포크된 저장소인지 여부 등 정보를 추가로 얻어오려면 매번 기다려야 하는 것이 문제였다.&lt;/p&gt;
-&lt;p&gt;이 문제를 코드를 조금만 고치면서 쓸만하게 만들려고 찾아같은보니, 반복문으로 작성된 코드를 &lt;a href="https://en.wikipedia.org/wiki/Generator_(computer_programming)"&gt;제너레이터&lt;/a&gt;를 사용하도록 고치고
+&lt;p&gt;이 문제를 코드를 조금만 고치면서 쓸만하게 만들려고 찾아보니, 반복문으로 작성된 코드를 &lt;a href="https://en.wikipedia.org/wiki/Generator_(computer_programming)"&gt;제너레이터&lt;/a&gt;를 사용하도록 고치고
 제너레이터를 다른 스레드에서 채우도록 변경하는 것이 좋아 보였다.
 값을 생성하고 사용할 때에 문제가 없도록 스레드에 안전한 &lt;a href="https://docs.python.org/3/library/queue.html"&gt;큐(Queue)&lt;/a&gt;를 사용하면 기존의 동기 코드를 크게 건드리지 않고 백그라운드에서 추가 작업을 진행할 수 있다.
 이와 같은 동작을 Threaded Generator라는 이름으로 만들어놓은 &lt;a href="https://gist.github.com/everilae/9697228"&gt;코드 조각(gist)&lt;/a&gt;이 있어,
