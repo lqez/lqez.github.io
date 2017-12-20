@@ -89,24 +89,24 @@ lqez/yuna was deleted.
 
 <hr />
 <p>최초의 코드는 아래와 같았다.</p>
-<div class="highlight"><pre><span></span>for repo in github.get_user().get_repos():
-    # do something
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">repo</span> <span class="ow">in</span> <span class="n">github</span><span class="o">.</span><span class="n">get_user</span><span class="p">()</span><span class="o">.</span><span class="n">get_repos</span><span class="p">():</span>
+    <span class="c1"># do something</span>
 </pre></div>
 
 
 <p>이를 제너레이터로 바꾸면 아래와 같이 바뀌고,</p>
-<div class="highlight"><pre><span></span>def generator_repos(github):
-    for repo in github.get_user().get_repos():
-        yield repo
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generator_repos</span><span class="p">(</span><span class="n">github</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">repo</span> <span class="ow">in</span> <span class="n">github</span><span class="o">.</span><span class="n">get_user</span><span class="p">()</span><span class="o">.</span><span class="n">get_repos</span><span class="p">():</span>
+        <span class="k">yield</span> <span class="n">repo</span>
 
-for repo in generator_repos(github):
-    # do something
+<span class="k">for</span> <span class="n">repo</span> <span class="ow">in</span> <span class="n">generator_repos</span><span class="p">(</span><span class="n">github</span><span class="p">):</span>
+    <span class="c1"># do something</span>
 </pre></div>
 
 
 <p>위에서 작성한 Threaded generator로 바꾼 것이 현재의 상태다.</p>
-<div class="highlight"><pre><span></span>for repo in ThreadedGenerator(generator_repos(github)):
-    # do something
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">repo</span> <span class="ow">in</span> <span class="n">ThreadedGenerator</span><span class="p">(</span><span class="n">generator_repos</span><span class="p">(</span><span class="n">github</span><span class="p">)):</span>
+    <span class="c1"># do something</span>
 </pre></div>
 
 

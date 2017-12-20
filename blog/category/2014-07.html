@@ -37,64 +37,52 @@
     </header><!-- /#banner -->
         
         
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="../segfault-by-ssl_session_cache-in-nginx.html">segfault by ssl_session_cache in Nginx</a></h1> 
+            <section id="content" class="body">
+                <ol id="posts-list" class="hfeed" start="4">
+        <li><article class="hentry">    
+            <header>
+                <h1 class="entry-title"><a href="../segfault-by-ssl_session_cache-in-nginx.html" rel="bookmark"
+                       title="Permalink to segfault by ssl_session_cache in Nginx">segfault by ssl_session_cache in Nginx</a></h1>
+            </header>
+            
+            <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-07-22T00:00:00+09:00">
                 Tue 22 July 2014
         </abbr>
 
-</footer><!-- /.post-info --><p>과거에는 SSL 웹서비스를 위해서 도메인 별로 다른 IP를 써야만 했었다.
+</footer><!-- /.post-info -->            <p>과거에는 SSL 웹서비스를 위해서 도메인 별로 다른 IP를 써야만 했었다.
 하지만 <a href="http://en.wikipedia.org/wiki/Server_Name_Indication">Server Name Indication</a>이 등장한 이후로,
 하나의 물리 IP에 여러 도메인의 SSL 웹 서비스가 가능해졌는데, 이를 위해 웹 서버 뿐 아니라 클라이언트에서의 지원도 필요하다.
 대표적으로 Internet Explorer 6 등은 SNI를 지원하지 않는다.</p>
 <ul>
 <li><a href="http://en.wikipedia.org/wiki/Server_Name_Indication#Client_side">SNI를 지원하지 않는 클라이언트 목록</a></li>
 </ul>
-<p>회사에서도 SNI를 지원하는 Nginx를 통해 여러 SSL 웹서비스를 운영하고 있는데,
-특정 클라이언트로 접속한 경우에 Nginx 가 종료되는 문제가 발생하였다.
-최적화를 위해 도입한 <code>ssl_session_cache</code> directive를 추가한 이후에 발생한 문제였는데,
-검색해보니 동일한 증상이 Nginx Trac에 보고되어 있다.</p>
-<ul>
-<li><a href="http://trac.nginx.org/nginx/ticket/235">http://trac.nginx.org/nginx/ticket/235</a></li>
-</ul>
-<p>덧) 이 글을 처음 썼던 시점으로부터 1년이 지나 2015년 10월에서야 수정되어 Nginx 1.9.6에 반영되었다.</p>
-<ul>
-<li><a href="https://trac.nginx.org/nginx/timeline?from=2015-10-20T16%3A38%3A08Z&amp;precision=second">https://trac.nginx.org/nginx/timeline?from=2015-10-20T16%3A38%3A08Z&amp;precision=second</a></li>
-</ul><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script><footer class="post-info-footer">
-        <p>
-        In <a href="../category/2014-07.html">2014-07</a>. 
-        </p>
-<p>tags: <a href="../tag/nginx.html" class="tag">nginx</a><a href="../tag/openssl.html" class="tag">openssl</a></p></footer><!-- /.post-info -->                    <div class="fb-comments" data-href="../segfault-by-ssl_session_cache-in-nginx.html" data-width="0" data-num-posts="5"></div>
-                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <ol id="posts-list" class="hfeed">
+<p>회사에서도 SNI를 ...</p>
+            <a class="readmore" href="../segfault-by-ssl_session_cache-in-nginx.html">read more</a>
+            </div><!-- /.entry-content -->
+        </article></li>
         
-
- 
-            <li><article class="hentry">    
-                <header>
-                    <h1 class="entry-title"><a href="../fool-upstart.html" rel="bookmark"
-                           title="Permalink to Fool Upstart">Fool Upstart</a></h1>
-                </header>
-                
-                <div class="entry-content">
+        <li><article class="hentry">    
+            <header>
+                <h1 class="entry-title"><a href="../fool-upstart.html" rel="bookmark"
+                       title="Permalink to Fool Upstart">Fool Upstart</a></h1>
+            </header>
+            
+            <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-07-17T00:00:00+09:00">
                 Thu 17 July 2014
         </abbr>
 
-</footer><!-- /.post-info -->                <h1>Upstart</h1>
+</footer><!-- /.post-info -->            <h1>Upstart</h1>
 <p><a href="http://upstart.ubuntu.com/">Upstart</a>는 /sbin/init 를 대체하기 위한 우분투의 기본 서비스 관리자다.
 다양한 서비스를 daemon 형태로 관리하고, 죽은 경우에 자동으로 다시 실행할 수 있는 등 편리한 기능을 갖추고 있다.</p>
 <p>프로세스 ID를 받아 해당 프로세스가 잘 동작하는지 감시해야 하므로,
 해당 서비스가 어떤 형태로 시작되는지 알고 있어야 정확한 프로세스 ID를 얻을 수 ...</p>
-                <a class="readmore" href="../fool-upstart.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
+            <a class="readmore" href="../fool-upstart.html">read more</a>
+            </div><!-- /.entry-content -->
+        </article></li>
             </ol><!-- /#posts-list -->
 <p class="paginator">
     Page 1 / 1
