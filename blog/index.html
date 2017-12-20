@@ -99,12 +99,13 @@ for repo in generator_repos(github):
 </pre></div>
 
 
-<p>위에서 작성한 Threade generator로 바꾼 것이 현재의 상태다.</p>
+<p>위에서 작성한 Threaded generator로 바꾼 것이 현재의 상태다.</p>
 <div class="highlight"><pre><span></span>for repo in ThreadedGenerator(generator_repos(github)):
     # do something
 </pre></div>
 
 
+<p>반복문 내에 느린 동작이 자주 포함되는 CLI 도구에서는 반복적으로 사용해볼만한 패턴이라고 생각된다.</p>
 <hr />
 <p>덧) 위 프로젝트를 <a href="https://www.reddit.com/r/github/comments/7jporl/">/r/github</a>에 올렸는데, 저장소는 지워져서는 안된다는 의견과
 <a href="https://www.reddit.com/r/github/comments/7jporl/rogrepos_remove_outdated_github_repositories_in/"><code>No Maintenance Intended</code></a> 배지에 대한 댓글이 달렸다.</p><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script><footer class="post-info-footer">
