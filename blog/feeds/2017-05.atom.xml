@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/2017-05.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2017-05-09T00:00:00+09:00</updated><entry><title>Death Valley</title><link href="https://lqez.github.io/blog/death-valley.html" rel="alternate"></link><published>2017-05-09T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2017-05-09:blog/death-valley.html</id><summary type="html">&lt;p&gt;어떤 종류의 일들은 왜 하는지, 또는 왜 그렇게 하는지 간단히 설명하기가 어려울 때가 있다.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer - 2017-05</title><link href="//lqez.github.io/blog/" rel="alternate"></link><link href="//lqez.github.io/blog/feeds/2017-05.atom.xml" rel="self"></link><id>//lqez.github.io/blog/</id><updated>2017-05-09T00:00:00+09:00</updated><entry><title>Death Valley</title><link href="//lqez.github.io/blog/death-valley.html" rel="alternate"></link><published>2017-05-09T00:00:00+09:00</published><updated>2017-05-09T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2017-05-09:/blog/death-valley.html</id><summary type="html">&lt;p&gt;어떤 종류의 일들은 왜 하는지, 또는 왜 그렇게 하는지 간단히 설명하기가 어려울 때가 있다.
+내가 개인적으로 하는 일 중에도 그런 것들이 있고, 회사에서의 여러 일도 그러하고, 어떤 정치적인 선택도 그러한 경우가 많다.&lt;/p&gt;
+&lt;p&gt;궁극적으로 하고자 하는 일 또는 목표를 A 라고 할 때, A 를 바로 할 수 없으니 B 를 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;어떤 종류의 일들은 왜 하는지, 또는 왜 그렇게 하는지 간단히 설명하기가 어려울 때가 있다.
 내가 개인적으로 하는 일 중에도 그런 것들이 있고, 회사에서의 여러 일도 그러하고, 어떤 정치적인 선택도 그러한 경우가 많다.&lt;/p&gt;
 &lt;p&gt;궁극적으로 하고자 하는 일 또는 목표를 A 라고 할 때, A 를 바로 할 수 없으니 B 를 먼저 해야하고, B 를 하려다보니 C 를 먼저 하지 않을 수 없는데,
 A 와 C 사이에는 어떤 직접적인 관련이 없는 경우에 참 설명하기가 어렵다.&lt;/p&gt;
@@ -12,4 +14,4 @@ A 와 C 사이에는 어떤 직접적인 관련이 없는 경우에 참 설명�
 이 또한 일의 종류에 따라서 각 단계의 격차가 너무 벌어질 수 밖에 없거나, 길고 긴 단계를 가질 수 밖에 없기도 하다.&lt;/p&gt;
 &lt;p&gt;시간과 노력을 들여 계속 설명하고, 조금 더 합의하는 과정을 거치려고 하지만 어쩐지 이런 노력은 다 무용하고
 결국 중요한 것은 좋은 선택을 하는 것일 뿐 아닌가 하는 생각도 든다.&lt;/p&gt;
-&lt;p&gt;잘 모르겠다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary></entry></feed>
+&lt;p&gt;잘 모르겠다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry></feed>

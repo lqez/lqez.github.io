@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>segfault by ssl_session_cache in Nginx</title>
+    <title>Weird result from Naver search</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=0.82, minimum-scale=0.82" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta property="og:url" content="//lqez.github.io/blog/segfault-by-ssl_session_cache-in-nginx.html"/>
-    <meta property="og:title" content="segfault by ssl_session_cache in Nginx"/>
+    <meta property="og:url" content="//lqez.github.io/blog/weird-result-from-naver-search.html"/>
+    <meta property="og:title" content="Weird result from Naver search"/>
 
     <link rel="stylesheet" href="//lqez.github.io/blog/theme/css/main.css" type="text/css" />
     <link href="//lqez.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Feature creep designer Atom Feed" />
@@ -41,40 +41,40 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="//lqez.github.io/blog/segfault-by-ssl_session_cache-in-nginx.html" rel="bookmark"
-           title="Permalink to segfault by ssl_session_cache in Nginx">segfault by ssl_session_cache in Nginx</a></h1>
+        <a href="//lqez.github.io/blog/weird-result-from-naver-search.html" rel="bookmark"
+           title="Permalink to Weird result from Naver search">Weird result from Naver search</a></h1>
     </header>
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2014-07-22T00:00:00+09:00">
-                Tue 22 July 2014
+        <abbr class="published" title="2018-01-22T00:00:00+09:00">
+                Mon 22 January 2018
         </abbr>
 
-</footer><!-- /.post-info -->      <p>과거에는 SSL 웹서비스를 위해서 도메인 별로 다른 IP를 써야만 했었다.
-하지만 <a href="http://en.wikipedia.org/wiki/Server_Name_Indication">Server Name Indication</a>이 등장한 이후로,
-하나의 물리 IP에 여러 도메인의 SSL 웹 서비스가 가능해졌는데, 이를 위해 웹 서버 뿐 아니라 클라이언트에서의 지원도 필요하다.
-대표적으로 Internet Explorer 6 등은 SNI를 지원하지 않는다.</p>
-<ul>
-<li><a href="http://en.wikipedia.org/wiki/Server_Name_Indication#Client_side">SNI를 지원하지 않는 클라이언트 목록</a></li>
-</ul>
-<p>회사에서도 SNI를 지원하는 Nginx를 통해 여러 SSL 웹서비스를 운영하고 있는데,
-특정 클라이언트로 접속한 경우에 Nginx 가 종료되는 문제가 발생하였다.
-최적화를 위해 도입한 <code>ssl_session_cache</code> directive를 추가한 이후에 발생한 문제였는데,
-검색해보니 동일한 증상이 Nginx Trac에 보고되어 있다.</p>
-<ul>
-<li><a href="http://trac.nginx.org/nginx/ticket/235">http://trac.nginx.org/nginx/ticket/235</a></li>
-</ul>
-<p>덧) 이 글을 처음 썼던 시점으로부터 1년이 지나 2015년 10월에서야 수정되어 Nginx 1.9.6에 반영되었다.</p>
-<ul>
-<li><a href="https://trac.nginx.org/nginx/timeline?from=2015-10-20T16%3A38%3A08Z&amp;precision=second">https://trac.nginx.org/nginx/timeline?from=2015-10-20T16%3A38%3A08Z&amp;precision=second</a></li>
-</ul><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</footer><!-- /.post-info -->      <p>예전부터 네이버 블로그 검색에서 ‘최신순’ 검색을 했을 때 검색어와 무관한 결과가 나와서 갸웃거린 경우가 있었는데, 그냥 네이버 검색이 별론가 생각하고 넘어갔었다.</p>
+<p>오늘은 <a href="https://en.wikipedia.org/wiki/BMW_X3#Third_generation_(G01;_2018%E2%80%93present)">BMW X3 (G01)</a>이 출시되었다는 얘기를 듣고 관심이 생겨 네이버에서 검색해보았다.
+역시나 최신 기준으로 검색 결과를 보았을 때 이상한 콘텐츠들이 주를 이루지만, 속는 셈 치고 들어가 콘텐츠를 살펴보았다.</p>
+<p><img alt="Search result" src="./images/2018-01/weird-naver-search-01.png"></p>
+<p>하지만 포스팅 본문에는 검색 결과에서 보여진 문장이 보이지 않는다.
+스타일을 통해 숨겨졌나 싶어 개발자 도구를 통해 소스를 보니, 역시나 자동 생성된 문자들이 <code>hidden="hidden"</code> 속성과 함께 본문 사이사이에 포함되어 있다.</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;font-family: Tahoma; font-size: 12pt;&quot;</span><span class="p">&gt;</span>
+    성능점검과 경정비까지
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;font-family: 나눔고딕,NanumGothic; font-size: 12px;&quot;</span> <span class="na">hidden</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span><span class="p">&gt;</span>
+    기아부터 여자가타기좋은되어야 렉스턴W할수 G25했다고 스마트해서 엠파크허브좋다.
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>보아하니 <code>기아</code>, <code>스마트</code> 등 자동차 관련 키워드와 한국어에서 사용하는 관용구와 조사들을 자동 생성해주는 한국형 블로그 마케팅 도구가 있는 것 같고, 이 도구를 중고차 딜러들이 많이 사용하고 있다고 추측할 수 있겠다.</p>
+<p><img alt="hidden attributes" src="./images/2018-01/weird-naver-search-02.png"></p>
+<p>네이버는 이런 문제를 뻔히 알고 있을텐데, 자동 생성되어 맥락과 의미가 없는 숨겨진 문자열들을 검색 대상에 포함시키지 않는다면 검색 결과 개선에 도움이 되지 않을까 싶다.</p><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 <footer class="post-info-footer">
         <p>
-        In <a href="//lqez.github.io/blog/category/2014-07.html">2014-07</a>. 
+        In <a href="//lqez.github.io/blog/category/2018-01.html">2018-01</a>. 
         </p>
-<p>tags: <a href="//lqez.github.io/blog/tag/nginx.html" class="tag">nginx</a><a href="//lqez.github.io/blog/tag/openssl.html" class="tag">openssl</a></p></footer><!-- /.post-info -->    </div><!-- /.entry-content -->
-    <div class="fb-comments" data-href="//lqez.github.io/blog/segfault-by-ssl_session_cache-in-nginx.html" data-width="0" data-num-posts="5"></div>
+</footer><!-- /.post-info -->    </div><!-- /.entry-content -->
+    <div class="fb-comments" data-href="//lqez.github.io/blog/weird-result-from-naver-search.html" data-width="0" data-num-posts="5"></div>
 
   </article>
 </section>
@@ -89,7 +89,7 @@
             <li ><a href="//lqez.github.io/blog/category/2013-05.html">2013-05</a></li>
             <li ><a href="//lqez.github.io/blog/category/2013-08.html">2013-08</a></li>
             <li ><a href="//lqez.github.io/blog/category/2013-10.html">2013-10</a></li>
-            <li class="active"><a href="//lqez.github.io/blog/category/2014-07.html">2014-07</a></li>
+            <li ><a href="//lqez.github.io/blog/category/2014-07.html">2014-07</a></li>
             <li ><a href="//lqez.github.io/blog/category/2016-08.html">2016-08</a></li>
             <li ><a href="//lqez.github.io/blog/category/2016-09.html">2016-09</a></li>
             <li ><a href="//lqez.github.io/blog/category/2017-05.html">2017-05</a></li>
@@ -97,7 +97,7 @@
             <li ><a href="//lqez.github.io/blog/category/2017-10.html">2017-10</a></li>
             <li ><a href="//lqez.github.io/blog/category/2017-11.html">2017-11</a></li>
             <li ><a href="//lqez.github.io/blog/category/2017-12.html">2017-12</a></li>
-            <li ><a href="//lqez.github.io/blog/category/2018-01.html">2018-01</a></li>
+            <li class="active"><a href="//lqez.github.io/blog/category/2018-01.html">2018-01</a></li>
             <li ><a href="//lqez.github.io/blog/category/uncategorized.html">Uncategorized</a></li>
         </ul></nav>
         -->

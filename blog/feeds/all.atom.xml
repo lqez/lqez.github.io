@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2017-12-21T00:00:00+09:00</updated><entry><title>The end is just another beginning</title><link href="https://lqez.github.io/blog/the-end-is-just-another-beginning.html" rel="alternate"></link><published>2017-12-21T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2017-12-21:blog/the-end-is-just-another-beginning.html</id><summary type="html">&lt;p&gt;&lt;img alt="The Last Moment" src="./images/2017-12/last-moment-mba.jpg" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="//lqez.github.io/blog/" rel="alternate"></link><link href="//lqez.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>//lqez.github.io/blog/</id><updated>2018-01-22T00:00:00+09:00</updated><entry><title>Weird result from Naver search</title><link href="//lqez.github.io/blog/weird-result-from-naver-search.html" rel="alternate"></link><published>2018-01-22T00:00:00+09:00</published><updated>2018-01-22T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2018-01-22:/blog/weird-result-from-naver-search.html</id><summary type="html">&lt;p&gt;예전부터 네이버 블로그 검색에서 ‘최신순’ 검색을 했을 때 검색어와 무관한 결과가 나와서 갸웃거린 경우가 있었는데, 그냥 네이버 검색이 별론가 생각하고 넘어갔었다.&lt;/p&gt;
+&lt;p&gt;오늘은 &lt;a href="https://en.wikipedia.org/wiki/BMW_X3#Third_generation_(G01;_2018%E2%80%93present)"&gt;BMW X3 (G01)&lt;/a&gt;이 출시되었다는 얘기를 듣고 관심이 생겨 네이버에서 검색해보았다.
+역시나 최신 기준으로 검색 결과를 보았을 때 이상한 콘텐츠들이 주를 이루지만, 속는 셈 치고 들어가 콘텐츠를 살펴보았다 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;예전부터 네이버 블로그 검색에서 ‘최신순’ 검색을 했을 때 검색어와 무관한 결과가 나와서 갸웃거린 경우가 있었는데, 그냥 네이버 검색이 별론가 생각하고 넘어갔었다.&lt;/p&gt;
+&lt;p&gt;오늘은 &lt;a href="https://en.wikipedia.org/wiki/BMW_X3#Third_generation_(G01;_2018%E2%80%93present)"&gt;BMW X3 (G01)&lt;/a&gt;이 출시되었다는 얘기를 듣고 관심이 생겨 네이버에서 검색해보았다.
+역시나 최신 기준으로 검색 결과를 보았을 때 이상한 콘텐츠들이 주를 이루지만, 속는 셈 치고 들어가 콘텐츠를 살펴보았다.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Search result" src="./images/2018-01/weird-naver-search-01.png"&gt;&lt;/p&gt;
+&lt;p&gt;하지만 포스팅 본문에는 검색 결과에서 보여진 문장이 보이지 않는다.
+스타일을 통해 숨겨졌나 싶어 개발자 도구를 통해 소스를 보니, 역시나 자동 생성된 문자들이 &lt;code&gt;hidden="hidden"&lt;/code&gt; 속성과 함께 본문 사이사이에 포함되어 있다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt; &lt;span class="na"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;font-family: Tahoma; font-size: 12pt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    성능점검과 경정비까지
+&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt; &lt;span class="na"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;font-family: 나눔고딕,NanumGothic; font-size: 12px;&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;hidden&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;hidden&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    기아부터 여자가타기좋은되어야 렉스턴W할수 G25했다고 스마트해서 엠파크허브좋다.
+&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;보아하니 &lt;code&gt;기아&lt;/code&gt;, &lt;code&gt;스마트&lt;/code&gt; 등 자동차 관련 키워드와 한국어에서 사용하는 관용구와 조사들을 자동 생성해주는 한국형 블로그 마케팅 도구가 있는 것 같고, 이 도구를 중고차 딜러들이 많이 사용하고 있다고 추측할 수 있겠다.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="hidden attributes" src="./images/2018-01/weird-naver-search-02.png"&gt;&lt;/p&gt;
+&lt;p&gt;네이버는 이런 문제를 뻔히 알고 있을텐데, 자동 생성되어 맥락과 의미가 없는 숨겨진 문자열들을 검색 대상에 포함시키지 않는다면 검색 결과 개선에 도움이 되지 않을까 싶다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>The end is just another beginning</title><link href="//lqez.github.io/blog/the-end-is-just-another-beginning.html" rel="alternate"></link><published>2017-12-21T00:00:00+09:00</published><updated>2017-12-21T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2017-12-21:/blog/the-end-is-just-another-beginning.html</id><summary type="html">&lt;p&gt;&lt;img alt="The Last Moment" src="./images/2017-12/last-moment-mba.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;2017년을 마지막으로 스마트스터디를 퇴직한다.&lt;/p&gt;
+&lt;p&gt;자신이 직접 디자인한 결재 양식으로 작성된 사직서와 공동대표 및 등기이사 사임 문서에 자필로 서명하는 일은 아무래도 낯선 일일 수밖에 없다.
+스스로 선택한 일이라 마음은 무겁지만 불편하지는 않다.
+지난 시간 동안 많은, 다양한 일이 있었고, 이제는 내가 보탬이 되지 않는다 생각하여 떠나는 것뿐이다.&lt;/p&gt;
+&lt;p&gt;회사와 일에 지나치게 몰입하면 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="The Last Moment" src="./images/2017-12/last-moment-mba.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;2017년을 마지막으로 스마트스터디를 퇴직한다.&lt;/p&gt;
 &lt;p&gt;자신이 직접 디자인한 결재 양식으로 작성된 사직서와 공동대표 및 등기이사 사임 문서에 자필로 서명하는 일은 아무래도 낯선 일일 수밖에 없다.
 스스로 선택한 일이라 마음은 무겁지만 불편하지는 않다.
@@ -10,7 +34,7 @@
 &lt;p&gt;힘듦에 내 책임이 크고, 한 분 한 분에게 인사드리고 죄송하다는 말씀을 드리지 못해 더 죄송하다.&lt;/p&gt;
 &lt;p&gt;지난 시간을 돌아보며 정리하여 남기고 싶은 말이 많지만, 개인적인 부분이 많아 저장소와 회선을 낭비해가며 남기고 전할 만큼 의미가 있지 않으니,
 아무것도 모르는 상태에서 창업하며 겪었던 일 중, 창업한다면 대체로 한 번쯤 생각해볼 만한 것에 대한 의견을 남겨본다.&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h4&gt;공동창업은 좋은가&lt;/h4&gt;
 &lt;p&gt;기본적으로 좋다고 생각한다. 일단 창업하고 나면 기쁜 일보다는 힘든 일이 훨씬 더 많기 마련인데,
 정말 힘들 때 등을 맞대고 고민을 함께할 수 있는 상대는 배우자나 친구보다는, 아무래도 맥락을 더 많이 이해하는 다른 공동창업자일 수밖에 없다.&lt;/p&gt;
@@ -30,7 +54,7 @@
 어떻게 일하면 좋을까를 고민해서 회사 이름을 지었다가, 외부와 의사소통 시에 답답해서 – 그래서 회사 이름이 뭐라고? – 회사 이름을 주력 제품이나 서비스명으로 바꾸는 경우도 봐왔고, 반대로 제품과 같게 지었다가 성장하는 중에 주력 사업이 바뀌면서 회사 이름이 따로 놀기도 한다.&lt;/p&gt;
 &lt;p&gt;개인적으로는 초기부터 제품/서비스 브랜딩을 따로 한다는 전제하에, ‘어떻게’를 회사 이름으로 선택할 것 같다.
 이후에 ‘무엇을’이 더 명확해지는 때에 회사 이름을 바꿀 수도 있다고 생각한다.&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;p&gt;앞으로 어떤 조직에 속할지, 어떤 일을 할지 아직 결정한 것은 아무것도 없다.
 다만, 몇 년 전부터 하고 싶었던 잡지를 시작하는 것과 글쓰기와 번역과 관련된 서비스를 하나 만들어보는 것이 사소한 목표다.
 매일 매일 조금씩이라도 코딩을 계속하고 사람들을 만나고 싶다.&lt;/p&gt;
@@ -41,7 +65,11 @@
 &lt;p&gt;좋아하는 문장이지만 더 좋아하는 이 문장을 덧붙이고 싶다.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;h3&gt;“The end is just another beginning.”&lt;/h3&gt;
-&lt;/blockquote&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary></entry><entry><title>Threaded Generator in Python</title><link href="https://lqez.github.io/blog/threaded-generator-in-python.html" rel="alternate"></link><published>2017-12-20T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2017-12-20:blog/threaded-generator-in-python.html</id><summary type="html">&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Command-line_interface"&gt;커맨드라인 인터페이스(CLI)&lt;/a&gt;를 가진 프로그램을 만들면서 &lt;a href="https://en.wikipedia.org/wiki/Asynchronous_I/O"&gt;비동기 처리&lt;/a&gt;를 시도한 적이 없었다.
+&lt;/blockquote&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>Threaded Generator in Python</title><link href="//lqez.github.io/blog/threaded-generator-in-python.html" rel="alternate"></link><published>2017-12-20T00:00:00+09:00</published><updated>2017-12-20T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2017-12-20:/blog/threaded-generator-in-python.html</id><summary type="html">&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Command-line_interface"&gt;커맨드라인 인터페이스(CLI)&lt;/a&gt;를 가진 프로그램을 만들면서 &lt;a href="https://en.wikipedia.org/wiki/Asynchronous_I/O"&gt;비동기 처리&lt;/a&gt;를 시도한 적이 없었다.
+대부분 선택지를 출력한 후에 사용자로부터 값을 입력받으면 다음 동작을 수행하는 것을 반복하기 때문에 일반적인 &lt;a href="https://en.wikipedia.org/wiki/Thread_(computing)#Single_threading"&gt;단일 스레드&lt;/a&gt;로 작성해왔다.&lt;/p&gt;
+&lt;p&gt;이번에 만든 CLI 프로그램인 &lt;a href="https://github.com/lqez/rogrepos"&gt;rogrepos&lt;/a&gt;는 GitHub에서 오픈소스 활동을 오래 하다 보면
+수정사항을 작성하기 위한 목적으로 &lt;a href="https://en.wikipedia.org/wiki/Fork_(software_development)"&gt;포크&lt;/a&gt;했다가
+더는 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Command-line_interface"&gt;커맨드라인 인터페이스(CLI)&lt;/a&gt;를 가진 프로그램을 만들면서 &lt;a href="https://en.wikipedia.org/wiki/Asynchronous_I/O"&gt;비동기 처리&lt;/a&gt;를 시도한 적이 없었다.
 대부분 선택지를 출력한 후에 사용자로부터 값을 입력받으면 다음 동작을 수행하는 것을 반복하기 때문에 일반적인 &lt;a href="https://en.wikipedia.org/wiki/Thread_(computing)#Single_threading"&gt;단일 스레드&lt;/a&gt;로 작성해왔다.&lt;/p&gt;
 &lt;p&gt;이번에 만든 CLI 프로그램인 &lt;a href="https://github.com/lqez/rogrepos"&gt;rogrepos&lt;/a&gt;는 GitHub에서 오픈소스 활동을 오래 하다 보면
 수정사항을 작성하기 위한 목적으로 &lt;a href="https://en.wikipedia.org/wiki/Fork_(software_development)"&gt;포크&lt;/a&gt;했다가
@@ -66,10 +94,10 @@ Retrieving organizations from GitHub...
 
 Retrieving &lt;span class="m"&gt;122&lt;/span&gt; repositories from GitHub...
 
-&lt;span class="m"&gt;97&lt;/span&gt; of 122
+&lt;span class="m"&gt;97&lt;/span&gt; of &lt;span class="m"&gt;122&lt;/span&gt;
 lqez/yuna
     Description: yuna
-    Updated    : 2013-11-27 16:13:40 / &lt;span class="m"&gt;1477&lt;/span&gt; day&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt; ago
+    Updated    : &lt;span class="m"&gt;2013&lt;/span&gt;-11-27 &lt;span class="m"&gt;16&lt;/span&gt;:13:40 / &lt;span class="m"&gt;1477&lt;/span&gt; day&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt; ago
     Size       : &lt;span class="m"&gt;100&lt;/span&gt; KB
     Do you really want to delete? &lt;span class="o"&gt;[&lt;/span&gt;y/N&lt;span class="o"&gt;]&lt;/span&gt;: y
     This is not a forked project. Are you sure? &lt;span class="o"&gt;[&lt;/span&gt;y/N&lt;span class="o"&gt;]&lt;/span&gt;: y
@@ -77,7 +105,7 @@ lqez/yuna was deleted.
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;p&gt;최초의 코드는 아래와 같았다.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;repo&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_user&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_repos&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="c1"&gt;# do something&lt;/span&gt;
@@ -101,9 +129,13 @@ lqez/yuna was deleted.
 
 
 &lt;p&gt;반복문 내에 느린 동작이 자주 포함되는 CLI 도구에서는 반복적으로 사용해볼만한 패턴이라고 생각된다.&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;p&gt;덧) 위 프로젝트를 &lt;a href="https://www.reddit.com/r/github/comments/7jporl/"&gt;/r/github&lt;/a&gt;에 올렸는데, 저장소는 지워져서는 안된다는 의견과
-&lt;a href="https://www.reddit.com/r/github/comments/7jporl/rogrepos_remove_outdated_github_repositories_in/"&gt;&lt;code&gt;No Maintenance Intended&lt;/code&gt;&lt;/a&gt; 배지에 대한 댓글이 달렸다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary></entry><entry><title>Under-stand-ing</title><link href="https://lqez.github.io/blog/under-stand-ing.html" rel="alternate"></link><published>2017-11-30T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2017-11-30:blog/under-stand-ing.html</id><summary type="html">&lt;p&gt;지난 주 금요일에 있었던 &lt;a href="https://www.facebook.com/publyteam/posts/2199237843435880"&gt;어떤 모임&lt;/a&gt;에서, 이런 얘기를 들었다. (정확히 기억나지는 않지만)&lt;/p&gt;
+&lt;a href="https://www.reddit.com/r/github/comments/7jporl/rogrepos_remove_outdated_github_repositories_in/"&gt;&lt;code&gt;No Maintenance Intended&lt;/code&gt;&lt;/a&gt; 배지에 대한 댓글이 달렸다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>Under-stand-ing</title><link href="//lqez.github.io/blog/under-stand-ing.html" rel="alternate"></link><published>2017-11-30T00:00:00+09:00</published><updated>2017-11-30T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2017-11-30:/blog/under-stand-ing.html</id><summary type="html">&lt;p&gt;지난 주 금요일에 있었던 &lt;a href="https://www.facebook.com/publyteam/posts/2199237843435880"&gt;어떤 모임&lt;/a&gt;에서, 이런 얘기를 들었다. (정확히 기억나지는 않지만)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“프로그래머분이 이해할 수 없는 단어를 자꾸 써가며 얘기해서 대화하기가 어려운데, 의사소통을 더 잘 하기 위해 저도 프로그래밍을 좀 배워야겠다는 생각이 들었어요. 도움이 될까요?”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;나는 프로그래밍을 배운다고 해서 – 프로그래밍도 범위가 너무 넓어서 어떤 것을 배우시겠다는 것인진 잘 모르겠지만 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;지난 주 금요일에 있었던 &lt;a href="https://www.facebook.com/publyteam/posts/2199237843435880"&gt;어떤 모임&lt;/a&gt;에서, 이런 얘기를 들었다. (정확히 기억나지는 않지만)&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;“프로그래머분이 이해할 수 없는 단어를 자꾸 써가며 얘기해서 대화하기가 어려운데, 의사소통을 더 잘 하기 위해 저도 프로그래밍을 좀 배워야겠다는 생각이 들었어요. 도움이 될까요?”&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -133,7 +165,9 @@ lqez/yuna was deleted.
 조금 알게 되었을 때 나 그거 아는데, 라고 섣불리 말하는 건 오히려 방해가 될 수도 있습니다.”&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;이해를 의미하는 영단어 understand의 &lt;a href="https://www.etymonline.com/word/understand"&gt;어원은 under + stand&lt;/a&gt; 이다.
-항상 누군가가 나보다 나을 수 있다는 생각과 자세를 갖추고 경청해야 나아갈 수 있다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary></entry><entry><title>The length of Django username</title><link href="https://lqez.github.io/blog/the-length-of-django-username.html" rel="alternate"></link><published>2017-11-16T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2017-11-16:blog/the-length-of-django-username.html</id><summary type="html">&lt;p&gt;오래 전, &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt;에서 제공하는 사용자 모델의 이름을 저장하는 기본 필드의 길이가 왜 30자인가에 대해 의문을 가진 적이 있었다.
+항상 누군가가 나보다 나을 수 있다는 생각과 자세를 갖추고 경청해야 나아갈 수 있다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>The length of Django username</title><link href="//lqez.github.io/blog/the-length-of-django-username.html" rel="alternate"></link><published>2017-11-16T00:00:00+09:00</published><updated>2017-11-16T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2017-11-16:/blog/the-length-of-django-username.html</id><summary type="html">&lt;p&gt;오래 전, &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt;에서 제공하는 사용자 모델의 이름을 저장하는 기본 필드의 길이가 왜 30자인가에 대해 의문을 가진 적이 있었다.
+필드의 길이가 짧거나 길어서 그런 생각을 했던건 아니고, 왜 하필 ‘30’ 일까에 대한 의문이었다.
+물론 한국 사람들의 이름만 생각하면 30자면 충분하다. 한국 국적을 가진 사람 중에 가장 긴 이름을 가진 사람은 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;오래 전, &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt;에서 제공하는 사용자 모델의 이름을 저장하는 기본 필드의 길이가 왜 30자인가에 대해 의문을 가진 적이 있었다.
 필드의 길이가 짧거나 길어서 그런 생각을 했던건 아니고, 왜 하필 ‘30’ 일까에 대한 의문이었다.
 물론 한국 사람들의 이름만 생각하면 30자면 충분하다. 한국 국적을 가진 사람 중에 가장 긴 이름을 가진 사람은 다음과 같다.&lt;/p&gt;
 &lt;ul&gt;
@@ -141,7 +175,7 @@ lqez/yuna was deleted.
 &lt;li&gt;‘프라이인드로스테쭈젠댄마리소피아수인레나테엘리자벳피아루이제’(30자)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;출처: &lt;a href="http://www.hani.co.kr/arti/society/society_general/399615.html"&gt;http://www.hani.co.kr/arti/society/society_general/399615.html&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;p&gt;그 뒤로 잊고 살았는데, 얼마 전 발표된 &lt;a href="https://docs.djangoproject.com/en/dev/releases/2.0/"&gt;Django 2.0 RC 릴리즈 노트&lt;/a&gt;를 보다가,
 &lt;a href="https://docs.djangoproject.com/en/dev/releases/2.0/#abstractuser-last-name-max-length-increased-to-150"&gt;사용자 이름 필드의 길이가 150자로 바뀐다&lt;/a&gt;는 항목이 눈에 띄었다.&lt;/p&gt;
 &lt;p&gt;하필이면, 왜 150자일까? 30자도 이상했지만 150자도 이상해서 &lt;a href="https://git-scm.com/docs/git-blame"&gt;git blame&lt;/a&gt;을 통해 길이를 바꾼 커밋을 찾아보니,
@@ -187,7 +221,7 @@ but while the email field is reasonably long (75), the 30 characters for the use
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://blog.jgc.org/2010/06/your-last-name-contains-invalid.html"&gt;Your last name contains invalid characters&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;p&gt;덧1) 어느 나라나 악플러는 있기 마련인 것 같다. 존 그레이엄-커밍의 블로그 포스팅에도 아래와 같은 사려깊지 못한 댓글이 달려있다. 흠.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Change your name. Not that big of a deal.&lt;/p&gt;
@@ -203,7 +237,13 @@ but while the email field is reasonably long (75), the 30 characters for the use
 1글자에 4바이트를 사용하는 &lt;code&gt;utf8mb4&lt;/code&gt; 인코딩에서는 767 ÷ 4 ≈ 191 이기 때문에 191자로 제한된다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-conversion.html"&gt;https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-conversion.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary></entry><entry><title>The Curse of Understanding</title><link href="https://lqez.github.io/blog/the-curse-of-understanding.html" rel="alternate"></link><published>2017-11-13T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2017-11-13:blog/the-curse-of-understanding.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/ul&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>The Curse of Understanding</title><link href="//lqez.github.io/blog/the-curse-of-understanding.html" rel="alternate"></link><published>2017-11-13T00:00:00+09:00</published><updated>2017-11-13T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2017-11-13:/blog/the-curse-of-understanding.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;The curse of the monad is that once you get the epiphany, once you understand, 
+you lose the ability to explain it to anybody else.&lt;/p&gt;
+&lt;p&gt;Douglas Crockford - &lt;a href="https://www.youtube.com/watch?v=dkZFtimgAcM"&gt;‘Monads &amp;amp; Gonads’ at YUIConf 2012&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Monad_(functional_programming)"&gt;모나드&lt;/a&gt;는 함수형 프로그래밍 언어에 대해서 얘기할 때 거의 매번 언급되는 주제이다.
+모나드라는 개념이 절차형 프로그래밍 언어에 익숙한 …&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
 &lt;p&gt;The curse of the monad is that once you get the epiphany, once you understand, 
 you lose the ability to explain it to anybody else.&lt;/p&gt;
 &lt;p&gt;Douglas Crockford - &lt;a href="https://www.youtube.com/watch?v=dkZFtimgAcM"&gt;‘Monads &amp;amp; Gonads’ at YUIConf 2012&lt;/a&gt;&lt;/p&gt;
@@ -234,7 +274,16 @@ you lose the ability to explain it to anybody else.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;나는 이런 문제들을 일반화하여 &lt;strong&gt;이해의 저주(The Curse of Understanding)&lt;/strong&gt;라고 부르고 싶다.&lt;/p&gt;
 &lt;p&gt;덧) 이 생각을 &lt;a href="https://twitter.com/lqez/status/759061524820299776"&gt;트윗&lt;/a&gt;으로 썼더니, &lt;a href="https://twitter.com/tebica"&gt;@tebica&lt;/a&gt; 님이 이에 공감하여 블로그 &lt;a href="http://earlybird.kr/1938"&gt;포스팅&lt;/a&gt;을 남겼던 적이 있다. 
-그리고, 나는 아직 모나드를 이해하지 못했다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary></entry><entry><title>Meaningless commits</title><link href="https://lqez.github.io/blog/meaningless-commits.html" rel="alternate"></link><published>2017-10-31T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2017-10-31:blog/meaningless-commits.html</id><summary type="html">&lt;p&gt;하고 있는 일에 지나치게 몰입하여 주변을 살피지 못하게 되면, 보다 의미있는 결과를 내기가 어렵다.
+그리고, 나는 아직 모나드를 이해하지 못했다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>Meaningless commits</title><link href="//lqez.github.io/blog/meaningless-commits.html" rel="alternate"></link><published>2017-10-31T00:00:00+09:00</published><updated>2017-10-31T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2017-10-31:/blog/meaningless-commits.html</id><summary type="html">&lt;p&gt;하고 있는 일에 지나치게 몰입하여 주변을 살피지 못하게 되면, 보다 의미있는 결과를 내기가 어렵다.
+요즘 아무도 사용할 것 같지 않은 기능들을 만드는데 시간을 낭비하고 있다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;마크다운 목록 정렬하기&lt;/li&gt;
+&lt;li&gt;한글 처리를 위한 Django template filter/tag 만들기&lt;/li&gt;
+&lt;li&gt;위지윅 에디터 만들기&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;mdls - Markdown List Sorter&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.com/lqez/mdls"&gt;https://github.com/lqez/mdls&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;먼저, &lt;a href="https://daringfireball.net/projects/markdown/"&gt;마크다운 …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;하고 있는 일에 지나치게 몰입하여 주변을 살피지 못하게 되면, 보다 의미있는 결과를 내기가 어렵다.
 요즘 아무도 사용할 것 같지 않은 기능들을 만드는데 시간을 낭비하고 있다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;마크다운 목록 정렬하기&lt;/li&gt;
@@ -269,14 +318,18 @@ you lose the ability to explain it to anybody else.&lt;/p&gt;
 &lt;p&gt;하지만, 최근에는 예전만큼 기여하지 못하고 있기도 하고, 다른 기여자들도 실무가 바뀌가 시간이 없어져 프로젝트 관리가 제대로 되고 있지 못하다.
 어떤 기여자는 프로젝트 작성자와 기존 기여자들이 제대로 활동하지 않는 것에 걱정과 &lt;a href="https://github.com/summernote/summernote/issues/2526"&gt;불만을 가지고 있다&lt;/a&gt;.
 계속 꾸준히 하는 것 외에 어떻게 잘 할 수 있을지 고민이 필요하다.&lt;/p&gt;
-&lt;p&gt;그냥 오늘 손댔던 일들을 적어본 글.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary></entry><entry><title>Data and Logic</title><link href="https://lqez.github.io/blog/data-and-logic.html" rel="alternate"></link><published>2017-10-19T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2017-10-19:blog/data-and-logic.html</id><summary type="html">&lt;p&gt;구글 브레인 프로젝트를 이끌고 있는 &lt;a href="https://research.google.com/pubs/jeff.html"&gt;제프 딘&lt;/a&gt;이 얼마 전에 &lt;a href="https://k2i.rice.edu/events/ken-kennedy-institute-lecture-series-jeff-dean-google-senior-fellow"&gt;발표&lt;/a&gt;한 바에 따르면
+&lt;p&gt;그냥 오늘 손댔던 일들을 적어본 글.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>Data and Logic</title><link href="//lqez.github.io/blog/data-and-logic.html" rel="alternate"></link><published>2017-10-19T00:00:00+09:00</published><updated>2017-10-19T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2017-10-19:/blog/data-and-logic.html</id><summary type="html">&lt;p&gt;구글 브레인 프로젝트를 이끌고 있는 &lt;a href="https://research.google.com/pubs/jeff.html"&gt;제프 딘&lt;/a&gt;이 얼마 전에 &lt;a href="https://k2i.rice.edu/events/ken-kennedy-institute-lecture-series-jeff-dean-google-senior-fellow"&gt;발표&lt;/a&gt;한 바에 따르면
+구글의 기존 언어 번역 코드는 50만줄 가량이었는데, 텐서플로우로 작성된 대규모 머신 러닝 모델에 기반한 번역 코드는 500줄 수준으로 줄어들었다고 한다.&lt;/p&gt;
+&lt;p&gt;참고: &lt;a href="https://jack-clark.net/2017/10/09/import-ai-63-google-shrinks-language-translation-code-from-500000-to-500-lines-with-ai-only-25-of-surveyed-people-believe-automationbetter-jobs/"&gt;Google shrinks language translation code from 500,000 to 500 lines&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;FM Nostalgia&lt;/h3&gt;
+&lt;p&gt;머신 러닝에 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;구글 브레인 프로젝트를 이끌고 있는 &lt;a href="https://research.google.com/pubs/jeff.html"&gt;제프 딘&lt;/a&gt;이 얼마 전에 &lt;a href="https://k2i.rice.edu/events/ken-kennedy-institute-lecture-series-jeff-dean-google-senior-fellow"&gt;발표&lt;/a&gt;한 바에 따르면
 구글의 기존 언어 번역 코드는 50만줄 가량이었는데, 텐서플로우로 작성된 대규모 머신 러닝 모델에 기반한 번역 코드는 500줄 수준으로 줄어들었다고 한다.&lt;/p&gt;
 &lt;p&gt;참고: &lt;a href="https://jack-clark.net/2017/10/09/import-ai-63-google-shrinks-language-translation-code-from-500000-to-500-lines-with-ai-only-25-of-surveyed-people-believe-automationbetter-jobs/"&gt;Google shrinks language translation code from 500,000 to 500 lines&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;FM Nostalgia&lt;/h3&gt;
 &lt;p&gt;머신 러닝에 기반한 여러 프로젝트를 보면서 계속 묘한 기분이 들었는데, 문득 20년 전의 기억이 떠올랐다.
 바로 &lt;a href="https://en.wikipedia.org/wiki/Frequency_modulation_synthesis"&gt;FM 음향&lt;/a&gt;에 기반한 미디 음악에서 &lt;a href="https://en.wikipedia.org/wiki/Pulse-code_modulation"&gt;PCM&lt;/a&gt; 기반의 &lt;a href="https://en.wikipedia.org/wiki/Music_tracker"&gt;트래커&lt;/a&gt; 음악들로 넘어갈 때,
 그리고 완전한 PCM 기반의 음원 저장 – &lt;a href="https://en.wikipedia.org/wiki/WAV"&gt;WAV&lt;/a&gt;, &lt;a href="https://en.wikipedia.org/wiki/MP3"&gt;MP3&lt;/a&gt;와 &lt;a href="https://en.wikipedia.org/wiki/RealAudio"&gt;RA&lt;/a&gt; 등 – 의 유행과 이들 음원의 유통이 본격화 되던 때에 뭔가 설명할 수 없는 아쉬움과 답답함을 느꼈었다.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Visual Composer by AdLib from vgmpf" src="./images/2017-10/adlib_visual_composer.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Visual Composer by AdLib from vgmpf" src="./images/2017-10/adlib_visual_composer.png"&gt;&lt;/p&gt;
 &lt;p&gt;내가 스스로 듣고자 해서 들었던 첫 음악들은 라디오나 비닐, 테이프가 아닌 컴퓨터 음악이었다.
 대표적 FM 음향칩인 &lt;a href="https://en.wikipedia.org/wiki/Yamaha_YM3812"&gt;야마하 YM3812&lt;/a&gt;에 기반한 &lt;a href="http://www.vgmpf.com/Wiki/index.php/Ad_Lib"&gt;Ad Lib&lt;/a&gt;사의 &lt;a href="http://www.vgmpf.com/Wiki/index.php/AdLib"&gt;AdLib&lt;/a&gt; 카드를 힘들게 구해, PC 본체 뒤로 손을 뻗어 볼륨을 조정하며 처음으로 &lt;a href="http://www.vgmpf.com/Wiki/index.php/ROL"&gt;ROL&lt;/a&gt; 음악을 들었다.
 이 방식으로 게임 음악을 만들며 즐거운 시기를 보냈었다. 몇 년이 지나 고등학생이 되던 즈음에 트래커 음악을 알게 되고, FM 음원이 아닌 샘플링된 PCM 음원으로 곡을 만든다는 것이 이상했지만 이내 적응하여 이 방식으로도 음악을 만들었다.&lt;/p&gt;
@@ -298,7 +351,10 @@ BNK 파일이 가지고 있던 작은 정보로 그럴싸한 음을 낼 수 있�
 &lt;p&gt;위 &lt;a href="https://jack-clark.net/2017/10/09/import-ai-63-google-shrinks-language-translation-code-from-500000-to-500-lines-with-ai-only-25-of-surveyed-people-believe-automationbetter-jobs/"&gt;참조&lt;/a&gt; 글에서도 다음과 같이 분명히 언급하고 있다. &lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Though bear in mind, Google has literally billions of lines of code in its supporting infrastructure, which the new slimmed-down system likely relies upon. No free lunch!&lt;/p&gt;
-&lt;/blockquote&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary></entry><entry><title>PyCon Korea 2017 ended.</title><link href="https://lqez.github.io/blog/pycon-korea-2017-ended.html" rel="alternate"></link><published>2017-08-16T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2017-08-16:blog/pycon-korea-2017-ended.html</id><summary type="html">&lt;p&gt;&lt;img alt="pyconkr-2017-ended.jpg" src="./images/2017-08/pyconkr-2017-ended.jpg" /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>PyCon Korea 2017 ended.</title><link href="//lqez.github.io/blog/pycon-korea-2017-ended.html" rel="alternate"></link><published>2017-08-16T00:00:00+09:00</published><updated>2017-08-16T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2017-08-16:/blog/pycon-korea-2017-ended.html</id><summary type="html">&lt;p&gt;&lt;img alt="pyconkr-2017-ended.jpg" src="./images/2017-08/pyconkr-2017-ended.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;준비위원회 분들과 거의 반년을 준비해서 4일간 코엑스 그랜드볼룸에서 진행했던 &lt;a href="https://www.pycon.kr/2017/"&gt;파이콘 한국 2017&lt;/a&gt;이 어제 스프린트 진행을 마지막으로 끝났다.&lt;/p&gt;
+&lt;p&gt;많은 사람이 운동을 배울 때 자주 듣는 얘기는 &lt;strong&gt;몸에 힘을 빼라는 것&lt;/strong&gt;이다. 몸에 힘을 빼야 물에 뜰 수 있는 것처럼.
+어쩌면 거창한 목표나 불필요한 공명심 없이 시작했기 때문에 지금까지 이런저런 일이 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="pyconkr-2017-ended.jpg" src="./images/2017-08/pyconkr-2017-ended.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;준비위원회 분들과 거의 반년을 준비해서 4일간 코엑스 그랜드볼룸에서 진행했던 &lt;a href="https://www.pycon.kr/2017/"&gt;파이콘 한국 2017&lt;/a&gt;이 어제 스프린트 진행을 마지막으로 끝났다.&lt;/p&gt;
 &lt;p&gt;많은 사람이 운동을 배울 때 자주 듣는 얘기는 &lt;strong&gt;몸에 힘을 빼라는 것&lt;/strong&gt;이다. 몸에 힘을 빼야 물에 뜰 수 있는 것처럼.
 어쩌면 거창한 목표나 불필요한 공명심 없이 시작했기 때문에 지금까지 이런저런 일이 많았음에도, 큰 탈 없이 해올 수 있었던 것 아닐까.&lt;/p&gt;
@@ -325,7 +381,10 @@ BNK 파일이 가지고 있던 작은 정보로 그럴싸한 음을 낼 수 있�
 물어볼 수도 있고, 그 물어보는 것에 대해서 다른 의견을 낼 수도, 그렇게 하지 말라고 할 수는 있습니다.
 그러나, 그 사람이 다르게 처리했다고 해서 우리는 비난할 수 없습니다.
 모든 자리에서 무슨 일을 하든지 우리는 그것을 지지하고 응원해주어야, 다음에 일하는 사람들이 더 열심히, 잘할 수 있다고 생각합니다.&lt;/p&gt;
-&lt;/blockquote&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary></entry><entry><title>Processing of photos</title><link href="https://lqez.github.io/blog/processing-of-photos.html" rel="alternate"></link><published>2017-08-01T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2017-08-01:blog/processing-of-photos.html</id><summary type="html">&lt;p&gt;어제 어떤 분이 페이스북에서 &lt;a href="http://www.screw-bar.com/"&gt;구닥&lt;/a&gt;으로 찍은 사진을 ‘무보정 원본’ 이라는 글과 함께 올려놓은 것을 보았다.
+&lt;/blockquote&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>Processing of photos</title><link href="//lqez.github.io/blog/processing-of-photos.html" rel="alternate"></link><published>2017-08-01T00:00:00+09:00</published><updated>2017-08-01T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2017-08-01:/blog/processing-of-photos.html</id><summary type="html">&lt;p&gt;어제 어떤 분이 페이스북에서 &lt;a href="http://www.screw-bar.com/"&gt;구닥&lt;/a&gt;으로 찍은 사진을 ‘무보정 원본’ 이라는 글과 함께 올려놓은 것을 보았다.
+구닥이 만든 결과물을 그 이후에 별도의 보정 없이 올렸으니까 그런 표현을 쓰셨다고 생각한다.
+이미 구닥이 엄청난 보정을 한 사진인데, 그것을 ‘무보정’이라고 표현하는게 조금 이상하다고 생각했지만,
+동시에 과연 어느 정도의 사진을 무보정이라고 할 수 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;어제 어떤 분이 페이스북에서 &lt;a href="http://www.screw-bar.com/"&gt;구닥&lt;/a&gt;으로 찍은 사진을 ‘무보정 원본’ 이라는 글과 함께 올려놓은 것을 보았다.
 구닥이 만든 결과물을 그 이후에 별도의 보정 없이 올렸으니까 그런 표현을 쓰셨다고 생각한다.
 이미 구닥이 엄청난 보정을 한 사진인데, 그것을 ‘무보정’이라고 표현하는게 조금 이상하다고 생각했지만,
 동시에 과연 어느 정도의 사진을 무보정이라고 할 수 있는가? 에 대한 의문도 동시에 들었다.&lt;/p&gt;
@@ -333,7 +392,9 @@ BNK 파일이 가지고 있던 작은 정보로 그럴싸한 음을 낼 수 있�
 필름을 이용해 사진을 찍고, 현상한 필름을 필름 스캐너로 스캔해서 &lt;a href="https://en.wikipedia.org/wiki/Raw_image_format"&gt;RAW&lt;/a&gt; 기준으로 보았을 때 훌륭한 것, 그래야 뭔가 더 대단한 느낌이 들었던 때가 있었다.
 이런 사진은 정말 ‘무보정 원본’인가? 이미 &lt;a href="https://en.wikipedia.org/wiki/Velvia"&gt;벨비아&lt;/a&gt;를 선택했던 그 순간, 인스타그램의 필터를 고른 것과 어떤 차이가 있는 것일까.
 디지털 카메라에서도 이미지 센서로 들어온 빛이 &lt;a href="https://en.wikipedia.org/wiki/Image_processor"&gt;이미지 프로세서&lt;/a&gt;에서 DAC/DSP 과정을 통해 비트로 변환될 때 이미 ‘보정’이 되는 것 아닐까.&lt;/p&gt;
-&lt;p&gt;우리가 무보정이라고 하는 것의 기준은 과연 무엇일까.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary></entry><entry><title>Death Valley</title><link href="https://lqez.github.io/blog/death-valley.html" rel="alternate"></link><published>2017-05-09T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2017-05-09:blog/death-valley.html</id><summary type="html">&lt;p&gt;어떤 종류의 일들은 왜 하는지, 또는 왜 그렇게 하는지 간단히 설명하기가 어려울 때가 있다.
+&lt;p&gt;우리가 무보정이라고 하는 것의 기준은 과연 무엇일까.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>Death Valley</title><link href="//lqez.github.io/blog/death-valley.html" rel="alternate"></link><published>2017-05-09T00:00:00+09:00</published><updated>2017-05-09T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2017-05-09:/blog/death-valley.html</id><summary type="html">&lt;p&gt;어떤 종류의 일들은 왜 하는지, 또는 왜 그렇게 하는지 간단히 설명하기가 어려울 때가 있다.
+내가 개인적으로 하는 일 중에도 그런 것들이 있고, 회사에서의 여러 일도 그러하고, 어떤 정치적인 선택도 그러한 경우가 많다.&lt;/p&gt;
+&lt;p&gt;궁극적으로 하고자 하는 일 또는 목표를 A 라고 할 때, A 를 바로 할 수 없으니 B 를 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;어떤 종류의 일들은 왜 하는지, 또는 왜 그렇게 하는지 간단히 설명하기가 어려울 때가 있다.
 내가 개인적으로 하는 일 중에도 그런 것들이 있고, 회사에서의 여러 일도 그러하고, 어떤 정치적인 선택도 그러한 경우가 많다.&lt;/p&gt;
 &lt;p&gt;궁극적으로 하고자 하는 일 또는 목표를 A 라고 할 때, A 를 바로 할 수 없으니 B 를 먼저 해야하고, B 를 하려다보니 C 를 먼저 하지 않을 수 없는데,
 A 와 C 사이에는 어떤 직접적인 관련이 없는 경우에 참 설명하기가 어렵다.&lt;/p&gt;
@@ -346,15 +407,20 @@ A 와 C 사이에는 어떤 직접적인 관련이 없는 경우에 참 설명�
 이 또한 일의 종류에 따라서 각 단계의 격차가 너무 벌어질 수 밖에 없거나, 길고 긴 단계를 가질 수 밖에 없기도 하다.&lt;/p&gt;
 &lt;p&gt;시간과 노력을 들여 계속 설명하고, 조금 더 합의하는 과정을 거치려고 하지만 어쩐지 이런 노력은 다 무용하고
 결국 중요한 것은 좋은 선택을 하는 것일 뿐 아닌가 하는 생각도 든다.&lt;/p&gt;
-&lt;p&gt;잘 모르겠다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary></entry><entry><title>A Postmortem of The Platance Hackathon</title><link href="https://lqez.github.io/blog/a-postmortem-of-the-platance-hackathon.html" rel="alternate"></link><published>2016-09-12T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2016-09-12:blog/a-postmortem-of-the-platance-hackathon.html</id><summary type="html">&lt;p&gt;외부로 알려진 행사의 개요는 이렇다. &lt;/p&gt;
+&lt;p&gt;잘 모르겠다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>A Postmortem of The Platance Hackathon</title><link href="//lqez.github.io/blog/a-postmortem-of-the-platance-hackathon.html" rel="alternate"></link><published>2016-09-12T00:00:00+09:00</published><updated>2016-09-12T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2016-09-12:/blog/a-postmortem-of-the-platance-hackathon.html</id><summary type="html">&lt;p&gt;외부로 알려진 행사의 개요는 이렇다. &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;‘플레이탕스 해커톤’ 개최: &lt;a href="http://www.bloter.net/archives/262994"&gt;http://www.bloter.net/archives/262994&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;시간이 지나, 돌이켜 봤을 때 성공한 많은 일들은 거창한 계획에서 시작하는 것이 아니라, 작은 아이디어나 작은 시도에서 시작한다고 생각한다.
+그래서 작은 일들에 늘 관심을 가지고, 남들과 다른 생각이나 행동을 하는 사람들에게 큰 가치를 느끼고 무언가 같이 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;외부로 알려진 행사의 개요는 이렇다. &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;‘플레이탕스 해커톤’ 개최: &lt;a href="http://www.bloter.net/archives/262994"&gt;http://www.bloter.net/archives/262994&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;시간이 지나, 돌이켜 봤을 때 성공한 많은 일들은 거창한 계획에서 시작하는 것이 아니라, 작은 아이디어나 작은 시도에서 시작한다고 생각한다.
 그래서 작은 일들에 늘 관심을 가지고, 남들과 다른 생각이나 행동을 하는 사람들에게 큰 가치를 느끼고 무언가 같이 해보고 싶은 마음을 늘 가지고 있다.&lt;/p&gt;
 &lt;p&gt;이번에 &lt;a href="https://www.smartstudy.co.kr/"&gt;스마트스터디&lt;/a&gt;와 &lt;a href="https://www.plating.co.kr/"&gt;플레이팅&lt;/a&gt;이 주최한 플레이탕스 해커톤도 큰 목표를 두고 시작한 것은 아니다.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="platance-00.jpg" src="./images/2016-09/platance-00.jpg" /&gt;&lt;/p&gt;
-&lt;hr /&gt;
+&lt;p&gt;&lt;img alt="platance-00.jpg" src="./images/2016-09/platance-00.jpg"&gt;&lt;/p&gt;
+&lt;hr&gt;
 &lt;h1&gt;起.&lt;/h1&gt;
 &lt;p&gt;회사에서 저녁으로 다양한 배달 음식들을 시켜먹는데, 페이스북에서 우연히 플레이팅이라는 저녁 배달 서비스를 이용하는 사람들의 사진을 보았다.
 이때까지만 해도, 플레이팅이 자기 레스토랑을 가지고 있는 전문 셰프의 요리를 대신 배달해주는 서비스라고 생각했다. 업계에 이미 많이 존재하는 다른 배달 서비스와 같이.&lt;/p&gt;
@@ -362,12 +428,12 @@ A 와 C 사이에는 어떤 직접적인 관련이 없는 경우에 참 설명�
 &lt;li&gt;플레이팅 홈페이지: &lt;a href="https://www.plating.co.kr/"&gt;https://www.plating.co.kr/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;서비스를 좀 살펴보니 다른 음식점의 음식을 배달하는 것이 아니라, 몇몇 음식의 소개가 되어 있고, 어떤 셰프가 만들었는지, 그리고 그 셰프가 어떤 경력을 가지고 있는지 소개하고 있었다.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="platance-01.jpg" src="./images/2016-09/platance-01.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="platance-01.jpg" src="./images/2016-09/platance-01.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;플레이팅은 음식 배달 서비스만 하는 회사가 아니다. 오히려 테이블이 없이 배달만 하는, 배달을 위한 자체적인 서비스가 갖춰진 일반적인 음식점에 가깝고 볼 수 있다.
 일단은 평상시에 배달해 먹던 치킨, 피자나 분식과는 다른 음식들을 시켜 먹을 수 있어 새로웠다.&lt;/p&gt;
 &lt;p&gt;아직은 초창기 스타트업이라서 그런지 현재 판매중인 음식들의 종류나 구입 가능 여부를 웹에서 확인할 수 있는 방법이 없었다.
 어떤 메뉴가 있는지도 반드시 앱을 설치한 후에야 확인할 수 있어, 구글 시트 등을 통해 각자 먹고 싶은 메뉴를 취합해서 시켜 먹는 우리 회사의 특성상 메뉴 확인이 개별적으로 가능해야 했는데, 이 부분이 아쉬웠다.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="platance-02.jpg" src="./images/2016-09/platance-02.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="platance-02.jpg" src="./images/2016-09/platance-02.jpg"&gt;&lt;/p&gt;
 &lt;h1&gt;承.&lt;/h1&gt;
 &lt;p&gt;나와 같이 하드웨어 부서에서 일하고 있는 파덕님의 &lt;a href="https://www.nhnnext.org/"&gt;NHN NEXT&lt;/a&gt; 동기인 져니님이 플레이팅의 소프트웨어 엔지니어라는 얘기를 들었다.
 파덕님이 플레이팅 메뉴라도 웹 페이지로 보여주면 안되겠냐고 문의를 했는데, API를 줄테니 직접 해보라는 답변을 듣고 리액트로 직접 작성해버렸다(?)&lt;/p&gt;
@@ -375,25 +441,25 @@ A 와 C 사이에는 어떤 직접적인 관련이 없는 경우에 참 설명�
 &lt;li&gt;사건의 시작: &lt;a href="https://www.facebook.com/hello.heesu/posts/906485259456004"&gt;파덕님 페이스북 포스팅&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;그렇게 만들어진 전용 페이지: &lt;a href="http://smartstudy.plating.co.kr/"&gt;http://smartstudy.plating.co.kr/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="platance-03.jpg" src="./images/2016-09/platance-03.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="platance-03.jpg" src="./images/2016-09/platance-03.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;그리하여, 스마트스터디 사람들은 플레이팅 메뉴를 손쉽게 열람하게 되어 잘 먹고 잘 살았습니다,
 로 끝나진 않았고 개인적으로 집에서 플레이팅 샐러드를 하나 먹고 싶어서 따로 주문하여 회사 주문 품목과 같이 배송 받으려고 했다.&lt;/p&gt;
 &lt;p&gt;직접 서비스를 써보니, 앱에서의 카드 등록 과정이나 주문시 별도 요청을 적는 부분 등에서 몇 가지 아쉬운 점이 있어 ‘이렇게 개선해보면 좋을텐데...’ 하는 아쉬움을 파덕님을 통해 전했다.
 그러자 져니님이 회사에 개발자가 부족하여 우선순위 낮은 이슈들을 쳐내기 어렵다는 다른 아쉬움으로 답해왔다.&lt;/p&gt;
 &lt;p&gt;이 외에도 이런 저런 아쉬운 점을 셋이서 얘기하다가 농담삼아, ‘아니 그럼 주말에 저랑 파덕님이라도 가서 좀 놀면서 개발하면 좋지 않을까요?’ 하고 가볍게 던진 이야기가 해커톤으로 커지고,
 몇 명이 모여서 하는게 아니라 이왕 이렇게 된 거 판을 키워서 재미있게 놀아보자고 회사 대 회사로 얘기하게 되었다.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="platance-04.jpg" src="./images/2016-09/platance-04.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="platance-04.jpg" src="./images/2016-09/platance-04.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;당장 내일 해커톤을 하자는 것을 뜯어 말려, 각자 준비를 해서 일주일 뒤에 하는 것으로 결정했다.
 이어, 져니님이 짧은 시간에 재치있는 글을 곁들여 구글 폼으로 해커톤 신청 페이지를 만들었고, 나는 폼을 수정할 수 있는 링크를 전달받아 만들고 있던 헤더 이미지를 얹고 꾸몄다.
 이 폼을 페이스북이나 트위터 등을 통해 알렸더니, 너무 많은 사람이 참가해서 플레이팅 사무실에서 진행할 수 없으면 어쩌나 걱정이 될 정도로 많은 분들이 신청해주셨다.&lt;/p&gt;
 &lt;p&gt;행사 당일까지 짬짬히 시간을 내서, 져니님은 회사에서 공개 가능한 API 와 웹 서비스들을 정리하며 안내 문서를 작성하였고,
 나는 보도자료 준비와 더불어 기념품으로 이번 해커톤의 의미를 담은 기념 머그컵을 사내수공업으로 이십여 개 제작하였다.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="platance-05.jpg" src="./images/2016-09/platance-05.jpg" /&gt;
-&lt;img alt="platance-06.jpg" src="./images/2016-09/platance-06.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="platance-05.jpg" src="./images/2016-09/platance-05.jpg"&gt;
+&lt;img alt="platance-06.jpg" src="./images/2016-09/platance-06.jpg"&gt;&lt;/p&gt;
 &lt;h1&gt;轉.&lt;/h1&gt;
 &lt;p&gt;지나치게 열심히, 과하게 준비하려고 하지도 않았고, 또 일부러 대충하려고 하지도 않았던 플레이탕스 해커톤이 시작되었다.
 아침 10시부터 저녁 10시까지, 12시간 동안 플레이팅의 논현동 사무실에서 플레이팅의 음식을 점심/저녁으로 시식하며 진행되었다.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="platance-07.jpg" src="./images/2016-09/platance-07.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="platance-07.jpg" src="./images/2016-09/platance-07.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;다른 해커톤은 주제를 정해주기는 해도, 문제 의식이 명확하지 않은 상태로 팀 빌딩을 하고 시작하게 되어 제대로 진행되지 못하거나 완성도가 낮은 팀들이 속출하는 반면,
 이번에는 져니님이 많은 준비를 하여 현재 서비스의 상황과 한계, 문제점들에 대해 기본적인 안내를 잘 해주었을 뿐 아니라,
 시식을 위해 주문하는 과정을 직접 체험하고, 주문이 어떻게 배달까지 이어지는지 현장에서 관찰할 수 있어 문제 도출이 잘 되었던 것이 좋았다.&lt;/p&gt;
@@ -401,11 +467,11 @@ A 와 C 사이에는 어떤 직접적인 관련이 없는 경우에 참 설명�
 하지만, 나는 서로 협업하지 않았던 사람들이 모여 같은 주제에 대해 토론하고 현장에서 문제를 인식, 도출하여 대안을 제시하고 개발하는 전 과정이 해커톤이라고 생각한다.
 우리가 왜 꼭 어딘가에 소속되어 직업적인 프로그래밍만 해야 하는가? 무릇 개발자라면 본인이 불편하거나 본인 기준에 맞지 않는 부분에 대해 직접적으로 개선하려는 시도가 더 나은 개발자가 될 수 있는 시작점이 된다고 본다.&lt;/p&gt;
 &lt;p&gt;져니님의 소개 이후에 돌아가며 짧은 자기 소개로 인사를 나눈 뒤에 점심을 먹으며 각자 개선, 해결하고 싶은 주제를 종이에 적고 칠판에 붙여 팀 빌딩을 시작했다.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="platance-08.jpg" src="./images/2016-09/platance-08.jpg" /&gt;
-&lt;img alt="platance-09.jpg" src="./images/2016-09/platance-09.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="platance-08.jpg" src="./images/2016-09/platance-08.jpg"&gt;
+&lt;img alt="platance-09.jpg" src="./images/2016-09/platance-09.jpg"&gt;&lt;/p&gt;
 &lt;h1&gt;結.&lt;/h1&gt;
 &lt;p&gt;플레이팅 측에서 테스트용 API 서버 뿐 아니라, 현재 서비스 중인 앱의 소스 코드와 샘플로 사용할 수 있는 실제에 가까운 가공된 데이터 셋을 제공해준 덕분에 다양한 방법으로 각자의 주제를 구현해볼 수 있었다.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="platance-10.jpg" src="./images/2016-09/platance-10.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="platance-10.jpg" src="./images/2016-09/platance-10.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;스무 명 정도의 참가자들은 5개 팀으로 나뉘어, 토론을 하기도 하고 일단 개발을 시작하기도 했다.
 맛있는 플레이팅의 식사와 디저트가 제공되어 배고픔 없이 개발할 수 있어 좋았다.
 개발을 시작할 때에는 팀별로 이름을 붙이진 않았지만, 정리해보니 다음과 같은 팀들이 구성되었다.&lt;/p&gt;
@@ -419,25 +485,25 @@ A 와 C 사이에는 어떤 직접적인 관련이 없는 경우에 참 설명�
 &lt;h2&gt;Review&lt;/h2&gt;
 &lt;p&gt;리뷰 팀은 커머스 서비스 기획자와 파덕님이 한 조가 되어 서비스에서 리뷰 기능을 개선하는 미션을 수행하였다.
 종이로 만든 프로토타입을 시작으로, 주문 단위 리뷰가 아닌, 주문 내 상품별 리뷰가 가능한 형태를 제안하고 &lt;a href="https://facebook.github.io/react/"&gt;리액트&lt;/a&gt;를 이용해 프로토타입을 완성하였다.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="platance-11.jpg" src="./images/2016-09/platance-11.jpg" /&gt;
-&lt;img alt="platance-12.jpg" src="./images/2016-09/platance-12.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="platance-11.jpg" src="./images/2016-09/platance-11.jpg"&gt;
+&lt;img alt="platance-12.jpg" src="./images/2016-09/platance-12.jpg"&gt;&lt;/p&gt;
 &lt;h2&gt;Sort&lt;/h2&gt;
 &lt;p&gt;플레이팅의 메뉴 정렬이 하나로 고정된 것이 아쉬웠던 소트 팀은 목록 개선을 제안하고 기존 소스 코드를 수정해서 구현하기도 했지만, 현재 안드로이드 앱 구성의 문제점에 대해 더 많이 밝혀내며 시간을 보냈다.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="platance-13.jpg" src="./images/2016-09/platance-13.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="platance-13.jpg" src="./images/2016-09/platance-13.jpg"&gt;&lt;/p&gt;
 &lt;h2&gt;BigBoss&lt;/h2&gt;
 &lt;p&gt;한 회사에서 같은 팀이 만든 관리자 화면이 서로 다른 구성이라 사용하기 불편할 뿐 아니라, 특정 화면 크기를 가정하고 만들어진 문제점이 있었다.
 빅보스 팀은 기존 코드를 처음부터 다시 만들지 않고도 웹 브라우저 상에서 연계하여 조화롭게 사용할 수 있는 방법을 제안하였다.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="platance-14.jpg" src="./images/2016-09/platance-14.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="platance-14.jpg" src="./images/2016-09/platance-14.jpg"&gt;&lt;/p&gt;
 &lt;h2&gt;Rider&lt;/h2&gt;
 &lt;p&gt;라이더 팀은 기존 라이더 앱의 지도가 단순히 배달 지점만 표시하고 있는 점과 주문 목록 표시, 메뉴 확인 및 상태 변경이 불편한 것을 문제로 인식하고,
 라이더가 배달시 사용하기 편리하도록 완전히 새로운 앱을 만들었다.
 그리고 다른 내비게이션 앱의 외부 호출 로직을 분석하여 라이더 앱에서 바로 내비게이션 앱으로 목적지 입력 처리가 가능하도록 하였다.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="platance-15.jpg" src="./images/2016-09/platance-15.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="platance-15.jpg" src="./images/2016-09/platance-15.jpg"&gt;&lt;/p&gt;
 &lt;h2&gt;13K&lt;/h2&gt;
 &lt;p&gt;내가 참여했던 13K 팀은 해커톤을 진행하며 개발하는 동안 팀원 네 명이서 13 접시(끼니)를 먹었다는 의미로 13K 라는 팀 이름을 정했다.
 기존 주문 배차 시스템이 각각의 주문 번호에 대한 라이더 지정을 담당자가 ‘개인적인 노하우’를 바탕으로 일일히 매번 클릭하여 배차하는 과정이 낭비로 느껴져, 이 부분을 개선하고 배달 경로를 최적화 하는 미션을 정했다.
 파이썬 웹 프레임워크인 &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt;로 웹 서비스를 구성하였으며, 해당 시간대의 주문 건들을 읽어와 외부 엔진을 통해 클러스터링 하고, 클러스터 내에서의 이동 경로를 최적화 하려고 했다.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="platance-16.jpg" src="./images/2016-09/platance-16.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="platance-16.jpg" src="./images/2016-09/platance-16.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;팀원이 네 명이었지만, 나를 제외한 다른 세 명은 고등학생으로 실전 경험이 많지 않은 점을 고려, 클러스터링과 주소 분석, 경로 최적화 등 개별 과제로 구분하여 각자 맡아서 진행하였으며,
 나는 웹 서비스를 구축하고 전달받은 덤프 데이터를 데이터베이스로 구축, 외부 프로세스를 호출하여 나온 결과를 다시 웹 서비스로 제공하는 역할을 맡았다.&lt;/p&gt;
 &lt;p&gt;각자 사용하는 언어가 달라 클러스터링은 C#, 경로 최적화는 Java, 나머지는 Python인 상황인 것이 재미있었으며, C# 구동을 위해 내 맥북에 &lt;a href="http://www.mono-project.com/docs/about-mono/supported-platforms/osx/"&gt;OS X 용 Mono Compiler&lt;/a&gt;를 처음으로 설치하는 경험도 했다.
@@ -445,31 +511,35 @@ A 와 C 사이에는 어떤 직접적인 관련이 없는 경우에 참 설명�
 &lt;p&gt;서로 다른 언어로 만든 결과물을 &lt;code&gt;stdin&lt;/code&gt;/&lt;code&gt;stdout&lt;/code&gt; 으로 조합하려는 시도도 재미있었고,
 늘 ‘이렇게 하면 뻔히 되는 거겠지’ 생각만 했던 &lt;a href="https://developers.google.com/maps/documentation/javascript/"&gt;Google Maps API&lt;/a&gt;도 실제로 적용해볼 때에야 알 수 있는 부분들이 있었으며,
 주문 샘플 데이터를 입력/변환 처리하면서 간만에 위치 데이터를 다루는 기회가 되었다.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="platance-17.jpg" src="./images/2016-09/platance-17.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="platance-17.jpg" src="./images/2016-09/platance-17.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;비록, 프로그램간 인터페이스를 완전히 맞추지 못한데다 마감까지 시간이 부족하여 완전한 조립은 이뤄내지 못했지만, 급한대로 &lt;code&gt;scipy&lt;/code&gt; 패키지의 &lt;code&gt;K-means clustering&lt;/code&gt;을 이용해 배차 서비스의 개선을 제안하는데 까지는 성공하였다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;13K 팀 소스 코드: &lt;a href="https://github.com/lqez/platance-hackathon"&gt;https://github.com/lqez/platance-hackathon&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;K-means clustering : &lt;a href="https://en.wikipedia.org/wiki/K-means_clustering"&gt;https://en.wikipedia.org/wiki/K-means_clustering&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;K-means in Scipy: &lt;a href="http://docs.scipy.org/doc/scipy/reference/cluster.vq.html"&gt;http://docs.scipy.org/doc/scipy/reference/cluster.vq.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h1&gt;Closing&lt;/h1&gt;
 &lt;p&gt;져니님이 해커톤을 마치고 1등이 아닌 2등 팀에게만 상품을 주겠다고 하였는데, 특별히 기준을 세우고 평가를 하는 자리가 아니라 딱히 등수를 가리기가 어려웠다.
 박수 소리로 하자는 고전적인 아이디어가 나와 맥북을 통해 데시벨 측정으로 정량적 평가를 하려고 했으나, 박수 소리가 너무 커서 모두 클리핑이 되는 관계로 포기.
 대신, 파이썬 랜덤신을 믿어보기로 했다.&lt;/p&gt;
 &lt;p&gt;팀 명을 리스트에 넣고 10회 &lt;a href="https://docs.python.org/3/library/random.html#random.shuffle"&gt;셔플&lt;/a&gt;, 그리고 첫번째 요소가 아닌 두번째 요소를 출력하여 2등을 뽑기로 했다.
 결과적으로 BigBoss 팀이 2등으로 선정되어 플레이팅에서 준비한 소정의 상품을 획득하였다. 정작 랜덤신이 뽑은 1등은 내가 참여했던 13K 팀이었는데... 랜덤은 언제나 옳다(?)&lt;/p&gt;
-&lt;p&gt;&lt;img alt="platance-19.jpg" src="./images/2016-09/platance-19.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="platance-19.jpg" src="./images/2016-09/platance-19.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;플레이탕스 해커톤은 큰 준비 없이 즐겁게 시작해서 즐겁게 끝난, 비교적 성공적인 해커톤이었다고 생각한다.
 무엇보다 참가자들 모두가 즐겁게 식사하고, 떠들고, 적당한 성과를 냈고, 자신이 만든 결과물에 대해 다른 사람과 공유할 수 있는 시간을 가질 수 있어 좋았다.&lt;/p&gt;
 &lt;p&gt;플레이팅 사무실에 프로젝터가 없다고 하여 사무실에서 간이로 사용하던 프로젝터를 가져왔는데, 덕분에 안드로이드 폰 미러링이나 종이로 프로토타이핑 한 내용들을 같이 보고 얘기할 수 있어 다행이었다.
 롤스크린이나 거치대가 없어 책상에 의자를 얹고 사무실 벽에 프로젝션하며 변변치 않게 진행했지만, 이 과정 또한 다들 즐기고 웃으며 같이 하는 분위기로 함께 한다는 느낌이 강하게 들었다.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="platance-18.jpg" src="./images/2016-09/platance-18.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="platance-18.jpg" src="./images/2016-09/platance-18.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;해커톤 기념품으로 컵을 만들면서 플레이팅의 로고에 들어있는 &lt;code&gt;+&lt;/code&gt; 기호화된 알파벳 &lt;code&gt;T&lt;/code&gt;를 응용해 컵의 앞/뒷면에 더하기와 곱하기를 새겨넣었다.
 해커톤을 통해 각자가 가진 재능과 아이디어, 그리고 유머를 더하고 곱해보자는 낡은(...) 발상에 만든 기념품인데 재미있는 추억을 더 오래 기억할 수 있는 계기가 되었으면 좋겠다.&lt;/p&gt;
 &lt;p&gt;주말에 시간을 내어 참가해준 모든 참가자분들과 흔쾌히 &lt;strike&gt;도장깨기&lt;/strike&gt; 해커톤을 승락하고 사무실을 내어준 플레이팅 분들에게 모두 감사드린다.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="platance-20.jpg" src="./images/2016-09/platance-20.jpg" /&gt;&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary><category term="plating"></category><category term="platance"></category><category term="hackathon"></category></entry><entry><title>Sketch and Draft</title><link href="https://lqez.github.io/blog/sketch-and-draft.html" rel="alternate"></link><published>2016-08-31T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2016-08-31:blog/sketch-and-draft.html</id><summary type="html">&lt;p&gt;소셜 미디어에 사진을 올리며 스케치와 시안 사이라고 적었다.
-&lt;img alt="sketch-and-draft.jpg" src="./images/2016-08/sketch-and-draft.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="platance-20.jpg" src="./images/2016-09/platance-20.jpg"&gt;&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="plating"></category><category term="platance"></category><category term="hackathon"></category></entry><entry><title>Sketch and Draft</title><link href="//lqez.github.io/blog/sketch-and-draft.html" rel="alternate"></link><published>2016-08-31T00:00:00+09:00</published><updated>2016-08-31T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2016-08-31:/blog/sketch-and-draft.html</id><summary type="html">&lt;p&gt;소셜 미디어에 사진을 올리며 스케치와 시안 사이라고 적었다.
+&lt;img alt="sketch-and-draft.jpg" src="./images/2016-08/sketch-and-draft.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;모 대학교 취업 박람회에서 사용할 홍보물을 제작하기 위해 간단히 스케치한 것과 그 스케치를 바탕으로 만든 시안이었다.&lt;/p&gt;
+&lt;p&gt;디지털로 바로 작업하는 것보다 종이에 펜으로 일단 빠르게 그려보는 것이 아이디어 구체화가 더 빠르게 진행되고 시간을 절약할 수 있어 선호한다.
+이는 프로그래밍에서도 바로 제품 코드를 작성하는 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;소셜 미디어에 사진을 올리며 스케치와 시안 사이라고 적었다.
+&lt;img alt="sketch-and-draft.jpg" src="./images/2016-08/sketch-and-draft.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;모 대학교 취업 박람회에서 사용할 홍보물을 제작하기 위해 간단히 스케치한 것과 그 스케치를 바탕으로 만든 시안이었다.&lt;/p&gt;
 &lt;p&gt;디지털로 바로 작업하는 것보다 종이에 펜으로 일단 빠르게 그려보는 것이 아이디어 구체화가 더 빠르게 진행되고 시간을 절약할 수 있어 선호한다.
 이는 프로그래밍에서도 바로 제품 코드를 작성하는 것보다, 비교적 단순한 코드로 &lt;a href="https://en.wikipedia.org/wiki/POC"&gt;Proof-of-Concept(PoC)&lt;/a&gt;를 달성하고
@@ -483,7 +553,14 @@ A 와 C 사이에는 어떤 직접적인 관련이 없는 경우에 참 설명�
 &lt;p&gt;헛된 상상이 아닌, 가치 있는 상상이 되려면 우선 이 결과물이 어떻게 사용될 지 예상하는 것과, 결과물을 만드는데 동원되는 도구들에 대해 많은 경험이 요구된다. 저장하는 데이터의 크기는 얼마나 큰지, 얼마나 자주 많은 데이터가 들어오는지, 어떤 하드웨어 수준에서 동작될 것인지 - 이런 것과 마찬가지로 내가 만드는 포스터는 어디에 부착되고 얼마나 먼 거리에서 몇 명이 볼 것이며, 대상 청중은 어떤 교육을 받고 어떤 기대를 가지고 오는 사람들인지 알고 예측할 수 있어야 하며, 사용하는 도구는 어떻게 동작하고 어떤 한계를 가지고 있는지 알고 있어야 빠른 예상이 가능할 것이다.&lt;/p&gt;
 &lt;p&gt;좋은 코드를 작성하기 위해서 다른 좋은 코드를 많이 보는 것 / 좋은 디자인을 위해서 다른 좋은 디자인을 많이 보는 것이 기본이지만, 자신이 사용하는 도구에 익숙해지는 것도 생산성을 높이는 것 뿐 아니라 기능과 한계를 명확히 앎으로써 더 나은 작업을 가능하게 할 수 있다고 생각한다.&lt;/p&gt;
 &lt;p&gt;처음으로 돌아가보면, 이 홍보물이 사용될 곳과 취업 박람회에 참가할 대학생들은 어떤 부분을 유심하게 볼 지 고민했었고, 우리 회사가 할당받은 부스의 크기를 감안해 부스 디자인, 포스터 디자인 그리고 홍보물 디자인을 조화롭게 하기 위해 노력했었다. 스케치와 시안은 서로 다른 사람이 한 것이 아니라, 내가 직접 한 것이었고, 대충 그린 그림을 주고 “이렇게 해보세요” 했던 것이 아니라, 어떤 도구로 이 제품을 제작해야할 지, 어떤 부분을 강조해서 넣으면 좋을 지 감안해서 종이에 그림을 그렸다. &lt;/p&gt;
-&lt;p&gt;저 사진을 페이스북에 올렸던 이유를 생각해봤는데, 도구를 다루는 능력이 부족해도 수록될 콘텐츠에 대한 이해가 있다면, 시간을 절약해서 적당한 품질로 작업하는 것이 가능하다는 얘기를 하고 싶었던 것 같다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary><category term="branding"></category><category term="design"></category><category term="concept"></category><category term="sketch"></category></entry><entry><title>segfault by ssl_session_cache in Nginx</title><link href="https://lqez.github.io/blog/segfault-by-ssl_session_cache-in-nginx.html" rel="alternate"></link><published>2014-07-22T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2014-07-22:blog/segfault-by-ssl_session_cache-in-nginx.html</id><summary type="html">&lt;p&gt;과거에는 SSL 웹서비스를 위해서 도메인 별로 다른 IP를 써야만 했었다.
+&lt;p&gt;저 사진을 페이스북에 올렸던 이유를 생각해봤는데, 도구를 다루는 능력이 부족해도 수록될 콘텐츠에 대한 이해가 있다면, 시간을 절약해서 적당한 품질로 작업하는 것이 가능하다는 얘기를 하고 싶었던 것 같다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="branding"></category><category term="design"></category><category term="concept"></category><category term="sketch"></category></entry><entry><title>segfault by ssl_session_cache in Nginx</title><link href="//lqez.github.io/blog/segfault-by-ssl_session_cache-in-nginx.html" rel="alternate"></link><published>2014-07-22T00:00:00+09:00</published><updated>2014-07-22T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2014-07-22:/blog/segfault-by-ssl_session_cache-in-nginx.html</id><summary type="html">&lt;p&gt;과거에는 SSL 웹서비스를 위해서 도메인 별로 다른 IP를 써야만 했었다.
+하지만 &lt;a href="http://en.wikipedia.org/wiki/Server_Name_Indication"&gt;Server Name Indication&lt;/a&gt;이 등장한 이후로,
+하나의 물리 IP에 여러 도메인의 SSL 웹 서비스가 가능해졌는데, 이를 위해 웹 서버 뿐 아니라 클라이언트에서의 지원도 필요하다.
+대표적으로 Internet Explorer 6 등은 SNI를 지원하지 않는다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Server_Name_Indication#Client_side"&gt;SNI를 지원하지 않는 클라이언트 목록&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;회사에서도 SNI를 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;과거에는 SSL 웹서비스를 위해서 도메인 별로 다른 IP를 써야만 했었다.
 하지만 &lt;a href="http://en.wikipedia.org/wiki/Server_Name_Indication"&gt;Server Name Indication&lt;/a&gt;이 등장한 이후로,
 하나의 물리 IP에 여러 도메인의 SSL 웹 서비스가 가능해졌는데, 이를 위해 웹 서버 뿐 아니라 클라이언트에서의 지원도 필요하다.
 대표적으로 Internet Explorer 6 등은 SNI를 지원하지 않는다.&lt;/p&gt;
@@ -500,7 +577,11 @@ A 와 C 사이에는 어떤 직접적인 관련이 없는 경우에 참 설명�
 &lt;p&gt;덧) 이 글을 처음 썼던 시점으로부터 1년이 지나 2015년 10월에서야 수정되어 Nginx 1.9.6에 반영되었다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://trac.nginx.org/nginx/timeline?from=2015-10-20T16%3A38%3A08Z&amp;amp;precision=second"&gt;https://trac.nginx.org/nginx/timeline?from=2015-10-20T16%3A38%3A08Z&amp;amp;precision=second&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary><category term="nginx"></category><category term="openssl"></category></entry><entry><title>Fool Upstart</title><link href="https://lqez.github.io/blog/fool-upstart.html" rel="alternate"></link><published>2014-07-17T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2014-07-17:blog/fool-upstart.html</id><summary type="html">&lt;h1&gt;Upstart&lt;/h1&gt;
+&lt;/ul&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="nginx"></category><category term="openssl"></category></entry><entry><title>Fool Upstart</title><link href="//lqez.github.io/blog/fool-upstart.html" rel="alternate"></link><published>2014-07-17T00:00:00+09:00</published><updated>2014-07-17T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2014-07-17:/blog/fool-upstart.html</id><summary type="html">&lt;h1&gt;Upstart&lt;/h1&gt;
+&lt;p&gt;&lt;a href="http://upstart.ubuntu.com/"&gt;Upstart&lt;/a&gt;는 /sbin/init 를 대체하기 위한 우분투의 기본 서비스 관리자다.
+다양한 서비스를 daemon 형태로 관리하고, 죽은 경우에 자동으로 다시 실행할 수 있는 등 편리한 기능을 갖추고 있다.&lt;/p&gt;
+&lt;p&gt;프로세스 ID를 받아 해당 프로세스가 잘 동작하는지 감시해야 하므로,
+해당 서비스가 어떤 형태로 시작되는지 알고 있어야 정확한 프로세스 ID를 얻을 수 …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Upstart&lt;/h1&gt;
 &lt;p&gt;&lt;a href="http://upstart.ubuntu.com/"&gt;Upstart&lt;/a&gt;는 /sbin/init 를 대체하기 위한 우분투의 기본 서비스 관리자다.
 다양한 서비스를 daemon 형태로 관리하고, 죽은 경우에 자동으로 다시 실행할 수 있는 등 편리한 기능을 갖추고 있다.&lt;/p&gt;
 &lt;p&gt;프로세스 ID를 받아 해당 프로세스가 잘 동작하는지 감시해야 하므로,
@@ -515,7 +596,7 @@ Upstart 설정 중, &lt;a href="http://upstart.ubuntu.com/cookbook/#expect"&gt;e
 &lt;p&gt;보통은 이 값을 잘못 설정한 경우에 서비스가 제대로 감시되지 않거나, 종료되지 않는 등의 문제가 생기는데
 오늘은 해당 서비스를 재시작하면서 별다른 설정의 변경이 없었음에도 불구하고, 이상한 상태에 빠지고 말았다.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ initctl list &lt;span class="p"&gt;|&lt;/span&gt; grep flower
-one/flower start/killed, process 14645
+one/flower start/killed, process &lt;span class="m"&gt;14645&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -523,8 +604,8 @@ one/flower start/killed, process 14645
 &lt;code&gt;start/killed&lt;/code&gt; 로 표시되는 프로세스 ID를 &lt;code&gt;ps&lt;/code&gt;로 찾아보면 당연히 없는 프로세스 ID다.
 한참을 헤매다 혹시나 싶어 upstart configuration 파일을 복제하여 다른 이름으로 바꿨더니, 제대로 동작한다!&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ initctl list &lt;span class="p"&gt;|&lt;/span&gt; grep flower
-one/flower start/killed, process 14645
-one/flower_dup start/running, process 17171
+one/flower start/killed, process &lt;span class="m"&gt;14645&lt;/span&gt;
+one/flower_dup start/running, process &lt;span class="m"&gt;17171&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -543,8 +624,17 @@ one/flower_dup start/running, process 17171
 &lt;/ol&gt;
 &lt;p&gt;우여곡절 끝에 문제 해결.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ initctl list &lt;span class="p"&gt;|&lt;/span&gt; grep one
-one/flower start/running, process 14810
-&lt;/pre&gt;&lt;/div&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary><category term="diary"></category><category term="ubuntu"></category></entry><entry><title>Today works</title><link href="https://lqez.github.io/blog/today-works.html" rel="alternate"></link><published>2013-10-16T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2013-10-16:blog/today-works.html</id><summary type="html">&lt;p&gt;뭘 하고 사는지 괜히 바쁜것 같아, 하루 일과를 정리해보았다.&lt;/p&gt;
+one/flower start/running, process &lt;span class="m"&gt;14810&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="diary"></category><category term="ubuntu"></category></entry><entry><title>Today works</title><link href="//lqez.github.io/blog/today-works.html" rel="alternate"></link><published>2013-10-16T00:00:00+09:00</published><updated>2013-10-16T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2013-10-16:/blog/today-works.html</id><summary type="html">&lt;p&gt;뭘 하고 사는지 괜히 바쁜것 같아, 하루 일과를 정리해보았다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;집에서 출발, 회사까지 걸어서 출근하기.&lt;/li&gt;
+&lt;li&gt;신규 입사자 면담.&lt;/li&gt;
+&lt;li&gt;VPN 설정 수정.&lt;/li&gt;
+&lt;li&gt;사내 서버실에서 랜선 교체작업, 케이블 정리, 서버 설치.&lt;/li&gt;
+&lt;li&gt;사내 서버실 냉각 / 경보 장치 관련하여 짧은 미팅.&lt;/li&gt;
+&lt;li&gt;신규 API 서비스 코드 리뷰. &lt;/li&gt;
+&lt;li&gt;기존 API 서비스의 pagination 관련 토론.&lt;/li&gt;
+&lt;li&gt;N사와 3세대 프로젝터 …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;뭘 하고 사는지 괜히 바쁜것 같아, 하루 일과를 정리해보았다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;집에서 출발, 회사까지 걸어서 출근하기.&lt;/li&gt;
 &lt;li&gt;신규 입사자 면담.&lt;/li&gt;
@@ -560,11 +650,16 @@ one/flower start/running, process 14810
 &lt;li&gt;Nginx + uwsgi_params 관련하여 문제 파악 및 수정.&lt;/li&gt;
 &lt;li&gt;npk JNI 관련 문의 답장.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;써놓고 보니 low-level system engineer 적인 일만 하고 있다. 회사에 SE가 없어서 그런건가.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary><category term="diary"></category></entry><entry><title>Happy birthday to me, 2013</title><link href="https://lqez.github.io/blog/happy-birthday-to-me-2013.html" rel="alternate"></link><published>2013-08-28T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2013-08-28:blog/happy-birthday-to-me-2013.html</id><summary type="html">&lt;p&gt;&lt;img alt="A drawing on my birthday" src="./images/2013-08/birthday.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;써놓고 보니 low-level system engineer 적인 일만 하고 있다. 회사에 SE가 없어서 그런건가.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="diary"></category></entry><entry><title>Happy birthday to me, 2013</title><link href="//lqez.github.io/blog/happy-birthday-to-me-2013.html" rel="alternate"></link><published>2013-08-28T00:00:00+09:00</published><updated>2013-08-28T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2013-08-28:/blog/happy-birthday-to-me-2013.html</id><summary type="html">&lt;p&gt;&lt;img alt="A drawing on my birthday" src="./images/2013-08/birthday.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;언제부턴가 생일에 특별한 의미를 부여하거나, 챙겨서 뭘 하진 않게 되었다.
 어차피 날짜라는 건 연속적인 시간을 인간의 기준에 맞춰 불연속적인 개념으로 부르는 것일 뿐이라고 생각한다.
 하지만 오늘은 어쩐지 회사 창업 후 달라진 모습을 기록해보고 싶다.&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
+&lt;p&gt;사실 거의 10년간 다니던 회사를 그만두고 지금의 일을 시작하는데 우아한 동기나 굳은 마음가짐이 있었던 건 아니다 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="A drawing on my birthday" src="./images/2013-08/birthday.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;언제부턴가 생일에 특별한 의미를 부여하거나, 챙겨서 뭘 하진 않게 되었다.
+어차피 날짜라는 건 연속적인 시간을 인간의 기준에 맞춰 불연속적인 개념으로 부르는 것일 뿐이라고 생각한다.
+하지만 오늘은 어쩐지 회사 창업 후 달라진 모습을 기록해보고 싶다.&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;사실 거의 10년간 다니던 회사를 그만두고 지금의 일을 시작하는데 우아한 동기나 굳은 마음가짐이 있었던 건 아니다.
 그저 변하지 않는 주변의 모습과 마찬가지로 발전 없는 내 모습이, 그리고 크게 나아지지 않는 상황이 나를 다른 곳으로 이끌었을 뿐이다.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;어쨌든 도망친 거다.&lt;/strong&gt;&lt;/p&gt;
@@ -608,9 +703,12 @@ one/flower start/running, process 14810
 &lt;li&gt;&lt;a href="https://dribbble.com/"&gt;Dribbble&lt;/a&gt;을 통해 맛볼 수 있는 트렌디한 웹/앱 디자인들.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;스타트업을 시작하고 나서, 자신에 대해 더 잘 알게 되고, 더 많은 사람을 만나고, 더 넓은 세상을 알게 되어 행복하다.
-아직 스포츠카도 없고, 물질적으로 아주 풍요로운 삶을 누리게 된 것도 아니지만, 그보다 훨씬 더 큰 선물을 받은 것 같다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary><category term="diary"></category></entry><entry><title>gittip.com and /for/korea</title><link href="https://lqez.github.io/blog/gittipcom-and-forkorea.html" rel="alternate"></link><published>2013-05-14T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2013-05-14:blog/gittipcom-and-forkorea.html</id><summary type="html">&lt;p&gt;얼마 전, &lt;a href="http://www.kickstarter.com/projects/andrewgodwin/schema-migrations-for-django"&gt;Schema Migrations for Django&lt;/a&gt; 라는 오픈소스 프로젝트 계획에 대한 모금 활동이 킥스타터에서 큰 성공을 거뒀다. 이제까지 오픈소스를 사용하면서 개발한 이들에게 고마움을 표시하는 방법은 해당 프로젝트를 열심히 사용하며, 버그 제보, 번역, 기능 추가 또는 사용기 발표 정도 밖에 없다고 생각했는데, '금전적인' 후원도 가능하다는 것을 알게 되었다.&lt;/p&gt;
+아직 스포츠카도 없고, 물질적으로 아주 풍요로운 삶을 누리게 된 것도 아니지만, 그보다 훨씬 더 큰 선물을 받은 것 같다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="diary"></category></entry><entry><title>gittip.com and /for/korea</title><link href="//lqez.github.io/blog/gittipcom-and-forkorea.html" rel="alternate"></link><published>2013-05-14T00:00:00+09:00</published><updated>2013-05-14T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2013-05-14:/blog/gittipcom-and-forkorea.html</id><summary type="html">&lt;p&gt;얼마 전, &lt;a href="http://www.kickstarter.com/projects/andrewgodwin/schema-migrations-for-django"&gt;Schema Migrations for Django&lt;/a&gt; 라는 오픈소스 프로젝트 계획에 대한 모금 활동이 킥스타터에서 큰 성공을 거뒀다. 이제까지 오픈소스를 사용하면서 개발한 이들에게 고마움을 표시하는 방법은 해당 프로젝트를 열심히 사용하며, 버그 제보, 번역, 기능 추가 또는 사용기 발표 정도 밖에 없다고 생각했는데, '금전적인' 후원도 가능하다는 것을 알게 되었다.&lt;/p&gt;
 &lt;h2&gt;Gittip&lt;/h2&gt;
-&lt;p&gt;&lt;img alt="gittip.png" src="./images/2013-05/gittip.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="gittip.png" src="./images/2013-05/gittip.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.gittip.com"&gt;https://www …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;얼마 전, &lt;a href="http://www.kickstarter.com/projects/andrewgodwin/schema-migrations-for-django"&gt;Schema Migrations for Django&lt;/a&gt; 라는 오픈소스 프로젝트 계획에 대한 모금 활동이 킥스타터에서 큰 성공을 거뒀다. 이제까지 오픈소스를 사용하면서 개발한 이들에게 고마움을 표시하는 방법은 해당 프로젝트를 열심히 사용하며, 버그 제보, 번역, 기능 추가 또는 사용기 발표 정도 밖에 없다고 생각했는데, '금전적인' 후원도 가능하다는 것을 알게 되었다.&lt;/p&gt;
+&lt;h2&gt;Gittip&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="gittip.png" src="./images/2013-05/gittip.png"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.gittip.com"&gt;https://www.gittip.com&lt;/a&gt; 은 오픈소스 개발자나 오픈소스 그룹에게 정기적으로 후원을 할 수 있는 웹서비스이다. 앞서 언급한 킥스타터와는 달리, 한 번 기부하고 마는 것이 아니라 지정한 금액을 매주 목요일 기부하게 된다.
 궁극적으로 이 사이트를 통해 의미있는 오픈소스 개발을 하는 사람이나 단체가 전업으로 오픈소스를 진행할 수 있는 기반을 갖게된다면 좋겠지만, 아직까지 그 정도로 많은 금액이 오고가는 것으로 보이진 않는다. 하지만, 주기적인 기부는 위와 같은 단기적인 프로젝트 기금 마련과는 다른 방향을 가지고 있고, 이는 오픈소스에 보다 긍정적인 문화를 가져올 것 같다.&lt;/p&gt;
 &lt;h2&gt;/for/korea&lt;/h2&gt;
@@ -628,10 +726,18 @@ one/flower start/running, process 14810
 &lt;p&gt;&lt;blockquote class="twitter-tweet" align="center"&gt;&lt;a href="https://twitter.com/whit537/status/333951758990733312"&gt;Tweet of whit537/333951758990733312&lt;/a&gt;&lt;/blockquote&gt;
 &lt;blockquote class="twitter-tweet" align="center"&gt;&lt;a href="https://twitter.com/whit537/status/333952649152053248"&gt;Tweet of whit537/333952649152053248&lt;/a&gt;&lt;/blockquote&gt;&lt;/p&gt;
 &lt;h2&gt;Small step for us&lt;/h2&gt;
-&lt;p&gt;&lt;img alt="gittip-korea.png" src="./images/2013-05/gittip-korea.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="gittip-korea.png" src="./images/2013-05/gittip-korea.png"&gt;&lt;/p&gt;
 &lt;p&gt;Gittip의 커뮤니티 중, &lt;a href="https://www.gittip.com/for/korea/"&gt;/for/korea&lt;/a&gt;가 가장 먼저 최소 요건인 150명을 돌파하였다. 특정 국가 커뮤니티로써 가장 큰 것일 뿐 아니라, 다른 모든 커뮤니티(예:&lt;a href="https://www.gittip.com/for/python/"&gt;/for/python&lt;/a&gt;) 중에서도 가장 인원이 많다. 이렇게 많은 개발자가 이런 사이트에 관심을 가지고 있는 줄 몰랐고, 이렇게 빨리 가입한 것은 더욱 놀랍다. 그럼에도 불구하고 부끄러운 것은, 한국인 커뮤니티에 가입한 사람들이 기부하고 있는 금액이 너무 적다는 점이다. 물론 한국 개발자들 중에서 아직 이 커뮤니티의 존재를 몰라, 가입하지 않은 상태로 기부하고 있을 수도 있겠다. 또는, 페이팔 계정이나 해외에서 자유롭게 결제 가능한 카드를 우리나라에서 만들기가 어려웠던 부분도 있을 것이다. 하지만 이 글을 쓰고 있는 현재, 도합 몇 달러가 채 안되는 금액이라는 것은 조금 아쉽다.&lt;/p&gt;
 &lt;p&gt;나는 예전에 &lt;a href="https://twitter.com/hongminhee"&gt;@hongminhee&lt;/a&gt; 님에게 &lt;a href="http://pytest.org/latest/"&gt;py.test&lt;/a&gt; 의 디버깅 도움을 받아, 이 사이트에서 후원하려다가 아직 계좌 연결을 시켜두시지 않은 관계로, 대신 독콜라(...) 한 박스를 보낸적이 있다. 아무튼 오늘 다시 한 번 사이트에 들어간 차에 적은 금액이지만 주당 $1.50 을 후원하도록 설정하였다.&lt;/p&gt;
-&lt;p&gt;오픈소스를 만들고 기꺼이 공개한 이들에게 감사를 표시하는 차원에서, 이 글을 읽는 분들도 자기가 쓰고 있는 프로젝트의 개발자나 그룹에 후원해보는 것은 어떨까?&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary><category term="gittip"></category><category term="donate"></category><category term="contribute"></category></entry><entry><title>499px</title><link href="https://lqez.github.io/blog/499px.html" rel="alternate"></link><published>2013-05-08T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2013-05-08:blog/499px.html</id><summary type="html">&lt;p&gt;&lt;a href="https://twitter.com/drypot"&gt;&lt;a href="https://twitter.com/drypot"&gt;@drypot&lt;/a&gt;&lt;/a&gt; 님이 의지를 불태워 &lt;a href="http://rapixel.com"&gt;http://rapixel.com&lt;/a&gt; 을 만들고 있는 것에 감명받아,
+&lt;p&gt;오픈소스를 만들고 기꺼이 공개한 이들에게 감사를 표시하는 차원에서, 이 글을 읽는 분들도 자기가 쓰고 있는 프로젝트의 개발자나 그룹에 후원해보는 것은 어떨까?&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="gittip"></category><category term="donate"></category><category term="contribute"></category></entry><entry><title>499px</title><link href="//lqez.github.io/blog/499px.html" rel="alternate"></link><published>2013-05-08T00:00:00+09:00</published><updated>2013-05-08T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2013-05-08:/blog/499px.html</id><summary type="html">&lt;p&gt;&lt;a href="https://twitter.com/drypot"&gt;&lt;a href="https://twitter.com/drypot"&gt;@drypot&lt;/a&gt;&lt;/a&gt; 님이 의지를 불태워 &lt;a href="http://rapixel.com"&gt;http://rapixel.com&lt;/a&gt; 을 만들고 있는 것에 감명받아,
+예전부터 만들고 싶었던 사진 저장/공유 사이트 아이디어를 구체화 해보았다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;원본 사진을 보관한다.&lt;/li&gt;
+&lt;li&gt;모바일 앱에서 바로 사진을 올릴 수 있다.&lt;/li&gt;
+&lt;li&gt;모두에게 공유할 수도 있지만, 기본적으로는 나만 본다.&lt;/li&gt;
+&lt;li&gt;이러한 공유 설정은 폴더 단위로 작동한다.&lt;/li&gt;
+&lt;li&gt;폴더에 하위 폴더는 없다.&lt;/li&gt;
+&lt;li&gt;특정 …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://twitter.com/drypot"&gt;&lt;a href="https://twitter.com/drypot"&gt;@drypot&lt;/a&gt;&lt;/a&gt; 님이 의지를 불태워 &lt;a href="http://rapixel.com"&gt;http://rapixel.com&lt;/a&gt; 을 만들고 있는 것에 감명받아,
 예전부터 만들고 싶었던 사진 저장/공유 사이트 아이디어를 구체화 해보았다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;원본 사진을 보관한다.&lt;/li&gt;
@@ -656,7 +762,11 @@ one/flower start/running, process 14810
 &lt;li&gt;폴더는 기본적으로 n일 후에 자동 폭파된다.&lt;/li&gt;
 &lt;li&gt;영구히 보관하는 기능은 유료로 제공.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;너무 길다. 하고 싶었던건 그저, &lt;strong&gt;"사진을 지인들과 편리하게 같이 보고 싶다."&lt;/strong&gt; 였는데.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary><category term="idea"></category><category term="photo"></category><category term="web"></category></entry><entry><title>Making a fan page for a 'Developer conference'</title><link href="https://lqez.github.io/blog/making-a-fan-page-for-a-developer-conference.html" rel="alternate"></link><published>2013-04-20T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2013-04-20:blog/making-a-fan-page-for-a-developer-conference.html</id><summary type="html">&lt;h1&gt;Preface&lt;/h1&gt;
+&lt;p&gt;너무 길다. 하고 싶었던건 그저, &lt;strong&gt;"사진을 지인들과 편리하게 같이 보고 싶다."&lt;/strong&gt; 였는데.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="idea"></category><category term="photo"></category><category term="web"></category></entry><entry><title>Making a fan page for a 'Developer conference'</title><link href="//lqez.github.io/blog/making-a-fan-page-for-a-developer-conference.html" rel="alternate"></link><published>2013-04-20T00:00:00+09:00</published><updated>2013-04-20T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2013-04-20:/blog/making-a-fan-page-for-a-developer-conference.html</id><summary type="html">&lt;h1&gt;Preface&lt;/h1&gt;
+&lt;p&gt;2012년 4월, 모 게임회사의 개발자 컨퍼런스가 열린다는 소식을 듣고, 기쁜 마음에 해당 컨퍼런스의 홈페이지에 접속했다.
+대형 포털 업체의 블로그 시스템을 이용한 페이지라 조금 실망했지만, 보통 이런 행사에 인력을 충분히 할당할 수 없음을 알기에 이해했다.&lt;/p&gt;
+&lt;p&gt;하지만, 일정표를 거대한 이미지 파일 하나로 배포하는 것을 보고, 아쉬운 마음을 감출 수 없었다.
+개발자 …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Preface&lt;/h1&gt;
 &lt;p&gt;2012년 4월, 모 게임회사의 개발자 컨퍼런스가 열린다는 소식을 듣고, 기쁜 마음에 해당 컨퍼런스의 홈페이지에 접속했다.
 대형 포털 업체의 블로그 시스템을 이용한 페이지라 조금 실망했지만, 보통 이런 행사에 인력을 충분히 할당할 수 없음을 알기에 이해했다.&lt;/p&gt;
 &lt;p&gt;하지만, 일정표를 거대한 이미지 파일 하나로 배포하는 것을 보고, 아쉬운 마음을 감출 수 없었다.
@@ -684,97 +794,97 @@ one/flower start/running, process 14810
 &lt;li&gt;만든 코드를 공개하여, 그럭저럭 괜찮은 Django 샘플 코드로 활용되기.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;'하라는 일은 안하고' 작업을 시작했다. 작업하는 동안 화면을 종종 캡춰했고, 이를 정리해봤다.&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;4월 11일&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;23:29&lt;/code&gt; 딸을 재우고 와이프가 TV를 보는 동안 작업을 시작했다.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;23:29&lt;/code&gt; Github에 리포지터리를 생성했다. 리포지터리를 생성하는 것만으로도 뭔가 달성한 기분이 든다.
-&lt;img alt="0411-01.jpg" src="./images/2013-04/0411-01.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0411-01.jpg" src="./images/2013-04/0411-01.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;23:30&lt;/code&gt; &lt;code&gt;virtualenv&lt;/code&gt;를 통해 독립 공간을 마련하고, Django 1.5 를 설치했다. 일단 It worked.
-&lt;img alt="0411-02.jpg" src="./images/2013-04/0411-02.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0411-02.jpg" src="./images/2013-04/0411-02.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;23:35&lt;/code&gt; 자료를 훑어보며 모델을 어떻게 만들지 고민했다.
-&lt;img alt="0411-03.jpg" src="./images/2013-04/0411-03.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0411-03.jpg" src="./images/2013-04/0411-03.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;23:47&lt;/code&gt; &lt;code&gt;syncdb&lt;/code&gt;로 처음으로 데이터베이스를 생성했다. 
-&lt;img alt="0411-04.jpg" src="./images/2013-04/0411-04.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0411-04.jpg" src="./images/2013-04/0411-04.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;00:00&lt;/code&gt; PDF 자료를 확대하여 이미지를 일부 캡춰했다. 원래 아이콘이나 이미지가 있어야 작업이 잘 되니까 일단 쓸데없는 짓을 좀 했다.
-&lt;img alt="0411-05.jpg" src="./images/2013-04/0411-05.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0411-05.jpg" src="./images/2013-04/0411-05.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;00:07&lt;/code&gt; 자료를 보며 &lt;code&gt;Django admin&lt;/code&gt;을 통해 기초 데이터를 입력하기 시작했다. 갈 길이 멀다. 
-&lt;img alt="0411-06.jpg" src="./images/2013-04/0411-06.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0411-06.jpg" src="./images/2013-04/0411-06.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;00:17&lt;/code&gt; 머리가 나쁘니까 손발이 고생한다. 잘못 설계된 모델들을 수정하기 위해 &lt;code&gt;south&lt;/code&gt;를 설치하고 마이그레이션을 하기 시작했다.
 머리가 나쁜 것을 탓하다 졸려서 잠들었다.
-&lt;img alt="0411-07.jpg" src="./images/2013-04/0411-07.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0411-07.jpg" src="./images/2013-04/0411-07.jpg"&gt;&lt;/p&gt;
 &lt;h2&gt;4월 12일&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;14:46&lt;/code&gt; 회사에 출근은 했는데, 마음은 밭에 가 있으니 오전 내내 싱숭생숭하다가, 점심 먹고 데이터 입력을 시작했다.
-&lt;img alt="0412-01.jpg" src="./images/2013-04/0412-01.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0412-01.jpg" src="./images/2013-04/0412-01.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;15:50&lt;/code&gt; 데이터 입력만 한 시간 내내 해서 드디어 입력을 끝냈다. 자동으로 긁는 도구를 만들까 하다가 그게 더 큰 일이 될게 뻔하니 관두고 몸빵했다. 
 다 하고 나니 눈치가 보여서 회사 일을 좀 했다.
-&lt;img alt="0412-02.jpg" src="./images/2013-04/0412-02.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0412-02.jpg" src="./images/2013-04/0412-02.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;18:47&lt;/code&gt; 저녁을 회사에서 먹고 드디어 첫 템플릿 코드를 작성했다. 그냥 목록이 나오는거 뿐인데도 뿌듯했다. 
 이후에 타임테이블용 템플릿 작업을 무지하게 했는데 머리가 잘 안돌아가서 걍 퇴근했다. 역시 야근... 아니 밤에 코딩하는건 효율이 나쁘다.
-&lt;img alt="0412-03.jpg" src="./images/2013-04/0412-03.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0412-03.jpg" src="./images/2013-04/0412-03.jpg"&gt;&lt;/p&gt;
 &lt;h2&gt;4월 13일 - 4월 14일&lt;/h2&gt;
 &lt;p&gt;팬심이 아무리 강해도, 유부남의 주말은 가족과 함께 보낼 수 밖에 없다. 한 줄도 못 짜고 이틀이 지나갔다.&lt;/p&gt;
 &lt;h2&gt;4월 15일&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;10:50&lt;/code&gt; 집에서 회사까지 약 5km 정도 되는데, 아침부터 뭔 바람이 불었는지 걸어서 출근했다. 
 쉰냄새를 풍기면서 타임테이블 템플릿 코딩을 계속했다. 엉성하지만 출력되는 것을 보고 조금 감동했다. &lt;code&gt;&amp;lt;table&amp;gt;&lt;/code&gt; 태그 따위에 말이지.
-&lt;img alt="0415-01.jpg" src="./images/2013-04/0415-01.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0415-01.jpg" src="./images/2013-04/0415-01.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;11:08&lt;/code&gt; 눈에 뭐가 보이니까, 장식 예술을 슬슬 하기 시작했다. 지난 주에 미리 캡춰해둔 이미지가 있어 끼워 넣으니 뭔가 그럴싸해졌다.
-&lt;img alt="0415-02.jpg" src="./images/2013-04/0415-02.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0415-02.jpg" src="./images/2013-04/0415-02.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;16:36&lt;/code&gt; 잉여짓만 하니까 또 미안한 마음이 들어, 잠깐 회사 일을 하는 척 하다, 또 장식 예술을 하고 있다.
 아무래도 색상과 픽토그램이 같이 붙어 있는 이미지는 별론거 같아, 픽토그램만 떼어내고 색상 정보를 따로 입력하기로 했다.
 나중에 모델에 색상 정보 넣었던 건 다시 버리고, 대신 클래스 이름을 넣고, 색상을 CSS 쪽으로 옮겼다. (휴-)
-&lt;img alt="0415-03.jpg" src="./images/2013-04/0415-03.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0415-03.jpg" src="./images/2013-04/0415-03.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;17:38&lt;/code&gt; 타임테이블에 태그 아이콘을 떼어내고 태그바를 붙였더니 한결 나아보였다. 하라는 코딩은 안하고 점점 CSS에 빠져들고 있다.
-&lt;img alt="0415-04.jpg" src="./images/2013-04/0415-04.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0415-04.jpg" src="./images/2013-04/0415-04.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;21:27&lt;/code&gt; 회사에서 밥을 먹고 네이게이션 바를 붙였다. 그냥 &lt;code&gt;Bootstrap&lt;/code&gt;보다는 역시 &lt;code&gt;Flat-UI&lt;/code&gt;가 힙해보인다, 는 착각이 든다.
 너무 늦는거 같아 대충 열시에 정리하고 퇴각.
-&lt;img alt="0415-05.jpg" src="./images/2013-04/0415-05.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0415-05.jpg" src="./images/2013-04/0415-05.jpg"&gt;&lt;/p&gt;
 &lt;h2&gt;4월 16일&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;14:52&lt;/code&gt; 또 걸어서 출근했더니 오전이 쉰내와 함께 갑자기 사라지고 말았다! 아무튼 점심 먹고 또 CSS에 빠져들었다. 툴팁 붙이고 신났다!
 이 때부터 &lt;code&gt;imgur&lt;/code&gt;에 올려서 IRC 에 링크도 올리고 했다. 슬슬 초기 버프가 떨어지고 재미가 없어지는 시점이었던거 같다.
-&lt;img alt="0416-01.jpg" src="./images/2013-04/0416-01.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0416-01.jpg" src="./images/2013-04/0416-01.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;17:23&lt;/code&gt; 짬짬히 템플릿 코딩을 계속했다. 동료의 어깨 너머로 배운 &lt;code&gt;Class based view&lt;/code&gt; 덕분에 뷰 코딩은 거의 안하고, 장식 예술에 빠질 수 있었다.
 &lt;code&gt;moot.it&lt;/code&gt;이 &lt;code&gt;disqus&lt;/code&gt;보다 예뻐보여 일단 넣어보았다. 넣기 정말 쉽긴 한데, 나중에 폰 뷰에서 제대로 안나오고 페이스북 로그인만 지원해서 빼버렸다.
-&lt;img alt="0416-02.jpg" src="./images/2013-04/0416-02.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0416-02.jpg" src="./images/2013-04/0416-02.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;18:18&lt;/code&gt; 이제 대놓고 이것만 만들기 시작했다. 다음 주가 바로 컨퍼런스 일인데 너무 늦게 알리면 아무도 안 봐줄꺼고, 그러면 아쉬울까봐.
 스타일이 대충 결정되고 나니 꾸미는데 속도가 좀 붙는다. 이 즈음에 태그를 눌러 필터링하는 기능이 추가되었다.
-&lt;img alt="0416-03.jpg" src="./images/2013-04/0416-03.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0416-03.jpg" src="./images/2013-04/0416-03.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;19:39&lt;/code&gt; 어설프게 만들고 놔두는거 싫어하는데, 마침 회식이 생겨 퇴각했다. 이날 술 먹고 체력이 저하되었ㄷㅈㅁ데ㅓㅐ러....
-&lt;img alt="0416-04.jpg" src="./images/2013-04/0416-04.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0416-04.jpg" src="./images/2013-04/0416-04.jpg"&gt;&lt;/p&gt;
 &lt;h2&gt;4월 17일&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;14:22&lt;/code&gt; 어제 만들다 놔둔 발표자 페이지를 꾸미기 시작했다. 트위터 아이디를 넣고 트위터 API로 프로필 이미지를 불러오도록 했다.
-&lt;img alt="0417-01.jpg" src="./images/2013-04/0417-01.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0417-01.jpg" src="./images/2013-04/0417-01.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;14:49&lt;/code&gt; 발표자 개인 페이지는 아직 넣을만한 내용이 별로 없어 한산하다. 아무튼 여기도 moot.it 넣고 마무리했다.
-&lt;img alt="0417-02.jpg" src="./images/2013-04/0417-02.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0417-02.jpg" src="./images/2013-04/0417-02.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;16:52&lt;/code&gt; 별로 중요하지도 않은 검색기능인데, 이걸 누군가에게 Django 데모 프로젝트로 보여주려면 꼭 있어야 겠다는 헛생각이 들어서,
 &lt;code&gt;haystack&lt;/code&gt; 기본 백엔드로 일단 넣었다.
-&lt;img alt="0417-03.jpg" src="./images/2013-04/0417-03.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0417-03.jpg" src="./images/2013-04/0417-03.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;17:32&lt;/code&gt; 각 세부 페이지가 대충 마무리된 것 같아, 대문을 뚝딱 뚝딱 만들었다. 이미지는 조금만 쓰고 해당 컨퍼런스와 어울리게끔 만들었다.
 나중에서야 깨닫게 되는 것지만, 이런 식으로 약간 그럴싸하게 만든게 문제가 아니었을까 싶다.
 만들면서 계속 크기를 줄여가며 반응형 - 이 말을 별로 좋아하진 않지만 - 페이지로 계속 갈아 엎어 나갔다.
 어제 술 먹고 늦게 들어온게 미안해, 퇴근하고 집에서 가족과 함께 시간을 보냈다.
-&lt;img alt="0417-04.jpg" src="./images/2013-04/0417-04.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0417-04.jpg" src="./images/2013-04/0417-04.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;24:01&lt;/code&gt; 집에 와서 아까 만든 페이지를 보며 뿌듯해 하려고 했는데, 계속 크롬으로 개발해서 그런지 파이어폭스 등에서 난리가 나고 있다는 걸 몰랐다.
 &lt;code&gt;&amp;lt;td&amp;gt;&lt;/code&gt; 태그에 &lt;code&gt;position: relative&lt;/code&gt; 가 안되는 걸 뒤늦게 깨닫고 멘붕. 이걸 해결하기 위해 자바스크립트를 끼얹는 만행을 저지르고 말았다.
 테이블 셀 우하단에 발표자 이름과 회사 이름 위치시키는게 이렇게 어려울 줄이야. 이걸 새벽 3시까지 했다.
-&lt;img alt="0417-05.jpg" src="./images/2013-04/0417-05.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0417-05.jpg" src="./images/2013-04/0417-05.jpg"&gt;&lt;/p&gt;
 &lt;h2&gt;4월 18일&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;19:13&lt;/code&gt; 어젯 밤에 늦게 자서 아예 휴가를 내고 본격적으로 마무리 작업을 했다. 뭔가 많이 다듬긴 했는데 기억나는게 몇 개 없는건 왜일까.
 사이트 자체 작업보다는, 회사 서버에 이걸 올려 실제 서비스하기 위한 준비를 했다.
 아무튼 친구와 같이 커피숍에서 배터리 떨어질 때까지 작업하며 이메일로 로그인하기 기능의 기본을 다 만들었다. 
 가족과 함께 저녁을 먹고 놀다가, favicon 을 만들고 일찍 잠들었다.
-&lt;img alt="0418-01.jpg" src="./images/2013-04/0418-01.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0418-01.jpg" src="./images/2013-04/0418-01.jpg"&gt;&lt;/p&gt;
 &lt;h2&gt;4월 19일&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;09:48&lt;/code&gt; 오늘은 무슨 일이 있어도 꼭 릴리즈해야 겠다는 마음이었으나, 버프가 완전히 떨어져 효율이 전혀 나지 않았다.
 아무튼 꾸역 꾸역 코딩해서 자체 댓글 기능 붙이고, 프로필 페이지를 작성하고, &lt;code&gt;Redis&lt;/code&gt;를 통해 캐시도 사용하도록 했고,
 &lt;code&gt;Google Analytics&lt;/code&gt;도 붙이는 등의 마무리 작업을 계속했다. 
-&lt;img alt="0419-01.jpg" src="./images/2013-04/0419-01.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0419-01.jpg" src="./images/2013-04/0419-01.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;17:26&lt;/code&gt; 드디어 실 서버에 배포하고 릴리즈했다. 아직 목표한 만큼 다 만들진 못했지만 오늘 릴리즈하지 않으면
 알리기도 어렵고해서 대충 정리해서 배포한 다음, 트위터랑 IRC 등에 홍보를 조금 했다.
 또한, 해당 컨퍼런스 담당 트위터 계정에도 멘션으로 팬 페이지를 만들었다고 알렸다.
-&lt;img alt="0419-02.jpg" src="./images/2013-04/0419-02.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="0419-02.jpg" src="./images/2013-04/0419-02.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;18:06&lt;/code&gt; 사용자들이 들어오기 시작했다! 들뜬 마음으로 쳐다보다가 근처에 가족이 와서 저녁을 먹으러 조금 일찍 퇴근했다.
-&lt;img alt="0419-03.jpg" src="./images/2013-04/0419-03.jpg" /&gt;&lt;/p&gt;
-&lt;hr /&gt;
+&lt;img alt="0419-03.jpg" src="./images/2013-04/0419-03.jpg"&gt;&lt;/p&gt;
+&lt;hr&gt;
 &lt;h1&gt;Afterwords&lt;/h1&gt;
 &lt;p&gt;만들고자 했던 기능들 중, 페이스북 그래프 활용이나 자기가 듣고 싶은 세션을 체크하는 기능 등을 완성하진 못했다.
 애초에 이 사이트를 만들려고 했던 것이 팬 페이지 만들어서 뭘 어떻게 해보겠다기 보다는,
@@ -784,7 +894,15 @@ one/flower start/running, process 14810
 &lt;p&gt;하지만 담당자로부터 컨퍼런스와 관련된 자료를 이용한 2차 저작물 제작을 허용하지 않는다는 얘기와 함께, 사이트를 내려 달라는 요청을 듣고,
 오픈했던 팬 페이지를 서너시간 만에 닫을 수 밖에 없었다. 이해는 가지만 아쉬운 마음은 숨기기 어려운 것 같다.&lt;/p&gt;
 &lt;p&gt;근 일주일 동안 즐겁게 작업했고, 간만에 원없이 CSS 질 한 것으로 만족해야겠다. 잠이 오지 않아, 뒤늦게 쓰려고 했던 제작 후기 글을 본의 아니게 일찍 쓰게 되었다.&lt;/p&gt;
-&lt;p&gt;Github link: &lt;a href="https://github.com/lqez/ndc13"&gt;https://github.com/lqez/ndc13&lt;/a&gt;&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary><category term="django"></category><category term="surplus"></category></entry><entry><title>Sync LDAP to Google Apps account via GADS</title><link href="https://lqez.github.io/blog/sync-ldap-to-google-apps-account-via-gads.html" rel="alternate"></link><published>2013-02-26T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2013-02-26:blog/sync-ldap-to-google-apps-account-via-gads.html</id><summary type="html">&lt;p&gt;Google은 - 친절하게도 - Google Apps 계정을 외부 서버와 동기화할 수 있는 기능을 제공할 뿐 아니라, 이를 위한 도구도 배포하고 있다.&lt;/p&gt;
+&lt;p&gt;Github link: &lt;a href="https://github.com/lqez/ndc13"&gt;https://github.com/lqez/ndc13&lt;/a&gt;&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="django"></category><category term="surplus"></category></entry><entry><title>Sync LDAP to Google Apps account via GADS</title><link href="//lqez.github.io/blog/sync-ldap-to-google-apps-account-via-gads.html" rel="alternate"></link><published>2013-02-26T00:00:00+09:00</published><updated>2013-02-26T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2013-02-26:/blog/sync-ldap-to-google-apps-account-via-gads.html</id><summary type="html">&lt;p&gt;Google은 - 친절하게도 - Google Apps 계정을 외부 서버와 동기화할 수 있는 기능을 제공할 뿐 아니라, 이를 위한 도구도 배포하고 있다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://support.google.com/a/bin/answer.py?answer=172212"&gt;Google Apps Migration for Microsoft Exchange&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://support.google.com/a/bin/answer.py?answer=106368"&gt;Google Apps Directory Sync&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://support.google.com/a/bin/answer.py?answer=2611842"&gt;Google Apps Password Sync&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;스마트스터디는 사내 계정을 이미 LDAP으로 통합 운용중이라서, Google Apps Directory Sync(이하 GADS)를 선택하였다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.google.com/support/enterprise/static/gapps/docs/admin/en/gads/admin/"&gt;Google Apps …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;Google은 - 친절하게도 - Google Apps 계정을 외부 서버와 동기화할 수 있는 기능을 제공할 뿐 아니라, 이를 위한 도구도 배포하고 있다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://support.google.com/a/bin/answer.py?answer=172212"&gt;Google Apps Migration for Microsoft Exchange&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://support.google.com/a/bin/answer.py?answer=106368"&gt;Google Apps Directory Sync&lt;/a&gt;&lt;/li&gt;
@@ -804,7 +922,7 @@ one/flower start/running, process 14810
 &lt;li&gt;Calendar Resources&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;GADS Configuration Tool은 자바를 이용한 GUI로 작성되어 있는데, 현재는 Windows / Linux 용만 제공된다. 이 툴을 통해 설정한 내용은 XML로 저장되고, 이 파일은 플랫폼 무관하게 사용할 수 있으므로, 일단 가상 머신의 Windows로 설정을 완료한 후에, 설정 파일을 복사하여 Linux에서 사용하였다.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Screen Shot of GADS" src="./images/gads_01.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Screen Shot of GADS" src="./images/gads_01.png"&gt;&lt;/p&gt;
 &lt;p&gt;Linux용 GADS는 커맨드라인에서 설치하면 동의항목이 HTML로 출력되지만, 계속 엔터키를 입력해 넘기며 진행하면 설치가 가능하다.
 root 계정으로 설치하는 경우에 /usr/local/GoogleAppsDirSync 에 설치가 되고, 이 디렉토리 아래에 있는 &lt;code&gt;sync-cmd&lt;/code&gt; 쉘 스크립트를 통해 동기화를 수행하면 된다.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ./sync-cmd -c &amp;lt;configuration_file.xml&amp;gt;
@@ -816,7 +934,13 @@ root 계정으로 설치하는 경우에 /usr/local/GoogleAppsDirSync 에 설치
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;code&gt;-a&lt;/code&gt; 옵션을 추가해야 실제 동기화가 이뤄진다. 현재는 위 명령을 cron에 넣어 5분 마다 동기화 하도록 설정해두었다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary><category term="ldap"></category><category term="google"></category><category term="gads"></category><category term="sync"></category></entry><entry><title>Build vim with language support via Homebrew</title><link href="https://lqez.github.io/blog/build-vim-with-language-support-via-homebrew.html" rel="alternate"></link><published>2013-02-20T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2013-02-20:blog/build-vim-with-language-support-via-homebrew.html</id><summary type="html">&lt;p&gt;Mac OS X에 기본 설치된 vim은 다른 언어를 위한 지원 옵션 없이 빌드되어, &lt;a href="https://github.com/klen/python-mode"&gt;python-mode&lt;/a&gt; 등을 사용할 수 없다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;-a&lt;/code&gt; 옵션을 추가해야 실제 동기화가 이뤄진다. 현재는 위 명령을 cron에 넣어 5분 마다 동기화 하도록 설정해두었다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="ldap"></category><category term="google"></category><category term="gads"></category><category term="sync"></category></entry><entry><title>Build vim with language support via Homebrew</title><link href="//lqez.github.io/blog/build-vim-with-language-support-via-homebrew.html" rel="alternate"></link><published>2013-02-20T00:00:00+09:00</published><updated>2013-02-20T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2013-02-20:/blog/build-vim-with-language-support-via-homebrew.html</id><summary type="html">&lt;p&gt;Mac OS X에 기본 설치된 vim은 다른 언어를 위한 지원 옵션 없이 빌드되어, &lt;a href="https://github.com/klen/python-mode"&gt;python-mode&lt;/a&gt; 등을 사용할 수 없다.&lt;/p&gt;
+&lt;p&gt;다행히도, Homebrew에 포함된 &lt;a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/vim.rb"&gt;vim.rb&lt;/a&gt;는 언어 지원을 위한 옵션을 포함하고 있어, 이를 이용해 편리하게 설치가 가능하다. 아래 명령으로 지원하는 옵션을 확인할 수 있다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ brew options vim
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Python 지원을 포함하려면 아래와 같이 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Mac OS X에 기본 설치된 vim은 다른 언어를 위한 지원 옵션 없이 빌드되어, &lt;a href="https://github.com/klen/python-mode"&gt;python-mode&lt;/a&gt; 등을 사용할 수 없다.&lt;/p&gt;
 &lt;p&gt;다행히도, Homebrew에 포함된 &lt;a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/vim.rb"&gt;vim.rb&lt;/a&gt;는 언어 지원을 위한 옵션을 포함하고 있어, 이를 이용해 편리하게 설치가 가능하다. 아래 명령으로 지원하는 옵션을 확인할 수 있다.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ brew options vim
 &lt;/pre&gt;&lt;/div&gt;
@@ -827,7 +951,7 @@ root 계정으로 설치하는 경우에 /usr/local/GoogleAppsDirSync 에 설치
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;vim.rb의 &lt;a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/vim.rb#L25"&gt;25-31L&lt;/a&gt;를 보면, &lt;code&gt;--with-&amp;lt;language&amp;gt;&lt;/code&gt; 옵션은 configure 시에 &lt;code&gt;--enable-&amp;lt;language&amp;gt;interp&lt;/code&gt; 옵션으로 변경된다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary><category term="vim"></category><category term="python"></category><category term="homebrew"></category></entry><entry><title>펠리칸으로 작성하는 첫번째 블로그 포스트</title><link href="https://lqez.github.io/blog/the-first-blog-post.html" rel="alternate"></link><published>2013-01-06T00:00:00+09:00</published><author><name></name></author><id>tag:lqez.github.io,2013-01-06:blog/the-first-blog-post.html</id><summary type="html">&lt;h1&gt;H1 테스트&lt;/h1&gt;
+&lt;p&gt;vim.rb의 &lt;a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/vim.rb#L25"&gt;25-31L&lt;/a&gt;를 보면, &lt;code&gt;--with-&amp;lt;language&amp;gt;&lt;/code&gt; 옵션은 configure 시에 &lt;code&gt;--enable-&amp;lt;language&amp;gt;interp&lt;/code&gt; 옵션으로 변경된다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="vim"></category><category term="python"></category><category term="homebrew"></category></entry><entry><title>펠리칸으로 작성하는 첫번째 블로그 포스트</title><link href="//lqez.github.io/blog/the-first-blog-post.html" rel="alternate"></link><published>2013-01-06T00:00:00+09:00</published><updated>2013-01-06T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2013-01-06:/blog/the-first-blog-post.html</id><summary type="html">&lt;h1&gt;H1 테스트&lt;/h1&gt;
 &lt;h2&gt;H2 테스트&lt;/h2&gt;
 &lt;h3&gt;이건 H3&lt;/h3&gt;
 &lt;blockquote&gt;
@@ -844,7 +968,32 @@ root 계정으로 설치하는 경우에 /usr/local/GoogleAppsDirSync 에 설치
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
+&lt;p&gt;일반 문단&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="nn"&gt;sys&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;문장 중간에 &lt;code&gt;import os,sys&lt;/code&gt; 가 가능하지
+이건 그냥 링크 &lt;a href=""&gt;http://lqez.github.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://lqez.github.com/"&gt;http://lqez.github …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;h1&gt;H1 테스트&lt;/h1&gt;
+&lt;h2&gt;H2 테스트&lt;/h2&gt;
+&lt;h3&gt;이건 H3&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;인용구는 이렇게 
+처리하면 잘 나오겠지.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;리스트 아이템 1&lt;/li&gt;
+&lt;li&gt;리스트 아이템 2
+    두 줄짜리는 이렇게 되려나?&lt;/li&gt;
+&lt;li&gt;리스트 아이템 3&lt;ul&gt;
+&lt;li&gt;리스트B 아이템1&lt;/li&gt;
+&lt;li&gt;리스트B 아이템2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
 &lt;p&gt;일반 문단&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="nn"&gt;sys&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -856,4 +1005,4 @@ root 계정으로 설치하는 경우에 /usr/local/GoogleAppsDirSync 에 설치
 &lt;p&gt;&lt;em&gt;single asterisks&lt;/em&gt;
 &lt;em&gt;single underscores&lt;/em&gt;
 &lt;strong&gt;double asterisks&lt;/strong&gt;
-&lt;strong&gt;double underscores&lt;/strong&gt;&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</summary></entry></feed>
+&lt;strong&gt;double underscores&lt;/strong&gt;&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry></feed>
