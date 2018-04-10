@@ -16,20 +16,20 @@
 /***** Global *****/
 /* Body */
 body {
-    background: transparent;
-    color: #333;
-    font-size: 15pt;
-    font-family: sans-serif;
-    font-weight: 300;
-    line-height: 1.429;
-    margin: 0;
-    padding: 0;
-    text-align: left;
+  background: transparent;
+  color: #333;
+  font-size: 15pt;
+  font-family: sans-serif;
+  font-weight: 300;
+  line-height: 1.429;
+  margin: 0;
+  padding: 0;
+  text-align: left;
 }
 html, body {
-    height: 100%;
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Headings */
@@ -41,18 +41,17 @@ h5 {font-size: 1.6em}
 h6 {font-size: 1.4em}
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Lato";
-	font-weight: 300;
-	line-height: 1.2;
-    letter-spacing: 1px;
-	margin-bottom: .5em;
-    word-break: keep-all;
+  font-family: "Lato";
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  margin-bottom: .5em;
+  word-break: keep-all;
 }
 
-h3, h4, h5, h6 { margin-top: .8em; }
-
-article h2, article h3 {
-    margin-top: 1em;
+article h2, article h3,
+article h4, article h5, article h6 {
+    margin-top: 1.4em;
 }
 	
 hr { border:none; border-top: 1px solid #F0F0F0; margin: 3% 8%; }

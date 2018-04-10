@@ -1,5 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="//lqez.github.io/blog/" rel="alternate"></link><link href="//lqez.github.io/blog/feeds/all-ko.atom.xml" rel="self"></link><id>//lqez.github.io/blog/</id><updated>2018-01-22T00:00:00+09:00</updated><entry><title>Weird result from Naver search</title><link href="//lqez.github.io/blog/weird-result-from-naver-search.html" rel="alternate"></link><published>2018-01-22T00:00:00+09:00</published><updated>2018-01-22T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2018-01-22:/blog/weird-result-from-naver-search.html</id><summary type="html">&lt;p&gt;예전부터 네이버 블로그 검색에서 ‘최신순’ 검색을 했을 때 검색어와 무관한 결과가 나와서 갸웃거린 경우가 있었는데, 그냥 네이버 검색이 별론가 생각하고 넘어갔었다.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="//lqez.github.io/blog/" rel="alternate"></link><link href="//lqez.github.io/blog/feeds/all-ko.atom.xml" rel="self"></link><id>//lqez.github.io/blog/</id><updated>2018-04-06T00:00:00+09:00</updated><entry><title>10 things to know before using Philips Hue</title><link href="//lqez.github.io/blog/10-things-to-know-before-using-philips-hue.html" rel="alternate"></link><published>2018-04-06T00:00:00+09:00</published><updated>2018-04-06T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2018-04-06:/blog/10-things-to-know-before-using-philips-hue.html</id><summary type="html">&lt;p&gt;&lt;img alt="A photo of home" src="./images/2018-04/hue-hallway.jpg"&gt;
+이번에 이사하며 필립스의 스마트 조명 시스템인 &lt;a href="https://www2.meethue.com"&gt;휴(Hue)&lt;/a&gt;를 사용하며 알게 된 몇 가지 내용을 정리해본다.&lt;/p&gt;
+&lt;h6&gt;0. 휴에 대해 잘 아는 사람은 별로 없다.&lt;/h6&gt;
+&lt;p&gt;천장등 &lt;a href="http://www.lightnara.com/shop/goods/goods_view.php?goodsno=100032642&amp;amp;category=030"&gt;무스카리&lt;/a&gt;,
+다운라이트 &lt;a href="http://www.lightnara.com/shop/goods/goods_view.php?goodsno=100032653&amp;amp;category=030"&gt;아펠리온&lt;/a&gt; 등을 시공했는데,
+한국에는 &lt;a href="https://www.bloter.net/archives/299332"&gt;2018년 1월에 출시&lt;/a&gt;된 제품이라 제대로 알고 있는 사람이 없었다. 
+필립스 코리아의 공식 대리점 중 하나인 &lt;a href="http://www.lamp21.co.kr/"&gt;정광조명산업&lt;/a&gt;을 통해서 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="A photo of home" src="./images/2018-04/hue-hallway.jpg"&gt;
+이번에 이사하며 필립스의 스마트 조명 시스템인 &lt;a href="https://www2.meethue.com"&gt;휴(Hue)&lt;/a&gt;를 사용하며 알게 된 몇 가지 내용을 정리해본다.&lt;/p&gt;
+&lt;h6&gt;0. 휴에 대해 잘 아는 사람은 별로 없다.&lt;/h6&gt;
+&lt;p&gt;천장등 &lt;a href="http://www.lightnara.com/shop/goods/goods_view.php?goodsno=100032642&amp;amp;category=030"&gt;무스카리&lt;/a&gt;,
+다운라이트 &lt;a href="http://www.lightnara.com/shop/goods/goods_view.php?goodsno=100032653&amp;amp;category=030"&gt;아펠리온&lt;/a&gt; 등을 시공했는데,
+한국에는 &lt;a href="https://www.bloter.net/archives/299332"&gt;2018년 1월에 출시&lt;/a&gt;된 제품이라 제대로 알고 있는 사람이 없었다. 
+필립스 코리아의 공식 대리점 중 하나인 &lt;a href="http://www.lamp21.co.kr/"&gt;정광조명산업&lt;/a&gt;을 통해서 구매했는데,
+해당 업체도 필립스 휴의 설치와 운용, 통신 방법에 대해 정확히 알고 있지는 못해 베타 테스트하는 기분으로 설치했다.&lt;/p&gt;
+&lt;p&gt;필립스 휴는 저전력, 저가격의 무선 네트워크 표준인 &lt;a href="http://www.zigbee.org/"&gt;ZigBee&lt;/a&gt;(IEEE 802.15)를 이용한 필립스 조명 시스템의 통칭이다.
+해당 시스템의 제어를 담당하는 브릿지와 전구/악세사리 사이의 통신에 ZigBee를 사용하고, 브릿지 자체는 유선 이더넷 통신을 사용한다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.reddit.com/r/Hue/comments/4uezvd/can_i_connect_the_hue_bridge_to_router_wirelessly/"&gt;휴 브릿지는 무선으로 연결할 수 없는가&lt;/a&gt; (Reddit)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://medium.com/@rxseger/enabling-the-hidden-wi-fi-radio-on-the-philips-hue-bridge-2-0-42949f0154e1"&gt;휴 브릿지를 해킹하여 Wi-Fi 연결을 가능하게&lt;/a&gt; (Medium)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;즉, 휴를 사용하기 위해서는 기본적으로 유선 네트워크와 이에 연결된 무선 액세스 포인트가 필요하다.&lt;/p&gt;
+&lt;h6&gt;1. 다운라이트와 천장 조명은 다양한 색상 표현이 안된다.&lt;/h6&gt;
+&lt;p&gt;‘휴’라는 이름 자체가 색상을 의미하는 단어지만, Hue White ambience 시리즈 제품들은 2000K ~ 6500K 사이의 색 온도만 조정 가능하다.
+Hue White and Color 시리즈에 속하는 제품들만 휴 광고에서 보여지는 다양한 색상 표현이 가능하다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.howtogeek.com/248178/the-difference-between-all-of-philips-hue-light-bulbs/"&gt;휴 전구들에 대한 차이 설명&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="Hue Muscari" src="./images/2018-04/hue-muscari.jpg"&gt;&lt;/p&gt;
+&lt;h6&gt;2. 라이트스트립은 연장하면 고주파가 들린다.&lt;/h6&gt;
+&lt;p&gt;라이트스트립만 단독으로 설치한 경우에는 고주파가 들리지 않는다. 하지만 라이트스트립 플러스를 통해 연장하면 할수록 더 큰 소음이 들리게 된다.
+필립스 코리아 방문 기사님을 통해 확인한 바에 따르면 현재까지는 제품 교환으로도 해결할 수 없는 문제라, 다음 제품이 나오기를 기다리고 있다.
+현재 상태로 사용하려면 어댑터를 벽이나 천장 안쪽으로 밀어넣지 않는 한, 실사용이 어려운 수준이다.&lt;/p&gt;
+&lt;h6&gt;3. 디머 스위치의 디밍은 실제로는 잘 안쓰게 된다.&lt;/h6&gt;
+&lt;p&gt;디머 스위치의 클릭감이 분명하지 않아 아쉬움이 있고, 디밍을 위해 계속 +/- 버튼을 누르고 있어야 하는 불편함이 있다.
+과거 로터리 방식의 디머와 같이 원하는 밝기로 한 번에 조절될 수 있으면 좋겠다.&lt;/p&gt;
+&lt;h6&gt;4. 탭 스위치는 배터리가 필요 없다.&lt;/h6&gt;
+&lt;p&gt;카페의 자동 유리문 등에 부착되어 사용되는 스위치와 같이 내장 배터리 없이 눌리는 힘으로 전력을 생산하여 신호를 보낸다.
+당연한 얘기지만 탭 스위치를 제외한 디머 스위치, 동작 센서 등은 배터리가 필요하다.&lt;/p&gt;
+&lt;h6&gt;5. 브릿지는 최대 50개의 전구, 10개의 악세사리만 지원한다.&lt;/h6&gt;
+&lt;p&gt;설치 전에 필요한 조명 개수를 세어보니 50개가 넘어, 대리점에서 브릿지가 2개 이상 필요하다는 얘기를 들었다.
+특별한 불편함이 없을 것이라는 대리점의 의견과 달리 한 공간에 브릿지가 2개 이상인 경우 매우 불편하다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;앱에서는 한 번에 하나의 브릿지만 선택할 수 있다.&lt;/li&gt;
+&lt;li&gt;다른 브릿지의 조명을 조작하기 위해서는 설정 탭에서 브릿지를 전환부터 해야 한다.&lt;/li&gt;
+&lt;li&gt;앱 뿐만 아니라 위젯도 마지막에 선택된 브릿지에 포함된 위젯만 표시된다.&lt;/li&gt;
+&lt;li&gt;Hue account 페이지에서도 하나의 브릿지만 선택할 수 있다. 전환하기 위해서는 Unlink 하고 다시 등록을 해야 한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;위젯을 통해 제어하거나 자주 조작하는 조명들을 주 브릿지에 붙이고, 센서로 동작하는 조명은 다른 브릿지에 붙이는 등의 선택이 필요하다.
+&lt;img alt="Hue Bridge" src="./images/2018-04/hue-bridge.jpg"&gt;&lt;/p&gt;
+&lt;h6&gt;6. 전원을 완전히 내렸다 올리면 기본 상태로 돌아간다.&lt;/h6&gt;
+&lt;p&gt;기존 스위치를 제거하지 않은 상태로 휴 스위치들을 같이 사용하고 있는데,
+실수로 기존 스위치를 내려 완전히 전원을 끊은 경우 다시 켜면 마지막 상태가 아니라 기본 상태로 켜진다.
+예를 들어, 아펠리온의 경우 Concentrate(주광색)인 상태로 바꾼 후에 전원을 끊었다 다시 켜면 Relax(전구색)로 켜진다.&lt;/p&gt;
+&lt;h6&gt;7. 라이트스트립을 주방에서 쓸 경우 주의점.&lt;/h6&gt;
+&lt;p&gt;스트립에 설치된 다수의 LED 앞쪽으로 별도의 디퓨저가 없어, 주방 간접등으로 사용하는 경우
+설거지를 할 때 물이나 금속 냄비 등에 LED가 아래 사진과 같이 그대로 반사되어 눈이 아프다.
+&lt;img alt="Reflection of Hue Lightstrip" src="./images/2018-04/hue-lightstrip-reflect.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;일반적인 간접등의 경우는 빛의 퍼짐을 위해 디퓨저가 설치되어 아래와 같이 LED가 직접 보이지 않고, 고르게 빛이 퍼지는 것을 도와준다.
+&lt;img alt="Reflection of Hue Lightstrip" src="./images/2018-04/hue-otherstrip.jpg"&gt;&lt;/p&gt;
+&lt;h6&gt;8. 조명을 설치하기 전에 시리얼을 기억해두자.&lt;/h6&gt;
+&lt;p&gt;무스카리 1대와 아펠리온 1대가 조명 검색에서 표시되지 않아, 조명 본체에서 시리얼을 확인하고 수동으로 등록한 후에야 찾을 수 있었다.
+모든 조명을 설치하기 전에, 평면도에 시리얼을 표시해가며 설치해두면 나중에 두 번 고생하지 않을 수 있다.
+&lt;img alt="Serial number of Hue Muscari" src="./images/2018-04/hue-muscari-serial.jpg"&gt;&lt;/p&gt;
+&lt;h6&gt;9. 하나의 조명은 하나의 방에만 할당된다.&lt;/h6&gt;
+&lt;p&gt;하나의 조명을 여러 방에 할당하여 제어할 수 없다. 필요한 경우 물리적으로 하나의 방을 논리적으로 나누어진 여러 방으로 설정해야 한다.&lt;/p&gt;
+&lt;p&gt;특별한 경우겠지만, 복도에 10개의 아펠리온과 양 끝에 2개의 동작 센서를 위치시켜
+중앙의 조명은 양 쪽의 센서에서 같이 제어하려고 했지만 복도의 10개 조명을 하나의 방으로 설정한 기본 상태에서는 불가능했다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;하나의 조명은 하나의 방에만 할당된다.&lt;/li&gt;
+&lt;li&gt;하나의 악세사리는 조명 단위가 아닌 방 단위로만 조작한다. (최대 4개)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이 문제를 해결하기 위해 복도를 아래와 같이 나누었다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;복도 1: 서쪽의 3개 조명 &lt;/li&gt;
+&lt;li&gt;복도 2: 중앙의 4개 조명 &lt;/li&gt;
+&lt;li&gt;복도 3: 동쪽의 3개 조명&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;서쪽에 위치한 센서에서는 복도1과 2를, 동쪽에 위치한 센서에서는 복도 2와 3을 조작하도록 하여 문제를 해결하였다.
+단, 서쪽 센서로 켜진 복도2(중앙 4개) 조명이 동쪽 센서로 다시 밝아진 경우에도, 서쪽 센서의 타이머에 따라 같이 꺼지는 사소한 아쉬움이 있다.
+&lt;img alt="Hue Motion Sensor" src="./images/2018-04/hue-motionsensor.jpg"&gt;&lt;/p&gt;
+&lt;h6&gt;10. 휴는 웹에서 제어할 수 없다.&lt;/h6&gt;
+&lt;p&gt;필립스에서 공식으로 제공하는 웹 제어 패널이 없다.
+&lt;a href="https://account.meethue.com"&gt;https://account.meethue.com&lt;/a&gt;가 공식 사이트지만 계정을 생성하고 로그인을 해도 제어할 수 있는 기능이 제공되지 않는다.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://developers.meethue.com/"&gt;필립스 휴 개발자 사이트&lt;/a&gt;를 통해 SDK와 개발 정보를 확인하여 직접 제어하는 것도 가능하겠지만,
+오픈소스인 &lt;a href="https://github.com/blitzcode/hue-dashboard"&gt;https://github.com/blitzcode/hue-dashboard&lt;/a&gt; 등을 라즈베리파이에 설치하고 직접 운영하는 것이 현재로는 최선으로 보인다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>Weird result from Naver search</title><link href="//lqez.github.io/blog/weird-result-from-naver-search.html" rel="alternate"></link><published>2018-01-22T00:00:00+09:00</published><updated>2018-01-22T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2018-01-22:/blog/weird-result-from-naver-search.html</id><summary type="html">&lt;p&gt;예전부터 네이버 블로그 검색에서 ‘최신순’ 검색을 했을 때 검색어와 무관한 결과가 나와서 갸웃거린 경우가 있었는데, 그냥 네이버 검색이 별론가 생각하고 넘어갔었다.&lt;/p&gt;
 &lt;p&gt;오늘은 &lt;a href="https://en.wikipedia.org/wiki/BMW_X3#Third_generation_(G01;_2018%E2%80%93present)"&gt;BMW X3 (G01)&lt;/a&gt;이 출시되었다는 얘기를 듣고 관심이 생겨 네이버에서 검색해보았다.
 역시나 최신 기준으로 검색 결과를 보았을 때 이상한 콘텐츠들이 주를 이루지만, 속는 셈 치고 들어가 콘텐츠를 살펴보았다 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;예전부터 네이버 블로그 검색에서 ‘최신순’ 검색을 했을 때 검색어와 무관한 결과가 나와서 갸웃거린 경우가 있었는데, 그냥 네이버 검색이 별론가 생각하고 넘어갔었다.&lt;/p&gt;
 &lt;p&gt;오늘은 &lt;a href="https://en.wikipedia.org/wiki/BMW_X3#Third_generation_(G01;_2018%E2%80%93present)"&gt;BMW X3 (G01)&lt;/a&gt;이 출시되었다는 얘기를 듣고 관심이 생겨 네이버에서 검색해보았다.
@@ -49,7 +133,7 @@
 하지만 모든 사업이 &lt;a href="http://www.piedpipersent.com/%EA%B0%9C%EB%B0%A5-%EB%A8%B9%EA%B8%B0eating-your-own-dog-food/"&gt;개밥 먹기&lt;/a&gt;를 할 수 있는 것은 아니고, 많은 경우 주변 사람들은 일반적인 지표를 주지 못하는 경우가 많다.
 그러므로 불필요하게 주변 사람들 괴롭히지 말고, 최선의 매체를 통해서 적은 비용으로 빠르게 홍보를 시도해보고 빠르게 실패하는 과정을 반복하면 좋을 것 같다.&lt;/p&gt;
 &lt;h3&gt;회사 이름은 어떻게 정할까&lt;/h3&gt;
-&lt;p&gt;준곰(&lt;a href="https://twitter.com/joongom"&gt;@joongom&lt;/a&gt;)님과 며칠 전에 얘기하다, 이 문제에 대해서도 생각해보게 되었다.
+&lt;p&gt;준곰(&lt;a href="https://twitter.com/joongom"&gt;@joongom&lt;/a&gt;님과 며칠 전에 얘기하다, 이 문제에 대해서도 생각해보게 되었다.
 조직의 문화에 대한 지향점을 이름에 넣는 편이 좋은지, 서비스나 제품을 담는 게 좋은지 늘 고민이 된다.
 어떻게 일하면 좋을까를 고민해서 회사 이름을 지었다가, 외부와 의사소통 시에 답답해서 – 그래서 회사 이름이 뭐라고? – 회사 이름을 주력 제품이나 서비스명으로 바꾸는 경우도 봐왔고, 반대로 제품과 같게 지었다가 성장하는 중에 주력 사업이 바뀌면서 회사 이름이 따로 놀기도 한다.&lt;/p&gt;
 &lt;p&gt;개인적으로는 초기부터 제품/서비스 브랜딩을 따로 한다는 전제하에, ‘어떻게’를 회사 이름으로 선택할 것 같다.
@@ -273,7 +357,7 @@ you lose the ability to explain it to anybody else.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;나는 이런 문제들을 일반화하여 &lt;strong&gt;이해의 저주(The Curse of Understanding)&lt;/strong&gt;라고 부르고 싶다.&lt;/p&gt;
-&lt;p&gt;덧) 이 생각을 &lt;a href="https://twitter.com/lqez/status/759061524820299776"&gt;트윗&lt;/a&gt;으로 썼더니, &lt;a href="https://twitter.com/tebica"&gt;@tebica&lt;/a&gt; 님이 이에 공감하여 블로그 &lt;a href="http://earlybird.kr/1938"&gt;포스팅&lt;/a&gt;을 남겼던 적이 있다. 
+&lt;p&gt;덧) 이 생각을 &lt;a href="https://twitter.com/lqez/status/759061524820299776"&gt;트윗&lt;/a&gt;으로 썼더니, &lt;a href="https://twitter.com/tebica"&gt;@tebica&lt;/a&gt;님이 이에 공감하여 블로그 &lt;a href="http://earlybird.kr/1938"&gt;포스팅&lt;/a&gt;을 남겼던 적이 있다. 
 그리고, 나는 아직 모나드를 이해하지 못했다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>Meaningless commits</title><link href="//lqez.github.io/blog/meaningless-commits.html" rel="alternate"></link><published>2017-10-31T00:00:00+09:00</published><updated>2017-10-31T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2017-10-31:/blog/meaningless-commits.html</id><summary type="html">&lt;p&gt;하고 있는 일에 지나치게 몰입하여 주변을 살피지 못하게 되면, 보다 의미있는 결과를 내기가 어렵다.
 요즘 아무도 사용할 것 같지 않은 기능들을 만드는데 시간을 낭비하고 있다.&lt;/p&gt;
 &lt;ul&gt;
@@ -364,7 +448,7 @@ BNK 파일이 가지고 있던 작은 정보로 그럴싸한 음을 낼 수 있�
 준비하는 사람은 어떻게 잘할까 보다는 다양한 사람과 주제가 오고 가는 장소에서 사고 없이 &lt;strong&gt;작지만 옳은&lt;/strong&gt; 진전을 만들어 내느냐에 집중하는 것이 좋다고 본다.&lt;/p&gt;
 &lt;p&gt;작년에는 &lt;a href="https://www.slideshare.net/lqez/tox-travis-coveralls"&gt;CI에 대한 발표&lt;/a&gt; 이후에 &lt;a href="https://www.pycon.kr/2016apac/program/tutorial/1"&gt;튜토리얼&lt;/a&gt;까지 이어서 하는 것에 노력했다면,
 올해는 &lt;a href="https://www.pycon.kr/2017/program/sprint/3"&gt;스프린트&lt;/a&gt;를 진행하면서 오픈소스를 처음 접해보는 분들에게 기여하는 방법을 알려드리고, 긍정적인 경험을 나누고 싶었다.
-운이 좋았는지, 썸머노트를 작성한 홍영택(&lt;a href="https://twitter.com/hackerwins"&gt;@hackerwins&lt;/a&gt;)님도 마침 시간이 맞아 &lt;a href="https://github.com/summernote/django-summernote"&gt;django-summernote&lt;/a&gt; 뿐 아니라 &lt;a href="https://github.com/summernote/summernote"&gt;summernote&lt;/a&gt; 에 대한 스프린트를 같이 진행할 수 있었다.&lt;/p&gt;
+운이 좋았는지, 썸머노트를 작성한 홍영택(&lt;a href="https://twitter.com/hackerwins"&gt;@hackerwins&lt;/a&gt;님도 마침 시간이 맞아 &lt;a href="https://github.com/summernote/django-summernote"&gt;django-summernote&lt;/a&gt; 뿐 아니라 &lt;a href="https://github.com/summernote/summernote"&gt;summernote&lt;/a&gt; 에 대한 스프린트를 같이 진행할 수 있었다.&lt;/p&gt;
 &lt;p&gt;큰 문제를 해결하기 보다는, 스프린트에 참가한 분들에게 각자 하나의 커밋이라도 머지되는 경험을 드리고 싶었는데, 다행히 기존 프로젝트에 많은 문제가 있어(?) 대부분 처음 스프린트를 경험했음에도 불구, 소기의 성과를 거둘 수 있었다.
 이번 한 번의 스프린트로 대단한 일을 하려는게 아니다. 적게는 한 두명이라도 스프린트를 통해 새롭지만 긍정적인 경험을 하고, 다시 주변 사람들에게 새로운 시각에 대해 전파할 수 있다고 가정한다면, 이 일을 몇 년간 꾸준히 계속할 때 작지만 의미있는 변화를 가져올 수 있다고 믿는다.&lt;/p&gt;
 &lt;ul&gt;
@@ -375,8 +459,7 @@ BNK 파일이 가지고 있던 작은 정보로 그럴싸한 음을 낼 수 있�
 &lt;p&gt;무엇보다 올해는 준비위원회에 새로 들어오시거나, 새롭게 더 많은 책임을 진 사람들이 주도적으로 준비하면서 이전보다 더 나은 결과를 내는 것을 볼 수 있어 좋았다.
 마지막으로, 비영리 컨퍼런스를 다른 자원봉사자들과 함께 운영하면서 배웠던 가장 큰 부분이 같이 준비했던 예지님이 보낸 이메일에 적혀있어, 동의를 구하고 이 곳에 인용해본다.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;a href="https://twitter.com/bloodevil4"&gt;@bloodevil4&lt;/a&gt;
-어떤 일을 할 때 최선을 다할 수도, 조금 신경을 덜 쓸 수도 있습니다.
+&lt;p&gt;&lt;a href="https://twitter.com/bloodevil4"&gt;@bloodevil4&lt;/a&gt;어떤 일을 할 때 최선을 다할 수도, 조금 신경을 덜 쓸 수도 있습니다.
 하지만, 그 일을 했던 사람이 가장 하고 싶은 대로 하는 것이 최선이라고 저는 생각합니다.
 물어볼 수도 있고, 그 물어보는 것에 대해서 다른 의견을 낼 수도, 그렇게 하지 말라고 할 수는 있습니다.
 그러나, 그 사람이 다르게 처리했다고 해서 우리는 비난할 수 없습니다.
@@ -712,32 +795,31 @@ one/flower start/running, process &lt;span class="m"&gt;14810&lt;/span&gt;
 &lt;p&gt;&lt;a href="https://www.gittip.com"&gt;https://www.gittip.com&lt;/a&gt; 은 오픈소스 개발자나 오픈소스 그룹에게 정기적으로 후원을 할 수 있는 웹서비스이다. 앞서 언급한 킥스타터와는 달리, 한 번 기부하고 마는 것이 아니라 지정한 금액을 매주 목요일 기부하게 된다.
 궁극적으로 이 사이트를 통해 의미있는 오픈소스 개발을 하는 사람이나 단체가 전업으로 오픈소스를 진행할 수 있는 기반을 갖게된다면 좋겠지만, 아직까지 그 정도로 많은 금액이 오고가는 것으로 보이진 않는다. 하지만, 주기적인 기부는 위와 같은 단기적인 프로젝트 기금 마련과는 다른 방향을 가지고 있고, 이는 오픈소스에 보다 긍정적인 문화를 가져올 것 같다.&lt;/p&gt;
 &lt;h2&gt;/for/korea&lt;/h2&gt;
-&lt;p&gt;Gittip 의 커뮤니티 기능이 약 &lt;a href="https://github.com/gittip/www.gittip.com/commit/f2ca1fa1f3eb1c8cabe9b98bebc1e180dd669e61"&gt;2주 전에 추가&lt;/a&gt;되었는데, 이에 한국 파이썬 커뮤니티계의 아이돌(...) &lt;a href="https://twitter.com/hongminhee"&gt;@hongminhee&lt;/a&gt; 님이 한국 개발자 커뮤니티(&lt;a href="https://www.gittip.com/for/korea/"&gt;/for/korea&lt;/a&gt;)를 만들고, 가입을 요청하는 트윗을 올렸다.&lt;/p&gt;
+&lt;p&gt;Gittip 의 커뮤니티 기능이 약 &lt;a href="https://github.com/gittip/www.gittip.com/commit/f2ca1fa1f3eb1c8cabe9b98bebc1e180dd669e61"&gt;2주 전에 추가&lt;/a&gt;되었는데, 이에 한국 파이썬 커뮤니티계의 아이돌(...) &lt;a href="https://twitter.com/hongminhee"&gt;@hongminhee&lt;/a&gt;님이 한국 개발자 커뮤니티(&lt;a href="https://www.gittip.com/for/korea/"&gt;/for/korea&lt;/a&gt;)를 만들고, 가입을 요청하는 트윗을 올렸다.&lt;/p&gt;
 &lt;p&gt;&lt;blockquote class="twitter-tweet" align="center"&gt;&lt;a href="https://twitter.com/hongminhee/status/333868284195770368"&gt;Tweet of hongminhee/333868284195770368&lt;/a&gt;&lt;/blockquote&gt;&lt;/p&gt;
-&lt;p&gt;해당 요청은 트위터나 페이스북을 통해 오픈소스에 관심이 있는 한국 개발자들에게 빠르게 전파되었고, 덕분에 몇 시간 지나지 않아 커뮤니티 구성 요건의 최소 인원인 150명에 가장 빠르게 도달하였다. 하지만 개발자 &lt;a href="https://twitter.com/whit537"&gt;@whit537&lt;/a&gt; 도 이처럼 빨리 150명에 도달할 것이라 생각하지 못한 모양이다.&lt;/p&gt;
+&lt;p&gt;해당 요청은 트위터나 페이스북을 통해 오픈소스에 관심이 있는 한국 개발자들에게 빠르게 전파되었고, 덕분에 몇 시간 지나지 않아 커뮤니티 구성 요건의 최소 인원인 150명에 가장 빠르게 도달하였다. 하지만 개발자 &lt;a href="https://twitter.com/whit537"&gt;@whit537&lt;/a&gt;도 이처럼 빨리 150명에 도달할 것이라 생각하지 못한 모양이다.&lt;/p&gt;
 &lt;p&gt;&lt;blockquote class="twitter-tweet" align="center"&gt;&lt;a href="https://twitter.com/whit537/status/333945787216175104"&gt;Tweet of whit537/333945787216175104&lt;/a&gt;&lt;/blockquote&gt;
 &lt;blockquote class="twitter-tweet" align="center"&gt;&lt;a href="https://twitter.com/whit537/status/333948844951891969"&gt;Tweet of whit537/333948844951891969&lt;/a&gt;&lt;/blockquote&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://twitter.com/whit537"&gt;@whit537&lt;/a&gt; 은 다음과 같은 커밋을 통해, 'korea' 커뮤니티의 150명 도달에 긴급히 대비하였다.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://twitter.com/whit537"&gt;@whit537&lt;/a&gt;은 다음과 같은 커밋을 통해, 'korea' 커뮤니티의 150명 도달에 긴급히 대비하였다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://github.com/gittip/www.gittip.com/commit/03429b36850b163879afc64b35d160f8f3c13146"&gt;#03429b3 Get barely ahead of Korea maybe&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/gittip/www.gittip.com/commit/c52b4c8d817e9c86453f118bbae72d355dedb0b3"&gt;#c52b4c8 Korea beat us to this!&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;그는 한국에서 왜 이렇게 많은 가입자가 발생했는지 궁금하였던 모양이다. 그에게 아이돌(...)을 소개시켜 주었는데, 결국 &lt;a href="https://twitter.com/hongminhee"&gt;@hongminhee&lt;/a&gt; 님은 &lt;a href="http://freenode.net/"&gt;freenode IRC&lt;/a&gt; 의 #gittip 채널에 들어가 개발자들과 얘기를 몇 마디 나누더니, 그세 개발에 참여하고 있는 것으로 보인다! (&lt;a href="https://github.com/gittip/aspen-python/pull/182"&gt;pull #182&lt;/a&gt;, &lt;a href="https://github.com/gittip/aspen-python/pull/183"&gt;pull #183&lt;/a&gt;) &lt;/p&gt;
+&lt;p&gt;그는 한국에서 왜 이렇게 많은 가입자가 발생했는지 궁금하였던 모양이다. 그에게 아이돌(...)을 소개시켜 주었는데, 결국 &lt;a href="https://twitter.com/hongminhee"&gt;@hongminhee&lt;/a&gt;님은 &lt;a href="http://freenode.net/"&gt;freenode IRC&lt;/a&gt; 의 #gittip 채널에 들어가 개발자들과 얘기를 몇 마디 나누더니, 그세 개발에 참여하고 있는 것으로 보인다! (&lt;a href="https://github.com/gittip/aspen-python/pull/182"&gt;pull #182&lt;/a&gt;, &lt;a href="https://github.com/gittip/aspen-python/pull/183"&gt;pull #183&lt;/a&gt;) &lt;/p&gt;
 &lt;p&gt;&lt;blockquote class="twitter-tweet" align="center"&gt;&lt;a href="https://twitter.com/whit537/status/333951758990733312"&gt;Tweet of whit537/333951758990733312&lt;/a&gt;&lt;/blockquote&gt;
 &lt;blockquote class="twitter-tweet" align="center"&gt;&lt;a href="https://twitter.com/whit537/status/333952649152053248"&gt;Tweet of whit537/333952649152053248&lt;/a&gt;&lt;/blockquote&gt;&lt;/p&gt;
 &lt;h2&gt;Small step for us&lt;/h2&gt;
 &lt;p&gt;&lt;img alt="gittip-korea.png" src="./images/2013-05/gittip-korea.png"&gt;&lt;/p&gt;
 &lt;p&gt;Gittip의 커뮤니티 중, &lt;a href="https://www.gittip.com/for/korea/"&gt;/for/korea&lt;/a&gt;가 가장 먼저 최소 요건인 150명을 돌파하였다. 특정 국가 커뮤니티로써 가장 큰 것일 뿐 아니라, 다른 모든 커뮤니티(예:&lt;a href="https://www.gittip.com/for/python/"&gt;/for/python&lt;/a&gt;) 중에서도 가장 인원이 많다. 이렇게 많은 개발자가 이런 사이트에 관심을 가지고 있는 줄 몰랐고, 이렇게 빨리 가입한 것은 더욱 놀랍다. 그럼에도 불구하고 부끄러운 것은, 한국인 커뮤니티에 가입한 사람들이 기부하고 있는 금액이 너무 적다는 점이다. 물론 한국 개발자들 중에서 아직 이 커뮤니티의 존재를 몰라, 가입하지 않은 상태로 기부하고 있을 수도 있겠다. 또는, 페이팔 계정이나 해외에서 자유롭게 결제 가능한 카드를 우리나라에서 만들기가 어려웠던 부분도 있을 것이다. 하지만 이 글을 쓰고 있는 현재, 도합 몇 달러가 채 안되는 금액이라는 것은 조금 아쉽다.&lt;/p&gt;
-&lt;p&gt;나는 예전에 &lt;a href="https://twitter.com/hongminhee"&gt;@hongminhee&lt;/a&gt; 님에게 &lt;a href="http://pytest.org/latest/"&gt;py.test&lt;/a&gt; 의 디버깅 도움을 받아, 이 사이트에서 후원하려다가 아직 계좌 연결을 시켜두시지 않은 관계로, 대신 독콜라(...) 한 박스를 보낸적이 있다. 아무튼 오늘 다시 한 번 사이트에 들어간 차에 적은 금액이지만 주당 $1.50 을 후원하도록 설정하였다.&lt;/p&gt;
-&lt;p&gt;오픈소스를 만들고 기꺼이 공개한 이들에게 감사를 표시하는 차원에서, 이 글을 읽는 분들도 자기가 쓰고 있는 프로젝트의 개발자나 그룹에 후원해보는 것은 어떨까?&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="gittip"></category><category term="donate"></category><category term="contribute"></category></entry><entry><title>499px</title><link href="//lqez.github.io/blog/499px.html" rel="alternate"></link><published>2013-05-08T00:00:00+09:00</published><updated>2013-05-08T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2013-05-08:/blog/499px.html</id><summary type="html">&lt;p&gt;&lt;a href="https://twitter.com/drypot"&gt;&lt;a href="https://twitter.com/drypot"&gt;@drypot&lt;/a&gt;&lt;/a&gt; 님이 의지를 불태워 &lt;a href="http://rapixel.com"&gt;http://rapixel.com&lt;/a&gt; 을 만들고 있는 것에 감명받아,
+&lt;p&gt;나는 예전에 &lt;a href="https://twitter.com/hongminhee"&gt;@hongminhee&lt;/a&gt;님에게 &lt;a href="http://pytest.org/latest/"&gt;py.test&lt;/a&gt; 의 디버깅 도움을 받아, 이 사이트에서 후원하려다가 아직 계좌 연결을 시켜두시지 않은 관계로, 대신 독콜라(...) 한 박스를 보낸적이 있다. 아무튼 오늘 다시 한 번 사이트에 들어간 차에 적은 금액이지만 주당 $1.50 을 후원하도록 설정하였다.&lt;/p&gt;
+&lt;p&gt;오픈소스를 만들고 기꺼이 공개한 이들에게 감사를 표시하는 차원에서, 이 글을 읽는 분들도 자기가 쓰고 있는 프로젝트의 개발자나 그룹에 후원해보는 것은 어떨까?&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="gittip"></category><category term="donate"></category><category term="contribute"></category></entry><entry><title>499px</title><link href="//lqez.github.io/blog/499px.html" rel="alternate"></link><published>2013-05-08T00:00:00+09:00</published><updated>2013-05-08T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2013-05-08:/blog/499px.html</id><summary type="html">&lt;p&gt;&lt;a href="https://twitter.com/drypot"&gt;&lt;a href="https://twitter.com/drypot"&gt;@drypot&lt;/a&gt;/a&gt; 님이 의지를 불태워 &lt;a href="http://rapixel.com"&gt;http://rapixel.com&lt;/a&gt; 을 만들고 있는 것에 감명받아,
 예전부터 만들고 싶었던 사진 저장/공유 사이트 아이디어를 구체화 해보았다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;원본 사진을 보관한다.&lt;/li&gt;
 &lt;li&gt;모바일 앱에서 바로 사진을 올릴 수 있다.&lt;/li&gt;
 &lt;li&gt;모두에게 공유할 수도 있지만, 기본적으로는 나만 본다.&lt;/li&gt;
 &lt;li&gt;이러한 공유 설정은 폴더 단위로 작동한다.&lt;/li&gt;
-&lt;li&gt;폴더에 하위 폴더는 없다.&lt;/li&gt;
-&lt;li&gt;특정 …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://twitter.com/drypot"&gt;&lt;a href="https://twitter.com/drypot"&gt;@drypot&lt;/a&gt;&lt;/a&gt; 님이 의지를 불태워 &lt;a href="http://rapixel.com"&gt;http://rapixel.com&lt;/a&gt; 을 만들고 있는 것에 감명받아,
+&lt;li&gt;폴더에 하위 폴더는 없다 …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://twitter.com/drypot"&gt;&lt;a href="https://twitter.com/drypot"&gt;@drypot&lt;/a&gt;/a&gt; 님이 의지를 불태워 &lt;a href="http://rapixel.com"&gt;http://rapixel.com&lt;/a&gt; 을 만들고 있는 것에 감명받아,
 예전부터 만들고 싶었던 사진 저장/공유 사이트 아이디어를 구체화 해보았다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;원본 사진을 보관한다.&lt;/li&gt;
