@@ -163,7 +163,9 @@ blockquote {
     font-style: italic;
 }
 
-address {
+address p {
+  margin-top: 0.4em;
+  line-height: 140%;
 }
 
 cite {}
