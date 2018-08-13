@@ -1,5 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2018-08-04T00:00:00+09:00</updated><entry><title>Trivia of BMW X5</title><link href="https://lqez.github.io/blog/trivia-of-bmw-x5.html" rel="alternate"></link><published>2018-08-04T00:00:00+09:00</published><updated>2018-08-04T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2018-08-04:/blog/trivia-of-bmw-x5.html</id><summary type="html">&lt;p&gt;&lt;img alt="A photo of X5" src="./images/2018-08/x5-0.jpg"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2018-08-13T00:00:00+09:00</updated><entry><title>Book, again by code.</title><link href="https://lqez.github.io/blog/book-again-by-code.html" rel="alternate"></link><published>2018-08-13T00:00:00+09:00</published><updated>2018-08-13T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2018-08-13:/blog/book-again-by-code.html</id><summary type="html">&lt;h3&gt;PyCon Korea&lt;/h3&gt;
+&lt;p&gt;파이콘 한국은 매년 파이썬 사용자들이 모이는 행사로, 올해로 다섯번째를 맞이하였다. 나는 2014년부터 이 행사를 준비하는데 같이 하였으나, 같은 사람이 너무 오랫동안 같은 일에 관여하면 오히려 좋지 않은 영향을 줄 것으로 생각하여 &lt;a href="http://lqez.github.io/blog/pycon-korea-2017-ended.html"&gt;작년까지만 참여하고 그만두었다&lt;/a&gt;. 올해는 처음으로 일반 참가자로 파이콘 한국에 참여하려고 했다. &lt;a href="http://blog.pycon.kr/2017/06/14/everybody-pays/"&gt;“Everybody pays”&lt;/a&gt;의 구호 아래 모든 …&lt;/p&gt;</summary><content type="html">&lt;h3&gt;PyCon Korea&lt;/h3&gt;
+&lt;p&gt;파이콘 한국은 매년 파이썬 사용자들이 모이는 행사로, 올해로 다섯번째를 맞이하였다. 나는 2014년부터 이 행사를 준비하는데 같이 하였으나, 같은 사람이 너무 오랫동안 같은 일에 관여하면 오히려 좋지 않은 영향을 줄 것으로 생각하여 &lt;a href="http://lqez.github.io/blog/pycon-korea-2017-ended.html"&gt;작년까지만 참여하고 그만두었다&lt;/a&gt;. 올해는 처음으로 일반 참가자로 파이콘 한국에 참여하려고 했다. &lt;a href="http://blog.pycon.kr/2017/06/14/everybody-pays/"&gt;“Everybody pays”&lt;/a&gt;의 구호 아래 모든 참가자가 가능하면 동등한 입장에서 즐기는 행사를 만들고자 했지만, 아무래도 준비위원회와 자원봉사자는 행사 당일에 다른 참가자들처럼 원하는 발표 프로그램을 듣거나, 다른 참가자와 네트워킹을 하는 것은 사정상 어려운 부분이 많다. 항상 어제보다 나은, &lt;a href="https://www.pycon.kr/2017/program/140"&gt;작년보다 나은 행사&lt;/a&gt;와 커뮤니티를 위해 노력하는 분들에게 감사할 따름이다.&lt;/p&gt;
+&lt;p&gt;개인 후원으로 티켓을 구입하고 행사를 기다리다 – 어련히 잘 하시겠지만 – 준비위원회 분들과 우연히 저녁을 같이하다 일손이 좀 부족하다는 얘기를 듣고, 내가 할 수 있는 일 가운데 ‘프로그램북’ 제작을 도와드리기로 했다. 프로그램북은 파이콘 참가자들에게 모두 지급되는 가방에 함께 제공되며, 행사에 대한 전반적인 정보를 담고 있다. &lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.etnews.com/20170701000026"&gt;많은 사람이 스마트폰을 가지고 있는 요즘&lt;/a&gt;, 홈페이지에 접속하면 모든 정보를 확인할 수 있는데, 종이로 만든 구식 프로그램북이 왜 필요할까? 다른 행사에서 만들어왔고, 우리도 2015년부터 만들어왔기 때문에 만들어야 하나? 의문이 들었다. 종이로 만들어진 정보의 의미에 대해서는 &lt;a href="http://newspeppermint.com/2015/07/23/screen_reading/"&gt;여러 의견&lt;/a&gt;이 있겠지만, 내가 생각하는 종이 프로그램북이 주는 장단점은 다음과 같다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;장점&lt;ul&gt;
+&lt;li&gt;빠르게 훑어보기가 가능하다.&lt;/li&gt;
+&lt;li&gt;후원사가 각자의 안내 홍보문을 넣어주는 것보다는 깔끔하다.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.pycon.kr/2018/about/sponsorship/"&gt;후원사에게 제공하는 혜택&lt;/a&gt;으로 사용할 수 있다.&lt;/li&gt;
+&lt;li&gt;(사소하지만) 기념품의 의미가 있다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;단점&lt;ul&gt;
+&lt;li&gt;종이를 낭비한다.&lt;/li&gt;
+&lt;li&gt;현장에서 변경된 정보를 반영하지 못한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;By code&lt;/h3&gt;
+&lt;p&gt;파이콘 한국은 &lt;a href="http://www.oss.kr/677685"&gt;파이썬 사용자들의 축제&lt;/a&gt;이기 때문에, 일반적으로 종이책을 만드는 방식 – Adobe InDesign 등의 전문 제작 프로그램 – 이 아닌, 파이썬을 활용하여 제작하면 좋겠다는 생각이 들었다. 이전 회사에서 인쇄/제본 관련 업무를 해본 적이 있어, &lt;a href="https://en.wikipedia.org/wiki/Book_design"&gt;책을 만드는데 필요한 요소와 구성&lt;/a&gt;은 익숙한 편이라 작업에 도움이 되었다. 기본적으로는 CMYK 색상을 가진 PDF를 만들면 어떻게든 출력해낼 수 있다.&lt;/p&gt;
+&lt;p&gt;레이아웃과 스타일을 다루는 언어로는 웹 페이지를 만드는 기술인 HTML과 CSS를 그대로 사용했다. 웹 페이지는 일반적으로 연속된 페이지로 구성되기에, CSS의 &lt;a href="https://developer.mozilla.org/ko/docs/Web/CSS/Paged_Media"&gt;Paged Media&lt;/a&gt;를 사용해서 종이책에 걸맞은 페이지 단위의 구성을 할 수 있다. 다음의 링크들을 통해 기본을 익히고 현재 생태계를 이해하는데 도움이 되었다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://print-css.rocks/"&gt;https://print-css.rocks/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.pagedmedia.org/making-book-with-html-css-a-look-at-vivliostyle-part-1-page-layouts/"&gt;Making books with HTML + CSS — a look at Vivliostyle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.w3.org/TR/css3-page/"&gt;CSS Paged Media Module Level 3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;프로그램북을 A5 크기로 제작할 예정이므로, 다음과 같이 기본 레이아웃을 지정했다. CSS로 도련이나 재단선 지정과 출력을 할 수 있으므로, 전문 제작 프로그램에서 제공하는 방식 그대로 페이지를 설정할 수 있다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="k"&gt;page&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nt"&gt;size&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;148mm&lt;/span&gt; &lt;span class="nt"&gt;210mm&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* A5 */&lt;/span&gt;
+  &lt;span class="nt"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;56pt&lt;/span&gt; &lt;span class="nt"&gt;50pt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* 기본 여백 */&lt;/span&gt;
+  &lt;span class="nt"&gt;marks&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;crop&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;        &lt;span class="c"&gt;/* 재단선 출력 */&lt;/span&gt;
+  &lt;span class="nt"&gt;prince-bleed&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;3mm&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* 도련 3mm */&lt;/span&gt;
+  &lt;span class="nt"&gt;prince-trim&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;3mm&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;   &lt;span class="c"&gt;/* 재단 3mm */&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;/* 좌우 페이지를 다르게 지정할 수 있다 */&lt;/span&gt;
+&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="k"&gt;page&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nd"&gt;right&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nt"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;56pt&lt;/span&gt; &lt;span class="nt"&gt;46pt&lt;/span&gt; &lt;span class="nt"&gt;56pt&lt;/span&gt; &lt;span class="nt"&gt;50pt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="k"&gt;page&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nd"&gt;left&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nt"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;56pt&lt;/span&gt; &lt;span class="nt"&gt;50pt&lt;/span&gt; &lt;span class="nt"&gt;56pt&lt;/span&gt; &lt;span class="nt"&gt;46pt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;일반적으로 사용하는 크롬과 같은 웹 브라우저에서 Paged Media CSS를 지원한다면, 마치 인쇄 모드에서 출력되는 것과 같이 잘 표현될 것으로 기대했는데, 전혀 그렇지 않았다. 스타일은 잘 표현되지만 레이아웃은 전혀 반영되지 않았다. 이 상태로도 열심히 수정하면 적당한 수준의 결과물을 얻을 수는 있겠지만, 괜히 &lt;a href="https://ko.wikipedia.org/wiki/EPUB"&gt;EPUB&lt;/a&gt; 표준이나 뷰어가 별도로 존재하는 것이 아니었다. HTML/CSS를 PDF로 변환하는 전용 컨버터를 이용해서 변환해야 책 같은 모습을 얻을 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Printing on Chrome" src="./images/2018-08/chrome-print.jpg"&gt;&lt;/p&gt;
+&lt;h3&gt;DocRaptor and Prince&lt;/h3&gt;
+&lt;p&gt;컨버터는 &lt;a href="https://print-css.rocks/tools.html"&gt;여러 종류가 있는데&lt;/a&gt;, 나는 DocRaptor (&lt;a href="https://docraptor.com/"&gt;https://docraptor.com/&lt;/a&gt;)를 사용해서 변환하였다. DocRaptor는 HTML을 PDF나 Excel 형식의 파일로 변환해주는 서비스를 온라인으로 제공한다. 다른 도구들이 서버당 라이센스 가격을 받는 것에 비해, 변환한 만큼의 비용만 지불하고 사용할 수 있어, 취미로 사용하는 경우에 적합한 도구로 생각된다. 뿐만 아니라, 전통적이며 괜찮은 컨버터중 하나인 &lt;a href="https://www.princexml.com/"&gt;Prince&lt;/a&gt;를 이용해 PDF 변환을 수행하고 있는 것도 마음에 들었다. (참고: &lt;a href="https://docraptor.com/blog/docraptor-vs-princexml/"&gt;DocRaptor vs PrinceXML&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Prince는 Windows, OS X, Linux 등 다양한 플랫폼을 위한 바이너리를 제공하여 직접 설치하여 사용할 수 있다. 비상업적 개인적인 이용에 한해, 작은 PDF 워터마크를 포함하는 수준으로 &lt;a href="https://www.princexml.com/download/"&gt;무료 사용을 허용&lt;/a&gt;하고 있다. &lt;/p&gt;
+&lt;p&gt;&lt;img alt="PrinceXML, watermark for free usage" src="./images/2018-08/princexml-free.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;파이콘 한국은 비영리 목적의 행사이지만, 개인적인 이용이 아니라 생각되어, DocRaptor가 제공하는 가장 낮은 서비스인 Basic Plan으로 가입하여 사용했다. 월 125회의 변환이 가능하지만, 테스트 목적의 변환은 무제한으로 할 수 있어 사용에 지장이 있지는 않았다. 테스트용으로 변환을 요청하면 역시 워터마크가 포함되어 변환된다.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Usage page of DocRaptor" src="./images/2018-08/docraptor-usage.png"&gt;&lt;/p&gt;
+&lt;h3&gt;Build with API&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://docraptor.com/documentation/api"&gt;DocRaptor API&lt;/a&gt;를 통해 빌드 시스템을 구축하는데 사용할 수 있다. 온라인에서 영수증을 발행하거나 보고서를 출력해서 첨부하여 보낼 때 사용할 수 있다. 단순한 HTTP Post 요청이라 직접 만들어도 되지만, 편리한 사용을 위해 언어별 라이브러리도 제공한다. Python용 라이브러리인 &lt;a href="https://github.com/docraptor/docraptor-python"&gt;docraptor-python&lt;/a&gt;도 제공하고 있어, 아래와 같이 호출하고 결과를 파일로 저장하면 된다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;docraptor&lt;/span&gt;
+
+&lt;span class="n"&gt;docraptor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;configuration&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;API_KEY_HERE&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;doc_api&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;docraptor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DocApi&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;doc_api&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create_doc&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;
+    &lt;span class="c1"&gt;# 테스트 여부&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;test&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# 변환할 내용&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;document_content&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;html&amp;gt;&amp;lt;body&amp;gt;Welcome to PyCon Korea&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="c1"&gt;# 또는 URL을 입력할 수 있다&lt;/span&gt;
+    &lt;span class="c1"&gt;# &amp;quot;document_url&amp;quot;: &amp;quot;https://some_url_on_internet&amp;quot;,&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# 저장할 이름&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;pyconkr-2018-book.pdf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# 파일 형식&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;document_type&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;pdf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;})&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;로컬에서 변환 결과를 확인하기 위해 테스트로 빌드할 경우에는 Prince를 사용해서 빨리 결과를 확인하고, 최종본을 만들 때 DocRaptor를 사용하는 식으로 작업하여 시간을 절약할 수 있었다. 사용한 글꼴의 문제 등으로 결과가 다를 수 있는데, DocRaptor에서 제공하는 요청별 로그 페이지를 통해 문제를 해결하는데 도움이 되었다.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Log of DocRaptor" src="./images/2018-08/docraptor-log.png"&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;...
+Sat Aug 11 01:35:44 2018: loading font: https://lqez.github.io/pyconkr-2018-booklet/fonts/NotoSans-DemiLight.otf
+Sat Aug 11 01:35:44 2018: used font: LiHei Pro, Medium
+Sat Aug 11 01:35:44 2018: loading font: https://fonts.gstatic.com/s/robotomono/v5/L0x5DF4xlVMF-BfR8bXMIjhLq3o.ttf
+Sat Aug 11 01:35:44 2018: used font: Roboto Mono, Regular
+Sat Aug 11 01:35:44 2018: Resolving cross-references...
+Sat Aug 11 01:35:45 2018: stats: total_page_count: 56
+Sat Aug 11 01:35:45 2018: finished: success
+Sat Aug 11 01:35:45 2018: ---- end
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Finalize&lt;/h3&gt;
+&lt;p&gt;원래는 파이콘 한국 홈페이지의 데이터를 &lt;a href="https://scrapy.org/"&gt;Scrapy&lt;/a&gt;와 같은 웹 페이지 크롤링 도구로 읽어 사용하려고 했으나, 인쇄물의 크기 제약 등으로 다른 데이터를 써야 하는 문제가 있어 진행하지 않았다. 하지만 데이터를 일일이 HTML로 작업하는 것은 원래 목적에 충실하지 않으니, 데이터를 파이썬 코드로 작성하고 이를 &lt;a href="http://jinja.pocoo.org/"&gt;Jinja&lt;/a&gt; 템플릿 엔진을 이용해 최종 HTML 파일을 만들도록 하였다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/lqez/pyconkr-2018-booklet"&gt;PyCon Korea 2018 프로그램북 프로젝트 (GitHub)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이렇게 생성된 PDF를 바로 업체에 보내 인쇄할 수 있으면 좋겠지만, 여러가지 문제로 바로 보낼 수는 없었다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;인쇄소에 보내려면 문자열을 모두 벡터 도형으로 바꾸는 &lt;code&gt;Create Outlines&lt;/code&gt; 작업이 필요하다. 글꼴 정보가 존재하는 상태로 전달되면, 문서 내에 사용된 글꼴가 없는 경우 문제가 되므로 반드시 도형으로 변환해야 한다.&lt;/li&gt;
+&lt;li&gt;DocRaptor를 통해 생성된 PDF를 수정하기 위해 Adobe Illustrator 등의 도구에서 불러오면, 문자열이 깨져서 표현되는 경우가 있다. 이 문제를 해결하기 위해 PDF를 &lt;code&gt;Archivable PDF/A&lt;/code&gt; 형식으로 변환해야 한다. &lt;a href="https://forums.adobe.com/thread/1158190"&gt;https://forums.adobe.com/thread/1158190&lt;/a&gt; 참조.&lt;/li&gt;
+&lt;li&gt;표지는 업체에서 원하는 템플릿 위에 얹혀 전달해야 한다. 책 두께에 따라 책등(세네카)의 크기가 달라지는데, 종이 두께와 매수로 달라지는 부분이므로 계산된 두께 만큼을 늘려 작업해야 한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="Creating outlines" src="./images/2018-08/create-outlines.png"&gt;&lt;/p&gt;
+&lt;p&gt;한글 글꼴로 Google Fonts Early Access에서 제공하는 &lt;a href="https://fonts.google.com/earlyaccess#Noto+Sans+KR"&gt;&lt;code&gt;Noto Sans Korean&lt;/code&gt;&lt;/a&gt;을 그대로 사용하려고 했지만, DocRaptor 쪽에서 WOFF2 형식을 지원하지 않아, EOT와 같은 기존 글꼴 형식을 사용하도록 변경해야 했다. &lt;a href="https://github.com/bswkr/noto-sans-korean-webfont"&gt;경량화된 웹 폰트&lt;/a&gt;를 만들어둔 분이 있어 편리하게 사용할 수 있었다. 웹 글꼴과 관련되어서는 구글에서 작성한 &lt;a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/webfont-optimization?hl=ko"&gt;‘웹 글꼴 최적화’&lt;/a&gt;를 참고.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Final result" src="./images/2018-08/pyconkr-2018-book.jpg"&gt;&lt;/p&gt;
+&lt;h3&gt;And,&lt;/h3&gt;
+&lt;p&gt;Adobe InDesign 등의 전문 도구로 작업하는 쪽에서 보자면, 결과물이 조악하고 부족한 부분이 있을 것이다. 실제 작업한 시간을 생각해봐도, 처음부터 전문 도구로 시작하여 작업한 시간만큼 걸린 것은 사실이다. 마우스나 터치패드를 클릭하는 대신 키보드를 통해 레이아웃을 설정한 것에 불과하다고 볼 수도 있지만,&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;작은 수정사항이 있을 때, 전문 도구를 다루는 사람이 없거나, 프로그램이 없어도 누구나 수정해서 빌드하여 결과물을 뽑아낼 수 있다. 물론 프로그래밍을 더 어려워하는 사람이라면 해당하지 않는 부분이지만, 파이썬 커뮤니티라면 이득이 있다.&lt;/li&gt;
+&lt;li&gt;전반적인 수정을 할 때 편리하다. 전문 도구에서도 초반에 서식을 잘 이용하면 전체적인 수정을 손쉽게 할 수 있지만, 코드로 하는 것이 개인적으로는 더 명확하고 쉬웠다.&lt;/li&gt;
+&lt;li&gt;데이터를 대량으로 입력할 때 유리하다. Adobe InDesign에서도 &lt;a href="https://helpx.adobe.com/indesign/using/data-merge.html"&gt;Data merge 기능&lt;/a&gt;을 통해 외부로부터 데이터를 불러와 본문에 삽입, 대체하는 것이 가능하지만 파이썬 프로그래머라면 Jinja를 다루는 것이 더 편리하다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;한 권을 만드는 것이 아니라 여러 권을 만들게 된다면 코드로 빌드할 수 있는 환경이 얻는 이점이 더 분명해질 것으로 생각한다. 행사 일정에 맞추느라 Paged Media 에 대한 충분한 이해와 깔끔한 편집을 못 한 것이 아쉽다. &lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>Trivia of BMW X5</title><link href="https://lqez.github.io/blog/trivia-of-bmw-x5.html" rel="alternate"></link><published>2018-08-04T00:00:00+09:00</published><updated>2018-08-04T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2018-08-04:/blog/trivia-of-bmw-x5.html</id><summary type="html">&lt;p&gt;&lt;img alt="A photo of X5" src="./images/2018-08/x5-0.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;BMW의 SUV인 &lt;a href="https://en.wikipedia.org/wiki/BMW_X5_(F15)"&gt;X5(F15)&lt;/a&gt;를 단종 직전 뒤늦게 구입했다.
 기존에 타던 차량이 잔고장이 심해져, 당장 빠르게 인수할 수 있는 차종 중에 고르다 보니 사고 싶던 차종 목록에 없던 X5를 구매하게 되었다.&lt;/p&gt;
 &lt;p&gt;해당 차종에 대해 충분히 알아보지 않은 탓에, 구매하고 나서야 알게 된 장단점들이 있다.&lt;/p&gt;
