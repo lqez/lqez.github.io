@@ -36,11 +36,11 @@
 &lt;span class="p"&gt;}&lt;/span&gt;
 
 &lt;span class="c"&gt;/* 좌우 페이지를 다르게 지정할 수 있다 */&lt;/span&gt;
-&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="k"&gt;page&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nd"&gt;right&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="k"&gt;page&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nd"&gt;right&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="nt"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;56pt&lt;/span&gt; &lt;span class="nt"&gt;46pt&lt;/span&gt; &lt;span class="nt"&gt;56pt&lt;/span&gt; &lt;span class="nt"&gt;50pt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
-&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="k"&gt;page&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nd"&gt;left&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="k"&gt;page&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nd"&gt;left&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="nt"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;56pt&lt;/span&gt; &lt;span class="nt"&gt;50pt&lt;/span&gt; &lt;span class="nt"&gt;56pt&lt;/span&gt; &lt;span class="nt"&gt;46pt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -114,7 +114,8 @@ Sat Aug 11 01:35:45 2018: ---- end
 &lt;li&gt;전반적인 수정을 할 때 편리하다. 전문 도구에서도 초반에 서식을 잘 이용하면 전체적인 수정을 손쉽게 할 수 있지만, 코드로 하는 것이 개인적으로는 더 명확하고 쉬웠다.&lt;/li&gt;
 &lt;li&gt;데이터를 대량으로 입력할 때 유리하다. Adobe InDesign에서도 &lt;a href="https://helpx.adobe.com/indesign/using/data-merge.html"&gt;Data merge 기능&lt;/a&gt;을 통해 외부로부터 데이터를 불러와 본문에 삽입, 대체하는 것이 가능하지만 파이썬 프로그래머라면 Jinja를 다루는 것이 더 편리하다.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;한 권을 만드는 것이 아니라 여러 권을 만들게 된다면 코드로 빌드할 수 있는 환경이 얻는 이점이 더 분명해질 것으로 생각한다. 행사 일정에 맞추느라 Paged Media 에 대한 충분한 이해와 깔끔한 편집을 못 한 것이 아쉽다. &lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>Trivia of BMW X5</title><link href="https://lqez.github.io/blog/trivia-of-bmw-x5.html" rel="alternate"></link><published>2018-08-04T00:00:00+09:00</published><updated>2018-08-04T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2018-08-04:/blog/trivia-of-bmw-x5.html</id><summary type="html">&lt;p&gt;&lt;img alt="A photo of X5" src="./images/2018-08/x5-0.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;한 권을 만드는 것이 아니라 여러 권을 만들게 된다면 코드로 빌드할 수 있는 환경이 얻는 이점이 더 분명해질 것으로 생각한다. 행사 일정에 맞추느라 Paged Media 에 대한 충분한 이해와 깔끔한 편집을 못 한 것이 아쉽다. &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Photo of draft printing" src="./images/2018-08/pyconkr-2018-book-res.jpg"&gt;&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>Trivia of BMW X5</title><link href="https://lqez.github.io/blog/trivia-of-bmw-x5.html" rel="alternate"></link><published>2018-08-04T00:00:00+09:00</published><updated>2018-08-04T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2018-08-04:/blog/trivia-of-bmw-x5.html</id><summary type="html">&lt;p&gt;&lt;img alt="A photo of X5" src="./images/2018-08/x5-0.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;BMW의 SUV인 &lt;a href="https://en.wikipedia.org/wiki/BMW_X5_(F15)"&gt;X5(F15)&lt;/a&gt;를 단종 직전 뒤늦게 구입했다.
 기존에 타던 차량이 잔고장이 심해져, 당장 빠르게 인수할 수 있는 차종 중에 고르다 보니 사고 싶던 차종 목록에 없던 X5를 구매하게 되었다.&lt;/p&gt;
 &lt;p&gt;해당 차종에 대해 충분히 알아보지 않은 탓에, 구매하고 나서야 알게 된 장단점들이 있다.&lt;/p&gt;
