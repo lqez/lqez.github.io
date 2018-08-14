@@ -1,92 +1,98 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
 
 * {
-    color: #777;
-    font-family: 'Lato', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
+  color: #777;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
 
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 h1, h2 {
-    font-weight: 700;
-    color: #000;
+  font-weight: 700;
+  color: #000;
 }
 h1 {
-    font-size: 2rem;
-    margin: 0 auto 3%;
+  font-size: 2rem;
+  margin: 0 auto 3%;
 }
 h2 {
-    font-size: 1.6rem;
-    margin: 5% auto 0;
+  font-size: 1.6rem;
+  margin: 5% auto 0;
 }
 ul {
-    list-style: none;
-    padding: 5px 3% 0 3%;
+  list-style: none;
+  padding: 5px 3% 0 3%;
 }
 p, li {
-    line-height: 160%;
-    margin-bottom: 5px;
+  line-height: 160%;
+  margin-bottom: 5px;
 }
 li {
-    text-indent: -12px;
-    padding-left: 12px;
+  text-indent: -12px;
+  padding-left: 12px;
 }
 li:before {
-    content: "- ";
-    color: #aaa;
-    font-size: 1rem;
-    padding-right: 5px;
+  content: "- ";
+  color: #aaa;
+  font-size: 1rem;
+  padding-right: 5px;
 }
 a {
-    color: #222;
-    text-decoration: none;
+  color: #222;
+  text-decoration: none;
 }
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 body {
-    margin: 0;
+  margin: 0;
 }
 hr {
-    width: 80%;
-    border: 0;
-    border-bottom: 1px solid #eee;
-    padding: 3% 0;
+  width: 80%;
+  border: 0;
+  border-bottom: 1px solid #eee;
+  padding: 3% 0;
 }
 small {
-    font-size: 12pt;
+  font-size: 10pt;
 }
 
 small a {
-    font-size: 12pt;
+  font-size: 10pt;
 }
 
 .wrapper {
-    max-width: 800px;
-    min-height: 100%;
-    border: 1px solid #eee;
-    border-radius: 25px;
-    padding: 5%;
-    margin: 3% auto;
+  max-width: 800px;
+  min-height: 100%;
+  border: 1px solid #eee;
+  border-radius: 25px;
+  padding: 5%;
+  margin: 3% auto;
 }
 .photo {
-    float: right;
-    overflow: hidden;
+  float: right;
+  overflow: hidden;
 }
 .photo img {
-    width: 96px;
-    height: 96px;
-    border-radius: 500px;
+  width: 96px;
+  height: 96px;
+  border-radius: 500px;
 }
 .eof {
-    margin: 3%;
-    width: 120px;
-    visibility: hidden;
+  margin: 3%;
+  width: 120px;
+  visibility: hidden;
+}
+.lang {
+  padding-bottom: 3%;
+}
+.lang span.selected {
+  text-decoration: underline;
 }
 @media (max-width: 768px) {
-    .wrapper {
-        border: 0px;
-    }
+  .wrapper {
+    border: 0px;
+  }
 }
