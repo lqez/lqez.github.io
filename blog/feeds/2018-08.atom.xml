@@ -1,5 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer - 2018-08</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/2018-08.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2018-08-13T00:00:00+09:00</updated><entry><title>Book, again by code.</title><link href="https://lqez.github.io/blog/book-again-by-code.html" rel="alternate"></link><published>2018-08-13T00:00:00+09:00</published><updated>2018-08-13T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2018-08-13:/blog/book-again-by-code.html</id><summary type="html">&lt;h3&gt;PyCon Korea&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer - 2018-08</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/2018-08.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2018-08-22T00:00:00+09:00</updated><entry><title>I don't like them.</title><link href="https://lqez.github.io/blog/i-dont-like-them.html" rel="alternate"></link><published>2018-08-22T00:00:00+09:00</published><updated>2018-08-22T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2018-08-22:/blog/i-dont-like-them.html</id><summary type="html">&lt;p&gt;회사를 그만둔 이후로 낯선 사람을 만날 기회가 별로 없었는데,
+요 며칠 개발자 컨퍼런스에 참가하며 내가 어떤 사람들을 의식적으로 싫어하는지 좀 더 명확하게 알게 되었다.
+아래에 해당하는 사람들이 틀렸다는 얘기가 아니다. 그냥, 싫다.&lt;/p&gt;
+&lt;h5&gt;자기소개가 긴 사람&lt;/h5&gt;
+&lt;p&gt;좋은 발표를 하기 위해서 발표자는 청중이 어떤 사람들일지 잘 예상하고 문서를 만들어 발표하면 좋다고 생각한다 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;회사를 그만둔 이후로 낯선 사람을 만날 기회가 별로 없었는데,
+요 며칠 개발자 컨퍼런스에 참가하며 내가 어떤 사람들을 의식적으로 싫어하는지 좀 더 명확하게 알게 되었다.
+아래에 해당하는 사람들이 틀렸다는 얘기가 아니다. 그냥, 싫다.&lt;/p&gt;
+&lt;h5&gt;자기소개가 긴 사람&lt;/h5&gt;
+&lt;p&gt;좋은 발표를 하기 위해서 발표자는 청중이 어떤 사람들일지 잘 예상하고 문서를 만들어 발표하면 좋다고 생각한다.
+하지만 반대로, 발표자가 전하고 싶은 내용을 청중에게 전달하는데 있어 발표자가 어떤 사람인지는 중요하지 않을 수도 있다고 생각한다.&lt;/p&gt;
+&lt;p&gt;우리는 권위에 쉽게 기대어 생각한다.&lt;/p&gt;
+&lt;p&gt;발표하는 사람이 교수니까 맞는 말일꺼야, 저 사람은 유명한 사람이니까 좀 이상한 것 같아도 설마 틀리진 않겠지,
+이런 생각이 올바른 사고 과정을 방해하는 경우를 많이 보아왔다.
+내 생각이 좀 비뚤어져서 그런 것이겠지만, 본인 소개가 지나치게 길고 경력에 대한 자부심이 너무 큰 사람의 발표는 옳은 소리를 해도 곧이 곧대로 들리지 않는다.&lt;/p&gt;
+&lt;h5&gt;행사를 이용하는 사람&lt;/h5&gt;
+&lt;p&gt;행사를 이용해도 된다. 다수를 대상으로 발표하는 자리가 있다면 그 자리에서 자기 광고를 하거나 자기 회사, 서비스에 대해 광고할 수도 있다고 생각한다.
+하지만 그 행사의 목표가 커뮤니티의 발전과 지속적인 성장을 위한 것이라면, 그 목표에는 부합하지 않는 행위라고 볼 수 있다.
+사람마다 다르겠지만 어느 정도는 다들 암묵적으로 허용하고 있는 것 같다.
+발표 마지막에 구인 광고 한 장 정도 넣는다던가, 자기소개할 때 어떤 소속에 누구인지 얘기하는 정도는 다들 문제 삼지 않는다.&lt;/p&gt;
+&lt;p&gt;하지만, A를 주제로 하는 커뮤니티에서 주최한 행사에서, B를 지나치게 강조하면 거부감이 든다.
+B에서 A를 사용할 수도 있고, 또 간접적으로 관계있는 부분에 대해서 얘기할 수 있다.
+하지만 어떤 사람들은 처음엔 기회를 얻기 위해 교집합에 대해 얘기하는 척 하다가, 결국엔 전혀 관계 없는 내용을 늘어놓고 사라진다.&lt;/p&gt;
+&lt;p&gt;이는 다른 사람들의 시간을 빼앗는 교활한 행위라고 생각한다. 그래서, 싫다.&lt;/p&gt;
+&lt;h5&gt;나만 중요한 사람&lt;/h5&gt;
+&lt;p&gt;지속적인 모임과 행사의 운영을 위해서는 공동체 의식이 어느 정도 필요하다.
+개인에게 일방적으로 희생을 요구하는 단체는 오래갈 수 없다. 그런 것을 바라는게 아니다.
+하지만 본인과 자기가 속한 단체의 이익을 위해서만 행동하고, 커뮤니티에 돌려주지 않는 체리피커는 어디에나 있고, 그들이 많아지면 결국 무너지게 된다.&lt;/p&gt;
+&lt;p&gt;나와 내 주변의 문제가 해결된다고 그 바깥쪽을 모른체한다면, 결국 그 역풍은 자기 자신에게 돌아오게 된다.
+채널에 질문을 하고 답변을 받으면 그 글을 삭제해버리는 사람부터 커뮤니티 행사에 참가하여 본질을 흐리고 호도하는 사람,
+단체에서 감당할 수 없는 범위의 일까지 간섭하며 감 놔라 배 놔라 하는 사람들까지 매우 다양하다.&lt;/p&gt;
+&lt;p&gt;커뮤니티에서 도움을 받은 일이 있다면, 그 이상으로 되돌려주기 위해 노력하는 사람이 많아야 발전할 수 있다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;이런 사람들이 잘못했다는 게 아니라 내가 싫어한다는 것에 불과하다.
+하나 마나 한 얘기지만, 어떤 행사는 자기소개가 길고, 행사를 이용하며, 자기 할 말만 하고 사라지는 사람과 단체로 가득해도 별문제 없을 수도 있다.&lt;/p&gt;
+&lt;p&gt;나는 싫다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>Book, again by code.</title><link href="https://lqez.github.io/blog/book-again-by-code.html" rel="alternate"></link><published>2018-08-13T00:00:00+09:00</published><updated>2018-08-13T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2018-08-13:/blog/book-again-by-code.html</id><summary type="html">&lt;h3&gt;PyCon Korea&lt;/h3&gt;
 &lt;p&gt;파이콘 한국은 매년 파이썬 사용자들이 모이는 행사로, 올해로 다섯번째를 맞이하였다. 나는 2014년부터 이 행사를 준비하는데 같이 하였으나, 같은 사람이 너무 오랫동안 같은 일에 관여하면 오히려 좋지 않은 영향을 줄 것으로 생각하여 &lt;a href="http://lqez.github.io/blog/pycon-korea-2017-ended.html"&gt;작년까지만 참여하고 그만두었다&lt;/a&gt;. 올해는 처음으로 일반 참가자로 파이콘 한국에 참여하려고 했다. &lt;a href="http://blog.pycon.kr/2017/06/14/everybody-pays/"&gt;“Everybody pays”&lt;/a&gt;의 구호 아래 모든 …&lt;/p&gt;</summary><content type="html">&lt;h3&gt;PyCon Korea&lt;/h3&gt;
 &lt;p&gt;파이콘 한국은 매년 파이썬 사용자들이 모이는 행사로, 올해로 다섯번째를 맞이하였다. 나는 2014년부터 이 행사를 준비하는데 같이 하였으나, 같은 사람이 너무 오랫동안 같은 일에 관여하면 오히려 좋지 않은 영향을 줄 것으로 생각하여 &lt;a href="http://lqez.github.io/blog/pycon-korea-2017-ended.html"&gt;작년까지만 참여하고 그만두었다&lt;/a&gt;. 올해는 처음으로 일반 참가자로 파이콘 한국에 참여하려고 했다. &lt;a href="http://blog.pycon.kr/2017/06/14/everybody-pays/"&gt;“Everybody pays”&lt;/a&gt;의 구호 아래 모든 참가자가 가능하면 동등한 입장에서 즐기는 행사를 만들고자 했지만, 아무래도 준비위원회와 자원봉사자는 행사 당일에 다른 참가자들처럼 원하는 발표 프로그램을 듣거나, 다른 참가자와 네트워킹을 하는 것은 사정상 어려운 부분이 많다. 항상 어제보다 나은, &lt;a href="https://www.pycon.kr/2017/program/140"&gt;작년보다 나은 행사&lt;/a&gt;와 커뮤니티를 위해 노력하는 분들에게 감사할 따름이다.&lt;/p&gt;
 &lt;p&gt;개인 후원으로 티켓을 구입하고 행사를 기다리던 중, 파이썬 사용자 모임 분들과 저녁을 같이 먹다 파이콘 준비위원회에 일손이 좀 부족하다는 얘기를 듣고, 내가 할 수 있는 일 가운데 ‘프로그램북’ 제작을 도와드리기로 했다. 프로그램북은 파이콘 참가자들에게 모두 지급되는 가방에 함께 제공되며, 행사에 대한 전반적인 정보를 담고 있다. &lt;/p&gt;
