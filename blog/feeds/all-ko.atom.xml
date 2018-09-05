@@ -73,7 +73,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 &lt;h4&gt;브런치 – &lt;a href="https://brunch.co.kr"&gt;https://brunch.co.kr&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="Brunch" src="./images/2018-09/ht-brunch.png"&gt;
 개인별 호불호는 당연히 있겠지만, 브런치는 글을 읽기에 가장 불편한 사이트 중 하나라고 생각한다.
-우선 &lt;code&gt;Noto Sans Light&lt;/code&gt;와 같은 획이 얇은 서체를 본문 기본 서체로 사용하고 있고, 글씨 크기도 &lt;code&gt;11pt&lt;/code&gt;로 작은데다,
+우선 &lt;code&gt;Noto Sans Light&lt;/code&gt;와 같은 획이 가는 서체를 본문 기본 서체로 사용하고 있고, 글씨 크기도 &lt;code&gt;11pt&lt;/code&gt;로 작은데다,
 자간을 &lt;code&gt;0.8px&lt;/code&gt;로 지정하여 낱글자 간격이 넓어 잘 읽히지 않는다.&lt;/p&gt;
 &lt;p&gt;비교적 나중에 만들어진 사이트 답게 &lt;code&gt;-webkit-font-smoothing&lt;/code&gt; 의 지정 등이 눈에 띈다.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
@@ -131,7 +131,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 &lt;h4&gt;인디포스트 – &lt;a href="https://www.indiepost.co.kr/"&gt;https://www.indiepost.co.kr/&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="the pinch" src="./images/2018-09/ht-indiepost.png"&gt;
 읽어보면 좋은 글이 많고, 하단에 관련된 글들도 연관성이 높아 음악가들에 대해 알아보기 좋은 사이트라고 생각한다.
-하지만 브런치와 마찬가지로 본문에 사용하는 서체의 획이 너무 얇아 읽기에 힘이 든다.
+하지만 브런치와 마찬가지로 본문에 사용하는 서체의 획이 너무 가늘어 읽기에 힘이 든다.
 게다가 이유는 알 수 없지만, 본문에 &lt;code&gt;text-shadow&lt;/code&gt; 를 지정하고 있다.&lt;/p&gt;
 &lt;p&gt;일반적으로 웹폰트로 많이 사용하는 &lt;code&gt;Noto Sans&lt;/code&gt; 대신, 스포카의 &lt;code&gt;Spoqa Han Sans&lt;/code&gt;를 사용하는 것이 눈에 띈다.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
