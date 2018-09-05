@@ -193,7 +193,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 &lt;h4&gt;리디북스 – &lt;a href="https://ridibooks.com/"&gt;https://ridibooks.com/&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="Ridibooks" src="./images/2018-09/ht-ridi.png"&gt;
 리디북스는 전용 리더를 제공하기 때문에, 책 본문을 웹 서비스로 제공하지는 않는다.
-하지만 활자가 주 콘텐츠인 서비스인 만큼 책을 소개하는 페이지의 본문을 어떻게 구성하고 있을지 흥미가 있었다.&lt;/p&gt;
+하지만 활자가 주 콘텐츠인 만큼 책을 소개하는 페이지의 본문을 어떻게 구성하고 있을지 흥미가 있었다.&lt;/p&gt;
 &lt;p&gt;다른 무엇보다 맥에서만 기본 서체로 제공되는 &lt;code&gt;Helvetica Neue&lt;/code&gt;를 최우선 순위로 놓은 것이, 이 페이지를 구성한 사람의 취향을 보여주는 것 같다.
 후순위의 서체들도 예전부터 사용되던 &lt;code&gt;Tahoma&lt;/code&gt;, &lt;code&gt;Geneva&lt;/code&gt;, &lt;code&gt;돋움&lt;/code&gt;보다 앞에 &lt;code&gt;나눔고딕&lt;/code&gt;, &lt;code&gt;arial&lt;/code&gt;을 지정한 것이 서체 유행의 역사를 보는 것 같은 재미가 있다.
 줄바꿈과 관련된 설정은 퍼블리와 같다. 대신 본문의 폭에 비해 서체를 작게 쓰고 있어 덜 거슬리는 편이다.&lt;/p&gt;
