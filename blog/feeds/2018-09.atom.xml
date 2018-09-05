@@ -243,4 +243,15 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 
   &lt;span class="kp"&gt;-webkit-&lt;/span&gt;&lt;span class="n"&gt;font-smoothing&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;antialiased&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry></feed>
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;p&gt;특별히 통계를 내거나 결론을 낼 만큼 많이 조사하지 않았지만, 한글을 주로 사용하는 웹 사이트들이 주로 어떻게 구성되어 있는지 알아보는 시간이 되었다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;본문 크기는 &lt;code&gt;17px&lt;/code&gt; 또는 유사한 값을 많이 사용한다.&lt;/li&gt;
+&lt;li&gt;본문 색상은 &lt;code&gt;#333&lt;/code&gt;과 근처 색상을 많이 사용한다.&lt;/li&gt;
+&lt;li&gt;인터넷 익스플로러가 주로 사용되던 시절보다는 좁은 자간을 특별히 선호하지는 않는다.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;word-break: keep-all&lt;/code&gt;을 예상했던 것 만큼 많이 사용하지는 않는다.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Noto Sans&lt;/code&gt; 계열은 확실히 널리 쓰인다.&lt;/li&gt;
+&lt;/ul&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry></feed>
