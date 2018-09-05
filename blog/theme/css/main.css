@@ -11,7 +11,7 @@
 @import url('reset.css');
 @import url('pygment.css');
 @import url('//fonts.googleapis.com/earlyaccess/notosanskr.css');
-@import url('//fonts.googleapis.com/css?family=Roboto:400|Lato:700|Source+Code+Pro:400, 700');
+@import url('//fonts.googleapis.com/css?family=Roboto:400|Lato:700|Inconsolata:400,700');
 
 /***** Global *****/
 /* Body */
@@ -438,26 +438,27 @@ article img {
 }
 
 pre {
-    font-family: "Source Code Pro", monospace;
+    font-family: "Inconsolata", monospace;
     background-color: #f4f8fa;
     border: 1px solid #ddeaf1;
-    font-size: 75%;
     overflow: auto;
     margin: 10px 0;
     padding: 10px;
     border-radius: 3px;
     position: relative;
+    line-height: 1.2;
+    font-size: 90%;
 }
 
 code {
-    font-family: "Source Code Pro", monospace;
+    font-family: "Inconsolata", monospace;
     background-color: #fafcfd;
     border: 1px solid #e1e2e3;
-    font-size: 80%;
     overflow: auto;
     margin: 3px;
     padding: 3px 5px;
     border-radius: 2px;
     position: relative;
-    top: -2px;
+    top: -1px;
+    font-size: 90%;
 }
