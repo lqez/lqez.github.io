@@ -1,5 +1,249 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/all-ko.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2018-08-22T00:00:00+09:00</updated><entry><title>I don't like them.</title><link href="https://lqez.github.io/blog/i-dont-like-them.html" rel="alternate"></link><published>2018-08-22T00:00:00+09:00</published><updated>2018-08-22T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2018-08-22:/blog/i-dont-like-them.html</id><summary type="html">&lt;p&gt;회사를 그만둔 이후로 낯선 사람을 만날 기회가 별로 없었는데,
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/all-ko.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2018-09-05T00:00:00+09:00</updated><entry><title>웹 사이트들의 한글 타이포그래피</title><link href="https://lqez.github.io/blog/hangul-typo-on-web.html" rel="alternate"></link><published>2018-09-05T00:00:00+09:00</published><updated>2018-09-05T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2018-09-05:/blog/hangul-typo-on-web.html</id><summary type="html">&lt;p&gt;한글이 주로 사용되는 사이트들 중, 접속 통계 상위권에 있는 곳들과 개인적으로 자주 방문하는 곳를 돌아다니며, 그들이 본문에 사용하고 있는 CSS 값들에 대해 정리해보았다.
+CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 표시가 없는 경우 계산된 값과 지정된 값이 같음을 의미한다.&lt;/p&gt;
+&lt;p&gt;이번에 사이트들을 둘러보며 아래 CSS 값들에 대해 더 알아보는 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;한글이 주로 사용되는 사이트들 중, 접속 통계 상위권에 있는 곳들과 개인적으로 자주 방문하는 곳를 돌아다니며, 그들이 본문에 사용하고 있는 CSS 값들에 대해 정리해보았다.
+CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 표시가 없는 경우 계산된 값과 지정된 값이 같음을 의미한다.&lt;/p&gt;
+&lt;p&gt;이번에 사이트들을 둘러보며 아래 CSS 값들에 대해 더 알아보는 계기가 되어 좋았다.
+웹에서의 타이포그래피에 관심이 있는 분들이라면 이미 알고 있다고 해도, 아래 속성들을 한 번쯤 다시 살펴보기를 추천한다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://developer.mozilla.org/ko/docs/Web/CSS/white-space"&gt;white-space&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://developer.mozilla.org/ko/docs/Web/CSS/text-rendering"&gt;text-rendering&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://developer.mozilla.org/ko/docs/Web/CSS/font-smooth"&gt;font-smooth&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://developer.mozilla.org/ko/docs/Web/CSS/font-feature-settings"&gt;font-feature-setting&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;뉴스 사이트&lt;/h2&gt;
+&lt;h4&gt;다음 뉴스 – &lt;a href="https://media.daum.net/"&gt;https://media.daum.net/&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="Daum news" src="./images/2018-09/ht-daum.png"&gt;
+다음 뉴스 사이트는 본문 크기를 CSS 파일이 아닌 태그에 인라인 스타일링으로 &lt;code&gt;17px&lt;/code&gt; 로 지정한 것과, 자간만 &lt;code&gt;em&lt;/code&gt; 단위로 지정한 것이 눈에 띈다.
+서체에 대해서는 영문 서체는 특별히 신경쓰지 않고 한글 서체 내에 포함된 서체를 사용하도록 하였다.
+색상은 다른 사이트들에서도 많이 사용하는 본문 색상인 &lt;code&gt;#333&lt;/code&gt;을 사용하고 있다.&lt;/p&gt;
+&lt;p&gt;서체로 &lt;code&gt;AppleSDGothicNeo-Regular&lt;/code&gt;가 최우선으로 지정되어 있는데, 이는 아이폰 사용자들을 의식한 결과로 생각되며,
+&lt;code&gt;맑은 고딕&lt;/code&gt; 계열을 별도로 지정하여 윈도우 사용자들을 고려하고 있음을 알 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;word-wrap&lt;/code&gt; / &lt;code&gt;word-break&lt;/code&gt; 그리고 요즘의 웹사이트에서 가독성 향상의 목적으로 사용하는 웹 브라우저 렌더링 옵션 지정이 없는 것이 특이하다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#333&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;AppleSDGothicNeo-Regular&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Malgun Gothic&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;맑은 고딕&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dotum&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="err"&gt;돋움&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;sans-serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;      &lt;span class="c"&gt;/* inline style */&lt;/span&gt;
+  &lt;span class="k"&gt;letter-spacing&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;-0.32&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;   &lt;span class="c"&gt;/* -0.02em */&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;27.625&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* 1.625 */&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;네이버 뉴스 – &lt;a href="https://news.naver.com/"&gt;https://news.naver.com/&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="Naver news" src="./images/2018-09/ht-naver.png"&gt;
+네이버는 최근에는 잘 사용하지 않는 완전한 검정색을 본문 색상으로 사용한 것이 눈에 뛴다.
+서체 지정과 크기, 자간과 행간이 다음 뉴스 사이트와 매우 유사하다.
+일반적으로 정보성 글 뭉치를 읽을 때 이 정도가 표준적으로 통용될 수 있다고 생각해도 무방할 것 같다.&lt;/p&gt;
+&lt;p&gt;네이버는 모든 단위에 &lt;code&gt;px&lt;/code&gt;를 지정해서 사용하고 있다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#000&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Helvetica Neue&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Apple SD Gothic Neo&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Malgun Gothic&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;맑은 고딕&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Dotum&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="err"&gt;돋움&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;sans-serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
+  &lt;span class="k"&gt;text-align&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;left&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;letter-spacing&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;-0.3&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;27&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;word-wrap&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;break-word&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;네이트 뉴스 – &lt;a href="http://news.nate.com/"&gt;http://news.nate.com/&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="Naver news" src="./images/2018-09/ht-nate.png"&gt;
+네이트 뉴스는 평소에는 잘 방문하지 않지만, 위 두 뉴스 사이트를 제외한 다른 신문, 매체 사이트는 광고 때문에 본문을 읽을 엄두가 나지 않아 울며 겨자먹기로 알아보았다.&lt;/p&gt;
+&lt;p&gt;요즘의 사이트 답지 않게 &lt;code&gt;굴림&lt;/code&gt;, &lt;code&gt;돋움&lt;/code&gt;만 지정하고 있으며, 서체 크기도 &lt;code&gt;14px&lt;/code&gt;로 최근의 추세보다는 다소 작게 지정되어 있다.
+다만 &lt;code&gt;word-break&lt;/code&gt;와 &lt;code&gt;word-wrap&lt;/code&gt;은 별도로 지정되어 있는 것이, 이 사이트를 처음 만들던 당시에 가독성에 대해 고민한 흔적으로 보인다&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#222&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Gulim&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Dotum&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Helvetica&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;sans-serif&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;letter-spacing&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;23.8&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* 1.7 */&lt;/span&gt;
+  &lt;span class="k"&gt;word-break&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;break-all&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;word-wrap&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;break-word&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;읽을거리&lt;/h2&gt;
+&lt;p&gt;카카오 1분이나 네이버 블로그 사이트도 알아보려고 했으나, 
+본문 없이 첨부 이미지로 가득차 있는 경우가 많고, 본문이 있다고 해도 강제적인 줄바꿈과 중앙 정렬을 사용하고 있어 제외했다.&lt;/p&gt;
+&lt;h4&gt;브런치 – &lt;a href="https://brunch.co.kr"&gt;https://brunch.co.kr&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="Brunch" src="./images/2018-09/ht-brunch.png"&gt;
+개인별 호불호는 당연히 있겠지만, 브런치는 글을 읽기에 가장 불편한 사이트 중 하나라고 생각한다.
+우선 &lt;code&gt;Noto Sans Light&lt;/code&gt;와 같은 획이 얇은 서체를 본문 기본 서체로 사용하고 있고, 글씨 크기도 &lt;code&gt;11pt&lt;/code&gt;로 작은데다,
+자간을 &lt;code&gt;0.8px&lt;/code&gt;로 지정하여 낱글자 간격이 넓어 잘 읽히지 않는다.&lt;/p&gt;
+&lt;p&gt;비교적 나중에 만들어진 사이트 답게 &lt;code&gt;-webkit-font-smoothing&lt;/code&gt; 의 지정 등이 눈에 띈다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#333&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Noto Sans Light&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Malgun Gothic&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;sans-serif&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;14.6667&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;   &lt;span class="c"&gt;/* 11pt */&lt;/span&gt;
+  &lt;span class="k"&gt;letter-spacing&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.8&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;29.3333&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;   &lt;span class="c"&gt;/* 22pt */&lt;/span&gt;
+  &lt;span class="k"&gt;text-align&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;left&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;word-break&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;break-word&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;word-wrap&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;break-word&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kp"&gt;-webkit-&lt;/span&gt;&lt;span class="n"&gt;font-smoothing&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;antialiased&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;퍼블리 – &lt;a href="https://publy.co/"&gt;https://publy.co/&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="Publy" src="./images/2018-09/ht-publy.png"&gt;
+글을 유료로 판매하는 모델을 실험하는 퍼블리는 아무래도 한글 가독성에 초점을 맞추었을 것으로 예상되었다.
+다른 사이트들과 다르게 &lt;code&gt;word-break: keep-all&lt;/code&gt;을 지정한 것이 가장 눈에 띄고,
+한글 서체는 시스템 폰트를 사용하지 않고 모두 &lt;code&gt;Noto Sans KR&lt;/code&gt;로 지정하여 사용자 경험을 기기마다 다르게 주지 않으려 한 것으로 보인다.&lt;/p&gt;
+&lt;p&gt;서체 크기가 &lt;code&gt;18px&lt;/code&gt;로 가장 크고 &lt;code&gt;keep-all&lt;/code&gt;을 사용하여 모바일 기기에서 줄바꿈이 심하고 줄 끝이 둘쭉날쭉 한 것이 눈에 걸린다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#333&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Noto Sans KR&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;sans-serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;    &lt;span class="c"&gt;/* 1.125rem */&lt;/span&gt;
+  &lt;span class="k"&gt;letter-spacing&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;       &lt;span class="c"&gt;/* normal */&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;32.4&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* 1.8 */&lt;/span&gt;
+  &lt;span class="k"&gt;text-align&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;left&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;word-break&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;keep-all&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;word-wrap&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;break-word&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;핀치 – &lt;a href="https://thepin.ch/"&gt;https://thepin.ch/&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="the pinch" src="./images/2018-09/ht-thepinch.png"&gt;
+여성을 위한 미디어를 표방하는 핀치는 전반적으로 색 사용이 많고,
+페이지 전환시마다 그라데이션에 애니메이션 포함된 막을 사용하여 다소 정신 없다는 인상을 주는 것에 비해 본문은 얌전하고 밀도가 높다.&lt;/p&gt;
+&lt;p&gt;밀도가 높은 것은 자간을 &lt;code&gt;-1px&lt;/code&gt; 지정하고, 양쪽 맞춤에 줄 바꿈을 브라우저 기본으로 사용했기 때문이다.
+글이 빽빽한 느낌이 들어 오래 읽기에는 조금 부담스럽다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#313233&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Noto Sans&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Apple SD Gothic Neo&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Malgun Gothic&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Dotum&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;letter-spacing&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;-1&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;30.6&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* 1.8em */&lt;/span&gt;
+  &lt;span class="k"&gt;text-align&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;justify&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="n"&gt;text-rendering&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;optimizeLegibility&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;인디포스트 – &lt;a href="https://www.indiepost.co.kr/"&gt;https://www.indiepost.co.kr/&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="the pinch" src="./images/2018-09/ht-indiepost.png"&gt;
+읽어보면 좋은 글이 많고, 하단에 관련된 글들도 연관성이 높아 음악가들에 대해 알아보기 좋은 사이트라고 생각한다.
+하지만 브런치와 마찬가지로 본문에 사용하는 서체의 획이 너무 얇아 읽기에 힘이 든다.
+게다가 이유는 알 수 없지만, 본문에 &lt;code&gt;text-shadow&lt;/code&gt; 를 지정하고 있다.&lt;/p&gt;
+&lt;p&gt;일반적으로 웹폰트로 많이 사용하는 &lt;code&gt;Noto Sans&lt;/code&gt; 대신, 스포카의 &lt;code&gt;Spoqa Han Sans&lt;/code&gt;를 사용하는 것이 눈에 띈다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#222&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Apple SD Gothic Neo&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Droid Sans&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Spoqa Han Sans&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Arial&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;sans-serif&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;    &lt;span class="c"&gt;/* 1rem */&lt;/span&gt;
+  &lt;span class="k"&gt;font-weight&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;300&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;30.4&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* 1.9rem */&lt;/span&gt;
+  &lt;span class="k"&gt;word-break&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;keep-all&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="n"&gt;text-rendering&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;optimizeLegibility&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;text-shadow&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;rgba&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.004&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kp"&gt;-webkit-&lt;/span&gt;&lt;span class="n"&gt;font-smoothing&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;antialiased&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;미디엄(Medium) – &lt;a href="https://medium.com/"&gt;https://medium.com/&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="Medium" src="./images/2018-09/ht-medium.png"&gt;
+미디엄은 &lt;a href="https://medium.design/"&gt;https://medium.design/&lt;/a&gt;과 &lt;a href="https://medium.engineering"&gt;https://medium.engineering&lt;/a&gt;을 운영하며
+&lt;a href="https://medium.engineering/typography-is-impossible-5872b0c7f891"&gt;Typography is impossible&lt;/a&gt;을 쓰는 등 웹에서의 타이포그래피에 관심이 많은 서비스로 보인다.&lt;/p&gt;
+&lt;p&gt;하지만 한글과 관련된 설정이 하나도 없어 한글로 포스팅하는 경우에는 그다지 좋은 결과를 얻기는 어렵다.
+본문 색상으로 &lt;code&gt;rgba(0, 0, 0, 0.84)&lt;/code&gt;를 지정한 것이 신기하다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;rgba&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mf"&gt;.84&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;medium&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;content&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kc"&gt;serif&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;font&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Georgia&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Cambria&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Times New Roman&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Times&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;21&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;letter-spacing&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;-0.063&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* -.003em */&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;33.18&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;   &lt;span class="c"&gt;/* 1.58 */&lt;/span&gt;
+  &lt;span class="k"&gt;word-break&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;break-word&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;word-wrap&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;break-word&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kp"&gt;-webkit-&lt;/span&gt;&lt;span class="n"&gt;font-smoothing&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;antialiased&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-feature-settings&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;normal&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="n"&gt;text-rendering&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;optimizeSpeed&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;페이스북 노트&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="Facebook note" src="./images/2018-09/ht-facebook-note.png"&gt;
+페이스북도 긴 글을 쓰기 위한 Facebook Note 기능을 제공한다. 하지만 많이 사용하는 기능이 아니라 그런지 적용된 스타일은 많지 않다.
+기본 서체가 &lt;code&gt;Georgia&lt;/code&gt; 하나라니.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#1d2129&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Georgia&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;letter-spacing&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;normal&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;28&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;text-align&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;left&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;word-wrap&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;break-word&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;white-space&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;pre-wrap&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kp"&gt;-webkit-&lt;/span&gt;&lt;span class="n"&gt;font-smoothing&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;antialiased&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;리디북스 – &lt;a href="https://ridibooks.com/"&gt;https://ridibooks.com/&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="Ridibooks" src="./images/2018-09/ht-ridi.png"&gt;
+리디북스는 전용 리더를 제공하기 때문에, 책 본문을 웹 서비스로 제공하지는 않는다.
+하지만 활자가 주 콘텐츠인 서비스인 만큼 책을 소개하는 페이지의 본문을 어떻게 구성하고 있을지 흥미가 있었다.&lt;/p&gt;
+&lt;p&gt;다른 무엇보다 맥에서만 기본 서체로 제공되는 &lt;code&gt;Helvetica Neue&lt;/code&gt;를 최우선 순위로 놓은 것이, 이 페이지를 구성한 사람의 취향을 보여주는 것 같다.
+후순위의 서체들도 예전부터 사용되던 &lt;code&gt;Tahoma&lt;/code&gt;, &lt;code&gt;Geneva&lt;/code&gt;, &lt;code&gt;돋움&lt;/code&gt;보다 앞에 &lt;code&gt;나눔고딕&lt;/code&gt;, &lt;code&gt;arial&lt;/code&gt;을 지정한 것이 서체 유행의 역사를 보는 것 같은 재미가 있다.
+줄바꿈과 관련된 설정은 퍼블리와 같다. 대신 본문의 폭에 비해 서체를 작게 쓰고 있어 덜 거슬리는 편이다.&lt;/p&gt;
+&lt;p&gt;전반적으로 조판에서 사용되는 다양한 기호를 적합하게 사용하고 있지만, 제목을 인용할 때 『사피엔스』/《사피엔스》와 같이 기호를 혼용하고 있는 것은 아쉽다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;           &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#333&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Helvetica Neue&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Apple SD Gothic Neo&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;arial&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="err"&gt;나눔고딕&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Nanum Gothic&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="err"&gt;돋움&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Dotum&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Tahoma&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Geneva&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;sans-serif&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;       &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;letter-spacing&lt;/span&gt;  &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;-0.39&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* -.03em*/&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;23.4&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;   &lt;span class="c"&gt;/* 1.8em */&lt;/span&gt;
+  &lt;span class="k"&gt;word-break&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;keep-all&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;word-wrap&lt;/span&gt;       &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;break-word&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kp"&gt;-webkit-&lt;/span&gt;&lt;span class="n"&gt;font-smoothing&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;antialiased&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;소셜 미디어&lt;/h2&gt;
+&lt;p&gt;카카오스토리나 밴드 등도 알아보고 싶었지만, 웹 서비스가 제대로 제공되지 않거나, 본문이 타이포그래피를 따질 정도로 구성되는 경우가 별로 없어 제외했다.
+페이스북 타임라인이나 트위터도 긴 글이 많지 않아 속성을 알아보는데 큰 의미는 없으나, 단문을 표시하기 위해 어떤 CSS를 사용하는지 참고하면 될 것 같다.&lt;/p&gt;
+&lt;h4&gt;페이스북 – &lt;a href="https://facebook.com"&gt;https://facebook.com&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="Facebook" src="./images/2018-09/ht-facebook.png"&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;       &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#1d2129&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;system-ui&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;apple-system&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;system-ui&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;.SFNSText-Regular&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;sans-serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;   &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;19.32&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* 1.38 */&lt;/span&gt;
+  &lt;span class="k"&gt;word-wrap&lt;/span&gt;   &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;break-word&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kp"&gt;-webkit-&lt;/span&gt;&lt;span class="n"&gt;font-smoothing&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;subpixel-antialiased&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;트위터 – &lt;a href="https://twitter.com"&gt;https://twitter.com&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="Twitter" src="./images/2018-09/ht-twitter.png"&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;       &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#14171a&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Helvetica Neue&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Helvetica&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Arial&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;sans-serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;   &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;text-align&lt;/span&gt;  &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;start&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;word-wrap&lt;/span&gt;   &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;break-word&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;white-space&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;pre-wrap&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kp"&gt;-webkit-&lt;/span&gt;&lt;span class="n"&gt;font-smoothing&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;antialiased&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>I don't like them.</title><link href="https://lqez.github.io/blog/i-dont-like-them.html" rel="alternate"></link><published>2018-08-22T00:00:00+09:00</published><updated>2018-08-22T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2018-08-22:/blog/i-dont-like-them.html</id><summary type="html">&lt;p&gt;회사를 그만둔 이후로 낯선 사람을 만날 기회가 별로 없었는데,
 요 며칠 개발자 컨퍼런스에 참가하며 내가 어떤 사람들을 의식적으로 싫어하는지 좀 더 명확하게 알게 되었다.
 아래에 해당하는 사람들이 틀렸다는 얘기가 아니다. 그냥, 싫다.&lt;/p&gt;
 &lt;h5&gt;자기소개가 긴 사람&lt;/h5&gt;

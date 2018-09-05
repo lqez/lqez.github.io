@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>웹 사이트들의 한글 타이포그래피</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=0.82, minimum-scale=0.82" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta property="og:url" content="https://lqez.github.io/blog/hangul-typo-on-web.html"/>
+    <meta property="og:title" content="웹 사이트들의 한글 타이포그래피"/>
+
+    <link rel="stylesheet" href="https://lqez.github.io/blog/theme/css/main.css" type="text/css" />
+    <link href="https://lqez.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Feature creep designer Atom Feed" />
+    <link rel="apple-touch-icon" href="static/images/icons/fcd-57.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="static/images/icons/fcd-72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="static/images/icons/fcd-114.png"/>
+
+    <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+    <!--[if lte IE 7]>
+        <link rel="stylesheet" type="text/css" media="all" href="https://lqez.github.io/blog/css/ie.css"/>
+        <script src="https://lqez.github.io/blog/js/IE8.js" type="text/javascript"></script><![endif]-->
+
+    <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" media="all" href="https://lqez.github.io/blog/css/ie6.css"/><![endif]-->
+</head>
+<body id="index" class="home">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1&appId=465940413466203";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <header id="banner" class="body">
+        <h1><a href="https://lqez.github.io/blog/">Feature creep designer </a></h1>
+        <h2 id="greeting">Happy day.</h2>
+    </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://lqez.github.io/blog/hangul-typo-on-web.html" rel="bookmark"
+           title="Permalink to 웹 사이트들의 한글 타이포그래피">웹 사이트들의 한글 타이포그래피</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-09-05T00:00:00+09:00">
+                Wed 05 September 2018
+        </abbr>
+
+</footer><!-- /.post-info -->      <p>한글이 주로 사용되는 사이트들 중, 접속 통계 상위권에 있는 곳들과 개인적으로 자주 방문하는 곳를 돌아다니며, 그들이 본문에 사용하고 있는 CSS 값들에 대해 정리해보았다.
+CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 표시가 없는 경우 계산된 값과 지정된 값이 같음을 의미한다.</p>
+<p>이번에 사이트들을 둘러보며 아래 CSS 값들에 대해 더 알아보는 계기가 되어 좋았다.
+웹에서의 타이포그래피에 관심이 있는 분들이라면 이미 알고 있다고 해도, 아래 속성들을 한 번쯤 다시 살펴보기를 추천한다.</p>
+<ul>
+<li><a href="https://developer.mozilla.org/ko/docs/Web/CSS/white-space">white-space</a></li>
+<li><a href="https://developer.mozilla.org/ko/docs/Web/CSS/text-rendering">text-rendering</a></li>
+<li><a href="https://developer.mozilla.org/ko/docs/Web/CSS/font-smooth">font-smooth</a></li>
+<li><a href="https://developer.mozilla.org/ko/docs/Web/CSS/font-feature-settings">font-feature-setting</a></li>
+</ul>
+<hr>
+<h2>뉴스 사이트</h2>
+<h4>다음 뉴스 – <a href="https://media.daum.net/">https://media.daum.net/</a></h4>
+<p><img alt="Daum news" src="./images/2018-09/ht-daum.png">
+다음 뉴스 사이트는 본문 크기를 CSS 파일이 아닌 태그에 인라인 스타일링으로 <code>17px</code> 로 지정한 것과, 자간만 <code>em</code> 단위로 지정한 것이 눈에 띈다.
+서체에 대해서는 영문 서체는 특별히 신경쓰지 않고 한글 서체 내에 포함된 서체를 사용하도록 하였다.
+색상은 다른 사이트들에서도 많이 사용하는 본문 색상인 <code>#333</code>을 사용하고 있다.</p>
+<p>서체로 <code>AppleSDGothicNeo-Regular</code>가 최우선으로 지정되어 있는데, 이는 아이폰 사용자들을 의식한 결과로 생각되며,
+<code>맑은 고딕</code> 계열을 별도로 지정하여 윈도우 사용자들을 고려하고 있음을 알 수 있다.</p>
+<p><code>word-wrap</code> / <code>word-break</code> 그리고 요즘의 웹사이트에서 가독성 향상의 목적으로 사용하는 웹 브라우저 렌더링 옵션 지정이 없는 것이 특이하다.</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="k">color</span>          <span class="p">:</span> <span class="mh">#333</span><span class="p">;</span>
+  <span class="k">font-family</span>    <span class="p">:</span> <span class="n">AppleSDGothicNeo-Regular</span><span class="p">,</span> <span class="s2">&quot;Malgun Gothic&quot;</span><span class="p">,</span> <span class="s2">&quot;맑은 고딕&quot;</span><span class="p">,</span> <span class="n">dotum</span><span class="p">,</span> <span class="err">돋움</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">;</span>
+  <span class="k">font-size</span>      <span class="p">:</span> <span class="mi">17</span><span class="kt">px</span><span class="p">;</span>      <span class="c">/* inline style */</span>
+  <span class="k">letter-spacing</span> <span class="p">:</span> <span class="mf">-0.32</span><span class="kt">px</span><span class="p">;</span>   <span class="c">/* -0.02em */</span>
+  <span class="k">line-height</span>    <span class="p">:</span> <span class="mf">27.625</span><span class="kt">px</span><span class="p">;</span>  <span class="c">/* 1.625 */</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4>네이버 뉴스 – <a href="https://news.naver.com/">https://news.naver.com/</a></h4>
+<p><img alt="Naver news" src="./images/2018-09/ht-naver.png">
+네이버는 최근에는 잘 사용하지 않는 완전한 검정색을 본문 색상으로 사용한 것이 눈에 뛴다.
+서체 지정과 크기, 자간과 행간이 다음 뉴스 사이트와 매우 유사하다.
+일반적으로 정보성 글 뭉치를 읽을 때 이 정도가 표준적으로 통용될 수 있다고 생각해도 무방할 것 같다.</p>
+<p>네이버는 모든 단위에 <code>px</code>를 지정해서 사용하고 있다.</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="k">color</span>          <span class="p">:</span> <span class="mh">#000</span><span class="p">;</span>
+  <span class="k">font-family</span>    <span class="p">:</span> <span class="s2">&quot;Helvetica Neue&quot;</span><span class="p">,</span> <span class="s2">&quot;Apple SD Gothic Neo&quot;</span><span class="p">,</span> <span class="s2">&quot;Malgun Gothic&quot;</span><span class="p">,</span> <span class="s2">&quot;맑은 고딕&quot;</span><span class="p">,</span> <span class="n">Dotum</span><span class="p">,</span> <span class="err">돋움</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">;</span>
+  <span class="k">font-size</span>      <span class="p">:</span> <span class="mi">17</span><span class="kt">px</span><span class="p">;</span> 
+  <span class="k">text-align</span>     <span class="p">:</span> <span class="kc">left</span><span class="p">;</span>
+  <span class="k">letter-spacing</span> <span class="p">:</span> <span class="mf">-0.3</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">line-height</span>    <span class="p">:</span> <span class="mi">27</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">word-wrap</span>      <span class="p">:</span> <span class="kc">break-word</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4>네이트 뉴스 – <a href="http://news.nate.com/">http://news.nate.com/</a></h4>
+<p><img alt="Naver news" src="./images/2018-09/ht-nate.png">
+네이트 뉴스는 평소에는 잘 방문하지 않지만, 위 두 뉴스 사이트를 제외한 다른 신문, 매체 사이트는 광고 때문에 본문을 읽을 엄두가 나지 않아 울며 겨자먹기로 알아보았다.</p>
+<p>요즘의 사이트 답지 않게 <code>굴림</code>, <code>돋움</code>만 지정하고 있으며, 서체 크기도 <code>14px</code>로 최근의 추세보다는 다소 작게 지정되어 있다.
+다만 <code>word-break</code>와 <code>word-wrap</code>은 별도로 지정되어 있는 것이, 이 사이트를 처음 만들던 당시에 가독성에 대해 고민한 흔적으로 보인다</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="k">color</span>          <span class="p">:</span> <span class="mh">#222</span><span class="p">;</span>
+  <span class="k">font-family</span>    <span class="p">:</span> <span class="n">Gulim</span><span class="p">,</span> <span class="n">Dotum</span><span class="p">,</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="kc">sans-serif</span> <span class="p">;</span>
+  <span class="k">font-size</span>      <span class="p">:</span> <span class="mi">14</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">letter-spacing</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">line-height</span>    <span class="p">:</span> <span class="mf">23.8</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* 1.7 */</span>
+  <span class="k">word-break</span>     <span class="p">:</span> <span class="n">break-all</span><span class="p">;</span>
+  <span class="k">word-wrap</span>      <span class="p">:</span> <span class="kc">break-word</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<hr>
+<h2>읽을거리</h2>
+<p>카카오 1분이나 네이버 블로그 사이트도 알아보려고 했으나, 
+본문 없이 첨부 이미지로 가득차 있는 경우가 많고, 본문이 있다고 해도 강제적인 줄바꿈과 중앙 정렬을 사용하고 있어 제외했다.</p>
+<h4>브런치 – <a href="https://brunch.co.kr">https://brunch.co.kr</a></h4>
+<p><img alt="Brunch" src="./images/2018-09/ht-brunch.png">
+개인별 호불호는 당연히 있겠지만, 브런치는 글을 읽기에 가장 불편한 사이트 중 하나라고 생각한다.
+우선 <code>Noto Sans Light</code>와 같은 획이 얇은 서체를 본문 기본 서체로 사용하고 있고, 글씨 크기도 <code>11pt</code>로 작은데다,
+자간을 <code>0.8px</code>로 지정하여 낱글자 간격이 넓어 잘 읽히지 않는다.</p>
+<p>비교적 나중에 만들어진 사이트 답게 <code>-webkit-font-smoothing</code> 의 지정 등이 눈에 띈다.</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="k">color</span>          <span class="p">:</span> <span class="mh">#333</span><span class="p">;</span>
+  <span class="k">font-family</span>    <span class="p">:</span> <span class="s2">&quot;Noto Sans Light&quot;</span><span class="p">,</span> <span class="s2">&quot;Malgun Gothic&quot;</span><span class="p">,</span> <span class="kc">sans-serif</span> <span class="p">;</span>
+  <span class="k">font-size</span>      <span class="p">:</span> <span class="mf">14.6667</span><span class="kt">px</span><span class="p">;</span>   <span class="c">/* 11pt */</span>
+  <span class="k">letter-spacing</span> <span class="p">:</span> <span class="mf">0.8</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">line-height</span>    <span class="p">:</span> <span class="mf">29.3333</span><span class="kt">px</span><span class="p">;</span>   <span class="c">/* 22pt */</span>
+  <span class="k">text-align</span>     <span class="p">:</span> <span class="kc">left</span><span class="p">;</span>
+  <span class="k">word-break</span>     <span class="p">:</span> <span class="kc">break-word</span><span class="p">;</span>
+  <span class="k">word-wrap</span>      <span class="p">:</span> <span class="kc">break-word</span><span class="p">;</span>
+
+  <span class="kp">-webkit-</span><span class="n">font-smoothing</span><span class="p">:</span> <span class="n">antialiased</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4>퍼블리 – <a href="https://publy.co/">https://publy.co/</a></h4>
+<p><img alt="Publy" src="./images/2018-09/ht-publy.png">
+글을 유료로 판매하는 모델을 실험하는 퍼블리는 아무래도 한글 가독성에 초점을 맞추었을 것으로 예상되었다.
+다른 사이트들과 다르게 <code>word-break: keep-all</code>을 지정한 것이 가장 눈에 띄고,
+한글 서체는 시스템 폰트를 사용하지 않고 모두 <code>Noto Sans KR</code>로 지정하여 사용자 경험을 기기마다 다르게 주지 않으려 한 것으로 보인다.</p>
+<p>서체 크기가 <code>18px</code>로 가장 크고 <code>keep-all</code>을 사용하여 모바일 기기에서 줄바꿈이 심하고 줄 끝이 둘쭉날쭉 한 것이 눈에 걸린다.</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="k">color</span>          <span class="p">:</span> <span class="mh">#333</span><span class="p">;</span>
+  <span class="k">font-family</span>    <span class="p">:</span> <span class="s2">&quot;Noto Sans KR&quot;</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">;</span>
+  <span class="k">font-size</span>      <span class="p">:</span> <span class="mi">18</span><span class="kt">px</span><span class="p">;</span>    <span class="c">/* 1.125rem */</span>
+  <span class="k">letter-spacing</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>       <span class="c">/* normal */</span>
+  <span class="k">line-height</span>    <span class="p">:</span> <span class="mf">32.4</span><span class="kt">px</span><span class="p">;</span>  <span class="c">/* 1.8 */</span>
+  <span class="k">text-align</span>     <span class="p">:</span> <span class="kc">left</span><span class="p">;</span>
+  <span class="k">word-break</span>     <span class="p">:</span> <span class="n">keep-all</span><span class="p">;</span>
+  <span class="k">word-wrap</span>      <span class="p">:</span> <span class="kc">break-word</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4>핀치 – <a href="https://thepin.ch/">https://thepin.ch/</a></h4>
+<p><img alt="the pinch" src="./images/2018-09/ht-thepinch.png">
+여성을 위한 미디어를 표방하는 핀치는 전반적으로 색 사용이 많고,
+페이지 전환시마다 그라데이션에 애니메이션 포함된 막을 사용하여 다소 정신 없다는 인상을 주는 것에 비해 본문은 얌전하고 밀도가 높다.</p>
+<p>밀도가 높은 것은 자간을 <code>-1px</code> 지정하고, 양쪽 맞춤에 줄 바꿈을 브라우저 기본으로 사용했기 때문이다.
+글이 빽빽한 느낌이 들어 오래 읽기에는 조금 부담스럽다.</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="k">color</span>          <span class="p">:</span> <span class="mh">#313233</span><span class="p">;</span>
+  <span class="k">font-family</span>    <span class="p">:</span> <span class="s2">&quot;Noto Sans&quot;</span><span class="p">,</span> <span class="s2">&quot;Apple SD Gothic Neo&quot;</span><span class="p">,</span> <span class="s2">&quot;Malgun Gothic&quot;</span><span class="p">,</span> <span class="n">Dotum</span><span class="p">;</span>
+  <span class="k">font-size</span>      <span class="p">:</span> <span class="mi">17</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">letter-spacing</span> <span class="p">:</span> <span class="mi">-1</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">line-height</span>    <span class="p">:</span> <span class="mf">30.6</span><span class="kt">px</span><span class="p">;</span>  <span class="c">/* 1.8em */</span>
+  <span class="k">text-align</span>     <span class="p">:</span> <span class="kc">justify</span><span class="p">;</span>
+  <span class="n">text-rendering</span> <span class="p">:</span> <span class="kc">optimizeLegibility</span> <span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4>인디포스트 – <a href="https://www.indiepost.co.kr/">https://www.indiepost.co.kr/</a></h4>
+<p><img alt="the pinch" src="./images/2018-09/ht-indiepost.png">
+읽어보면 좋은 글이 많고, 하단에 관련된 글들도 연관성이 높아 음악가들에 대해 알아보기 좋은 사이트라고 생각한다.
+하지만 브런치와 마찬가지로 본문에 사용하는 서체의 획이 너무 얇아 읽기에 힘이 든다.
+게다가 이유는 알 수 없지만, 본문에 <code>text-shadow</code> 를 지정하고 있다.</p>
+<p>일반적으로 웹폰트로 많이 사용하는 <code>Noto Sans</code> 대신, 스포카의 <code>Spoqa Han Sans</code>를 사용하는 것이 눈에 띈다.</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="k">color</span>          <span class="p">:</span> <span class="mh">#222</span><span class="p">;</span>
+  <span class="k">font-family</span>    <span class="p">:</span> <span class="s2">&quot;Apple SD Gothic Neo&quot;</span><span class="p">,</span> <span class="s2">&quot;Droid Sans&quot;</span><span class="p">,</span> <span class="s2">&quot;Spoqa Han Sans&quot;</span><span class="p">,</span> <span class="n">Arial</span><span class="p">,</span> <span class="kc">sans-serif</span> <span class="p">;</span>
+  <span class="k">font-size</span>      <span class="p">:</span> <span class="mi">16</span><span class="kt">px</span><span class="p">;</span>    <span class="c">/* 1rem */</span>
+  <span class="k">font-weight</span>    <span class="p">:</span> <span class="mi">300</span><span class="p">;</span>
+  <span class="k">line-height</span>    <span class="p">:</span> <span class="mf">30.4</span><span class="kt">px</span><span class="p">;</span>  <span class="c">/* 1.9rem */</span>
+  <span class="k">word-break</span>     <span class="p">:</span> <span class="n">keep-all</span><span class="p">;</span>
+  <span class="n">text-rendering</span> <span class="p">:</span> <span class="kc">optimizeLegibility</span> <span class="p">;</span>
+  <span class="k">text-shadow</span>    <span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.004</span><span class="p">)</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">1</span><span class="kt">px</span> <span class="p">;</span>
+
+  <span class="kp">-webkit-</span><span class="n">font-smoothing</span><span class="p">:</span> <span class="n">antialiased</span> <span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4>미디엄(Medium) – <a href="https://medium.com/">https://medium.com/</a></h4>
+<p><img alt="Medium" src="./images/2018-09/ht-medium.png">
+미디엄은 <a href="https://medium.design/">https://medium.design/</a>과 <a href="https://medium.engineering">https://medium.engineering</a>을 운영하며
+<a href="https://medium.engineering/typography-is-impossible-5872b0c7f891">Typography is impossible</a>을 쓰는 등 웹에서의 타이포그래피에 관심이 많은 서비스로 보인다.</p>
+<p>하지만 한글과 관련된 설정이 하나도 없어 한글로 포스팅하는 경우에는 그다지 좋은 결과를 얻기는 어렵다.
+본문 색상으로 <code>rgba(0, 0, 0, 0.84)</code>를 지정한 것이 신기하다.</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="k">color</span>          <span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">.84</span><span class="p">);</span>
+  <span class="k">font-family</span>    <span class="p">:</span> <span class="kc">medium</span><span class="o">-</span><span class="k">content</span><span class="o">-</span><span class="kc">serif</span><span class="o">-</span><span class="k">font</span><span class="p">,</span> <span class="n">Georgia</span><span class="p">,</span> <span class="n">Cambria</span><span class="p">,</span> <span class="s2">&quot;Times New Roman&quot;</span><span class="p">,</span> <span class="n">Times</span><span class="p">,</span> <span class="kc">serif</span><span class="p">;</span>
+  <span class="k">font-size</span>      <span class="p">:</span> <span class="mi">21</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">letter-spacing</span> <span class="p">:</span> <span class="mf">-0.063</span><span class="kt">px</span><span class="p">;</span>  <span class="c">/* -.003em */</span>
+  <span class="k">line-height</span>    <span class="p">:</span> <span class="mf">33.18</span><span class="kt">px</span><span class="p">;</span>   <span class="c">/* 1.58 */</span>
+  <span class="k">word-break</span>     <span class="p">:</span> <span class="kc">break-word</span><span class="p">;</span>
+  <span class="k">word-wrap</span>      <span class="p">:</span> <span class="kc">break-word</span><span class="p">;</span>
+
+  <span class="kp">-webkit-</span><span class="n">font-smoothing</span><span class="p">:</span> <span class="n">antialiased</span><span class="p">;</span>
+  <span class="k">font-feature-settings</span><span class="p">:</span> <span class="kc">normal</span><span class="p">;</span>
+  <span class="n">text-rendering</span><span class="p">:</span> <span class="kc">optimizeSpeed</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4>페이스북 노트</h4>
+<p><img alt="Facebook note" src="./images/2018-09/ht-facebook-note.png">
+페이스북도 긴 글을 쓰기 위한 Facebook Note 기능을 제공한다. 하지만 많이 사용하는 기능이 아니라 그런지 적용된 스타일은 많지 않다.
+기본 서체가 <code>Georgia</code> 하나라니.</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="k">color</span>          <span class="p">:</span> <span class="mh">#1d2129</span><span class="p">;</span>
+  <span class="k">font-family</span>    <span class="p">:</span> <span class="n">Georgia</span><span class="p">,</span> <span class="kc">serif</span><span class="p">;</span>
+  <span class="k">font-size</span>      <span class="p">:</span> <span class="mi">17</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">letter-spacing</span> <span class="p">:</span> <span class="kc">normal</span><span class="p">;</span>
+  <span class="k">line-height</span>    <span class="p">:</span> <span class="mi">28</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">text-align</span>     <span class="p">:</span> <span class="kc">left</span><span class="p">;</span>
+  <span class="k">word-wrap</span>      <span class="p">:</span> <span class="kc">break-word</span><span class="p">;</span>
+  <span class="k">white-space</span>    <span class="p">:</span> <span class="kc">pre-wrap</span><span class="p">;</span>
+
+  <span class="kp">-webkit-</span><span class="n">font-smoothing</span><span class="p">:</span> <span class="n">antialiased</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4>리디북스 – <a href="https://ridibooks.com/">https://ridibooks.com/</a></h4>
+<p><img alt="Ridibooks" src="./images/2018-09/ht-ridi.png">
+리디북스는 전용 리더를 제공하기 때문에, 책 본문을 웹 서비스로 제공하지는 않는다.
+하지만 활자가 주 콘텐츠인 서비스인 만큼 책을 소개하는 페이지의 본문을 어떻게 구성하고 있을지 흥미가 있었다.</p>
+<p>다른 무엇보다 맥에서만 기본 서체로 제공되는 <code>Helvetica Neue</code>를 최우선 순위로 놓은 것이, 이 페이지를 구성한 사람의 취향을 보여주는 것 같다.
+후순위의 서체들도 예전부터 사용되던 <code>Tahoma</code>, <code>Geneva</code>, <code>돋움</code>보다 앞에 <code>나눔고딕</code>, <code>arial</code>을 지정한 것이 서체 유행의 역사를 보는 것 같은 재미가 있다.
+줄바꿈과 관련된 설정은 퍼블리와 같다. 대신 본문의 폭에 비해 서체를 작게 쓰고 있어 덜 거슬리는 편이다.</p>
+<p>전반적으로 조판에서 사용되는 다양한 기호를 적합하게 사용하고 있지만, 제목을 인용할 때 『사피엔스』/《사피엔스》와 같이 기호를 혼용하고 있는 것은 아쉽다.</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="k">color</span>           <span class="p">:</span> <span class="mh">#333</span><span class="p">;</span>
+  <span class="k">font-family</span>     <span class="p">:</span> <span class="s2">&quot;Helvetica Neue&quot;</span><span class="p">,</span> <span class="s2">&quot;Apple SD Gothic Neo&quot;</span><span class="p">,</span> <span class="n">arial</span><span class="p">,</span> <span class="err">나눔고딕</span><span class="p">,</span> <span class="s2">&quot;Nanum Gothic&quot;</span><span class="p">,</span> <span class="err">돋움</span><span class="p">,</span> <span class="n">Dotum</span><span class="p">,</span> <span class="n">Tahoma</span><span class="p">,</span> <span class="n">Geneva</span><span class="p">,</span> <span class="kc">sans-serif</span> <span class="p">;</span>
+  <span class="k">font-size</span>       <span class="p">:</span> <span class="mi">13</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">letter-spacing</span>  <span class="p">:</span> <span class="mf">-0.39</span><span class="kt">px</span><span class="p">;</span>  <span class="c">/* -.03em*/</span>
+  <span class="k">line-height</span>     <span class="p">:</span> <span class="mf">23.4</span><span class="kt">px</span><span class="p">;</span>   <span class="c">/* 1.8em */</span>
+  <span class="k">word-break</span>      <span class="p">:</span> <span class="n">keep-all</span><span class="p">;</span>
+  <span class="k">word-wrap</span>       <span class="p">:</span> <span class="kc">break-word</span><span class="p">;</span>
+
+  <span class="kp">-webkit-</span><span class="n">font-smoothing</span><span class="p">:</span> <span class="n">antialiased</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<hr>
+<h2>소셜 미디어</h2>
+<p>카카오스토리나 밴드 등도 알아보고 싶었지만, 웹 서비스가 제대로 제공되지 않거나, 본문이 타이포그래피를 따질 정도로 구성되는 경우가 별로 없어 제외했다.
+페이스북 타임라인이나 트위터도 긴 글이 많지 않아 속성을 알아보는데 큰 의미는 없으나, 단문을 표시하기 위해 어떤 CSS를 사용하는지 참고하면 될 것 같다.</p>
+<h4>페이스북 – <a href="https://facebook.com">https://facebook.com</a></h4>
+<p><img alt="Facebook" src="./images/2018-09/ht-facebook.png"></p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="k">color</span>       <span class="p">:</span> <span class="mh">#1d2129</span><span class="p">;</span>
+  <span class="k">font-family</span> <span class="p">:</span> <span class="n">system-ui</span><span class="p">,</span> <span class="o">-</span><span class="n">apple-system</span><span class="p">,</span> <span class="n">system-ui</span><span class="p">,</span> <span class="s2">&quot;.SFNSText-Regular&quot;</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">;</span>
+  <span class="k">font-size</span>   <span class="p">:</span> <span class="mi">14</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">line-height</span> <span class="p">:</span> <span class="mf">19.32</span><span class="kt">px</span><span class="p">;</span>  <span class="c">/* 1.38 */</span>
+  <span class="k">word-wrap</span>   <span class="p">:</span> <span class="kc">break-word</span><span class="p">;</span>
+
+  <span class="kp">-webkit-</span><span class="n">font-smoothing</span><span class="p">:</span> <span class="n">subpixel-antialiased</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4>트위터 – <a href="https://twitter.com">https://twitter.com</a></h4>
+<p><img alt="Twitter" src="./images/2018-09/ht-twitter.png"></p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="k">color</span>       <span class="p">:</span> <span class="mh">#14171a</span><span class="p">;</span>
+  <span class="k">font-family</span> <span class="p">:</span> <span class="s2">&quot;Helvetica Neue&quot;</span><span class="p">,</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="n">Arial</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">;</span>
+  <span class="k">font-size</span>   <span class="p">:</span> <span class="mi">14</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">line-height</span> <span class="p">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">text-align</span>  <span class="p">:</span> <span class="kc">start</span><span class="p">;</span>
+  <span class="k">word-wrap</span>   <span class="p">:</span> <span class="kc">break-word</span><span class="p">;</span>
+  <span class="k">white-space</span> <span class="p">:</span> <span class="kc">pre-wrap</span><span class="p">;</span>
+
+  <span class="kp">-webkit-</span><span class="n">font-smoothing</span><span class="p">:</span> <span class="n">antialiased</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<footer class="post-info-footer">
+        <p>
+        In <a href="https://lqez.github.io/blog/category/2018-09.html">2018-09</a>. 
+        </p>
+</footer><!-- /.post-info -->    </div><!-- /.entry-content -->
+    <div class="fb-comments" data-href="https://lqez.github.io/blog/hangul-typo-on-web.html" data-width="0" data-num-posts="5"></div>
+
+  </article>
+</section>
+    <section id="extras" class="body">
+    </section><!-- /#extras -->
+
+    <footer id="contentinfo" class="body">
+    <!--
+        <nav><ul>
+            <li ><a href="https://lqez.github.io/blog/category/2013-02.html">2013-02</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2013-04.html">2013-04</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2013-05.html">2013-05</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2013-08.html">2013-08</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2013-10.html">2013-10</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2014-07.html">2014-07</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2016-08.html">2016-08</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2016-09.html">2016-09</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2017-05.html">2017-05</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2017-08.html">2017-08</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2017-10.html">2017-10</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2017-11.html">2017-11</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2017-12.html">2017-12</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2018-01.html">2018-01</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2018-04.html">2018-04</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2018-05.html">2018-05</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2018-08.html">2018-08</a></li>
+            <li class="active"><a href="https://lqez.github.io/blog/category/2018-09.html">2018-09</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/uncategorized.html">Uncategorized</a></li>
+        </ul></nav>
+        -->
+        <address id="about" class="vcard body">
+        Published by <a href="http://getpelican.com/">Pelican</a> / <a href="http://python.org">Python</a>.
+        <p id="theme"><a href="https://github.com/lqez/42signals-pelican-theme">42 signals theme by lqez</a></p>
+        </address><!-- /#about -->
+    </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37711911-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+</body>
+<script language="javascript">
+var weekday = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+var dayOfWeek = weekday[new Date().getDay()];
+document.getElementById('greeting').innerHTML = "Happy " + dayOfWeek + ".";
+</script>
+</html>
