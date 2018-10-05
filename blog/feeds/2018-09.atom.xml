@@ -25,7 +25,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
   &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#333&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
   &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;AppleSDGothicNeo-Regular&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Malgun Gothic&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;맑은 고딕&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dotum&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="err"&gt;돋움&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;sans-serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
   &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;      &lt;span class="c"&gt;/* inline style */&lt;/span&gt;
-  &lt;span class="k"&gt;letter-spacing&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;-0.32&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;   &lt;span class="c"&gt;/* -0.02em */&lt;/span&gt;
+  &lt;span class="k"&gt;letter-spacing&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;-0.34&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;   &lt;span class="c"&gt;/* -0.02em */&lt;/span&gt;
   &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;27.625&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* 1.625 */&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -50,7 +50,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 
 
 &lt;h4&gt;네이트 뉴스 – &lt;a href="http://news.nate.com/"&gt;http://news.nate.com/&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;img alt="Naver news" src="./images/2018-09/ht-nate.png"&gt;
+&lt;p&gt;&lt;img alt="Nate news" src="./images/2018-09/ht-nate.png"&gt;
 네이트 뉴스는 평소에는 잘 방문하지 않지만, 위 두 뉴스 사이트를 제외한 다른 신문, 매체 사이트는 광고 때문에 본문을 읽을 엄두가 나지 않아 울며 겨자먹기로 알아보았다.&lt;/p&gt;
 &lt;p&gt;요즘의 사이트 답지 않게 &lt;code&gt;굴림&lt;/code&gt;, &lt;code&gt;돋움&lt;/code&gt;만 지정하고 있으며, 서체 크기도 &lt;code&gt;14px&lt;/code&gt;로 최근의 추세보다는 다소 작게 지정되어 있다.
 다만 &lt;code&gt;word-break&lt;/code&gt;와 &lt;code&gt;word-wrap&lt;/code&gt;은 별도로 지정되어 있는 것이, 이 사이트를 처음 만들던 당시에 가독성에 대해 고민한 흔적으로 보인다&lt;/p&gt;
@@ -129,7 +129,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 
 
 &lt;h4&gt;인디포스트 – &lt;a href="https://www.indiepost.co.kr/"&gt;https://www.indiepost.co.kr/&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;img alt="the pinch" src="./images/2018-09/ht-indiepost.png"&gt;
+&lt;p&gt;&lt;img alt="indiepost" src="./images/2018-09/ht-indiepost.png"&gt;
 읽어보면 좋은 글이 많고, 하단에 관련된 글들도 연관성이 높아 음악가들에 대해 알아보기 좋은 사이트라고 생각한다.
 하지만 브런치와 마찬가지로 본문에 사용하는 서체의 획이 너무 가늘어 읽기에 힘이 든다.
 게다가 이유는 알 수 없지만, 본문에 &lt;code&gt;text-shadow&lt;/code&gt; 를 지정하고 있다.&lt;/p&gt;

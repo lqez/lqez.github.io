@@ -1,5 +1,378 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/all-ko.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2018-09-05T00:00:00+09:00</updated><entry><title>웹 사이트들의 한글 타이포그래피</title><link href="https://lqez.github.io/blog/hangul-typo-on-web.html" rel="alternate"></link><published>2018-09-05T00:00:00+09:00</published><updated>2018-09-05T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2018-09-05:/blog/hangul-typo-on-web.html</id><summary type="html">&lt;p&gt;한글이 주로 사용되는 사이트들 중, 접속 통계 상위권 사이트들과 개인적으로 자주 방문하는 곳들을 돌아다니며, 그들이 본문에 사용하고 있는 CSS 값들에 대해 정리해보았다.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/all-ko.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2018-10-03T00:00:00+09:00</updated><entry><title>모바일 웹 사이트들의 한글 타이포그래피</title><link href="https://lqez.github.io/blog/hangul-typography-on-mobile-web.html" rel="alternate"></link><published>2018-10-03T00:00:00+09:00</published><updated>2018-10-03T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2018-10-03:/blog/hangul-typography-on-mobile-web.html</id><summary type="html">&lt;p&gt;&lt;a href="https://lqez.github.io/blog/hangul-typo-on-web.html"&gt;지난 글&lt;/a&gt;에서는 한글이 주로 사용되는 웹 사이트들을 데스크탑 기기(이하 일반)에서 봤을 때 어떻게 표현하는지 정리했었다. 이번에는 모바일 기기에서 해당 웹 사이트들을 접속했을 때 어떻게 한글 서식을 지정하는지 알아보았다.
+CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 표시가 없는 경우 계산된 값과 지정된 값이 같음을 의미한다.&lt;/p&gt;
+&lt;p&gt;이번에는 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://lqez.github.io/blog/hangul-typo-on-web.html"&gt;지난 글&lt;/a&gt;에서는 한글이 주로 사용되는 웹 사이트들을 데스크탑 기기(이하 일반)에서 봤을 때 어떻게 표현하는지 정리했었다. 이번에는 모바일 기기에서 해당 웹 사이트들을 접속했을 때 어떻게 한글 서식을 지정하는지 알아보았다.
+CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 표시가 없는 경우 계산된 값과 지정된 값이 같음을 의미한다.&lt;/p&gt;
+&lt;p&gt;이번에는 본문 뿐 아니라 제목에 적용된 CSS도 함께 찾아봤다. 화면은 iPhone X 기본 웹 브라우저인 Safari에서 직접 캡춰하였으며 정사각형으로 화면을 잘라 왼쪽엔 제목 영역, 오른쪽에는 본문 영역으로 매치하였다. CSS 값은 크롬의 &lt;a href="https://developers.google.com/web/tools/chrome-devtools/device-mode"&gt;디바이스 모드를 통한 휴대기기 시뮬레이션&lt;/a&gt;과 iPhone을 macOS Safari의 &lt;a href="https://appletoolbox.com/2014/05/use-web-inspector-debug-mobile-safari/"&gt;Web Inspector&lt;/a&gt;와 연결해 이중으로 확인하였다. 일반 페이지에서와 다른 부분을 강조하여 정리해보았다.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Web Insepction" src="./images/2018-10/htm-webinspector.jpg"&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4&gt;다음 뉴스 모바일 – &lt;a href="https://m.media.daum.net"&gt;https://m.media.daum.net&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="Daum news" src="./images/2018-10/htm-daum.jpg"&gt;
+일반 페이지에서는 &lt;code&gt;AppleSDGothicNeo-Regular&lt;/code&gt;를 최우선 서체로 사용했던 것과는 다르게, &lt;code&gt;AppleSDGothicNeo-Light&lt;/code&gt;를 제목과 본문에 모두 사용하고 있다. 일반 페이지에서 문자열 색상으로 &lt;code&gt;#333&lt;/code&gt;을 사용했지만, 모바일에서는 제목과 본문 색상을 완전한 검정인 &lt;code&gt;#000&lt;/code&gt;로 쓰고 있다. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;/* 제목 */&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#000&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;AppleSDGothicNeo-Light&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;HelveticaNeue&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Malgun Gothic&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;맑은 고딕&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;sans-serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-weight&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;normal&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;letter-spacing&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;-1&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;29&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;/* 본문 */&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#000&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;AppleSDGothicNeo-Light&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;HelveticaNeue&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Malgun Gothic&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;맑은 고딕&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;sans-serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;letter-spacing&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;-0.34&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;   &lt;span class="c"&gt;/* -0.02em */&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;27.625&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* 1.625 */&lt;/span&gt;
+
+  &lt;span class="k"&gt;word-break&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;break-all&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;word-wrap&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;break-word&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;네이버 뉴스 모바일 – &lt;a href="https://m.news.naver.com/"&gt;https://m.news.naver.com/&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="Naver news" src="./images/2018-10/htm-naver.jpg"&gt;
+다음이 일반 페이지보다 모바일 페이지에서 더 가는 서체와 진한 색을 쓴 것과는 달리, 네이버는 모바일에서 같은 종류의 서체에 조금 더 어두운 색상인 &lt;code&gt;#141414&lt;/code&gt;를 사용한다. 일반 페이지에서는 &lt;code&gt;맑은 고딕&lt;/code&gt; 계열을 후순위로 두었지만, 모바일에서는 지원 가능성이 낮으니 후보에서 제외하였다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;/* 제목 */&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#141414&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;HelveticaNeue&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AppleSDGothicNeo-Regular&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;sans-serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;24&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-weight&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;normal&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;letter-spacing&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;-0.3&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;31&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;/* 본문 */&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#141414&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;HelveticaNeue&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AppleSDGothicNeo-Regular&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;sans-serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;letter-spacing&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;-0.3&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;26.52&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* 1.56 */&lt;/span&gt;
+
+  &lt;span class="k"&gt;word-break&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;break-all&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;word-wrap&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;break-word&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;네이트 뉴스 – &lt;a href="http://news.nate.com/"&gt;http://news.nate.com/&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="Nate news" src="./images/2018-10/htm-nate.jpg"&gt;
+일반 페이지에서 최근의 흐름과는 다르게 예전에 만들어진 것 같은 스타일을 사용하던 네이트도, 모바일 페이지에서는 &lt;code&gt;Apple SD Gothic Neo&lt;/code&gt;를 별도 지정하고 적당한 서체 크기를 사용하는 등 최소한의 조치를 하였다. 특이한 것은 브라우저 정보에 따라 &lt;code&gt;body&lt;/code&gt; 태그에 &lt;code&gt;android&lt;/code&gt; 또는 &lt;code&gt;safari&lt;/code&gt;, &lt;code&gt;ip6&lt;/code&gt; 등의 클래스를 추가로 지정하는데, 특별히 &lt;code&gt;.safari *&lt;/code&gt; 클래스들에 대해 &lt;code&gt;font-weight: 300&lt;/code&gt;을 지정하여 보다 가늘게 표기되도록 한 점이다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- Pixel 2 XL로 에뮬레이션 한 경우 --&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;body&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;view_pg android&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;body&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;data-gr-c-s-loaded&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="c"&gt;&amp;lt;!-- iPhone X로 에뮬레이션 한 경우 --&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;body&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;view_pg safari ip6&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;body&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;data-gr-c-s-loaded&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;/* 제목 */&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#000&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Helvetica Neue&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Apple SD Gothic Neo&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;26&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-weight&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;400&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;32&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="k"&gt;word-wrap&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;break-word&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;/* 본문 */&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#222&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Helvetica Neue&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Apple SD Gothic Neo&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-weight&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;400&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;26.35&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* 1.55em */&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="k"&gt;word-wrap&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;break-word&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;/* 사파리 한정 */&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;safari&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;font-weight&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;300&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;브런치 – &lt;a href="https://brunch.co.kr"&gt;https://brunch.co.kr&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="Brunch" src="./images/2018-10/htm-brunch.jpg"&gt;
+일반 페이지에서 &lt;code&gt;Noto Sans Light&lt;/code&gt; 서체를 지정하여 지나치게 가는 글자가 출력되도록 한 브런치는 모바일에서도 본문에 &lt;code&gt;Apple SD Gothic Neo UltraLight&lt;/code&gt;를 사용하고 있다. 게다가 서체가 없는 경우를 대비해 &lt;code&gt;font-weight: 100&lt;/code&gt;을 지정하고 있는데, 그나마 레티나 디스플레이에서의 해당 서체가 그럭저럭 읽을만 하여 일반 페이지에서보다는 괜찮은 결과를 보여주고 있다. 모바일 페이지에서도 &lt;code&gt;user-select: none&lt;/code&gt;을 통해 문자열 선택을 방지하고 있는데, 이 조치가 얼마나 효과적인지는 궁금하다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;/* 제목 */&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#fff&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;applesdgothicneo-ultralight&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;24&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* 18pt */&lt;/span&gt;
+  &lt;span class="k"&gt;font-weight&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;letter-spacing&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;-1&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;24&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* 18pt */&lt;/span&gt;
+
+  &lt;span class="k"&gt;white-space&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;normal&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;/* 본문 */&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#1b1b1b&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;applesdgothicneo-ultralight&lt;/span&gt;&lt;span class="cp"&gt;!important&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;17.333333&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* 13pt!important */&lt;/span&gt;
+  &lt;span class="k"&gt;font-weight&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="cp"&gt;!important&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;28&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;         &lt;span class="c"&gt;/* 21pt!important */&lt;/span&gt;
+
+  &lt;span class="k"&gt;user-select&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;none&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;word-break&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;break-all&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;퍼블리 – &lt;a href="https://publy.co/"&gt;https://publy.co/&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="Publy" src="./images/2018-10/htm-publy.jpg"&gt;
+일반 페이지에서 &lt;code&gt;Noto Sans&lt;/code&gt;를 사용했던 퍼블리는 모바일에서는 유사 서체인 &lt;code&gt;Spoqa Han Sans&lt;/code&gt;를 사용하고 있다. 다른 사이트들이 모바일 페이지에서의 제목에 대해 &lt;code&gt;font-weight: 400&lt;/code&gt; 이하를 고집했던 것과 달리 퍼블리는 일반적인 &lt;code&gt;700&lt;/code&gt;을 지정하고 있다. 본문 서체의 크기는 일반 페이지의 &lt;code&gt;18px&lt;/code&gt; 보다는 작은 &lt;code&gt;17px&lt;/code&gt;로 다른 사이트들과 유사하다. 모바일 페이지의 본문에서 &lt;code&gt;word-break: keep-all&lt;/code&gt;을 사용하고 있는 부분은 일반 페이지와 동일하다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;/* 제목 */&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#333&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Spoqa&lt;/span&gt; &lt;span class="n"&gt;Han&lt;/span&gt; &lt;span class="n"&gt;Sans&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Spoqa&lt;/span&gt; &lt;span class="n"&gt;Han&lt;/span&gt; &lt;span class="n"&gt;Sans&lt;/span&gt; &lt;span class="n"&gt;JP&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Sans-serif&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;32&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;    &lt;span class="c"&gt;/* 2rem!important */&lt;/span&gt;
+  &lt;span class="k"&gt;font-weight&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;700&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;letter-spacing&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;41.6&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* 1.3!important */&lt;/span&gt; 
+
+  &lt;span class="k"&gt;overflow-wrap&lt;/span&gt;  &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;break-word&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;word-break&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;keep-all&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;word-wrap&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;break-word&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;/* 본문 */&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#333&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Spoqa&lt;/span&gt; &lt;span class="n"&gt;Han&lt;/span&gt; &lt;span class="n"&gt;Sans&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-weight&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;400&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;30.6&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* 1.8 */&lt;/span&gt;
+
+  &lt;span class="k"&gt;word-break&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;keep-all&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;word-wrap&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;break-word&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;핀치 – &lt;a href="https://thepin.ch/"&gt;https://thepin.ch/&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="The Pinch" src="./images/2018-10/htm-thepinch.jpg"&gt;
+핀치는 모바일 페이지를 위한 별도의 스타일 지정이 없다. 딱 하나 모바일 페이지의 스타일이 &lt;code&gt;letter-spacing: -0.7px&lt;/code&gt; 로 표시되어 찾아보니, 일반 페이지에서도 같은 값으로 변경되어 있다. 지난 번 글을 적은 이후로 바뀐 것으로 보인다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;/* 제목: 콘텐츠마다 별도 이미지나 애니메이션으로 표현된다. */&lt;/span&gt;
+
+&lt;span class="c"&gt;/* 본문 */&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#313233&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Noto Sans&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Apple SD Gothic Neo&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Malgun Gothic&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Dotum&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;letter-spacing&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;-0.7&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* ??? */&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;30.6&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* 1.8em */&lt;/span&gt;
+  &lt;span class="k"&gt;text-align&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;justify&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="n"&gt;text-rendering&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;optimizeLegibility&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;인디포스트 – &lt;a href="https://www.indiepost.co.kr/"&gt;https://www.indiepost.co.kr/&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="Indiepost" src="./images/2018-10/htm-indiepost.jpg"&gt;
+본문의 글이 너무 가늘어 읽기 어려웠던 인디포스트는 모바일 페이지를 위한 별도 스타일이 없었지만, 브런치와 마찬가지로 모바일 기기에서는 그럭저럭 읽을 수 있도록 표시된다. 의문의 그림자 처리도 그대로 유지된다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;/* 제목 */&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#000&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Apple SD Gothic Neo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Droid Sans&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Spoqa Han Sans&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Arial&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;sans-serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;35.2&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;     &lt;span class="c"&gt;/* 2.2rem */&lt;/span&gt;
+  &lt;span class="k"&gt;font-weight&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;700&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;50.2857&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* 1.42857143 (Bootstrap) */&lt;/span&gt;
+
+  &lt;span class="n"&gt;text-rendering&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;optimizeLegibility&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;text-shadow&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="nb"&gt;rgba&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mf"&gt;0.005&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;word-break&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;keep-all&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kp"&gt;-webkit-&lt;/span&gt;&lt;span class="n"&gt;font-smoothing&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;antialiased&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;/* 본문 */&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#222&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Apple SD Gothic Neo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Droid Sans&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Spoqa Han Sans&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Arial&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;sans-serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;    &lt;span class="c"&gt;/* 1rem */&lt;/span&gt;
+  &lt;span class="k"&gt;font-weight&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;300&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;30.4&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* 1.9rem */&lt;/span&gt;
+
+  &lt;span class="n"&gt;text-rendering&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;optimizeLegibility&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;text-shadow&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="nb"&gt;rgba&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mf"&gt;0.005&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;word-break&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;keep-all&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="kp"&gt;-webkit-&lt;/span&gt;&lt;span class="n"&gt;font-smoothing&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;antialiased&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;미디엄(Medium) – &lt;a href="https://medium.com/"&gt;https://medium.com/&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="Medium" src="./images/2018-10/htm-medium.jpg"&gt;
+미디엄은 일반 페이지와 모바일 페이지 사이에 서체 크기가 다른 것이 가장 다른 점이다. 본문 서체로 &lt;code&gt;21px&lt;/code&gt;를 썼던 것과 달리 미디어 쿼리를 통해 iPhone X에서는 &lt;code&gt;18px&lt;/code&gt;로 서체의 크기를 줄였다. 이외에도 &lt;code&gt;letter-spacing&lt;/code&gt; 이 &lt;code&gt;-0.003em&lt;/code&gt; 에서 &lt;code&gt;-0.004em&lt;/code&gt;으로 아주 살짝 커진 것을 알 수 있다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;/* 제목 */&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;rgba&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mf"&gt;.84&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;medium&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;content&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kc"&gt;sans-serif&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;font&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Lucida Grande&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Lucida Sans Unicode&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Lucida Sans&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Geneva&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Arial&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;sans-serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-style&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;normal&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-weight&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;600&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;letter-spacing&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;-0.45&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* -.015em */&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;34.5&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;   &lt;span class="c"&gt;/* 1.15 */&lt;/span&gt;
+
+  &lt;span class="k"&gt;word-break&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;break-word&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;word-wrap&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;break-word&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="err"&gt;--&lt;/span&gt;&lt;span class="n"&gt;baseline-multiplier&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.22&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="err"&gt;--&lt;/span&gt;&lt;span class="n"&gt;x-height-multiplier&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.342&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kp"&gt;-webkit-&lt;/span&gt;&lt;span class="n"&gt;font-smoothing&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;antialiased&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;/* 본문 */&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;rgba&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mf"&gt;.84&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;medium&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;content&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kc"&gt;serif&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;font&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Georgia&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Cambria&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Times New Roman&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Times&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-style&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;normal&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;font-weight&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;400&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;letter-spacing&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;-0.072&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* -.004em */&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;28.44&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;   &lt;span class="c"&gt;/* 1.58 */&lt;/span&gt;
+
+  &lt;span class="n"&gt;text-rendering&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;optimizeLegibility&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;word-break&lt;/span&gt;     &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;break-word&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;word-wrap&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;break-word&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="err"&gt;--&lt;/span&gt;&lt;span class="n"&gt;baseline-multiplier&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.17&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="err"&gt;--&lt;/span&gt;&lt;span class="n"&gt;x-height-multiplier&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.375&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kp"&gt;-webkit-&lt;/span&gt;&lt;span class="n"&gt;font-smoothing&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;antialiased&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;p&gt;각 사이트의 본문과 제목 서체 크기와 비율은 다음과 같다&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;사이트&lt;/th&gt;
+&lt;th&gt;본문(px)&lt;/th&gt;
+&lt;th&gt;제목(px)&lt;/th&gt;
+&lt;th&gt;비율&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;다음 뉴스&lt;/td&gt;
+&lt;td&gt;17&lt;/td&gt;
+&lt;td&gt;23&lt;/td&gt;
+&lt;td&gt;1.35&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;네이버 뉴스&lt;/td&gt;
+&lt;td&gt;17&lt;/td&gt;
+&lt;td&gt;24&lt;/td&gt;
+&lt;td&gt;1.41&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;네이트 뉴스&lt;/td&gt;
+&lt;td&gt;17&lt;/td&gt;
+&lt;td&gt;26&lt;/td&gt;
+&lt;td&gt;1.53&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;브런치&lt;/td&gt;
+&lt;td&gt;17.3&lt;/td&gt;
+&lt;td&gt;24&lt;/td&gt;
+&lt;td&gt;1.38&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;퍼블리&lt;/td&gt;
+&lt;td&gt;17&lt;/td&gt;
+&lt;td&gt;32&lt;/td&gt;
+&lt;td&gt;1.88&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;인디포스트&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;35.2&lt;/td&gt;
+&lt;td&gt;2.2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;미디엄&lt;/td&gt;
+&lt;td&gt;18&lt;/td&gt;
+&lt;td&gt;30&lt;/td&gt;
+&lt;td&gt;1.67&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;각 사이트의 본문 서체 크기와 &lt;code&gt;line-height&lt;/code&gt; 값의 비율은 다음과 같다&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;사이트&lt;/th&gt;
+&lt;th&gt;font-size(px)&lt;/th&gt;
+&lt;th&gt;line-height(px)&lt;/th&gt;
+&lt;th&gt;비율&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;다음 뉴스&lt;/td&gt;
+&lt;td&gt;17&lt;/td&gt;
+&lt;td&gt;27.625&lt;/td&gt;
+&lt;td&gt;1.625&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;네이버 뉴스&lt;/td&gt;
+&lt;td&gt;17&lt;/td&gt;
+&lt;td&gt;26.52&lt;/td&gt;
+&lt;td&gt;1.56&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;네이트 뉴스&lt;/td&gt;
+&lt;td&gt;17&lt;/td&gt;
+&lt;td&gt;26.35&lt;/td&gt;
+&lt;td&gt;1.55&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;브런치&lt;/td&gt;
+&lt;td&gt;17.3&lt;/td&gt;
+&lt;td&gt;28&lt;/td&gt;
+&lt;td&gt;1.618&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;퍼블리&lt;/td&gt;
+&lt;td&gt;17&lt;/td&gt;
+&lt;td&gt;30.6&lt;/td&gt;
+&lt;td&gt;1.8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;핀치&lt;/td&gt;
+&lt;td&gt;17&lt;/td&gt;
+&lt;td&gt;30.6&lt;/td&gt;
+&lt;td&gt;1.8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;인디포스트&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;30.4&lt;/td&gt;
+&lt;td&gt;1.9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;미디엄&lt;/td&gt;
+&lt;td&gt;18&lt;/td&gt;
+&lt;td&gt;28.44&lt;/td&gt;
+&lt;td&gt;1.58&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>웹 사이트들의 한글 타이포그래피</title><link href="https://lqez.github.io/blog/hangul-typo-on-web.html" rel="alternate"></link><published>2018-09-05T00:00:00+09:00</published><updated>2018-09-05T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2018-09-05:/blog/hangul-typo-on-web.html</id><summary type="html">&lt;p&gt;한글이 주로 사용되는 사이트들 중, 접속 통계 상위권 사이트들과 개인적으로 자주 방문하는 곳들을 돌아다니며, 그들이 본문에 사용하고 있는 CSS 값들에 대해 정리해보았다.
 CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 표시가 없는 경우 계산된 값과 지정된 값이 같음을 의미한다.&lt;/p&gt;
 &lt;p&gt;이번에 사이트들을 둘러보며 아래 CSS 값들에 대해 더 알아보는 계기가 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;한글이 주로 사용되는 사이트들 중, 접속 통계 상위권 사이트들과 개인적으로 자주 방문하는 곳들을 돌아다니며, 그들이 본문에 사용하고 있는 CSS 값들에 대해 정리해보았다.
 CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 표시가 없는 경우 계산된 값과 지정된 값이 같음을 의미한다.&lt;/p&gt;
@@ -25,7 +398,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
   &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#333&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
   &lt;span class="k"&gt;font-family&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;AppleSDGothicNeo-Regular&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Malgun Gothic&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;맑은 고딕&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dotum&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="err"&gt;돋움&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;sans-serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
   &lt;span class="k"&gt;font-size&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;      &lt;span class="c"&gt;/* inline style */&lt;/span&gt;
-  &lt;span class="k"&gt;letter-spacing&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;-0.32&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;   &lt;span class="c"&gt;/* -0.02em */&lt;/span&gt;
+  &lt;span class="k"&gt;letter-spacing&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;-0.34&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;   &lt;span class="c"&gt;/* -0.02em */&lt;/span&gt;
   &lt;span class="k"&gt;line-height&lt;/span&gt;    &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;27.625&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="c"&gt;/* 1.625 */&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -50,7 +423,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 
 
 &lt;h4&gt;네이트 뉴스 – &lt;a href="http://news.nate.com/"&gt;http://news.nate.com/&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;img alt="Naver news" src="./images/2018-09/ht-nate.png"&gt;
+&lt;p&gt;&lt;img alt="Nate news" src="./images/2018-09/ht-nate.png"&gt;
 네이트 뉴스는 평소에는 잘 방문하지 않지만, 위 두 뉴스 사이트를 제외한 다른 신문, 매체 사이트는 광고 때문에 본문을 읽을 엄두가 나지 않아 울며 겨자먹기로 알아보았다.&lt;/p&gt;
 &lt;p&gt;요즘의 사이트 답지 않게 &lt;code&gt;굴림&lt;/code&gt;, &lt;code&gt;돋움&lt;/code&gt;만 지정하고 있으며, 서체 크기도 &lt;code&gt;14px&lt;/code&gt;로 최근의 추세보다는 다소 작게 지정되어 있다.
 다만 &lt;code&gt;word-break&lt;/code&gt;와 &lt;code&gt;word-wrap&lt;/code&gt;은 별도로 지정되어 있는 것이, 이 사이트를 처음 만들던 당시에 가독성에 대해 고민한 흔적으로 보인다&lt;/p&gt;
@@ -129,7 +502,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 
 
 &lt;h4&gt;인디포스트 – &lt;a href="https://www.indiepost.co.kr/"&gt;https://www.indiepost.co.kr/&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;img alt="the pinch" src="./images/2018-09/ht-indiepost.png"&gt;
+&lt;p&gt;&lt;img alt="indiepost" src="./images/2018-09/ht-indiepost.png"&gt;
 읽어보면 좋은 글이 많고, 하단에 관련된 글들도 연관성이 높아 음악가들에 대해 알아보기 좋은 사이트라고 생각한다.
 하지만 브런치와 마찬가지로 본문에 사용하는 서체의 획이 너무 가늘어 읽기에 힘이 든다.
 게다가 이유는 알 수 없지만, 본문에 &lt;code&gt;text-shadow&lt;/code&gt; 를 지정하고 있다.&lt;/p&gt;
