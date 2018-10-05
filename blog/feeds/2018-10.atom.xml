@@ -35,7 +35,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 
 &lt;h4&gt;네이버 뉴스 모바일 – &lt;a href="https://m.news.naver.com/"&gt;https://m.news.naver.com/&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="Naver news" src="./images/2018-10/htm-naver.jpg"&gt;
-다음이 일반 페이지보다 모바일 페이지에서 더 가는 서체와 진한 색을 쓴 것과는 달리, 네이버는 모바일에서 같은 종류의 서체에 일반 페이지의 &lt;code&gt;#000&lt;/code&gt; 보다 조금 더 밝은 색상인 &lt;code&gt;#141414&lt;/code&gt;를 사용한다. 일반 페이지에서는 &lt;code&gt;맑은 고딕&lt;/code&gt; 계열을 후순위로 두었지만, 모바일에서는 지원 가능성이 낮으니 후보에서 제외하였다.&lt;/p&gt;
+다음이 일반 페이지보다 모바일 페이지에서 더 가는 서체와 진한 색을 쓴 것과는 달리, 네이버는 모바일에서 같은 종류의 서체에 일반 페이지의 &lt;code&gt;#000&lt;/code&gt; 보다 조금 더 밝은 색상인 &lt;code&gt;#141414&lt;/code&gt;를 사용한다. 일반 페이지에서는 &lt;code&gt;맑은 고딕&lt;/code&gt; 계열을 후순위로 두었지만, 모바일에서는 지원 가능성이 낮으니 후보에서 제외한 것으로 보인다.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;/* 제목 */&lt;/span&gt;
 &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="k"&gt;color&lt;/span&gt;          &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#141414&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
