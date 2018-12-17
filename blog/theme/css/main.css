@@ -10,7 +10,7 @@
 /* Imports */
 @import url('reset.css');
 @import url('pygment.css');
-@import url('//fonts.googleapis.com/earlyaccess/notosanskr.css:400,700');
+@import url('//fonts.googleapis.com/earlyaccess/notosanskr.css');
 @import url('//fonts.googleapis.com/css?family=Roboto:400,700|Lato:400,700|Inconsolata:400,700');
 
 /***** Global *****/
