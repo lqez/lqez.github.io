@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>크롬 개발자 도구 101</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=0.82, minimum-scale=0.82" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta property="og:url" content="https://lqez.github.io/blog/chrome-dev-tool-101.html"/>
+    <meta property="og:title" content="크롬 개발자 도구 101"/>
+    <meta property="og:image" content="https://lqez.github.io/blog/images/icons/fcd.png"/>
+
+    <link rel="stylesheet" href="https://lqez.github.io/blog/theme/css/main.css" type="text/css" />
+    <link href="https://lqez.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Feature creep designer Atom Feed" />
+    <link rel="apple-touch-icon" href="static/images/icons/fcd-57.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="static/images/icons/fcd-72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="static/images/icons/fcd-114.png"/>
+
+    <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+    <!--[if lte IE 7]>
+        <link rel="stylesheet" type="text/css" media="all" href="https://lqez.github.io/blog/css/ie.css"/>
+        <script src="https://lqez.github.io/blog/js/IE8.js" type="text/javascript"></script><![endif]-->
+
+    <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" media="all" href="https://lqez.github.io/blog/css/ie6.css"/><![endif]-->
+</head>
+<body id="index" class="home">
+    <header id="banner" class="body">
+        <h1><a href="https://lqez.github.io/blog/">Feature creep designer </a></h1>
+        <h2 id="greeting">Happy day.</h2>
+    </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://lqez.github.io/blog/chrome-dev-tool-101.html" rel="bookmark"
+           title="Permalink to 크롬 개발자 도구 101">크롬 개발자 도구 101</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-12-17T00:00:00+09:00">
+                Mon 17 December 2018
+        </abbr>
+
+</footer><!-- /.post-info -->      <p><a href="https://github.com/summernote/summernote">썸머노트</a>를 개발하며 늘 사용하는 크롬 개발자 도구에 대해 한 번도 제대로 공부해본 적이 없었는데, 마침 아샬(<a href="https://twitter.com/ahastudio">@ahastudio</a>)님이 <a href="https://adieu2018.ahastudio.com/">“아듀 2018”</a>이라는 일종의 <a href="https://en.wikipedia.org/wiki/Advent_calendar">Advent Calender</a>를 주최하는 것을 보고 재미있겠다 싶어 이걸 기회 삼아 크롬 개발자 도구의 기초 내용을 정리해보게 되었다.</p>
+<p>크롬 개발자 도구에 대한 정보는 <a href="https://developers.google.com/web/tools/chrome-devtools/">https://developers.google.com/web/tools/chrome-devtools/</a> 에서 얻는 것이 가장 정확하고 빠르다. 이 글에서는 웹 서비스를 개발하는데 있어 필수적인 기본 요소만을 간략하게 소개한다.</p>
+<h3>개발자 도구 활성화</h3>
+<p><img alt="Chrome menu" src="./images/2018-12/chrome-dev-tool-101-menu.png">
+개발자 도구는 크롬 메뉴바에서 개발자 도구를 선택해서 활성화 할 수 있다. 개발자 도구의 메뉴는 왼쪽부터 차례대로 아래의 기능을 가진다.</p>
+<ul>
+<li>단축키: <code>⌘ + Shift + I</code> 또는 <code>Ctrl + Shift + I</code></li>
+</ul>
+<p><img alt="Developer tool" src="./images/2018-12/chrome-dev-tool-101-toolbar.png"></p>
+<h4>요소 선택</h4>
+<p><img alt="Select element" src="./images/2018-12/chrome-dev-tool-101-select.png">
+화면에서 직접 요소를 선택할 수 있다.</p>
+<ul>
+<li>단축키: <code>⌘ + Shift + C</code> 또는 <code>Ctrl + Shift + C</code></li>
+</ul>
+<h4>장치 변경</h4>
+<p><img alt="Device toggle" src="./images/2018-12/chrome-dev-tool-101-device.png">
+현재 크롬이 동작하는 장치가 아닌 다른 휴대 장치와 같은 화면 크기나 설정을 가지도록 변경하여 여러 환경을 테스트할 수 있도록 한다. 특히 안드로이드와 아이폰 등의 여러 모바일 장치의 값이 미리 등록되어 있어, 모바일 장치를 가정하고 테스트할 때 유용하다.</p>
+<ul>
+<li>단축키: <code>⌘ + Shift + M</code> 또는 <code>Ctrl + Shift + M</code></li>
+</ul>
+<h4>요소 (Elements)</h4>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">DOM</a>(문서 객체 모델, The Document Object Model, 이하 DOM)을 탐색하고 CSS를 확인하며 변경할 수 있다. 주로 화면에 보이는 내용을 확인하고 편집할 때 사용한다. 화면 왼쪽의 DOM을 통해 요소를 탐색할 수 있고, 오른쪽에서는 현재 적용된 CSS 목록과 계산된(computed) 스타일, 이벤트, DOM에 설정된 중단점(breakpoint) 등을 확인할 수 있다.</p>
+<p>선택된 요소에서 우클릭을 하면 컨텍스트 메뉴가 표시되는데, 다음의 기능은 꽤 편리하다.</p>
+<p><img alt="Context menu" src="./images/2018-12/chrome-dev-tool-101-context-menu.png"></p>
+<ul>
+<li><strong>Force state</strong><ul>
+<li>선택된 요소의 상태를 임의로 변경한다. <code>:active</code>, <code>:hover</code>, <code>:visited</code>와 같은 상태를 임의로 선택하여 버튼 위에 커서가 올라가 있을 때나 링크가 클릭된 경우 등을 가정해볼 수 있다.</li>
+</ul>
+</li>
+<li><strong>Break on</strong><ul>
+<li>선택한 요소의 속성이 변경되거나, 하위 노드에 변경이 있을 경우 또는 선택된 요소가 삭제될 때에 중단점을 설정해서 확인할 수 있다. 이러한 변경사항은 자바스크립트나 콘솔에서 직접 지정하는것 보다는 이 메뉴를 통해 지정하는 것이 편리하다.</li>
+</ul>
+</li>
+<li><strong>Store as global variable</strong><ul>
+<li>해당 요소를 콘솔의 변수로 만들어준다. 콘솔에서 일부 객체를 얻어 작업하기 위해 일일히 <code>document.querySelector()</code>를 입력하지 않고도 이 기능을 통해 선택된 요소를 <code>temp1</code>과 같은 변수에 할당이 가능하다.</li>
+</ul>
+</li>
+</ul>
+<p>오른쪽 윈도우에서도 다음의 기능을 알아두면 좋다.</p>
+<h6>스타일 (Styles)</h6>
+<ul>
+<li><strong>필터</strong> (Filter)
+    <img alt="Filter style" src="./images/2018-12/chrome-dev-tool-101-style-filter.png"><ul>
+<li>CSS 속성의 이름을 검색해볼 수 있다. 예를 들어, 검색 필터에 <code>margin</code>을 입력하면, 선택된 속성에 영향을 주는 여러 CSS 스타일에서 <code>margin</code> 값만 찾아볼 수 있다.</li>
+</ul>
+</li>
+<li><strong><code>:hov</code></strong> (Toggle Element State)
+    <img alt="Toggle Element State" src="./images/2018-12/chrome-dev-tool-101-style-state.png"><ul>
+<li>앞서 언급했던 <code>Force state</code>와 마찬가지로 선택된 요소의 상태를 임의로 지정할 수 있다. </li>
+</ul>
+</li>
+<li><strong><code>+</code></strong> (New Style Rule)
+    <img alt="New Style Rule" src="./images/2018-12/chrome-dev-tool-101-style-newrule.png"><ul>
+<li>선택된 요소의 클래스 이름으로 스타일이 존재하지 않는다면 새로 만들어 지정할 수 있다. 소스 코드상에서 특정 선택자(selector)에 대해 스타일을 지정하지 않은 경우, 개발자 도구에서 임의로 만들어 지정해볼 때 편리하게 사용할 수 있다.</li>
+</ul>
+</li>
+</ul>
+<h6>스타일 계산 결과 (Computed)</h6>
+<p><img alt="Computed style" src="./images/2018-12/chrome-dev-tool-101-computed.png">
+선택된 요소에 적용된 최종 스타일을 확인할 수 있다. 스타일 필터와 마찬가지로 필터를 통해 원하는 스타일믄 추려서 볼 수 있다. 특정 스타일을 확장하면 어떤 선택자들을 통해 최종적으로 연산된 값인지 확인할 수 있다.</p>
+<h4>콘솔 (Console)</h4>
+<p><img alt="Console" src="./images/2018-12/chrome-dev-tool-101-console.png">
+콘솔을 통해 페이지에 불려진 DOM과 자바스크립트와 상호 작용하며 디버깅할 수 있다. 기본 콘솔에서는 <code>verbose</code> 수준의 메세지는 표시되지 않아 출력 수준을 변경해야 볼 수 있는데, <code>verbose</code> 메세지는 개발 도구에서 유용한 내용을 알려주는 경우도 있으니 보는 것이 좋다. 좌상단의 아이콘을 선택해 사이드바를 꺼내면 콘솔 로그를 출력한 주체별로 또는 메세지 레벨별로 나눠서 볼 수 있다. 유닉스의 오래된 단축키 중 하나인 <code>Ctrl + L</code>을 이제까지의 콘솔 출력을 지우는 단축키로 사용할 수 있다.</p>
+<ul>
+<li><strong>프레임</strong> (Frames)
+    <img alt="Frame" src="./images/2018-12/chrome-dev-tool-101-console-frame.png"><ul>
+<li>콘솔은 한 번에 하나의 프레임을 대상으로만 작동한다. 문서에 <code>iframe</code> 등으로 포함된 프레임이 추가적으로 존재하면 이 메뉴를 통해 주 프레임이 아닌 다른 프레임과 연결해 작업할 수 있다.</li>
+</ul>
+</li>
+<li><strong>표현식</strong> (Expression)
+    <img alt="Expression" src="./images/2018-12/chrome-dev-tool-101-console-expression.png"><ul>
+<li>눈 모양의 아이콘을 입력하면 일반적인 디버거에서 제공하는 Watch 기능을 사용할 수 있다. 계속해서 변화하는 값을 모니터링할 때 유용하다.</li>
+</ul>
+</li>
+<li><strong>필터</strong> (Filter)<ul>
+<li>다른 필터 기능과 마찬가지로, 콘솔에 출력된 내용중 지정한 필터에 해당하는 내용만 골라 볼 수 있다.</li>
+</ul>
+</li>
+<li><strong>경과 시간 측정</strong><ul>
+<li><a href="https://developer.mozilla.org/ko/docs/Web/API/Console/time"><code>console.time(label)</code></a>을 통해 특정 작업이 얼마나 걸리는지 편리하게 측정할 수 있다.
+<code>console.timeEnd(label)</code>과 같이 사용하여 두 함수의 호출 사이에 얼마나 시간이 흘렀는지 확인할 수 있다.<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="s1">&#39;timer1&#39;</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="c1">// (... 무언가 긴 작업 ...)</span>
+<span class="o">&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">timeEnd</span><span class="p">(</span><span class="s1">&#39;timer1&#39;</span><span class="p">);</span>
+<span class="nx">timer1</span><span class="o">:</span> <span class="mf">3659.787109375</span><span class="nx">ms</span>
+</pre></div>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h4>소스 (Sources)</h4>
+<p><img alt="Source" src="./images/2018-12/chrome-dev-tool-101-source.png">
+소스 메뉴에서는 해당 페이지에 로드된 파일들의 목록을 보며 중단점을 설정하며 본격적인 자바스크립트 디버깅이 가능하다.</p>
+<ul>
+<li><strong>페이지</strong> (Page)<ul>
+<li>현재 페이지에 로드된 파일 목록을 표시한다. <em>기울어진</em> 파일 이름은 해당 파일이 컴파일된 소스로부터 <a href="https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps">소스맵</a>을 통해 매핑된 파일임을 나타낸다.</li>
+</ul>
+</li>
+<li><strong>파일 시스템</strong> (Filesystem)
+    <img alt="Filesystem" src="./images/2018-12/chrome-dev-tool-101-source-filesystem.png"><ul>
+<li>로컬 디스크의 소스 위치를 지정하면 현재 페이지에 로드된 파일과 매칭하여 디버깅이 가능할 뿐 아니라 바로 편집하는 것도 가능하다. 아이콘의 초록 점은 해당 소스 파일이 소스맵을 통해 매핑된 파일임을 나타낸다.</li>
+</ul>
+</li>
+<li><strong>코드 조각</strong> (Snippet)
+    <img alt="Snippet" src="./images/2018-12/chrome-dev-tool-101-source-snippet.png"><ul>
+<li><a href="https://gist.github.com/">GitHub Gist</a>와 같이 코드 조각을 크롬에 저장하고 반복적으로 사용할 수 있다. 이 내용은 크롬에 연결된 사용자 별로 저장되므로 , 서로 다른 사이트에서도 같은 코드 조각 목록을 사용할 수 있다.</li>
+<li>이 내용을 크롬에 연결된 구글 계정과 동기화하여 다른 장치에서도 사용할 수 있도록 하는 기능은 아직 개발되지 않았다. <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=249030">chromium/249030</a></li>
+</ul>
+</li>
+</ul>
+<p>디버거 창에서는 중단점을 설정하고, 값을 추적하는 등의 기능을 통해 효율적으로 소스 코드를 디버깅할 수 있다.
+<img alt="Debugger" src="./images/2018-12/chrome-dev-tool-101-source-debugger.png"></p>
+<ul>
+<li><strong>값 추적</strong> (Watch)<ul>
+<li>중단점에서 지정된 변수의 값을 출력한다.</li>
+</ul>
+</li>
+<li><strong>호출 스택</strong> (Call Stack)<ul>
+<li>현재 중단된 지점이 어떤 함수 호출을 통해 온 것인지 확인할 수 있다. 이전 스택을 선택하여 해당 호출 상황으로 돌아가 디버깅이 가능하다.</li>
+</ul>
+</li>
+<li><strong>범위</strong> (Scope)<ul>
+<li>지정된 범위에 포함된 변수를 확인할 수 있다. 지역 변수와 전역 변수 외에도 현재 중단점의 클로저 변수도 확인할 수 있어 유용하다.</li>
+</ul>
+</li>
+<li><strong>중단점</strong> (Breakpoint)<ul>
+<li>설정된 중단점의 목록을 표시한다. 체크 박스를 해제하면 일시적으로 해당 중단점을 사용하지 않게 할 수 있다. 우클릭을 통해 컨텍스트 메뉴를 호출하여 모든 중단점을 지우거나 비활성화 시키는 등의 작업을 수행할 수 있다.</li>
+</ul>
+</li>
+</ul>
+<h4>네트워크 (Network)</h4>
+<p><img alt="Network" src="./images/2018-12/chrome-dev-tool-101-network.png">
+페이지를 표시하는데 필요한 네트워크 작업에 대한 결과를 시간순으로 표시한다. 페이지 로드가 느리다면 이 탭을 통해 그 원인을 파악할 수 있다.</p>
+<ul>
+<li><strong>캐시 사용안함</strong> (Disable cache)<ul>
+<li>캐시를 사용하지 않을 경우 어떻게 네트워크 요청이 이뤄지는지 확인해볼 수 있다.</li>
+</ul>
+</li>
+<li><strong>오프라인</strong> (Offline)<ul>
+<li>네트워크가 연결되지 않은 상태를 가정하여 페이지를 표시한다. 오프라인 웹 앱을 구성할 때 사용한다.</li>
+</ul>
+</li>
+<li><strong>트래픽 조절</strong> (Throttling)
+    <img alt="Preset" src="./images/2018-12/chrome-dev-tool-101-network-preset.png"><ul>
+<li>느린 네트워크 상황을 가정하여 페이지를 표시한다. <code>Fast 3G</code> / <code>Slow 3G</code> 등의 프리셋이 있으며, 원하는 속도와 지연 시간을 지정하여 사용할 수도 있다. 개발할 때 자주 이 기능을 활성화 하여 테스트 해보는 것을 추천한다.</li>
+</ul>
+</li>
+</ul>
+<p>특정 항목을 선택하여 해당 항목이 어떻게 요청되었는지, 어떤 응답을 받았는지를 상세히 확인할 수 있다. 서버에 어떤 헤더를 지정하여 요청했는지, 응답으로는 어떤 헤더를 받았는지 확인하며 네트워크 최적화를 진행하는데 유용하다.
+<img alt="Request and response header" src="./images/2018-12/chrome-dev-tool-101-network-header.png"></p>
+<h4>성능 (Performance)</h4>
+<p><img alt="Performance" src="./images/2018-12/chrome-dev-tool-101-performance.png">
+네트워크 탭을 통해 원격지와 어떻게 데이터를 요청하고 받았는지 확인하며 최적화를 했다면, 성능 탭에서는 자바스크립트 실행과 화면 그리기를 추적하여 어떤 부분이 웹 애플리케이션을 지연시키고 있는지 확인할 수 있다. 녹화(Record) 버튼을 누른 뒤 페이지를 로드하거나 자바스크립트 작업을 수행한 후, 정지하면 그 사이에 발생한 자바스크립트의 함수별 호출수와 사용된 시간 등을 확인할 수 있다.</p>
+<p>타임 라인에서 구간을 선택하고 어떤 함수 호출이 가장 많은 시간을 사용했는지, 또 어떤 흐름으로 작업을 수행했는지 등을 파악할 수 있다.
+<img alt="Heavist job" src="./images/2018-12/chrome-dev-tool-101-performance-heavist.png"></p>
+<h4>보안 (Security)</h4>
+<p><img alt="Security" src="./images/2018-12/chrome-dev-tool-101-security.png">
+페이지의 인증서와 페이지에서 참조하는 도메인의 인증서 등을 검사하고 그 결과를 보여준다. 모든 사이트에 HTTPS 연결이 강조되므로 이 탭을 통해 페이지에서 참조하는 리소스에 대해서도 확인하는 것이 필요하다.</p>
+<h4>감사 (Audits)</h4>
+<p><img alt="Audits" src="./images/2018-12/chrome-dev-tool-101-audits.png">
+<a href="https://developers.google.com/web/tools/lighthouse/">Lighthouse</a>를 통한 페이지 검사 결과를 표시하고 저장할 수 있다. 기본적인 페이지의 성능과 <a href="https://developers.google.com/web/progressive-web-apps/">PWA</a>, <a href="https://en.wikipedia.org/wiki/Search_engine_optimization">SEO</a>, <a href="https://www.w3.org/standards/webdesign/accessibility">접근성</a>과 관련된 점수를 제공하므로, <a href="https://developers.google.com/speed/">Page speed</a>와 함께 사용하여 품질 높은 페이지를 만드는데 참조하면 좋다. </p>
+<h3>추가 기능 (More tools)</h3>
+<p><img alt="More tools" src="./images/2018-12/chrome-dev-tool-101-moretools.png">
+개발자 도구의 기본 탭의 오른쪽 끝 메뉴(<code>⋮</code>)를 클릭하면 추가 개발자 도구를 확인할 수 있다.</p>
+<ul>
+<li><strong>도구 위치</strong> (Dock side)<ul>
+<li>개발자 도구를 별도의 창으로 분리하거나, 같은 창의 특정 위치로 보낼 수 있다.</li>
+</ul>
+</li>
+<li><strong>콘솔 창 보이기/숨기기</strong> (Show/Hide console drawer)<ul>
+<li>콘솔과 추가 기능을 별도로 표시하는 창을 보이거나 숨길 수 있다. </li>
+<li>단축키: <code>Esc</code></li>
+</ul>
+</li>
+<li><strong>검색</strong> (Search)<ul>
+<li>페이지를 표시하는데 쓰인 파일과 개발자 도구에 등록된 파일 시스템, 코드 조각 등의 모든 파일을 대상으로 검색을 수행한다.</li>
+</ul>
+</li>
+<li><strong>명령 실행</strong> (Run command)
+    <img alt="Run command" src="./images/2018-12/chrome-dev-tool-101-moretools-runcommand.png"><ul>
+<li>개발자 도구의 기능 목록을 보고 검색하여 실행할 수 있다.</li>
+</ul>
+</li>
+<li><strong>파일 열기</strong> (Open file)
+    <img alt="Run command" src="./images/2018-12/chrome-dev-tool-101-moretools-openfile.png"><ul>
+<li>페이지를 표시하는데 쓰인 파일과 개발자 도구에 등록된 파일 시스템, 코드 조각 등의 모든 파일을 표시하고 검색하여 파일을 열 수 있도록 한다.</li>
+</ul>
+</li>
+<li><strong>추가 기능</strong> (More tools)<ul>
+<li>개발자 도구의 기본 탭에 표시된 기능 외에 다른 기능들을 추가로 사용할 수 있다.</li>
+</ul>
+</li>
+</ul>
+<p>추가 기능에는 다음 항목이 있으며 각 항목에 대한 자세한 설명은 아래 목록의 링크와 <a href="https://developers.google.com/web/tools/chrome-devtools/">구글 크롬 개발자 도구 도움말</a>을 참조한다.</p>
+<ul>
+<li><a href="https://developers.google.com/web/tools/chrome-devtools/inspect-styles/animations">Animations</a>: CSS 애니메이션을 타임라인을 따라 추적하고 캡춰할 수 있다.</li>
+<li><a href="https://developers.google.com/web/updates/2018/01/devtools#changes">Changes</a>: 소스 코드 변경 사항을 추적한다.</li>
+<li><a href="https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage">Coverage</a>: 해당 페이지에서 파일별로 얼마나 많은 부분을 실제로 사용했는지 표시.</li>
+<li>JavaScript Profiler: 성능(Performance)와 유사한 기능을 제공한다.</li>
+<li><a href="https://developers.google.com/web/tools/chrome-devtools/network-performance/network-conditions">Network conditions</a>: 네트워크(Network)의 트래픽 조절(Throttling)과 같은 기능.</li>
+<li><a href="https://developers.google.com/web/updates/2017/04/devtools-release-notes#block-requests">Request blocking</a>: 패턴 매칭을 통해 특정 요청만 제한하는 테스트가 가능하다.</li>
+<li><a href="https://developers.google.com/web/tools/chrome-devtools/device-mode/device-input-and-sensors">Sensors</a>: 모바일 장치의 위치 정보와 가속도 센서를 에뮬레이션.</li>
+</ul>
+<h3>설정 (Settings)</h3>
+<p><img alt="Settings" src="./images/2018-12/chrome-dev-tool-101-settings.png">
+개발자 도구 자체에 대한 다양한 설정이 제공되며, 주요 기능은 다음과 같다.</p>
+<ul>
+<li><strong>Appearance</strong><ul>
+<li>Theme: Light/Dark 테마를 변경할 수 있다.</li>
+<li><a href="https://developers.google.com/web/updates/2017/05/devtools-release-notes#badges">Show third party URL badges</a>: 네트워크 탭에서 잘 알려진 제 3자 도메인의 아이콘을 같이 표시한다.</li>
+</ul>
+</li>
+<li><strong>Sources</strong><ul>
+<li>Enable JavaScript source maps: 자바스크립트 소스 맵을 활성화 한다.</li>
+<li>Autocompletion: 자동 완성 기능을 사용한다.</li>
+</ul>
+</li>
+<li><strong>Elements</strong><ul>
+<li>Show rulers: 눈금자를 표시한다.</li>
+<li>Color format: 색상값을 어떻게 표시할 지 지정한다. 기본값은 <code>작성된 대로(As authored)</code>.</li>
+</ul>
+</li>
+<li><strong>Network</strong><ul>
+<li>Enable request blocking: 특정 요청을 제한하는 기능을 활성화 한다.</li>
+</ul>
+</li>
+<li><strong>Console</strong><ul>
+<li>Show timestamps: 콘솔 로그 왼쪽에 해당 출력이 일어난 시간을 표시한다.</li>
+<li>Group similar: 같은 출력이 반복되는 경우, 왼쪽에 반복된 출력 회수를 표시하고 중복하여 출력하지 않는다.</li>
+<li><a href="https://developers.google.com/web/updates/2018/05/devtools#eagerevaluation">Eager evaluation</a>: 콘솔 명령어 입력 후, 엔터를 치기 전에 이제까지 입력된 내용을 바탕으로 미리 수행한 결과를 보여준다.</li>
+</ul>
+</li>
+<li><strong>Debugger</strong><ul>
+<li>Disable JavaScript: 자바스크립트를 수행하지 않는다.</li>
+</ul>
+</li>
+</ul>
+<p>이 글에서 언급된 내용은 크롬 개발자 도구의 극히 일부에 불과하므로 궁금한 내용은 항상 <a href="https://developers.google.com/web/tools/chrome-devtools/">구글 크롬 개발자 도구 도움말</a>을 참조하는 것이 좋다.</p>
+<p>마지막 팁: 개발자 도구 내에서도 <code>⌘ + +/-</code> 또는 <code>Ctrl + +/-</code>를 통해 일반 페이지와 마찬가지로 확대/축소가 가능하다.
+<img alt="Zoom in Devtool" src="./images/2018-12/chrome-dev-tool-101-zoom.png"></p><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<footer class="post-info-footer">
+        <p>
+        In <a href="https://lqez.github.io/blog/category/2018-12.html">2018-12</a>. 
+        </p>
+</footer><!-- /.post-info -->    </div><!-- /.entry-content -->
+    <div class="fb-comments" data-href="https://lqez.github.io/blog/chrome-dev-tool-101.html" data-width="0" data-num-posts="5"></div>
+
+  </article>
+</section>
+    <section id="extras" class="body">
+    </section><!-- /#extras -->
+
+    <footer id="contentinfo" class="body">
+    <!--
+        <nav><ul>
+            <li ><a href="https://lqez.github.io/blog/category/2013-02.html">2013-02</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2013-04.html">2013-04</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2013-05.html">2013-05</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2013-08.html">2013-08</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2013-10.html">2013-10</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2014-07.html">2014-07</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2016-08.html">2016-08</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2016-09.html">2016-09</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2017-05.html">2017-05</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2017-08.html">2017-08</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2017-10.html">2017-10</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2017-11.html">2017-11</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2017-12.html">2017-12</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2018-01.html">2018-01</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2018-04.html">2018-04</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2018-05.html">2018-05</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2018-08.html">2018-08</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2018-09.html">2018-09</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2018-10.html">2018-10</a></li>
+            <li class="active"><a href="https://lqez.github.io/blog/category/2018-12.html">2018-12</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/uncategorized.html">Uncategorized</a></li>
+        </ul></nav>
+        -->
+        <address id="about" class="vcard body">
+        Published by <a href="http://getpelican.com/">Pelican</a> / <a href="http://python.org">Python</a>.
+        <p id="theme"><a href="https://github.com/lqez/42signals-pelican-theme">42 signals theme by lqez</a></p>
+        </address><!-- /#about -->
+    </footer><!-- /#contentinfo -->
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1&appId=465940413466203";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37711911-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+</body>
+<script language="javascript">
+var weekday = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+var dayOfWeek = weekday[new Date().getDay()];
+document.getElementById('greeting').innerHTML = "Happy " + dayOfWeek + ".";
+</script>
+</html>

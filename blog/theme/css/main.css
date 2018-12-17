@@ -10,8 +10,8 @@
 /* Imports */
 @import url('reset.css');
 @import url('pygment.css');
-@import url('//fonts.googleapis.com/earlyaccess/notosanskr.css');
-@import url('//fonts.googleapis.com/css?family=Roboto:400|Lato:700|Inconsolata:400,700');
+@import url('//fonts.googleapis.com/earlyaccess/notosanskr.css:400,700');
+@import url('//fonts.googleapis.com/css?family=Roboto:400,700|Lato:400,700|Inconsolata:400,700');
 
 /***** Global *****/
 /* Body */
@@ -63,14 +63,7 @@ a img {border: 0px; text-decoration: none;}
 /* Paragraphs */
 p {margin-top: 1.5em; line-height:180%;}
 
-strong, b {font-weight: 500;}
-strong {
-    background-color: #fcfcfc;
-    border-radius: 4px;
-    padding: 2px 5px;
-    margin: -2px 0px;
-    border: 1px solid #eee;
-}
+strong, b {font-weight: 700;}
 em, i {font-style: italic;}
 
 /* Lists */
