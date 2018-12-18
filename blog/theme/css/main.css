@@ -251,7 +251,7 @@ article a:hover, article a:active {
 article img {
     max-width: 100%;
     height: auto;
-    border: 1px solid #ddeaf1;
+    border: 1px solid #e0e0e0;
     border-radius: 3px;
     margin: 5px auto;
     float: none;
