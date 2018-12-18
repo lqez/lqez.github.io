@@ -61,7 +61,8 @@ a {outline: 0; color:#477b96; text-decoration: none;}
 a img {border: 0px; text-decoration: none;}
 	
 /* Paragraphs */
-p {margin-top: 1.5em; line-height:180%;}
+p {line-height:180%;}
+p + p {margin-top: 1.5em;}
 
 strong, b {font-weight: 700;}
 em, i {font-style: italic;}
@@ -84,8 +85,7 @@ article ul li:before {
     font-size: 8pt;
     padding-right: 10px;
     margin-left: -16px;
-    position: relative;
-    top: -3pt;
+    position: absolute;
 }
 
 article li {
@@ -96,7 +96,7 @@ article li {
 article ul ul li:before {
     content: "–";
     color: #878787;
-    top: -2pt;
+    position: absolute;
 }
 
 .post-info {

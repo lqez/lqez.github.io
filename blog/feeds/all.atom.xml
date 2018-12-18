@@ -60,7 +60,7 @@
 &lt;/ul&gt;
 &lt;h6&gt;스타일 계산 결과 (Computed)&lt;/h6&gt;
 &lt;p&gt;&lt;img alt="Computed style" src="./images/2018-12/chrome-dev-tool-101-computed.png"&gt;
-선택된 요소에 적용된 최종 스타일을 확인할 수 있다. 스타일 필터와 마찬가지로 필터를 통해 원하는 스타일믄 추려서 볼 수 있다. 특정 스타일을 확장하면 어떤 선택자들을 통해 최종적으로 연산된 값인지 확인할 수 있다.&lt;/p&gt;
+선택된 요소에 적용된 최종 스타일을 확인할 수 있다. 스타일 필터와 마찬가지로 필터를 통해 원하는 스타일만 추려서 볼 수 있다. 특정 스타일을 확장하면 어떤 선택자들을 통해 최종적으로 연산된 값인지 확인할 수 있다.&lt;/p&gt;
 &lt;h4&gt;콘솔 (Console)&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="Console" src="./images/2018-12/chrome-dev-tool-101-console.png"&gt;
 콘솔을 통해 페이지에 불려진 DOM과 자바스크립트와 상호 작용하며 디버깅할 수 있다. 기본 콘솔에서는 &lt;code&gt;verbose&lt;/code&gt; 수준의 메세지는 표시되지 않아 출력 수준을 변경해야 볼 수 있는데, &lt;code&gt;verbose&lt;/code&gt; 메세지는 개발 도구에서 유용한 내용을 알려주는 경우도 있으니 보는 것이 좋다. 좌상단의 아이콘을 선택해 사이드바를 꺼내면 콘솔 로그를 출력한 주체별로 또는 메세지 레벨별로 나눠서 볼 수 있다. 유닉스의 오래된 단축키 중 하나인 &lt;code&gt;Ctrl + L&lt;/code&gt;을 이제까지의 콘솔 출력을 지우는 단축키로 사용할 수 있다.&lt;/p&gt;
@@ -157,6 +157,48 @@
 네트워크 탭을 통해 원격지와 어떻게 데이터를 요청하고 받았는지 확인하며 최적화를 했다면, 성능 탭에서는 자바스크립트 실행과 화면 그리기를 추적하여 어떤 부분이 웹 애플리케이션을 지연시키고 있는지 확인할 수 있다. 녹화(Record) 버튼을 누른 뒤 페이지를 로드하거나 자바스크립트 작업을 수행한 후, 정지하면 그 사이에 발생한 자바스크립트의 함수별 호출수와 사용된 시간 등을 확인할 수 있다.&lt;/p&gt;
 &lt;p&gt;타임 라인에서 구간을 선택하고 어떤 함수 호출이 가장 많은 시간을 사용했는지, 또 어떤 흐름으로 작업을 수행했는지 등을 파악할 수 있다.
 &lt;img alt="Heavist job" src="./images/2018-12/chrome-dev-tool-101-performance-heavist.png"&gt;&lt;/p&gt;
+&lt;h4&gt;애플리케이션 (Application)&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="Application" src="./images/2018-12/chrome-dev-tool-101-application.png"&gt;
+애플리케이션 탭에서는 웹 페이지가 웹 애플리케이션으로 기능하기 위해 필요한 내용들을 보여준다. 예전 웹 페이지에서는 오직 쿠키로만 정보를 저장하던 것과 달리, &lt;a href="https://developers.google.com/web/fundamentals/instant-and-offline/web-storage/"&gt;다양한 웹 저장소&lt;/a&gt;가 추가되어 더 안전하고 빠른 형태로 정보를 읽고 쓸 수 있게 되었다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;선언&lt;/strong&gt; (Manifest)&lt;ul&gt;
+&lt;li&gt;일반적으로 &lt;code&gt;&amp;lt;link rel="manifest" href="/manifest.json"&amp;gt;&lt;/code&gt;로 선언된 &lt;a href="https://developer.mozilla.org/en-US/docs/Web/Manifest"&gt;웹 애플리케이션과 관련된 선언&lt;/a&gt;을 표시한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;서비스 워커&lt;/strong&gt; (Service Workers)&lt;ul&gt;
+&lt;li&gt;현재 페이지에서 사용중인 &lt;a href="https://developers.google.com/web/fundamentals/primers/service-workers/"&gt;서비스 워커&lt;/a&gt; 정보를 표시한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;로컬 저장소&lt;/strong&gt; (Local Storage)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;키/값 쌍으로 손쉽게 데이터를 읽고 쓸 수 있다. 웹 브라우저마다 도메인별로 할당된 저장 공간의 크기가 다르지만 일반적으로 &lt;code&gt;10 MiB&lt;/code&gt;까지 허용된다.&lt;/li&gt;
+&lt;li&gt;데이터는 도메인 단위로 공유되어, 같은 브라우저 내의 서로 다른 창/탭에서도 같은 데이터를 공유할 수 있다.&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;localStorage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;setItem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;key&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;value&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="nx"&gt;localStorage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getItem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;key&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="nx"&gt;localStorage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;removeItem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;key&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="nx"&gt;localStorage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;clear&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;세션 저장소&lt;/strong&gt; (Session Storage)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;로컬 저장소와 기능적으로는 같지만, 사용자가 명시적으로 삭제하지 않으면 지워지지 않는 로컬 저장소와는 달리, 세션 저장소는 브라우저가 닫힐 때 같이 제워진다. &lt;/li&gt;
+&lt;li&gt;로컬 저장소와 달리, 같은 도메인일 경우에도 창/탭 단위로 서로 다른 데이터를 사용하게 된다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;인덱스DB&lt;/strong&gt; (IndexedDB)&lt;ul&gt;
+&lt;li&gt;많이 사용되는 관계형 데이터베이스를 브라우저에서도 사용할 수 있다. 일반적으로 &lt;code&gt;50 MiB&lt;/code&gt;이상 사용할 경우에는 사용자 동의를 필요로 한다. 이전에는 이를 위해 &lt;code&gt;WebSQL&lt;/code&gt;이 있었지만 &lt;a href="https://softwareengineering.stackexchange.com/questions/220254/why-is-web-sql-database-deprecated"&gt;이제는 사용되지 않는다&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;쿠키&lt;/strong&gt; (Cookies)&lt;ul&gt;
+&lt;li&gt;현재 페이지에서 사용 중인 쿠키 정보를 보여준다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h4&gt;보안 (Security)&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="Security" src="./images/2018-12/chrome-dev-tool-101-security.png"&gt;
 페이지의 인증서와 페이지에서 참조하는 도메인의 인증서 등을 검사하고 그 결과를 보여준다. 모든 사이트에 HTTPS 연결이 강조되므로 이 탭을 통해 페이지에서 참조하는 리소스에 대해서도 확인하는 것이 필요하다.&lt;/p&gt;
