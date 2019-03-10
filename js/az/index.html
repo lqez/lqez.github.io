@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>from a to z</title>
+<style>
+pre {
+  font-size: 2em;
+}
+</style>
+</head>
+<body>
+<h1>Type a from z.</h1>
+<p>Timer will begin after typing the first letter 'a'.</p>
+<p>Quit: <code>Cmd + w</code> or <code>Ctrl + w</code></p>
+<hr>
+<pre id="console"></pre>
+<script>
+const body = document.getElementsByTagName('body')[0];
+const console = document.getElementById('console');
+
+const beginCode = 65;
+const endCode = 91;
+var begin;
+var currentCode = beginCode;
+
+function now() {
+  if (typeof performance !== 'undefined') {
+    return performance.now();
+  }
+  return Date.now();
+}
+
+body.addEventListener('keydown', function (e) {
+  if (e.keyCode == currentCode) {
+    if (currentCode == beginCode) {
+      begin = now();
+    }
+
+    console.innerHTML += String.fromCharCode(e.keyCode);
+    currentCode += 1;
+    
+    if (currentCode >= endCode) {
+      console.innerHTML += '    ' + ((now() - begin) / 1000);
+      console.innerHTML += '\n';
+      currentCode = beginCode;
+    }
+  }
+});
+</script>
+</body>
