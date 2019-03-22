@@ -1,27 +1,26 @@
 /*
-	Name: Smashing HTML5
-	Date: July 2009
-	Description: Sample layout for HTML5 and CSS3 goodness.
-	Version: 1.0
-	Author: Enrique Ramírez
-	Autor URI: http://enrique-ramirez.com
+  Name: Smashing HTML5
+  Date: July 2009
+  Description: Sample layout for HTML5 and CSS3 goodness.
+  Version: 1.0
+  Author: Enrique Ramírez
+  Autor URI: http://enrique-ramirez.com
 */
 
 /* Imports */
 @import url('reset.css');
 @import url('pygment.css');
-@import url('//fonts.googleapis.com/earlyaccess/notosanskr.css');
-@import url('//fonts.googleapis.com/css?family=Roboto:400,700|Lato:400,700|Inconsolata:400,700');
+@import url('//fonts.googleapis.com/css?family=Noto+Sans+KR:400,700|Roboto:400,700|Lato:400,700|Inconsolata:400,700');
 
 /***** Global *****/
 /* Body */
 body {
   background: transparent;
-  color: #333;
-  font-size: 14pt;
+  color: #505356;
+  font-size: 13.6pt;
   font-family: 'Roboto', 'Noto Sans KR', sans-serif;
   font-weight: 400;
-  line-height: 1.429;
+  line-height: 1.667;
   margin: 0;
   padding: 0;
   text-align: left;
@@ -51,17 +50,17 @@ h1, h2, h3, h4, h5, h6 {
 
 article h2, article h3,
 article h4, article h5, article h6 {
-    margin-top: 1.4em;
+  margin-top: 1.4em;
 }
-	
+  
 hr { border:none; border-top: 1px solid #F0F0F0; margin: 3% 8%; }
 
 /* Anchors */
 a {outline: 0; color:#477b96; text-decoration: none;}
 a img {border: 0px; text-decoration: none;}
-	
+  
 /* Paragraphs */
-p {line-height:180%;}
+p {line-height:1.825;}
 p + p {margin-top: 1.5em;}
 
 strong, b {font-weight: 700;}
@@ -69,69 +68,69 @@ em, i {font-style: italic;}
 
 /* Lists */
 article ul {
-	list-style: none;
-	padding: 0.5em 1em 0.5em 1.5em;
+  list-style: none;
+  padding: 0.5em 1em 0.5em 1.5em;
   margin: 0em 0 0.5em 0;
 }
 
 article ol {
-	list-style: outside decimal;
-	margin: 1em 0 1.5em 1.5em;
+  list-style: outside decimal;
+  margin: 1em 0 1.5em 1.5em;
 }
 
 article ul li:before {
-    content: "•";
-    color: #676767;
-    font-size: 8pt;
-    padding-right: 10px;
-    margin-left: -16px;
-    position: absolute;
+  content: "•";
+  color: #676767;
+  font-size: 8pt;
+  padding-right: 10px;
+  margin-left: -16px;
+  position: absolute;
 }
 
 article li {
-    margin: 0.25em 0 0.25em 0em;
-    line-height: 150%;
+  margin: 0.25em 0 0.25em 0em;
+  line-height: 160%;
 }
 
 article ul ul li:before {
-    content: "–";
-    color: #878787;
-    position: absolute;
+  content: "–";
+  color: #878787;
+  position: absolute;
 }
 
 .post-info {
-    margin:10px 0 50px;
-    font-size: 0.8em;
-    color: #AAA;
-    text-align: right;
+  margin:10px 0 50px;
+  font-size: 0.8em;
+  color: #AAA;
+  text-align: right;
 }
 
 .post-info > abbr, .author {
-    display: block;
-    text-decoration: none;
+  display: block;
+  text-decoration: none;
 }
 
 .post-info-footer {
-    margin:10px;
-    padding:5px;
-    color: #AAA;
-    text-align: right;
+  margin:10px;
+  padding:5px;
+  color: #AAA;
+  text-align: right;
 }
 
 .tag {
-    margin-left: 0.3em;
+  margin-left: 0.3em;
 }
 
 .readmore { 
-    padding: 1em 0;
-    display: block;
-    border: none !important;
-    text-align: right;
+  padding: 1em 0;
+  display: block;
+  border: none !important;
+  text-align: right;
 }
 
 .paginator { 
-    margin: 2em auto;
-    text-align: center;
+  margin: 2em auto;
+  text-align: center;
 }
 
 dl {margin: 0 0 1.5em 0;}
@@ -163,54 +162,55 @@ div.note {
 
 /* Tables */
 table {margin: .5em auto 1.5em auto; width: 98%;}
-	
-	/* Thead */
-	thead th {padding: .5em .4em; text-align: left;}
-	thead td {}
+  
+  /* Thead */
+  thead th {padding: .5em .4em; text-align: left;}
+  thead td {}
 
-	/* Tbody */
-	tbody td {padding: .5em .4em;}
-	tbody th {}
-	
-	tbody .alt td {}
-	tbody .alt th {}
-	
-	/* Tfoot */
-	tfoot th {}
-	tfoot td {}
-	
+  /* Tbody */
+  tbody td {padding: .5em .4em;}
+  tbody th {}
+  
+  tbody .alt td {}
+  tbody .alt th {}
+  
+  /* Tfoot */
+  tfoot th {}
+  tfoot td {}
+  
 /* HTML5 tags */
 header, section, footer,
 aside, nav, article, figure {
-	display: block;
+  display: block;
 }
 
 /***** Layout *****/
 .body {clear: both; margin: 0 auto; width: 100%;}
+figure {margin: 0;}
 figure.right {float: right; margin: 0 0 2em 2em;}
 figure.left {float: left; margin: 0 2em 2em 0;}
 
 /*
-	Header
+  Header
 *****************/
 #banner {
-	margin: 0 auto;
+  margin: 0 auto;
 }
 
-	/* Banner */
-	#banner h1 {
+  /* Banner */
+  #banner h1 {
         font-size: 1.4em; 
         text-align: center;
         color: #444;
         margin: 0.5em 0;
     }
-	
-	#banner h1 a {
+  
+  #banner h1 a {
         color: #444;
         text-decoration: none;
     }
 
-	#banner h2 {
+  #banner h2 {
         font-size: 1em; 
         text-align: center;
         color: #777;
@@ -221,16 +221,16 @@ figure.left {float: left; margin: 0 2em 2em 0;}
     }
 
 /*
-	Featured
+  Featured
 *****************/
 #featured {
-	margin: 0 auto;
-	overflow: hidden;
-	width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 100%;
 }
 
 /*
-	Body
+  Body
 *****************/
 article {
     padding: 3em 1em 4em;
@@ -240,91 +240,105 @@ article {
 }
 
 article a:link, article a:visited {
-	text-decoration: none;
+  text-decoration: none;
     border-bottom: 1px solid #cde3ee;
 }
 article a:hover, article a:active {
-	text-decoration: none;
-    border-bottom: 1px solid #477b96;
+  text-decoration: none;
+  border-bottom: 1px solid #477b96;
 }
 
 article img {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid #e0e0e0;
-    border-radius: 3px;
-    margin: 5px auto;
-    float: none;
+  max-width: 100%;
+  height: auto;
+  outline: 1px solid #e0e0e0;
+  margin: 1em auto;
+  display: block;
+}
+
+article figure {
+  outline: 1px solid #e0e0e0;
+  margin: 1em auto;
+}
+
+article figure img {
+  margin: 0 auto;
+}
+
+article figure figcaption {
+  font-size: 0.9em;
+  padding: 2px 5px;
+  background-color: #eee;
 }
 
 #content {
-	margin: 0em auto;
-	overflow: hidden;
+  margin: 0em auto;
+  overflow: hidden;
 }
 
 /*
-	Extras
+  Extras
 *****************/
 #extras {margin: 0 auto 3em auto; overflow: hidden;}
 
 #extras ul {list-style: none; margin: 0;}
 #extras li {border-bottom: 1px solid #fff;}
 #extras h2 {
-	margin-bottom: .25em;
-	padding: 0 3px;
+  margin-bottom: .25em;
+  padding: 0 3px;
 }
 
 #extras a:link, #extras a:visited {
-	color: #444;
-	display: block;
-	border-bottom: 1px solid #F4E3E3;
-	text-decoration: none;
-	padding: .3em .25em;
+  color: #444;
+  display: block;
+  border-bottom: 1px solid #F4E3E3;
+  text-decoration: none;
+  padding: .3em .25em;
 }
 
 #extras a:hover, #extras a:active {color: #fff;}
 
-	/* Blogroll */
-	#extras .blogroll {
-		float: left;
-		width: 615px;
-	}
-	
-	#extras .blogroll li {float: left; margin: 0 20px 0 0; width: 185px;}
-	
-	/* Social */
-	#extras .social {
-		float: right;
-		width: 175px;
-	}
-	
-	#extras div[class='social'] a {
-		background-repeat: no-repeat;
-		background-position: 3px 6px;
-		padding-left: 25px;
-	}
-	
-		/* Icons */
-		.social a[href*='delicious.com'] {background-image: url('../images/icons/delicious.png');}
-		.social a[href*='digg.com'] {background-image: url('../images/icons/digg.png');}
-		.social a[href*='facebook.com'] {background-image: url('../images/icons/facebook.png');}
-		.social a[href*='last.fm'], .social a[href*='lastfm.'] {background-image: url('../images/icons/lastfm.png');}
-		.social a[type$='atom+xml'], .social a[type$='rss+xml'] {background-image: url('../images/icons/rss.png');}
-		.social a[href*='twitter.com'] {background-image: url('../images/icons/twitter.png');}
-		.social a[href*='linkedin.com'] {background-image: url('../images/icons/linkedin.png');}
-		.social a[href*='gitorious.org'] {background-image: url('../images/icons/gitorious.png');}
-		.social a[href*='github.com'],
-		.social a[href*='git.io'] {background-image: url('../images/icons/github.png');}
-		.social a[href*='gittip.com'] {background-image: url('../images/icons/gittip.png');}
-		.social a[href*='plus.google.com'] {background-image: url('../images/icons/google-plus.png');}
+  /* Blogroll */
+  #extras .blogroll {
+    float: left;
+    width: 615px;
+  }
+  
+  #extras .blogroll li {float: left; margin: 0 20px 0 0; width: 185px;}
+  
+  /* Social */
+  #extras .social {
+    float: right;
+    width: 175px;
+  }
+  
+  #extras div[class='social'] a {
+    background-repeat: no-repeat;
+    background-position: 3px 6px;
+    padding-left: 25px;
+  }
+  
+    /* Icons */
+    .social a[href*='delicious.com'] {background-image: url('../images/icons/delicious.png');}
+    .social a[href*='digg.com'] {background-image: url('../images/icons/digg.png');}
+    .social a[href*='facebook.com'] {background-image: url('../images/icons/facebook.png');}
+    .social a[href*='last.fm'], .social a[href*='lastfm.'] {background-image: url('../images/icons/lastfm.png');}
+    .social a[type$='atom+xml'], .social a[type$='rss+xml'] {background-image: url('../images/icons/rss.png');}
+    .social a[href*='twitter.com'] {background-image: url('../images/icons/twitter.png');}
+    .social a[href*='linkedin.com'] {background-image: url('../images/icons/linkedin.png');}
+    .social a[href*='gitorious.org'] {background-image: url('../images/icons/gitorious.png');}
+    .social a[href*='github.com'],
+    .social a[href*='git.io'] {background-image: url('../images/icons/github.png');}
+    .social a[href*='gittip.com'] {background-image: url('../images/icons/gittip.png');}
+    .social a[href*='plus.google.com'] {background-image: url('../images/icons/google-plus.png');}
 
 /*
-	About
+  About
 *****************/
 #about {
-	margin: 1.5em auto;
+  margin: 1.5em auto;
     font-size: 0.7em;
-	text-align: center;
+  text-align: center;
     font-style: normal;
 }
 
@@ -337,15 +351,15 @@ article img {
 #about .bio {float: right; width: 500px;}
 
 /*
-	Footer
+  Footer
 *****************/
 #contentinfo {padding-bottom: 2em; text-align: right;}
 
 /***** Sections *****/
 /* Blog */
 .hentry {
-	display: block;
-	clear: both;
+  display: block;
+  clear: both;
 }
 #content > .hentry {padding: 1em 0;}
 .hentry img{display : none ;}
@@ -376,50 +390,50 @@ article img {
     #posts-list > li {
         list-style: none;
     }
-	
-	/* About the Author */
-	#about-author {
-		background: #f9f9f9;
-		clear: both;
-		font-style: normal;
-		margin: 2em 0;
-		padding: 10px 20px 15px 20px;
-	}
-	
-	#about-author strong {
-		color: #C64350;
-		clear: both;
-		display: block;
-		font-size: 1.429em;
-	}
-	
-	#about-author .photo {border: 1px solid #ddd; float: left; margin: 5px 1em 0 0;}
-	
-	/* Comments */
-	#comments-list {list-style: none; margin: 0 1em;}
-	#comments-list blockquote {
-		background: #f8f8f8;
-		clear: both;
-		font-style: normal;
-		margin: 0;
-		padding: 15px 20px;
-	}
-	#comments-list footer {color: #888; padding: .5em 1em 0 0; text-align: right;}
-	
-	#comments-list li:nth-child(2n) blockquote {background: #F5f5f5;}
-	
-	/* Add a Comment */
-	#add-comment label {clear: left; float: left; text-align: left; width: 150px;}
-	#add-comment input[type='text'],
-	#add-comment input[type='email'],
-	#add-comment input[type='url'] {float: left; width: 200px;}
-	
-	#add-comment textarea {float: left; height: 150px; width: 495px;}
-	
-	#add-comment p.req {clear: both; margin: 0 .5em 1em 0; text-align: right;}
-	
-	#add-comment input[type='submit'] {float: right; margin: 0 .5em;}
-	#add-comment * {margin-bottom: .5em;}
+  
+  /* About the Author */
+  #about-author {
+    background: #f9f9f9;
+    clear: both;
+    font-style: normal;
+    margin: 2em 0;
+    padding: 10px 20px 15px 20px;
+  }
+  
+  #about-author strong {
+    color: #C64350;
+    clear: both;
+    display: block;
+    font-size: 1.429em;
+  }
+  
+  #about-author .photo {border: 1px solid #ddd; float: left; margin: 5px 1em 0 0;}
+  
+  /* Comments */
+  #comments-list {list-style: none; margin: 0 1em;}
+  #comments-list blockquote {
+    background: #f8f8f8;
+    clear: both;
+    font-style: normal;
+    margin: 0;
+    padding: 15px 20px;
+  }
+  #comments-list footer {color: #888; padding: .5em 1em 0 0; text-align: right;}
+  
+  #comments-list li:nth-child(2n) blockquote {background: #F5f5f5;}
+  
+  /* Add a Comment */
+  #add-comment label {clear: left; float: left; text-align: left; width: 150px;}
+  #add-comment input[type='text'],
+  #add-comment input[type='email'],
+  #add-comment input[type='url'] {float: left; width: 200px;}
+  
+  #add-comment textarea {float: left; height: 150px; width: 495px;}
+  
+  #add-comment p.req {clear: both; margin: 0 .5em 1em 0; text-align: right;}
+  
+  #add-comment input[type='submit'] {float: right; margin: 0 .5em;}
+  #add-comment * {margin-bottom: .5em;}
 
 .fb-comments, .fb-comments iframe[style], .fb-comments span {
     width: 100% !important;

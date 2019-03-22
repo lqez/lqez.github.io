@@ -123,7 +123,23 @@
         </p>
 <p>tags: <a href="https://lqez.github.io/blog/tag/synology.html" class="tag">synology</a><a href="https://lqez.github.io/blog/tag/nas.html" class="tag">nas</a><a href="https://lqez.github.io/blog/tag/money.html" class="tag">money</a></p></footer><!-- /.post-info -->    </div><!-- /.entry-content -->
     <div class="fb-comments" data-href="https://lqez.github.io/blog/drafts/synology-and.html" data-width="100%"  data-num-posts="10"></div>
+    <!-- img title to figcaption -->
+    <script>
+    window.addEventListener('load', function () {
+      const imgNodes = document.querySelectorAll('img[title]');
+      for(var i = 0; i < imgNodes.length; i++) {
+        const node = imgNodes[i];
+        const para = node.parentElement;
+        const figure = document.createElement('figure');
+        const figcaption = document.createElement('figcaption');
+        figcaption.innerHTML = node.getAttribute('title');
+        figure.append(para.removeChild(node));
+        figure.append(figcaption);
 
+        para.append(figure);
+      };
+    });
+    </script>
   </article>
 </section>
     <section id="extras" class="body">
@@ -152,6 +168,7 @@
             <li ><a href="https://lqez.github.io/blog/category/2018-09.html">2018-09</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2018-10.html">2018-10</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2018-12.html">2018-12</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2019-03.html">2019-03</a></li>
             <li ><a href="https://lqez.github.io/blog/category/uncategorized.html">Uncategorized</a></li>
         </ul></nav>
         -->
