@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Feature creep designer - diary</title>
+    <title>Django, graphene, 그리고 React로 간단한 서비스 만들기</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=0.82, minimum-scale=0.82" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta property="og:url" content="https://lqez.github.io/blog/drafts/django-graphene-react.html"/>
+    <meta property="og:title" content="Django, graphene, 그리고 React로 간단한 서비스 만들기"/>
+    <meta property="og:image" content="https://lqez.github.io/blog/images/icons/fcd.png"/>
 
     <link rel="stylesheet" href="https://lqez.github.io/blog/theme/css/main.css" type="text/css" />
     <link href="https://lqez.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Feature creep designer Atom Feed" />
@@ -27,83 +30,121 @@
         <h1><a href="https://lqez.github.io/blog/">Feature creep designer </a></h1>
         <h2 id="greeting">Happy day.</h2>
     </header><!-- /#banner -->
-        
-        
-            <section id="content" class="body">
-                <ol id="posts-list" class="hfeed" start="4">
-        <li><article class="hentry">    
-            <header>
-                <h1 class="entry-title"><a href="https://lqez.github.io/blog/fool-upstart.html" rel="bookmark"
-                       title="Permalink to Fool Upstart">Fool Upstart</a></h1>
-            </header>
-            
-            <div class="entry-content">
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://lqez.github.io/blog/drafts/django-graphene-react.html" rel="bookmark"
+           title="Permalink to Django, graphene, 그리고 React로 간단한 서비스 만들기">Django, graphene, 그리고 React로 간단한 서비스 만들기</a></h1>
+    </header>
+
+    <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2014-07-17T00:00:00+09:00">
-                Thu 17 July 2014
+        <abbr class="published" title="2019-04-02T00:00:00+09:00">
+                Tue 02 April 2019
         </abbr>
 
-</footer><!-- /.post-info -->            <h1>Upstart</h1>
-<p><a href="http://upstart.ubuntu.com/">Upstart</a>는 /sbin/init 를 대체하기 위한 우분투의 기본 서비스 관리자다.
-다양한 서비스를 daemon 형태로 관리하고, 죽은 경우에 자동으로 다시 실행할 수 있는 등 편리한 기능을 갖추고 있다.</p>
-<p>프로세스 ID를 받아 해당 프로세스가 잘 동작하는지 감시해야 하므로,
-해당 서비스가 어떤 형태로 시작되는지 알고 있어야 정확한 프로세스 ID를 얻을 수 …</p>
-            <a class="readmore" href="https://lqez.github.io/blog/fool-upstart.html">read more</a>
-            </div><!-- /.entry-content -->
-        </article></li>
-        
-        <li><article class="hentry">    
-            <header>
-                <h1 class="entry-title"><a href="https://lqez.github.io/blog/today-works.html" rel="bookmark"
-                       title="Permalink to Today works">Today works</a></h1>
-            </header>
-            
-            <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-10-16T00:00:00+09:00">
-                Wed 16 October 2013
-        </abbr>
+</footer><!-- /.post-info -->      <p>소비자의 이력서</p>
+<p>Python 3.7.2
+https://github.com/pyenv/pyenv/issues/1219#issuecomment-448658430</p>
+<p>brew install zlib sqlite</p>
+<p>export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/sqlite/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/sqlite/include"</p>
+<p>custom user model
+https://docs.djangoproject.com/en/2.1/topics/auth/customizing/#changing-to-a-custom-user-model-mid-project</p>
+<p>AUTH_USER_MODEL = 'pubsub.User'
+makemigrations
+migrate</p>
+<p>객체 모델링</p>
+<p>ImageField
+makemigrations
+migrate</p>
+<p>Pillow error
+pip install Pillow</p>
+<p>pip install django-summernote
+apps 추가
+url 추가
+media 추가
+migrate</p>
+<p>admin.site.register(Publisher, SummernoteModelAdmin)</p>
+<p>pip install graphene-django
+schema 추가</p>
+<p>django-filter
+relay</p>
+<p>https://docs.graphene-python.org/projects/django/en/latest/authorization/
+authentication
+exclude
+https://www.howtographql.com/graphql-python/4-authentication/</p>
+<p>https://github.com/flavors/django-graphql-jwt</p>
+<p>apollo playground 설치하기 http request header 지정</p>
+<p>{
+  "Authorization": "JWT <token>"
+}</p>
+<p>Procfile --pythonpath</p>
+<p>$ heroku run python pubsubat/manage.py migrate
+createsuperuser</p>
+<p>cloudflare
+heroku domains:add pubsub.at
+https://support.cloudflare.com/hc/en-us/articles/200169056-Does-CloudFlare-support-CNAME-APEX-at-the-root-</p>
+<p>react + graphql
+https://github.com/mbrochh/django-graphql-apollo-react-demo
+https://www.robinwieruch.de/minimal-react-webpack-babel-setup/
+https://www.howtographql.com/react-apollo/1-getting-started/</p>
+<p>npm install --save-dev apollo-boost react-apollo graphql</p>
+<h1>client side</h1>
+<p>CORS
+fetchOptions: {
+  mode: 'no-cors',
+},
+Content-Type:text/plain;charset=UTF-8
+https://github.com/apollographql/apollo-link/issues/275#issuecomment-347138651
+text/html</p>
+<h1>or on serverside</h1>
+<p>pip install django-cors-headers</p>
+<p>Graphene Django “Must provide query string”</p>
+<p>CORS_ORIGIN_WHITELIST = (
+    'pubsub.at',
+    'localhost:8000',
+    'localhost:8080',
+)</p>
+<p>이걸 꼭 해야할 필요가 있을까? ... django dev server로 서빙하지 않으면 필요 없는 것 같다. nginx 로 서빙하는게 낫다.
+serving webpack with django
+https://owais.lone.pw/blog/webpack-plus-reactjs-and-django/
+https://github.com/owais/django-webpack-loader
+npm install --save-dev webpack-bundle-tracker
+pip install django-webpack-loader</p>
+<p>history on webpackdev 
+historyApiFallback: true,
+https://stackoverflow.com/a/39968984/366908</p>
+<p>npm install --save-dev @babel/plugin-transform-runtime</p>
+<p>https://github.com/owais/django-webpack-loader/issues/160</p>
+<p>using process.env within webpack build
+https://medium.com/@justintulk/passing-environment-variables-into-your-code-with-webpack-cab09d8974b0</p><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<footer class="post-info-footer">
+        <p>
+        In <a href="https://lqez.github.io/blog/category/2019-04.html">2019-04</a>. 
+        </p>
+</footer><!-- /.post-info -->    </div><!-- /.entry-content -->
+    <div class="fb-comments" data-href="https://lqez.github.io/blog/drafts/django-graphene-react.html" data-width="100%"  data-num-posts="10"></div>
+    <!-- img title to figcaption -->
+    <script>
+    window.addEventListener('load', function () {
+      const imgNodes = document.querySelectorAll('img[title]');
+      for(var i = 0; i < imgNodes.length; i++) {
+        const node = imgNodes[i];
+        const para = node.parentElement;
+        const figure = document.createElement('figure');
+        const figcaption = document.createElement('figcaption');
+        figcaption.innerHTML = node.getAttribute('title');
+        figure.append(para.removeChild(node));
+        figure.append(figcaption);
 
-</footer><!-- /.post-info -->            <p>뭘 하고 사는지 괜히 바쁜것 같아, 하루 일과를 정리해보았다.</p>
-<ul>
-<li>집에서 출발, 회사까지 걸어서 출근하기.</li>
-<li>신규 입사자 면담.</li>
-<li>VPN 설정 수정.</li>
-<li>사내 서버실에서 랜선 교체작업, 케이블 정리, 서버 설치.</li>
-<li>사내 서버실 냉각 / 경보 장치 관련하여 짧은 미팅.</li>
-<li>신규 API 서비스 코드 리뷰. </li>
-<li>기존 API 서비스의 pagination 관련 토론.</li>
-<li>N사와 3세대 프로젝터 …</li></ul>
-            <a class="readmore" href="https://lqez.github.io/blog/today-works.html">read more</a>
-            </div><!-- /.entry-content -->
-        </article></li>
-        
-        <li><article class="hentry">    
-            <header>
-                <h1 class="entry-title"><a href="https://lqez.github.io/blog/happy-birthday-to-me-2013.html" rel="bookmark"
-                       title="Permalink to Happy birthday to me, 2013">Happy birthday to me, 2013</a></h1>
-            </header>
-            
-            <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-08-28T00:00:00+09:00">
-                Wed 28 August 2013
-        </abbr>
-
-</footer><!-- /.post-info -->            <p><img alt="A drawing on my birthday" src="./images/2013-08/birthday.jpg"></p>
-<p>언제부턴가 생일에 특별한 의미를 부여하거나, 챙겨서 뭘 하진 않게 되었다.
-어차피 날짜라는 건 연속적인 시간을 인간의 기준에 맞춰 불연속적인 개념으로 부르는 것일 뿐이라고 생각한다.
-하지만 오늘은 어쩐지 회사 창업 후 달라진 모습을 기록해보고 싶다.</p>
-<hr>
-<p>사실 거의 10년간 다니던 회사를 그만두고 지금의 일을 시작하는데 우아한 동기나 굳은 마음가짐이 있었던 건 아니다 …</p>
-            <a class="readmore" href="https://lqez.github.io/blog/happy-birthday-to-me-2013.html">read more</a>
-            </div><!-- /.entry-content -->
-        </article></li>
-            </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 1
-</p>
-            </section><!-- /#content -->
+        para.append(figure);
+      };
+    });
+    </script>
+  </article>
+</section>
     <section id="extras" class="body">
     </section><!-- /#extras -->
 
@@ -131,7 +172,7 @@
             <li ><a href="https://lqez.github.io/blog/category/2018-10.html">2018-10</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2018-12.html">2018-12</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2019-03.html">2019-03</a></li>
-            <li ><a href="https://lqez.github.io/blog/category/2019-04.html">2019-04</a></li>
+            <li class="active"><a href="https://lqez.github.io/blog/category/2019-04.html">2019-04</a></li>
             <li ><a href="https://lqez.github.io/blog/category/uncategorized.html">Uncategorized</a></li>
         </ul></nav>
         -->
