@@ -95,7 +95,7 @@
 <p>과목별 최고 점수를 구하기 위해서는 <a href="https://docs.djangoproject.com/en/2.2/ref/models/querysets/#values"><code>values</code></a>와
 <a href="https://docs.djangoproject.com/en/2.2/ref/models/querysets/#annotate"><code>annotate</code></a>를 섞어 사용한다.</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db.models</span> <span class="kn">import</span> <span class="n">Avg</span>
-<span class="n">qs</span> <span class="o">=</span> <span class="n">Score</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s1">&#39;subject_text&#39;</span><span class="p">)</span> \
+<span class="n">qs</span> <span class="o">=</span> <span class="n">Score</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s1">&#39;subject_name&#39;</span><span class="p">)</span> \
                   <span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">Avg</span><span class="p">(</span><span class="s1">&#39;score&#39;</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">qs</span><span class="p">:</span>
@@ -117,7 +117,7 @@
 <p><code>annotate</code>는 수행될 때 <code>values</code>로 지정된 필드를 SQL의 <a href="https://dev.mysql.com/doc/mysql/en/group-by-modifiers.html"><code>GROUP BY</code></a>로 전달하여, 해당 필드끼리 묶은 결과를 구한다.
 과목별 최고 점수를 가진 사람을 구하는 과정을 통해 <code>annotate</code>의 한계를 확인해보자.</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db.models</span> <span class="kn">import</span> <span class="n">Max</span>
-<span class="n">qs</span> <span class="o">=</span> <span class="n">Score</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s1">&#39;subject_text&#39;</span><span class="p">)</span> \
+<span class="n">qs</span> <span class="o">=</span> <span class="n">Score</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s1">&#39;subject_name&#39;</span><span class="p">)</span> \
                   <span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">Max</span><span class="p">(</span><span class="s1">&#39;score&#39;</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">qs</span><span class="p">:</span>
@@ -133,7 +133,7 @@
 <h3>Problem</h3>
 <p>최고 점수를 낸 사람을 같이 보고 싶은 경우에는 어떻게 해야할까? <code>values</code>에 학생 이름을 추가로 넣으면 의도한 결과가 나오지 않는다.</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db.models</span> <span class="kn">import</span> <span class="n">Max</span>
-<span class="n">qs</span> <span class="o">=</span> <span class="n">Score</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s1">&#39;subject_text&#39;</span><span class="p">,</span> <span class="s1">&#39;student_name&#39;</span><span class="p">)</span> \
+<span class="n">qs</span> <span class="o">=</span> <span class="n">Score</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s1">&#39;subject_name&#39;</span><span class="p">,</span> <span class="s1">&#39;student_name&#39;</span><span class="p">)</span> \
                   <span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">Max</span><span class="p">(</span><span class="s1">&#39;score&#39;</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">qs</span><span class="p">:</span>
@@ -157,9 +157,9 @@
 
 <p>그렇다면 <code>values</code>를 <code>annotate</code> 뒤에 추가로 놓으면 결과가 달라질까?</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db.models</span> <span class="kn">import</span> <span class="n">Max</span>
-<span class="n">qs</span> <span class="o">=</span> <span class="n">Score</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s1">&#39;subject_text&#39;</span><span class="p">)</span> \
+<span class="n">qs</span> <span class="o">=</span> <span class="n">Score</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s1">&#39;subject_name&#39;</span><span class="p">)</span> \
                   <span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">Max</span><span class="p">(</span><span class="s1">&#39;score&#39;</span><span class="p">))</span> \
-                  <span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s1">&#39;subject_text&#39;</span><span class="p">,</span> <span class="s1">&#39;student_name&#39;</span><span class="p">,</span> <span class="s1">&#39;score__max&#39;</span><span class="p">)</span>
+                  <span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s1">&#39;subject_name&#39;</span><span class="p">,</span> <span class="s1">&#39;student_name&#39;</span><span class="p">,</span> <span class="s1">&#39;score__max&#39;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">qs</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
