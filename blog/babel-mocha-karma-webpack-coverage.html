@@ -807,7 +807,7 @@ $ npm test
 </pre></div>
 
 
-<p>웹 브라우저에 자바스크립트를 전달하기 위해서는 <code>test/test.js</code> 코드도 Babel을 통해 변환해야 한다. 이번에도 Webpack을 이용해 <code>dist/test.js</code> 파일을 번들링한다. 시작점(<code>--entry</code>)을 <code>test/test.js</code>로 지정하고, 번들링 결과(<code>--output</code>)는 <code>dist/test.js</code>로 출력해서 <code>dist/test.html</code>에서 불러 쓸 수 있도록 한다.</p>
+<p>웹 브라우저에 자바스크립트를 전달하기 위해서는 <code>test/test.js</code> 코드도 Babel을 통해 변환해야 한다. 이번에도 Webpack을 이용해 <code>dist/test.js</code> 파일을 번들링한다. <a href="https://webpack.js.org/concepts/entry-points/">시작점(<code>--entry</code>)</a>을 <code>test/test.js</code>로 지정하고, <a href="https://webpack.js.org/configuration/output/">번들링 결과(<code>--output</code>)</a>는 <code>dist/test.js</code>로 출력해서 <code>dist/test.html</code>에서 불러 쓸 수 있도록 한다.</p>
 <div class="highlight"><pre><span></span>$ npx -c &quot;webpack --entry=./test/test.js --output=./dist/test.js&quot;
 Hash: 3f87d82287927aa93e01
 Version: webpack 4.39.3

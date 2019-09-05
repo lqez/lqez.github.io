@@ -763,7 +763,7 @@ $ npm test
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;웹 브라우저에 자바스크립트를 전달하기 위해서는 &lt;code&gt;test/test.js&lt;/code&gt; 코드도 Babel을 통해 변환해야 한다. 이번에도 Webpack을 이용해 &lt;code&gt;dist/test.js&lt;/code&gt; 파일을 번들링한다. 시작점(&lt;code&gt;--entry&lt;/code&gt;)을 &lt;code&gt;test/test.js&lt;/code&gt;로 지정하고, 번들링 결과(&lt;code&gt;--output&lt;/code&gt;)는 &lt;code&gt;dist/test.js&lt;/code&gt;로 출력해서 &lt;code&gt;dist/test.html&lt;/code&gt;에서 불러 쓸 수 있도록 한다.&lt;/p&gt;
+&lt;p&gt;웹 브라우저에 자바스크립트를 전달하기 위해서는 &lt;code&gt;test/test.js&lt;/code&gt; 코드도 Babel을 통해 변환해야 한다. 이번에도 Webpack을 이용해 &lt;code&gt;dist/test.js&lt;/code&gt; 파일을 번들링한다. &lt;a href="https://webpack.js.org/concepts/entry-points/"&gt;시작점(&lt;code&gt;--entry&lt;/code&gt;)&lt;/a&gt;을 &lt;code&gt;test/test.js&lt;/code&gt;로 지정하고, &lt;a href="https://webpack.js.org/configuration/output/"&gt;번들링 결과(&lt;code&gt;--output&lt;/code&gt;)&lt;/a&gt;는 &lt;code&gt;dist/test.js&lt;/code&gt;로 출력해서 &lt;code&gt;dist/test.html&lt;/code&gt;에서 불러 쓸 수 있도록 한다.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ npx -c &amp;quot;webpack --entry=./test/test.js --output=./dist/test.js&amp;quot;
 Hash: 3f87d82287927aa93e01
 Version: webpack 4.39.3
