@@ -126,6 +126,10 @@
 &lt;h6&gt;index.js&lt;/h6&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;import&lt;/span&gt; &lt;span class="nx"&gt;Animal&lt;/span&gt; &lt;span class="nx"&gt;from&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;./Animal.js&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
+&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;main&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="err"&gt;…&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
 &lt;span class="nb"&gt;window&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;onload&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
 &lt;span class="err"&gt;…&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
