@@ -44,7 +44,7 @@
                 Thu 17 July 2014
         </abbr>
 
-</footer><!-- /.post-info -->      <h1>Upstart</h1>
+</footer><!-- /.post-info -->      <h2 id="upstart">Upstart</h2>
 <p><a href="http://upstart.ubuntu.com/">Upstart</a>는 /sbin/init 를 대체하기 위한 우분투의 기본 서비스 관리자다.
 다양한 서비스를 daemon 형태로 관리하고, 죽은 경우에 자동으로 다시 실행할 수 있는 등 편리한 기능을 갖추고 있다.</p>
 <p>프로세스 ID를 받아 해당 프로세스가 잘 동작하는지 감시해야 하므로,
@@ -55,7 +55,7 @@ Upstart 설정 중, <a href="http://upstart.ubuntu.com/cookbook/#expect">expect 
 <ul>
 <li><a href="http://upstart.ubuntu.com/cookbook/#implications-of-misspecifying-expect">6.13.5 Implications of Misspecifying expect</a></li>
 </ul>
-<h2>Symptom</h2>
+<h3 id="symptom">Symptom</h3>
 <p>보통은 이 값을 잘못 설정한 경우에 서비스가 제대로 감시되지 않거나, 종료되지 않는 등의 문제가 생기는데
 오늘은 해당 서비스를 재시작하면서 별다른 설정의 변경이 없었음에도 불구하고, 이상한 상태에 빠지고 말았다.</p>
 <div class="highlight"><pre><span></span>$ initctl list <span class="p">|</span> grep flower
@@ -72,7 +72,7 @@ one/flower_dup start/running, process <span class="m">17171</span>
 </pre></div>
 
 
-<h2>Solution</h2>
+<h3 id="solution">Solution</h3>
 <p>시스템을 재시작하면 복구될 것 같았지만, 당장 재시작할 수 없는 프로덕션 시스템이라
 혹시나 하여 구글링을 계속하다보니 누군가 만들어둔 루비 스크립트를 찾게 되었다.</p>
 <ul>
@@ -95,6 +95,18 @@ one/flower start/running, process <span class="m">14810</span>
         </p>
 <p>tags: <a href="https://lqez.github.io/blog/tag/diary.html" class="tag">diary</a><a href="https://lqez.github.io/blog/tag/ubuntu.html" class="tag">ubuntu</a></p></footer><!-- /.post-info -->    </div><!-- /.entry-content -->
     <div class="fb-comments" data-href="https://lqez.github.io/blog/fool-upstart.html" data-width="100%"  data-num-posts="10"></div>
+    <!-- add anchor to headings -->
+    <script>
+    const headers = document.querySelectorAll('h2[id], h3[id]');
+    for(var i = 0; i < headers.length; i++) {
+      const node = headers[i];
+      const anchor = document.createElement("a");
+      anchor.className = "pilcrow";
+      anchor.text = "\xb6";
+      anchor.href = "#" + node.id;
+      node.appendChild(anchor);
+    };
+    </script>
     <!-- img title to figcaption -->
     <script>
     window.addEventListener('load', function () {
@@ -143,6 +155,7 @@ one/flower start/running, process <span class="m">14810</span>
             <li ><a href="https://lqez.github.io/blog/category/2019-03.html">2019-03</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2019-04.html">2019-04</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2019-05.html">2019-05</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2019-09.html">2019-09</a></li>
             <li ><a href="https://lqez.github.io/blog/category/uncategorized.html">Uncategorized</a></li>
         </ul></nav>
         -->

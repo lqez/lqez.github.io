@@ -32,7 +32,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;Aggregate&lt;/h3&gt;
+&lt;h4 id="aggregate"&gt;Aggregate&lt;/h4&gt;
 &lt;p&gt;전체 시험 성적을 대상으로 최고 점수나 평균 점수를 구하는 것은
 &lt;a href="https://docs.djangoproject.com/en/2.2/topics/db/aggregation/"&gt;&lt;code&gt;aggregate&lt;/code&gt;&lt;/a&gt;로 가능하다.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Avg&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Max&lt;/span&gt;
@@ -52,7 +52,7 @@
 
 &lt;p&gt;그럼 과목별 평균을 구하고 싶을 때는 어떻게 해야할까?
 위 쿼리에서 &lt;code&gt;filter&lt;/code&gt; 부분을 모든 과목으로 바꿔가며 확인할 수도 있겠지만, &lt;code&gt;annotate&lt;/code&gt; 기능을 사용하면 간단하게 해결할 수 있다.&lt;/p&gt;
-&lt;h3&gt;Annotate&lt;/h3&gt;
+&lt;h4 id="annotate"&gt;Annotate&lt;/h4&gt;
 &lt;p&gt;과목별 최고 점수를 구하기 위해서는 &lt;a href="https://docs.djangoproject.com/en/2.2/ref/models/querysets/#values"&gt;&lt;code&gt;values&lt;/code&gt;&lt;/a&gt;와
 &lt;a href="https://docs.djangoproject.com/en/2.2/ref/models/querysets/#annotate"&gt;&lt;code&gt;annotate&lt;/code&gt;&lt;/a&gt;를 섞어 사용한다.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Avg&lt;/span&gt;
@@ -91,7 +91,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;Problem&lt;/h3&gt;
+&lt;h4 id="problem"&gt;Problem&lt;/h4&gt;
 &lt;p&gt;최고 점수를 낸 사람을 같이 보고 싶은 경우에는 어떻게 해야할까? &lt;code&gt;values&lt;/code&gt;에 학생 이름을 추가로 넣으면 의도한 결과가 나오지 않는다.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Max&lt;/span&gt;
 &lt;span class="n"&gt;qs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Score&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;subject_name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;student_name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; \
@@ -156,8 +156,8 @@
 &lt;/ul&gt;
 &lt;p&gt;하지만 MySQL과 같은 대중적인 데이터베이스에서도 이런 애매한 구문이 문제 없이 수행되는 경우가 많다 보니,
 이런 경우를 Django ORM에서 적당히 처리하지 못하는 것에 대해 불편하다고 느낄 수도 있다.&lt;/p&gt;
-&lt;h3&gt;Solution&lt;/h3&gt;
-&lt;h4&gt;Loop&lt;/h4&gt;
+&lt;h4 id="solution"&gt;Solution&lt;/h4&gt;
+&lt;h5 id="loop"&gt;Loop&lt;/h5&gt;
 &lt;p&gt;첫번째 방법은 과목별 최고 점수를 구한 뒤, 각 결과를 순회하며 해당 과목의 해당 점수를 가진 결과 중,
 가장 첫번째 결과에 해당하는 값을 추가로 넣는 방법이다.
 직관적으로 이해할 수 있는 쉬운 코드이지만, 과목별로 쿼리를 추가적으로 요청해야 하는 부담이 있다.&lt;/p&gt;
@@ -180,7 +180,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h4&gt;Subquery&lt;/h4&gt;
+&lt;h5 id="subquery"&gt;Subquery&lt;/h5&gt;
 &lt;p&gt;두번째는 &lt;code&gt;Subquery&lt;/code&gt;를 이용해 각 과목별 최고 점수를 가져오는 서브쿼리를 통해 한 번의 쿼리 요청으로 전체 결과를 얻어오는 방법이다.
 서브쿼리가 데이터베이스 상에서 발생하기 때문에 첫번째 방법에 비해 상대적으로 적은 비용으로 같은 결과를 얻을 것으로 예상된다.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Subquery&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;OuterRef&lt;/span&gt;
@@ -212,7 +212,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h4&gt;Raw query&lt;/h4&gt;
+&lt;h5 id="raw-query"&gt;Raw query&lt;/h5&gt;
 &lt;p&gt;세번째는 Django ORM을 통하지 않고 바로 SQL문을 실행하는 방법이다.
 이는 해당 데이터베이스가 위에서 언급했던 &lt;em&gt;애매한&lt;/em&gt; 결과를 문제삼지 않는 경우에 사용할 수 있다.
 하지만 데이터베이스와 데이터가 저장된 순서에 따라 같은 동작이 보장되지 않으므로 추천하지 않는다.&lt;/p&gt;
@@ -234,7 +234,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;Many to one relationships&lt;/h3&gt;
+&lt;h4 id="many-to-one-relationships"&gt;Many to one relationships&lt;/h4&gt;
 &lt;p&gt;같은 문제를 일반적으로 많이 사용하는 &lt;a href="https://docs.djangoproject.com/en/2.2/topics/db/examples/many_to_one/"&gt;Many-to-one 관계&lt;/a&gt;의 모델에서도 만날 수 있다.
 다음과 같은 모델이 있을 경우 앞서 제시했던 방법을 어떻게 적용하는지 확인해보자.
 &lt;code&gt;Contractor&lt;/code&gt; 모델은 계약을 맺는 업자 정보를 담고 있고, &lt;code&gt;Contract&lt;/code&gt;는 업자들이 맺은 계약지와 그 수량을 담고 있다고 가정한다.&lt;/p&gt;

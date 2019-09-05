@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer - 2013-04</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/2013-04.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2013-04-20T00:00:00+09:00</updated><entry><title>Making a fan page for a 'Developer conference'</title><link href="https://lqez.github.io/blog/making-a-fan-page-for-a-developer-conference.html" rel="alternate"></link><published>2013-04-20T00:00:00+09:00</published><updated>2013-04-20T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2013-04-20:/blog/making-a-fan-page-for-a-developer-conference.html</id><summary type="html">&lt;h1&gt;Preface&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer - 2013-04</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/2013-04.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2013-04-20T00:00:00+09:00</updated><entry><title>Making a fan page for a 'Developer conference'</title><link href="https://lqez.github.io/blog/making-a-fan-page-for-a-developer-conference.html" rel="alternate"></link><published>2013-04-20T00:00:00+09:00</published><updated>2013-04-20T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2013-04-20:/blog/making-a-fan-page-for-a-developer-conference.html</id><summary type="html">&lt;h2 id="preface"&gt;Preface&lt;/h2&gt;
 &lt;p&gt;2012년 4월, 모 게임회사의 개발자 컨퍼런스가 열린다는 소식을 듣고, 기쁜 마음에 해당 컨퍼런스의 홈페이지에 접속했다.
 대형 포털 업체의 블로그 시스템을 이용한 페이지라 조금 실망했지만, 보통 이런 행사에 인력을 충분히 할당할 수 없음을 알기에 이해했다.&lt;/p&gt;
 &lt;p&gt;하지만, 일정표를 거대한 이미지 파일 하나로 배포하는 것을 보고, 아쉬운 마음을 감출 수 없었다.
-개발자 …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Preface&lt;/h1&gt;
+개발자 …&lt;/p&gt;</summary><content type="html">&lt;h2 id="preface"&gt;Preface&lt;/h2&gt;
 &lt;p&gt;2012년 4월, 모 게임회사의 개발자 컨퍼런스가 열린다는 소식을 듣고, 기쁜 마음에 해당 컨퍼런스의 홈페이지에 접속했다.
 대형 포털 업체의 블로그 시스템을 이용한 페이지라 조금 실망했지만, 보통 이런 행사에 인력을 충분히 할당할 수 없음을 알기에 이해했다.&lt;/p&gt;
 &lt;p&gt;하지만, 일정표를 거대한 이미지 파일 하나로 배포하는 것을 보고, 아쉬운 마음을 감출 수 없었다.
@@ -32,7 +32,7 @@
 &lt;/ul&gt;
 &lt;p&gt;'하라는 일은 안하고' 작업을 시작했다. 작업하는 동안 화면을 종종 캡춰했고, 이를 정리해봤다.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2&gt;4월 11일&lt;/h2&gt;
+&lt;h3 id="4-11"&gt;4월 11일&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;23:29&lt;/code&gt; 딸을 재우고 와이프가 TV를 보는 동안 작업을 시작했다.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;23:29&lt;/code&gt; Github에 리포지터리를 생성했다. 리포지터리를 생성하는 것만으로도 뭔가 달성한 기분이 든다.
 &lt;img alt="0411-01.jpg" src="./images/2013-04/0411-01.jpg"&gt;&lt;/p&gt;
@@ -49,7 +49,7 @@
 &lt;p&gt;&lt;code&gt;00:17&lt;/code&gt; 머리가 나쁘니까 손발이 고생한다. 잘못 설계된 모델들을 수정하기 위해 &lt;code&gt;south&lt;/code&gt;를 설치하고 마이그레이션을 하기 시작했다.
 머리가 나쁜 것을 탓하다 졸려서 잠들었다.
 &lt;img alt="0411-07.jpg" src="./images/2013-04/0411-07.jpg"&gt;&lt;/p&gt;
-&lt;h2&gt;4월 12일&lt;/h2&gt;
+&lt;h3 id="4-12"&gt;4월 12일&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;14:46&lt;/code&gt; 회사에 출근은 했는데, 마음은 밭에 가 있으니 오전 내내 싱숭생숭하다가, 점심 먹고 데이터 입력을 시작했다.
 &lt;img alt="0412-01.jpg" src="./images/2013-04/0412-01.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;15:50&lt;/code&gt; 데이터 입력만 한 시간 내내 해서 드디어 입력을 끝냈다. 자동으로 긁는 도구를 만들까 하다가 그게 더 큰 일이 될게 뻔하니 관두고 몸빵했다. 
@@ -58,9 +58,9 @@
 &lt;p&gt;&lt;code&gt;18:47&lt;/code&gt; 저녁을 회사에서 먹고 드디어 첫 템플릿 코드를 작성했다. 그냥 목록이 나오는거 뿐인데도 뿌듯했다. 
 이후에 타임테이블용 템플릿 작업을 무지하게 했는데 머리가 잘 안돌아가서 걍 퇴근했다. 역시 야근... 아니 밤에 코딩하는건 효율이 나쁘다.
 &lt;img alt="0412-03.jpg" src="./images/2013-04/0412-03.jpg"&gt;&lt;/p&gt;
-&lt;h2&gt;4월 13일 - 4월 14일&lt;/h2&gt;
+&lt;h3 id="4-13-4-14"&gt;4월 13일 - 4월 14일&lt;/h3&gt;
 &lt;p&gt;팬심이 아무리 강해도, 유부남의 주말은 가족과 함께 보낼 수 밖에 없다. 한 줄도 못 짜고 이틀이 지나갔다.&lt;/p&gt;
-&lt;h2&gt;4월 15일&lt;/h2&gt;
+&lt;h3 id="4-15"&gt;4월 15일&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;10:50&lt;/code&gt; 집에서 회사까지 약 5km 정도 되는데, 아침부터 뭔 바람이 불었는지 걸어서 출근했다. 
 쉰냄새를 풍기면서 타임테이블 템플릿 코딩을 계속했다. 엉성하지만 출력되는 것을 보고 조금 감동했다. &lt;code&gt;&amp;lt;table&amp;gt;&lt;/code&gt; 태그 따위에 말이지.
 &lt;img alt="0415-01.jpg" src="./images/2013-04/0415-01.jpg"&gt;&lt;/p&gt;
@@ -75,7 +75,7 @@
 &lt;p&gt;&lt;code&gt;21:27&lt;/code&gt; 회사에서 밥을 먹고 네이게이션 바를 붙였다. 그냥 &lt;code&gt;Bootstrap&lt;/code&gt;보다는 역시 &lt;code&gt;Flat-UI&lt;/code&gt;가 힙해보인다, 는 착각이 든다.
 너무 늦는거 같아 대충 열시에 정리하고 퇴각.
 &lt;img alt="0415-05.jpg" src="./images/2013-04/0415-05.jpg"&gt;&lt;/p&gt;
-&lt;h2&gt;4월 16일&lt;/h2&gt;
+&lt;h3 id="4-16"&gt;4월 16일&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;14:52&lt;/code&gt; 또 걸어서 출근했더니 오전이 쉰내와 함께 갑자기 사라지고 말았다! 아무튼 점심 먹고 또 CSS에 빠져들었다. 툴팁 붙이고 신났다!
 이 때부터 &lt;code&gt;imgur&lt;/code&gt;에 올려서 IRC 에 링크도 올리고 했다. 슬슬 초기 버프가 떨어지고 재미가 없어지는 시점이었던거 같다.
 &lt;img alt="0416-01.jpg" src="./images/2013-04/0416-01.jpg"&gt;&lt;/p&gt;
@@ -87,7 +87,7 @@
 &lt;img alt="0416-03.jpg" src="./images/2013-04/0416-03.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;19:39&lt;/code&gt; 어설프게 만들고 놔두는거 싫어하는데, 마침 회식이 생겨 퇴각했다. 이날 술 먹고 체력이 저하되었ㄷㅈㅁ데ㅓㅐ러....
 &lt;img alt="0416-04.jpg" src="./images/2013-04/0416-04.jpg"&gt;&lt;/p&gt;
-&lt;h2&gt;4월 17일&lt;/h2&gt;
+&lt;h3 id="4-17"&gt;4월 17일&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;14:22&lt;/code&gt; 어제 만들다 놔둔 발표자 페이지를 꾸미기 시작했다. 트위터 아이디를 넣고 트위터 API로 프로필 이미지를 불러오도록 했다.
 &lt;img alt="0417-01.jpg" src="./images/2013-04/0417-01.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;14:49&lt;/code&gt; 발표자 개인 페이지는 아직 넣을만한 내용이 별로 없어 한산하다. 아무튼 여기도 moot.it 넣고 마무리했다.
@@ -104,13 +104,13 @@
 &lt;code&gt;&amp;lt;td&amp;gt;&lt;/code&gt; 태그에 &lt;code&gt;position: relative&lt;/code&gt; 가 안되는 걸 뒤늦게 깨닫고 멘붕. 이걸 해결하기 위해 자바스크립트를 끼얹는 만행을 저지르고 말았다.
 테이블 셀 우하단에 발표자 이름과 회사 이름 위치시키는게 이렇게 어려울 줄이야. 이걸 새벽 3시까지 했다.
 &lt;img alt="0417-05.jpg" src="./images/2013-04/0417-05.jpg"&gt;&lt;/p&gt;
-&lt;h2&gt;4월 18일&lt;/h2&gt;
+&lt;h3 id="4-18"&gt;4월 18일&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;19:13&lt;/code&gt; 어젯 밤에 늦게 자서 아예 휴가를 내고 본격적으로 마무리 작업을 했다. 뭔가 많이 다듬긴 했는데 기억나는게 몇 개 없는건 왜일까.
 사이트 자체 작업보다는, 회사 서버에 이걸 올려 실제 서비스하기 위한 준비를 했다.
 아무튼 친구와 같이 커피숍에서 배터리 떨어질 때까지 작업하며 이메일로 로그인하기 기능의 기본을 다 만들었다. 
 가족과 함께 저녁을 먹고 놀다가, favicon 을 만들고 일찍 잠들었다.
 &lt;img alt="0418-01.jpg" src="./images/2013-04/0418-01.jpg"&gt;&lt;/p&gt;
-&lt;h2&gt;4월 19일&lt;/h2&gt;
+&lt;h3 id="4-19"&gt;4월 19일&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;09:48&lt;/code&gt; 오늘은 무슨 일이 있어도 꼭 릴리즈해야 겠다는 마음이었으나, 버프가 완전히 떨어져 효율이 전혀 나지 않았다.
 아무튼 꾸역 꾸역 코딩해서 자체 댓글 기능 붙이고, 프로필 페이지를 작성하고, &lt;code&gt;Redis&lt;/code&gt;를 통해 캐시도 사용하도록 했고,
 &lt;code&gt;Google Analytics&lt;/code&gt;도 붙이는 등의 마무리 작업을 계속했다. 
@@ -122,7 +122,7 @@
 &lt;p&gt;&lt;code&gt;18:06&lt;/code&gt; 사용자들이 들어오기 시작했다! 들뜬 마음으로 쳐다보다가 근처에 가족이 와서 저녁을 먹으러 조금 일찍 퇴근했다.
 &lt;img alt="0419-03.jpg" src="./images/2013-04/0419-03.jpg"&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1&gt;Afterwords&lt;/h1&gt;
+&lt;h2 id="afterwords"&gt;Afterwords&lt;/h2&gt;
 &lt;p&gt;만들고자 했던 기능들 중, 페이스북 그래프 활용이나 자기가 듣고 싶은 세션을 체크하는 기능 등을 완성하진 못했다.
 애초에 이 사이트를 만들려고 했던 것이 팬 페이지 만들어서 뭘 어떻게 해보겠다기 보다는,
 어차피 앞으로 인하우스 도구를 만들 때 계속 쓸 것 같은 &lt;code&gt;Django&lt;/code&gt;를 좀 정리해서 제대로 써보고 싶었고,

@@ -49,7 +49,7 @@
 <p>CFP 페이지 자체는 내용도 단순하고 사실상 읽기 전용 페이지라 복잡한 작업이 없는데,
 이 페이지를 만들면서 2015년의 새로운 파이콘 한국 웹 사이트의 스타일에 대해 고민하다보니
 시간만 엄청 쓰고 페이지 자체는 별로 특이할 것이 없게 되었다.</p>
-<h2>Paper and Paper</h2>
+<h3 id="paper-and-paper">Paper and Paper</h3>
 <p>2014년의 홈페이지 디자인은 파이콘 한국 2014 라이트닝 토크 시간에 정리해서 발표했었다.</p>
 <ul>
 <li><a href="http://www.slideshare.net/lqez/ss-38513725">그릇된 팬심의 어긋난 결말 (slideshare)</a></li>
@@ -68,10 +68,10 @@
 TODO : Wave -&gt; 통합</p>
 <hr>
 <p>TODO : 자바스크립트 / 캔버스 라이브러리 </p>
-<h2>Taiji</h2>
+<h3 id="taiji">Taiji</h3>
 <p>TODO : 내 닫힌 생각과 파이님의 지적 
 TODO : 태극을 나타내는 것은 괘의 원형도 필요</p>
-<h2>And,</h2>
+<h3 id="and">And,</h3>
 <p>TODO : 홈페이지 기능 자체에 대한 것
 TODO : 홍보</p><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 <footer class="post-info-footer">
@@ -80,6 +80,18 @@ TODO : 홍보</p><script src="//platform.twitter.com/widgets.js" charset="utf-8"
         </p>
 <p>tags: <a href="https://lqez.github.io/blog/tag/diary.html" class="tag">diary</a><a href="https://lqez.github.io/blog/tag/pycon.html" class="tag">pycon</a><a href="https://lqez.github.io/blog/tag/design.html" class="tag">design</a></p></footer><!-- /.post-info -->    </div><!-- /.entry-content -->
     <div class="fb-comments" data-href="https://lqez.github.io/blog/drafts/decorating-pycon-korea-2015-cfp.html" data-width="100%"  data-num-posts="10"></div>
+    <!-- add anchor to headings -->
+    <script>
+    const headers = document.querySelectorAll('h2[id], h3[id]');
+    for(var i = 0; i < headers.length; i++) {
+      const node = headers[i];
+      const anchor = document.createElement("a");
+      anchor.className = "pilcrow";
+      anchor.text = "\xb6";
+      anchor.href = "#" + node.id;
+      node.appendChild(anchor);
+    };
+    </script>
     <!-- img title to figcaption -->
     <script>
     window.addEventListener('load', function () {
@@ -128,6 +140,7 @@ TODO : 홍보</p><script src="//platform.twitter.com/widgets.js" charset="utf-8"
             <li ><a href="https://lqez.github.io/blog/category/2019-03.html">2019-03</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2019-04.html">2019-04</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2019-05.html">2019-05</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2019-09.html">2019-09</a></li>
             <li ><a href="https://lqez.github.io/blog/category/uncategorized.html">Uncategorized</a></li>
         </ul></nav>
         -->

@@ -44,7 +44,7 @@
                 Wed 08 May 2013
         </abbr>
 
-</footer><!-- /.post-info -->      <p><a href="https://twitter.com/drypot"><a href="https://twitter.com/drypot">@drypot</a></a> 님이 의지를 불태워 <a href="http://rapixel.com">http://rapixel.com</a> 을 만들고 있는 것에 감명받아,
+</footer><!-- /.post-info -->      <p><a href="https://twitter.com/drypot">@drypot</a> 님이 의지를 불태워 <a href="http://rapixel.com">http://rapixel.com</a> 을 만들고 있는 것에 감명받아,
 예전부터 만들고 싶었던 사진 저장/공유 사이트 아이디어를 구체화 해보았다.</p>
 <ul>
 <li>원본 사진을 보관한다.</li>
@@ -76,6 +76,18 @@
         </p>
 <p>tags: <a href="https://lqez.github.io/blog/tag/idea.html" class="tag">idea</a><a href="https://lqez.github.io/blog/tag/photo.html" class="tag">photo</a><a href="https://lqez.github.io/blog/tag/web.html" class="tag">web</a></p></footer><!-- /.post-info -->    </div><!-- /.entry-content -->
     <div class="fb-comments" data-href="https://lqez.github.io/blog/499px.html" data-width="100%"  data-num-posts="10"></div>
+    <!-- add anchor to headings -->
+    <script>
+    const headers = document.querySelectorAll('h2[id], h3[id]');
+    for(var i = 0; i < headers.length; i++) {
+      const node = headers[i];
+      const anchor = document.createElement("a");
+      anchor.className = "pilcrow";
+      anchor.text = "\xb6";
+      anchor.href = "#" + node.id;
+      node.appendChild(anchor);
+    };
+    </script>
     <!-- img title to figcaption -->
     <script>
     window.addEventListener('load', function () {
@@ -124,6 +136,7 @@
             <li ><a href="https://lqez.github.io/blog/category/2019-03.html">2019-03</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2019-04.html">2019-04</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2019-05.html">2019-05</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2019-09.html">2019-09</a></li>
             <li ><a href="https://lqez.github.io/blog/category/uncategorized.html">Uncategorized</a></li>
         </ul></nav>
         -->

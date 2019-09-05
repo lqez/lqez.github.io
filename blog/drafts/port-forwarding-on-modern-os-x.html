@@ -52,7 +52,7 @@
 
 
 <p>alias</p>
-<h1>ifconfig lo0 172.16.6.225 alias</h1>
+<h2 id="ifconfig-lo0-172166225-alias">ifconfig lo0 172.16.6.225 alias</h2>
 <p>/etc/pf.anchors/com.forwarding
 rdr pass inet proto tcp from any to 172.16.6.225 port 11211 -&gt; 127.0.0.1 port 11211</p>
 <p>scrub-anchor "com.apple/<em>"                                         <br>
@@ -66,13 +66,25 @@ load anchor "forwarding" from "/etc/pf.anchors/com.forwarding"       </p>
 <p>verification
 $ pfctl -vnf /etc/pf.conf</p>
 <p>reload</p>
-<h1>pfctl -ef /etc/pf.conf</h1><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<h2 id="pfctl-ef-etcpfconf">pfctl -ef /etc/pf.conf</h2><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 <footer class="post-info-footer">
         <p>
         In <a href="https://lqez.github.io/blog/category/2016-11.html">2016-11</a>. 
         </p>
 <p>tags: <a href="https://lqez.github.io/blog/tag/os-x.html" class="tag">os x</a><a href="https://lqez.github.io/blog/tag/port.html" class="tag">port</a><a href="https://lqez.github.io/blog/tag/forwarding.html" class="tag">forwarding</a><a href="https://lqez.github.io/blog/tag/pf.html" class="tag">pf</a></p></footer><!-- /.post-info -->    </div><!-- /.entry-content -->
     <div class="fb-comments" data-href="https://lqez.github.io/blog/drafts/port-forwarding-on-modern-os-x.html" data-width="100%"  data-num-posts="10"></div>
+    <!-- add anchor to headings -->
+    <script>
+    const headers = document.querySelectorAll('h2[id], h3[id]');
+    for(var i = 0; i < headers.length; i++) {
+      const node = headers[i];
+      const anchor = document.createElement("a");
+      anchor.className = "pilcrow";
+      anchor.text = "\xb6";
+      anchor.href = "#" + node.id;
+      node.appendChild(anchor);
+    };
+    </script>
     <!-- img title to figcaption -->
     <script>
     window.addEventListener('load', function () {
@@ -121,6 +133,7 @@ $ pfctl -vnf /etc/pf.conf</p>
             <li ><a href="https://lqez.github.io/blog/category/2019-03.html">2019-03</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2019-04.html">2019-04</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2019-05.html">2019-05</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2019-09.html">2019-09</a></li>
             <li ><a href="https://lqez.github.io/blog/category/uncategorized.html">Uncategorized</a></li>
         </ul></nav>
         -->

@@ -47,7 +47,7 @@
 </footer><!-- /.post-info -->      <p>구글 브레인 프로젝트를 이끌고 있는 <a href="https://research.google.com/pubs/jeff.html">제프 딘</a>이 얼마 전에 <a href="https://k2i.rice.edu/events/ken-kennedy-institute-lecture-series-jeff-dean-google-senior-fellow">발표</a>한 바에 따르면
 구글의 기존 언어 번역 코드는 50만줄 가량이었는데, 텐서플로우로 작성된 대규모 머신 러닝 모델에 기반한 번역 코드는 500줄 수준으로 줄어들었다고 한다.</p>
 <p>참고: <a href="https://jack-clark.net/2017/10/09/import-ai-63-google-shrinks-language-translation-code-from-500000-to-500-lines-with-ai-only-25-of-surveyed-people-believe-automationbetter-jobs/">Google shrinks language translation code from 500,000 to 500 lines</a></p>
-<h3>FM Nostalgia</h3>
+<h4 id="fm-nostalgia">FM Nostalgia</h4>
 <p>머신 러닝에 기반한 여러 프로젝트를 보면서 계속 묘한 기분이 들었는데, 문득 20년 전의 기억이 떠올랐다.
 바로 <a href="https://en.wikipedia.org/wiki/Frequency_modulation_synthesis">FM 음향</a>에 기반한 미디 음악에서 <a href="https://en.wikipedia.org/wiki/Pulse-code_modulation">PCM</a> 기반의 <a href="https://en.wikipedia.org/wiki/Music_tracker">트래커</a> 음악들로 넘어갈 때,
 그리고 완전한 PCM 기반의 음원 저장 – <a href="https://en.wikipedia.org/wiki/WAV">WAV</a>, <a href="https://en.wikipedia.org/wiki/MP3">MP3</a>와 <a href="https://en.wikipedia.org/wiki/RealAudio">RA</a> 등 – 의 유행과 이들 음원의 유통이 본격화 되던 때에 뭔가 설명할 수 없는 아쉬움과 답답함을 느꼈었다.</p>
@@ -65,7 +65,7 @@ BNK 파일이 가지고 있던 작은 정보로 그럴싸한 음을 낼 수 있�
 하드웨어였던 OPL을 소프트웨어로 에뮬레이션 하기 위해서는 (당시 기준으로는) 상당한 컴퓨팅 파워가 필요했을 것이다.</p>
 <p>참고: <a href="https://github.com/gtaylormb/opl3_fpga">Reverse engineered SystemVerilog RTL version of the Yamaha OPL3 (YMF262) FM Synthesizer</a></p>
 <p>적은 용량의 음악 파일이라는 것은 하드웨어 음원 칩, BNK 파일, 그리고 먼 훗날 거대한 용량을 자랑하는 <a href="https://en.wikipedia.org/wiki/Virtual_Studio_Technology">VST</a> 등의 도움으로 가능했던 것이다.</p>
-<h3>Data consumes logic</h3>
+<h4 id="data-consumes-logic">Data consumes logic</h4>
 <p>방대한 양의 저장소(메모리나 하드디스크, SSD와 같은)와 빠른 프로세싱 능력은 복잡하고 절차적인 알고리즘, 로직을 줄이는 것을 가능하게 한다.
 구구단을 루프로 출력하는 코드와 구구단을 데이터로 가지고 있어 그대로 출력하는 코드는 어떻게 다른가? 50만줄에 해당하는 코드의 총 용량과 500줄의 코드가 작동하는데 필요한 저장소의 크기는 얼마나 차이나는가?
 일반적이지 않겠지만, 50만줄이 모두 80글자로 채워져 있다고 가정해도 그 소스 코드의 전체 용량은 약 38MiB 에 불과하다. (해당 소스코드는 <a href="https://ko.wikipedia.org/wiki/UTF-8">UTF-8</a>으로 작성되었겠지?)</p>
@@ -80,6 +80,18 @@ BNK 파일이 가지고 있던 작은 정보로 그럴싸한 음을 낼 수 있�
         </p>
 </footer><!-- /.post-info -->    </div><!-- /.entry-content -->
     <div class="fb-comments" data-href="https://lqez.github.io/blog/data-and-logic.html" data-width="100%"  data-num-posts="10"></div>
+    <!-- add anchor to headings -->
+    <script>
+    const headers = document.querySelectorAll('h2[id], h3[id]');
+    for(var i = 0; i < headers.length; i++) {
+      const node = headers[i];
+      const anchor = document.createElement("a");
+      anchor.className = "pilcrow";
+      anchor.text = "\xb6";
+      anchor.href = "#" + node.id;
+      node.appendChild(anchor);
+    };
+    </script>
     <!-- img title to figcaption -->
     <script>
     window.addEventListener('load', function () {
@@ -128,6 +140,7 @@ BNK 파일이 가지고 있던 작은 정보로 그럴싸한 음을 낼 수 있�
             <li ><a href="https://lqez.github.io/blog/category/2019-03.html">2019-03</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2019-04.html">2019-04</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2019-05.html">2019-05</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2019-09.html">2019-09</a></li>
             <li ><a href="https://lqez.github.io/blog/category/uncategorized.html">Uncategorized</a></li>
         </ul></nav>
         -->

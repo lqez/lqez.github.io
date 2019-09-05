@@ -44,7 +44,7 @@
                 Tue 07 May 2013
         </abbr>
 
-</footer><!-- /.post-info -->      <h2>Preface</h2>
+</footer><!-- /.post-info -->      <h3 id="preface">Preface</h3>
 <p>시놀로지는 개인, 소호 또는 작은 사무실에서 사용하기 가장 좋은 NAS를 생산하는 업체다.
 가격대가 경쟁 제품에 비해 다소 높긴 하지만,
 그만큼 비전문가도 사용하기 편리한 기능들과 나쁘지 않은 웹 인터페이스를 갖추고 있다.</p>
@@ -59,7 +59,7 @@
 </ul>
 <p>한 번 결정하면 적어도 몇 년은 유지해야하는 솔루션이기에, 좀 더 따져보기로 했다.
 어디까지나 당시 회사 상황이나 구성원에 맞춘 결과이기 때문에, 모든 상황에 다 맞지는 않으리라고 생각한다.</p>
-<h2>Requirements</h2>
+<h3 id="requirements">Requirements</h3>
 <ul>
 <li>30명 정도의 사용자.<ul>
 <li>기획자 : 디자이너 : 프로그래머 = 1 : 1 : 2</li>
@@ -70,7 +70,7 @@
 <li>주기적으로 GB 단위의 데이터를 올리고 내려야 함.</li>
 <li>LDAP 으로 사용자 계정이 관리되고 있어, 이를 지원하면 좋겠음.</li>
 </ul>
-<h3>직접 만들어도 되지 않나?</h3>
+<h4 id="_1">직접 만들어도 되지 않나?</h4>
 <ul>
 <li>시놀로지 NAS도 일반적인 리눅스 박스인건 맞다.</li>
 <li>구현하고 있는 RAID도 리눅스에서 일반적으로 사용하는 mdadm 이다.</li>
@@ -78,13 +78,13 @@
 <li>AFP, CIFS, FTP, WebDAV 등의 연결 뿐만 아니라 안드로이드, iOS 전용 앱도 이미 있다.</li>
 <li>과연 직접 만드는 가격 + 시놀로지 NAS 만큼의 모듈 및 인터페이스를 갖추는 것이 쌀까? </li>
 </ul>
-<h3>풍부한 부가 기능, 얼마나 쓰려나?</h3>
+<h4 id="_2">풍부한 부가 기능, 얼마나 쓰려나?</h4>
 <ul>
 <li>DS409 쓰던 경험에 미루어 보면, AFP, CIFS 연결 외에 웹 인터페이스로 브라우징 하는 경우는 많음.</li>
 <li>내장되어 있는 사진, 동영상 뷰어나 iTunes 공유 기능 들은 역시 잘 안쓰게 됨.</li>
 <li>전용 모바일 앱 대신, GoodReader 등을 WebDAV 나 FTP 연결을 통해 사용하는 경우는 가끔 있음.</li>
 </ul>
-<h3>클라우드 스토리지는 어떤가?</h3>
+<h4 id="_3">클라우드 스토리지는 어떤가?</h4>
 <ul>
 <li>예상되는 필요 공간이 대략 80TB 이상.</li>
 <li>AWS S3 의 경우, <a href="http:/TODO">RRS</a> 를 쓴다고 해도, $5,000 이상이 매달 들어감.</li>
@@ -95,7 +95,7 @@
 <li>Dropbox 는 모든 데이터를 동기화할 것이 아니므로, 적합하지는 않지만, 어쨌든 사용자당 연간 $125.</li>
 <li>결국, 속도와 가격 문제로 제외.</li>
 </ul>
-<h2>Fly-Over-The-Air</h2>
+<h3 id="fly-over-the-air">Fly-Over-The-Air</h3>
 <p>위와 같은 이유에서 기업용 NAS 장비를 도입했다기 보다는, 사실 한 번 써보고 싶었던 것 같다.
 일단 목표하는 용량이 있으므로 아래 링크를 통해 어떤 제품이 어울리는지, 어떻게 구성하면 좋을지 검토해보았다.
 그리고 구매를 고민하던 당시, 가격대 용량비로는 3TB 의 하드디스크가 가장 합리적이라, 3TB 디스크를 기준으로 계산하였다.</p>
@@ -111,18 +111,30 @@
 아직까지 해당 리셀러는 그 정도는 아니라고 판단되어 ebay를 통해 직접 구매하기로 결정했다.</p>
 <p>국제 배송이 가능한 셀러에게서 직접 구매하는 경우에는 제품 가격에 단순히 운송비, 관세만 더 낼꺼라 생각했었는데, '전파인증'이라는 복병을 만나 추가로 돈을 내게 되었다.
 결국, 시간과 마음 고생한 것을 생각하면, 그냥 국내 리셀러에서 사는 것도 방법이라고 생각한다.</p>
-<h2>Extend with Expansion</h2>
+<h3 id="extend-with-expansion">Extend with Expansion</h3>
 <p>기존에 사용하던 NAS와 Airport에 물려있던 디스크, 기타 오프라인으로 분리하여 보관하던 데이터들을 다 올리고 나니, 이미 20TB 정도가 소요되었다.
 생각했던 것보다 보관해야하는 데이터가 빠르게 늘어남에 따라, 바로 확장 유닛을 구입해야 했다. 이번에는 지난 번 직접 구매했던 경험을 교훈삼아,
 리셀러를 통해 2개의 RX1211 제품을 구입하였다. </p>
-<h2>Pros</h2>
-<h2>Cons</h2><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<h3 id="pros">Pros</h3>
+<h3 id="cons">Cons</h3><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 <footer class="post-info-footer">
         <p>
         In <a href="https://lqez.github.io/blog/category/2013-05.html">2013-05</a>. 
         </p>
 <p>tags: <a href="https://lqez.github.io/blog/tag/synology.html" class="tag">synology</a><a href="https://lqez.github.io/blog/tag/nas.html" class="tag">nas</a><a href="https://lqez.github.io/blog/tag/money.html" class="tag">money</a></p></footer><!-- /.post-info -->    </div><!-- /.entry-content -->
     <div class="fb-comments" data-href="https://lqez.github.io/blog/drafts/synology-and.html" data-width="100%"  data-num-posts="10"></div>
+    <!-- add anchor to headings -->
+    <script>
+    const headers = document.querySelectorAll('h2[id], h3[id]');
+    for(var i = 0; i < headers.length; i++) {
+      const node = headers[i];
+      const anchor = document.createElement("a");
+      anchor.className = "pilcrow";
+      anchor.text = "\xb6";
+      anchor.href = "#" + node.id;
+      node.appendChild(anchor);
+    };
+    </script>
     <!-- img title to figcaption -->
     <script>
     window.addEventListener('load', function () {
@@ -171,6 +183,7 @@
             <li ><a href="https://lqez.github.io/blog/category/2019-03.html">2019-03</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2019-04.html">2019-04</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2019-05.html">2019-05</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2019-09.html">2019-09</a></li>
             <li ><a href="https://lqez.github.io/blog/category/uncategorized.html">Uncategorized</a></li>
         </ul></nav>
         -->

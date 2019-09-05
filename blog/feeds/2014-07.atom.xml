@@ -23,11 +23,11 @@
 &lt;p&gt;덧) 이 글을 처음 썼던 시점으로부터 1년이 지나 2015년 10월에서야 수정되어 Nginx 1.9.6에 반영되었다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://trac.nginx.org/nginx/timeline?from=2015-10-20T16%3A38%3A08Z&amp;amp;precision=second"&gt;https://trac.nginx.org/nginx/timeline?from=2015-10-20T16%3A38%3A08Z&amp;amp;precision=second&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="nginx"></category><category term="openssl"></category></entry><entry><title>Fool Upstart</title><link href="https://lqez.github.io/blog/fool-upstart.html" rel="alternate"></link><published>2014-07-17T00:00:00+09:00</published><updated>2014-07-17T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2014-07-17:/blog/fool-upstart.html</id><summary type="html">&lt;h1&gt;Upstart&lt;/h1&gt;
+&lt;/ul&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="nginx"></category><category term="openssl"></category></entry><entry><title>Fool Upstart</title><link href="https://lqez.github.io/blog/fool-upstart.html" rel="alternate"></link><published>2014-07-17T00:00:00+09:00</published><updated>2014-07-17T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2014-07-17:/blog/fool-upstart.html</id><summary type="html">&lt;h2 id="upstart"&gt;Upstart&lt;/h2&gt;
 &lt;p&gt;&lt;a href="http://upstart.ubuntu.com/"&gt;Upstart&lt;/a&gt;는 /sbin/init 를 대체하기 위한 우분투의 기본 서비스 관리자다.
 다양한 서비스를 daemon 형태로 관리하고, 죽은 경우에 자동으로 다시 실행할 수 있는 등 편리한 기능을 갖추고 있다.&lt;/p&gt;
 &lt;p&gt;프로세스 ID를 받아 해당 프로세스가 잘 동작하는지 감시해야 하므로,
-해당 서비스가 어떤 형태로 시작되는지 알고 있어야 정확한 프로세스 ID를 얻을 수 …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Upstart&lt;/h1&gt;
+해당 서비스가 어떤 형태로 시작되는지 알고 있어야 정확한 프로세스 ID를 얻을 수 …&lt;/p&gt;</summary><content type="html">&lt;h2 id="upstart"&gt;Upstart&lt;/h2&gt;
 &lt;p&gt;&lt;a href="http://upstart.ubuntu.com/"&gt;Upstart&lt;/a&gt;는 /sbin/init 를 대체하기 위한 우분투의 기본 서비스 관리자다.
 다양한 서비스를 daemon 형태로 관리하고, 죽은 경우에 자동으로 다시 실행할 수 있는 등 편리한 기능을 갖추고 있다.&lt;/p&gt;
 &lt;p&gt;프로세스 ID를 받아 해당 프로세스가 잘 동작하는지 감시해야 하므로,
@@ -38,7 +38,7 @@ Upstart 설정 중, &lt;a href="http://upstart.ubuntu.com/cookbook/#expect"&gt;e
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://upstart.ubuntu.com/cookbook/#implications-of-misspecifying-expect"&gt;6.13.5 Implications of Misspecifying expect&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;Symptom&lt;/h2&gt;
+&lt;h3 id="symptom"&gt;Symptom&lt;/h3&gt;
 &lt;p&gt;보통은 이 값을 잘못 설정한 경우에 서비스가 제대로 감시되지 않거나, 종료되지 않는 등의 문제가 생기는데
 오늘은 해당 서비스를 재시작하면서 별다른 설정의 변경이 없었음에도 불구하고, 이상한 상태에 빠지고 말았다.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ initctl list &lt;span class="p"&gt;|&lt;/span&gt; grep flower
@@ -55,7 +55,7 @@ one/flower_dup start/running, process &lt;span class="m"&gt;17171&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h2&gt;Solution&lt;/h2&gt;
+&lt;h3 id="solution"&gt;Solution&lt;/h3&gt;
 &lt;p&gt;시스템을 재시작하면 복구될 것 같았지만, 당장 재시작할 수 없는 프로덕션 시스템이라
 혹시나 하여 구글링을 계속하다보니 누군가 만들어둔 루비 스크립트를 찾게 되었다.&lt;/p&gt;
 &lt;ul&gt;

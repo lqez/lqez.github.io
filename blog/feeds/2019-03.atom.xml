@@ -10,7 +10,7 @@
 &lt;/ul&gt;
 &lt;p&gt;&lt;img alt="JPG Artifact" src="./images/2019-03/cbo_jpg-artifact.jpg" title="8x8 단위로 나뉜 부분이 선명하게 보이는 JPG 이미지 (확대된 것)"&gt;&lt;/p&gt;
 &lt;p&gt;사진을 웹 페이지에서 배경 이미지로 사용하는 경우 데스크탑 웹 브라우저부터 모바일 브라우저까지 모두 지원하기 위해 해상도도 높고 용량도 상대적으로 큰 이미지를 사용하는 경우가 많다. 빠른 네트워크만을 가정한다면 큰 문제가 되지 않지만, 웹 페이지가 어떤 환경에서 표시될 지 모르기 때문에 항상 가볍게 유지하는 편이 좋다고 생각한다.&lt;/p&gt;
-&lt;h2&gt;옛날 옛적엔,&lt;/h2&gt;
+&lt;h3 id="_1"&gt;옛날 옛적엔,&lt;/h3&gt;
 &lt;p&gt;용량을 줄이기 위해 이미지의 품질을 극단적으로 낮추면, 압축 알고리즘 특성이 그대로 드러나 좋지 않다. 이를 극복하기 위해 오래 전부터 이미지 위에 다른 이미지를 덧씌워 나쁜 화질을 숨기는 방법을 써왔다. 배경으로 이미지를 사용하는 경우에는 그 위에 쓰여질 글씨를 돋보이게 하기 위해 이미지를 어둡게 처리하는 경우가 많은데, 플래시 애니메이션에서는 배경을 어둡게 만드는 대신 &lt;a href="https://en.wikipedia.org/wiki/Interlaced_video"&gt;인터레이스드 영상&lt;/a&gt;에서 보이는 주사선 패턴을 덧씌우기도 했다. 이를 통해 낮은 해상도의 영상이나 이미지의 약점을 숨겼다. 아래 이미지를 통해 처리 과정을 살펴보자.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Sample Image" src="./images/2019-03/cbo_jpg-sample.jpg" title="&amp;lt;a href='https://unsplash.com/photos/l090uFWoPaI'&amp;gt;Photo&amp;lt;/a&amp;gt; by &amp;lt;a href='https://unsplash.com/@barkipleJohn'&amp;gt;Barkiple&amp;lt;/a&amp;gt; on Unsplash"&gt;&lt;/p&gt;
 &lt;p&gt;위 이미지의 일부를 잘라 각각 포토샵에서 JPG로 다시 저장할 때 품질을 1과 60으로 다르게 저장한다. 품질이 1인 경우 역시 JPG의 단점인 8x8 픽셀 단위로 화면이 갈라지는 것을 볼 수 있다.&lt;/p&gt;
@@ -25,7 +25,7 @@
 &lt;p&gt;&lt;img alt="JPG Quality 60, darkened, zoomed" src="./images/2019-03/cbo_jpg-60-darken-zoom.png" title="품질 60, 어둡게 처리한 것을 부분 확대"&gt;
 &lt;img alt="JPG Quality 1, darkened, zoomed" src="./images/2019-03/cbo_jpg-01-darken-zoom.png" title="품질 1, 어둡게 처리한 것을 부분 확대"&gt;
 &lt;img alt="JPG Quality 1, scanline overlay, zoomed" src="./images/2019-03/cbo_jpg-01-interlaced-zoom.png" title="품질 1, 주사선 패턴 덧씌운 것을 부분 확대"&gt;&lt;/p&gt;
-&lt;h2&gt;CSS로 구현하기&lt;/h2&gt;
+&lt;h3 id="css"&gt;CSS로 구현하기&lt;/h3&gt;
 &lt;p&gt;&lt;img alt="High quality sample JPG" src="./images/2019-03/cbo_2560-hi.jpg" title="&amp;lt;a href='https://unsplash.com/photos/Cecb0_8Hx-o'&amp;gt;Photo&amp;lt;/a&amp;gt; by &amp;lt;a href='https://unsplash.com/@miinyuii'&amp;gt;Duy Phama&amp;lt;/a&amp;gt; on Unsplash"&gt;
 &lt;a href="https://unsplash.com/@miinyuii"&gt;Duy Pham&lt;/a&gt;이 촬영한 이 멋진 &lt;a href="https://unsplash.com/photos/Cecb0_8Hx-o"&gt;원본 이미지&lt;/a&gt;는 해상도가 5884 x 3310 픽셀에, 용량은 3.4MiB로 그대로 사용하기에는 지나치게 크다.&lt;/p&gt;
 &lt;p&gt;배경 이미지로 사용하기 위해 품질을 최대한 낮춰 저장하면 아래와 같다.
@@ -101,7 +101,7 @@
 
 
 &lt;hr&gt;
-&lt;h3&gt;참고 링크&lt;/h3&gt;
+&lt;h4 id="_2"&gt;참고 링크&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;SVG 노이즈 이미지를 활용한 웹 페이지: &lt;a href="https://sprintseoul.org/"&gt;https://sprintseoul.org/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://stackoverflow.com/a/49108254/366908"&gt;https://stackoverflow.com/a/49108254/366908&lt;/a&gt;&lt;/li&gt;

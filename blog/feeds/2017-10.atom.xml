@@ -6,7 +6,7 @@
 &lt;li&gt;한글 처리를 위한 Django template filter/tag 만들기&lt;/li&gt;
 &lt;li&gt;위지윅 에디터 만들기&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;mdls - Markdown List Sorter&lt;/h2&gt;
+&lt;h3 id="mdls-markdown-list-sorter"&gt;mdls - Markdown List Sorter&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://github.com/lqez/mdls"&gt;https://github.com/lqez/mdls&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;먼저, &lt;a href="https://daringfireball.net/projects/markdown/"&gt;마크다운 …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;하고 있는 일에 지나치게 몰입하여 주변을 살피지 못하게 되면, 보다 의미있는 결과를 내기가 어렵다.
 요즘 아무도 사용할 것 같지 않은 기능들을 만드는데 시간을 낭비하고 있다.&lt;/p&gt;
@@ -15,7 +15,7 @@
 &lt;li&gt;한글 처리를 위한 Django template filter/tag 만들기&lt;/li&gt;
 &lt;li&gt;위지윅 에디터 만들기&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;mdls - Markdown List Sorter&lt;/h2&gt;
+&lt;h3 id="mdls-markdown-list-sorter"&gt;mdls - Markdown List Sorter&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://github.com/lqez/mdls"&gt;https://github.com/lqez/mdls&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;먼저, &lt;a href="https://daringfireball.net/projects/markdown/"&gt;마크다운&lt;/a&gt;은 애초에 표현과 내용의 분리를 중요하게 생각하고, 글을 – 비교적 – 체계적으로 쓰기를 원하는 사람들이 선호하는 글의 형식인데,
 이런 유형의 글에 포함되어 있는 목록을 정렬하는 프로그램을 만들겠다는 것 자체가 별 의미가 없다.
@@ -25,7 +25,7 @@
 만약 기계적으로 목록을 정렬할 수 있다면, 해당 pull request가 유효한지 검증할 수도 있고, 그렇지 않은 경우 자동으로 정렬하는 것도 가능하기 때문이다.&lt;/p&gt;
 &lt;p&gt;하지만, 이는 많은 목록을 관리하기에 애초에 적합하지 않은 마크다운 형식을 쓰는 것 자체가 문제인데, 이를 잘못된 방법으로 해결하려는 것에 가깝게 느껴진다.
 그래도 일단 시작했으니 해당 프로젝트의 빌드 과정에 적용할 때까지는 해보려고 한다.&lt;/p&gt;
-&lt;h2&gt;django-tossi&lt;/h2&gt;
+&lt;h3 id="django-tossi"&gt;django-tossi&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://github.com/lqez/django-tossi"&gt;https://github.com/lqez/django-tossi&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://pythonhosted.org/korean/"&gt;Korean&lt;/a&gt;은 한글의 형태소를 다루는 라이브러리였다.
 과거형으로 적는 이유는 저작자가 이 프로젝트를 deprecate 시키고 &lt;a href="https://github.com/what-studio/tossi"&gt;Tossi&lt;/a&gt;라는 새로운 라이브러리를 만들고 있기 때문이다.
@@ -35,7 +35,7 @@
 헌데, Korean 라이브러리에 있던 &lt;a href="http://pythonhosted.org/korean/#proofreading-legacy-text"&gt;proofreading&lt;/a&gt; 기능이 Tossi에서는 사라졌다.
 이 기능을 django-tossi 내에 구현을 할까 아니면 Tossi 쪽에 추가하는 PR을 보낼까 고민을 했는데, 이 기능을 만들기 전에 과연 이 기능을 얼마나 자주, 중요하게 쓰고 있었는지 생각해볼 필요가 있다는 생각이 들었다.
 원래 있었던 것이 없어졌다고 해서 그냥 만드는 것이 아니라, 왜 없어졌을까, 그동안 이 기능을 유용하게 썼는가 한 번 따져봐야겠다.&lt;/p&gt;
-&lt;h2&gt;summernote&lt;/h2&gt;
+&lt;h3 id="summernote"&gt;summernote&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://github.com/summernote/summernote"&gt;https://github.com/summernote/summernote&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;2013년부터 참여해오고 있는 프로젝트. 요즘에 누가 위지윅 에디터를 만드냐 싶을 정도로 예전보다는 관심이 많이 줄어든 것이 사실이다.
 대부분 의식하지 못하고 있어서 그렇지 &lt;a href="https://github.com/facebook/draft-js"&gt;페이스북의 글쓰기 창도 위지윅&lt;/a&gt;이다.
@@ -46,11 +46,11 @@
 &lt;p&gt;그냥 오늘 손댔던 일들을 적어본 글.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>Data and Logic</title><link href="https://lqez.github.io/blog/data-and-logic.html" rel="alternate"></link><published>2017-10-19T00:00:00+09:00</published><updated>2017-10-19T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2017-10-19:/blog/data-and-logic.html</id><summary type="html">&lt;p&gt;구글 브레인 프로젝트를 이끌고 있는 &lt;a href="https://research.google.com/pubs/jeff.html"&gt;제프 딘&lt;/a&gt;이 얼마 전에 &lt;a href="https://k2i.rice.edu/events/ken-kennedy-institute-lecture-series-jeff-dean-google-senior-fellow"&gt;발표&lt;/a&gt;한 바에 따르면
 구글의 기존 언어 번역 코드는 50만줄 가량이었는데, 텐서플로우로 작성된 대규모 머신 러닝 모델에 기반한 번역 코드는 500줄 수준으로 줄어들었다고 한다.&lt;/p&gt;
 &lt;p&gt;참고: &lt;a href="https://jack-clark.net/2017/10/09/import-ai-63-google-shrinks-language-translation-code-from-500000-to-500-lines-with-ai-only-25-of-surveyed-people-believe-automationbetter-jobs/"&gt;Google shrinks language translation code from 500,000 to 500 lines&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;FM Nostalgia&lt;/h3&gt;
+&lt;h4 id="fm-nostalgia"&gt;FM Nostalgia&lt;/h4&gt;
 &lt;p&gt;머신 러닝에 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;구글 브레인 프로젝트를 이끌고 있는 &lt;a href="https://research.google.com/pubs/jeff.html"&gt;제프 딘&lt;/a&gt;이 얼마 전에 &lt;a href="https://k2i.rice.edu/events/ken-kennedy-institute-lecture-series-jeff-dean-google-senior-fellow"&gt;발표&lt;/a&gt;한 바에 따르면
 구글의 기존 언어 번역 코드는 50만줄 가량이었는데, 텐서플로우로 작성된 대규모 머신 러닝 모델에 기반한 번역 코드는 500줄 수준으로 줄어들었다고 한다.&lt;/p&gt;
 &lt;p&gt;참고: &lt;a href="https://jack-clark.net/2017/10/09/import-ai-63-google-shrinks-language-translation-code-from-500000-to-500-lines-with-ai-only-25-of-surveyed-people-believe-automationbetter-jobs/"&gt;Google shrinks language translation code from 500,000 to 500 lines&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;FM Nostalgia&lt;/h3&gt;
+&lt;h4 id="fm-nostalgia"&gt;FM Nostalgia&lt;/h4&gt;
 &lt;p&gt;머신 러닝에 기반한 여러 프로젝트를 보면서 계속 묘한 기분이 들었는데, 문득 20년 전의 기억이 떠올랐다.
 바로 &lt;a href="https://en.wikipedia.org/wiki/Frequency_modulation_synthesis"&gt;FM 음향&lt;/a&gt;에 기반한 미디 음악에서 &lt;a href="https://en.wikipedia.org/wiki/Pulse-code_modulation"&gt;PCM&lt;/a&gt; 기반의 &lt;a href="https://en.wikipedia.org/wiki/Music_tracker"&gt;트래커&lt;/a&gt; 음악들로 넘어갈 때,
 그리고 완전한 PCM 기반의 음원 저장 – &lt;a href="https://en.wikipedia.org/wiki/WAV"&gt;WAV&lt;/a&gt;, &lt;a href="https://en.wikipedia.org/wiki/MP3"&gt;MP3&lt;/a&gt;와 &lt;a href="https://en.wikipedia.org/wiki/RealAudio"&gt;RA&lt;/a&gt; 등 – 의 유행과 이들 음원의 유통이 본격화 되던 때에 뭔가 설명할 수 없는 아쉬움과 답답함을 느꼈었다.&lt;/p&gt;
@@ -68,7 +68,7 @@ BNK 파일이 가지고 있던 작은 정보로 그럴싸한 음을 낼 수 있�
 하드웨어였던 OPL을 소프트웨어로 에뮬레이션 하기 위해서는 (당시 기준으로는) 상당한 컴퓨팅 파워가 필요했을 것이다.&lt;/p&gt;
 &lt;p&gt;참고: &lt;a href="https://github.com/gtaylormb/opl3_fpga"&gt;Reverse engineered SystemVerilog RTL version of the Yamaha OPL3 (YMF262) FM Synthesizer&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;적은 용량의 음악 파일이라는 것은 하드웨어 음원 칩, BNK 파일, 그리고 먼 훗날 거대한 용량을 자랑하는 &lt;a href="https://en.wikipedia.org/wiki/Virtual_Studio_Technology"&gt;VST&lt;/a&gt; 등의 도움으로 가능했던 것이다.&lt;/p&gt;
-&lt;h3&gt;Data consumes logic&lt;/h3&gt;
+&lt;h4 id="data-consumes-logic"&gt;Data consumes logic&lt;/h4&gt;
 &lt;p&gt;방대한 양의 저장소(메모리나 하드디스크, SSD와 같은)와 빠른 프로세싱 능력은 복잡하고 절차적인 알고리즘, 로직을 줄이는 것을 가능하게 한다.
 구구단을 루프로 출력하는 코드와 구구단을 데이터로 가지고 있어 그대로 출력하는 코드는 어떻게 다른가? 50만줄에 해당하는 코드의 총 용량과 500줄의 코드가 작동하는데 필요한 저장소의 크기는 얼마나 차이나는가?
 일반적이지 않겠지만, 50만줄이 모두 80글자로 채워져 있다고 가정해도 그 소스 코드의 전체 용량은 약 38MiB 에 불과하다. (해당 소스코드는 &lt;a href="https://ko.wikipedia.org/wiki/UTF-8"&gt;UTF-8&lt;/a&gt;으로 작성되었겠지?)&lt;/p&gt;

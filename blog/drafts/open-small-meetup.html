@@ -44,7 +44,7 @@
                 Fri 24 May 2019
         </abbr>
 
-</footer><!-- /.post-info -->      <h3>모임 준비</h3>
+</footer><!-- /.post-info -->      <h4 id="_1">모임 준비</h4>
 <p>아무리 작은 행사라도 발표와 대화를 하기에 조용한 곳, 다양한 교통편을 가진 장소가 있으면 참석자들이 불편하지 않게 참석할 수 있어 참석율도 높고 더 나은 행사를 만들 수 있다고 생각한다.
 본인이 재직중인 회사의 회의실을 이런 모임 장소로 빌려주시는 감사한 분들이 주변에 있어, 행사 비용을 고민하지 않을 수 있어 작은 모임을 준비할 때 큰 도움이 된다.
 이제까지 이런 방식으로 몇 번 장소를 후원 받아봤는데, 요청하는 쪽에서 최소한 이런 건 준비하면 좋겠다 싶은 것들이 있다.</p>
@@ -62,6 +62,18 @@
         </p>
 </footer><!-- /.post-info -->    </div><!-- /.entry-content -->
     <div class="fb-comments" data-href="https://lqez.github.io/blog/drafts/open-small-meetup.html" data-width="100%"  data-num-posts="10"></div>
+    <!-- add anchor to headings -->
+    <script>
+    const headers = document.querySelectorAll('h2[id], h3[id]');
+    for(var i = 0; i < headers.length; i++) {
+      const node = headers[i];
+      const anchor = document.createElement("a");
+      anchor.className = "pilcrow";
+      anchor.text = "\xb6";
+      anchor.href = "#" + node.id;
+      node.appendChild(anchor);
+    };
+    </script>
     <!-- img title to figcaption -->
     <script>
     window.addEventListener('load', function () {
@@ -110,6 +122,7 @@
             <li ><a href="https://lqez.github.io/blog/category/2019-03.html">2019-03</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2019-04.html">2019-04</a></li>
             <li class="active"><a href="https://lqez.github.io/blog/category/2019-05.html">2019-05</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2019-09.html">2019-09</a></li>
             <li ><a href="https://lqez.github.io/blog/category/uncategorized.html">Uncategorized</a></li>
         </ul></nav>
         -->

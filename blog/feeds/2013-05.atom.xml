@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer - 2013-05</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/2013-05.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2013-05-14T00:00:00+09:00</updated><entry><title>gittip.com and /for/korea</title><link href="https://lqez.github.io/blog/gittipcom-and-forkorea.html" rel="alternate"></link><published>2013-05-14T00:00:00+09:00</published><updated>2013-05-14T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2013-05-14:/blog/gittipcom-and-forkorea.html</id><summary type="html">&lt;p&gt;얼마 전, &lt;a href="http://www.kickstarter.com/projects/andrewgodwin/schema-migrations-for-django"&gt;Schema Migrations for Django&lt;/a&gt; 라는 오픈소스 프로젝트 계획에 대한 모금 활동이 킥스타터에서 큰 성공을 거뒀다. 이제까지 오픈소스를 사용하면서 개발한 이들에게 고마움을 표시하는 방법은 해당 프로젝트를 열심히 사용하며, 버그 제보, 번역, 기능 추가 또는 사용기 발표 정도 밖에 없다고 생각했는데, '금전적인' 후원도 가능하다는 것을 알게 되었다.&lt;/p&gt;
-&lt;h2&gt;Gittip&lt;/h2&gt;
+&lt;h3 id="gittip"&gt;Gittip&lt;/h3&gt;
 &lt;p&gt;&lt;img alt="gittip.png" src="./images/2013-05/gittip.png"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.gittip.com"&gt;https://www …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;얼마 전, &lt;a href="http://www.kickstarter.com/projects/andrewgodwin/schema-migrations-for-django"&gt;Schema Migrations for Django&lt;/a&gt; 라는 오픈소스 프로젝트 계획에 대한 모금 활동이 킥스타터에서 큰 성공을 거뒀다. 이제까지 오픈소스를 사용하면서 개발한 이들에게 고마움을 표시하는 방법은 해당 프로젝트를 열심히 사용하며, 버그 제보, 번역, 기능 추가 또는 사용기 발표 정도 밖에 없다고 생각했는데, '금전적인' 후원도 가능하다는 것을 알게 되었다.&lt;/p&gt;
-&lt;h2&gt;Gittip&lt;/h2&gt;
+&lt;h3 id="gittip"&gt;Gittip&lt;/h3&gt;
 &lt;p&gt;&lt;img alt="gittip.png" src="./images/2013-05/gittip.png"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.gittip.com"&gt;https://www.gittip.com&lt;/a&gt; 은 오픈소스 개발자나 오픈소스 그룹에게 정기적으로 후원을 할 수 있는 웹서비스이다. 앞서 언급한 킥스타터와는 달리, 한 번 기부하고 마는 것이 아니라 지정한 금액을 매주 목요일 기부하게 된다.
 궁극적으로 이 사이트를 통해 의미있는 오픈소스 개발을 하는 사람이나 단체가 전업으로 오픈소스를 진행할 수 있는 기반을 갖게된다면 좋겠지만, 아직까지 그 정도로 많은 금액이 오고가는 것으로 보이진 않는다. 하지만, 주기적인 기부는 위와 같은 단기적인 프로젝트 기금 마련과는 다른 방향을 가지고 있고, 이는 오픈소스에 보다 긍정적인 문화를 가져올 것 같다.&lt;/p&gt;
-&lt;h2&gt;/for/korea&lt;/h2&gt;
+&lt;h3 id="forkorea"&gt;/for/korea&lt;/h3&gt;
 &lt;p&gt;Gittip 의 커뮤니티 기능이 약 &lt;a href="https://github.com/gittip/www.gittip.com/commit/f2ca1fa1f3eb1c8cabe9b98bebc1e180dd669e61"&gt;2주 전에 추가&lt;/a&gt;되었는데, 이에 한국 파이썬 커뮤니티계의 아이돌(...) &lt;a href="https://twitter.com/hongminhee"&gt;@hongminhee&lt;/a&gt; 님이 한국 개발자 커뮤니티(&lt;a href="https://www.gittip.com/for/korea/"&gt;/for/korea&lt;/a&gt;)를 만들고, 가입을 요청하는 트윗을 올렸다.&lt;/p&gt;
 &lt;p&gt;&lt;blockquote class="twitter-tweet" align="center"&gt;&lt;a href="https://twitter.com/hongminhee/status/333868284195770368"&gt;Tweet of hongminhee/333868284195770368&lt;/a&gt;&lt;/blockquote&gt;&lt;/p&gt;
 &lt;p&gt;해당 요청은 트위터나 페이스북을 통해 오픈소스에 관심이 있는 한국 개발자들에게 빠르게 전파되었고, 덕분에 몇 시간 지나지 않아 커뮤니티 구성 요건의 최소 인원인 150명에 가장 빠르게 도달하였다. 하지만 개발자 &lt;a href="https://twitter.com/whit537"&gt;@whit537&lt;/a&gt; 도 이처럼 빨리 150명에 도달할 것이라 생각하지 못한 모양이다.&lt;/p&gt;
@@ -21,11 +21,11 @@
 &lt;p&gt;그는 한국에서 왜 이렇게 많은 가입자가 발생했는지 궁금하였던 모양이다. 그에게 아이돌(...)을 소개시켜 주었는데, 결국 &lt;a href="https://twitter.com/hongminhee"&gt;@hongminhee&lt;/a&gt; 님은 &lt;a href="http://freenode.net/"&gt;freenode IRC&lt;/a&gt; 의 #gittip 채널에 들어가 개발자들과 얘기를 몇 마디 나누더니, 그세 개발에 참여하고 있는 것으로 보인다! (&lt;a href="https://github.com/gittip/aspen-python/pull/182"&gt;pull #182&lt;/a&gt;, &lt;a href="https://github.com/gittip/aspen-python/pull/183"&gt;pull #183&lt;/a&gt;) &lt;/p&gt;
 &lt;p&gt;&lt;blockquote class="twitter-tweet" align="center"&gt;&lt;a href="https://twitter.com/whit537/status/333951758990733312"&gt;Tweet of whit537/333951758990733312&lt;/a&gt;&lt;/blockquote&gt;
 &lt;blockquote class="twitter-tweet" align="center"&gt;&lt;a href="https://twitter.com/whit537/status/333952649152053248"&gt;Tweet of whit537/333952649152053248&lt;/a&gt;&lt;/blockquote&gt;&lt;/p&gt;
-&lt;h2&gt;Small step for us&lt;/h2&gt;
+&lt;h3 id="small-step-for-us"&gt;Small step for us&lt;/h3&gt;
 &lt;p&gt;&lt;img alt="gittip-korea.png" src="./images/2013-05/gittip-korea.png"&gt;&lt;/p&gt;
 &lt;p&gt;Gittip의 커뮤니티 중, &lt;a href="https://www.gittip.com/for/korea/"&gt;/for/korea&lt;/a&gt;가 가장 먼저 최소 요건인 150명을 돌파하였다. 특정 국가 커뮤니티로써 가장 큰 것일 뿐 아니라, 다른 모든 커뮤니티(예:&lt;a href="https://www.gittip.com/for/python/"&gt;/for/python&lt;/a&gt;) 중에서도 가장 인원이 많다. 이렇게 많은 개발자가 이런 사이트에 관심을 가지고 있는 줄 몰랐고, 이렇게 빨리 가입한 것은 더욱 놀랍다. 그럼에도 불구하고 부끄러운 것은, 한국인 커뮤니티에 가입한 사람들이 기부하고 있는 금액이 너무 적다는 점이다. 물론 한국 개발자들 중에서 아직 이 커뮤니티의 존재를 몰라, 가입하지 않은 상태로 기부하고 있을 수도 있겠다. 또는, 페이팔 계정이나 해외에서 자유롭게 결제 가능한 카드를 우리나라에서 만들기가 어려웠던 부분도 있을 것이다. 하지만 이 글을 쓰고 있는 현재, 도합 몇 달러가 채 안되는 금액이라는 것은 조금 아쉽다.&lt;/p&gt;
-&lt;p&gt;나는 예전에 &lt;a href="https://twitter.com/hongminhee"&gt;@hongminhee&lt;/a&gt; 님에게 &lt;a href="http://pytest.org/latest/"&gt;py.test&lt;/a&gt; 의 디버깅 도움을 받아, 이 사이트에서 후원하려다가 아직 계좌 연결을 시켜두시지 않은 관계로, 대신 독콜라(...) 한 박스를 보낸적이 있다. 아무튼 오늘 다시 한 번 사이트에 들어간 차에 적은 금액이지만 주당 $1.50 을 후원하도록 설정하였다.&lt;/p&gt;
-&lt;p&gt;오픈소스를 만들고 기꺼이 공개한 이들에게 감사를 표시하는 차원에서, 이 글을 읽는 분들도 자기가 쓰고 있는 프로젝트의 개발자나 그룹에 후원해보는 것은 어떨까?&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="gittip"></category><category term="donate"></category><category term="contribute"></category></entry><entry><title>499px</title><link href="https://lqez.github.io/blog/499px.html" rel="alternate"></link><published>2013-05-08T00:00:00+09:00</published><updated>2013-05-08T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2013-05-08:/blog/499px.html</id><summary type="html">&lt;p&gt;&lt;a href="https://twitter.com/drypot"&gt;&lt;a href="https://twitter.com/drypot"&gt;@drypot&lt;/a&gt;&lt;/a&gt; 님이 의지를 불태워 &lt;a href="http://rapixel.com"&gt;http://rapixel.com&lt;/a&gt; 을 만들고 있는 것에 감명받아,
+&lt;p&gt;나는 예전에 @hongminhee 님에게 &lt;a href="http://pytest.org/latest/"&gt;py.test&lt;/a&gt; 의 디버깅 도움을 받아, 이 사이트에서 후원하려다가 아직 계좌 연결을 시켜두시지 않은 관계로, 대신 독콜라(...) 한 박스를 보낸적이 있다. 아무튼 오늘 다시 한 번 사이트에 들어간 차에 적은 금액이지만 주당 $1.50 을 후원하도록 설정하였다.&lt;/p&gt;
+&lt;p&gt;오픈소스를 만들고 기꺼이 공개한 이들에게 감사를 표시하는 차원에서, 이 글을 읽는 분들도 자기가 쓰고 있는 프로젝트의 개발자나 그룹에 후원해보는 것은 어떨까?&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="gittip"></category><category term="donate"></category><category term="contribute"></category></entry><entry><title>499px</title><link href="https://lqez.github.io/blog/499px.html" rel="alternate"></link><published>2013-05-08T00:00:00+09:00</published><updated>2013-05-08T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2013-05-08:/blog/499px.html</id><summary type="html">&lt;p&gt;&lt;a href="https://twitter.com/drypot"&gt;@drypot&lt;/a&gt; 님이 의지를 불태워 &lt;a href="http://rapixel.com"&gt;http://rapixel.com&lt;/a&gt; 을 만들고 있는 것에 감명받아,
 예전부터 만들고 싶었던 사진 저장/공유 사이트 아이디어를 구체화 해보았다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;원본 사진을 보관한다.&lt;/li&gt;
@@ -33,7 +33,7 @@
 &lt;li&gt;모두에게 공유할 수도 있지만, 기본적으로는 나만 본다.&lt;/li&gt;
 &lt;li&gt;이러한 공유 설정은 폴더 단위로 작동한다.&lt;/li&gt;
 &lt;li&gt;폴더에 하위 폴더는 없다.&lt;/li&gt;
-&lt;li&gt;특정 …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://twitter.com/drypot"&gt;&lt;a href="https://twitter.com/drypot"&gt;@drypot&lt;/a&gt;&lt;/a&gt; 님이 의지를 불태워 &lt;a href="http://rapixel.com"&gt;http://rapixel.com&lt;/a&gt; 을 만들고 있는 것에 감명받아,
+&lt;li&gt;특정 …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://twitter.com/drypot"&gt;@drypot&lt;/a&gt; 님이 의지를 불태워 &lt;a href="http://rapixel.com"&gt;http://rapixel.com&lt;/a&gt; 을 만들고 있는 것에 감명받아,
 예전부터 만들고 싶었던 사진 저장/공유 사이트 아이디어를 구체화 해보았다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;원본 사진을 보관한다.&lt;/li&gt;

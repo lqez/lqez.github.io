@@ -58,7 +58,7 @@
 <ul>
 <li>Open Broadcaster Software: <a href="https://obsproject.com/">https://obsproject.com/</a></li>
 </ul>
-<h3>좋았던 점</h3>
+<h4 id="_1">좋았던 점</h4>
 <p>이제까지 주최하거나 참석했던 모임은 대부분 다음과 같았다.</p>
 <ul>
 <li>발표자가 발표하고, 참가자는 일방적으로 듣는다. 끝나면 질문 시간이 있다.</li>
@@ -71,13 +71,13 @@
 <li>발표 중에 다른 참가자가 질문할 수 있다.</li>
 </ul>
 <p>발표 중에 다른 사람이 갑자기 질문하는 것이 흐름을 방해할 수도 있지만, 하나의 문제를 해결하는 방법에 여러 접근 방법이 있을 수 있는 경우 – <a href="https://en.wikipedia.org/wiki/There%27s_more_than_one_way_to_do_it">TIMTOWTDI</a> – 에 대해 토론할 때는 이런 방식도 괜찮지 않을까 싶어 적용해보았다. 결과적으로 예상했던 것보다 시간은 늘어졌지만, 발표자가 준비하지 않은 다양한 내용에 대해서 이야기할 수 있는 계기가 됨을 확인했다. 2시간 반 정도로 예상했던 시간을 훌쩍 넘겨 3시간 40분 정도 진행했으니, 시간을 여유 있게 쓸 수 있는 상황이 아닐 때는 적용하기 어렵겠다.</p>
-<h3>개선해야할 점</h3>
+<h4 id="_2">개선해야할 점</h4>
 <p>앞서 얘기했던 것처럼 적은 인원이여도 중간 중간 다른 얘기를 쉽게 할 수 있는 형태에서는 시간이 늘어지기 마련이다.
 그리고 같은 주제에 대해 열 명이 넘는 사람이 순서대로 얘기하니 앞서 했던 얘기를 다시 반복하는 일이 잦아져 늘어진 부분이 있다.
 적은 인원이 모여서 모두 발표하는 경우에도 분야를 적당히 나눠 서로 다른 얘기를 다양한 입장에서 나눌 수 있도록 준비하면 좋겠다.</p>
-<h3>다시 할 수 있을까?</h3>
+<h4 id="_3">다시 할 수 있을까?</h4>
 <p>꼭 Vim이 아니어도 <a href="https://www.gnu.org/software/emacs/">Emacs</a>와 <a href="https://code.visualstudio.com/">Visual Studio Code</a>등의 편집기에 대해서도 다들 각자 어떻게 쓰는지 얘기하면 시간이 가는 줄 모를 것 같다. 모두가 발표하는 모임의 경우 주최하는 사람이 꼭 해당 내용에 대해 많은 것을 알고 있어야 하는 것은 아니겠지만, 그래도 해당 소프트웨어를 자주 사용하는 사람이 모임을 만드는 것이 더 낫지 않을까 싶다. 다른 교정학원이 열리면 무척 즐거울 것 같다.</p>
-<h3>영상 링크</h3>
+<h4 id="_4">영상 링크</h4>
 <div class="videowrapper"><iframe class="video" src="https://www.youtube.com/embed/lNWuf48vgV4?autoplay=0" frameborder="0"></iframe></div>
 
 <ul>
@@ -89,6 +89,18 @@
         </p>
 </footer><!-- /.post-info -->    </div><!-- /.entry-content -->
     <div class="fb-comments" data-href="https://lqez.github.io/blog/vimrc-2019.html" data-width="100%"  data-num-posts="10"></div>
+    <!-- add anchor to headings -->
+    <script>
+    const headers = document.querySelectorAll('h2[id], h3[id]');
+    for(var i = 0; i < headers.length; i++) {
+      const node = headers[i];
+      const anchor = document.createElement("a");
+      anchor.className = "pilcrow";
+      anchor.text = "\xb6";
+      anchor.href = "#" + node.id;
+      node.appendChild(anchor);
+    };
+    </script>
     <!-- img title to figcaption -->
     <script>
     window.addEventListener('load', function () {
@@ -137,6 +149,7 @@
             <li ><a href="https://lqez.github.io/blog/category/2019-03.html">2019-03</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2019-04.html">2019-04</a></li>
             <li class="active"><a href="https://lqez.github.io/blog/category/2019-05.html">2019-05</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2019-09.html">2019-09</a></li>
             <li ><a href="https://lqez.github.io/blog/category/uncategorized.html">Uncategorized</a></li>
         </ul></nav>
         -->

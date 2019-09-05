@@ -12,8 +12,8 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 &lt;li&gt;&lt;a href="https://developer.mozilla.org/ko/docs/Web/CSS/font-feature-settings"&gt;font-feature-setting&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2&gt;뉴스 사이트&lt;/h2&gt;
-&lt;h4&gt;다음 뉴스 – &lt;a href="https://media.daum.net/"&gt;https://media.daum.net/&lt;/a&gt;&lt;/h4&gt;
+&lt;h3 id="_1"&gt;뉴스 사이트&lt;/h3&gt;
+&lt;h5 id="httpsmediadaumnet"&gt;다음 뉴스 – &lt;a href="https://media.daum.net/"&gt;https://media.daum.net/&lt;/a&gt;&lt;/h5&gt;
 &lt;p&gt;&lt;img alt="Daum news" src="./images/2018-09/ht-daum.png"&gt;
 다음 뉴스 사이트는 본문 크기를 CSS 파일이 아닌 태그에 인라인 스타일링으로 &lt;code&gt;17px&lt;/code&gt; 로 지정한 것과, 자간만 &lt;code&gt;em&lt;/code&gt; 단위로 지정한 것이 눈에 띈다.
 서체에 대해서는 영문 서체는 특별히 신경쓰지 않고 한글 서체 내에 포함된 서체를 사용하도록 하였다.
@@ -31,7 +31,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h4&gt;네이버 뉴스 – &lt;a href="https://news.naver.com/"&gt;https://news.naver.com/&lt;/a&gt;&lt;/h4&gt;
+&lt;h5 id="httpsnewsnavercom"&gt;네이버 뉴스 – &lt;a href="https://news.naver.com/"&gt;https://news.naver.com/&lt;/a&gt;&lt;/h5&gt;
 &lt;p&gt;&lt;img alt="Naver news" src="./images/2018-09/ht-naver.png"&gt;
 네이버는 최근에는 잘 사용하지 않는 완전한 검정색을 본문 색상으로 사용한 것이 눈에 뛴다.
 서체 지정과 크기, 자간과 행간이 다음 뉴스 사이트와 매우 유사하다.
@@ -49,7 +49,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h4&gt;네이트 뉴스 – &lt;a href="http://news.nate.com/"&gt;http://news.nate.com/&lt;/a&gt;&lt;/h4&gt;
+&lt;h5 id="httpnewsnatecom"&gt;네이트 뉴스 – &lt;a href="http://news.nate.com/"&gt;http://news.nate.com/&lt;/a&gt;&lt;/h5&gt;
 &lt;p&gt;&lt;img alt="Nate news" src="./images/2018-09/ht-nate.png"&gt;
 네이트 뉴스는 평소에는 잘 방문하지 않지만, 위 두 뉴스 사이트를 제외한 다른 신문, 매체 사이트는 광고 때문에 본문을 읽을 엄두가 나지 않아 울며 겨자먹기로 알아보았다.&lt;/p&gt;
 &lt;p&gt;요즘의 사이트 답지 않게 &lt;code&gt;굴림&lt;/code&gt;, &lt;code&gt;돋움&lt;/code&gt;만 지정하고 있으며, 서체 크기도 &lt;code&gt;14px&lt;/code&gt;로 최근의 추세보다는 다소 작게 지정되어 있다.
@@ -67,10 +67,10 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 
 
 &lt;hr&gt;
-&lt;h2&gt;읽을거리&lt;/h2&gt;
+&lt;h3 id="_2"&gt;읽을거리&lt;/h3&gt;
 &lt;p&gt;카카오 1분이나 네이버 블로그 사이트도 알아보려고 했으나, 
 본문 없이 첨부 이미지로 가득차 있는 경우가 많고, 본문이 있다고 해도 강제적인 줄바꿈과 중앙 정렬을 사용하고 있어 제외했다.&lt;/p&gt;
-&lt;h4&gt;브런치 – &lt;a href="https://brunch.co.kr"&gt;https://brunch.co.kr&lt;/a&gt;&lt;/h4&gt;
+&lt;h5 id="httpsbrunchcokr"&gt;브런치 – &lt;a href="https://brunch.co.kr"&gt;https://brunch.co.kr&lt;/a&gt;&lt;/h5&gt;
 &lt;p&gt;&lt;img alt="Brunch" src="./images/2018-09/ht-brunch.png"&gt;
 개인별 호불호는 당연히 있겠지만, 브런치는 글을 읽기에 가장 불편한 사이트 중 하나라고 생각한다.
 우선 &lt;code&gt;Noto Sans Light&lt;/code&gt;와 같은 획이 가는 서체를 본문 기본 서체로 사용하고 있고, 글씨 크기도 &lt;code&gt;11pt&lt;/code&gt;로 작은데다,
@@ -91,7 +91,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h4&gt;퍼블리 – &lt;a href="https://publy.co/"&gt;https://publy.co/&lt;/a&gt;&lt;/h4&gt;
+&lt;h5 id="httpspublyco"&gt;퍼블리 – &lt;a href="https://publy.co/"&gt;https://publy.co/&lt;/a&gt;&lt;/h5&gt;
 &lt;p&gt;&lt;img alt="Publy" src="./images/2018-09/ht-publy.png"&gt;
 글을 유료로 판매하는 모델을 실험하는 퍼블리는 아무래도 한글 가독성에 초점을 맞추었을 것으로 예상되었다.
 다른 사이트들과 다르게 &lt;code&gt;word-break: keep-all&lt;/code&gt;을 지정한 것이 가장 눈에 띄고,
@@ -110,7 +110,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h4&gt;핀치 – &lt;a href="https://thepin.ch/"&gt;https://thepin.ch/&lt;/a&gt;&lt;/h4&gt;
+&lt;h5 id="httpsthepinch"&gt;핀치 – &lt;a href="https://thepin.ch/"&gt;https://thepin.ch/&lt;/a&gt;&lt;/h5&gt;
 &lt;p&gt;&lt;img alt="the pinch" src="./images/2018-09/ht-thepinch.png"&gt;
 여성을 위한 미디어를 표방하는 핀치는 전반적으로 색 사용이 많고,
 페이지 전환시마다 그라데이션에 애니메이션 포함된 막을 사용하여 다소 정신 없다는 인상을 주는 것에 비해 본문은 얌전하고 밀도가 높다.&lt;/p&gt;
@@ -128,7 +128,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h4&gt;인디포스트 – &lt;a href="https://www.indiepost.co.kr/"&gt;https://www.indiepost.co.kr/&lt;/a&gt;&lt;/h4&gt;
+&lt;h5 id="httpswwwindiepostcokr"&gt;인디포스트 – &lt;a href="https://www.indiepost.co.kr/"&gt;https://www.indiepost.co.kr/&lt;/a&gt;&lt;/h5&gt;
 &lt;p&gt;&lt;img alt="indiepost" src="./images/2018-09/ht-indiepost.png"&gt;
 읽어보면 좋은 글이 많고, 하단에 관련된 글들도 연관성이 높아 음악가들에 대해 알아보기 좋은 사이트라고 생각한다.
 하지만 브런치와 마찬가지로 본문에 사용하는 서체의 획이 너무 가늘어 읽기에 힘이 든다.
@@ -149,7 +149,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h4&gt;미디엄(Medium) – &lt;a href="https://medium.com/"&gt;https://medium.com/&lt;/a&gt;&lt;/h4&gt;
+&lt;h5 id="medium-httpsmediumcom"&gt;미디엄(Medium) – &lt;a href="https://medium.com/"&gt;https://medium.com/&lt;/a&gt;&lt;/h5&gt;
 &lt;p&gt;&lt;img alt="Medium" src="./images/2018-09/ht-medium.png"&gt;
 미디엄은 &lt;a href="https://medium.design/"&gt;https://medium.design/&lt;/a&gt;과 &lt;a href="https://medium.engineering"&gt;https://medium.engineering&lt;/a&gt;을 운영하며
 &lt;a href="https://medium.engineering/typography-is-impossible-5872b0c7f891"&gt;Typography is impossible&lt;/a&gt;을 쓰는 등 웹에서의 타이포그래피에 관심이 많은 서비스로 보인다.&lt;/p&gt;
@@ -171,7 +171,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h4&gt;페이스북 노트&lt;/h4&gt;
+&lt;h5 id="_3"&gt;페이스북 노트&lt;/h5&gt;
 &lt;p&gt;&lt;img alt="Facebook note" src="./images/2018-09/ht-facebook-note.png"&gt;
 페이스북도 긴 글을 쓰기 위한 Facebook Note 기능을 제공한다. 하지만 많이 사용하는 기능이 아니라 그런지 적용된 스타일은 많지 않다.
 기본 서체가 &lt;code&gt;Georgia&lt;/code&gt; 하나라니.&lt;/p&gt;
@@ -190,7 +190,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h4&gt;리디북스 – &lt;a href="https://ridibooks.com/"&gt;https://ridibooks.com/&lt;/a&gt;&lt;/h4&gt;
+&lt;h5 id="httpsridibookscom"&gt;리디북스 – &lt;a href="https://ridibooks.com/"&gt;https://ridibooks.com/&lt;/a&gt;&lt;/h5&gt;
 &lt;p&gt;&lt;img alt="Ridibooks" src="./images/2018-09/ht-ridi.png"&gt;
 리디북스는 전용 리더를 제공하기 때문에, 책 본문을 웹 서비스로 제공하지는 않는다.
 하지만 활자가 주 콘텐츠인 만큼 책을 소개하는 페이지의 본문을 어떻게 구성하고 있을지 흥미가 있었다.&lt;/p&gt;
@@ -213,10 +213,10 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 
 
 &lt;hr&gt;
-&lt;h2&gt;소셜 미디어&lt;/h2&gt;
+&lt;h3 id="_4"&gt;소셜 미디어&lt;/h3&gt;
 &lt;p&gt;카카오스토리나 밴드 등도 알아보고 싶었지만, 웹 서비스가 제대로 제공되지 않거나, 본문이 타이포그래피를 따질 정도로 구성되는 경우가 별로 없어 제외했다.
 페이스북 타임라인이나 트위터도 긴 글이 많지 않아 속성을 알아보는데 큰 의미는 없으나, 단문을 표시하기 위해 어떤 CSS를 사용하는지 참고하면 될 것 같다.&lt;/p&gt;
-&lt;h4&gt;페이스북 – &lt;a href="https://facebook.com"&gt;https://facebook.com&lt;/a&gt;&lt;/h4&gt;
+&lt;h5 id="httpsfacebookcom"&gt;페이스북 – &lt;a href="https://facebook.com"&gt;https://facebook.com&lt;/a&gt;&lt;/h5&gt;
 &lt;p&gt;&lt;img alt="Facebook" src="./images/2018-09/ht-facebook.png"&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="k"&gt;color&lt;/span&gt;       &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#1d2129&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -230,7 +230,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h4&gt;트위터 – &lt;a href="https://twitter.com"&gt;https://twitter.com&lt;/a&gt;&lt;/h4&gt;
+&lt;h5 id="httpstwittercom"&gt;트위터 – &lt;a href="https://twitter.com"&gt;https://twitter.com&lt;/a&gt;&lt;/h5&gt;
 &lt;p&gt;&lt;img alt="Twitter" src="./images/2018-09/ht-twitter.png"&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="k"&gt;color&lt;/span&gt;       &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#14171a&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;

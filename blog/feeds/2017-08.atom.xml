@@ -12,7 +12,7 @@
 준비하는 사람은 어떻게 잘할까 보다는 다양한 사람과 주제가 오고 가는 장소에서 사고 없이 &lt;strong&gt;작지만 옳은&lt;/strong&gt; 진전을 만들어 내느냐에 집중하는 것이 좋다고 본다.&lt;/p&gt;
 &lt;p&gt;작년에는 &lt;a href="https://www.slideshare.net/lqez/tox-travis-coveralls"&gt;CI에 대한 발표&lt;/a&gt; 이후에 &lt;a href="https://www.pycon.kr/2016apac/program/tutorial/1"&gt;튜토리얼&lt;/a&gt;까지 이어서 하는 것에 노력했다면,
 올해는 &lt;a href="https://www.pycon.kr/2017/program/sprint/3"&gt;스프린트&lt;/a&gt;를 진행하면서 오픈소스를 처음 접해보는 분들에게 기여하는 방법을 알려드리고, 긍정적인 경험을 나누고 싶었다.
-운이 좋았는지, 썸머노트를 작성한 홍영택(&lt;a href="https://twitter.com/hackerwins"&gt;@hackerwins&lt;/a&gt;)님도 마침 시간이 맞아 &lt;a href="https://github.com/summernote/django-summernote"&gt;django-summernote&lt;/a&gt; 뿐 아니라 &lt;a href="https://github.com/summernote/summernote"&gt;summernote&lt;/a&gt; 에 대한 스프린트를 같이 진행할 수 있었다.&lt;/p&gt;
+운이 좋았는지, 썸머노트를 작성한 홍영택(@hackerwins)님도 마침 시간이 맞아 &lt;a href="https://github.com/summernote/django-summernote"&gt;django-summernote&lt;/a&gt; 뿐 아니라 &lt;a href="https://github.com/summernote/summernote"&gt;summernote&lt;/a&gt; 에 대한 스프린트를 같이 진행할 수 있었다.&lt;/p&gt;
 &lt;p&gt;큰 문제를 해결하기 보다는, 스프린트에 참가한 분들에게 각자 하나의 커밋이라도 머지되는 경험을 드리고 싶었는데, 다행히 기존 프로젝트에 많은 문제가 있어(?) 대부분 처음 스프린트를 경험했음에도 불구, 소기의 성과를 거둘 수 있었다.
 이번 한 번의 스프린트로 대단한 일을 하려는게 아니다. 적게는 한 두명이라도 스프린트를 통해 새롭지만 긍정적인 경험을 하고, 다시 주변 사람들에게 새로운 시각에 대해 전파할 수 있다고 가정한다면, 이 일을 몇 년간 꾸준히 계속할 때 작지만 의미있는 변화를 가져올 수 있다고 믿는다.&lt;/p&gt;
 &lt;ul&gt;
@@ -23,7 +23,7 @@
 &lt;p&gt;무엇보다 올해는 준비위원회에 새로 들어오시거나, 새롭게 더 많은 책임을 진 사람들이 주도적으로 준비하면서 이전보다 더 나은 결과를 내는 것을 볼 수 있어 좋았다.
 마지막으로, 비영리 컨퍼런스를 다른 자원봉사자들과 함께 운영하면서 배웠던 가장 큰 부분이 같이 준비했던 예지님이 보낸 이메일에 적혀있어, 동의를 구하고 이 곳에 인용해본다.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;a href="https://twitter.com/bloodevil4"&gt;@bloodevil4&lt;/a&gt;
+&lt;p&gt;@bloodevil4
 어떤 일을 할 때 최선을 다할 수도, 조금 신경을 덜 쓸 수도 있습니다.
 하지만, 그 일을 했던 사람이 가장 하고 싶은 대로 하는 것이 최선이라고 저는 생각합니다.
 물어볼 수도 있고, 그 물어보는 것에 대해서 다른 의견을 낼 수도, 그렇게 하지 말라고 할 수는 있습니다.

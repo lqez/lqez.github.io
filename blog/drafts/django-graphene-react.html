@@ -91,7 +91,7 @@ https://github.com/mbrochh/django-graphql-apollo-react-demo
 https://www.robinwieruch.de/minimal-react-webpack-babel-setup/
 https://www.howtographql.com/react-apollo/1-getting-started/</p>
 <p>npm install --save-dev apollo-boost react-apollo graphql</p>
-<h1>client side</h1>
+<h2 id="client-side">client side</h2>
 <p>CORS
 fetchOptions: {
   mode: 'no-cors',
@@ -99,7 +99,7 @@ fetchOptions: {
 Content-Type:text/plain;charset=UTF-8
 https://github.com/apollographql/apollo-link/issues/275#issuecomment-347138651
 text/html</p>
-<h1>or on serverside</h1>
+<h2 id="or-on-serverside">or on serverside</h2>
 <p>pip install django-cors-headers</p>
 <p>Graphene Django “Must provide query string”</p>
 <p>CORS_ORIGIN_WHITELIST = (
@@ -126,6 +126,18 @@ https://medium.com/@justintulk/passing-environment-variables-into-your-code-with
         </p>
 </footer><!-- /.post-info -->    </div><!-- /.entry-content -->
     <div class="fb-comments" data-href="https://lqez.github.io/blog/drafts/django-graphene-react.html" data-width="100%"  data-num-posts="10"></div>
+    <!-- add anchor to headings -->
+    <script>
+    const headers = document.querySelectorAll('h2[id], h3[id]');
+    for(var i = 0; i < headers.length; i++) {
+      const node = headers[i];
+      const anchor = document.createElement("a");
+      anchor.className = "pilcrow";
+      anchor.text = "\xb6";
+      anchor.href = "#" + node.id;
+      node.appendChild(anchor);
+    };
+    </script>
     <!-- img title to figcaption -->
     <script>
     window.addEventListener('load', function () {
@@ -174,6 +186,7 @@ https://medium.com/@justintulk/passing-environment-variables-into-your-code-with
             <li ><a href="https://lqez.github.io/blog/category/2019-03.html">2019-03</a></li>
             <li class="active"><a href="https://lqez.github.io/blog/category/2019-04.html">2019-04</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2019-05.html">2019-05</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2019-09.html">2019-09</a></li>
             <li ><a href="https://lqez.github.io/blog/category/uncategorized.html">Uncategorized</a></li>
         </ul></nav>
         -->

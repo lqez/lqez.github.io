@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer - Uncategorized</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/uncategorized.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2013-01-06T00:00:00+09:00</updated><entry><title>펠리칸으로 작성하는 첫번째 블로그 포스트</title><link href="https://lqez.github.io/blog/the-first-blog-post.html" rel="alternate"></link><published>2013-01-06T00:00:00+09:00</published><updated>2013-01-06T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2013-01-06:/blog/the-first-blog-post.html</id><summary type="html">&lt;h1&gt;H1 테스트&lt;/h1&gt;
-&lt;h2&gt;H2 테스트&lt;/h2&gt;
-&lt;h3&gt;이건 H3&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer - Uncategorized</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/uncategorized.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2013-01-06T00:00:00+09:00</updated><entry><title>펠리칸으로 작성하는 첫번째 블로그 포스트</title><link href="https://lqez.github.io/blog/the-first-blog-post.html" rel="alternate"></link><published>2013-01-06T00:00:00+09:00</published><updated>2013-01-06T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2013-01-06:/blog/the-first-blog-post.html</id><summary type="html">&lt;h2 id="h1"&gt;H1 테스트&lt;/h2&gt;
+&lt;h3 id="h2"&gt;H2 테스트&lt;/h3&gt;
+&lt;h4 id="h3"&gt;이건 H3&lt;/h4&gt;
 &lt;blockquote&gt;
 &lt;p&gt;인용구는 이렇게 
 처리하면 잘 나오겠지.&lt;/p&gt;
@@ -24,9 +24,9 @@
 
 &lt;p&gt;문장 중간에 &lt;code&gt;import os,sys&lt;/code&gt; 가 가능하지
 이건 그냥 링크 &lt;a href=""&gt;http://lqez.github.com&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://lqez.github.com/"&gt;http://lqez.github …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;h1&gt;H1 테스트&lt;/h1&gt;
-&lt;h2&gt;H2 테스트&lt;/h2&gt;
-&lt;h3&gt;이건 H3&lt;/h3&gt;
+&lt;p&gt;&lt;a href="http://lqez.github.com/"&gt;http://lqez.github …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;h2 id="h1"&gt;H1 테스트&lt;/h2&gt;
+&lt;h3 id="h2"&gt;H2 테스트&lt;/h3&gt;
+&lt;h4 id="h3"&gt;이건 H3&lt;/h4&gt;
 &lt;blockquote&gt;
 &lt;p&gt;인용구는 이렇게 
 처리하면 잘 나오겠지.&lt;/p&gt;

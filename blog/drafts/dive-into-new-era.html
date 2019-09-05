@@ -48,13 +48,25 @@
 해당 사업부에서 다루는 일은 투자, 기업 인수, 펀드 운용 등의 일이었고, 여러 스타트업에 대한 관심도 필요했다.
 한번 창업해봤다는 것으로 창업에 대해 많은 것을 얘기할 수는 없겠지만, 그래도 고민하는 친구에게 조금이나마 도움이 될 것 같아 만나서 몇 번 얘기를 나눴고,
 그 때 나눴던 이야기는 대부분 “완전히 새로운 곳에 뛰어들 때는 어디서 시작해야할 지 모르겠다”가 주제였던터라, 그에 대한 생각을 정리해보았다.</p>
-<h3></h3><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<h4 id="_1"></h4><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 <footer class="post-info-footer">
         <p>
         In <a href="https://lqez.github.io/blog/category/2019-01.html">2019-01</a>. 
         </p>
 </footer><!-- /.post-info -->    </div><!-- /.entry-content -->
     <div class="fb-comments" data-href="https://lqez.github.io/blog/drafts/dive-into-new-era.html" data-width="100%"  data-num-posts="10"></div>
+    <!-- add anchor to headings -->
+    <script>
+    const headers = document.querySelectorAll('h2[id], h3[id]');
+    for(var i = 0; i < headers.length; i++) {
+      const node = headers[i];
+      const anchor = document.createElement("a");
+      anchor.className = "pilcrow";
+      anchor.text = "\xb6";
+      anchor.href = "#" + node.id;
+      node.appendChild(anchor);
+    };
+    </script>
     <!-- img title to figcaption -->
     <script>
     window.addEventListener('load', function () {
@@ -103,6 +115,7 @@
             <li ><a href="https://lqez.github.io/blog/category/2019-03.html">2019-03</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2019-04.html">2019-04</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2019-05.html">2019-05</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2019-09.html">2019-09</a></li>
             <li ><a href="https://lqez.github.io/blog/category/uncategorized.html">Uncategorized</a></li>
         </ul></nav>
         -->

@@ -56,7 +56,7 @@
 <p>지난 시간을 돌아보며 정리하여 남기고 싶은 말이 많지만, 개인적인 부분이 많아 저장소와 회선을 낭비해가며 남기고 전할 만큼 의미가 있지 않으니,
 아무것도 모르는 상태에서 창업하며 겪었던 일 중, 창업한다면 대체로 한 번쯤 생각해볼 만한 것에 대한 의견을 남겨본다.</p>
 <hr>
-<h4>공동창업은 좋은가</h4>
+<h5 id="_1">공동창업은 좋은가</h5>
 <p>기본적으로 좋다고 생각한다. 일단 창업하고 나면 기쁜 일보다는 힘든 일이 훨씬 더 많기 마련인데,
 정말 힘들 때 등을 맞대고 고민을 함께할 수 있는 상대는 배우자나 친구보다는, 아무래도 맥락을 더 많이 이해하는 다른 공동창업자일 수밖에 없다.</p>
 <p>좋아하는 것이 비슷한 사람보다, 싫어하는 것에 공통점이 있는 사람과 창업하는 게 낫다고 생각한다. 무언가를 좋아하는 것은 너무 쉽게 달라진다.
@@ -65,12 +65,12 @@
 일이 잘 될 때는 자기가 잘해서라고 생각하고, 잘 안될 때는 다른 사람을 탓하는 게 인간이다.
 핵심 역량을 같이 고민하고 서로 성장에 도움 될 수 있는 사람이 공동창업을 하는 게 낫다고 생각한다.
 창업가가 가지고 있지 못한 능력은 이후에 정말 필요해질 때에 다른 사람을 채용하거나 외부 회사를 통해 보강하는 게 좋을 것 같다.</p>
-<h3>어떻게 알릴 것인가</h3>
+<h4 id="_2">어떻게 알릴 것인가</h4>
 <p>스스로 필요해서, 해야 한다고 생각해서 시작한 사업은 일단 본인이 미친 듯이 쓰면서 주변의 가까운 사람에게 알리는 게 기본이다.
 하지만 모든 사업이 <a href="http://www.piedpipersent.com/%EA%B0%9C%EB%B0%A5-%EB%A8%B9%EA%B8%B0eating-your-own-dog-food/">개밥 먹기</a>를 할 수 있는 것은 아니고, 많은 경우 주변 사람들은 일반적인 지표를 주지 못하는 경우가 많다.
 그러므로 불필요하게 주변 사람들 괴롭히지 말고, 최선의 매체를 통해서 적은 비용으로 빠르게 홍보를 시도해보고 빠르게 실패하는 과정을 반복하면 좋을 것 같다.</p>
-<h3>회사 이름은 어떻게 정할까</h3>
-<p>준곰(<a href="https://twitter.com/joongom">@joongom</a>)님과 며칠 전에 얘기하다, 이 문제에 대해서도 생각해보게 되었다.
+<h4 id="_3">회사 이름은 어떻게 정할까</h4>
+<p>준곰(@joongom)님과 며칠 전에 얘기하다, 이 문제에 대해서도 생각해보게 되었다.
 조직의 문화에 대한 지향점을 이름에 넣는 편이 좋은지, 서비스나 제품을 담는 게 좋은지 늘 고민이 된다.
 어떻게 일하면 좋을까를 고민해서 회사 이름을 지었다가, 외부와 의사소통 시에 답답해서 – 그래서 회사 이름이 뭐라고? – 회사 이름을 주력 제품이나 서비스명으로 바꾸는 경우도 봐왔고, 반대로 제품과 같게 지었다가 성장하는 중에 주력 사업이 바뀌면서 회사 이름이 따로 놀기도 한다.</p>
 <p>개인적으로는 초기부터 제품/서비스 브랜딩을 따로 한다는 전제하에, ‘어떻게’를 회사 이름으로 선택할 것 같다.
@@ -81,11 +81,11 @@
 매일 매일 조금씩이라도 코딩을 계속하고 사람들을 만나고 싶다.</p>
 <p>영화 매트릭스에 <a href="https://www.youtube.com/watch?v=5wqd-ETXrOw">이런 대사</a>가 있다.</p>
 <blockquote>
-<h3>“Everything that has a beginning has an end.”</h3>
+<h4 id="everything-that-has-a-beginning-has-an-end">“Everything that has a beginning has an end.”</h4>
 </blockquote>
 <p>좋아하는 문장이지만 더 좋아하는 이 문장을 덧붙이고 싶다.</p>
 <blockquote>
-<h3>“The end is just another beginning.”</h3>
+<h4 id="the-end-is-just-another-beginning">“The end is just another beginning.”</h4>
 </blockquote><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 <footer class="post-info-footer">
         <p>
@@ -93,6 +93,18 @@
         </p>
 </footer><!-- /.post-info -->    </div><!-- /.entry-content -->
     <div class="fb-comments" data-href="https://lqez.github.io/blog/the-end-is-just-another-beginning.html" data-width="100%"  data-num-posts="10"></div>
+    <!-- add anchor to headings -->
+    <script>
+    const headers = document.querySelectorAll('h2[id], h3[id]');
+    for(var i = 0; i < headers.length; i++) {
+      const node = headers[i];
+      const anchor = document.createElement("a");
+      anchor.className = "pilcrow";
+      anchor.text = "\xb6";
+      anchor.href = "#" + node.id;
+      node.appendChild(anchor);
+    };
+    </script>
     <!-- img title to figcaption -->
     <script>
     window.addEventListener('load', function () {
@@ -141,6 +153,7 @@
             <li ><a href="https://lqez.github.io/blog/category/2019-03.html">2019-03</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2019-04.html">2019-04</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2019-05.html">2019-05</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2019-09.html">2019-09</a></li>
             <li ><a href="https://lqez.github.io/blog/category/uncategorized.html">Uncategorized</a></li>
         </ul></nav>
         -->
