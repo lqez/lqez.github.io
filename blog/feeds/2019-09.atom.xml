@@ -1018,9 +1018,9 @@ All files  |    35.71 |      100 |       50 |    35.71 |                   |
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;웹 브라우저가 아닌 Node.js를 통해 테스트를 진행했으므로, &lt;code&gt;document&lt;/code&gt;가 존재하지 않는 문제가 있다. 이제 Karma에서 Istanbul을 이용해 테스트와 커버리지를 통합해 진행해보자.&lt;/p&gt;
+&lt;p&gt;웹 브라우저가 아닌 Node.js를 통해 테스트를 진행했으므로, &lt;code&gt;document&lt;/code&gt;가 존재하지 않는 문제가 있다. 이제 Karma에서 Istanbul을 이용해 테스트와 커버리지를 함께 진행해보자.&lt;/p&gt;
 &lt;h4 id="karma-coverage"&gt;karma-coverage&lt;/h4&gt;
-&lt;p&gt;&lt;a href="https://github.com/karma-runner/karma-coverage"&gt;&lt;code&gt;karma-coverage&lt;/code&gt;&lt;/a&gt;는 Karma에서 Istanbul을 연동하기 위한 플러그인이다. 플러그인을 설치하고 &lt;code&gt;karma.conf.js&lt;/code&gt;에 &lt;code&gt;reporters&lt;/code&gt; 항목에 &lt;code&gt;coverage&lt;/code&gt;를, &lt;code&gt;coverageReporter&lt;/code&gt;에 &lt;code&gt;text&lt;/code&gt;로 형식으로 출력하는 설정을 추가한다. Instanbul은 &lt;code&gt;text&lt;/code&gt;, &lt;code&gt;html&lt;/code&gt; 뿐 아니라 &lt;a href="https://istanbul.js.org/docs/advanced/alternative-reporters/"&gt;다양한 보고서 형식&lt;/a&gt;을 지원한다.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/karma-runner/karma-coverage"&gt;&lt;code&gt;karma-coverage&lt;/code&gt;&lt;/a&gt;는 Karma에서 Istanbul을 연동하기 위한 플러그인이다. 플러그인을 설치하고 &lt;code&gt;karma.conf.js&lt;/code&gt;의 &lt;code&gt;reporters&lt;/code&gt; 항목에 &lt;code&gt;coverage&lt;/code&gt;를, &lt;code&gt;coverageReporter&lt;/code&gt;에 &lt;code&gt;text&lt;/code&gt;로 형식으로 출력하는 설정을 추가한다. Instanbul은 &lt;code&gt;text&lt;/code&gt;, &lt;code&gt;html&lt;/code&gt; 뿐 아니라 &lt;a href="https://istanbul.js.org/docs/advanced/alternative-reporters/"&gt;다양한 보고서 형식&lt;/a&gt;을 지원한다.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ npm i -D karma-coverage
 &lt;/pre&gt;&lt;/div&gt;
 
