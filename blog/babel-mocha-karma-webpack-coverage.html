@@ -498,7 +498,7 @@ Entrypoint main = main.js
 
 
 <p>프리셋을 지정한 후에는 원래 작성했던 코드를 더 낮은 버전의 ECMAScript를 지원하는 런타임에서도 실행될 수 있도록 필요한 함수를 추가하고, 문법을 변경한 결과를 출력한다. <code>index.js</code> 도 같은 방법으로 변환해서 확인해보면 ES6 미만 코드에서 어떻게 모듈을 불러오는지 볼 수 있다.</p>
-<p>변환할 때마다 <code>--preset</code> 등 여러 가지 옵션을 지정해서 사용하면 불편하므로, <code>.babelrc</code> 파일에 Babel의 설정을 저장하여 기본값으로 사용하자.</p>
+<p>변환할 때마다 <code>--presets</code> 등 여러 가지 옵션을 지정해서 사용하면 불편하므로, <code>.babelrc</code> 파일에 Babel의 설정을 저장하여 기본값으로 사용하자.</p>
 <h6>.babelrc</h6>
 <div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nx">presets</span><span class="o">:</span> <span class="p">[</span>
