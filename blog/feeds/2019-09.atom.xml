@@ -14,7 +14,7 @@
 &lt;li&gt;&lt;a href="#mocha"&gt;Mocha&lt;/a&gt;: 자바스크립트 테스트 프레임워크.&lt;/li&gt;
 &lt;li&gt;&lt;a href="#karma"&gt;Karma&lt;/a&gt;: 작성한 테스트를 웹 브라우저로 테스트해 주는 테스트 러너.&lt;/li&gt;
 &lt;li&gt;&lt;a href="#karma-webpack"&gt;karma-webpack&lt;/a&gt;: Webpack 설정을 Karma에서 사용하기 위한 플러그인.&lt;/li&gt;
-&lt;li&gt;&lt;a href="#Istanbul"&gt;Istanbul&lt;/a&gt;: 자바스크립트 테스트 커버리지 도구.&lt;/li&gt;
+&lt;li&gt;&lt;a href="#istanbul"&gt;Istanbul&lt;/a&gt;: 자바스크립트 테스트 커버리지 도구.&lt;/li&gt;
 &lt;li&gt;&lt;a href="#karma-coverage"&gt;karma-coverage&lt;/a&gt;: Karma에서 Istanbul을 사용하기 위한 플러그인.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;각각의 도구를 알아보기 전에 위와 같은 도구들이 나온 배경에 대해 알아보자.&lt;/p&gt;
