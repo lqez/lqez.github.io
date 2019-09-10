@@ -255,7 +255,9 @@ $ webpack
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Webpack은 기본 설정으로 &lt;code&gt;src&lt;/code&gt; 디렉터리 안에 &lt;code&gt;index.js&lt;/code&gt; 파일이 있을 것을 가정하고 실행된다. 기존에 작성했던 &lt;code&gt;index.js&lt;/code&gt;, &lt;code&gt;Animal.js&lt;/code&gt; 파일을 &lt;code&gt;src&lt;/code&gt; 디렉터리를 만들어 옮긴 후에 다시 Webpack을 실행해보자.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ npm run build
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mkdir src
+$ mv *.js src/
+$ npm run build
 
 &amp;gt; webpack-sample@1.0.0 build /Users/lqez/Dev/webpack-sample
 &amp;gt; webpack

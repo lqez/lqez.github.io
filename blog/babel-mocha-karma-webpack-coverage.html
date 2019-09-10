@@ -299,7 +299,9 @@ $ webpack
 </ul>
 </blockquote>
 <p>Webpack은 기본 설정으로 <code>src</code> 디렉터리 안에 <code>index.js</code> 파일이 있을 것을 가정하고 실행된다. 기존에 작성했던 <code>index.js</code>, <code>Animal.js</code> 파일을 <code>src</code> 디렉터리를 만들어 옮긴 후에 다시 Webpack을 실행해보자.</p>
-<div class="highlight"><pre><span></span>$ npm run build
+<div class="highlight"><pre><span></span>$ mkdir src
+$ mv *.js src/
+$ npm run build
 
 &gt; webpack-sample@1.0.0 build /Users/lqez/Dev/webpack-sample
 &gt; webpack
