@@ -604,7 +604,7 @@ $
 </pre></div>
 
 
-<p>아무 결과도 출력되지 않고 종료된다. 일반적으로 커맨드라인 프로그램은 정상 종료될 때 <code>0</code>을, 그 외의 경우는 다른 값을 <a href="https://www.tldp.org/LDP/abs/html/exit-status.html">종료 상태(exit status)</a>로 내보낸다. 이 값을 통해 자동화 스크립트 등을 만들 때 테스트의 통과 여부를 확인할 수 있다. <code>bash</code> 등 대중적으로 많이 사용되는 쉘에서는 <code>$?</code> 변수에 종료 상태를 담아두니, 그 값을 출력해 확인해볼 수 있다.</p>
+<p>아무 결과도 출력되지 않고 종료된다. 일반적으로 커맨드라인 프로그램은 정상 종료될 때 <code>0</code>을, 그 외의 경우는 다른 값을 <a href="https://www.tldp.org/LDP/abs/html/exit-status.html">종료 상태(exit status)</a>로 내보낸다. 이 값을 통해 자동화 스크립트 등을 만들 때 테스트의 통과 여부를 확인할 수 있다. <code>bash</code> 등 대중적으로 많이 사용되는 셸에서는 <code>$?</code> 변수에 종료 상태를 담아두니, 그 값을 출력해 확인해 볼 수 있다.</p>
 <div class="highlight"><pre><span></span>$ node test/test.src &amp;&amp; echo $?
 0
 $
@@ -659,7 +659,7 @@ $
 
 <p>Mocha는 별도의 파일 이름을 지정하지 않으면 <a href="https://mochajs.org/#the-test-directory">기본적으로 <code>test</code> 디렉터리 아래에 있는 자바스크립트 파일</a>들을 실행해서 테스트를 진행한다.</p>
 <p><code>throw</code>를 직접 호출하는 대신, 더 편리하게 사용할 수 있는 Node.js에 내장된 <a href="https://nodejs.org/api/assert.html"><code>assert</code></a> 모듈을 사용했다. 하지만 웹 브라우저에서는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/console/assert"><code>console.assert()</code></a>를 사용하는 등 자바스크립트 런타임에 따라 다른 문법을 사용해야 하는 불편함이 있어, Mocha에서는 <a href="https://www.chaijs.com"><code>chai</code></a>, <a href="https://github.com/Automattic/expect.js"><code>expect.js</code></a> 등 다른 <a href="https://mochajs.org/#assertions">Assertion 기능을 포함한 모듈</a>과 함께 사용하는 것을 권장하고 있다.</p>
-<p>Mocha에서는 여러 형태의 <a href="https://mochajs.org/#interfaces">테스트 인터페이스</a>를 제공한다. 대부분 테스트에 사용할 맥락을 유지하고 테스트 전/후에 불릴 함수를 제공하는 등 유사한 기능을 제공하므로, <a href="https://en.wikipedia.org/wiki/Behavior-driven_development"><code>BDD</code></a>에 속하는 <code>describe</code> 를 골라 테스트를 작성했다. 테스트가 정상적으로 수행되고, 종료 상태도 <code>0</code>으로 나오는 것을 확인할 수 있다. 이제 <code>Animal.js</code>를 포함하여 동물들이 제대로 짓는지(?) 확인해보자.</p>
+<p>Mocha에서는 여러 형태의 <a href="https://mochajs.org/#interfaces">테스트 인터페이스</a>를 제공한다. 대부분 테스트에 사용할 맥락을 유지하고 테스트 전/후에 불릴 함수를 제공하는 등 유사한 기능을 제공하므로, <a href="https://en.wikipedia.org/wiki/Behavior-driven_development"><code>BDD</code></a>에 속하는 <code>describe</code> 를 골라 테스트를 작성했다. 테스트가 정상적으로 수행되고, 종료 상태도 <code>0</code>으로 나오는 것을 확인할 수 있다. 이제 <code>Animal.js</code>를 포함하여 동물들이 제대로 짖는지(?) 확인해보자.</p>
 <h6>test/test.js</h6>
 <div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">assert</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;assert&#39;</span><span class="p">)</span>
 <span class="kr">const</span> <span class="nx">Animal</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../src/Animal.js&#39;</span><span class="p">).</span><span class="k">default</span>
