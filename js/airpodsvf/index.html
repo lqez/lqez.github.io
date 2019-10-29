@@ -3,9 +3,15 @@
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>AirPod Pro page effect by video</title>
 <style>
+html {
+  scroll-behavior: smooth;
+}
 body {
   margin: 0;
   background: #000;
+  touch-action: pan-y;
+  height: 100vh;
+  overflow: auto;
 }
 section {
   display: flex;
