@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2019-09-01T00:00:00+09:00</updated><entry><title>Babel, Mocha, Karma and Webpack with coverage in order</title><link href="https://lqez.github.io/blog/babel-mocha-karma-webpack-coverage.html" rel="alternate"></link><published>2019-09-01T00:00:00+09:00</published><updated>2019-09-01T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2019-09-01:/blog/babel-mocha-karma-webpack-coverage.html</id><summary type="html">&lt;p&gt;요즘 &lt;a href="https://github.com/zerobased-co/veryslide"&gt;만들고 있는 슬라이드 서비스&lt;/a&gt; 코드가 더 엉망이 되기 전에 유닛 테스트를 붙이고 관리하기 위해 관련 도구를 도입하기로 했다.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2019-10-29T00:00:00+09:00</updated><entry><title>One day dev</title><link href="https://lqez.github.io/blog/one-day-dev.html" rel="alternate"></link><published>2019-10-29T00:00:00+09:00</published><updated>2019-10-29T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2019-10-29:/blog/one-day-dev.html</id><summary type="html">&lt;h3 id="just-one-day"&gt;Just one day&lt;/h3&gt;
+&lt;p&gt;딱 하루, 낯선 회사에서 일할 기회를 찾고 있습니다.
+다른 사람과 조직은 어떻게 일하는지 궁금하고, 새로운 환경을 경험해보며 관찰하여 기록하고 싶습니다.&lt;/p&gt;
+&lt;p&gt;이 과정에서 새로운 사람, 특히 소프트웨어 엔지니어들을 만나 의견을 나누며 제가 도움이 될 수 있는 부분에 도움을 드리고,
+더불어 제가 준비하고 있는 잡지 – &lt;a href="https://setup.cafe"&gt;셋업 Setup&lt;/a&gt;에서 인터뷰할 …&lt;/p&gt;</summary><content type="html">&lt;h3 id="just-one-day"&gt;Just one day&lt;/h3&gt;
+&lt;p&gt;딱 하루, 낯선 회사에서 일할 기회를 찾고 있습니다.
+다른 사람과 조직은 어떻게 일하는지 궁금하고, 새로운 환경을 경험해보며 관찰하여 기록하고 싶습니다.&lt;/p&gt;
+&lt;p&gt;이 과정에서 새로운 사람, 특히 소프트웨어 엔지니어들을 만나 의견을 나누며 제가 도움이 될 수 있는 부분에 도움을 드리고,
+더불어 제가 준비하고 있는 잡지 – &lt;a href="https://setup.cafe"&gt;셋업 Setup&lt;/a&gt;에서 인터뷰할 회사와 사람들을 찾아보는 기회가 되었으면 합니다.&lt;/p&gt;
+&lt;p&gt;회사 입장에서는 조직의 시스템을 처음 접하는 엔지니어가 어떻게 적응해가는지 알아볼 수 있고, 외부의 시선으로 조직의 문제를 진단해볼 수 있습니다.
+더불어 회사가 어떤 지향점을 가지고 어떤 사회의 문제를 해결하는지 외부에 알릴 수 있는 계기가 되기를 바랍니다.&lt;/p&gt;
+&lt;p&gt;조건은 다음과 같습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;하루 동안 해당 회사의 사무실에서 근무합니다. 해당일의 총 근무 시간은 사전 협의합니다.&lt;/li&gt;
+&lt;li&gt;근로계약서를 작성하며, 법정 최저임금 이상으로 지급해주시면 됩니다.&lt;/li&gt;
+&lt;li&gt;근무하는 동안 계속해서 영상을 촬영하고, 이를 편집하여 5분 내외의 영상 형태로 공개합니다.
+   보안과 관련된 부분은 문제가 없도록 편집할 예정이며, 공개하기 전 담당자에게 미리 영상을 전달하여 협의하에 필요한 부분을 추가로 편집합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="services"&gt;Services&lt;/h3&gt;
+&lt;p&gt;제가 가지고 있는 기능은 다음과 같습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.linkedin.com/in/hyunwoopark/"&gt;LinkedIn&lt;/a&gt;과 &lt;a href="https://github.com/lqez/"&gt;GitHub&lt;/a&gt;, &lt;a href="https://lqez.github.io/"&gt;홈페이지&lt;/a&gt;를 참조해주세요.&lt;/li&gt;
+&lt;li&gt;한국어는 모국어로 자연스럽게 의사소통할 수 있고, 영어는 읽고 쓰며, 낮은 수준으로 의사소통할 수 있습니다.&lt;/li&gt;
+&lt;li&gt;다음의 프로그래밍 언어로 프로그램을 작성하고 기존에 작성된 코드를 수정할 수 있습니다.&lt;ul&gt;
+&lt;li&gt;C, Python, JavaScript&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;다음의 운영체제 위에서 프로그래밍을 할 수 있습니다.&lt;ul&gt;
+&lt;li&gt;Windows, Linux, macOS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;다양한 서비스를 운영하며 관계형, 문서, 키-밸류 데이터베이스를 운영하고 최적화한 경험이 있습니다.&lt;/li&gt;
+&lt;li&gt;새로운 코드를 최소한으로 작성하고 기존에 작성된 것들을 조합하여 문제를 해결하는 방법을 찾습니다.&lt;/li&gt;
+&lt;li&gt;최종 사용자 제품 제작부터 사내 시스템 운영까지 다양한 분야에 넓고 얕은 경험을 공유해 드립니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="contact"&gt;Contact&lt;/h3&gt;
+&lt;p&gt;&lt;a href="&amp;#109;&amp;#97;&amp;#105;&amp;#108;&amp;#116;&amp;#111;&amp;#58;&amp;#101;&amp;#122;&amp;#64;&amp;#122;&amp;#101;&amp;#114;&amp;#111;&amp;#98;&amp;#97;&amp;#115;&amp;#101;&amp;#100;&amp;#46;&amp;#99;&amp;#111;"&gt;&amp;#101;&amp;#122;&amp;#64;&amp;#122;&amp;#101;&amp;#114;&amp;#111;&amp;#98;&amp;#97;&amp;#115;&amp;#101;&amp;#100;&amp;#46;&amp;#99;&amp;#111;&lt;/a&gt;로 이메일을 주시거나, 트위터 &lt;a href="https://twitter.com/lqez"&gt;@lqez&lt;/a&gt;로 DM을 보내주시면 되겠습니다.&lt;/p&gt;
+&lt;p&gt;이 글은 게시되어 있는 동안 유효합니다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="Prototype"></category></entry><entry><title>Babel, Mocha, Karma and Webpack with coverage in order</title><link href="https://lqez.github.io/blog/babel-mocha-karma-webpack-coverage.html" rel="alternate"></link><published>2019-09-01T00:00:00+09:00</published><updated>2019-09-01T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2019-09-01:/blog/babel-mocha-karma-webpack-coverage.html</id><summary type="html">&lt;p&gt;요즘 &lt;a href="https://github.com/zerobased-co/veryslide"&gt;만들고 있는 슬라이드 서비스&lt;/a&gt; 코드가 더 엉망이 되기 전에 유닛 테스트를 붙이고 관리하기 위해 관련 도구를 도입하기로 했다.
 유닛 테스트 작성에 대해 테스트를 위한 테스트라며 회의적인 시각을 가진 사람도 많지만, 나는 유닛 테스트를 통해 코드 재작성 과정에서 이득 본 경험이 있고, 오픈소스 프로젝트라면 새로운 기여자를 찾기 위한 가장 기초적인 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;요즘 &lt;a href="https://github.com/zerobased-co/veryslide"&gt;만들고 있는 슬라이드 서비스&lt;/a&gt; 코드가 더 엉망이 되기 전에 유닛 테스트를 붙이고 관리하기 위해 관련 도구를 도입하기로 했다.
 유닛 테스트 작성에 대해 테스트를 위한 테스트라며 회의적인 시각을 가진 사람도 많지만, 나는 유닛 테스트를 통해 코드 재작성 과정에서 이득 본 경험이 있고, 오픈소스 프로젝트라면 새로운 기여자를 찾기 위한 가장 기초적인 준비라고 생각하기 때문에 유용하다 생각하는 편이다.&lt;/p&gt;
 &lt;ul&gt;
