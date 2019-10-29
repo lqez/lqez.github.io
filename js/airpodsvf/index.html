@@ -1,5 +1,6 @@
 <html>
 <head>
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>AirPod Pro page effect by video</title>
 <style>
 body {
@@ -26,7 +27,7 @@ video {
 .scroll-dummy h1 {
   font-size: 80px;
   font-weight: 700;
-  padding: 200px 40px;
+  padding: 200px 0;
   color: white;
 }
 
@@ -47,7 +48,7 @@ code {
 </head>
 <body>
 <section>
-<video id="video" width="998" height="560">
+<video id="video" width="998" height="560" autoplay muted playsinline poster="video.jpg">
   <source src="video.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
@@ -72,6 +73,11 @@ window.addEventListener('scroll', function (e) {
   var time = (window.scrollY / 1000) * FRAMES / FPS;
   video.currentTime = time;
   console.log(time);
+});
+
+window.addEventListener('load', function(e) {
+  video.pause();
+  video.currentTime = 0;
 });
 </script>
 </html>
