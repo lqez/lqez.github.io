@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>AirPod Pro page effect by video</title>
+<style>
+body {
+  margin: 0;
+  background: #000;
+}
+section {
+  display: flex;
+  justify-content: center;
+}
+video {
+  position: fixed;
+  z-index: 0;
+  max-width: 100%;
+}
+.scroll-dummy {
+  height: 2000px;
+  max-width: 998px;
+  padding: 20px;
+  z-index: 1;
+  font-family: sans-serif;
+}
+
+.scroll-dummy h1 {
+  font-size: 80px;
+  font-weight: 700;
+  padding: 200px 40px;
+  color: white;
+}
+
+.scroll-dummy p, .scroll-dummy a {
+  font-size: 20px;
+  color: #ccc;
+  line-height: 1.4;
+}
+
+code {
+  font-family: monospace;
+  background: #333;
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+</style>
+</head>
+<body>
+<section>
+<video id="video" width="998" height="560">
+  <source src="video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+<div class="scroll-dummy">
+<h1>AirPods Pro page is TOO BIG</h1>
+<p>
+  <a href="https://www.apple.com/kr/airpods-pro/">https://www.apple.com/kr/airpods-pro/</a> contains 1,500+ images and their size is over 60MiB.
+</p>
+<p>
+  I encoded the first 147ea, 4.8MiB of AirPods Pro images into a single 1.1MiB x264 video file and put it as a background.
+  The video file has total 147 i-frame frames by <code>-intra</code> option. It makes much smoother frame changes.
+</p>
+</div>
+</section>
+</body>
+<script>
+var FRAMES = 148;
+var FPS = 30;
+var video = document.getElementById('video');
+
+window.addEventListener('scroll', function (e) {
+  var time = (window.scrollY / 1000) * FRAMES / FPS;
+  video.currentTime = time;
+  console.log(time);
+});
+</script>
+</html>
