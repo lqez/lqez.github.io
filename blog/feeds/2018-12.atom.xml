@@ -129,7 +129,7 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;&lt;code&gt;:hov&lt;/code&gt;&lt;/strong&gt; (Toggle Element State)
     &lt;img alt="Toggle Element State" src="./images/2018-12/chrome-dev-tool-101-style-state.png"&gt;&lt;ul&gt;
-&lt;li&gt;앞서 언급했던 &lt;code&gt;Force state&lt;/code&gt;와 마찬가지로 선택된 요소의 상태를 임의로 지정할 수 있다. &lt;/li&gt;
+&lt;li&gt;앞서 언급했던 &lt;code&gt;Force state&lt;/code&gt;와 마찬가지로 선택된 요소의 상태를 임의로 지정할 수 있다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;&lt;code&gt;+&lt;/code&gt;&lt;/strong&gt; (New Style Rule)
@@ -266,7 +266,7 @@
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;세션 저장소&lt;/strong&gt; (Session Storage)&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;로컬 저장소와 기능적으로는 같지만, 사용자가 명시적으로 삭제하지 않으면 지워지지 않는 로컬 저장소와는 달리, 세션 저장소는 브라우저가 닫힐 때 같이 제워진다. &lt;/li&gt;
+&lt;li&gt;로컬 저장소와 기능적으로는 같지만, 사용자가 명시적으로 삭제하지 않으면 지워지지 않는 로컬 저장소와는 달리, 세션 저장소는 브라우저가 닫힐 때 같이 제워진다.&lt;/li&gt;
 &lt;li&gt;로컬 저장소와 달리, 같은 도메인일 경우에도 창/탭 단위로 서로 다른 데이터를 사용하게 된다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -284,7 +284,7 @@
 페이지의 인증서와 페이지에서 참조하는 도메인의 인증서 등을 검사하고 그 결과를 보여준다. 모든 사이트에 HTTPS 연결이 강조되므로 이 탭을 통해 페이지에서 참조하는 리소스에 대해서도 확인하는 것이 필요하다.&lt;/p&gt;
 &lt;h5 id="audits"&gt;감사 (Audits)&lt;/h5&gt;
 &lt;p&gt;&lt;img alt="Audits" src="./images/2018-12/chrome-dev-tool-101-audits.png"&gt;
-&lt;a href="https://developers.google.com/web/tools/lighthouse/"&gt;Lighthouse&lt;/a&gt;를 통한 페이지 검사 결과를 표시하고 저장할 수 있다. 기본적인 페이지의 성능과 &lt;a href="https://developers.google.com/web/progressive-web-apps/"&gt;PWA&lt;/a&gt;, &lt;a href="https://en.wikipedia.org/wiki/Search_engine_optimization"&gt;SEO&lt;/a&gt;, &lt;a href="https://www.w3.org/standards/webdesign/accessibility"&gt;접근성&lt;/a&gt;과 관련된 점수를 제공하므로, &lt;a href="https://developers.google.com/speed/"&gt;Page speed&lt;/a&gt;와 함께 사용하여 품질 높은 페이지를 만드는데 참조하면 좋다. &lt;/p&gt;
+&lt;a href="https://developers.google.com/web/tools/lighthouse/"&gt;Lighthouse&lt;/a&gt;를 통한 페이지 검사 결과를 표시하고 저장할 수 있다. 기본적인 페이지의 성능과 &lt;a href="https://developers.google.com/web/progressive-web-apps/"&gt;PWA&lt;/a&gt;, &lt;a href="https://en.wikipedia.org/wiki/Search_engine_optimization"&gt;SEO&lt;/a&gt;, &lt;a href="https://www.w3.org/standards/webdesign/accessibility"&gt;접근성&lt;/a&gt;과 관련된 점수를 제공하므로, &lt;a href="https://developers.google.com/speed/"&gt;Page speed&lt;/a&gt;와 함께 사용하여 품질 높은 페이지를 만드는데 참조하면 좋다.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h4 id="more-tools"&gt;추가 기능 (More tools)&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="More tools" src="./images/2018-12/chrome-dev-tool-101-moretools.png"&gt;
@@ -295,7 +295,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;콘솔 창 보이기/숨기기&lt;/strong&gt; (Show/Hide console drawer)&lt;ul&gt;
-&lt;li&gt;콘솔과 추가 기능을 별도로 표시하는 창을 보이거나 숨길 수 있다. &lt;/li&gt;
+&lt;li&gt;콘솔과 추가 기능을 별도로 표시하는 창을 보이거나 숨길 수 있다.&lt;/li&gt;
 &lt;li&gt;단축키: &lt;code&gt;Esc&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
