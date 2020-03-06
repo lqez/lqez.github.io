@@ -10,17 +10,17 @@
 /* Imports */
 @import url('reset.css');
 @import url('pygment.css');
-@import url('//fonts.googleapis.com/css?family=Noto+Sans+KR:400,700|Roboto:400,700|Lato:400,700|Inconsolata:400,700');
+@import url('//fonts.googleapis.com/css?family=Noto+Sans+KR:400,700|Roboto:400,700,900|Courier+Prime:400,700&display=swap');
 
 /***** Global *****/
 /* Body */
 body {
   background: transparent;
-  color: #404346;
-  font-size: 13.2pt;
-  font-family: 'Roboto', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  color: #303336;
+  font-size: 12.6pt;
+  font-family: 'Open Sans', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
   font-weight: 400;
-  line-height: 1.667;
+  line-height: 1.75;
   margin: 0;
   padding: 0;
   text-align: left;
@@ -33,33 +33,30 @@ html, body {
 
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lato', 'Noto Sans KR', sans-serif;
-  font-weight: 700;
+  font-weight: 900;
   line-height: 1.2;
-  margin-top: 3em;
-  margin-bottom: .5em;
+  margin-top: 10%;
+  margin-bottom: 3%;
   word-break: keep-all;
 }
 
-h1 {font-size: 2.5em}
-h2 {font-size: 2.2em}
-h3 {font-size: 2.0em}
-h4 {font-size: 1.8em}
-h5 {font-size: 1.4em}
-h6 {font-size: 1.2em}
-
-
-article h2, article h3,
-article h4, article h5, article h6 {
-  margin-top: 1.3em;
+h4, h5, h6 {
+  margin: 8% 0 2%;
 }
-  
+
+h1 {font-size: 3.2em}
+h2 {font-size: 2.8em}
+h3 {font-size: 2.5em}
+h4 {font-size: 2.0em}
+h5 {font-size: 1.6em}
+h6 {font-size: 1.4em}
+
 hr { border:none; border-top: 1px solid #F0F0F0; margin: 8%; }
 
 /* Anchors */
-a {outline: 0; color:#477b96; text-decoration: none;}
+a {outline: 0; color:#3065f9; text-decoration: none;}
 a img {border: 0px; text-decoration: none;}
-  
+
 /* Paragraphs */
 p {line-height:1.825; word-break: break-all;}
 p + p {margin-top: 1.5em;}
@@ -122,14 +119,14 @@ article ul ul li:before {
   margin-left: 0.3em;
 }
 
-.readmore { 
+.readmore {
   padding: 1em 0;
   display: block;
   border: none !important;
   text-align: right;
 }
 
-.paginator { 
+.paginator {
   margin: 2em auto;
   text-align: center;
 }
@@ -141,16 +138,16 @@ dd {margin-left: 1.5em;}
 
 /* Quotes */
 blockquote {
-  padding: 20px 30px 10px;
+  padding: 20px 30px 20px;
   font-style: normal;
-  background: #f1f1f1;
+  background: #f4f6f8;
   margin: 20px 0;
   border: 1px solid #eee;
   border-radius: 3px;
+  font-style: italic;
 }
 
 address p {
-  margin-top: 0.4em;
   line-height: 140%;
 }
 
@@ -167,7 +164,7 @@ div.note {
 
 /* Tables */
 table {margin: .5em auto 1.5em auto; width: 98%;}
-  
+
   /* Thead */
   thead th {padding: .5em .4em; text-align: left;}
   thead td {}
@@ -175,14 +172,14 @@ table {margin: .5em auto 1.5em auto; width: 98%;}
   /* Tbody */
   tbody td {padding: .5em .4em;}
   tbody th {}
-  
+
   tbody .alt td {}
   tbody .alt th {}
-  
+
   /* Tfoot */
   tfoot th {}
   tfoot td {}
-  
+
 /* HTML5 tags */
 header, section, footer,
 aside, nav, article, figure {
@@ -204,25 +201,24 @@ figure.left {float: left; margin: 0 2em 2em 0;}
 
   /* Banner */
   #banner h1 {
-        font-size: 1.4em; 
+        font-size: 2.4em;
         text-align: center;
-        color: #444;
-        margin: 0.5em 0;
+        color: #515559;
+        margin: 1em 0 0.25em;
     }
-  
+
   #banner h1 a {
-        color: #444;
+        color: #515559;
         text-decoration: none;
     }
 
   #banner h2 {
-        font-size: 1em; 
+        font-size: 1em;
         text-align: center;
-        color: #777;
+        color: #717579;
 
         padding-bottom: 1em;
         margin: 0.5em 0;
-        border-bottom: 1px dashed #DDD;
     }
 
 /*
@@ -238,19 +234,22 @@ figure.left {float: left; margin: 0 2em 2em 0;}
   Body
 *****************/
 article {
-    padding: 3em 1em 4em;
-    max-width: 800px;
-    margin: 0 auto;
-    border-bottom: 1px solid #ddd;
+    padding: 5%;
+    max-width: 768px;
+    margin: 2em auto 4em;
+    -webkit-box-shadow: 0 20px 50px -10px rgba(0,0,0,.20), 0 18px 36px -18px rgba(0,0,0,.25);
+    box-shadow: 0 20px 50px -10px rgba(0,50,50,.20), 0 18px 36px -18px rgba(0,0,100,.25);
 }
 
 article a:link, article a:visited {
+  color: #8a1fce;
   text-decoration: none;
-    border-bottom: 1px solid #cde3ee;
+  border-bottom: 1px solid #8a1fce;
 }
 article a:hover, article a:active {
+  color: #3065f9;
   text-decoration: none;
-  border-bottom: 1px solid #477b96;
+  border-bottom: 1px solid #3065f9;
 }
 
 article img {
@@ -308,21 +307,21 @@ article figure figcaption {
     float: left;
     width: 615px;
   }
-  
+
   #extras .blogroll li {float: left; margin: 0 20px 0 0; width: 185px;}
-  
+
   /* Social */
   #extras .social {
     float: right;
     width: 175px;
   }
-  
+
   #extras div[class='social'] a {
     background-repeat: no-repeat;
     background-position: 3px 6px;
     padding-left: 25px;
   }
-  
+
     /* Icons */
     .social a[href*='delicious.com'] {background-image: url('../images/icons/delicious.png');}
     .social a[href*='digg.com'] {background-image: url('../images/icons/digg.png');}
@@ -341,10 +340,9 @@ article figure figcaption {
   About
 *****************/
 #about {
-  margin: 1.5em auto;
-    font-size: 0.7em;
+  margin: 1.0em auto;
   text-align: center;
-    font-style: normal;
+  font-style: normal;
 }
 
 #about .primary {float: left; width: 165px;}
@@ -358,7 +356,7 @@ article figure figcaption {
 /*
   Footer
 *****************/
-#contentinfo {padding-bottom: 2em; text-align: right;}
+#contentinfo {padding-bottom: 4em; text-align: right;}
 
 /***** Sections *****/
 /* Blog */
@@ -382,7 +380,7 @@ article figure figcaption {
 }
 
 .entry-title a:hover, .entry-title a:active {
-    color: #477b96;
+    color: #3065f9;
     border-bottom: none;
 }
 
@@ -395,7 +393,7 @@ article figure figcaption {
     #posts-list > li {
         list-style: none;
     }
-  
+
   /* About the Author */
   #about-author {
     background: #f9f9f9;
@@ -404,16 +402,16 @@ article figure figcaption {
     margin: 2em 0;
     padding: 10px 20px 15px 20px;
   }
-  
+
   #about-author strong {
     color: #C64350;
     clear: both;
     display: block;
     font-size: 1.429em;
   }
-  
+
   #about-author .photo {border: 1px solid #ddd; float: left; margin: 5px 1em 0 0;}
-  
+
   /* Comments */
   #comments-list {list-style: none; margin: 0 1em;}
   #comments-list blockquote {
@@ -424,19 +422,19 @@ article figure figcaption {
     padding: 15px 20px;
   }
   #comments-list footer {color: #888; padding: .5em 1em 0 0; text-align: right;}
-  
+
   #comments-list li:nth-child(2n) blockquote {background: #F5f5f5;}
-  
+
   /* Add a Comment */
   #add-comment label {clear: left; float: left; text-align: left; width: 150px;}
   #add-comment input[type='text'],
   #add-comment input[type='email'],
   #add-comment input[type='url'] {float: left; width: 200px;}
-  
+
   #add-comment textarea {float: left; height: 150px; width: 495px;}
-  
+
   #add-comment p.req {clear: both; margin: 0 .5em 1em 0; text-align: right;}
-  
+
   #add-comment input[type='submit'] {float: right; margin: 0 .5em;}
   #add-comment * {margin-bottom: .5em;}
 
@@ -450,7 +448,7 @@ article figure figcaption {
 }
 
 pre {
-    font-family: "Inconsolata", monospace;
+    font-family: "Courier Prime", monospace;
     background-color: #f4f8fa;
     border: 1px solid #ddeaf1;
     overflow: auto;
@@ -463,7 +461,7 @@ pre {
 }
 
 code {
-    font-family: "Inconsolata", monospace;
+    font-family: "Courier Prime", monospace;
     background-color: #fafcfd;
     border: 1px solid #e1e2e3;
     overflow: auto;
@@ -477,11 +475,13 @@ code {
 
 
 article h6 {
-  font-family: "Inconsolata", monospace;
+  font-family: "Courier Prime", monospace;
+  margin-top: 1em;
   margin-bottom: 0em;
   font-size: 1em;
-  padding: 2px 5px;
-  background-color: #eee;
+  padding: 10px 10px 6px;
+  background-color: #444;
+  color: #ccc;
   border: 1px solid #e0e0e0;
   border-bottom-width: 0;
 }

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Implementation of a Clipping Indicator</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=0.82, minimum-scale=0.82" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta property="og:url" content="https://lqez.github.io/blog/implementation-of-a-clipping-indicator.html"/>
+    <meta property="og:title" content="Implementation of a Clipping Indicator"/>
+    <meta property="og:image" content="https://lqez.github.io/blog/images/icons/fcd.png"/>
+
+    <link rel="stylesheet" href="https://lqez.github.io/blog/theme/css/main.css" type="text/css" />
+    <link href="https://lqez.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Feature creep designer Atom Feed" />
+    <link rel="apple-touch-icon" href="static/images/icons/fcd-57.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="static/images/icons/fcd-72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="static/images/icons/fcd-114.png"/>
+
+    <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+    <!--[if lte IE 7]>
+        <link rel="stylesheet" type="text/css" media="all" href="https://lqez.github.io/blog/css/ie.css"/>
+        <script src="https://lqez.github.io/blog/js/IE8.js" type="text/javascript"></script><![endif]-->
+
+    <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" media="all" href="https://lqez.github.io/blog/css/ie6.css"/><![endif]-->
+</head>
+<body id="index" class="home">
+    <header id="banner" class="body">
+        <h1><a href="https://lqez.github.io/blog/">Feature creep designer </a></h1>
+        <h2 id="greeting">Happy day.</h2>
+    </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://lqez.github.io/blog/implementation-of-a-clipping-indicator.html" rel="bookmark"
+           title="Permalink to Implementation of a Clipping Indicator">Implementation of a Clipping Indicator</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2020-03-03T00:00:00+09:00">
+                Tue 03 March 2020
+        </abbr>
+
+</footer><!-- /.post-info -->      <p><img alt="Plus mark is used for clipping indicator in Apple Keynote" src="./images/2020-03/keynote-clipping.png" title="애플 키노트의 선택 핸들과 함께 표시된 클리핑 표시자"></p>
+<h4 id="clipping-indicator">Clipping Indicator</h4>
+<p><a href="https://www.apple.com/keynote/">애플 키노트</a> 앱은 개체의 크기보다 많은 문자열이 포함되면, 개체의 아래쪽에 <code>[+]</code> 기호를 표시해 전체 문자열이 화면에 표시되지 않고 있음을 나타내는 기능이 있다. 이를 <a href="https://support.apple.com/guide/keynote/tan04fe38ce7/mac">클리핑 표시자(Clipping indicator)</a>라 부르는데, 만들고 있던 웹앱에서도 비슷한 기능을 넣어달라는 요청을 받아 구현해보았습니다.</p>
+<p><img alt="Clipped text in Veryslide" src="./images/2020-03/veryslide-clipping-1.png" title="완전히 표시되지 않은 문자열 개체"></p>
+<p>위 화면에서와 같이 문자열이 다 표시되지 않았다는 것을 사용자가 시각적으로 인지할 수 있는 경우에는 바로 조정할 수 있지만, 행간에서 잘린 경우에는 알아차리기가 어렵습니다.</p>
+<p><img alt="Actual size of the clipped text in Veryslide" src="./images/2020-03/veryslide-clipping-2.png" title="실제 문자열 개체의 크기"></p>
+<p>위와 같이 실제 문자열은 더 많은 공간을 필요로 하는데, 이런 경우 클리핑 표시자가 있다면 사용자는 문제를 빨리 인지하고 효과적으로 조정할 수 있게 됩니다. 애플 키노트에 구현된 클리핑 표시자는 다음과 같이 동작합니다.</p>
+<ol>
+<li>개체의 크기보다 더 많은 내용을 담고 있는 경우, 개체의 하단에 <code>+</code> 기호로 클리핑 되었음을 표시합니다. 개체를 선택하지 않은 경우에도 항상 표시됩니다.</li>
+<li>클리핑 표시자를 이용해 개체의 크기를 조정할 때 사용하는 <code>선택 핸들</code>과 같은 방법으로 개체의 세로 크기를 조정할 수 있습니다.</li>
+<li>클리핑 표시자를 더블클릭하면 내용이 완전히 표시될 수 있는 정도로 개체의 크기를 자동 조절합니다.</li>
+</ol>
+<p>이제 어떻게 구현했는지 알아봅시다.</p>
+<hr>
+<h4 id="offsetheight-clientheight-scrollheight">offsetHeight &amp; clientHeight &amp; scrollHeight</h4>
+<p>HTML 개체가 가지는 크기 속성 중, 높이 정보를 가진 속성은 다음의 세 가지가 있습니다.</p>
+<p><img alt="Height variables of a div object" src="./images/2020-03/div-heights.png" title="높이에 대한 각 변수의 값"></p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/clientHeight"><code>clientHeight</code></a>: padding을 포함한 표시된 콘텐츠의 높이 값.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetHeight"><code>offsetHeight</code></a>: clientHeight에 border, 가로 스크롤바가 있는 경우 그 높이를 포함한 값.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight"><code>scrollHeight</code></a>: padding을 포함한 콘텐츠의 실제 높이 값. 충분한 공간이 있는 경우에는 clientHeight와 같습니다.</li>
+</ol>
+<p>CodePen에서 직접 확인해보기: <a href="https://codepen.io/lqez/pen/qBdVqKB">https://codepen.io/lqez/pen/qBdVqKB</a>
+<p class="codepen" data-height="405" data-theme-id="light" data-default-tab="result" data-user="lqez" data-slug-hash="qBdVqKB" style="height: 405px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Multiple height values">
+  <span>See the Pen <a href="https://codepen.io/lqez/pen/qBdVqKB">
+  Multiple height values</a> by Hyunwoo Park (<a href="https://codepen.io/lqez">@lqez</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script></p>
+<h4 id="check-overflow-on-resizing">Check overflow on resizing</h4>
+<p>Veryslide는 편리한 코딩을 위해 개체의 상태(state)가 변경될 때, 자동으로 <code>on_&lt;state name&gt;</code> 이름을 가진 함수가 호출되는 기능이 있습니다. 이를 이용해 개체의 <code>height</code> 값이 변경될 때, 자동으로 호출된 <code>on_height</code>에서 높이 정보를 읽어 문자열이 표시될 공간보다 문자열이 길다면 클리핑 표시자를 표시하는 방식으로 구현해보았습니다.</p>
+<p>하지만 이 구현에는 문제가 있었습니다. 문자열이 잘리지 않고 완전히 표시되는 것을 따져보기 위해서는 문자열을 담고 있는 개체의 크기 뿐만 아니라, 문자열의 크기, 굵기, 서체, 행간 등 여러 요소가 관여하는데, 이에 대응하는 상태의 값이 변경될 때를 고려하지 않았기 때문입니다.</p>
+<h4 id="resizeobserver">ResizeObserver</h4>
+<p>이 문제를 해결하기 위해서는 개체의 모든 상태가 변경될 때마다 크기를 검사해 클리핑 여부를 따져봐야 합니다. 하지만 특정 요소가 달라져도 매번 크기가 달라지는 것은 아니기 때문에 비효율적이라 생각해, <a href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver"><code>ResizeObserver</code></a>를 도입하였습니다.</p>
+<p>ResizeObserver는 지정한 개체의 크기가 달라지는 경우에 지정한 함수를 실행하는 관찰자입니다. 비교적 최신의 크롬, 파이어폭스, 엣지에서는 기본으로 지원하지만, 2020년 3월 기준으로 <a href="https://caniuse.com/#feat=resizeobserver">Can I use…</a> 사이트에 따르면 71.08% 정도의 사용자만이 이 기능을 문제 없이 사용할 수 있는 상태입니다.</p>
+<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">resizeObserver</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ResizeObserver</span><span class="p">(</span><span class="nx">entries</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// 달라진 개체의 정보를 담고 있는 ResizeObserverEntry 목록이 entries로 넘어옵니다.</span>
+<span class="p">});</span>
+
+<span class="nx">resizeObserver</span><span class="p">.</span><span class="nx">observer</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>         <span class="c1">// element의 변화를 관찰합니다.</span>
+<span class="nx">resizeObserver</span><span class="p">.</span><span class="nx">observer</span><span class="p">(</span><span class="nx">another_element</span><span class="p">);</span> <span class="c1">// 하나의 관찰자가 여러 개체를 관찰합니다.</span>
+
+<span class="nx">resizeObserver</span><span class="p">.</span><span class="nx">unobserve</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>        <span class="c1">// 더 이상 element를 관찰하지 않습니다.</span>
+</pre></div>
+
+
+<p>관찰자 생성시에 콜백 함수를 지정하는데, 해당 함수는 관찰하던 개체들 중 크기가 변경되면 <a href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverEntry">ResizeObserverEntry</a>의 목록을 인자로 받습니다. 이를 이용해 달라진 개체가 어떤 개체이고, 어떤 크기로 달라졌는지 확인할 수 있습니다.</p>
+<p>Veryslide는 문자열을 담고 있는 <code>textNode</code>와, <code>textNode</code>를 포함하고 있는 <code>clipNode</code>를 ResizeObserver를 통해 관찰하고, 변화가 있는 경우에 클리핑 여부를 확인해 동작하도록 했습니다. (<a href="https://github.com/zerobased-co/veryslide/blob/8fcd9d0e78873d9976a527164a31f353ef6932a5/src/components/objects/TextBox.js#L55-L58">TextBox.js</a>)</p>
+<h6>TextBox.js</h6>
+<div class="highlight"><pre><span></span><span class="c1">// Set observers for overflow check</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">observer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ResizeObserver</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">check_overflow</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">observer</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">textNode</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">observer</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">clipNode</span><span class="p">);</span>
+</pre></div>
+
+
+<h5 id="polyfill">Polyfill</h5>
+<p><a href="https://www.npmjs.com/package/resize-observer-polyfill">resize-observer-polyfill</a>을 이용하면, Internet Explorer 9을 포함한 대부분의 미지원 브라우저에서도 같은 방법으로 ResizeObserver를 사용할 수 있습니다. 이 폴리필은 기본적으로 <code>window.resize</code> 이벤트를 구독하여 지정된 개체의 크기 변경에 반응하도록 되어 있으며, 추가로 <code>transitionend</code> 이벤트를 구독하여 CSS 트랜지션 등으로 인한 크기 변경에 반응합니다. 뿐만 아니라, <code>MutationObserver</code> 또는 <code>DOMSubtreeModified</code> 이벤트를 이용해 개체 내부에 변경이 있는 경우도 대응합니다.</p>
+<ul>
+<li><a href="https://github.com/que-etc/resize-observer-polyfill/blob/a3ae98bcd34e972b92d9e40e8b974a75399503e8/src/ResizeObserverController.js#L157-L174">resize-observer-polyfill의 이벤트 구독 부분, ResizeObserverController.js</a></li>
+</ul>
+<h4 id="demo">Demo</h4>
+<div class="videowrapper"><iframe class="video" src="https://www.youtube.com/embed/EhuKpLruu7Y?autoplay=0" frameborder="0"></iframe></div><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<footer class="post-info-footer">
+        <p>
+        In <a href="https://lqez.github.io/blog/category/2020-03.html">2020-03</a>. 
+        </p>
+<p>tags: <a href="https://lqez.github.io/blog/tag/javascript.html" class="tag">JavaScript</a></p></footer><!-- /.post-info -->    </div><!-- /.entry-content -->
+    <div class="fb-comments" data-href="https://lqez.github.io/blog/implementation-of-a-clipping-indicator.html" data-width="100%"  data-num-posts="10"></div>
+    <!-- add anchor to headings -->
+    <script>
+    const headers = document.querySelectorAll('h2[id], h3[id]');
+    for(var i = 0; i < headers.length; i++) {
+      const node = headers[i];
+      const anchor = document.createElement("a");
+      anchor.className = "pilcrow";
+      anchor.text = "\xb6";
+      anchor.href = "#" + node.id;
+      node.appendChild(anchor);
+    };
+    </script>
+    <!-- img title to figcaption -->
+    <script>
+    window.addEventListener('load', function () {
+      const imgNodes = document.querySelectorAll('img[title]');
+      for(var i = 0; i < imgNodes.length; i++) {
+        const node = imgNodes[i];
+        const para = node.parentElement;
+        const figure = document.createElement('figure');
+        const figcaption = document.createElement('figcaption');
+        figcaption.innerHTML = node.getAttribute('title');
+        figure.append(para.removeChild(node));
+        figure.append(figcaption);
+
+        para.append(figure);
+      };
+    });
+    </script>
+  </article>
+</section>
+    <section id="extras" class="body">
+    </section><!-- /#extras -->
+
+    <footer id="contentinfo" class="body">
+    <!--
+        <nav><ul>
+            <li ><a href="https://lqez.github.io/blog/category/2013-02.html">2013-02</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2013-04.html">2013-04</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2013-05.html">2013-05</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2013-08.html">2013-08</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2013-10.html">2013-10</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2014-07.html">2014-07</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2016-08.html">2016-08</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2016-09.html">2016-09</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2017-05.html">2017-05</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2017-08.html">2017-08</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2017-10.html">2017-10</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2017-11.html">2017-11</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2017-12.html">2017-12</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2018-01.html">2018-01</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2018-04.html">2018-04</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2018-05.html">2018-05</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2018-08.html">2018-08</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2018-09.html">2018-09</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2018-10.html">2018-10</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2018-12.html">2018-12</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2019-03.html">2019-03</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2019-04.html">2019-04</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2019-05.html">2019-05</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2019-09.html">2019-09</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2019-10.html">2019-10</a></li>
+            <li class="active"><a href="https://lqez.github.io/blog/category/2020-03.html">2020-03</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/uncategorized.html">Uncategorized</a></li>
+        </ul></nav>
+        -->
+        <address id="about" class="vcard body">
+        Published by <a href="http://getpelican.com/">Pelican</a> / <a href="http://python.org">Python</a>.
+        <p id="theme"><a href="https://github.com/lqez/42signals-pelican-theme">42 signals theme by lqez</a></p>
+        </address><!-- /#about -->
+    </footer><!-- /#contentinfo -->
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1&appId=465940413466203";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37711911-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+</body>
+<script language="javascript">
+var weekday = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+var dayOfWeek = weekday[new Date().getDay()];
+document.getElementById('greeting').innerHTML = "Happy " + dayOfWeek + ".";
+</script>
+</html>

@@ -1,5 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/all-ko.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2019-10-29T00:00:00+09:00</updated><entry><title>One day dev</title><link href="https://lqez.github.io/blog/one-day-dev.html" rel="alternate"></link><published>2019-10-29T00:00:00+09:00</published><updated>2019-10-29T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2019-10-29:/blog/one-day-dev.html</id><summary type="html">&lt;h3 id="just-one-day"&gt;Just one day&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/all-ko.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2020-03-03T00:00:00+09:00</updated><entry><title>Implementation of a Clipping Indicator</title><link href="https://lqez.github.io/blog/implementation-of-a-clipping-indicator.html" rel="alternate"></link><published>2020-03-03T00:00:00+09:00</published><updated>2020-03-03T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2020-03-03:/blog/implementation-of-a-clipping-indicator.html</id><summary type="html">&lt;p&gt;&lt;img alt="Plus mark is used for clipping indicator in Apple Keynote" src="./images/2020-03/keynote-clipping.png" title="애플 키노트의 선택 핸들과 함께 표시된 클리핑 표시자"&gt;&lt;/p&gt;
+&lt;h4 id="clipping-indicator"&gt;Clipping Indicator&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://www.apple.com/keynote/"&gt;애플 키노트&lt;/a&gt; 앱은 개체의 크기보다 많은 문자열이 포함되면, 개체의 아래쪽에 &lt;code&gt;[+]&lt;/code&gt; 기호를 표시해 전체 문자열이 화면에 표시되지 않고 있음을 나타내는 기능이 있다. 이를 &lt;a href="https://support.apple.com/guide/keynote/tan04fe38ce7/mac"&gt;클리핑 표시자(Clipping indicator)&lt;/a&gt;라 부르는데, 만들고 있던 웹앱에서도 비슷한 기능을 넣어달라는 요청을 받아 구현해보았습니다.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Clipped text in Veryslide" src="./images/2020-03/veryslide-clipping-1.png" title="완전히 표시되지 않은 문자열 개체"&gt;&lt;/p&gt;
+&lt;p&gt;위 화면에서와 같이 문자열이 다 표시되지 않았다는 것을 사용자가 시각적으로 인지할 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Plus mark is used for clipping indicator in Apple Keynote" src="./images/2020-03/keynote-clipping.png" title="애플 키노트의 선택 핸들과 함께 표시된 클리핑 표시자"&gt;&lt;/p&gt;
+&lt;h4 id="clipping-indicator"&gt;Clipping Indicator&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://www.apple.com/keynote/"&gt;애플 키노트&lt;/a&gt; 앱은 개체의 크기보다 많은 문자열이 포함되면, 개체의 아래쪽에 &lt;code&gt;[+]&lt;/code&gt; 기호를 표시해 전체 문자열이 화면에 표시되지 않고 있음을 나타내는 기능이 있다. 이를 &lt;a href="https://support.apple.com/guide/keynote/tan04fe38ce7/mac"&gt;클리핑 표시자(Clipping indicator)&lt;/a&gt;라 부르는데, 만들고 있던 웹앱에서도 비슷한 기능을 넣어달라는 요청을 받아 구현해보았습니다.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Clipped text in Veryslide" src="./images/2020-03/veryslide-clipping-1.png" title="완전히 표시되지 않은 문자열 개체"&gt;&lt;/p&gt;
+&lt;p&gt;위 화면에서와 같이 문자열이 다 표시되지 않았다는 것을 사용자가 시각적으로 인지할 수 있는 경우에는 바로 조정할 수 있지만, 행간에서 잘린 경우에는 알아차리기가 어렵습니다.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Actual size of the clipped text in Veryslide" src="./images/2020-03/veryslide-clipping-2.png" title="실제 문자열 개체의 크기"&gt;&lt;/p&gt;
+&lt;p&gt;위와 같이 실제 문자열은 더 많은 공간을 필요로 하는데, 이런 경우 클리핑 표시자가 있다면 사용자는 문제를 빨리 인지하고 효과적으로 조정할 수 있게 됩니다. 애플 키노트에 구현된 클리핑 표시자는 다음과 같이 동작합니다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;개체의 크기보다 더 많은 내용을 담고 있는 경우, 개체의 하단에 &lt;code&gt;+&lt;/code&gt; 기호로 클리핑 되었음을 표시합니다. 개체를 선택하지 않은 경우에도 항상 표시됩니다.&lt;/li&gt;
+&lt;li&gt;클리핑 표시자를 이용해 개체의 크기를 조정할 때 사용하는 &lt;code&gt;선택 핸들&lt;/code&gt;과 같은 방법으로 개체의 세로 크기를 조정할 수 있습니다.&lt;/li&gt;
+&lt;li&gt;클리핑 표시자를 더블클릭하면 내용이 완전히 표시될 수 있는 정도로 개체의 크기를 자동 조절합니다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;이제 어떻게 구현했는지 알아봅시다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id="offsetheight-clientheight-scrollheight"&gt;offsetHeight &amp;amp; clientHeight &amp;amp; scrollHeight&lt;/h4&gt;
+&lt;p&gt;HTML 개체가 가지는 크기 속성 중, 높이 정보를 가진 속성은 다음의 세 가지가 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Height variables of a div object" src="./images/2020-03/div-heights.png" title="높이에 대한 각 변수의 값"&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/clientHeight"&gt;&lt;code&gt;clientHeight&lt;/code&gt;&lt;/a&gt;: padding을 포함한 표시된 콘텐츠의 높이 값.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetHeight"&gt;&lt;code&gt;offsetHeight&lt;/code&gt;&lt;/a&gt;: clientHeight에 border, 가로 스크롤바가 있는 경우 그 높이를 포함한 값.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight"&gt;&lt;code&gt;scrollHeight&lt;/code&gt;&lt;/a&gt;: padding을 포함한 콘텐츠의 실제 높이 값. 충분한 공간이 있는 경우에는 clientHeight와 같습니다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;CodePen에서 직접 확인해보기: &lt;a href="https://codepen.io/lqez/pen/qBdVqKB"&gt;https://codepen.io/lqez/pen/qBdVqKB&lt;/a&gt;
+&lt;p class="codepen" data-height="405" data-theme-id="light" data-default-tab="result" data-user="lqez" data-slug-hash="qBdVqKB" style="height: 405px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Multiple height values"&gt;
+  &lt;span&gt;See the Pen &lt;a href="https://codepen.io/lqez/pen/qBdVqKB"&gt;
+  Multiple height values&lt;/a&gt; by Hyunwoo Park (&lt;a href="https://codepen.io/lqez"&gt;@lqez&lt;/a&gt;)
+  on &lt;a href="https://codepen.io"&gt;CodePen&lt;/a&gt;.&lt;/span&gt;
+&lt;/p&gt;
+&lt;script async src="https://static.codepen.io/assets/embed/ei.js"&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;h4 id="check-overflow-on-resizing"&gt;Check overflow on resizing&lt;/h4&gt;
+&lt;p&gt;Veryslide는 편리한 코딩을 위해 개체의 상태(state)가 변경될 때, 자동으로 &lt;code&gt;on_&amp;lt;state name&amp;gt;&lt;/code&gt; 이름을 가진 함수가 호출되는 기능이 있습니다. 이를 이용해 개체의 &lt;code&gt;height&lt;/code&gt; 값이 변경될 때, 자동으로 호출된 &lt;code&gt;on_height&lt;/code&gt;에서 높이 정보를 읽어 문자열이 표시될 공간보다 문자열이 길다면 클리핑 표시자를 표시하는 방식으로 구현해보았습니다.&lt;/p&gt;
+&lt;p&gt;하지만 이 구현에는 문제가 있었습니다. 문자열이 잘리지 않고 완전히 표시되는 것을 따져보기 위해서는 문자열을 담고 있는 개체의 크기 뿐만 아니라, 문자열의 크기, 굵기, 서체, 행간 등 여러 요소가 관여하는데, 이에 대응하는 상태의 값이 변경될 때를 고려하지 않았기 때문입니다.&lt;/p&gt;
+&lt;h4 id="resizeobserver"&gt;ResizeObserver&lt;/h4&gt;
+&lt;p&gt;이 문제를 해결하기 위해서는 개체의 모든 상태가 변경될 때마다 크기를 검사해 클리핑 여부를 따져봐야 합니다. 하지만 특정 요소가 달라져도 매번 크기가 달라지는 것은 아니기 때문에 비효율적이라 생각해, &lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver"&gt;&lt;code&gt;ResizeObserver&lt;/code&gt;&lt;/a&gt;를 도입하였습니다.&lt;/p&gt;
+&lt;p&gt;ResizeObserver는 지정한 개체의 크기가 달라지는 경우에 지정한 함수를 실행하는 관찰자입니다. 비교적 최신의 크롬, 파이어폭스, 엣지에서는 기본으로 지원하지만, 2020년 3월 기준으로 &lt;a href="https://caniuse.com/#feat=resizeobserver"&gt;Can I use…&lt;/a&gt; 사이트에 따르면 71.08% 정도의 사용자만이 이 기능을 문제 없이 사용할 수 있는 상태입니다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;resizeObserver&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;ResizeObserver&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;entries&lt;/span&gt; &lt;span class="p"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="c1"&gt;// 달라진 개체의 정보를 담고 있는 ResizeObserverEntry 목록이 entries로 넘어옵니다.&lt;/span&gt;
+&lt;span class="p"&gt;});&lt;/span&gt;
+
+&lt;span class="nx"&gt;resizeObserver&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;observer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;element&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;         &lt;span class="c1"&gt;// element의 변화를 관찰합니다.&lt;/span&gt;
+&lt;span class="nx"&gt;resizeObserver&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;observer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;another_element&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;// 하나의 관찰자가 여러 개체를 관찰합니다.&lt;/span&gt;
+
+&lt;span class="nx"&gt;resizeObserver&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;unobserve&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;element&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;        &lt;span class="c1"&gt;// 더 이상 element를 관찰하지 않습니다.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;관찰자 생성시에 콜백 함수를 지정하는데, 해당 함수는 관찰하던 개체들 중 크기가 변경되면 &lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverEntry"&gt;ResizeObserverEntry&lt;/a&gt;의 목록을 인자로 받습니다. 이를 이용해 달라진 개체가 어떤 개체이고, 어떤 크기로 달라졌는지 확인할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;Veryslide는 문자열을 담고 있는 &lt;code&gt;textNode&lt;/code&gt;와, &lt;code&gt;textNode&lt;/code&gt;를 포함하고 있는 &lt;code&gt;clipNode&lt;/code&gt;를 ResizeObserver를 통해 관찰하고, 변화가 있는 경우에 클리핑 여부를 확인해 동작하도록 했습니다. (&lt;a href="https://github.com/zerobased-co/veryslide/blob/8fcd9d0e78873d9976a527164a31f353ef6932a5/src/components/objects/TextBox.js#L55-L58"&gt;TextBox.js&lt;/a&gt;)&lt;/p&gt;
+&lt;h6&gt;TextBox.js&lt;/h6&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// Set observers for overflow check&lt;/span&gt;
+&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;observer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;ResizeObserver&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;check_overflow&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;bind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;observer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;observe&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;textNode&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;observer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;observe&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;clipNode&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h5 id="polyfill"&gt;Polyfill&lt;/h5&gt;
+&lt;p&gt;&lt;a href="https://www.npmjs.com/package/resize-observer-polyfill"&gt;resize-observer-polyfill&lt;/a&gt;을 이용하면, Internet Explorer 9을 포함한 대부분의 미지원 브라우저에서도 같은 방법으로 ResizeObserver를 사용할 수 있습니다. 이 폴리필은 기본적으로 &lt;code&gt;window.resize&lt;/code&gt; 이벤트를 구독하여 지정된 개체의 크기 변경에 반응하도록 되어 있으며, 추가로 &lt;code&gt;transitionend&lt;/code&gt; 이벤트를 구독하여 CSS 트랜지션 등으로 인한 크기 변경에 반응합니다. 뿐만 아니라, &lt;code&gt;MutationObserver&lt;/code&gt; 또는 &lt;code&gt;DOMSubtreeModified&lt;/code&gt; 이벤트를 이용해 개체 내부에 변경이 있는 경우도 대응합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/que-etc/resize-observer-polyfill/blob/a3ae98bcd34e972b92d9e40e8b974a75399503e8/src/ResizeObserverController.js#L157-L174"&gt;resize-observer-polyfill의 이벤트 구독 부분, ResizeObserverController.js&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="demo"&gt;Demo&lt;/h4&gt;
+&lt;div class="videowrapper"&gt;&lt;iframe class="video" src="https://www.youtube.com/embed/EhuKpLruu7Y?autoplay=0" frameborder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="JavaScript"></category></entry><entry><title>One day dev</title><link href="https://lqez.github.io/blog/one-day-dev.html" rel="alternate"></link><published>2019-10-29T00:00:00+09:00</published><updated>2019-10-29T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2019-10-29:/blog/one-day-dev.html</id><summary type="html">&lt;h3 id="just-one-day"&gt;Just one day&lt;/h3&gt;
 &lt;p&gt;딱 하루, 낯선 회사에서 일할 기회를 찾고 있습니다.
 다른 사람과 조직은 어떻게 일하는지 궁금하고, 새로운 환경을 경험해보며 관찰하여 기록하고 싶습니다.&lt;/p&gt;
 &lt;p&gt;이 과정에서 새로운 사람, 특히 소프트웨어 엔지니어들을 만나 의견을 나누며 제가 도움이 될 수 있는 부분에 도움을 드리고,
@@ -1741,7 +1807,11 @@ All files  |      100 |      100 |      100 |      100 |                   |
 &lt;li&gt;&lt;a href="#_1"&gt;개발자 도구 활성화&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#_2"&gt;요소 선택&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#_3"&gt;장치 변경&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#elements"&gt;요소 (Elements)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#elements"&gt;요소 (Elements)&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#styles"&gt;스타일 (Styles)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#computed"&gt;스타일 계산 결과 (Computed)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;&lt;a href="#console"&gt;콘솔 (Console)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#sources"&gt;소스 (Sources)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#network"&gt;네트워크 (Network)&lt;/a&gt;&lt;/li&gt;
@@ -1755,7 +1825,7 @@ All files  |      100 |      100 |      100 |      100 |                   |
 &lt;li&gt;&lt;a href="#settings"&gt;설정 (Settings)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-&lt;h4 id="_1"&gt;개발자 도구 활성화&lt;/h4&gt;
+&lt;h3 id="_1"&gt;개발자 도구 활성화&lt;/h3&gt;
 &lt;p&gt;&lt;img alt="Chrome menu" src="./images/2018-12/chrome-dev-tool-101-menu.png"&gt;
 개발자 도구는 크롬 메뉴바에서 개발자 도구를 선택해서 활성화 할 수 있다.&lt;/p&gt;
 &lt;ul&gt;
@@ -1764,19 +1834,19 @@ All files  |      100 |      100 |      100 |      100 |                   |
 &lt;p&gt;&lt;img alt="Developer tool" src="./images/2018-12/chrome-dev-tool-101-toolbar.png"&gt;
 개발자 도구의 메뉴는 왼쪽부터 차례대로 아래의 기능을 가진다.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h5 id="_2"&gt;요소 선택&lt;/h5&gt;
+&lt;h4 id="_2"&gt;요소 선택&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="Select element" src="./images/2018-12/chrome-dev-tool-101-select.png"&gt;
 화면에서 직접 요소를 선택할 수 있다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;단축키: &lt;code&gt;⌘ + Shift + C&lt;/code&gt; 또는 &lt;code&gt;Ctrl + Shift + C&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5 id="_3"&gt;장치 변경&lt;/h5&gt;
+&lt;h4 id="_3"&gt;장치 변경&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="Device toggle" src="./images/2018-12/chrome-dev-tool-101-device.png"&gt;
 현재 크롬이 동작하는 장치가 아닌 다른 휴대 장치와 같은 화면 크기나 설정을 가지도록 변경하여 여러 환경을 테스트할 수 있도록 한다. 특히 안드로이드와 아이폰 등의 여러 모바일 장치의 값이 미리 등록되어 있어, 모바일 장치를 가정하고 테스트할 때 유용하다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;단축키: &lt;code&gt;⌘ + Shift + M&lt;/code&gt; 또는 &lt;code&gt;Ctrl + Shift + M&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5 id="elements"&gt;요소 (Elements)&lt;/h5&gt;
+&lt;h4 id="elements"&gt;요소 (Elements)&lt;/h4&gt;
 &lt;p&gt;&lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model"&gt;DOM&lt;/a&gt;(문서 객체 모델, The Document Object Model, 이하 DOM)을 탐색하고 CSS를 확인하며 변경할 수 있다. 주로 화면에 보이는 내용을 확인하고 편집할 때 사용한다. 화면 왼쪽의 DOM을 통해 요소를 탐색할 수 있고, 오른쪽에서는 현재 적용된 CSS 목록과 계산된(computed) 스타일, 이벤트, DOM에 설정된 중단점(breakpoint) 등을 확인할 수 있다.&lt;/p&gt;
 &lt;p&gt;선택된 요소에서 우클릭을 하면 컨텍스트 메뉴가 표시되는데, 다음의 기능은 꽤 편리하다.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Context menu" src="./images/2018-12/chrome-dev-tool-101-context-menu.png"&gt;&lt;/p&gt;
@@ -1795,7 +1865,7 @@ All files  |      100 |      100 |      100 |      100 |                   |
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;오른쪽 윈도우에서도 다음의 기능을 알아두면 좋다.&lt;/p&gt;
-&lt;h6&gt;스타일 (Styles)&lt;/h6&gt;
+&lt;h5 id="styles"&gt;스타일 (Styles)&lt;/h5&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;필터&lt;/strong&gt; (Filter)
     &lt;img alt="Filter style" src="./images/2018-12/chrome-dev-tool-101-style-filter.png"&gt;&lt;ul&gt;
@@ -1813,10 +1883,10 @@ All files  |      100 |      100 |      100 |      100 |                   |
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h6&gt;스타일 계산 결과 (Computed)&lt;/h6&gt;
+&lt;h5 id="computed"&gt;스타일 계산 결과 (Computed)&lt;/h5&gt;
 &lt;p&gt;&lt;img alt="Computed style" src="./images/2018-12/chrome-dev-tool-101-computed.png"&gt;
 선택된 요소에 적용된 최종 스타일을 확인할 수 있다. 스타일 필터와 마찬가지로 필터를 통해 원하는 스타일만 추려서 볼 수 있다. 특정 스타일을 확장하면 어떤 선택자들을 통해 최종적으로 연산된 값인지 확인할 수 있다.&lt;/p&gt;
-&lt;h5 id="console"&gt;콘솔 (Console)&lt;/h5&gt;
+&lt;h4 id="console"&gt;콘솔 (Console)&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="Console" src="./images/2018-12/chrome-dev-tool-101-console.png"&gt;
 콘솔을 통해 페이지에 불려진 DOM과 자바스크립트와 상호 작용하며 디버깅할 수 있다. 기본 콘솔에서는 &lt;code&gt;verbose&lt;/code&gt; 수준의 메세지는 표시되지 않아 출력 수준을 변경해야 볼 수 있는데, &lt;code&gt;verbose&lt;/code&gt; 메세지는 개발 도구에서 유용한 내용을 알려주는 경우도 있으니 보는 것이 좋다. 좌상단의 아이콘을 선택해 사이드바를 꺼내면 콘솔 로그를 출력한 주체별로 또는 메세지 레벨별로 나눠서 볼 수 있다. 유닉스의 오래된 단축키 중 하나인 &lt;code&gt;Ctrl + L&lt;/code&gt;을 이제까지의 콘솔 출력을 지우는 단축키로 사용할 수 있다.&lt;/p&gt;
 &lt;ul&gt;
@@ -1847,7 +1917,7 @@ All files  |      100 |      100 |      100 |      100 |                   |
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5 id="sources"&gt;소스 (Sources)&lt;/h5&gt;
+&lt;h4 id="sources"&gt;소스 (Sources)&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="Source" src="./images/2018-12/chrome-dev-tool-101-source.png"&gt;
 소스 메뉴에서는 해당 페이지에 로드된 파일들의 목록을 보며 중단점을 설정하며 본격적인 자바스크립트 디버깅이 가능하다.&lt;/p&gt;
 &lt;ul&gt;
@@ -1887,7 +1957,7 @@ All files  |      100 |      100 |      100 |      100 |                   |
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5 id="network"&gt;네트워크 (Network)&lt;/h5&gt;
+&lt;h4 id="network"&gt;네트워크 (Network)&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="Network" src="./images/2018-12/chrome-dev-tool-101-network.png"&gt;
 페이지를 표시하는데 필요한 네트워크 작업에 대한 결과를 시간순으로 표시한다. 페이지 로드가 느리다면 이 탭을 통해 그 원인을 파악할 수 있다.&lt;/p&gt;
 &lt;ul&gt;
@@ -1907,12 +1977,12 @@ All files  |      100 |      100 |      100 |      100 |                   |
 &lt;/ul&gt;
 &lt;p&gt;특정 항목을 선택하여 해당 항목이 어떻게 요청되었는지, 어떤 응답을 받았는지를 상세히 확인할 수 있다. 서버에 어떤 헤더를 지정하여 요청했는지, 응답으로는 어떤 헤더를 받았는지 확인하며 네트워크 최적화를 진행하는데 유용하다.
 &lt;img alt="Request and response header" src="./images/2018-12/chrome-dev-tool-101-network-header.png"&gt;&lt;/p&gt;
-&lt;h5 id="performance"&gt;성능 (Performance)&lt;/h5&gt;
+&lt;h4 id="performance"&gt;성능 (Performance)&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="Performance" src="./images/2018-12/chrome-dev-tool-101-performance.png"&gt;
 네트워크 탭을 통해 원격지와 어떻게 데이터를 요청하고 받았는지 확인하며 최적화를 했다면, 성능 탭에서는 자바스크립트 실행과 화면 그리기를 추적하여 어떤 부분이 웹 애플리케이션을 지연시키고 있는지 확인할 수 있다. 녹화(Record) 버튼을 누른 뒤 페이지를 로드하거나 자바스크립트 작업을 수행한 후, 정지하면 그 사이에 발생한 자바스크립트의 함수별 호출수와 사용된 시간 등을 확인할 수 있다.&lt;/p&gt;
 &lt;p&gt;타임 라인에서 구간을 선택하고 어떤 함수 호출이 가장 많은 시간을 사용했는지, 또 어떤 흐름으로 작업을 수행했는지 등을 파악할 수 있다.
 &lt;img alt="Heavist job" src="./images/2018-12/chrome-dev-tool-101-performance-heavist.png"&gt;&lt;/p&gt;
-&lt;h5 id="application"&gt;애플리케이션 (Application)&lt;/h5&gt;
+&lt;h4 id="application"&gt;애플리케이션 (Application)&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="Application" src="./images/2018-12/chrome-dev-tool-101-application.png"&gt;
 애플리케이션 탭에서는 웹 페이지가 웹 애플리케이션으로 기능하기 위해 필요한 내용들을 보여준다. 예전 웹 페이지에서는 오직 쿠키로만 정보를 저장하던 것과 달리, &lt;a href="https://developers.google.com/web/fundamentals/instant-and-offline/web-storage/"&gt;다양한 웹 저장소&lt;/a&gt;가 추가되어 더 안전하고 빠른 형태로 정보를 읽고 쓸 수 있게 되었다.&lt;/p&gt;
 &lt;ul&gt;
@@ -1954,14 +2024,14 @@ All files  |      100 |      100 |      100 |      100 |                   |
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5 id="security"&gt;보안 (Security)&lt;/h5&gt;
+&lt;h4 id="security"&gt;보안 (Security)&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="Security" src="./images/2018-12/chrome-dev-tool-101-security.png"&gt;
 페이지의 인증서와 페이지에서 참조하는 도메인의 인증서 등을 검사하고 그 결과를 보여준다. 모든 사이트에 HTTPS 연결이 강조되므로 이 탭을 통해 페이지에서 참조하는 리소스에 대해서도 확인하는 것이 필요하다.&lt;/p&gt;
-&lt;h5 id="audits"&gt;감사 (Audits)&lt;/h5&gt;
+&lt;h4 id="audits"&gt;감사 (Audits)&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="Audits" src="./images/2018-12/chrome-dev-tool-101-audits.png"&gt;
 &lt;a href="https://developers.google.com/web/tools/lighthouse/"&gt;Lighthouse&lt;/a&gt;를 통한 페이지 검사 결과를 표시하고 저장할 수 있다. 기본적인 페이지의 성능과 &lt;a href="https://developers.google.com/web/progressive-web-apps/"&gt;PWA&lt;/a&gt;, &lt;a href="https://en.wikipedia.org/wiki/Search_engine_optimization"&gt;SEO&lt;/a&gt;, &lt;a href="https://www.w3.org/standards/webdesign/accessibility"&gt;접근성&lt;/a&gt;과 관련된 점수를 제공하므로, &lt;a href="https://developers.google.com/speed/"&gt;Page speed&lt;/a&gt;와 함께 사용하여 품질 높은 페이지를 만드는데 참조하면 좋다.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h4 id="more-tools"&gt;추가 기능 (More tools)&lt;/h4&gt;
+&lt;h3 id="more-tools"&gt;추가 기능 (More tools)&lt;/h3&gt;
 &lt;p&gt;&lt;img alt="More tools" src="./images/2018-12/chrome-dev-tool-101-moretools.png"&gt;
 개발자 도구의 기본 탭의 오른쪽 끝 메뉴(&lt;code&gt;⋮&lt;/code&gt;)를 클릭하면 추가 개발자 도구를 확인할 수 있다.&lt;/p&gt;
 &lt;ul&gt;
@@ -2004,7 +2074,7 @@ All files  |      100 |      100 |      100 |      100 |                   |
 &lt;li&gt;&lt;a href="https://developers.google.com/web/tools/chrome-devtools/device-mode/device-input-and-sensors"&gt;Sensors&lt;/a&gt;: 모바일 장치의 위치 정보와 가속도 센서를 에뮬레이션.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h4 id="settings"&gt;설정 (Settings)&lt;/h4&gt;
+&lt;h3 id="settings"&gt;설정 (Settings)&lt;/h3&gt;
 &lt;p&gt;&lt;img alt="Settings" src="./images/2018-12/chrome-dev-tool-101-settings.png"&gt;
 개발자 도구 자체에 대한 다양한 설정이 제공되며, 주요 기능은 다음과 같다.&lt;/p&gt;
 &lt;ul&gt;
@@ -2672,18 +2742,18 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 &lt;/ul&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>I don't like them.</title><link href="https://lqez.github.io/blog/i-dont-like-them.html" rel="alternate"></link><published>2018-08-22T00:00:00+09:00</published><updated>2018-08-22T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2018-08-22:/blog/i-dont-like-them.html</id><summary type="html">&lt;p&gt;회사를 그만둔 이후로 낯선 사람을 만날 기회가 별로 없었는데,
 요 며칠 개발자 컨퍼런스에 참가하며 내가 어떤 사람들을 의식적으로 싫어하는지 좀 더 명확하게 알게 되었다.
 아래에 해당하는 사람들이 틀렸다는 얘기가 아니다. 그냥, 싫다.&lt;/p&gt;
-&lt;h6&gt;자기소개가 긴 사람&lt;/h6&gt;
+&lt;h5 id="_1"&gt;자기소개가 긴 사람&lt;/h5&gt;
 &lt;p&gt;좋은 발표를 하기 위해서 발표자는 청중이 어떤 사람들일지 잘 예상하고 문서를 만들어 발표하면 좋다고 생각한다 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;회사를 그만둔 이후로 낯선 사람을 만날 기회가 별로 없었는데,
 요 며칠 개발자 컨퍼런스에 참가하며 내가 어떤 사람들을 의식적으로 싫어하는지 좀 더 명확하게 알게 되었다.
 아래에 해당하는 사람들이 틀렸다는 얘기가 아니다. 그냥, 싫다.&lt;/p&gt;
-&lt;h6&gt;자기소개가 긴 사람&lt;/h6&gt;
+&lt;h5 id="_1"&gt;자기소개가 긴 사람&lt;/h5&gt;
 &lt;p&gt;좋은 발표를 하기 위해서 발표자는 청중이 어떤 사람들일지 잘 예상하고 문서를 만들어 발표하면 좋다고 생각한다.
 하지만 반대로, 발표자가 전하고 싶은 내용을 청중에게 전달하는데 있어 발표자가 어떤 사람인지는 중요하지 않을 수도 있다고 생각한다.&lt;/p&gt;
 &lt;p&gt;우리는 권위에 쉽게 기대어 생각한다.&lt;/p&gt;
 &lt;p&gt;발표하는 사람이 교수니까 맞는 말일꺼야, 저 사람은 유명한 사람이니까 좀 이상한 것 같아도 설마 틀리진 않겠지,
 이런 생각이 올바른 사고 과정을 방해하는 경우를 많이 보아왔다.
 내 생각이 좀 비뚤어져서 그런 것이겠지만, 본인 소개가 지나치게 길고 경력에 대한 자부심이 너무 큰 사람의 발표는 옳은 소리를 해도 곧이 곧대로 들리지 않는다.&lt;/p&gt;
-&lt;h6&gt;행사를 이용하는 사람&lt;/h6&gt;
+&lt;h5 id="_2"&gt;행사를 이용하는 사람&lt;/h5&gt;
 &lt;p&gt;행사를 이용해도 된다. 다수를 대상으로 발표하는 자리가 있다면 그 자리에서 자기 광고를 하거나 자기 회사, 서비스에 대해 광고할 수도 있다고 생각한다.
 하지만 그 행사의 목표가 커뮤니티의 발전과 지속적인 성장을 위한 것이라면, 그 목표에는 부합하지 않는 행위라고 볼 수 있다.
 사람마다 다르겠지만 어느 정도는 다들 암묵적으로 허용하고 있는 것 같다.
@@ -2692,7 +2762,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 B에서 A를 사용할 수도 있고, 또 간접적으로 관계있는 부분에 대해서 얘기할 수 있다.
 하지만 어떤 사람들은 처음엔 기회를 얻기 위해 교집합에 대해 얘기하는 척 하다가, 결국엔 전혀 관계 없는 내용을 늘어놓고 사라진다.&lt;/p&gt;
 &lt;p&gt;이는 다른 사람들의 시간을 빼앗는 교활한 행위라고 생각한다. 그래서, 싫다.&lt;/p&gt;
-&lt;h6&gt;나만 중요한 사람&lt;/h6&gt;
+&lt;h5 id="_3"&gt;나만 중요한 사람&lt;/h5&gt;
 &lt;p&gt;지속적인 모임과 행사의 운영을 위해서는 공동체 의식이 어느 정도 필요하다.
 개인에게 일방적으로 희생을 요구하는 단체는 오래갈 수 없다. 그런 것을 바라는게 아니다.
 하지만 본인과 자기가 속한 단체의 이익을 위해서만 행동하고, 커뮤니티에 돌려주지 않는 체리피커는 어디에나 있고, 그들이 많아지면 결국 무너지게 된다.&lt;/p&gt;
@@ -2823,14 +2893,14 @@ Sat Aug 11 01:35:45 2018: ---- end
 &lt;p&gt;BMW의 SUV인 &lt;a href="https://en.wikipedia.org/wiki/BMW_X5_(F15)"&gt;X5(F15)&lt;/a&gt;를 단종 직전 뒤늦게 구입했다.
 기존에 타던 차량이 잔고장이 심해져, 당장 빠르게 인수할 수 있는 차종 중에 고르다 보니 사고 싶던 차종 목록에 없던 X5를 구매하게 되었다.&lt;/p&gt;
 &lt;p&gt;해당 차종에 대해 충분히 알아보지 않은 탓에, 구매하고 나서야 알게 된 장단점들이 있다.&lt;/p&gt;
-&lt;h6&gt;방향 지시등 조작이 불편하고 마감이 좋지 …&lt;/h6&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="A photo of X5" src="./images/2018-08/x5-0.jpg"&gt;&lt;/p&gt;
+&lt;h5 id="_1"&gt;방향 지시등 조작이 불편하고 마감이 좋지 …&lt;/h5&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="A photo of X5" src="./images/2018-08/x5-0.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;BMW의 SUV인 &lt;a href="https://en.wikipedia.org/wiki/BMW_X5_(F15)"&gt;X5(F15)&lt;/a&gt;를 단종 직전 뒤늦게 구입했다.
 기존에 타던 차량이 잔고장이 심해져, 당장 빠르게 인수할 수 있는 차종 중에 고르다 보니 사고 싶던 차종 목록에 없던 X5를 구매하게 되었다.&lt;/p&gt;
 &lt;p&gt;해당 차종에 대해 충분히 알아보지 않은 탓에, 구매하고 나서야 알게 된 장단점들이 있다.&lt;/p&gt;
-&lt;h6&gt;방향 지시등 조작이 불편하고 마감이 좋지 않다&lt;/h6&gt;
+&lt;h5 id="_1"&gt;방향 지시등 조작이 불편하고 마감이 좋지 않다&lt;/h5&gt;
 &lt;p&gt;&lt;img alt="Lights lever of X5" src="./images/2018-08/x5-1.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;G 코드 전의 BMW 차량은 방향 지시등이 다른 차종들과는 다르게 토글 방식이라, 레버를 조작해도 위/아래에 위치했다 돌아오는 방식이 아니라, 조작 후 바로 원래 위치로 돌아오는 방식이다. 행여나 자동으로 꺼지지 않은 경우, 위/아래 방향으로 ‘살짝’ 움직여 꺼야 하는데, 이 ‘살짝’이 너무 애매하다 보니 불편하다. 이것만으로도 이미 여간 신경 쓰이는 게 아닌데 마감까지 좋지 않다. 우회전을 위해 레버를 아래에서 위로 조작해야 하는 경우 레버의 아래쪽이 손에 닿게 되는데 플라스틱 부품 사이가 벌어져 있고, 마감이 날카로워 손가락에 닿을 때마다 매우 불쾌하다.&lt;/p&gt;
-&lt;h6&gt;계기판 가운데가 텅 비어 시각적으로 휑하다&lt;/h6&gt;
+&lt;h5 id="_2"&gt;계기판 가운데가 텅 비어 시각적으로 휑하다&lt;/h5&gt;
 &lt;p&gt;&lt;img alt="Clusters of X5" src="./images/2018-08/x5-2.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;전체 LCD로 구성된 계기판인데, 어댑티브 크루즈 콘트롤(ACC) 기능이 없는 등급이다 보니 계기판 중앙이 쓸모가 없고 항상 덩그러니 비어있게 된다. 오히려 전체 LCD가 아닌 기존 세대 계기판에서는 중앙에 시계, 연비, 날짜 등의 여러 정보를 동시에 표시하고 있었던 반면, 현세대에서는 그중 하나만 골라 아래에 표시할 수 있을 뿐이다. ACC가 장착된 모델인 경우에는 앞차와의 거리를 설정하고 표시하는 영역으로 사용된다.&lt;/p&gt;
 &lt;p&gt;그 외 또 사소한 단점들이 있다면,&lt;/p&gt;
@@ -2843,7 +2913,7 @@ Sat Aug 11 01:35:45 2018: ---- end
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;p&gt;단점만 있는 건 아니고 의외의 장점도 발견했다.&lt;/p&gt;
-&lt;h6&gt;공조기 자동 상태에서도 풍량을 조정할 수 있다&lt;/h6&gt;
+&lt;h5 id="_3"&gt;공조기 자동 상태에서도 풍량을 조정할 수 있다&lt;/h5&gt;
 &lt;p&gt;&lt;img alt="Air circulation controller of X5" src="./images/2018-08/x5-3.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;기존에 타던 차들은 공조기를 자동으로 설정한 상태에서 온도 변경, 풍량 조정, 내기 순환 등을 변경하면 1) 자동 모드가 해제되거나 2) 풍량이 특정 세기에 고정되었었다. 이에 비해, 자동 모드에서도 지정한 온도에 도달하기까지 풍량을 원하는 정도로 조정이 가능하다. 다른 제조사의 차종에서는 자동으로 설정한 상태에서 풍량을 1로 조정하면, 말 그대로 바람의 세기가 1로 고정되는 반면, X5에서는 &lt;strong&gt;1의 속도로 목표 온도에 도달하겠다&lt;/strong&gt;는 의미가 된다. 이 상태에서도 풍량은 자동으로 강해졌다 약해졌다 한다. 커뮤니티에서는 이 방식이 불편하다는 의견이 더 많은 편.&lt;/p&gt;
 &lt;p&gt;그 외 (특정 년식의 모델에만 해당하는 내용도 포함하여),&lt;/p&gt;
@@ -2902,13 +2972,13 @@ Sat Aug 11 01:35:45 2018: ---- end
 거짓말을 밥먹듯 하는 사람은 다음에 말을 바꿔도, 틀린 얘기를 해도 별 피해를 받지 않는다.&lt;/p&gt;
 &lt;p&gt;왜 그렇게 행동하는지는, 잘 알겠다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>10 things to know before using Philips Hue</title><link href="https://lqez.github.io/blog/10-things-to-know-before-using-philips-hue.html" rel="alternate"></link><published>2018-04-06T00:00:00+09:00</published><updated>2018-04-06T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2018-04-06:/blog/10-things-to-know-before-using-philips-hue.html</id><summary type="html">&lt;p&gt;&lt;img alt="A photo of home" src="./images/2018-04/hue-hallway.jpg"&gt;
 이번에 이사하며 필립스의 스마트 조명 시스템인 &lt;a href="https://www2.meethue.com"&gt;휴(Hue)&lt;/a&gt;를 사용하며 알게 된 몇 가지 내용을 정리해본다.&lt;/p&gt;
-&lt;h6&gt;0. 휴에 대해 잘 아는 사람은 별로 없다.&lt;/h6&gt;
+&lt;h5 id="0"&gt;0. 휴에 대해 잘 아는 사람은 별로 없다.&lt;/h5&gt;
 &lt;p&gt;천장등 &lt;a href="http://www.lightnara.com/shop/goods/goods_view.php?goodsno=100032642&amp;amp;category=030"&gt;무스카리&lt;/a&gt;,
 다운라이트 &lt;a href="http://www.lightnara.com/shop/goods/goods_view.php?goodsno=100032653&amp;amp;category=030"&gt;아펠리온&lt;/a&gt; 등을 시공했는데,
 한국에는 &lt;a href="https://www.bloter.net/archives/299332"&gt;2018년 1월에 출시&lt;/a&gt;된 제품이라 제대로 알고 있는 사람이 없었다.
 필립스 코리아의 공식 대리점 중 하나인 &lt;a href="http://www.lamp21.co.kr/"&gt;정광조명산업&lt;/a&gt;을 통해서 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="A photo of home" src="./images/2018-04/hue-hallway.jpg"&gt;
 이번에 이사하며 필립스의 스마트 조명 시스템인 &lt;a href="https://www2.meethue.com"&gt;휴(Hue)&lt;/a&gt;를 사용하며 알게 된 몇 가지 내용을 정리해본다.&lt;/p&gt;
-&lt;h6&gt;0. 휴에 대해 잘 아는 사람은 별로 없다.&lt;/h6&gt;
+&lt;h5 id="0"&gt;0. 휴에 대해 잘 아는 사람은 별로 없다.&lt;/h5&gt;
 &lt;p&gt;천장등 &lt;a href="http://www.lightnara.com/shop/goods/goods_view.php?goodsno=100032642&amp;amp;category=030"&gt;무스카리&lt;/a&gt;,
 다운라이트 &lt;a href="http://www.lightnara.com/shop/goods/goods_view.php?goodsno=100032653&amp;amp;category=030"&gt;아펠리온&lt;/a&gt; 등을 시공했는데,
 한국에는 &lt;a href="https://www.bloter.net/archives/299332"&gt;2018년 1월에 출시&lt;/a&gt;된 제품이라 제대로 알고 있는 사람이 없었다.
@@ -2921,24 +2991,24 @@ Sat Aug 11 01:35:45 2018: ---- end
 &lt;li&gt;&lt;a href="https://medium.com/@rxseger/enabling-the-hidden-wi-fi-radio-on-the-philips-hue-bridge-2-0-42949f0154e1"&gt;휴 브릿지를 해킹하여 Wi-Fi 연결을 가능하게&lt;/a&gt; (Medium)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;즉, 휴를 사용하기 위해서는 기본적으로 유선 네트워크와 이에 연결된 무선 액세스 포인트가 필요하다.&lt;/p&gt;
-&lt;h6&gt;1. 다운라이트와 천장 조명은 다양한 색상 표현이 안된다.&lt;/h6&gt;
+&lt;h5 id="1"&gt;1. 다운라이트와 천장 조명은 다양한 색상 표현이 안된다.&lt;/h5&gt;
 &lt;p&gt;‘휴’라는 이름 자체가 색상을 의미하는 단어지만, Hue White ambience 시리즈 제품들은 2000K ~ 6500K 사이의 색 온도만 조정 가능하다.
 Hue White and Color 시리즈에 속하는 제품들만 휴 광고에서 보여지는 다양한 색상 표현이 가능하다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://www.howtogeek.com/248178/the-difference-between-all-of-philips-hue-light-bulbs/"&gt;휴 전구들에 대한 차이 설명&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;img alt="Hue Muscari" src="./images/2018-04/hue-muscari.jpg"&gt;&lt;/p&gt;
-&lt;h6&gt;2. 라이트스트립은 연장하면 고주파가 들린다.&lt;/h6&gt;
+&lt;h5 id="2"&gt;2. 라이트스트립은 연장하면 고주파가 들린다.&lt;/h5&gt;
 &lt;p&gt;라이트스트립만 단독으로 설치한 경우에는 고주파가 들리지 않는다. 하지만 라이트스트립 플러스를 통해 연장하면 할수록 더 큰 소음이 들리게 된다.
 필립스 코리아 방문 기사님을 통해 확인한 바에 따르면 현재까지는 제품 교환으로도 해결할 수 없는 문제라, 다음 제품이 나오기를 기다리고 있다.
 현재 상태로 사용하려면 어댑터를 벽이나 천장 안쪽으로 밀어넣지 않는 한, 실사용이 어려운 수준이다.&lt;/p&gt;
-&lt;h6&gt;3. 디머 스위치의 디밍은 실제로는 잘 안쓰게 된다.&lt;/h6&gt;
+&lt;h5 id="3"&gt;3. 디머 스위치의 디밍은 실제로는 잘 안쓰게 된다.&lt;/h5&gt;
 &lt;p&gt;디머 스위치의 클릭감이 분명하지 않아 아쉬움이 있고, 디밍을 위해 계속 +/- 버튼을 누르고 있어야 하는 불편함이 있다.
 과거 로터리 방식의 디머와 같이 원하는 밝기로 한 번에 조절될 수 있으면 좋겠다.&lt;/p&gt;
-&lt;h6&gt;4. 탭 스위치는 배터리가 필요 없다.&lt;/h6&gt;
+&lt;h5 id="4"&gt;4. 탭 스위치는 배터리가 필요 없다.&lt;/h5&gt;
 &lt;p&gt;카페의 자동 유리문 등에 부착되어 사용되는 스위치와 같이 내장 배터리 없이 눌리는 힘으로 전력을 생산하여 신호를 보낸다.
 당연한 얘기지만 탭 스위치를 제외한 디머 스위치, 동작 센서 등은 배터리가 필요하다.&lt;/p&gt;
-&lt;h6&gt;5. 브릿지는 최대 50개의 전구, 10개의 악세사리만 지원한다.&lt;/h6&gt;
+&lt;h5 id="5-50-10"&gt;5. 브릿지는 최대 50개의 전구, 10개의 악세사리만 지원한다.&lt;/h5&gt;
 &lt;p&gt;설치 전에 필요한 조명 개수를 세어보니 50개가 넘어, 대리점에서 브릿지가 2개 이상 필요하다는 얘기를 들었다.
 특별한 불편함이 없을 것이라는 대리점의 의견과 달리 한 공간에 브릿지가 2개 이상인 경우 매우 불편하다.&lt;/p&gt;
 &lt;ul&gt;
@@ -2949,21 +3019,21 @@ Hue White and Color 시리즈에 속하는 제품들만 휴 광고에서 보여�
 &lt;/ul&gt;
 &lt;p&gt;위젯을 통해 제어하거나 자주 조작하는 조명들을 주 브릿지에 붙이고, 센서로 동작하는 조명은 다른 브릿지에 붙이는 등의 선택이 필요하다.
 &lt;img alt="Hue Bridge" src="./images/2018-04/hue-bridge.jpg"&gt;&lt;/p&gt;
-&lt;h6&gt;6. 전원을 완전히 내렸다 올리면 기본 상태로 돌아간다.&lt;/h6&gt;
+&lt;h5 id="6"&gt;6. 전원을 완전히 내렸다 올리면 기본 상태로 돌아간다.&lt;/h5&gt;
 &lt;p&gt;기존 스위치를 제거하지 않은 상태로 휴 스위치들을 같이 사용하고 있는데,
 실수로 기존 스위치를 내려 완전히 전원을 끊은 경우 다시 켜면 마지막 상태가 아니라 기본 상태로 켜진다.
 예를 들어, 아펠리온의 경우 Concentrate(주광색)인 상태로 바꾼 후에 전원을 끊었다 다시 켜면 Relax(전구색)로 켜진다.&lt;/p&gt;
-&lt;h6&gt;7. 라이트스트립을 주방에서 쓸 경우 주의점.&lt;/h6&gt;
+&lt;h5 id="7"&gt;7. 라이트스트립을 주방에서 쓸 경우 주의점.&lt;/h5&gt;
 &lt;p&gt;스트립에 설치된 다수의 LED 앞쪽으로 별도의 디퓨저가 없어, 주방 간접등으로 사용하는 경우
 설거지를 할 때 물이나 금속 냄비 등에 LED가 아래 사진과 같이 그대로 반사되어 눈이 아프다.
 &lt;img alt="Reflection of Hue Lightstrip" src="./images/2018-04/hue-lightstrip-reflect.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;일반적인 간접등의 경우는 빛의 퍼짐을 위해 디퓨저가 설치되어 아래와 같이 LED가 직접 보이지 않고, 고르게 빛이 퍼지는 것을 도와준다.
 &lt;img alt="Reflection of Hue Lightstrip" src="./images/2018-04/hue-otherstrip.jpg"&gt;&lt;/p&gt;
-&lt;h6&gt;8. 조명을 설치하기 전에 시리얼을 기억해두자.&lt;/h6&gt;
+&lt;h5 id="8"&gt;8. 조명을 설치하기 전에 시리얼을 기억해두자.&lt;/h5&gt;
 &lt;p&gt;무스카리 1대와 아펠리온 1대가 조명 검색에서 표시되지 않아, 조명 본체에서 시리얼을 확인하고 수동으로 등록한 후에야 찾을 수 있었다.
 모든 조명을 설치하기 전에, 평면도에 시리얼을 표시해가며 설치해두면 나중에 두 번 고생하지 않을 수 있다.
 &lt;img alt="Serial number of Hue Muscari" src="./images/2018-04/hue-muscari-serial.jpg"&gt;&lt;/p&gt;
-&lt;h6&gt;9. 하나의 조명은 하나의 방에만 할당된다.&lt;/h6&gt;
+&lt;h5 id="9"&gt;9. 하나의 조명은 하나의 방에만 할당된다.&lt;/h5&gt;
 &lt;p&gt;하나의 조명을 여러 방에 할당하여 제어할 수 없다. 필요한 경우 물리적으로 하나의 방을 논리적으로 나누어진 여러 방으로 설정해야 한다.&lt;/p&gt;
 &lt;p&gt;특별한 경우겠지만, 복도에 10개의 아펠리온과 양 끝에 2개의 동작 센서를 위치시켜
 중앙의 조명은 양 쪽의 센서에서 같이 제어하려고 했지만 복도의 10개 조명을 하나의 방으로 설정한 기본 상태에서는 불가능했다.&lt;/p&gt;
@@ -2980,7 +3050,7 @@ Hue White and Color 시리즈에 속하는 제품들만 휴 광고에서 보여�
 &lt;p&gt;서쪽에 위치한 센서에서는 복도1과 2를, 동쪽에 위치한 센서에서는 복도 2와 3을 조작하도록 하여 문제를 해결하였다.
 단, 서쪽 센서로 켜진 복도2(중앙 4개) 조명이 동쪽 센서로 다시 밝아진 경우에도, 서쪽 센서의 타이머에 따라 같이 꺼지는 사소한 아쉬움이 있다.
 &lt;img alt="Hue Motion Sensor" src="./images/2018-04/hue-motionsensor.jpg"&gt;&lt;/p&gt;
-&lt;h6&gt;10. 휴는 웹에서 제어할 수 없다.&lt;/h6&gt;
+&lt;h5 id="10"&gt;10. 휴는 웹에서 제어할 수 없다.&lt;/h5&gt;
 &lt;p&gt;필립스에서 공식으로 제공하는 웹 제어 패널이 없다.
 &lt;a href="https://account.meethue.com"&gt;https://account.meethue.com&lt;/a&gt;가 공식 사이트지만 계정을 생성하고 로그인을 해도 제어할 수 있는 기능이 제공되지 않는다.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://developers.meethue.com/"&gt;필립스 휴 개발자 사이트&lt;/a&gt;를 통해 SDK와 개발 정보를 확인하여 직접 제어하는 것도 가능하겠지만,
@@ -3020,7 +3090,7 @@ Hue White and Color 시리즈에 속하는 제품들만 휴 광고에서 보여�
 &lt;p&gt;지난 시간을 돌아보며 정리하여 남기고 싶은 말이 많지만, 개인적인 부분이 많아 저장소와 회선을 낭비해가며 남기고 전할 만큼 의미가 있지 않으니,
 아무것도 모르는 상태에서 창업하며 겪었던 일 중, 창업한다면 대체로 한 번쯤 생각해볼 만한 것에 대한 의견을 남겨본다.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h5 id="_1"&gt;공동창업은 좋은가&lt;/h5&gt;
+&lt;h4 id="_1"&gt;공동창업은 좋은가&lt;/h4&gt;
 &lt;p&gt;기본적으로 좋다고 생각한다. 일단 창업하고 나면 기쁜 일보다는 힘든 일이 훨씬 더 많기 마련인데,
 정말 힘들 때 등을 맞대고 고민을 함께할 수 있는 상대는 배우자나 친구보다는, 아무래도 맥락을 더 많이 이해하는 다른 공동창업자일 수밖에 없다.&lt;/p&gt;
 &lt;p&gt;좋아하는 것이 비슷한 사람보다, 싫어하는 것에 공통점이 있는 사람과 창업하는 게 낫다고 생각한다. 무언가를 좋아하는 것은 너무 쉽게 달라진다.
@@ -3045,11 +3115,11 @@ Hue White and Color 시리즈에 속하는 제품들만 휴 광고에서 보여�
 매일 매일 조금씩이라도 코딩을 계속하고 사람들을 만나고 싶다.&lt;/p&gt;
 &lt;p&gt;영화 매트릭스에 &lt;a href="https://www.youtube.com/watch?v=5wqd-ETXrOw"&gt;이런 대사&lt;/a&gt;가 있다.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;h4 id="everything-that-has-a-beginning-has-an-end"&gt;“Everything that has a beginning has an end.”&lt;/h4&gt;
+&lt;p&gt;“Everything that has a beginning has an end.”&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;좋아하는 문장이지만 더 좋아하는 이 문장을 덧붙이고 싶다.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;h4 id="the-end-is-just-another-beginning"&gt;“The end is just another beginning.”&lt;/h4&gt;
+&lt;p&gt;“The end is just another beginning.”&lt;/p&gt;
 &lt;/blockquote&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>Threaded Generator in Python</title><link href="https://lqez.github.io/blog/threaded-generator-in-python.html" rel="alternate"></link><published>2017-12-20T00:00:00+09:00</published><updated>2017-12-20T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2017-12-20:/blog/threaded-generator-in-python.html</id><summary type="html">&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Command-line_interface"&gt;커맨드라인 인터페이스(CLI)&lt;/a&gt;를 가진 프로그램을 만들면서 &lt;a href="https://en.wikipedia.org/wiki/Asynchronous_I/O"&gt;비동기 처리&lt;/a&gt;를 시도한 적이 없었다.
 대부분 선택지를 출력한 후에 사용자로부터 값을 입력받으면 다음 동작을 수행하는 것을 반복하기 때문에 일반적인 &lt;a href="https://en.wikipedia.org/wiki/Thread_(computing)#Single_threading"&gt;단일 스레드&lt;/a&gt;로 작성해왔다.&lt;/p&gt;
 &lt;p&gt;이번에 만든 CLI 프로그램인 &lt;a href="https://github.com/lqez/rogrepos"&gt;rogrepos&lt;/a&gt;는 GitHub에서 오픈소스 활동을 오래 하다 보면
