@@ -241,7 +241,7 @@ article {
     box-shadow: 0 20px 50px -10px rgba(0,50,50,.20), 0 18px 36px -18px rgba(0,0,100,.25);
 }
 
-article a:link, article a:visited {
+article a:visited {
   color: #8a1fce;
   text-decoration: none;
   border-bottom: 1px solid #8a1fce;
