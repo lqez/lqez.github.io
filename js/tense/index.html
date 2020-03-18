@@ -1,0 +1,208 @@
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="./words.js"></script>
+<style>
+* {
+  font-family: 'Roboto Slab', serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div {
+  text-align: center;
+}
+
+#app > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 4em;
+}
+
+.menu {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(50px, auto);
+}
+
+.result {
+  font-size: 4em;
+  font-weight: 700;
+}
+
+button {
+  min-width: 10vw;
+  font-size: 1.5em;
+}
+
+.t1, .t2 {
+  font-size: 5em;
+  cursor: pointer;
+}
+
+.t1 {
+  font-weight: 700;
+}
+
+.t2 {
+  min-width: 80vw;
+  background: #aaa;
+  color: transparent;
+}
+
+.t2.show {
+  background: transparent;
+  color: black;
+  transition: all 0.25s;
+}
+
+.t3 {
+  visibility: hidden;
+  margin: 20px 0;
+}
+
+.t3.show {
+  visibility: visible;
+}
+
+button.big {
+  grid-column: 1 / 4;
+}
+
+button.small {
+  min-width: 2vw;
+  font-size: 0.5em;
+}
+
+button.active {
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <div v-if="mode === 'menu'">
+    <h1>Tense test</h1>
+    <div class="menu">
+      <button class="big" v-on:click="setStep(0, $event)" v-bind:class="getStepClass(0)">All</button>
+      <button v-for="item in steps" v-bind:class="getStepClass(item)" v-on:click="setStep(item, $event)">{{ item }}</button>
+      <button class="big" v-on:click="beginTest(10)">Begin a test</button>
+    </div>
+  </div>
+  <div v-else-if="mode === 'test'">
+    <button class="small" v-on:click="endTest">End test</button>
+    <h2>Problem {{ currNum + 1 }} / {{ totalNum }}</h2>
+    <div class="t1" v-on:click="show">{{ words[currNum][0] }} / {{ words[currNum][1] }}</div>
+    <div class="t2" v-on:click="show" v-bind:class="{show: isShow}">{{ words[currNum][2] }} • {{ words[currNum][3] }}</div>
+    <div class="t3" v-bind:class="{show: isShow}">
+      <button v-on:click="next(1)">O</button>
+      <button v-on:click="next(0)">X</button>
+    </div>
+  </div>
+  <div v-else-if="mode === 'end'">
+    <h2>Total score</h2>
+    <div class="result">{{ score }}</div>
+    <button v-on:click="menu">Back to menu</button>
+  </div>
+</div>
+</body>
+<script>
+var steps = 12
+var totalWords = words.length
+var wordsPerStep = Math.floor(words.length / steps)
+
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    mode: 'menu',
+    word: null,
+
+    words: [],
+    steps: steps,
+
+    step: 0,
+
+    currNum: 0,
+    totalNum: 0,
+    score: 0,
+    isShow: false,
+  },
+  methods: {
+    reset: function () {
+      this.currNum = 0
+      this.totalNum = 0
+      this.score = 0
+      this.isShow = false
+    },
+
+    getStepClass: function (step) {
+      return {
+        active: this.step === step
+      }
+    },
+    setStep: function (step, event) {
+      this.step = step;
+    },
+
+    beginTest: function (number) {
+      this.reset()
+
+      this.totalNum = number
+      this.prepareWords(number)
+      this.mode = 'test'
+    },
+
+    endTest: function (event) {
+      this.mode = 'end'
+    },
+
+    menu: function (event) {
+      this.mode = 'menu'
+    },
+
+    show: function() {
+      this.isShow = true
+    },
+
+    prepareWords: function(total) {
+      if (this.step === 0) {
+        this.words = words.slice()
+        shuffle(this.words)
+      } else {
+        this.words = words.slice((this.step - 1) * wordsPerStep, this.step * wordsPerStep)
+        shuffle(this.words)
+      }
+      this.words = this.words.slice(0, total)
+    },
+
+    next: function(score) {
+      this.score += score
+      this.currNum += 1
+      this.isShow = false
+
+      if (this.currNum >= this.words.length) {
+        this.mode = 'end'
+      }
+    }
+  }
+})
+</script>
+</html>
