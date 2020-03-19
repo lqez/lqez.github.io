@@ -47,16 +47,15 @@ button {
   font-size: 1.5em;
 }
 
-.t1, .t2 {
+.t1 {
   font-size: 5em;
+  font-weight: 700;
   cursor: pointer;
 }
 
-.t1 {
-  font-weight: 700;
-}
-
 .t2 {
+  font-size: 3em;
+  cursor: pointer;
   min-width: 80vw;
   background: #aaa;
   color: transparent;
@@ -104,8 +103,8 @@ button.active {
   <div v-else-if="mode === 'test'">
     <button class="small" v-on:click="endTest">End test</button>
     <h2>Problem {{ currNum + 1 }} / {{ totalNum }}</h2>
-    <div class="t1" v-on:click="show">{{ words[currNum][0] }} / {{ words[currNum][1] }}</div>
-    <div class="t2" v-on:click="show" v-bind:class="{show: isShow}">{{ words[currNum][2] }} • {{ words[currNum][3] }}</div>
+    <div class="t1" v-on:click="show">{{ words[currNum][1] }}</div>
+    <div class="t2" v-on:click="show" v-bind:class="{show: isShow}">{{ words[currNum][0] }} / {{ words[currNum][2] }} / {{ words[currNum][3] }}</div>
     <div class="t3" v-bind:class="{show: isShow}">
       <button v-on:click="next(1)">O</button>
       <button v-on:click="next(0)">X</button>
