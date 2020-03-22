@@ -108,7 +108,7 @@ const words = [
   ["튀어 오르다", "spring", "sprang | sprung", "sprung"],
   ["서다", "stand", "stood", "stood"],
   ["훔치다", "steal", "stole", "stolen"],
-  ["붙이다", "stiek", "stuck", "stuck"],
+  ["붙이다", "stick", "stuck", "stuck"],
   ["찌르다", "sting", "stung", "stung"],
   ["치다", "strike", "struck", "struck"],
   ["맹세하다", "swear", "swore", "sworn"],
