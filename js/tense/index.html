@@ -54,14 +54,36 @@ button {
 }
 
 .t2 {
-  font-size: 3em;
   cursor: pointer;
   min-width: 80vw;
+}
+
+.t2 table {
+  width: 80%;
+  margin: 1em auto;
+  table-layout: fixed;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.t2 th {
+  font-size: 1em;
+  line-height: 1.5;
   background: #aaa;
   color: transparent;
 }
 
-.t2.show {
+.t2 td {
+  text-align: center;
+  font-size: 3em;
+  height: 3em;
+  background: #aaa;
+  color: transparent;
+
+  border: 1px solid #aaa;
+}
+
+.t2.show td, .t2.show th {
   background: transparent;
   color: black;
   transition: all 0.25s;
@@ -163,7 +185,24 @@ button.active {
     </div>
     <h2>Problem {{ currNum + 1 }} / {{ totalNum }}</h2>
     <div class="t1" v-on:click="show">{{ words[currNum][1] }}</div>
-    <div class="t2" v-on:click="show" v-bind:class="{show: isShow}">{{ words[currNum][0] }} / {{ words[currNum][2] }} / {{ words[currNum][3] }}</div>
+    <div class="t2" v-on:click="show" v-bind:class="{show: isShow}">
+      <table>
+        <thead>
+          <tr>
+            <th>Meaning</th>
+            <th>Past</th>
+            <th>Past Participle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ words[currNum][0] }}</td>
+            <td>{{ words[currNum][2] }}</td>
+            <td>{{ words[currNum][3] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <div class="t3" v-bind:class="{show: isShow}">
       <button v-on:click="next(1)">O</button>
       <button v-on:click="next(0)">X</button>
