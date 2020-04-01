@@ -167,13 +167,21 @@ button.active {
 </head>
 <body>
 <div id="app">
-  <div v-if="mode === 'menu'">
-    <h1>Tense test</h1>
+  <div v-if="mode === 'set'">
+    <h1>Select a set</h1>
     <div class="menu">
-      <button class="big" v-on:click="setStep(0, $event)" v-bind:class="getStepClass(0)">All</button>
-      <button v-for="item in steps" v-bind:class="getStepClass(item)" v-on:click="setStep(item, $event)">{{ item }}</button>
+      <button class="big" v-for="(set, idx) in wordset" v-on:click="setSet(idx)">{{ set.title }}</button>
+    </div>
+  </div>
+  <div v-else-if="mode === 'step'">
+    <h1>Select a step</h1>
+    <div class="menu">
+      <button class="big" v-on:click="setStep(0)" v-bind:class="getStepClass(0)">All</button>
+      <button v-for="(item, idx) in set.steps" v-bind:class="getStepClass(idx + 1)" v-on:click="setStep(idx + 1)">{{ idx + 1 }}</button>
       <button class="big" v-on:click="beginTest()">Begin a test</button>
     </div>
+    <hr>
+    <button class="small" v-on:click="setMode('set')">Select new set</button>
   </div>
   <div v-else-if="mode === 'test'">
     <button class="small" v-on:click="endTest">End test</button>
@@ -184,24 +192,38 @@ button.active {
       </svg>
     </div>
     <h2>Problem {{ currNum + 1 }} / {{ totalNum }}</h2>
-    <div class="t1" v-on:click="show">{{ words[currNum][1] }}</div>
-    <div class="t2" v-on:click="show" v-bind:class="{show: isShow}">
-      <table>
-        <thead>
-          <tr>
-            <th>Meaning</th>
-            <th>Past</th>
-            <th>Past Participle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{ words[currNum][0] }}</td>
-            <td>{{ words[currNum][2] }}</td>
-            <td>{{ words[currNum][3] }}</td>
-          </tr>
-        </tbody>
-      </table>
+    <div v-if="template === 'tense'">
+      <div class="t1" v-on:click="show">{{ words[currNum][1] }}</div>
+      <div class="t2" v-on:click="show" v-bind:class="{show: isShow}">
+        <table>
+          <thead>
+            <tr>
+              <th>Meaning</th>
+              <th>Past</th>
+              <th>Past Participle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ words[currNum][0] }}</td>
+              <td>{{ words[currNum][2] }}</td>
+              <td>{{ words[currNum][3] }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div v-else-if="template === 'simple'">
+      <div class="t1" v-on:click="show">{{ words[currNum][0] }}</div>
+      <div class="t2" v-on:click="show" v-bind:class="{show: isShow}">
+        <table>
+          <tbody>
+            <tr>
+              <td>{{ words[currNum][1] }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <div class="t3" v-bind:class="{show: isShow}">
       <button v-on:click="next(1)">O</button>
@@ -211,16 +233,11 @@ button.active {
   <div v-else-if="mode === 'end'">
     <h2>Total score</h2>
     <div class="result">{{ score }}</div>
-    <button v-on:click="menu">Back to menu</button>
+    <button v-on:click="setMode('step')">Back to menu</button>
   </div>
 </div>
 </body>
 <script>
-var steps = 12
-var totalWords = words.length
-var wordsPerStep = Math.floor(words.length / steps)
-var timelimit = 20
-
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -232,15 +249,16 @@ function shuffle(a) {
 var app = new Vue({
   el: '#app',
   data: {
-    mode: 'menu',
-    word: null,
+    mode: 'set',
+    wordset: wordset,
+    set: null,
 
     words: [],
     wordsForAll: [],
-    steps: steps,
+    timelimit: 0,
+    template: 'simple',
 
     step: 0,
-
     currNum: 0,
     totalNum: 0,
     score: 0,
@@ -256,12 +274,19 @@ var app = new Vue({
       this.isShow = false
     },
 
+    setSet: function(set) {
+      this.mode = 'step'
+      this.step = 0
+      this.set = wordset[set]
+    },
+
     getStepClass: function (step) {
       return {
         active: this.step === step
       }
     },
-    setStep: function (step, event) {
+
+    setStep: function (step) {
       this.step = step;
     },
 
@@ -278,8 +303,8 @@ var app = new Vue({
       this.stopTimer();
     },
 
-    menu: function (event) {
-      this.mode = 'menu'
+    setMode: function (mode) {
+      this.mode = mode
     },
 
     show: function() {
@@ -288,9 +313,13 @@ var app = new Vue({
     },
 
     prepareWords: function() {
-      var wordCountForAll = 24
-      var wordCountForStep = 10
+      var wordCountForAll = this.set['test']['all']
+      var wordCountForStep = this.set['test']['step']
 
+      this.timelimit = this.set['timelimit']
+      this.template = this.set['template']
+
+/*
       if (this.step === 0) {
         if (this.wordsForAll.length < wordCountForAll) {
           this.wordsForAll = []
@@ -304,9 +333,10 @@ var app = new Vue({
         this.words = this.wordsForAll.slice(0, wordCountForAll)
         this.wordsForAll = this.wordsForAll.slice(wordCountForAll)
       } else {
-        this.words = words.slice((this.step - 1) * wordsPerStep, this.step * wordsPerStep)
+      */
+        this.words = this.set['steps'][this.step - 1]
         this.words = this.words.slice(0, wordCountForStep)
-      }
+      //}
       shuffle(this.words)
       this.totalNum = this.words.length
     },
@@ -326,7 +356,7 @@ var app = new Vue({
       this.timer = setInterval(this.tick.bind(this), 1000);
       if (this.$refs.circle) {
         this.$refs.circle.classList.add('countdown-anim');
-        this.$refs.circle.style.animationDuration = timelimit;
+        this.$refs.circle.style.animationDuration = this.timelimit;
         this.$refs.circle.style.webkitAnimationPlayState = "running";
       }
       if (this.$refs.remainTime) {
@@ -349,7 +379,7 @@ var app = new Vue({
       this.score += score
       this.currNum += 1
       this.isShow = false
-      this.remainTime = timelimit;
+      this.remainTime = this.timelimit;
       this.startTimer();
 
       if (this.currNum >= this.words.length) {
