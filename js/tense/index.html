@@ -32,7 +32,7 @@ h1 {
 
 .menu {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 5px;
   grid-auto-rows: minmax(50px, auto);
 }
@@ -43,7 +43,7 @@ h1 {
 }
 
 button {
-  min-width: 10vw;
+  min-width: 6vw;
   font-size: 1.5em;
 }
 
@@ -152,7 +152,7 @@ button {
 }
 
 button.big {
-  grid-column: 1 / 4;
+  grid-column: 1 / 5;
 }
 
 button.small {
@@ -176,9 +176,8 @@ button.active {
   <div v-else-if="mode === 'step'">
     <h1>Select a step</h1>
     <div class="menu">
-      <button class="big" v-on:click="setStep(0)" v-bind:class="getStepClass(0)">All</button>
+      <button class="big" v-if="set.test.all > 0" v-on:click="setStep(0)" v-bind:class="getStepClass(0)">All</button>
       <button v-for="(item, idx) in set.steps" v-bind:class="getStepClass(idx + 1)" v-on:click="setStep(idx + 1)">{{ idx + 1 }}</button>
-      <button class="big" v-on:click="beginTest()">Begin a test</button>
     </div>
     <hr>
     <button class="small" v-on:click="setMode('set')">Select new set</button>
@@ -288,9 +287,6 @@ var app = new Vue({
 
     setStep: function (step) {
       this.step = step;
-    },
-
-    beginTest: function () {
       this.reset()
 
       this.prepareWords()
@@ -319,25 +315,27 @@ var app = new Vue({
       this.timelimit = this.set['timelimit']
       this.template = this.set['template']
 
-/*
       if (this.step === 0) {
         if (this.wordsForAll.length < wordCountForAll) {
           this.wordsForAll = []
+          var steps = this.set['steps'].length
+          var wordsPerStep = this.set['steps'][0].length
+
           for (var i = 0; i < steps; i++) {
             var orders = shuffle([...Array(wordsPerStep).keys()])
             for (var j = 0; j < wordsPerStep; j++) {
-              this.wordsForAll[orders[j] * steps + i] = words[i * wordsPerStep + j]
+              this.wordsForAll[orders[j] * steps + i] = this.set['steps'][i][j]
             }
           }
         }
         this.words = this.wordsForAll.slice(0, wordCountForAll)
+        shuffle(this.words)
         this.wordsForAll = this.wordsForAll.slice(wordCountForAll)
       } else {
-      */
-      //}
-      this.words = this.set['steps'][this.step - 1].slice()
-      shuffle(this.words)
-      this.words = this.words.slice(0, wordCountForStep)
+        this.words = this.set['steps'][this.step - 1].slice()
+        shuffle(this.words)
+        this.words = this.words.slice(0, wordCountForStep)
+      }
       this.totalNum = this.words.length
     },
 

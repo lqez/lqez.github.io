@@ -55,7 +55,7 @@ const wordset = [
     ]
   },
   {
-    title: "영쌤 동사 시제 변화 132제",
+    title: "Grammar Zone 동사 시제 변화 132제",
     template: "tense",
     timelimit: 20,
     test: {
