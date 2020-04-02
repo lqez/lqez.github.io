@@ -224,6 +224,32 @@ button.active {
         </table>
       </div>
     </div>
+    <div v-else-if="template === 'swap'">
+      <div v-if="(random % 2) === 0">
+        <div class="t1" v-on:click="show">{{ words[currNum][0] }}</div>
+        <div class="t2" v-on:click="show" v-bind:class="{show: isShow}">
+          <table>
+            <tbody>
+              <tr>
+                <td>{{ words[currNum][1] }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div v-else>
+        <div class="t1" v-on:click="show">{{ words[currNum][1] }}</div>
+        <div class="t2" v-on:click="show" v-bind:class="{show: isShow}">
+          <table>
+            <tbody>
+              <tr>
+                <td>{{ words[currNum][0] }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
     <div class="t3" v-bind:class="{show: isShow}">
       <button v-on:click="next(1)">O</button>
       <button v-on:click="next(0)">X</button>
@@ -264,6 +290,8 @@ var app = new Vue({
     remainTime: 0,
     timer: null,
     isShow: false,
+
+    random: 0,
   },
   methods: {
     reset: function () {
@@ -379,6 +407,7 @@ var app = new Vue({
       this.isShow = false
       this.remainTime = this.timelimit;
       this.startTimer();
+      this.random = Math.floor(Math.random() * 100);
 
       if (this.currNum >= this.words.length) {
         this.endTest();
