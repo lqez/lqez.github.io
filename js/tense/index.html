@@ -48,7 +48,7 @@ button {
 }
 
 .t1 {
-  font-size: 5em;
+  font-size: 4em;
   font-weight: 700;
   cursor: pointer;
 }
@@ -238,8 +238,7 @@ button.active {
         </div>
       </div>
       <div v-else>
-        <div v-if="isShow" class="t1" v-on:click="show">{{ words[currNum][1] }}</div>
-        <div v-else class="t1" v-on:click="show">{{ pickOne(words[currNum][1]) }}</div>
+        <div class="t1" v-on:click="show">{{ words[currNum][1] }}</div>
         <div class="t2" v-on:click="show" v-bind:class="{show: isShow}">
           <table>
             <tbody>
