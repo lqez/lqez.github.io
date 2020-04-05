@@ -30,6 +30,11 @@ h1 {
   font-size: 3em;
 }
 
+hr {
+  width: 80%;
+  margin: 2em auto;
+}
+
 .menu {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -45,6 +50,7 @@ h1 {
 button {
   min-width: 6vw;
   font-size: 1.5em;
+  margin: 5px;
 }
 
 .t1 {
@@ -163,6 +169,24 @@ button.small {
 button.active {
   font-weight: bold;
 }
+
+.scoreboard {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+}
+
+.scoreboard table {
+  border-collapse: collapse;
+}
+
+.scoreboard th {
+  border-bottom: 1px solid black;
+}
+.scoreboard td {
+  width: 24px;
+  text-align: center;
+}
 </style>
 </head>
 <body>
@@ -180,9 +204,50 @@ button.active {
       <button v-for="(item, idx) in set.steps" v-bind:class="getStepClass(idx + 1)" v-on:click="setStep(idx + 1)">{{ idx + 1 }}</button>
     </div>
     <hr>
+    <div class="menu">
+      <div>
+        <span>Total</span>
+        <select v-model="game_count">
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="40">40</option>
+          <option value="60">60</option>
+        </select>
+      </div>
+      <div>
+        <span>from</span>
+        <select v-model="game_from">
+          <option v-for="(item, idx) in set.steps" :value="idx + 1">{{ idx + 1 }}</option>
+        </select>
+        <span>to</span>
+        <select v-model="game_to">
+          <option v-for="(item, idx) in set.steps" :value="idx + 1">{{ idx + 1 }}</option>
+        </select>
+      </div>
+      <div>
+        <span>with</span>
+        <select v-model="game_player">
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+        <span>players.</span>
+      </div>
+      <button class="big" v-on:click="startGame()">Start a game</button>
+    </div>
+    <hr>
     <button class="small" v-on:click="setMode('set')">Select new set</button>
   </div>
   <div v-else-if="mode === 'test'">
+    <div class="scoreboard" v-if="game">
+      <table>
+        <tr>
+          <th v-for="(i, idx) in game_scores">{{ idx + 1 }}</th>
+        </tr>
+        <tr>
+          <td v-for="i in game_scores">{{ i }}</td>
+        </tr>
+      </table>
+    </div>
     <button class="small" v-on:click="endTest">End test</button>
     <div class="timer">
       <div id="remainTime" ref="remainTime">{{ remainTime }}</div>
@@ -251,13 +316,24 @@ button.active {
       </div>
     </div>
     <div class="t3" v-bind:class="{show: isShow}">
-      <button v-on:click="next(1)">O</button>
-      <button v-on:click="next(0)">X</button>
+      <div v-if="game">
+        <button v-for="(i, idx) in game_scores" v-on:click="next(idx + 1)">Player {{ idx + 1 }}</button>
+        <button v-on:click="next(0)">X</button>
+      </div>
+      <div v-else>
+        <button v-on:click="next(1)">O</button>
+        <button v-on:click="next(0)">X</button>
+      </div>
     </div>
   </div>
   <div v-else-if="mode === 'end'">
     <h2>Total score</h2>
-    <div class="result">{{ score }}</div>
+    <div v-if="game">
+      <div class="result" v-for="(i, idx) in game_scores">Player {{ idx + 1 }}: {{ i }}</div>
+    </div>
+    <div v-else>
+      <div class="result">{{ score }}</div>
+    </div>
     <button v-on:click="setMode('step')">Back to menu</button>
   </div>
 </div>
@@ -292,6 +368,13 @@ var app = new Vue({
     isShow: false,
 
     random: 0,
+
+    game: false,
+    game_from: 1,
+    game_to: 1,
+    game_count: 10,
+    game_player: 3,
+    game_scores: [],
   },
   methods: {
     pickOne : function(str){
@@ -310,6 +393,9 @@ var app = new Vue({
       this.mode = 'step'
       this.step = 0
       this.set = wordset[set]
+
+      this.game_from = 1;
+      this.game_to = this.set['steps'].length;
     },
 
     getStepClass: function (step) {
@@ -319,6 +405,7 @@ var app = new Vue({
     },
 
     setStep: function (step) {
+      this.game = false;
       this.step = step;
       this.reset()
 
@@ -407,7 +494,14 @@ var app = new Vue({
     },
 
     next: function(score) {
-      this.score += score
+      if (this.game) {
+        if (score > 0) {
+          this.game_scores[score - 1] += 1
+        }
+      } else {
+        this.score += score
+      }
+
       this.currNum += 1
       this.isShow = false
       this.remainTime = this.timelimit;
@@ -417,6 +511,30 @@ var app = new Vue({
       if (this.currNum >= this.words.length) {
         this.endTest();
       }
+    },
+
+    startGame: function() {
+      this.game = true;
+      this.reset()
+      this.template = this.set['template']
+
+      this.words = [];
+      while(this.words.length < this.game_count) {
+        for (var i = this.game_from; i <= this.game_to; i++) {
+          this.words = this.words.concat(this.set['steps'][i - 1]);
+        }
+      }
+      shuffle(this.words)
+      this.words = this.words.slice(0, this.game_count)
+      this.totalNum = this.words.length
+
+      this.game_scores = []
+      for(var i = 0; i < this.game_player; i++) {
+        this.game_scores.push(0)
+      }
+
+      this.next(0)
+      this.mode = 'test'
     }
   }
 })
