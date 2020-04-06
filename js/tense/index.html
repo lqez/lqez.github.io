@@ -516,6 +516,8 @@ var app = new Vue({
     startGame: function() {
       this.game = true;
       this.reset()
+
+      this.timelimit = this.set['timelimit']
       this.template = this.set['template']
 
       this.words = [];
