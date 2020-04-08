@@ -462,7 +462,9 @@ var app = new Vue({
     tick: function() {
       this.remainTime -= 1;
       if (this.remainTime === 0) {
-        this.show();
+        if (!this.game) {
+          this.show();
+        }
       } else if (this.remainTime <= 5) {
         if (this.$refs.remainTime) {
           this.$refs.remainTime.classList.add('hurryup');
