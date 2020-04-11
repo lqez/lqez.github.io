@@ -305,7 +305,8 @@ button.active {
         </div>
       </div>
       <div v-else>
-        <div class="t1" v-on:click="show">{{ words[currNum][1] }}</div>
+        <div class="t1" v-if="isShow" v-on:click="show">{{ words[currNum][1] }}</div>
+        <div class="t1" v-else v-on:click="show">{{ pickOne(words[currNum][1]) }}</div>
         <div class="t2" v-on:click="show" v-bind:class="{show: isShow}">
           <table>
             <tbody>
@@ -370,6 +371,7 @@ var app = new Vue({
     isShow: false,
 
     random: 0,
+    random2: 0,
 
     game: false,
     game_from: 1,
@@ -380,8 +382,8 @@ var app = new Vue({
   },
   methods: {
     pickOne : function(str){
-      var vars = str.split(',')
-      return vars[Math.floor(Math.random() * vars.length)]
+      var vars = str.split('/')
+      return vars[this.random2 % vars.length]
     },
 
     reset: function () {
@@ -511,6 +513,7 @@ var app = new Vue({
       this.remainTime = this.timelimit;
       this.startTimer();
       this.random = Math.floor(Math.random() * 100);
+      this.random2 = Math.floor(Math.random() * 100);
 
       if (this.currNum >= this.words.length) {
         this.endTest();
