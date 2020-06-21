@@ -64,7 +64,7 @@ function create_object() {
   const object = document.createElement('img');
   object.className = 'object';
   object.style.left = '1000px';
-  object.style.height = getRandomInt(24, 40) + 'px';
+  object.style.height = getRandomInt(20, 32) + 'px';
   object.src = obstacles[getRandomInt(0, obstacles.length)];
 
   _stage.appendChild(object);
@@ -99,7 +99,7 @@ function logic() {
       respawn -= 1;
     } else {
       create_object();
-      if (MAX_RESPAWN > MIN_RESPAWN && getRandomInt(0, 3) === 0) {
+      if (MAX_RESPAWN > MIN_RESPAWN && getRandomInt(0, 2) === 0) {
         MAX_RESPAWN -= 1;
       }
       respawn = getRandomInt(50, parseInt(MAX_RESPAWN));
