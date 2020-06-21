@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=0.7, shrink-to-fit=no">
+  <title>HORSEMÈS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
+  <link href="horsemes.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="game">
+    <h1>HORSEMÈS</h1>
+    <div id="stage">
+      <img id="horse">
+      <img class="grass" src="grass.png" style="left:0px">
+      <img class="grass" src="grass.png" style="left:180px">
+      <img class="grass" src="grass.png" style="left:360px">
+      <img class="grass" src="grass.png" style="left:540px">
+      <img class="grass" src="grass.png" style="left:720px">
+      <div id="highscore"></div>
+      <div id="score">0</div>
+    </div>
+    <div id="howto">
+      <span>Touch, click, or press any key</span>
+    </div>
+    <div id="copyright">
+      <span>Horse and items courtesy of Hermès</span>
+    </div>
+  </div>
+</body>
+<script src="horsemes.js"></script>
+<script>
+window.onload = function() {
+  init_game();
+};
+</script>
+</html>

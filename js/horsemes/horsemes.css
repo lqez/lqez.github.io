@@ -1,0 +1,96 @@
+body {
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  margin: 0;
+  padding: 0;
+}
+
+.game {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 90vh;
+}
+
+h1 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+  color: #333;
+  margin: 0em;
+}
+
+#highscore {
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+  font-size: 1em;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  color: #72bdff;
+}
+
+#score {
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+  font-size: 1em;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+
+  position: absolute;
+  top: 2px;
+  right: 5px;
+}
+
+#howto {
+  padding: 1em;
+  font-size: 0.8em;
+  color: #999;
+}
+
+#copyright {
+  font-size: 0.8em;
+  color: #ccc;
+}
+
+.grass {
+  position: absolute;
+  height: 16px;
+  bottom: -4px;
+  opacity: 0.9;
+  z-index: 200;
+}
+
+#stage {
+  position: relative;
+  width: 560px;
+  height: 140px;
+  overflow: hidden;
+  border: 1px solid gray;
+  border-radius: 5px;
+  background: linear-gradient(0deg, #fff0, #fff0, #3c649647);
+}
+
+#horse {
+  position: absolute;
+  bottom: -26px;
+  z-index: 100;
+  width: 128px;
+  height: 128px;
+}
+
+.object {
+  position: absolute;
+  z-index: 1;
+  width: auto;
+  bottom: 0px;
+}
+
