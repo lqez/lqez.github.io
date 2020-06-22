@@ -25,13 +25,15 @@ h1 {
   margin: 0em;
 }
 
-#highscore {
+.ui {
   font-family: 'Lato', sans-serif;
   font-weight: 900;
   font-size: 1em;
   font-feature-settings: "tnum";
   font-variant-numeric: tabular-nums;
+}
 
+#highscore {
   position: absolute;
   top: 2px;
   left: 5px;
@@ -39,26 +41,16 @@ h1 {
 }
 
 #score {
-  font-family: 'Lato', sans-serif;
-  font-weight: 900;
-  font-size: 1em;
-  font-feature-settings: "tnum";
-  font-variant-numeric: tabular-nums;
-
   position: absolute;
   top: 2px;
   right: 5px;
 }
 
-#howto {
+#info {
   padding: 1em;
-  font-size: 0.8em;
+  font-size: 0.9em;
   color: #999;
-}
-
-#copyright {
-  font-size: 0.8em;
-  color: #ccc;
+  text-align: center;
 }
 
 .grass {

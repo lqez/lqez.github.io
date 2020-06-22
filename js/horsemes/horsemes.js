@@ -16,32 +16,13 @@ const HORSE_KICK = 4;
 const HORSE_BOW = 5;
 
 const obstacles = [
-  "https://assets.hermes.com/is/image/hermesproduct/075199CK89_set",
-  "https://assets.hermes.com/is/image/hermesproduct/078986CK37_set",
-  "https://assets.hermes.com/is/image/hermesproduct/073442CP89_set",
-  "https://assets.hermes.com/is/image/hermesproduct/048263CK8W_set",
-  "https://assets.hermes.com/is/image/hermesproduct/077725CKAC_set",
-  "https://assets.hermes.com/is/image/hermesproduct/071319CKL3_set",
-  "https://assets.hermes.com/is/image/hermesproduct/076236CKAE_set",
-  "https://assets.hermes.com/is/image/hermesproduct/071966CK9R_set",
-  "https://assets.hermes.com/is/image/hermesproduct/063912CKAA_set",
-  "https://assets.hermes.com/is/image/hermesproduct/119696B+00_set",
-  "https://assets.hermes.com/is/image/hermesproduct/066302CK5P_set",
-  "https://assets.hermes.com/is/image/hermesproduct/074774CK37_set",
-  "https://assets.hermes.com/is/image/hermesproduct/067831CK36_set",
-  "https://assets.hermes.com/is/image/hermesproduct/074863CK89_set",
-  "https://assets.hermes.com/is/image/hermesproduct/DT40WWNOIR_set",
-  "https://assets.hermes.com/is/image/hermesproduct/120642B+00_set",
-  "https://assets.hermes.com/is/image/hermesproduct/119697B+00_set",
-  "https://assets.hermes.com/is/image/hermesproduct/219690B+00_set",
-  "https://assets.hermes.com/is/image/hermesproduct/201126Z+91_set",
-  "https://assets.hermes.com/is/image/hermesproduct/172041Z+D3_set",
-  "https://assets.hermes.com/is/image/hermesproduct/172212Z+05_set",
-  "https://assets.hermes.com/is/image/hermesproduct/201050Z+L5_set",
-  "https://assets.hermes.com/is/image/hermesproduct/182036G+BO_set",
-  "https://assets.hermes.com/is/image/hermesproduct/079001CK89_set",
-  "https://assets.hermes.com/is/image/hermesproduct/080200CK01_set",
-  "https://assets.hermes.com/is/image/hermesproduct/064983CCI9_set",
+  "075199CK89_set", "078986CK37_set", "073442CP89_set", "048263CK8W_set",
+  "077725CKAC_set", "071319CKL3_set", "076236CKAE_set", "071966CK9R_set",
+  "063912CKAA_set", "119696B+00_set", "066302CK5P_set", "074774CK37_set",
+  "067831CK36_set", "074863CK89_set", "DT40WWNOIR_set", "120642B+00_set",
+  "119697B+00_set", "219690B+00_set", "201126Z+91_set", "172041Z+D3_set",
+  "172212Z+05_set", "201050Z+L5_set", "182036G+BO_set", "079001CK89_set",
+  "080200CK01_set", "064983CCI9_set",
 ];
 const _stage = document.getElementById("stage");
 const _horse = document.getElementById("horse");
@@ -65,7 +46,7 @@ function create_object() {
   object.className = 'object';
   object.style.left = '1000px';
   object.style.height = getRandomInt(20, 32) + 'px';
-  object.src = obstacles[getRandomInt(0, obstacles.length)];
+  object.src = 'https://assets.hermes.com/is/image/hermesproduct/' + obstacles[getRandomInt(0, obstacles.length)];
 
   _stage.appendChild(object);
   objects.push(object);
