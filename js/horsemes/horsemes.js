@@ -36,6 +36,7 @@ var highscore = 0;
 var time = 0;
 var respawn = 0;
 var timers = {};
+var last_update_ts = 0;
 var objects = [];
 var jumping = 0;
 var MIN_RESPAWN = 50;
@@ -66,6 +67,13 @@ function scroll_grass(x) {
 }
 
 function logic() {
+  var ts = + new Date();
+  var elapsed = ts - last_update_ts;
+  if (elapsed < 16) {
+    return;
+  }
+  last_update_ts = ts;
+
   if (game_state === GAME_PLAY) {
     scroll_grass(4);
 
@@ -189,7 +197,8 @@ function init_game() {
   }
 
   change_horse(HORSE_TROT);
-  timers['logic'] = window.setInterval(logic, 16);
+  timers['logic'] = window.setInterval(logic, 0);
+  last_update_ts = + new Date();
 }
 
 function reset_game() {
