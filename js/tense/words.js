@@ -2211,5 +2211,36 @@ const wordset = [
         ["쓰다", "write", "wrote", "written"]
       ]
     ]
-  }
+  },
+  {
+    title: "독립부정사",
+    template: "simple",
+    timelimit: 60,
+    test: {
+      all: 0,
+      step: 18,
+    },
+    steps: [
+      [
+        ["to tell the truth", "사실대로 말하면"],
+        ["to be frank", "솔직히 말하면"],
+        ["to begin with", "우선, 먼저"],
+        ["not to mention", "~은 말할 것도 없이"],
+        ["so to speak", "말하자면"],
+        ["to put it simply", "간단히 말하자면"],
+        ["to do justice", "공정하게 평하면"],
+        ["to make matters worse", "설상가상으로"],
+        ["to make matters better", "금상첨화로"],
+        ["사실대로 말하면", "to tell the truth"],
+        ["솔직히 말하면", "to be frank"],
+        ["우선, 먼저", "to begin with"],
+        ["~은 말할 것도 없이", "not to mention"],
+        ["말하자면", "so to speak"],
+        ["간단히 말하자면", "to put it simply"],
+        ["공정하게 평하면", "to do justice"],
+        ["설상가상으로", "to make matters worse"],
+        ["금상첨화로", "to make matters better"],
+      ],
+    ],
+  },
 ];
