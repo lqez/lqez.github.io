@@ -2346,4 +2346,22 @@ const wordset = [
       ],
     ],
   },
+  {
+    title: "원형부정사 관용구",
+    template: "simple",
+    timelimit: 60,
+    test: {
+      all: 0,
+      step: 5,
+    },
+    steps: [
+      [
+        ["그녀의 아이디어에 찬성하지 않을 수 없다.", "I cannot but agree with her idea."],
+        ["cannot (help) but + 원형부정사", "~하지 않을 수 없다"],
+        ["그 아기는 할머니와 있을 때 단지 미소짓기만 한다.", "The baby does nothing but smile when she is with her grandmother."],
+        ["do nothing but + 원형부정사", "단지 ~하기만 하다"],
+        ["do anything but + 원형부정사", "~말고는 다 하다"],
+      ],
+    ],
+  },
 ];
