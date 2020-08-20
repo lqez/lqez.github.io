@@ -2414,7 +2414,7 @@ const wordset = [
     timelimit: 60,
     test: {
       all: 0,
-      step: 11,
+      step: 14,
     },
     steps: [
       [
@@ -2441,6 +2441,13 @@ const wordset = [
         ["persuade + O + to-V", "~가 —하도록 설득하다"],
         ["permit + O + to-V", "~가 —하는 것을 허락하다"],
         ["encourage + O + to-V", "~가 —하도록 격려하다(장려하다)"],
+
+        ["be expected to-V", "~할 것으로 기대(예상)되다"],
+        ["be asked to-V", "~하도록 요청을 받다"],
+        ["be advised to-V", "~하라는 충고(조언)을 받다"],
+        ["be allowed to-V", "~하는 것을 허락받다"],
+        ["be forced to-V", "어쩔 수 없이 (억지로) ~하다"],
+        ["be told to-V", "~하라는 말을 듣다"],
       ],
     ],
   },
