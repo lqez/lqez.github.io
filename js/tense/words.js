@@ -2484,7 +2484,7 @@ const wordset = [
     timelimit: 60,
     test: {
       all: 0,
-      step: 5,
+      step: 6,
     },
     steps: [
       [
@@ -2537,6 +2537,41 @@ const wordset = [
         ["be allowed to-V", "~하는 것을 허락받다"],
         ["be forced to-V", "어쩔 수 없이 (억지로) ~하다"],
         ["be told to-V", "~하라는 말을 듣다"],
+      ],
+    ],
+  },
+  {
+    title: "자주 쓰이는 동명사 구문",
+    template: "simple",
+    timelimit: 60,
+    test: {
+      all: 0,
+      step: 10,
+    },
+    steps: [
+      [
+        ["can't help v-ing", "~하지 않을 수 없다"],
+        ["go v-ing", "~하러 가다"],
+        ["look forward to v-ing", "~할 것을 고대하다"],
+        ["be accustomed to v-ing", "~에 익숙하다"],
+        ["be used to v-ing", "~에 익숙하다"],
+        ["be busy v-ing", "~하느라 바쁘다"],
+        ["be on the point of v-ing", "막 ~하려던 참이다"],
+        ["be worth v-ing", "~할 가치가 있다"],
+        ["feel like v-ing", "~하고 싶다"],
+        ["never ~ without v-ing", "~하지 않고는 ~않는다"],
+      ],
+      [
+        ["prevent(keep/prohibit/stop) A from v-ing", "A가 ~하지 못하게 하다"],
+        ["on v-ing", "~하자마자"],
+        ["have trouble(difficulty) v-ing", "~하는 데 어려움을 겪다"],
+        ["There is no v-ing", "~하는 것은 불가능하다"],
+        ["spend + 시간(돈) + (on) v-ing", "~하느라 시간(돈)을 소비하다"],
+        ["It is no use v-ing", "~해도 소용 없다"],
+        ["It goes without saying that ~", "~은 말할 필요도 없다"],
+        ["object to v-ing", "~하는 것을 반대하다"],
+        ["What(How) about v~ing?", "~는 어때?"],
+        ["What do you say to v-ing?", "~하는 것은 어때?"],
       ],
     ],
   },
