@@ -2645,4 +2645,26 @@ const wordset = [
       ],
     ],
   },
+  {
+    title: "비인칭 독립 분사구문",
+    template: "swap",
+    timelimit: 60,
+    test: {
+      all: 0,
+      step: 9,
+    },
+    steps: [
+      [
+        ["generally speaking", "일반적으로 말하자면"],
+        ["considering ~", "~를 고려하면"],
+        ["judging from", "~로 판단하건데"],
+        ["strictly speaking", "엄밀히 말하자면"],
+        ["speaking(talking) of", "~의 얘기가 나왔으니 말인데"],
+        ["assuming(supposing) that", "~라고 가정하면"],
+        ["frankly speaking", "솔직히 말하자면"],
+        ["putting it mildly", "완곡히 말하자면"],
+        ["granted that ~", "비록 ~이라 할지라도"],
+      ],
+    ],
+  },
 ];
