@@ -48,11 +48,11 @@ function rasterize(c) {
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
   ctx.font = s + 'px sans-serif';
-  ctx.textBaseline = 'top';
+  ctx.textBaseline = 'middle';
   ctx.textAlign = 'center';
   ctx.fillStyle = 'rgb(0, 0, 0)';
   for (let i = 0; i < l; i++) {
-    ctx.fillText(c[i], s * i + parseInt(s / 2) + 1, 1);
+    ctx.fillText(c[i], s * i + parseInt(s / 2) + 1.25, parseInt(s / 2) + 1.5);
   }
 
   let res = "";
