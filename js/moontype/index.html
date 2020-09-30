@@ -1,0 +1,99 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+.emoji {
+  font-family: "AppleColorEmoji","Apple Color Emoji","Segoe UI Emoji",'Noto Color Emoji',"NotoColorEmoji","Segoe UI Symbol","EmojiSymbols",Symbola,"Android Emoji","AndroidEmoji","Arial Unicode MS","Zapf Dingbats","AppleSDGothicNeo-Regular",sans-serif;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: -3;
+}
+canvas {
+  visibility: hidden;
+}
+</style>
+</head>
+<body>
+<h1>moontype</h1>
+<p>Size</p>
+<input id="size" value="13"></input>
+<p>Type any characters and press enter</p>
+<input id="char" autofocus></input>
+<pre id="result" class="emoji"></pre>
+<canvas id="canvas"></canvas>
+</body>
+<script>
+const canvas = document.getElementById('canvas');
+const result = document.getElementById('result');
+const moonchar = ['🌑', '🌒', '🌓', '🌔', '🌕', '🌖', '🌗', '🌘'];
+const TRS = 90;
+
+document.getElementById('size').addEventListener('keydown', function (e) {
+  if (e.keyCode !== 13) return;
+  rasterize(document.getElementById('char').value);
+});
+
+document.getElementById('char').addEventListener('keydown', function (e) {
+  if (e.keyCode !== 13) return;
+  rasterize(e.target.value);
+});
+
+function rasterize(c) {
+  let s = parseInt(document.getElementById('size').value);
+  let ctx = canvas.getContext('2d');
+  let l = c.length;
+  let w = s * c.length;
+  ctx.canvas.width = w + 2;
+  ctx.canvas.height = s + 2;
+  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+  ctx.font = s + 'px sans-serif';
+  ctx.textBaseline = 'top';
+  ctx.textAlign = 'center';
+  ctx.fillStyle = 'rgb(0, 0, 0)';
+  for (let i = 0; i < l; i++) {
+    ctx.fillText(c[i], s * i + parseInt(s / 2) + 1, 1);
+  }
+
+  let res = "";
+  let pixels = ctx.getImageData(1, 1, w, s).data;
+
+  function getPixel(x, y) {
+    if (x < 0 || y < 0 || x >= w || y >= s) return 0;
+    return pixels[(y * w + x) * 4 + 3];
+  }
+
+  for (let y = 0; y < s; y++) {
+    for (let x = 0; x < w; x++) {
+      let p = getPixel(x, y);
+      let l = getPixel(x - 1, y);
+      let r = getPixel(x + 1, y);
+
+      if (p < TRS && l < TRS && r < TRS) {
+        res += moonchar[0];
+      } else if (p >= TRS) {
+        res += moonchar[4];
+      } else if (p >= 60) {
+        if (l < r) {
+          res += moonchar[2];
+        } else {
+          res += moonchar[6];
+        }
+      } else if (p >= 30) {
+        if (l < r) {
+          res += moonchar[1];
+        } else {
+          res += moonchar[7];
+        }
+      } else {
+        res += moonchar[0];
+      }
+    }
+    res += "\n";
+  }
+  result.innerHTML = res;
+}
+
+rasterize('한가위');
+</script>
+</html>
