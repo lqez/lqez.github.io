@@ -2,7 +2,7 @@ const wordset = [
   {
     title: "주니어 능률 VOCA 실력 1200제",
     template: "swap",
-    timelimit: 40,
+    timelimit: 20,
     test: {
       all: 0,
       step: 20,
