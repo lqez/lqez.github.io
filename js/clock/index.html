@@ -1,0 +1,58 @@
+<html>
+<head>
+  <title>An ordinary clock</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <style>
+  :root {
+    --a: 31.4vw;
+  }
+
+  @media (max-aspect-ratio: 3570 / 2082) {
+    :root {
+      --a: 54vh;
+    }
+  }
+
+  body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: url("background.jpg");
+    background-size: cover;
+  }
+
+  #box {
+    position: absolute;
+    left: calc(var(--a) * 0.6);
+    top: calc(var(--a) * 1.0);
+  }
+
+  #c {
+    position: absolute;
+    width: calc(var(--a) * 0.185);
+    height: calc(var(--a) * 0.185);
+    transform: translate(-50%, -50%);
+  }
+
+  #dot {
+    position: absolute;
+    width: calc(var(--a) * 0.0248);
+    height: calc(var(--a) * 0.0248);
+    transform: translate(-50%, -50%);
+  }
+  </style>
+</head>
+<body>
+<div id="box">
+  <canvas id="c"></canvas>
+  <img id="dot" src="dot.png" />
+</div>
+</body>
+<script>
+const gl = document.getElementById("c").getContext("webgl");
+gl.clearColor(0.5, 0, 0, 0.5);
+gl.clear(gl.COLOR_BUFFER_BIT);
+</script>
+</html>
