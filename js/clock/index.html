@@ -29,6 +29,13 @@
     top: calc(var(--a) * 1.0);
   }
 
+  #d {
+    position: absolute;
+    width: calc(var(--a) * 0.185);
+    height: calc(var(--a) * 0.185);
+    transform: translate(-50%, -50%);
+  }
+
   #c {
     position: absolute;
     width: calc(var(--a) * 0.185);
@@ -46,13 +53,79 @@
 </head>
 <body>
 <div id="box">
+  <div id="d"></div>
   <canvas id="c"></canvas>
   <img id="dot" src="dot.png" />
 </div>
 </body>
+<script src="three.js"></script>
+<script src="GLTFLoader.js"></script>
 <script>
-const gl = document.getElementById("c").getContext("webgl");
-gl.clearColor(0.5, 0, 0, 0.5);
-gl.clear(gl.COLOR_BUFFER_BIT);
+const d = document.getElementById("d");
+const canvas = document.getElementById("c");
+const { width, height } = canvas.getBoundingClientRect();
+
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera( 75, width / height, 0.1, 1000 );
+
+var renderer = new THREE.WebGLRenderer({
+  alpha: true,
+  antialias: true,
+  canvas: canvas,
+});
+renderer.setClearColor(0x000000, 0);
+renderer.setSize(width, height);
+
+var directionalLight = new THREE.DirectionalLight( 0xffffff, 4.0 );
+directionalLight.position.set(-10, 0, 1.0);
+directionalLight.target.position.set(0, 0, 0);
+scene.add(directionalLight);
+scene.add(directionalLight.target);
+
+var light = new THREE.AmbientLight( 0x603030 );
+scene.add( light );
+
+//var geometry = new THREE.BoxGeometry();
+//var material = new THREE.MeshPhongMaterial( { color: 0xc59e35 } );
+//var cube = new THREE.Mesh( geometry, material );
+//scene.add( cube );
+
+var loader = new THREE.GLTFLoader();
+var ready = false;
+var hand_min, hand_hour;
+loader.load(
+	'hand.glb',
+	function ( gltf ) {
+    hand_min = gltf.scene;
+    hand_hour = gltf.scene.clone();
+    hand_min.scale.x = 0.8;
+    hand_hour.scale.y = 0.8;
+		scene.add( hand_min );
+		scene.add( hand_hour );
+    ready = true;
+	},
+);
+
+camera.position.z = 2;
+
+var animate = function () {
+  requestAnimationFrame( animate );
+
+  if (ready) {
+    hand_min.rotation.z -= 0.1;
+    hand_hour.rotation.z -= 0.1 / 12;
+  }
+
+  renderer.render( scene, camera );
+};
+
+var handleResize = function () {
+  const { width, height } = d.getBoundingClientRect();
+  this.renderer.setSize(width, height);
+};
+
+window.addEventListener('resize', handleResize, false);
+
+animate();
 </script>
 </html>
