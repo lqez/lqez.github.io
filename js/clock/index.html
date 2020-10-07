@@ -10,7 +10,7 @@
 
   @media (max-aspect-ratio: 3570 / 2082) {
     :root {
-      --a: 54vh;
+      --a: 53.84vh;
     }
   }
 
@@ -75,36 +75,56 @@ var renderer = new THREE.WebGLRenderer({
 });
 renderer.setClearColor(0x000000, 0);
 renderer.setSize(width, height);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-var directionalLight = new THREE.DirectionalLight( 0xffffff, 4.0 );
-directionalLight.position.set(-10, 0, 1.0);
+var directionalLight = new THREE.DirectionalLight( 0xffffff, 14.0 );
+directionalLight.position.set(-100, 0, 4.0);
 directionalLight.target.position.set(0, 0, 0);
+directionalLight.castShadow = true;
 scene.add(directionalLight);
 scene.add(directionalLight.target);
 
-var light = new THREE.AmbientLight( 0x603030 );
+var light = new THREE.AmbientLight( 0x302020 );
 scene.add( light );
 
-//var geometry = new THREE.BoxGeometry();
-//var material = new THREE.MeshPhongMaterial( { color: 0xc59e35 } );
-//var cube = new THREE.Mesh( geometry, material );
-//scene.add( cube );
-
 var loader = new THREE.GLTFLoader();
+var go = false;
 var ready = false;
-var hand_min, hand_hour;
+var hand_min, hand_hour, hand_sec;
 loader.load(
 	'hand.glb',
 	function ( gltf ) {
     hand_min = gltf.scene;
     hand_hour = gltf.scene.clone();
-    hand_min.scale.x = 0.8;
+    hand_sec = gltf.scene.clone();
+    hand_min.scale.x = 0.9;
+    hand_min.position.z = 0.1;
     hand_hour.scale.y = 0.8;
+    hand_hour.position.z = 0.2;
+    hand_sec.scale.x = 0.3;
+    hand_sec.scale.y = 1.0;
+    hand_sec.position.z = 0.0;
 		scene.add( hand_min );
 		scene.add( hand_hour );
+		scene.add( hand_sec );
     ready = true;
+    updateHands();
 	},
 );
+
+var updateHands = function () {
+  if (ready) {
+    var date = new Date;
+    var seconds = date.getSeconds() + date.getMilliseconds() / 1000;
+    var minutes = date.getMinutes() + seconds / 60;
+    var hour = date.getHours() + minutes / 60;
+
+    hand_hour.rotation.z = -THREE.Math.degToRad(hour*30);
+    hand_min.rotation.z = -THREE.Math.degToRad(minutes*6);
+    hand_sec.rotation.z = -THREE.Math.degToRad(seconds*6);
+  }
+}
 
 camera.position.z = 2;
 
@@ -112,8 +132,7 @@ var animate = function () {
   requestAnimationFrame( animate );
 
   if (ready) {
-    hand_min.rotation.z -= 0.1;
-    hand_hour.rotation.z -= 0.1 / 12;
+    updateHands();
   }
 
   renderer.render( scene, camera );
