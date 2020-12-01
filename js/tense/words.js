@@ -493,6 +493,168 @@ const wordset = [
                     "dental",
                     "치아의"
                 ]
+            ],
+            [
+                [
+                    "delight",
+                    "기쁨 / 기쁘게 하다"
+                ],
+                [
+                    "confident",
+                    "자신 있는"
+                ],
+                [
+                    "gradually",
+                    "점차, 서서히"
+                ],
+                [
+                    "shadow",
+                    "그림자 / 그늘지게 하다"
+                ],
+                [
+                    "access",
+                    "접근, 이용 / 접근하다"
+                ],
+                [
+                    "announce",
+                    "발표하다, 알리다"
+                ],
+                [
+                    "allow",
+                    "허락하다, 인정하다"
+                ],
+                [
+                    "firm",
+                    "확고한, 단단한 / 회사"
+                ],
+                [
+                    "vary",
+                    "바꾸다, 변하다, 다르다"
+                ],
+                [
+                    "injure",
+                    "상처를 입히다, 손상시키다"
+                ],
+                [
+                    "permit",
+                    "허용하다, 허락하다"
+                ],
+                [
+                    "response",
+                    "응답, 반응"
+                ],
+                [
+                    "threat",
+                    "위협, 협박"
+                ],
+                [
+                    "electricity",
+                    "전기"
+                ],
+                [
+                    "disabled",
+                    "장애를 가진, 무능력하게 된"
+                ],
+                [
+                    "lack",
+                    "부족 / ~이 부족하다"
+                ],
+                [
+                    "signify",
+                    "의미하다, 중요하다"
+                ],
+                [
+                    "concentrate",
+                    "집중하다"
+                ],
+                [
+                    "emphasize",
+                    "강조하다"
+                ],
+                [
+                    "astronomy",
+                    "천문학"
+                ],
+                [
+                    "flood",
+                    "홍수 / 범람시키다"
+                ],
+                [
+                    "fuel",
+                    "연료 / 연료를 가하다"
+                ],
+                [
+                    "manufacture",
+                    "제조하다 / 제조업, 제품"
+                ],
+                [
+                    "movement",
+                    "움직임, 운동"
+                ],
+                [
+                    "capable",
+                    "~을 할 수 있는, 유능한"
+                ],
+                [
+                    "combine",
+                    "결합시키다, 겸비하다"
+                ],
+                [
+                    "gene",
+                    "유전자"
+                ],
+                [
+                    "increase",
+                    "증가하다 / 증가, 이자"
+                ],
+                [
+                    "victim",
+                    "희생, 희생자"
+                ],
+                [
+                    "pressure",
+                    "압력, 압박 / 압력을 가하다"
+                ],
+                [
+                    "accompany",
+                    "동반하다, 수반하다"
+                ],
+                [
+                    "frustrate",
+                    "좌절시키다"
+                ],
+                [
+                    "construct",
+                    "건설하다"
+                ],
+                [
+                    "dwindle",
+                    "점점 줄어들다, 저하되다"
+                ],
+                [
+                    "commerce",
+                    "상업, 교역"
+                ],
+                [
+                    "entertain",
+                    "즐겁게 하다"
+                ],
+                [
+                    "predict",
+                    "예언하다, 예측하다"
+                ],
+                [
+                    "apologize",
+                    "사과하다"
+                ],
+                [
+                    "sight",
+                    "시야, 광경, 시력"
+                ],
+                [
+                    "quantity",
+                    "양, 수량"
+                ]
             ]
         ],
         "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRZ5qSbFOW321zAIJ6MkcQFKMksgk9rrc-XIWVn4BGFLtHf-VTT_T35jQdDdk2pso9oq0NnFcIUGUw7/pub?gid=500660810&single=true&output=csv",
