@@ -1,0 +1,45 @@
+<html>
+<head>
+<style>
+body {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.wrap {
+  flex-direction: column;
+  display: flex;
+  height: 100vw;
+  height: 100vh;
+}
+
+#build {
+  height: 50px;
+}
+
+#result {
+  flex: 1;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <input id="build" type="button" value="Build it!" onclick="requestBuildHook()">
+  <textarea id="result"></textarea>
+</div>
+</body>
+<script>
+function requestBuildHook() {
+  const button = document.getElementById("build");
+  button.disabled = true;
+
+  const textarea = document.getElementById("result");
+  fetch("https://api.netlify.com/build_hooks/5fc781213bd97f6457278ddd", {
+    method: "POST",
+    mode: "no-cors",
+  }).then(res => {
+    textarea.value = res.status;
+  });
+}
+</script>
+</html>
