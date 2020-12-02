@@ -655,6 +655,168 @@ const wordset = [
                     "quantity",
                     "양, 수량"
                 ]
+            ],
+            [
+                [
+                    "conclude",
+                    "결론짓다, 끝내다"
+                ],
+                [
+                    "donate",
+                    "기부하다"
+                ],
+                [
+                    "personality",
+                    "개성, 성격, 특색"
+                ],
+                [
+                    "struggle",
+                    "싸우다, 노력하다 / 투쟁, 노력"
+                ],
+                [
+                    "advantage",
+                    "유리한 점, 이익"
+                ],
+                [
+                    "variety",
+                    "다양, 다양성"
+                ],
+                [
+                    "enable",
+                    "가능하게 하다"
+                ],
+                [
+                    "instruction",
+                    "지시, 제품 사용 설명서, 가르침"
+                ],
+                [
+                    "assume",
+                    "추정하다"
+                ],
+                [
+                    "attempt",
+                    "시도하다, 시도"
+                ],
+                [
+                    "incredible",
+                    "믿을 수 없는, 굉장한"
+                ],
+                [
+                    "feature",
+                    "특징, 특집 기사, 얼굴 생김새 / ~을 특징으로 하다"
+                ],
+                [
+                    "confuse",
+                    "혼동하다, 혼란시키다"
+                ],
+                [
+                    "electronic",
+                    "전자의, 전기의"
+                ],
+                [
+                    "absorb",
+                    "흡수하다, 열중시키다"
+                ],
+                [
+                    "indicate",
+                    "가리키다, 나타내다"
+                ],
+                [
+                    "analyze",
+                    "분석하다"
+                ],
+                [
+                    "stock",
+                    "재고품, 저장, 가축 / 저장하다, 들여놓다"
+                ],
+                [
+                    "resident",
+                    "거주자"
+                ],
+                [
+                    "labor",
+                    "노동, 산고 / 노동하다"
+                ],
+                [
+                    "remark",
+                    "의견을 말하다, ~에 주목하다 / 의견, 주목"
+                ],
+                [
+                    "moral",
+                    "도덕적인"
+                ],
+                [
+                    "embarrassed",
+                    "당황한"
+                ],
+                [
+                    "claim",
+                    "주장하다 / 요구, 주장"
+                ],
+                [
+                    "reasonable",
+                    "논리적인, 분별력이 있는"
+                ],
+                [
+                    "interrupt",
+                    "방해하다, 중단하다"
+                ],
+                [
+                    "discount",
+                    "할인 / 할인하다"
+                ],
+                [
+                    "creature",
+                    "생물, 피조물"
+                ],
+                [
+                    "heal",
+                    "치료하다, 낫게 하다"
+                ],
+                [
+                    "establish",
+                    "설립하다, 확립하다, 제정하다"
+                ],
+                [
+                    "revolution",
+                    "혁명, 갑작스런 변화, 회전"
+                ],
+                [
+                    "criticize",
+                    "비난하다"
+                ],
+                [
+                    "convince",
+                    "확신시키다, 납득시키다"
+                ],
+                [
+                    "efficient",
+                    "효율적인, 유능한"
+                ],
+                [
+                    "stranger",
+                    "낯선 사람, 문외한"
+                ],
+                [
+                    "tide",
+                    "조수, 흐름"
+                ],
+                [
+                    "obtain",
+                    "획득하다, 통용하다, 행해지다"
+                ],
+                [
+                    "assist",
+                    "도움을 주다"
+                ],
+                [
+                    "disaster",
+                    "재앙, 재난, 재해"
+                ],
+                [
+                    "terrific",
+                    "굉장한, 훌륭한"
+                ]
             ]
         ],
         "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRZ5qSbFOW321zAIJ6MkcQFKMksgk9rrc-XIWVn4BGFLtHf-VTT_T35jQdDdk2pso9oq0NnFcIUGUw7/pub?gid=500660810&single=true&output=csv",
