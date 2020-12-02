@@ -1,4 +1,4 @@
 #!/bin/bash
 cd js/tense
-pip install requests
-python parse.py
+pip3 install requests
+python3 parse.py
