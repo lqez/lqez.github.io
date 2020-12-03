@@ -1,0 +1,83 @@
+<html>
+<head>
+<style>
+#src {
+  width: 100%;
+  height: 200px;
+}
+input[type=button] {
+  width: 100%;
+  height: 40px;
+}
+#dst {
+  background: #eee;
+}
+
+#dst td {
+	background: #ffffff;
+}
+</style>
+</head>
+<body>
+<textarea id="src"></textarea>
+<input type="button" value="convert" onclick="convert()">
+<div id="dst"></div>
+</body>
+<script>
+const src = document.getElementById("src");
+const dst = document.getElementById("dst");
+const eng_re = /\w{2,}[^\.]/g;
+const kor_re = /[가-힣()~]{2,}[^\n\r]*/g;
+const kor_replace = /[a-z]+./gi;
+
+function convert() {
+  let words_eng = src.value.match(eng_re);
+  if (!!words_eng) {
+    words_eng = words_eng.map(x => x.trim().toLowerCase());
+  }
+
+  let words_kor = src.value.match(kor_re);
+  if (!!words_kor) {
+    words_kor = words_kor.map(x => x.replace(kor_replace, '/'));
+    words_kor = words_kor.map(x => x.replace('"', ''));
+  }
+
+  if (!!words_eng && !!words_kor) {
+    if (words_eng.length != words_kor.length) {
+      dst.innerHTML = 'Word counts are not matched.';
+    } else {
+      let res = '<table>';
+      for (let i = 0; i < words_eng.length; i++) {
+        res += `<tr><td>${words_eng[i]}</td><td>${words_kor[i]}</td></tr>`;
+      }
+      res += '</table>';
+      dst.innerHTML = res;
+			selectElementContents(dst);
+    }
+  } else {
+      dst.innerHTML = 'Cannot parse the input.';
+  }
+}
+
+function selectElementContents(el) {
+  var body = document.body, range, sel;
+  if (document.createRange && window.getSelection) {
+    range = document.createRange();
+    sel = window.getSelection();
+    sel.removeAllRanges();
+    try {
+      range.selectNodeContents(el);
+      sel.addRange(range);
+    } catch (e) {
+      range.selectNode(el);
+      sel.addRange(range);
+    }
+  } else if (body.createTextRange) {
+    range = body.createTextRange();
+    range.moveToElementText(el);
+    range.select();
+  }
+	document.execCommand("copy");
+}
+</script>
+</html>
