@@ -26,7 +26,7 @@ input[type=button] {
 <script>
 const src = document.getElementById("src");
 const dst = document.getElementById("dst");
-const eng_re = /\w{2,}[^\.]/g;
+const eng_re = /\w{2,}[^"\.]/g;
 const kor_re = /[가-힣()~]{2,}[^\n\r]*/g;
 const kor_replace = /[a-z]+./gi;
 
@@ -43,16 +43,18 @@ function convert() {
   }
 
   if (!!words_eng && !!words_kor) {
-    if (words_eng.length != words_kor.length) {
-      dst.innerHTML = 'Word counts are not matched.';
-    } else {
-      let res = '<table>';
-      for (let i = 0; i < words_eng.length; i++) {
-        res += `<tr><td>${words_eng[i]}</td><td>${words_kor[i]}</td></tr>`;
-      }
-      res += '</table>';
+    let res = '<table>';
+    for (let i = 0; i < words_eng.length; i++) {
+      res += `<tr><td>${words_eng[i]}</td><td>${words_kor[i]}</td></tr>`;
+    }
+    res += '</table>';
+
+    if (words_eng.length == words_kor.length) {
       dst.innerHTML = res;
-			selectElementContents(dst);
+      selectElementContents(dst);
+    } else {
+      res += `<p>Word counts are not matched.(${words_eng.length} / ${words_kor.length})</p>`;
+      dst.innerHTML = res;
     }
   } else {
       dst.innerHTML = 'Cannot parse the input.';
