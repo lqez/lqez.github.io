@@ -95,6 +95,10 @@ button {
   transition: all 0.25s;
 }
 
+.t2.hint td::first-letter {
+  color: white;
+}
+
 .t3 {
   display: none;
   margin: 20px 0;
@@ -145,7 +149,6 @@ button {
 
 .countdown-anim {
   stroke: #333 !important;
-  animation: countdown 20s linear 1 forwards;
 }
 
 @keyframes countdown {
@@ -211,7 +214,7 @@ button.active {
     <div class="timer">
       <div id="remainTime" ref="remainTime">{{ remainTime }}</div>
       <svg>
-        <circle ref="circle" class="countdown-anim" r="18" cx="20" cy="20"></circle>
+        <circle ref="circle" r="18" cx="20" cy="20"></circle>
       </svg>
     </div>
     <h2>Problem {{ currNum + 1 }} / {{ totalNum }}</h2>
@@ -238,7 +241,7 @@ button.active {
     </div>
     <div v-else-if="template === 'simple'">
       <div class="t1" v-on:click="show">{{ words[currNum][0] }}</div>
-      <div class="t2" v-on:click="show" v-bind:class="{show: isShow}">
+      <div class="t2" v-on:click="show" v-bind:class="{hint: isHintShown, show: isShow}">
         <table>
           <tbody>
             <tr>
@@ -251,7 +254,7 @@ button.active {
     <div v-else-if="template === 'swap'">
       <div v-if="(random % 2) === 0">
         <div class="t1" v-on:click="show">{{ words[currNum][0] }}</div>
-        <div class="t2" v-on:click="show" v-bind:class="{show: isShow}">
+        <div class="t2" v-on:click="show" v-bind:class="{hint: isHintShown, show: isShow}">
           <table>
             <tbody>
               <tr>
@@ -264,7 +267,7 @@ button.active {
       <div v-else>
         <div class="t1" v-if="isShow" v-on:click="show">{{ words[currNum][1] }}</div>
         <div class="t1" v-else v-on:click="show">{{ pickOne(words[currNum][1]) }}</div>
-        <div class="t2" v-on:click="show" v-bind:class="{show: isShow}">
+        <div class="t2" v-on:click="show" v-bind:class="{hint: isHintShown, show: isShow}">
           <table>
             <tbody>
               <tr>
@@ -276,7 +279,7 @@ button.active {
       </div>
     </div>
     <div class="t3" v-bind:class="{show: !isShow}">
-      <button v-on:click="hint()">Hint</button>
+      <button v-on:click="showHint()" :disabled="!isHintAvailable">Hint ({{hint}})</button>
     </div>
     <div class="t3" v-bind:class="{show: isShow}">
       <button v-on:click="next(1)">O</button>
@@ -299,6 +302,8 @@ function shuffle(a) {
   return a;
 }
 
+const HINT_PER_GAME = 3
+
 var app = new Vue({
   el: '#app',
   data: {
@@ -315,10 +320,12 @@ var app = new Vue({
     currNum: 0,
     totalNum: 0,
     score: 0,
-    hint: 0,
+    hint: HINT_PER_GAME,
     remainTime: 0,
     timer: null,
     isShow: false,
+    isHintShown: false,
+    isHintAvailable: true,
 
     random: 0,
     random2: 0,
@@ -333,8 +340,9 @@ var app = new Vue({
       this.currNum = -1
       this.totalNum = 0
       this.score = 0
-      this.hint = 0
+      this.hint = HINT_PER_GAME 
       this.isShow = false
+      this.isHintShown = false
     },
 
     setSet: function(set) {
@@ -369,6 +377,7 @@ var app = new Vue({
 
     show: function() {
       this.isShow = true
+      this.isHintShown = false
       this.stopTimer();
     },
 
@@ -404,36 +413,37 @@ var app = new Vue({
     },
 
     tick: function() {
-      this.remainTime -= 1;
+      this.remainTime -= 1
       if (this.remainTime === 0) {
-        this.show();
+        this.show()
       } else if (this.remainTime <= 5) {
         if (this.$refs.remainTime) {
-          this.$refs.remainTime.classList.add('hurryup');
+          this.$refs.remainTime.classList.add('hurryup')
         }
       }
     },
 
     startTimer: function() {
-      this.timer = setInterval(this.tick.bind(this), 1000);
+      this.timer = setInterval(this.tick.bind(this), 1000)
       if (this.$refs.circle) {
-        this.$refs.circle.classList.add('countdown-anim');
-        this.$refs.circle.style.animationDuration = this.timelimit;
-        this.$refs.circle.style.webkitAnimationPlayState = "running";
+        this.$refs.circle.classList.add('countdown-anim')
+        this.$refs.circle.style.animation = `countdown ${this.timelimit}s linear 1 forwards`
+        this.$refs.circle.style.webkitAnimationPlayState = "running"
       }
       if (this.$refs.remainTime) {
-        this.$refs.remainTime.classList.remove('hurryup');
+        this.$refs.remainTime.classList.remove('hurryup')
       }
     },
 
     stopTimer: function() {
       if (this.timer !== null) {
-        clearInterval(this.timer);
-        this.timer = null;
+        clearInterval(this.timer)
+        this.timer = null
       }
       if (this.$refs.circle) {
-        this.$refs.circle.classList.remove('countdown-anim');
-        this.$refs.circle.style.webkitAnimationPlayState = "paused";
+        this.$refs.circle.classList.remove('countdown-anim')
+        this.$refs.circle.style.animation = ''
+        this.$refs.circle.style.webkitAnimationPlayState = "paused"
       }
     },
 
@@ -442,8 +452,10 @@ var app = new Vue({
 
       this.currNum += 1
       this.isShow = false
+      this.isHintShown = false
+      this.isHintAvailable = (this.hint > 0)
       this.remainTime = this.timelimit;
-      this.startTimer();
+      this.timer = setTimeout(this.startTimer.bind(this), 100)
       this.random = Math.floor(Math.random() * 100);
       this.random2 = Math.floor(Math.random() * 100);
 
@@ -452,7 +464,10 @@ var app = new Vue({
       }
     },
 
-    hint: function() {
+    showHint: function() {
+      this.isHintShown = true
+      this.isHintAvailable = false
+      this.hint -= 1
     },
   }
 })
