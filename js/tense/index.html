@@ -307,6 +307,8 @@ function shuffle(a) {
 
 function getVoices(locale) {
   let voices = synth.getVoices()
+  console.log(voices)
+  
   selectedVoices = []
   voices.forEach(voice => {
     if (voice['lang'] == locale) {
@@ -314,7 +316,7 @@ function getVoices(locale) {
     }
   })
 
-  return voices
+  return selectedVoices
 }
 
 let voices = getVoices('en-US')
