@@ -477,7 +477,7 @@ var app = new Vue({
     speech: function(word) {
       var utterThis = new SpeechSynthesisUtterance(word)
       utterThis.voice = voices[0]
-      utterThis.lang = 'en-us'
+      utterThis.lang = 'en-US'
       synth.speak(utterThis)
     },
   }
