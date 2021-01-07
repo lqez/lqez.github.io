@@ -295,16 +295,29 @@ button.active {
 </div>
 </body>
 <script>
+var synth = window.speechSynthesis;
+
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    [a[i], a[j]] = [a[j], a[i]]
+    let j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
   }
-  return a
+  return a;
 }
 
-var synth = window.speechSynthesis
-var voices = synth.getVoices()
+function getVoices(locale) {
+  let voices = synth.getVoices()
+  selectedVoices = []
+  voices.forEach(voice => {
+    if (voice['lang'] == locale) {
+      selectedVoices.push(voice)
+    }
+  })
+
+  return voices
+}
+
+let voices = getVoices('en-US')
 console.log(voices)
 
 const HINT_PER_GAME = 3
