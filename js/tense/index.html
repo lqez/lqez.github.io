@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
 <head>
 <meta name="apple-mobile-web-app-title" content="Tense test">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -284,7 +284,7 @@ button.active {
     <div class="t3" v-bind:class="{show: isShow}">
       <button v-on:click="next(1)">O</button>
       <button v-on:click="next(0)">X</button>
-      <button v-on:click="speech(words[currNum][0])">▶</button>
+      <button v-on:click="speech(getEnglishWord(words[currNum]))">▶</button>
     </div>
   </div>
   <div v-else-if="mode === 'end'">
@@ -475,10 +475,26 @@ var app = new Vue({
     },
 
     speech: function(word) {
+      console.log(word)
+
       var utterThis = new SpeechSynthesisUtterance(word)
       utterThis.voice = voices[0]
       utterThis.lang = 'en-US'
       synth.speak(utterThis)
+    },
+
+    getEnglishWord: function(words) {
+      let m = 0
+      let w = ''
+
+      words.forEach(word => {
+        const n = (word.match(/[A-Za-z]/g) || []).length
+        if (n > m) {
+          w = word
+          m = n
+        }
+      })
+      return w
     },
   }
 })
