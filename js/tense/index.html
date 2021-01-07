@@ -305,23 +305,6 @@ function shuffle(a) {
   return a;
 }
 
-function getVoices(locale) {
-  let voices = synth.getVoices()
-  console.log(voices)
-  
-  selectedVoices = []
-  voices.forEach(voice => {
-    if (voice['lang'] == locale) {
-      selectedVoices.push(voice)
-    }
-  })
-
-  return selectedVoices
-}
-
-let voices = getVoices('en-US')
-console.log(voices)
-
 const HINT_PER_GAME = 3
 
 var app = new Vue({
@@ -494,7 +477,6 @@ var app = new Vue({
       console.log(word)
 
       var utterThis = new SpeechSynthesisUtterance(word)
-      utterThis.voice = voices[0]
       utterThis.lang = 'en-US'
       synth.speak(utterThis)
     },
