@@ -284,6 +284,7 @@ button.active {
     <div class="t3" v-bind:class="{show: isShow}">
       <button v-on:click="next(1)">O</button>
       <button v-on:click="next(0)">X</button>
+      <button v-on:click="speech(words[currNum][0])">▶</button>
     </div>
   </div>
   <div v-else-if="mode === 'end'">
@@ -301,6 +302,9 @@ function shuffle(a) {
   }
   return a;
 }
+
+var synth = window.speechSynthesis;
+var voices = synth.getVoices();
 
 const HINT_PER_GAME = 3
 
@@ -468,6 +472,13 @@ var app = new Vue({
       this.isHintShown = true
       this.isHintAvailable = false
       this.hint -= 1
+    },
+
+    speech: function(word) {
+      var utterThis = new SpeechSynthesisUtterance(word)
+      utterThis.voice = voices[0]
+      utterThis.lang = 'en-us'
+      synth.speak(utterThis)
     },
   }
 })
