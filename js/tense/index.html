@@ -297,14 +297,15 @@ button.active {
 <script>
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
+    const j = Math.floor(Math.random() * (i + 1))
+    [a[i], a[j]] = [a[j], a[i]]
   }
-  return a;
+  return a
 }
 
-var synth = window.speechSynthesis;
-var voices = synth.getVoices();
+var synth = window.speechSynthesis
+var voices = synth.getVoices()
+console.log(voices)
 
 const HINT_PER_GAME = 3
 
