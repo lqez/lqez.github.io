@@ -457,13 +457,15 @@ var app = new Vue({
       this.isShow = false
       this.isHintShown = false
       this.isHintAvailable = (this.hint > 0)
-      this.remainTime = this.timelimit;
-      this.timer = setTimeout(this.startTimer.bind(this), 100)
-      this.random = Math.floor(Math.random() * 100);
-      this.random2 = Math.floor(Math.random() * 100);
+      this.remainTime = this.timelimit
+      this.$nextTick(() => {
+        this.startTimer()
+      })
+      this.random = Math.floor(Math.random() * 100)
+      this.random2 = Math.floor(Math.random() * 100)
 
       if (this.currNum >= this.words.length) {
-        this.endTest();
+        this.endTest()
       }
     },
 
