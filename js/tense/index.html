@@ -166,7 +166,7 @@ button.big {
 
 button.small {
   min-width: 2vw;
-  font-size: 0.5em;
+  font-size: 0.75em;
 }
 
 button.active {
@@ -204,7 +204,14 @@ button.active {
     <h1>Select a step</h1>
     <div class="menu">
       <button class="big" v-if="set.test.all > 0" v-on:click="setStep(0)" v-bind:class="getStepClass(0)">All</button>
-      <button v-for="(item, idx) in set.steps" v-bind:class="getStepClass(idx + 1)" v-on:click="setStep(idx + 1)">{{ idx + 1 }}</button>
+      <button v-for="(item, idx) in set.steps" v-bind:class="getStepClass(idx + 1)" v-on:click="setStep(idx + 1)">
+        <div v-if="set.steps_divider > 1">
+          <b>{{ Math.floor(idx / (set.steps_divider || 1)) + 1 }}</b> - {{ idx % set.steps_divider + 1 }}
+        </div>
+        <div v-else>
+          {{ idx + 1 }}
+        </div>
+      </button>
     </div>
     <hr>
     <button class="small" v-on:click="setMode('set')">Select new set</button>

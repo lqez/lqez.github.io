@@ -2,14 +2,15 @@
   {
     "title": "워드마스터 수능 2000제",
     "template": "swap",
-    "timelimit": 30,
+    "timelimit": 40,
     "test": {
       "all": 0,
-      "step": 40
+      "step": 20
     },
     "steps": [],
     "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRZ5qSbFOW321zAIJ6MkcQFKMksgk9rrc-XIWVn4BGFLtHf-VTT_T35jQdDdk2pso9oq0NnFcIUGUw7/pub?gid=500660810&single=true&output=csv",
-    "steps_split": 40,
+    "steps_split": 20,
+    "steps_divider": 2,
     "skip_lines": 1
   },
   {
