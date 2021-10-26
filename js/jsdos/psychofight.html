@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <title>Psycho Fight</title>
+  <script src="https://js-dos.com/6.22/current/js-dos.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .wrapper {
+      width: 100vw;
+      height: 90vh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    canvas {
+      width: 800px;
+      height: 540px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <canvas id="jsdos"></canvas>
+    <p>Ran by <a href="https://js-dos.com/">https://js-dos.com/</a></p>
+  </div>
+  <script>
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    Dos(document.getElementById("jsdos"), {
+        wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js",
+        cycles: 20000,
+        autolock: false,
+    }).ready(function (fs, main) {
+      fs.extract("./psychofight.zip").then(function () {
+        main(["-c", "R2.EXE"]).then(function (ci) {
+            window.ci = ci;
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
