@@ -41,7 +41,7 @@
     <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2020-03-03T00:00:00+09:00">
-                Tue 03 March 2020
+                2020-03-03
         </abbr>
 
 </footer><!-- /.post-info -->      <p><img alt="Plus mark is used for clipping indicator in Apple Keynote" src="./images/2020-03/keynote-clipping.png" title="애플 키노트의 선택 핸들과 함께 표시된 클리핑 표시자"></p>
@@ -66,20 +66,21 @@
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetHeight"><code>offsetHeight</code></a>: clientHeight에 border, 가로 스크롤바가 있는 경우 그 높이를 포함한 값.</li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight"><code>scrollHeight</code></a>: padding을 포함한 콘텐츠의 실제 높이 값. 충분한 공간이 있는 경우에는 clientHeight와 같습니다.</li>
 </ol>
-<p>CodePen에서 직접 확인해보기: <a href="https://codepen.io/lqez/pen/qBdVqKB">https://codepen.io/lqez/pen/qBdVqKB</a>
+<p>CodePen에서 직접 확인해보기: <a href="https://codepen.io/lqez/pen/qBdVqKB">https://codepen.io/lqez/pen/qBdVqKB</a></p>
 <p class="codepen" data-height="405" data-theme-id="light" data-default-tab="result" data-user="lqez" data-slug-hash="qBdVqKB" style="height: 405px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Multiple height values">
   <span>See the Pen <a href="https://codepen.io/lqez/pen/qBdVqKB">
   Multiple height values</a> by Hyunwoo Park (<a href="https://codepen.io/lqez">@lqez</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script></p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
 <h4 id="check-overflow-on-resizing">Check overflow on resizing</h4>
 <p>Veryslide는 편리한 코딩을 위해 개체의 상태(state)가 변경될 때, 자동으로 <code>on_&lt;state name&gt;</code> 이름을 가진 함수가 호출되는 기능이 있습니다. 이를 이용해 개체의 <code>height</code> 값이 변경될 때, 자동으로 호출된 <code>on_height</code>에서 높이 정보를 읽어 문자열이 표시될 공간보다 문자열이 길다면 클리핑 표시자를 표시하는 방식으로 구현해보았습니다.</p>
 <p>하지만 이 구현에는 문제가 있었습니다. 문자열이 잘리지 않고 완전히 표시되는 것을 따져보기 위해서는 문자열을 담고 있는 개체의 크기 뿐만 아니라, 문자열의 크기, 굵기, 서체, 행간 등 여러 요소가 관여하는데, 이에 대응하는 상태의 값이 변경될 때를 고려하지 않았기 때문입니다.</p>
 <h4 id="resizeobserver">ResizeObserver</h4>
 <p>이 문제를 해결하기 위해서는 개체의 모든 상태가 변경될 때마다 크기를 검사해 클리핑 여부를 따져봐야 합니다. 하지만 특정 요소가 달라져도 매번 크기가 달라지는 것은 아니기 때문에 비효율적이라 생각해, <a href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver"><code>ResizeObserver</code></a>를 도입하였습니다.</p>
 <p>ResizeObserver는 지정한 개체의 크기가 달라지는 경우에 지정한 함수를 실행하는 관찰자입니다. 비교적 최신의 크롬, 파이어폭스, 엣지에서는 기본으로 지원하지만, 2020년 3월 기준으로 <a href="https://caniuse.com/#feat=resizeobserver">Can I use…</a> 사이트에 따르면 71.08% 정도의 사용자만이 이 기능을 문제 없이 사용할 수 있는 상태입니다.</p>
-<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">resizeObserver</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ResizeObserver</span><span class="p">(</span><span class="nx">entries</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">resizeObserver</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">ResizeObserver</span><span class="p">(</span><span class="nx">entries</span> <span class="p">=&gt;</span> <span class="p">{</span>
     <span class="c1">// 달라진 개체의 정보를 담고 있는 ResizeObserverEntry 목록이 entries로 넘어옵니다.</span>
 <span class="p">});</span>
 
@@ -87,18 +88,16 @@
 <span class="nx">resizeObserver</span><span class="p">.</span><span class="nx">observer</span><span class="p">(</span><span class="nx">another_element</span><span class="p">);</span> <span class="c1">// 하나의 관찰자가 여러 개체를 관찰합니다.</span>
 
 <span class="nx">resizeObserver</span><span class="p">.</span><span class="nx">unobserve</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>        <span class="c1">// 더 이상 element를 관찰하지 않습니다.</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>관찰자 생성시에 콜백 함수를 지정하는데, 해당 함수는 관찰하던 개체들 중 크기가 변경되면 <a href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverEntry">ResizeObserverEntry</a>의 목록을 인자로 받습니다. 이를 이용해 달라진 개체가 어떤 개체이고, 어떤 크기로 달라졌는지 확인할 수 있습니다.</p>
 <p>Veryslide는 문자열을 담고 있는 <code>textNode</code>와, <code>textNode</code>를 포함하고 있는 <code>clipNode</code>를 ResizeObserver를 통해 관찰하고, 변화가 있는 경우에 클리핑 여부를 확인해 동작하도록 했습니다. (<a href="https://github.com/zerobased-co/veryslide/blob/8fcd9d0e78873d9976a527164a31f353ef6932a5/src/components/objects/TextBox.js#L55-L58">TextBox.js</a>)</p>
-<h6>TextBox.js</h6>
-<div class="highlight"><pre><span></span><span class="c1">// Set observers for overflow check</span>
-<span class="k">this</span><span class="p">.</span><span class="nx">observer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ResizeObserver</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">check_overflow</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+<h6 id="textboxjs">TextBox.js</h6>
+<div class="highlight"><pre><span></span><code><span class="c1">// Set observers for overflow check</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">observer</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">ResizeObserver</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">check_overflow</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
 <span class="k">this</span><span class="p">.</span><span class="nx">observer</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">textNode</span><span class="p">);</span>
 <span class="k">this</span><span class="p">.</span><span class="nx">observer</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">clipNode</span><span class="p">);</span>
-</pre></div>
-
+</code></pre></div>
 
 <h5 id="polyfill">Polyfill</h5>
 <p><a href="https://www.npmjs.com/package/resize-observer-polyfill">resize-observer-polyfill</a>을 이용하면, Internet Explorer 9을 포함한 대부분의 미지원 브라우저에서도 같은 방법으로 ResizeObserver를 사용할 수 있습니다. 이 폴리필은 기본적으로 <code>window.resize</code> 이벤트를 구독하여 지정된 개체의 크기 변경에 반응하도록 되어 있으며, 추가로 <code>transitionend</code> 이벤트를 구독하여 CSS 트랜지션 등으로 인한 크기 변경에 반응합니다. 뿐만 아니라, <code>MutationObserver</code> 또는 <code>DOMSubtreeModified</code> 이벤트를 이용해 개체 내부에 변경이 있는 경우도 대응합니다.</p>

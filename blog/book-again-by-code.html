@@ -41,7 +41,7 @@
     <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-08-13T00:00:00+09:00">
-                Mon 13 August 2018
+                2018-08-13
         </abbr>
 
 </footer><!-- /.post-info -->      <h4 id="pycon-korea">PyCon Korea</h4>
@@ -71,7 +71,7 @@
 <li><a href="https://www.w3.org/TR/css3-page/">CSS Paged Media Module Level 3</a></li>
 </ul>
 <p>프로그램북을 A5 크기로 제작할 예정이므로, 다음과 같이 기본 레이아웃을 지정했다. CSS로 도련이나 재단선 지정과 출력을 할 수 있으므로, 전문 제작 프로그램에서 제공하는 방식 그대로 페이지를 설정할 수 있다.</p>
-<div class="highlight"><pre><span></span><span class="p">@</span><span class="k">page</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">page</span> <span class="p">{</span>
   <span class="nt">size</span><span class="o">:</span> <span class="nt">148mm</span> <span class="nt">210mm</span><span class="o">;</span>  <span class="c">/* A5 */</span>
   <span class="nt">margin</span><span class="o">:</span> <span class="nt">56pt</span> <span class="nt">50pt</span><span class="o">;</span>  <span class="c">/* 기본 여백 */</span>
   <span class="nt">marks</span><span class="o">:</span> <span class="nt">crop</span><span class="o">;</span>        <span class="c">/* 재단선 출력 */</span>
@@ -87,8 +87,7 @@
 <span class="p">@</span><span class="k">page</span><span class="p">:</span><span class="nd">left</span> <span class="p">{</span>
   <span class="nt">margin</span><span class="o">:</span> <span class="nt">56pt</span> <span class="nt">50pt</span> <span class="nt">56pt</span> <span class="nt">46pt</span><span class="o">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>일반적으로 사용하는 크롬과 같은 웹 브라우저에서 Paged Media CSS를 지원한다면, 마치 인쇄 모드에서 출력되는 것과 같이 잘 표현될 것으로 기대했는데, 전혀 그렇지 않았다. 스타일은 잘 표현되지만 레이아웃은 전혀 반영되지 않았다. 이 상태로도 열심히 수정하면 적당한 수준의 결과물을 얻을 수는 있겠지만, 괜히 <a href="https://ko.wikipedia.org/wiki/EPUB">EPUB</a> 표준이나 뷰어가 별도로 존재하는 것이 아니었다. HTML/CSS를 PDF로 변환하는 전용 컨버터를 이용해서 변환해야 책 같은 모습을 얻을 수 있다.</p>
 <p><img alt="Printing on Chrome" src="./images/2018-08/chrome-print.jpg"></p>
@@ -100,14 +99,14 @@
 <p><img alt="Usage page of DocRaptor" src="./images/2018-08/docraptor-usage.png"></p>
 <h4 id="build-with-api">Build with API</h4>
 <p><a href="https://docraptor.com/documentation/api">DocRaptor API</a>를 통해 빌드 시스템을 구축하는데 사용할 수 있다. 온라인에서 영수증을 발행하거나 보고서를 출력해서 첨부하여 보낼 때 사용할 수 있다. 단순한 HTTP Post 요청이라 직접 만들어도 되지만, 편리한 사용을 위해 언어별 라이브러리도 제공한다. Python용 라이브러리인 <a href="https://github.com/docraptor/docraptor-python">docraptor-python</a>도 제공하고 있어, 아래와 같이 호출하고 결과를 파일로 저장하면 된다.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">docraptor</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">docraptor</span>
 
 <span class="n">docraptor</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="s2">&quot;API_KEY_HERE&quot;</span>
 <span class="n">doc_api</span> <span class="o">=</span> <span class="n">docraptor</span><span class="o">.</span><span class="n">DocApi</span><span class="p">()</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">doc_api</span><span class="o">.</span><span class="n">create_doc</span><span class="p">({</span>
     <span class="c1"># 테스트 여부</span>
-    <span class="s2">&quot;test&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s2">&quot;test&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
 
     <span class="c1"># 변환할 내용</span>
     <span class="s2">&quot;document_content&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;html&gt;&lt;body&gt;Welcome to PyCon Korea&lt;/body&gt;&lt;/html&gt;&quot;</span><span class="p">,</span>
@@ -120,22 +119,20 @@
     <span class="c1"># 파일 형식</span>
     <span class="s2">&quot;document_type&quot;</span><span class="p">:</span> <span class="s2">&quot;pdf&quot;</span><span class="p">,</span>
 <span class="p">})</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>로컬에서 변환 결과를 확인하기 위해 테스트로 빌드할 경우에는 Prince를 사용해서 빨리 결과를 확인하고, 최종본을 만들 때 DocRaptor를 사용하는 식으로 작업하여 시간을 절약할 수 있었다. 사용한 글꼴의 문제 등으로 결과가 다를 수 있는데, DocRaptor에서 제공하는 요청별 로그 페이지를 통해 문제를 해결하는데 도움이 되었다.</p>
 <p><img alt="Log of DocRaptor" src="./images/2018-08/docraptor-log.png"></p>
-<div class="highlight"><pre><span></span>...
-Sat Aug 11 01:35:44 2018: loading font: https://lqez.github.io/pyconkr-2018-booklet/fonts/NotoSans-DemiLight.otf
-Sat Aug 11 01:35:44 2018: used font: LiHei Pro, Medium
-Sat Aug 11 01:35:44 2018: loading font: https://fonts.gstatic.com/s/robotomono/v5/L0x5DF4xlVMF-BfR8bXMIjhLq3o.ttf
-Sat Aug 11 01:35:44 2018: used font: Roboto Mono, Regular
-Sat Aug 11 01:35:44 2018: Resolving cross-references...
-Sat Aug 11 01:35:45 2018: stats: total_page_count: 56
-Sat Aug 11 01:35:45 2018: finished: success
-Sat Aug 11 01:35:45 2018: ---- end
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">...</span>
+<span class="n">Sat</span> <span class="n">Aug</span> <span class="mi">11</span> <span class="mi">01</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">44</span> <span class="mi">2018</span><span class="p">:</span> <span class="n">loading</span> <span class="n">font</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">lqez</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">pyconkr</span><span class="o">-</span><span class="mi">2018</span><span class="o">-</span><span class="n">booklet</span><span class="o">/</span><span class="n">fonts</span><span class="o">/</span><span class="n">NotoSans</span><span class="o">-</span><span class="n">DemiLight</span><span class="o">.</span><span class="n">otf</span>
+<span class="n">Sat</span> <span class="n">Aug</span> <span class="mi">11</span> <span class="mi">01</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">44</span> <span class="mi">2018</span><span class="p">:</span> <span class="n">used</span> <span class="n">font</span><span class="p">:</span> <span class="n">LiHei</span> <span class="n">Pro</span><span class="p">,</span> <span class="n">Medium</span>
+<span class="n">Sat</span> <span class="n">Aug</span> <span class="mi">11</span> <span class="mi">01</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">44</span> <span class="mi">2018</span><span class="p">:</span> <span class="n">loading</span> <span class="n">font</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">fonts</span><span class="o">.</span><span class="n">gstatic</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">s</span><span class="o">/</span><span class="n">robotomono</span><span class="o">/</span><span class="n">v5</span><span class="o">/</span><span class="n">L0x5DF4xlVMF</span><span class="o">-</span><span class="n">BfR8bXMIjhLq3o</span><span class="o">.</span><span class="n">ttf</span>
+<span class="n">Sat</span> <span class="n">Aug</span> <span class="mi">11</span> <span class="mi">01</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">44</span> <span class="mi">2018</span><span class="p">:</span> <span class="n">used</span> <span class="n">font</span><span class="p">:</span> <span class="n">Roboto</span> <span class="n">Mono</span><span class="p">,</span> <span class="n">Regular</span>
+<span class="n">Sat</span> <span class="n">Aug</span> <span class="mi">11</span> <span class="mi">01</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">44</span> <span class="mi">2018</span><span class="p">:</span> <span class="n">Resolving</span> <span class="n">cross</span><span class="o">-</span><span class="n">references</span><span class="o">...</span>
+<span class="n">Sat</span> <span class="n">Aug</span> <span class="mi">11</span> <span class="mi">01</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">45</span> <span class="mi">2018</span><span class="p">:</span> <span class="n">stats</span><span class="p">:</span> <span class="n">total_page_count</span><span class="p">:</span> <span class="mi">56</span>
+<span class="n">Sat</span> <span class="n">Aug</span> <span class="mi">11</span> <span class="mi">01</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">45</span> <span class="mi">2018</span><span class="p">:</span> <span class="n">finished</span><span class="p">:</span> <span class="n">success</span>
+<span class="n">Sat</span> <span class="n">Aug</span> <span class="mi">11</span> <span class="mi">01</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">45</span> <span class="mi">2018</span><span class="p">:</span> <span class="o">----</span> <span class="n">end</span>
+</code></pre></div>
 
 <h4 id="finalize">Finalize</h4>
 <p>원래는 파이콘 한국 홈페이지의 데이터를 <a href="https://scrapy.org/">Scrapy</a>와 같은 웹 페이지 크롤링 도구로 읽어 사용하려고 했으나, 인쇄물의 크기 제약 등으로 다른 데이터를 써야 하는 문제가 있어 진행하지 않았다. 하지만 데이터를 일일이 HTML로 작업하는 것은 원래 목적에 충실하지 않으니, 데이터를 파이썬 코드로 작성하고 이를 <a href="http://jinja.pocoo.org/">Jinja</a> 템플릿 엔진을 이용해 최종 HTML 파일을 만들도록 하였다.</p>

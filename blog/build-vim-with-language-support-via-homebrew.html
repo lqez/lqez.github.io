@@ -41,19 +41,17 @@
     <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2013-02-20T00:00:00+09:00">
-                Wed 20 February 2013
+                2013-02-20
         </abbr>
 
 </footer><!-- /.post-info -->      <p>Mac OS X에 기본 설치된 vim은 다른 언어를 위한 지원 옵션 없이 빌드되어, <a href="https://github.com/klen/python-mode">python-mode</a> 등을 사용할 수 없다.</p>
 <p>다행히도, Homebrew에 포함된 <a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/vim.rb">vim.rb</a>는 언어 지원을 위한 옵션을 포함하고 있어, 이를 이용해 편리하게 설치가 가능하다. 아래 명령으로 지원하는 옵션을 확인할 수 있다.</p>
-<div class="highlight"><pre><span></span>$ brew options vim
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>$ brew options vim
+</code></pre></div>
 
 <p>Python 지원을 포함하려면 아래와 같이 설치한다.</p>
-<div class="highlight"><pre><span></span>$ brew install vim --with-python
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>$ brew install vim --with-python
+</code></pre></div>
 
 <p>vim.rb의 <a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/vim.rb#L25">25-31L</a>를 보면, <code>--with-&lt;language&gt;</code> 옵션은 configure 시에 <code>--enable-&lt;language&gt;interp</code> 옵션으로 변경된다.</p><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 <footer class="post-info-footer">

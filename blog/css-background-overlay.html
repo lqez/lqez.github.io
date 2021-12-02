@@ -41,7 +41,7 @@
     <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2019-03-20T00:00:00+09:00">
-                Wed 20 March 2019
+                2019-03-20
         </abbr>
 
 </footer><!-- /.post-info -->      <p>사진을 저장하는데 널리 사용되는 JPG 이미지 포맷은 8x8 픽셀로 화면을 쪼개 저장하는 방식을 사용하는데, 이 방식은 용량을 줄이기 위해 낮은 품질을 선택해 저장할 때 8x8 단위로 화면이 나뉘어 보이는 단점을 가진다.</p>
@@ -74,19 +74,18 @@
 <p><img alt="A part of high quality sample JPG" src="./images/2019-03/cbo_2560-hi-part.png" title="높은 품질의 이미지의 부분 확대">
 <img alt="A part of low quality sample JPG" src="./images/2019-03/cbo_2560-low-part.png" title="낮은 품질의 이미지의 부분 확대"></p>
 <p>이 단점을 극복하기 위해 위에서 언급했던 주사선 덧씌우기를 CSS로 구현하면 아래와 같다. </p>
-<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">hero-image</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">hero-image</span> <span class="p">{</span>
   <span class="k">background</span><span class="p">:</span>
     <span class="nb">linear-gradient</span><span class="p">(</span><span class="kc">black</span> <span class="mi">1</span><span class="kt">px</span><span class="p">,</span> <span class="kc">transparent</span> <span class="mi">0</span><span class="p">),</span>
     <span class="nb">url</span><span class="p">(</span><span class="s2">&quot;/static/images/small-size-crappy-image.jpg&quot;</span><span class="p">);</span>
   <span class="k">background-size</span><span class="p">:</span> <span class="mi">2</span><span class="kt">px</span> <span class="mi">1</span><span class="kt">px</span><span class="p">,</span> <span class="kc">cover</span><span class="p">;</span>
   <span class="k">background-position</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><img alt="Scanline by CSS" src="./images/2019-03/cbo_css-linear.jpg" title="CSS로 스캔라인을 덧씌운 이미지"></p>
 <p>주사선 패턴 외에도 등간격으로 점(<a href="https://en.wikipedia.org/wiki/Polka_dot">Polka dot</a>)을 찍는 방식도 활용되었다.</p>
-<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">hero-image</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">hero-image</span> <span class="p">{</span>
   <span class="k">background</span><span class="p">:</span>
     <span class="nb">radial-gradient</span><span class="p">(</span><span class="kc">black</span> <span class="mi">35</span><span class="kt">%</span><span class="p">,</span> <span class="kc">transparent</span> <span class="mi">1</span><span class="kt">%</span><span class="p">),</span>
     <span class="nb">radial-gradient</span><span class="p">(</span><span class="kc">black</span> <span class="mi">35</span><span class="kt">%</span><span class="p">,</span> <span class="kc">transparent</span> <span class="mi">1</span><span class="kt">%</span><span class="p">),</span>
@@ -94,12 +93,11 @@
   <span class="k">background-position</span><span class="p">:</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="kt">px</span> <span class="mi">2</span><span class="kt">px</span><span class="p">,</span> <span class="kc">center</span><span class="p">;</span>
   <span class="k">background-size</span><span class="p">:</span> <span class="mi">4</span><span class="kt">px</span> <span class="mi">4</span><span class="kt">px</span><span class="p">,</span> <span class="mi">4</span><span class="kt">px</span> <span class="mi">4</span><span class="kt">px</span><span class="p">,</span> <span class="kc">cover</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><img alt="Polka dot by CSS" src="./images/2019-03/cbo_css-polkadot.jpg" title="CSS로 등간격으로 점을 찍은 이미지"></p>
 <p>하지만, 디스플레이 장치가 점점 고해상도로 바뀌어가며 CSS 지원이 확대되는 요즘에는 이와 같은 방법은 널리 쓰이지 않는 듯 하다. 이에, SVG에서 지원하는 <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feTurbulence">feTurbulence</a> 필터를 통해 생성한 불규칙한 노이즈 이미지를 덧씌워 저화질 이미지의 단점을 개선해보려고 한다.</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;svg</span> <span class="na">xmlns=</span><span class="s">&#39;http://www.w3.org/2000/svg&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;svg</span> <span class="na">xmlns=</span><span class="s">&#39;http://www.w3.org/2000/svg&#39;</span>
      <span class="na">xmlns:xlink=</span><span class="s">&#39;http://www.w3.org/1999/xlink&#39;</span>
      <span class="na">width=</span><span class="s">&#39;300&#39;</span> <span class="na">height=</span><span class="s">&#39;300&#39;</span><span class="nt">&gt;</span>
 
@@ -112,33 +110,30 @@
   <span class="nt">&lt;rect</span> <span class="na">width=</span><span class="s">&#39;300&#39;</span> <span class="na">height=</span><span class="s">&#39;300&#39;</span> <span class="na">fill=</span><span class="s">&#39;#000&#39;</span> <span class="na">opacity=</span><span class="s">&#39;0.18&#39;</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;rect</span> <span class="na">width=</span><span class="s">&#39;300&#39;</span> <span class="na">height=</span><span class="s">&#39;300&#39;</span> <span class="na">filter=</span><span class="s">&quot;url(#noise)&quot;</span> <span class="na">opacity=</span><span class="s">&#39;0.32&#39;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/svg&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>위의 SVG 이미지를 아래의 CSS로 덧씌운 결과는 비교적 만족할 만하다. 부분 확대 이미지는 웹 브라우저 화면 캡춰본를 확대한 것이다. 위의 JPG 이미지의 부분 확대 결과물과 1:1로 비교하기는 어렵지만, 블럭 단위로 쪼개져 보이는 현상이 덜한 것은 확인할 수 있다.</p>
-<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">hero-image</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">hero-image</span> <span class="p">{</span>
   <span class="k">background</span><span class="p">:</span>
     <span class="nb">url</span><span class="p">(</span><span class="s2">&quot;/static/images/noise.svg&quot;</span><span class="p">),</span>
     <span class="nb">url</span><span class="p">(</span><span class="s2">&quot;/static/images/small-size-crappy-image.jpg&quot;</span><span class="p">);</span>
   <span class="k">background-size</span><span class="p">:</span> <span class="kc">auto</span><span class="p">,</span> <span class="kc">cover</span><span class="p">;</span>
   <span class="k">background-position</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><img alt="Noised sample JPG" src="./images/2019-03/cbo_css-noise.jpg" title="SVG와 CSS로 이미지에 노이즈를 덧씌운 것의 결과">
 <img alt="A part of darkened sample JPG" src="./images/2019-03/cbo_css-darken-part.png" title="SVG와 CSS로 이미지를 어둡게만 한 것의 부분 확대">
 <img alt="A part of noised sample JPG" src="./images/2019-03/cbo_css-noise-part.png" title="SVG와 CSS로 이미지에 노이즈를 덧씌운 것의 부분 확대"></p>
 <p>SVG 이미지를 별도로 구성하는 것이 싫다면, <a href="https://css-tricks.com/data-uris/">base64로 인코딩해서 CSS에 내장</a>할 수도 있다.</p>
-<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">hero-image</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">hero-image</span> <span class="p">{</span>
   <span class="k">background</span><span class="p">:</span>
     <span class="nb">url</span><span class="p">(</span><span class="sx">data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyAgeG1sbnM6eGxpbms9J2h0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsnICB3aWR0aD0nMzAwJyBoZWlnaHQ9JzMwMCc+ICAgIDxmaWx0ZXIgaWQ9J24nIHg9JzAnIHk9JzAnPiAgICAgICAgICAgIDxmZVR1cmJ1bGVuY2UgICAgICAgICAgICAgIHR5cGU9J2ZyYWN0YWxOb2lzZScgICAgICAgICAgICAgIGJhc2VGcmVxdWVuY3k9JzAuOTUnICAgICAgICAgICAgICBzdGl0Y2hUaWxlcz0nc3RpdGNoJy8+ICAgIDwvZmlsdGVyPiAgICA8cmVjdCB3aWR0aD0nMzAwJyBoZWlnaHQ9JzMwMCcgZmlsbD0nIzAwMCcgb3BhY2l0eT0nMC4yNScvPiAgICA8cmVjdCB3aWR0aD0nMzAwJyBoZWlnaHQ9JzMwMCcgZmlsdGVyPSJ1cmwoI24pIiBvcGFjaXR5PScwLjMyJy8+PC9zdmc+</span><span class="p">),</span>
     <span class="nb">url</span><span class="p">(</span><span class="s2">&quot;/static/images/small-size-crappy-image.jpg&quot;</span><span class="p">);</span>
   <span class="k">background-size</span><span class="p">:</span> <span class="kc">auto</span><span class="p">,</span> <span class="kc">cover</span><span class="p">;</span>
   <span class="k">background-position</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <hr>
 <h4 id="_2">참고 링크</h4>

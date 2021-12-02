@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer - 2019-03</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/2019-03.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2019-03-20T00:00:00+09:00</updated><entry><title>CSS로 배경 이미지 위에 덧그리기</title><link href="https://lqez.github.io/blog/css-background-overlay.html" rel="alternate"></link><published>2019-03-20T00:00:00+09:00</published><updated>2019-03-20T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2019-03-20:/blog/css-background-overlay.html</id><summary type="html">&lt;p&gt;사진을 저장하는데 널리 사용되는 JPG 이미지 포맷은 8x8 픽셀로 화면을 쪼개 저장하는 방식을 사용하는데, 이 방식은 용량을 줄이기 위해 낮은 품질을 선택해 저장할 때 8x8 단위로 화면이 나뉘어 보이는 단점을 가진다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;참고: &lt;a href="https://medium.freecodecamp.org/how-jpg-works-a4dbd2316f35"&gt;How JPG Works&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img alt="JPG Artifact" src="./images/2019-03/cbo_jpg-artifact.jpg" title="8x8 단위로 나뉜 부분이 선명하게 보이는 JPG 이미지 (확대된 것)"&gt;&lt;/p&gt;
-&lt;p&gt;사진을 웹 페이지에서 배경 이미지로 사용하는 경우 데스크탑 웹 브라우저부터 모바일 브라우저까지 모두 지원하기 위해 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;사진을 저장하는데 널리 사용되는 JPG 이미지 포맷은 8x8 픽셀로 화면을 쪼개 저장하는 방식을 사용하는데, 이 방식은 용량을 줄이기 위해 낮은 품질을 선택해 저장할 때 8x8 단위로 화면이 나뉘어 보이는 단점을 가진다.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer - 2019-03</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/2019-03.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2019-03-20T00:00:00+09:00</updated><entry><title>CSS로 배경 이미지 위에 덧그리기</title><link href="https://lqez.github.io/blog/css-background-overlay.html" rel="alternate"></link><published>2019-03-20T00:00:00+09:00</published><updated>2019-03-20T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2019-03-20:/blog/css-background-overlay.html</id><summary type="html">&lt;p&gt;사진을 저장하는데 널리 사용되는 JPG 이미지 포맷은 8x8 픽셀로 화면을 쪼개 저장하는 방식을 사용하는데, 이 방식은 용량을 줄 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;사진을 저장하는데 널리 사용되는 JPG 이미지 포맷은 8x8 픽셀로 화면을 쪼개 저장하는 방식을 사용하는데, 이 방식은 용량을 줄이기 위해 낮은 품질을 선택해 저장할 때 8x8 단위로 화면이 나뉘어 보이는 단점을 가진다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;참고: &lt;a href="https://medium.freecodecamp.org/how-jpg-works-a4dbd2316f35"&gt;How JPG Works&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -34,19 +29,18 @@
 &lt;p&gt;&lt;img alt="A part of high quality sample JPG" src="./images/2019-03/cbo_2560-hi-part.png" title="높은 품질의 이미지의 부분 확대"&gt;
 &lt;img alt="A part of low quality sample JPG" src="./images/2019-03/cbo_2560-low-part.png" title="낮은 품질의 이미지의 부분 확대"&gt;&lt;/p&gt;
 &lt;p&gt;이 단점을 극복하기 위해 위에서 언급했던 주사선 덧씌우기를 CSS로 구현하면 아래와 같다. &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;hero-image&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;hero-image&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="k"&gt;background&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="nb"&gt;linear-gradient&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;black&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;transparent&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
     &lt;span class="nb"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/static/images/small-size-crappy-image.jpg&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
   &lt;span class="k"&gt;background-size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;cover&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
   &lt;span class="k"&gt;background-position&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;center&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;img alt="Scanline by CSS" src="./images/2019-03/cbo_css-linear.jpg" title="CSS로 스캔라인을 덧씌운 이미지"&gt;&lt;/p&gt;
 &lt;p&gt;주사선 패턴 외에도 등간격으로 점(&lt;a href="https://en.wikipedia.org/wiki/Polka_dot"&gt;Polka dot&lt;/a&gt;)을 찍는 방식도 활용되었다.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;hero-image&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;hero-image&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="k"&gt;background&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="nb"&gt;radial-gradient&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;black&lt;/span&gt; &lt;span class="mi"&gt;35&lt;/span&gt;&lt;span class="kt"&gt;%&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;transparent&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="kt"&gt;%&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
     &lt;span class="nb"&gt;radial-gradient&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;black&lt;/span&gt; &lt;span class="mi"&gt;35&lt;/span&gt;&lt;span class="kt"&gt;%&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;transparent&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="kt"&gt;%&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
@@ -54,12 +48,11 @@
   &lt;span class="k"&gt;background-position&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;center&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
   &lt;span class="k"&gt;background-size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;cover&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;img alt="Polka dot by CSS" src="./images/2019-03/cbo_css-polkadot.jpg" title="CSS로 등간격으로 점을 찍은 이미지"&gt;&lt;/p&gt;
 &lt;p&gt;하지만, 디스플레이 장치가 점점 고해상도로 바뀌어가며 CSS 지원이 확대되는 요즘에는 이와 같은 방법은 널리 쓰이지 않는 듯 하다. 이에, SVG에서 지원하는 &lt;a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feTurbulence"&gt;feTurbulence&lt;/a&gt; 필터를 통해 생성한 불규칙한 노이즈 이미지를 덧씌워 저화질 이미지의 단점을 개선해보려고 한다.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;svg&lt;/span&gt; &lt;span class="na"&gt;xmlns=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;http://www.w3.org/2000/svg&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nt"&gt;&amp;lt;svg&lt;/span&gt; &lt;span class="na"&gt;xmlns=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;http://www.w3.org/2000/svg&amp;#39;&lt;/span&gt;
      &lt;span class="na"&gt;xmlns:xlink=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;http://www.w3.org/1999/xlink&amp;#39;&lt;/span&gt;
      &lt;span class="na"&gt;width=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;300&amp;#39;&lt;/span&gt; &lt;span class="na"&gt;height=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;300&amp;#39;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
 
@@ -72,37 +65,34 @@
   &lt;span class="nt"&gt;&amp;lt;rect&lt;/span&gt; &lt;span class="na"&gt;width=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;300&amp;#39;&lt;/span&gt; &lt;span class="na"&gt;height=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;300&amp;#39;&lt;/span&gt; &lt;span class="na"&gt;fill=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;#000&amp;#39;&lt;/span&gt; &lt;span class="na"&gt;opacity=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;0.18&amp;#39;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
   &lt;span class="nt"&gt;&amp;lt;rect&lt;/span&gt; &lt;span class="na"&gt;width=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;300&amp;#39;&lt;/span&gt; &lt;span class="na"&gt;height=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;300&amp;#39;&lt;/span&gt; &lt;span class="na"&gt;filter=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;url(#noise)&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;opacity=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;0.32&amp;#39;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;/svg&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;위의 SVG 이미지를 아래의 CSS로 덧씌운 결과는 비교적 만족할 만하다. 부분 확대 이미지는 웹 브라우저 화면 캡춰본를 확대한 것이다. 위의 JPG 이미지의 부분 확대 결과물과 1:1로 비교하기는 어렵지만, 블럭 단위로 쪼개져 보이는 현상이 덜한 것은 확인할 수 있다.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;hero-image&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;hero-image&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="k"&gt;background&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="nb"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/static/images/noise.svg&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
     &lt;span class="nb"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/static/images/small-size-crappy-image.jpg&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
   &lt;span class="k"&gt;background-size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;cover&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
   &lt;span class="k"&gt;background-position&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;center&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;img alt="Noised sample JPG" src="./images/2019-03/cbo_css-noise.jpg" title="SVG와 CSS로 이미지에 노이즈를 덧씌운 것의 결과"&gt;
 &lt;img alt="A part of darkened sample JPG" src="./images/2019-03/cbo_css-darken-part.png" title="SVG와 CSS로 이미지를 어둡게만 한 것의 부분 확대"&gt;
 &lt;img alt="A part of noised sample JPG" src="./images/2019-03/cbo_css-noise-part.png" title="SVG와 CSS로 이미지에 노이즈를 덧씌운 것의 부분 확대"&gt;&lt;/p&gt;
 &lt;p&gt;SVG 이미지를 별도로 구성하는 것이 싫다면, &lt;a href="https://css-tricks.com/data-uris/"&gt;base64로 인코딩해서 CSS에 내장&lt;/a&gt;할 수도 있다.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;hero-image&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;hero-image&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="k"&gt;background&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="nb"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sx"&gt;data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyAgeG1sbnM6eGxpbms9J2h0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsnICB3aWR0aD0nMzAwJyBoZWlnaHQ9JzMwMCc+ICAgIDxmaWx0ZXIgaWQ9J24nIHg9JzAnIHk9JzAnPiAgICAgICAgICAgIDxmZVR1cmJ1bGVuY2UgICAgICAgICAgICAgIHR5cGU9J2ZyYWN0YWxOb2lzZScgICAgICAgICAgICAgIGJhc2VGcmVxdWVuY3k9JzAuOTUnICAgICAgICAgICAgICBzdGl0Y2hUaWxlcz0nc3RpdGNoJy8+ICAgIDwvZmlsdGVyPiAgICA8cmVjdCB3aWR0aD0nMzAwJyBoZWlnaHQ9JzMwMCcgZmlsbD0nIzAwMCcgb3BhY2l0eT0nMC4yNScvPiAgICA8cmVjdCB3aWR0aD0nMzAwJyBoZWlnaHQ9JzMwMCcgZmlsdGVyPSJ1cmwoI24pIiBvcGFjaXR5PScwLjMyJy8+PC9zdmc+&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
     &lt;span class="nb"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/static/images/small-size-crappy-image.jpg&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
   &lt;span class="k"&gt;background-size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;cover&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
   &lt;span class="k"&gt;background-position&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;center&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;hr&gt;
 &lt;h4 id="_2"&gt;참고 링크&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;SVG 노이즈 이미지를 활용한 웹 페이지: &lt;a href="https://sprintseoul.org/"&gt;https://sprintseoul.org/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://stackoverflow.com/a/49108254/366908"&gt;https://stackoverflow.com/a/49108254/366908&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry></feed>
+&lt;/ul&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="2019-03"></category></entry></feed>

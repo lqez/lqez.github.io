@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer - 2017-11</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/2017-11.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2017-11-30T00:00:00+09:00</updated><entry><title>Under-stand-ing</title><link href="https://lqez.github.io/blog/under-stand-ing.html" rel="alternate"></link><published>2017-11-30T00:00:00+09:00</published><updated>2017-11-30T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2017-11-30:/blog/under-stand-ing.html</id><summary type="html">&lt;p&gt;지난 주 금요일에 있었던 &lt;a href="https://www.facebook.com/publyteam/posts/2199237843435880"&gt;어떤 모임&lt;/a&gt;에서, 이런 얘기를 들었다. (정확히 기억나지는 않지만)&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;“프로그래머분이 이해할 수 없는 단어를 자꾸 써가며 얘기해서 대화하기가 어려운데, 의사소통을 더 잘 하기 위해 저도 프로그래밍을 좀 배워야겠다는 생각이 들었어요. 도움이 될까요?”&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;나는 프로그래밍을 배운다고 해서 – 프로그래밍도 범위가 너무 넓어서 어떤 것을 배우시겠다는 것인진 잘 모르겠지만 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;지난 주 금요일에 있었던 &lt;a href="https://www.facebook.com/publyteam/posts/2199237843435880"&gt;어떤 모임&lt;/a&gt;에서, 이런 얘기를 들었다. (정확히 기억나지는 않지만)&lt;/p&gt;
+&lt;p&gt;“프로그래머분이 이해할 수 없는 단어 …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;p&gt;지난 주 금요일에 있었던 &lt;a href="https://www.facebook.com/publyteam/posts/2199237843435880"&gt;어떤 모임&lt;/a&gt;에서, 이런 얘기를 들었다. (정확히 기억나지는 않지만)&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;“프로그래머분이 이해할 수 없는 단어를 자꾸 써가며 얘기해서 대화하기가 어려운데, 의사소통을 더 잘 하기 위해 저도 프로그래밍을 좀 배워야겠다는 생각이 들었어요. 도움이 될까요?”&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -33,9 +31,8 @@
 조금 알게 되었을 때 나 그거 아는데, 라고 섣불리 말하는 건 오히려 방해가 될 수도 있습니다.”&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;이해를 의미하는 영단어 understand의 &lt;a href="https://www.etymonline.com/word/understand"&gt;어원은 under + stand&lt;/a&gt; 이다.
-항상 누군가가 나보다 나을 수 있다는 생각과 자세를 갖추고 경청해야 나아갈 수 있다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>The length of Django username</title><link href="https://lqez.github.io/blog/the-length-of-django-username.html" rel="alternate"></link><published>2017-11-16T00:00:00+09:00</published><updated>2017-11-16T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2017-11-16:/blog/the-length-of-django-username.html</id><summary type="html">&lt;p&gt;오래 전, &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt;에서 제공하는 사용자 모델의 이름을 저장하는 기본 필드의 길이가 왜 30자인가에 대해 의문을 가진 적이 있었다.
-필드의 길이가 짧거나 길어서 그런 생각을 했던건 아니고, 왜 하필 ‘30’ 일까에 대한 의문이었다.
-물론 한국 사람들의 이름만 생각하면 30자면 충분하다. 한국 국적을 가진 사람 중에 가장 긴 이름을 가진 사람은 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;오래 전, &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt;에서 제공하는 사용자 모델의 이름을 저장하는 기본 필드의 길이가 왜 30자인가에 대해 의문을 가진 적이 있었다.
+항상 누군가가 나보다 나을 수 있다는 생각과 자세를 갖추고 경청해야 나아갈 수 있다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="2017-11"></category></entry><entry><title>The length of Django username</title><link href="https://lqez.github.io/blog/the-length-of-django-username.html" rel="alternate"></link><published>2017-11-16T00:00:00+09:00</published><updated>2017-11-16T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2017-11-16:/blog/the-length-of-django-username.html</id><summary type="html">&lt;p&gt;오래 전, &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt;에서 제공하는 사용자 모델의 이름을 저장하는 기본 필드의 길이가 왜 30자인가에 대해 의문을 가진 적이 있었다.
+필 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;오래 전, &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt;에서 제공하는 사용자 모델의 이름을 저장하는 기본 필드의 길이가 왜 30자인가에 대해 의문을 가진 적이 있었다.
 필드의 길이가 짧거나 길어서 그런 생각을 했던건 아니고, 왜 하필 ‘30’ 일까에 대한 의문이었다.
 물론 한국 사람들의 이름만 생각하면 30자면 충분하다. 한국 국적을 가진 사람 중에 가장 긴 이름을 가진 사람은 다음과 같다.&lt;/p&gt;
 &lt;ul&gt;
@@ -105,13 +102,12 @@ but while the email field is reasonably long (75), the 30 characters for the use
 1글자에 4바이트를 사용하는 &lt;code&gt;utf8mb4&lt;/code&gt; 인코딩에서는 767 ÷ 4 ≈ 191 이기 때문에 191자로 제한된다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-conversion.html"&gt;https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-conversion.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>The Curse of Understanding</title><link href="https://lqez.github.io/blog/the-curse-of-understanding.html" rel="alternate"></link><published>2017-11-13T00:00:00+09:00</published><updated>2017-11-13T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2017-11-13:/blog/the-curse-of-understanding.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/ul&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="2017-11"></category></entry><entry><title>The Curse of Understanding</title><link href="https://lqez.github.io/blog/the-curse-of-understanding.html" rel="alternate"></link><published>2017-11-13T00:00:00+09:00</published><updated>2017-11-13T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2017-11-13:/blog/the-curse-of-understanding.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;The curse of the monad is that once you get the epiphany, once you understand, 
 you lose the ability to explain it to anybody else.&lt;/p&gt;
 &lt;p&gt;Douglas Crockford - &lt;a href="https://www.youtube.com/watch?v=dkZFtimgAcM"&gt;‘Monads &amp;amp; Gonads’ at YUIConf 2012&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Monad_(functional_programming)"&gt;모나드&lt;/a&gt;는 함수형 프로그래밍 언어에 대해서 얘기할 때 거의 매번 언급되는 주제이다.
-모나드라는 개념이 절차형 프로그래밍 언어에 익숙한 …&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Monad_(functional_programming)"&gt;모나드&lt;/a&gt;는 함수형 프로그래밍 언어에 대해서 …&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
 &lt;p&gt;The curse of the monad is that once you get the epiphany, once you understand, 
 you lose the ability to explain it to anybody else.&lt;/p&gt;
 &lt;p&gt;Douglas Crockford - &lt;a href="https://www.youtube.com/watch?v=dkZFtimgAcM"&gt;‘Monads &amp;amp; Gonads’ at YUIConf 2012&lt;/a&gt;&lt;/p&gt;
@@ -142,4 +138,4 @@ you lose the ability to explain it to anybody else.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;나는 이런 문제들을 일반화하여 &lt;strong&gt;이해의 저주(The Curse of Understanding)&lt;/strong&gt;라고 부르고 싶다.&lt;/p&gt;
 &lt;p&gt;덧) 이 생각을 &lt;a href="https://twitter.com/lqez/status/759061524820299776"&gt;트윗&lt;/a&gt;으로 썼더니, &lt;a href="https://twitter.com/tebica"&gt;@tebica&lt;/a&gt; 님이 이에 공감하여 블로그 &lt;a href="http://earlybird.kr/1938"&gt;포스팅&lt;/a&gt;을 남겼던 적이 있다. 
-그리고, 나는 아직 모나드를 이해하지 못했다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry></feed>
+그리고, 나는 아직 모나드를 이해하지 못했다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="2017-11"></category></entry></feed>

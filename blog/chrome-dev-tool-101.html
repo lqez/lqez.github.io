@@ -41,7 +41,7 @@
     <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-12-17T00:00:00+09:00">
-                Mon 17 December 2018
+                2018-12-17
         </abbr>
 
 </footer><!-- /.post-info -->      <p><a href="https://github.com/summernote/summernote">썸머노트</a>를 개발하며 늘 사용하는 크롬 개발자 도구에 대해 한 번도 제대로 공부해본 적이 없었는데, 마침 아샬(@ahastudio)님이 <a href="https://adieu2018.ahastudio.com/">“아듀 2018”</a>이라는 일종의 <a href="https://en.wikipedia.org/wiki/Advent_calendar">Advent Calender</a>를 주최하는 것을 보고 재미있겠다 싶어 이걸 기회 삼아 크롬 개발자 도구의 기초 내용을 정리해보게 되었다.</p>
@@ -150,12 +150,11 @@
 </li>
 <li><strong>경과 시간 측정</strong><ul>
 <li><a href="https://developer.mozilla.org/ko/docs/Web/API/Console/time"><code>console.time(label)</code></a>을 통해 특정 작업이 얼마나 걸리는지 편리하게 측정할 수 있다.
-<code>console.timeEnd(label)</code>과 같이 사용하여 두 함수의 호출 사이에 얼마나 시간이 흘렀는지 확인할 수 있다.<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="s1">&#39;timer1&#39;</span><span class="p">);</span>
+<code>console.timeEnd(label)</code>과 같이 사용하여 두 함수의 호출 사이에 얼마나 시간이 흘렀는지 확인할 수 있다.<div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="s1">&#39;timer1&#39;</span><span class="p">);</span>
 <span class="o">&gt;</span> <span class="c1">// (... 무언가 긴 작업 ...)</span>
 <span class="o">&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">timeEnd</span><span class="p">(</span><span class="s1">&#39;timer1&#39;</span><span class="p">);</span>
 <span class="nx">timer1</span><span class="o">:</span> <span class="mf">3659.787109375</span><span class="nx">ms</span>
-</pre></div>
-
+</code></pre></div>
 
 </li>
 </ul>
@@ -242,12 +241,11 @@
 <p><strong>로컬 저장소</strong> (Local Storage)</p>
 <ul>
 <li>키/값 쌍으로 손쉽게 데이터를 읽고 쓸 수 있다. 웹 브라우저마다 도메인별로 할당된 저장 공간의 크기가 다르지만 일반적으로 <code>10 MiB</code>까지 허용된다.</li>
-<li>데이터는 도메인 단위로 공유되어, 같은 브라우저 내의 서로 다른 창/탭에서도 같은 데이터를 공유할 수 있다.<div class="highlight"><pre><span></span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">);</span>
+<li>데이터는 도메인 단위로 공유되어, 같은 브라우저 내의 서로 다른 창/탭에서도 같은 데이터를 공유할 수 있다.<div class="highlight"><pre><span></span><code><span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">);</span>
 <span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">);</span>
 <span class="nx">localStorage</span><span class="p">.</span><span class="nx">removeItem</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">);</span>
 <span class="nx">localStorage</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
-</pre></div>
-
+</code></pre></div>
 
 </li>
 </ul>

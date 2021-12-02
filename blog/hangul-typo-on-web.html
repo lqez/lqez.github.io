@@ -41,7 +41,7 @@
     <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-09-05T00:00:00+09:00">
-                Wed 05 September 2018
+                2018-09-05
         </abbr>
 
 </footer><!-- /.post-info -->      <p>한글이 주로 사용되는 사이트들 중, 접속 통계 상위권 사이트들과 개인적으로 자주 방문하는 곳들을 돌아다니며, 그들이 본문에 사용하고 있는 CSS 값들에 대해 정리해보았다.
@@ -64,15 +64,14 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 <p>서체로 <code>AppleSDGothicNeo-Regular</code>가 최우선으로 지정되어 있는데, 이는 아이폰 사용자들을 의식한 결과로 생각되며,
 <code>맑은 고딕</code> 계열을 별도로 지정하여 윈도우 사용자들을 고려하고 있음을 알 수 있다.</p>
 <p><code>word-wrap</code> / <code>word-break</code> 그리고 요즘의 웹사이트에서 가독성 향상의 목적으로 사용하는 웹 브라우저 렌더링 옵션 지정이 없는 것이 특이하다.</p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="k">color</span>          <span class="p">:</span> <span class="mh">#333</span><span class="p">;</span>
   <span class="k">font-family</span>    <span class="p">:</span> <span class="n">AppleSDGothicNeo-Regular</span><span class="p">,</span> <span class="s2">&quot;Malgun Gothic&quot;</span><span class="p">,</span> <span class="s2">&quot;맑은 고딕&quot;</span><span class="p">,</span> <span class="n">dotum</span><span class="p">,</span> <span class="err">돋움</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">;</span>
   <span class="k">font-size</span>      <span class="p">:</span> <span class="mi">17</span><span class="kt">px</span><span class="p">;</span>      <span class="c">/* inline style */</span>
   <span class="k">letter-spacing</span> <span class="p">:</span> <span class="mf">-0.34</span><span class="kt">px</span><span class="p">;</span>   <span class="c">/* -0.02em */</span>
   <span class="k">line-height</span>    <span class="p">:</span> <span class="mf">27.625</span><span class="kt">px</span><span class="p">;</span>  <span class="c">/* 1.625 */</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h5 id="httpsnewsnavercom">네이버 뉴스 – <a href="https://news.naver.com/">https://news.naver.com/</a></h5>
 <p><img alt="Naver news" src="./images/2018-09/ht-naver.png">
@@ -80,7 +79,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 서체 지정과 크기, 자간과 행간이 다음 뉴스 사이트와 매우 유사하다.
 일반적으로 정보성 글 뭉치를 읽을 때 이 정도가 표준적으로 통용될 수 있다고 생각해도 무방할 것 같다.</p>
 <p>네이버는 모든 단위에 <code>px</code>를 지정해서 사용하고 있다.</p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="k">color</span>          <span class="p">:</span> <span class="mh">#000</span><span class="p">;</span>
   <span class="k">font-family</span>    <span class="p">:</span> <span class="s2">&quot;Helvetica Neue&quot;</span><span class="p">,</span> <span class="s2">&quot;Apple SD Gothic Neo&quot;</span><span class="p">,</span> <span class="s2">&quot;Malgun Gothic&quot;</span><span class="p">,</span> <span class="s2">&quot;맑은 고딕&quot;</span><span class="p">,</span> <span class="n">Dotum</span><span class="p">,</span> <span class="err">돋움</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">;</span>
   <span class="k">font-size</span>      <span class="p">:</span> <span class="mi">17</span><span class="kt">px</span><span class="p">;</span> 
@@ -89,15 +88,14 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
   <span class="k">line-height</span>    <span class="p">:</span> <span class="mi">27</span><span class="kt">px</span><span class="p">;</span>
   <span class="k">word-wrap</span>      <span class="p">:</span> <span class="kc">break-word</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h5 id="httpnewsnatecom">네이트 뉴스 – <a href="http://news.nate.com/">http://news.nate.com/</a></h5>
 <p><img alt="Nate news" src="./images/2018-09/ht-nate.png">
 네이트 뉴스는 평소에는 잘 방문하지 않지만, 위 두 뉴스 사이트를 제외한 다른 신문, 매체 사이트는 광고 때문에 본문을 읽을 엄두가 나지 않아 울며 겨자먹기로 알아보았다.</p>
 <p>요즘의 사이트 답지 않게 <code>굴림</code>, <code>돋움</code>만 지정하고 있으며, 서체 크기도 <code>14px</code>로 최근의 추세보다는 다소 작게 지정되어 있다.
 다만 <code>word-break</code>와 <code>word-wrap</code>은 별도로 지정되어 있는 것이, 이 사이트를 처음 만들던 당시에 가독성에 대해 고민한 흔적으로 보인다</p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="k">color</span>          <span class="p">:</span> <span class="mh">#222</span><span class="p">;</span>
   <span class="k">font-family</span>    <span class="p">:</span> <span class="n">Gulim</span><span class="p">,</span> <span class="n">Dotum</span><span class="p">,</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">;</span>
   <span class="k">font-size</span>      <span class="p">:</span> <span class="mi">14</span><span class="kt">px</span><span class="p">;</span>
@@ -106,8 +104,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
   <span class="k">word-break</span>     <span class="p">:</span> <span class="n">break-all</span><span class="p">;</span>
   <span class="k">word-wrap</span>      <span class="p">:</span> <span class="kc">break-word</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <hr>
 <h3 id="_2">읽을거리</h3>
@@ -119,7 +116,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 우선 <code>Noto Sans Light</code>와 같은 획이 가는 서체를 본문 기본 서체로 사용하고 있고, 글씨 크기도 <code>11pt</code>로 작은데다,
 자간을 <code>0.8px</code>로 지정하여 낱글자 간격이 넓어 잘 읽히지 않는다.</p>
 <p>비교적 나중에 만들어진 사이트 답게 <code>-webkit-font-smoothing</code> 의 지정 등이 눈에 띈다.</p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="k">color</span>          <span class="p">:</span> <span class="mh">#333</span><span class="p">;</span>
   <span class="k">font-family</span>    <span class="p">:</span> <span class="s2">&quot;Noto Sans Light&quot;</span><span class="p">,</span> <span class="s2">&quot;Malgun Gothic&quot;</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">;</span>
   <span class="k">font-size</span>      <span class="p">:</span> <span class="mf">14.6667</span><span class="kt">px</span><span class="p">;</span>   <span class="c">/* 11pt */</span>
@@ -131,8 +128,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 
   <span class="kp">-webkit-</span><span class="n">font-smoothing</span><span class="p">:</span> <span class="n">antialiased</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h5 id="httpspublyco">퍼블리 – <a href="https://publy.co/">https://publy.co/</a></h5>
 <p><img alt="Publy" src="./images/2018-09/ht-publy.png">
@@ -140,7 +136,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 다른 사이트들과 다르게 <code>word-break: keep-all</code>을 지정한 것이 가장 눈에 띄고,
 한글 서체는 시스템 폰트를 사용하지 않고 모두 <code>Noto Sans KR</code>로 지정하여 사용자 경험을 기기마다 다르게 주지 않으려 한 것으로 보인다.</p>
 <p>서체 크기가 <code>18px</code>로 가장 크고 <code>keep-all</code>을 사용하여 모바일 기기에서 줄바꿈이 심하고 줄 끝이 둘쭉날쭉 한 것이 눈에 걸린다.</p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="k">color</span>          <span class="p">:</span> <span class="mh">#333</span><span class="p">;</span>
   <span class="k">font-family</span>    <span class="p">:</span> <span class="s2">&quot;Noto Sans KR&quot;</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">;</span>
   <span class="k">font-size</span>      <span class="p">:</span> <span class="mi">18</span><span class="kt">px</span><span class="p">;</span>    <span class="c">/* 1.125rem */</span>
@@ -150,8 +146,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
   <span class="k">word-break</span>     <span class="p">:</span> <span class="n">keep-all</span><span class="p">;</span>
   <span class="k">word-wrap</span>      <span class="p">:</span> <span class="kc">break-word</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h5 id="httpsthepinch">핀치 – <a href="https://thepin.ch/">https://thepin.ch/</a></h5>
 <p><img alt="the pinch" src="./images/2018-09/ht-thepinch.png">
@@ -159,7 +154,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 페이지 전환시마다 그라데이션에 애니메이션 포함된 막을 사용하여 다소 정신 없다는 인상을 주는 것에 비해 본문은 얌전하고 밀도가 높다.</p>
 <p>밀도가 높은 것은 자간을 <code>-1px</code> 지정하고, 양쪽 맞춤에 줄 바꿈을 브라우저 기본으로 사용했기 때문이다.
 글이 빽빽한 느낌이 들어 오래 읽기에는 조금 부담스럽다.</p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="k">color</span>          <span class="p">:</span> <span class="mh">#313233</span><span class="p">;</span>
   <span class="k">font-family</span>    <span class="p">:</span> <span class="s2">&quot;Noto Sans&quot;</span><span class="p">,</span> <span class="s2">&quot;Apple SD Gothic Neo&quot;</span><span class="p">,</span> <span class="s2">&quot;Malgun Gothic&quot;</span><span class="p">,</span> <span class="n">Dotum</span><span class="p">;</span>
   <span class="k">font-size</span>      <span class="p">:</span> <span class="mi">17</span><span class="kt">px</span><span class="p">;</span>
@@ -168,8 +163,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
   <span class="k">text-align</span>     <span class="p">:</span> <span class="kc">justify</span><span class="p">;</span>
   <span class="n">text-rendering</span> <span class="p">:</span> <span class="kc">optimizeLegibility</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h5 id="httpswwwindiepostcokr">인디포스트 – <a href="https://www.indiepost.co.kr/">https://www.indiepost.co.kr/</a></h5>
 <p><img alt="indiepost" src="./images/2018-09/ht-indiepost.png">
@@ -177,7 +171,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 하지만 브런치와 마찬가지로 본문에 사용하는 서체의 획이 너무 가늘어 읽기에 힘이 든다.
 게다가 이유는 알 수 없지만, 본문에 <code>text-shadow</code> 를 지정하고 있다.</p>
 <p>일반적으로 웹폰트로 많이 사용하는 <code>Noto Sans</code> 대신, 스포카의 <code>Spoqa Han Sans</code>를 사용하는 것이 눈에 띈다.</p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="k">color</span>          <span class="p">:</span> <span class="mh">#222</span><span class="p">;</span>
   <span class="k">font-family</span>    <span class="p">:</span> <span class="s2">&quot;Apple SD Gothic Neo&quot;</span><span class="p">,</span> <span class="s2">&quot;Droid Sans&quot;</span><span class="p">,</span> <span class="s2">&quot;Spoqa Han Sans&quot;</span><span class="p">,</span> <span class="n">Arial</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">;</span>
   <span class="k">font-size</span>      <span class="p">:</span> <span class="mi">16</span><span class="kt">px</span><span class="p">;</span>    <span class="c">/* 1rem */</span>
@@ -189,8 +183,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 
   <span class="kp">-webkit-</span><span class="n">font-smoothing</span><span class="p">:</span> <span class="n">antialiased</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h5 id="medium-httpsmediumcom">미디엄(Medium) – <a href="https://medium.com/">https://medium.com/</a></h5>
 <p><img alt="Medium" src="./images/2018-09/ht-medium.png">
@@ -198,7 +191,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 <a href="https://medium.engineering/typography-is-impossible-5872b0c7f891">Typography is impossible</a>을 쓰는 등 웹에서의 타이포그래피에 관심이 많은 서비스로 보인다.</p>
 <p>하지만 한글과 관련된 설정이 하나도 없어 한글로 포스팅하는 경우에는 그다지 좋은 결과를 얻기는 어렵다.
 본문 색상으로 <code>rgba(0, 0, 0, 0.84)</code>를 지정한 것이 신기하다.</p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="k">color</span>          <span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">.84</span><span class="p">);</span>
   <span class="k">font-family</span>    <span class="p">:</span> <span class="kc">medium</span><span class="o">-</span><span class="k">content</span><span class="o">-</span><span class="kc">serif</span><span class="o">-</span><span class="k">font</span><span class="p">,</span> <span class="n">Georgia</span><span class="p">,</span> <span class="n">Cambria</span><span class="p">,</span> <span class="s2">&quot;Times New Roman&quot;</span><span class="p">,</span> <span class="n">Times</span><span class="p">,</span> <span class="kc">serif</span><span class="p">;</span>
   <span class="k">font-size</span>      <span class="p">:</span> <span class="mi">21</span><span class="kt">px</span><span class="p">;</span>
@@ -211,14 +204,13 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
   <span class="k">font-feature-settings</span><span class="p">:</span> <span class="kc">normal</span><span class="p">;</span>
   <span class="n">text-rendering</span><span class="p">:</span> <span class="kc">optimizeSpeed</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h5 id="_3">페이스북 노트</h5>
 <p><img alt="Facebook note" src="./images/2018-09/ht-facebook-note.png">
 페이스북도 긴 글을 쓰기 위한 Facebook Note 기능을 제공한다. 하지만 많이 사용하는 기능이 아니라 그런지 적용된 스타일은 많지 않다.
 기본 서체가 <code>Georgia</code> 하나라니.</p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="k">color</span>          <span class="p">:</span> <span class="mh">#1d2129</span><span class="p">;</span>
   <span class="k">font-family</span>    <span class="p">:</span> <span class="n">Georgia</span><span class="p">,</span> <span class="kc">serif</span><span class="p">;</span>
   <span class="k">font-size</span>      <span class="p">:</span> <span class="mi">17</span><span class="kt">px</span><span class="p">;</span>
@@ -230,8 +222,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 
   <span class="kp">-webkit-</span><span class="n">font-smoothing</span><span class="p">:</span> <span class="n">antialiased</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h5 id="httpsridibookscom">리디북스 – <a href="https://ridibooks.com/">https://ridibooks.com/</a></h5>
 <p><img alt="Ridibooks" src="./images/2018-09/ht-ridi.png">
@@ -241,7 +232,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 후순위의 서체들도 예전부터 사용되던 <code>Tahoma</code>, <code>Geneva</code>, <code>돋움</code>보다 앞에 <code>나눔고딕</code>, <code>arial</code>을 지정한 것이 서체 유행의 역사를 보는 것 같은 재미가 있다.
 줄바꿈과 관련된 설정은 퍼블리와 같다. 대신 본문의 폭에 비해 서체를 작게 쓰고 있어 덜 거슬리는 편이다.</p>
 <p>전반적으로 조판에서 사용되는 다양한 기호를 적합하게 사용하고 있지만, 제목을 인용할 때 『사피엔스』/《사피엔스》와 같이 기호를 혼용하고 있는 것은 아쉽다.</p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="k">color</span>           <span class="p">:</span> <span class="mh">#333</span><span class="p">;</span>
   <span class="k">font-family</span>     <span class="p">:</span> <span class="s2">&quot;Helvetica Neue&quot;</span><span class="p">,</span> <span class="s2">&quot;Apple SD Gothic Neo&quot;</span><span class="p">,</span> <span class="n">arial</span><span class="p">,</span> <span class="err">나눔고딕</span><span class="p">,</span> <span class="s2">&quot;Nanum Gothic&quot;</span><span class="p">,</span> <span class="err">돋움</span><span class="p">,</span> <span class="n">Dotum</span><span class="p">,</span> <span class="n">Tahoma</span><span class="p">,</span> <span class="n">Geneva</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">;</span>
   <span class="k">font-size</span>       <span class="p">:</span> <span class="mi">13</span><span class="kt">px</span><span class="p">;</span>
@@ -252,8 +243,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 
   <span class="kp">-webkit-</span><span class="n">font-smoothing</span><span class="p">:</span> <span class="n">antialiased</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <hr>
 <h3 id="_4">소셜 미디어</h3>
@@ -261,7 +251,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 페이스북 타임라인이나 트위터도 긴 글이 많지 않아 속성을 알아보는데 큰 의미는 없으나, 단문을 표시하기 위해 어떤 CSS를 사용하는지 참고하면 될 것 같다.</p>
 <h5 id="httpsfacebookcom">페이스북 – <a href="https://facebook.com">https://facebook.com</a></h5>
 <p><img alt="Facebook" src="./images/2018-09/ht-facebook.png"></p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="k">color</span>       <span class="p">:</span> <span class="mh">#1d2129</span><span class="p">;</span>
   <span class="k">font-family</span> <span class="p">:</span> <span class="n">system-ui</span><span class="p">,</span> <span class="o">-</span><span class="n">apple-system</span><span class="p">,</span> <span class="n">system-ui</span><span class="p">,</span> <span class="s2">&quot;.SFNSText-Regular&quot;</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">;</span>
   <span class="k">font-size</span>   <span class="p">:</span> <span class="mi">14</span><span class="kt">px</span><span class="p">;</span>
@@ -270,12 +260,11 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 
   <span class="kp">-webkit-</span><span class="n">font-smoothing</span><span class="p">:</span> <span class="n">subpixel-antialiased</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h5 id="httpstwittercom">트위터 – <a href="https://twitter.com">https://twitter.com</a></h5>
 <p><img alt="Twitter" src="./images/2018-09/ht-twitter.png"></p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="k">color</span>       <span class="p">:</span> <span class="mh">#14171a</span><span class="p">;</span>
   <span class="k">font-family</span> <span class="p">:</span> <span class="s2">&quot;Helvetica Neue&quot;</span><span class="p">,</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="n">Arial</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">;</span>
   <span class="k">font-size</span>   <span class="p">:</span> <span class="mi">14</span><span class="kt">px</span><span class="p">;</span>
@@ -286,8 +275,7 @@ CSS에서 주석에 적힌 값이 실제 CSS로 지정한 값이며, 별도의 �
 
   <span class="kp">-webkit-</span><span class="n">font-smoothing</span><span class="p">:</span> <span class="n">antialiased</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <hr>
 <p>특별히 통계를 내거나 결론을 낼 만큼 많이 조사하지 않았지만, 한글을 주로 사용하는 웹 사이트들이 주로 어떻게 구성되어 있는지 알아보는 시간이 되었다.</p>

@@ -41,7 +41,7 @@
     <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-01-22T00:00:00+09:00">
-                Mon 22 January 2018
+                2018-01-22
         </abbr>
 
 </footer><!-- /.post-info -->      <p>예전부터 네이버 블로그 검색에서 ‘최신순’ 검색을 했을 때 검색어와 무관한 결과가 나와서 갸웃거린 경우가 있었는데, 그냥 네이버 검색이 별론가 생각하고 넘어갔었다.</p>
@@ -50,14 +50,13 @@
 <p><img alt="Search result" src="./images/2018-01/weird-naver-search-01.png"></p>
 <p>하지만 포스팅 본문에는 검색 결과에서 보여진 문장이 보이지 않는다.
 스타일을 통해 숨겨졌나 싶어 개발자 도구를 통해 소스를 보니, 역시나 자동 생성된 문자들이 <code>hidden="hidden"</code> 속성과 함께 본문 사이사이에 포함되어 있다.</p>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;font-family: Tahoma; font-size: 12pt;&quot;</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;font-family: Tahoma; font-size: 12pt;&quot;</span><span class="p">&gt;</span>
     성능점검과 경정비까지
 <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">p</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;font-family: 나눔고딕,NanumGothic; font-size: 12px;&quot;</span> <span class="na">hidden</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span><span class="p">&gt;</span>
     기아부터 여자가타기좋은되어야 렉스턴W할수 G25했다고 스마트해서 엠파크허브좋다.
 <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>보아하니 <code>기아</code>, <code>스마트</code> 등 자동차 관련 키워드와 한국어에서 사용하는 관용구와 조사들을 결합한 문자열을 자동 생성해주는 한국형 블로그 마케팅 도구가 있고, 이 도구를 중고차 딜러들이 많이 사용하고 있다고 추측할 수 있겠다.</p>
 <p><img alt="hidden attributes" src="./images/2018-01/weird-naver-search-02.png"></p>

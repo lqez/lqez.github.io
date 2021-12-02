@@ -41,7 +41,7 @@
     <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-07-17T00:00:00+09:00">
-                Thu 17 July 2014
+                2014-07-17
         </abbr>
 
 </footer><!-- /.post-info -->      <h2 id="upstart">Upstart</h2>
@@ -58,19 +58,17 @@ Upstart 설정 중, <a href="http://upstart.ubuntu.com/cookbook/#expect">expect 
 <h3 id="symptom">Symptom</h3>
 <p>보통은 이 값을 잘못 설정한 경우에 서비스가 제대로 감시되지 않거나, 종료되지 않는 등의 문제가 생기는데
 오늘은 해당 서비스를 재시작하면서 별다른 설정의 변경이 없었음에도 불구하고, 이상한 상태에 빠지고 말았다.</p>
-<div class="highlight"><pre><span></span>$ initctl list <span class="p">|</span> grep flower
+<div class="highlight"><pre><span></span><code>$ initctl list <span class="p">|</span> grep flower
 one/flower start/killed, process <span class="m">14645</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>이 상황에서는 <code>start</code> / <code>stop</code> 명령어가 전부 hang이 되어 서비스 재시작이나 종료가 불가능하다.
 <code>start/killed</code> 로 표시되는 프로세스 ID를 <code>ps</code>로 찾아보면 당연히 없는 프로세스 ID다.
 한참을 헤매다 혹시나 싶어 upstart configuration 파일을 복제하여 다른 이름으로 바꿨더니, 제대로 동작한다!</p>
-<div class="highlight"><pre><span></span>$ initctl list <span class="p">|</span> grep flower
+<div class="highlight"><pre><span></span><code>$ initctl list <span class="p">|</span> grep flower
 one/flower start/killed, process <span class="m">14645</span>
 one/flower_dup start/running, process <span class="m">17171</span>
-</pre></div>
-
+</code></pre></div>
 
 <h3 id="solution">Solution</h3>
 <p>시스템을 재시작하면 복구될 것 같았지만, 당장 재시작할 수 없는 프로덕션 시스템이라
@@ -86,9 +84,9 @@ one/flower_dup start/running, process <span class="m">17171</span>
 <li>Upstart는 이것이 정상적인 프로세스 종료로 판단하고 혼란 상황에서 빠져나온다.</li>
 </ol>
 <p>우여곡절 끝에 문제 해결.</p>
-<div class="highlight"><pre><span></span>$ initctl list <span class="p">|</span> grep one
+<div class="highlight"><pre><span></span><code>$ initctl list <span class="p">|</span> grep one
 one/flower start/running, process <span class="m">14810</span>
-</pre></div><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</code></pre></div><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 <footer class="post-info-footer">
         <p>
         In <a href="https://lqez.github.io/blog/category/2014-07.html">2014-07</a>. 

@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer - 2018-01</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/2018-01.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2018-01-22T00:00:00+09:00</updated><entry><title>Weird result from Naver search</title><link href="https://lqez.github.io/blog/weird-result-from-naver-search.html" rel="alternate"></link><published>2018-01-22T00:00:00+09:00</published><updated>2018-01-22T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2018-01-22:/blog/weird-result-from-naver-search.html</id><summary type="html">&lt;p&gt;예전부터 네이버 블로그 검색에서 ‘최신순’ 검색을 했을 때 검색어와 무관한 결과가 나와서 갸웃거린 경우가 있었는데, 그냥 네이버 검색이 별론가 생각하고 넘어갔었다.&lt;/p&gt;
-&lt;p&gt;오늘은 &lt;a href="https://en.wikipedia.org/wiki/BMW_X3#Third_generation_(G01;_2018%E2%80%93present)"&gt;BMW X3 (G01)&lt;/a&gt;이 출시되었다는 얘기를 듣고 관심이 생겨 네이버에서 검색해보았다.
-역시나 최신 기준으로 검색 결과를 보았을 때 이상한 콘텐츠들이 주를 이루지만, 속는 셈 치고 들어가 콘텐츠를 살펴보았다 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;예전부터 네이버 블로그 검색에서 ‘최신순’ 검색을 했을 때 검색어와 무관한 결과가 나와서 갸웃거린 경우가 있었는데, 그냥 네이버 검색이 별론가 생각하고 넘어갔었다.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer - 2018-01</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/2018-01.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2018-01-22T00:00:00+09:00</updated><entry><title>Weird result from Naver search</title><link href="https://lqez.github.io/blog/weird-result-from-naver-search.html" rel="alternate"></link><published>2018-01-22T00:00:00+09:00</published><updated>2018-01-22T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2018-01-22:/blog/weird-result-from-naver-search.html</id><summary type="html">&lt;p&gt;예전부터 네이버 블로그 검색에서 ‘최신순’ 검색을 했을 때 검색어와 무관한 결과가 나와서 갸웃거린 경우가 있었는데, 그냥 네 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;예전부터 네이버 블로그 검색에서 ‘최신순’ 검색을 했을 때 검색어와 무관한 결과가 나와서 갸웃거린 경우가 있었는데, 그냥 네이버 검색이 별론가 생각하고 넘어갔었다.&lt;/p&gt;
 &lt;p&gt;오늘은 &lt;a href="https://en.wikipedia.org/wiki/BMW_X3#Third_generation_(G01;_2018%E2%80%93present)"&gt;BMW X3 (G01)&lt;/a&gt;이 출시되었다는 얘기를 듣고 관심이 생겨 네이버에서 검색해보았다.
 역시나 최신 기준으로 검색 결과를 보았을 때 이상한 콘텐츠들이 주를 이루지만, 속는 셈 치고 들어가 콘텐츠를 살펴보았다.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Search result" src="./images/2018-01/weird-naver-search-01.png"&gt;&lt;/p&gt;
 &lt;p&gt;하지만 포스팅 본문에는 검색 결과에서 보여진 문장이 보이지 않는다.
 스타일을 통해 숨겨졌나 싶어 개발자 도구를 통해 소스를 보니, 역시나 자동 생성된 문자들이 &lt;code&gt;hidden="hidden"&lt;/code&gt; 속성과 함께 본문 사이사이에 포함되어 있다.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt; &lt;span class="na"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;font-family: Tahoma; font-size: 12pt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt; &lt;span class="na"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;font-family: Tahoma; font-size: 12pt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
     성능점검과 경정비까지
 &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt; &lt;span class="na"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;font-family: 나눔고딕,NanumGothic; font-size: 12px;&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;hidden&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;hidden&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
     기아부터 여자가타기좋은되어야 렉스턴W할수 G25했다고 스마트해서 엠파크허브좋다.
 &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;보아하니 &lt;code&gt;기아&lt;/code&gt;, &lt;code&gt;스마트&lt;/code&gt; 등 자동차 관련 키워드와 한국어에서 사용하는 관용구와 조사들을 결합한 문자열을 자동 생성해주는 한국형 블로그 마케팅 도구가 있고, 이 도구를 중고차 딜러들이 많이 사용하고 있다고 추측할 수 있겠다.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="hidden attributes" src="./images/2018-01/weird-naver-search-02.png"&gt;&lt;/p&gt;
-&lt;p&gt;네이버는 이런 문제를 뻔히 알고 있을텐데, 자동 생성되어 맥락과 의미가 없는 숨겨진 문자열들을 검색 대상에 포함시키지 않는다면 검색 결과 개선에 도움이 되지 않을까 싶다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry></feed>
+&lt;p&gt;네이버는 이런 문제를 뻔히 알고 있을텐데, 자동 생성되어 맥락과 의미가 없는 숨겨진 문자열들을 검색 대상에 포함시키지 않는다면 검색 결과 개선에 도움이 되지 않을까 싶다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="2018-01"></category></entry></feed>

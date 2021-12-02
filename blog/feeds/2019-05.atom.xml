@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer - 2019-05</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/2019-05.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2019-05-24T00:00:00+09:00</updated><entry><title>Vim 교정학원 후기</title><link href="https://lqez.github.io/blog/vimrc-2019.html" rel="alternate"></link><published>2019-05-24T00:00:00+09:00</published><updated>2019-05-24T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2019-05-24:/blog/vimrc-2019.html</id><summary type="html">&lt;p&gt;&lt;blockquote class="twitter-tweet" align="center"&gt;&lt;a href="https://twitter.com/KrComet/status/1128204672836071424"&gt;Tweet of KrComet/1128204672836071424&lt;/a&gt;&lt;/blockquote&gt;&lt;/p&gt;
 &lt;p&gt;어느 날 이 트윗을 보고, 실제로 이런 느낌으로 특정 도구에 대한 사용자 모임을 해보면 어떨까 싶었다.&lt;/p&gt;
-&lt;p&gt;‘교정학원’이라는 말에 꽂혀 바로 모임을 만들고 트위터를 통해 참가자를 모집하였다.
-&lt;a href="https://twitter.com/lqez/status/906179674132189186"&gt;늘 그렇듯 작게 시작&lt;/a&gt;해야 고생하지 않기 때문에 열 명 남짓한 작은 규모로 제한하였다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Vim 교정학원 모집 페이지: &lt;a href="https://lqez.github.io/vimrc2019/"&gt;https …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;&lt;blockquote class="twitter-tweet" align="center"&gt;&lt;a href="https://twitter.com/KrComet/status/1128204672836071424"&gt;Tweet of KrComet/1128204672836071424&lt;/a&gt;&lt;/blockquote&gt;&lt;/p&gt;
+&lt;p&gt;‘교정학원’이라 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;blockquote class="twitter-tweet" align="center"&gt;&lt;a href="https://twitter.com/KrComet/status/1128204672836071424"&gt;Tweet of KrComet/1128204672836071424&lt;/a&gt;&lt;/blockquote&gt;&lt;/p&gt;
 &lt;p&gt;어느 날 이 트윗을 보고, 실제로 이런 느낌으로 특정 도구에 대한 사용자 모임을 해보면 어떨까 싶었다.&lt;/p&gt;
 &lt;p&gt;‘교정학원’이라는 말에 꽂혀 바로 모임을 만들고 트위터를 통해 참가자를 모집하였다.
 &lt;a href="https://twitter.com/lqez/status/906179674132189186"&gt;늘 그렇듯 작게 시작&lt;/a&gt;해야 고생하지 않기 때문에 열 명 남짓한 작은 규모로 제한하였다.&lt;/p&gt;
@@ -42,4 +39,4 @@
 
 &lt;ul&gt;
 &lt;li&gt;유튜브 주소: &lt;a href="https://youtu.be/lNWuf48vgV4"&gt;https://youtu.be/lNWuf48vgV4&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry></feed>
+&lt;/ul&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="2019-05"></category></entry></feed>

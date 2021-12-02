@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer - 2020-03</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/2020-03.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2020-03-03T00:00:00+09:00</updated><entry><title>Implementation of a Clipping Indicator</title><link href="https://lqez.github.io/blog/implementation-of-a-clipping-indicator.html" rel="alternate"></link><published>2020-03-03T00:00:00+09:00</published><updated>2020-03-03T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2020-03-03:/blog/implementation-of-a-clipping-indicator.html</id><summary type="html">&lt;p&gt;&lt;img alt="Plus mark is used for clipping indicator in Apple Keynote" src="./images/2020-03/keynote-clipping.png" title="애플 키노트의 선택 핸들과 함께 표시된 클리핑 표시자"&gt;&lt;/p&gt;
 &lt;h4 id="clipping-indicator"&gt;Clipping Indicator&lt;/h4&gt;
-&lt;p&gt;&lt;a href="https://www.apple.com/keynote/"&gt;애플 키노트&lt;/a&gt; 앱은 개체의 크기보다 많은 문자열이 포함되면, 개체의 아래쪽에 &lt;code&gt;[+]&lt;/code&gt; 기호를 표시해 전체 문자열이 화면에 표시되지 않고 있음을 나타내는 기능이 있습니다. 이를 &lt;a href="https://support.apple.com/guide/keynote/tan04fe38ce7/mac"&gt;클리핑 표시자(Clipping indicator)&lt;/a&gt;라 부르는데, 만들고 있던 웹앱에서도 비슷한 기능을 넣어달라는 요청을 받아 구현해보았습니다.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Clipped text in Veryslide" src="./images/2020-03/veryslide-clipping-1.png" title="완전히 표시되지 않은 문자열 개체"&gt;&lt;/p&gt;
-&lt;p&gt;위 화면에서와 같이 문자열이 다 표시되지 않았다는 것을 사용자가 시각적으로 인지할 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Plus mark is used for clipping indicator in Apple Keynote" src="./images/2020-03/keynote-clipping.png" title="애플 키노트의 선택 핸들과 함께 표시된 클리핑 표시자"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.apple.com/keynote/"&gt;애플 키노트&lt;/a&gt; 앱은 개체의 크기보다 많은 문자열이 포함되면, 개체의 아래쪽에 &lt;code&gt;[+]&lt;/code&gt; 기호를 표시해 전체 문자열이 화면에 표시 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Plus mark is used for clipping indicator in Apple Keynote" src="./images/2020-03/keynote-clipping.png" title="애플 키노트의 선택 핸들과 함께 표시된 클리핑 표시자"&gt;&lt;/p&gt;
 &lt;h4 id="clipping-indicator"&gt;Clipping Indicator&lt;/h4&gt;
 &lt;p&gt;&lt;a href="https://www.apple.com/keynote/"&gt;애플 키노트&lt;/a&gt; 앱은 개체의 크기보다 많은 문자열이 포함되면, 개체의 아래쪽에 &lt;code&gt;[+]&lt;/code&gt; 기호를 표시해 전체 문자열이 화면에 표시되지 않고 있음을 나타내는 기능이 있습니다. 이를 &lt;a href="https://support.apple.com/guide/keynote/tan04fe38ce7/mac"&gt;클리핑 표시자(Clipping indicator)&lt;/a&gt;라 부르는데, 만들고 있던 웹앱에서도 비슷한 기능을 넣어달라는 요청을 받아 구현해보았습니다.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Clipped text in Veryslide" src="./images/2020-03/veryslide-clipping-1.png" title="완전히 표시되지 않은 문자열 개체"&gt;&lt;/p&gt;
@@ -25,20 +23,21 @@
 &lt;li&gt;&lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetHeight"&gt;&lt;code&gt;offsetHeight&lt;/code&gt;&lt;/a&gt;: clientHeight에 border, 가로 스크롤바가 있는 경우 그 높이를 포함한 값.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight"&gt;&lt;code&gt;scrollHeight&lt;/code&gt;&lt;/a&gt;: padding을 포함한 콘텐츠의 실제 높이 값. 충분한 공간이 있는 경우에는 clientHeight와 같습니다.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;CodePen에서 직접 확인해보기: &lt;a href="https://codepen.io/lqez/pen/qBdVqKB"&gt;https://codepen.io/lqez/pen/qBdVqKB&lt;/a&gt;
+&lt;p&gt;CodePen에서 직접 확인해보기: &lt;a href="https://codepen.io/lqez/pen/qBdVqKB"&gt;https://codepen.io/lqez/pen/qBdVqKB&lt;/a&gt;&lt;/p&gt;
 &lt;p class="codepen" data-height="405" data-theme-id="light" data-default-tab="result" data-user="lqez" data-slug-hash="qBdVqKB" style="height: 405px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Multiple height values"&gt;
   &lt;span&gt;See the Pen &lt;a href="https://codepen.io/lqez/pen/qBdVqKB"&gt;
   Multiple height values&lt;/a&gt; by Hyunwoo Park (&lt;a href="https://codepen.io/lqez"&gt;@lqez&lt;/a&gt;)
   on &lt;a href="https://codepen.io"&gt;CodePen&lt;/a&gt;.&lt;/span&gt;
 &lt;/p&gt;
-&lt;script async src="https://static.codepen.io/assets/embed/ei.js"&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script async src="https://static.codepen.io/assets/embed/ei.js"&gt;&lt;/script&gt;
+
 &lt;h4 id="check-overflow-on-resizing"&gt;Check overflow on resizing&lt;/h4&gt;
 &lt;p&gt;Veryslide는 편리한 코딩을 위해 개체의 상태(state)가 변경될 때, 자동으로 &lt;code&gt;on_&amp;lt;state name&amp;gt;&lt;/code&gt; 이름을 가진 함수가 호출되는 기능이 있습니다. 이를 이용해 개체의 &lt;code&gt;height&lt;/code&gt; 값이 변경될 때, 자동으로 호출된 &lt;code&gt;on_height&lt;/code&gt;에서 높이 정보를 읽어 문자열이 표시될 공간보다 문자열이 길다면 클리핑 표시자를 표시하는 방식으로 구현해보았습니다.&lt;/p&gt;
 &lt;p&gt;하지만 이 구현에는 문제가 있었습니다. 문자열이 잘리지 않고 완전히 표시되는 것을 따져보기 위해서는 문자열을 담고 있는 개체의 크기 뿐만 아니라, 문자열의 크기, 굵기, 서체, 행간 등 여러 요소가 관여하는데, 이에 대응하는 상태의 값이 변경될 때를 고려하지 않았기 때문입니다.&lt;/p&gt;
 &lt;h4 id="resizeobserver"&gt;ResizeObserver&lt;/h4&gt;
 &lt;p&gt;이 문제를 해결하기 위해서는 개체의 모든 상태가 변경될 때마다 크기를 검사해 클리핑 여부를 따져봐야 합니다. 하지만 특정 요소가 달라져도 매번 크기가 달라지는 것은 아니기 때문에 비효율적이라 생각해, &lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver"&gt;&lt;code&gt;ResizeObserver&lt;/code&gt;&lt;/a&gt;를 도입하였습니다.&lt;/p&gt;
 &lt;p&gt;ResizeObserver는 지정한 개체의 크기가 달라지는 경우에 지정한 함수를 실행하는 관찰자입니다. 비교적 최신의 크롬, 파이어폭스, 엣지에서는 기본으로 지원하지만, 2020년 3월 기준으로 &lt;a href="https://caniuse.com/#feat=resizeobserver"&gt;Can I use…&lt;/a&gt; 사이트에 따르면 71.08% 정도의 사용자만이 이 기능을 문제 없이 사용할 수 있는 상태입니다.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;resizeObserver&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;ResizeObserver&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;entries&lt;/span&gt; &lt;span class="p"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kd"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;resizeObserver&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="ow"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;ResizeObserver&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;entries&lt;/span&gt; &lt;span class="p"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="c1"&gt;// 달라진 개체의 정보를 담고 있는 ResizeObserverEntry 목록이 entries로 넘어옵니다.&lt;/span&gt;
 &lt;span class="p"&gt;});&lt;/span&gt;
 
@@ -46,18 +45,16 @@
 &lt;span class="nx"&gt;resizeObserver&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;observer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;another_element&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;// 하나의 관찰자가 여러 개체를 관찰합니다.&lt;/span&gt;
 
 &lt;span class="nx"&gt;resizeObserver&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;unobserve&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;element&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;        &lt;span class="c1"&gt;// 더 이상 element를 관찰하지 않습니다.&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;관찰자 생성시에 콜백 함수를 지정하는데, 해당 함수는 관찰하던 개체들 중 크기가 변경되면 &lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverEntry"&gt;ResizeObserverEntry&lt;/a&gt;의 목록을 인자로 받습니다. 이를 이용해 달라진 개체가 어떤 개체이고, 어떤 크기로 달라졌는지 확인할 수 있습니다.&lt;/p&gt;
 &lt;p&gt;Veryslide는 문자열을 담고 있는 &lt;code&gt;textNode&lt;/code&gt;와, &lt;code&gt;textNode&lt;/code&gt;를 포함하고 있는 &lt;code&gt;clipNode&lt;/code&gt;를 ResizeObserver를 통해 관찰하고, 변화가 있는 경우에 클리핑 여부를 확인해 동작하도록 했습니다. (&lt;a href="https://github.com/zerobased-co/veryslide/blob/8fcd9d0e78873d9976a527164a31f353ef6932a5/src/components/objects/TextBox.js#L55-L58"&gt;TextBox.js&lt;/a&gt;)&lt;/p&gt;
-&lt;h6&gt;TextBox.js&lt;/h6&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// Set observers for overflow check&lt;/span&gt;
-&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;observer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;ResizeObserver&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;check_overflow&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;bind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;h6 id="textboxjs"&gt;TextBox.js&lt;/h6&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;// Set observers for overflow check&lt;/span&gt;
+&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;observer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="ow"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;ResizeObserver&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;check_overflow&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;bind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
 &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;observer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;observe&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;textNode&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;observer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;observe&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;clipNode&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h5 id="polyfill"&gt;Polyfill&lt;/h5&gt;
 &lt;p&gt;&lt;a href="https://www.npmjs.com/package/resize-observer-polyfill"&gt;resize-observer-polyfill&lt;/a&gt;을 이용하면, Internet Explorer 9을 포함한 대부분의 미지원 브라우저에서도 같은 방법으로 ResizeObserver를 사용할 수 있습니다. 이 폴리필은 기본적으로 &lt;code&gt;window.resize&lt;/code&gt; 이벤트를 구독하여 지정된 개체의 크기 변경에 반응하도록 되어 있으며, 추가로 &lt;code&gt;transitionend&lt;/code&gt; 이벤트를 구독하여 CSS 트랜지션 등으로 인한 크기 변경에 반응합니다. 뿐만 아니라, &lt;code&gt;MutationObserver&lt;/code&gt; 또는 &lt;code&gt;DOMSubtreeModified&lt;/code&gt; 이벤트를 이용해 개체 내부에 변경이 있는 경우도 대응합니다.&lt;/p&gt;
@@ -65,4 +62,4 @@
 &lt;li&gt;&lt;a href="https://github.com/que-etc/resize-observer-polyfill/blob/a3ae98bcd34e972b92d9e40e8b974a75399503e8/src/ResizeObserverController.js#L157-L174"&gt;resize-observer-polyfill의 이벤트 구독 부분, ResizeObserverController.js&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id="demo"&gt;Demo&lt;/h4&gt;
-&lt;div class="videowrapper"&gt;&lt;iframe class="video" src="https://www.youtube.com/embed/EhuKpLruu7Y?autoplay=0" frameborder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="JavaScript"></category></entry></feed>
+&lt;div class="videowrapper"&gt;&lt;iframe class="video" src="https://www.youtube.com/embed/EhuKpLruu7Y?autoplay=0" frameborder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="2020-03"></category><category term="JavaScript"></category></entry></feed>

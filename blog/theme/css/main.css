@@ -447,8 +447,11 @@ article figure figcaption {
     text-decoration: none;
 }
 
-pre {
+pre, code {
     font-family: "Courier Prime", monospace;
+}
+
+pre {
     background-color: #f4f8fa;
     border: 1px solid #ddeaf1;
     overflow: auto;
@@ -457,22 +460,25 @@ pre {
     border-radius: 3px;
     position: relative;
     line-height: 1.2;
-    font-size: 90%;
+    font-size: 80%;
 }
 
-code {
-    font-family: "Courier Prime", monospace;
+p code, li code {
     background-color: #fafcfd;
     border: 1px solid #e1e2e3;
     overflow: auto;
-    padding: 3px 5px;
-    border-radius: 2px;
+    padding: 3px 5px 2px;
+    border-radius: 3px;
     position: relative;
-    top: -1px;
-    font-size: 90%;
+    top: -2px;
+    margin: 0 2px;
+    font-size: 80%;
     word-break: keep-all;
 }
 
+.highlight code {
+    line-height: 1;
+}
 
 article h6 {
   font-family: "Courier Prime", monospace;

@@ -41,7 +41,7 @@
     <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2017-12-20T00:00:00+09:00">
-                Wed 20 December 2017
+                2017-12-20
         </abbr>
 
 </footer><!-- /.post-info -->      <p><a href="https://en.wikipedia.org/wiki/Command-line_interface">커맨드라인 인터페이스(CLI)</a>를 가진 프로그램을 만들면서 <a href="https://en.wikipedia.org/wiki/Asynchronous_I/O">비동기 처리</a>를 시도한 적이 없었다.
@@ -61,7 +61,7 @@ rogrepos를 처음에는 기존처럼 비동기 처리 없이 단일 스레드�
 rogrepos에서 <a href="https://github.com/lqez/rogrepos/blob/5513ea4e1b699c64d0c98c54afd8e7849c804673/rogrepos/rogrepos.py#L10-L32">사용</a>했다.</p>
 <p>rogrepos는 아래와 같이 동작하며, 메인 스레드는 사용자 입력을 기다리는 <code>[y/N]</code> 부분에서 멈추지만,
 다른 스레드에서 저장소를 탐색하며 추가 정보를 계속해서 불러오므로 다음 선택지로 넘어갈 때 사용자 입장에서는 지연을 덜 느끼게 된다.</p>
-<div class="highlight"><pre><span></span>$ rogrepos
+<div class="highlight"><pre><span></span><code>$ rogrepos
 Retrieving organizations from GitHub...
 
     KeyCastr, <span class="m">1</span> public repo<span class="o">(</span>s<span class="o">)</span>, <span class="m">0</span> private repo<span class="o">(</span>s<span class="o">)</span>
@@ -77,31 +77,27 @@ lqez/yuna
     Do you really want to delete? <span class="o">[</span>y/N<span class="o">]</span>: y
     This is not a forked project. Are you sure? <span class="o">[</span>y/N<span class="o">]</span>: y
 lqez/yuna was deleted.
-</pre></div>
-
+</code></pre></div>
 
 <hr>
 <p>최초의 코드는 아래와 같았다.</p>
-<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">repo</span> <span class="ow">in</span> <span class="n">github</span><span class="o">.</span><span class="n">get_user</span><span class="p">()</span><span class="o">.</span><span class="n">get_repos</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">repo</span> <span class="ow">in</span> <span class="n">github</span><span class="o">.</span><span class="n">get_user</span><span class="p">()</span><span class="o">.</span><span class="n">get_repos</span><span class="p">():</span>
     <span class="c1"># do something</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>이를 제너레이터로 바꾸면 아래와 같이 바뀌고,</p>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generator_repos</span><span class="p">(</span><span class="n">github</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">generator_repos</span><span class="p">(</span><span class="n">github</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">repo</span> <span class="ow">in</span> <span class="n">github</span><span class="o">.</span><span class="n">get_user</span><span class="p">()</span><span class="o">.</span><span class="n">get_repos</span><span class="p">():</span>
         <span class="k">yield</span> <span class="n">repo</span>
 
 <span class="k">for</span> <span class="n">repo</span> <span class="ow">in</span> <span class="n">generator_repos</span><span class="p">(</span><span class="n">github</span><span class="p">):</span>
     <span class="c1"># do something</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>위에서 작성한 Threaded generator로 바꾼 것이 현재의 상태다.</p>
-<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">repo</span> <span class="ow">in</span> <span class="n">ThreadedGenerator</span><span class="p">(</span><span class="n">generator_repos</span><span class="p">(</span><span class="n">github</span><span class="p">)):</span>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">repo</span> <span class="ow">in</span> <span class="n">ThreadedGenerator</span><span class="p">(</span><span class="n">generator_repos</span><span class="p">(</span><span class="n">github</span><span class="p">)):</span>
     <span class="c1"># do something</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>반복문 내에 느린 동작이 자주 포함되는 CLI 도구에서는 반복적으로 사용해볼만한 패턴이라고 생각된다.</p>
 <hr>

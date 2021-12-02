@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer - 2017-12</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/2017-12.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2017-12-21T00:00:00+09:00</updated><entry><title>The end is just another beginning</title><link href="https://lqez.github.io/blog/the-end-is-just-another-beginning.html" rel="alternate"></link><published>2017-12-21T00:00:00+09:00</published><updated>2017-12-21T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2017-12-21:/blog/the-end-is-just-another-beginning.html</id><summary type="html">&lt;p&gt;&lt;img alt="The Last Moment" src="./images/2017-12/last-moment-mba.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;2017년을 마지막으로 스마트스터디를 퇴직한다.&lt;/p&gt;
-&lt;p&gt;자신이 직접 디자인한 결재 양식으로 작성된 사직서와 공동대표 및 등기이사 사임 문서에 자필로 서명하는 일은 아무래도 낯선 일일 수밖에 없다.
-스스로 선택한 일이라 마음은 무겁지만 불편하지는 않다.
-지난 시간 동안 많은, 다양한 일이 있었고, 이제는 내가 보탬이 되지 않는다 생각하여 떠나는 것뿐이다.&lt;/p&gt;
-&lt;p&gt;회사와 일에 지나치게 몰입하면 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="The Last Moment" src="./images/2017-12/last-moment-mba.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;자신이 직접 디자인한 결재 양식으로 작성된 사직서와 공동대표 및 등기이사 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="The Last Moment" src="./images/2017-12/last-moment-mba.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;2017년을 마지막으로 스마트스터디를 퇴직한다.&lt;/p&gt;
 &lt;p&gt;자신이 직접 디자인한 결재 양식으로 작성된 사직서와 공동대표 및 등기이사 사임 문서에 자필로 서명하는 일은 아무래도 낯선 일일 수밖에 없다.
 스스로 선택한 일이라 마음은 무겁지만 불편하지는 않다.
@@ -46,11 +43,8 @@
 &lt;p&gt;좋아하는 문장이지만 더 좋아하는 이 문장을 덧붙이고 싶다.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;“The end is just another beginning.”&lt;/p&gt;
-&lt;/blockquote&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry><entry><title>Threaded Generator in Python</title><link href="https://lqez.github.io/blog/threaded-generator-in-python.html" rel="alternate"></link><published>2017-12-20T00:00:00+09:00</published><updated>2017-12-20T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2017-12-20:/blog/threaded-generator-in-python.html</id><summary type="html">&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Command-line_interface"&gt;커맨드라인 인터페이스(CLI)&lt;/a&gt;를 가진 프로그램을 만들면서 &lt;a href="https://en.wikipedia.org/wiki/Asynchronous_I/O"&gt;비동기 처리&lt;/a&gt;를 시도한 적이 없었다.
-대부분 선택지를 출력한 후에 사용자로부터 값을 입력받으면 다음 동작을 수행하는 것을 반복하기 때문에 일반적인 &lt;a href="https://en.wikipedia.org/wiki/Thread_(computing)#Single_threading"&gt;단일 스레드&lt;/a&gt;로 작성해왔다.&lt;/p&gt;
-&lt;p&gt;이번에 만든 CLI 프로그램인 &lt;a href="https://github.com/lqez/rogrepos"&gt;rogrepos&lt;/a&gt;는 GitHub에서 오픈소스 활동을 오래 하다 보면
-수정사항을 작성하기 위한 목적으로 &lt;a href="https://en.wikipedia.org/wiki/Fork_(software_development)"&gt;포크&lt;/a&gt;했다가
-더는 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Command-line_interface"&gt;커맨드라인 인터페이스(CLI)&lt;/a&gt;를 가진 프로그램을 만들면서 &lt;a href="https://en.wikipedia.org/wiki/Asynchronous_I/O"&gt;비동기 처리&lt;/a&gt;를 시도한 적이 없었다.
+&lt;/blockquote&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="2017-12"></category></entry><entry><title>Threaded Generator in Python</title><link href="https://lqez.github.io/blog/threaded-generator-in-python.html" rel="alternate"></link><published>2017-12-20T00:00:00+09:00</published><updated>2017-12-20T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2017-12-20:/blog/threaded-generator-in-python.html</id><summary type="html">&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Command-line_interface"&gt;커맨드라인 인터페이스(CLI)&lt;/a&gt;를 가진 프로그램을 만들면서 &lt;a href="https://en.wikipedia.org/wiki/Asynchronous_I/O"&gt;비동기 처리&lt;/a&gt;를 시도한 적이 없었다.
+대부분 선택지를 출력한 후에 사 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Command-line_interface"&gt;커맨드라인 인터페이스(CLI)&lt;/a&gt;를 가진 프로그램을 만들면서 &lt;a href="https://en.wikipedia.org/wiki/Asynchronous_I/O"&gt;비동기 처리&lt;/a&gt;를 시도한 적이 없었다.
 대부분 선택지를 출력한 후에 사용자로부터 값을 입력받으면 다음 동작을 수행하는 것을 반복하기 때문에 일반적인 &lt;a href="https://en.wikipedia.org/wiki/Thread_(computing)#Single_threading"&gt;단일 스레드&lt;/a&gt;로 작성해왔다.&lt;/p&gt;
 &lt;p&gt;이번에 만든 CLI 프로그램인 &lt;a href="https://github.com/lqez/rogrepos"&gt;rogrepos&lt;/a&gt;는 GitHub에서 오픈소스 활동을 오래 하다 보면
 수정사항을 작성하기 위한 목적으로 &lt;a href="https://en.wikipedia.org/wiki/Fork_(software_development)"&gt;포크&lt;/a&gt;했다가
@@ -67,7 +61,7 @@ rogrepos를 처음에는 기존처럼 비동기 처리 없이 단일 스레드�
 rogrepos에서 &lt;a href="https://github.com/lqez/rogrepos/blob/5513ea4e1b699c64d0c98c54afd8e7849c804673/rogrepos/rogrepos.py#L10-L32"&gt;사용&lt;/a&gt;했다.&lt;/p&gt;
 &lt;p&gt;rogrepos는 아래와 같이 동작하며, 메인 스레드는 사용자 입력을 기다리는 &lt;code&gt;[y/N]&lt;/code&gt; 부분에서 멈추지만,
 다른 스레드에서 저장소를 탐색하며 추가 정보를 계속해서 불러오므로 다음 선택지로 넘어갈 때 사용자 입장에서는 지연을 덜 느끼게 된다.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ rogrepos
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ rogrepos
 Retrieving organizations from GitHub...
 
     KeyCastr, &lt;span class="m"&gt;1&lt;/span&gt; public repo&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt;, &lt;span class="m"&gt;0&lt;/span&gt; private repo&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt;
@@ -83,33 +77,29 @@ lqez/yuna
     Do you really want to delete? &lt;span class="o"&gt;[&lt;/span&gt;y/N&lt;span class="o"&gt;]&lt;/span&gt;: y
     This is not a forked project. Are you sure? &lt;span class="o"&gt;[&lt;/span&gt;y/N&lt;span class="o"&gt;]&lt;/span&gt;: y
 lqez/yuna was deleted.
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;hr&gt;
 &lt;p&gt;최초의 코드는 아래와 같았다.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;repo&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_user&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_repos&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;repo&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_user&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_repos&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="c1"&gt;# do something&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;이를 제너레이터로 바꾸면 아래와 같이 바뀌고,&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;generator_repos&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;generator_repos&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;repo&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_user&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_repos&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
         &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;repo&lt;/span&gt;
 
 &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;repo&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;generator_repos&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="c1"&gt;# do something&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;위에서 작성한 Threaded generator로 바꾼 것이 현재의 상태다.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;repo&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;ThreadedGenerator&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;generator_repos&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;repo&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;ThreadedGenerator&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;generator_repos&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
     &lt;span class="c1"&gt;# do something&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;반복문 내에 느린 동작이 자주 포함되는 CLI 도구에서는 반복적으로 사용해볼만한 패턴이라고 생각된다.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;덧) 위 프로젝트를 &lt;a href="https://www.reddit.com/r/github/comments/7jporl/"&gt;/r/github&lt;/a&gt;에 올렸는데, 저장소는 지워져서는 안된다는 의견과
-&lt;a href="https://www.reddit.com/r/github/comments/7jporl/rogrepos_remove_outdated_github_repositories_in/"&gt;&lt;code&gt;No Maintenance Intended&lt;/code&gt;&lt;/a&gt; 배지에 대한 댓글이 달렸다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content></entry></feed>
+&lt;a href="https://www.reddit.com/r/github/comments/7jporl/rogrepos_remove_outdated_github_repositories_in/"&gt;&lt;code&gt;No Maintenance Intended&lt;/code&gt;&lt;/a&gt; 배지에 대한 댓글이 달렸다.&lt;/p&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="2017-12"></category></entry></feed>

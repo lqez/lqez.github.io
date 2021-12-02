@@ -41,7 +41,7 @@
     <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2013-02-26T00:00:00+09:00">
-                Tue 26 February 2013
+                2013-02-26
         </abbr>
 
 </footer><!-- /.post-info -->      <p>Google은 - 친절하게도 - Google Apps 계정을 외부 서버와 동기화할 수 있는 기능을 제공할 뿐 아니라, 이를 위한 도구도 배포하고 있다.</p>
@@ -67,14 +67,12 @@
 <p><img alt="Screen Shot of GADS" src="./images/gads_01.png"></p>
 <p>Linux용 GADS는 커맨드라인에서 설치하면 동의항목이 HTML로 출력되지만, 계속 엔터키를 입력해 넘기며 진행하면 설치가 가능하다.
 root 계정으로 설치하는 경우에 /usr/local/GoogleAppsDirSync 에 설치가 되고, 이 디렉토리 아래에 있는 <code>sync-cmd</code> 쉘 스크립트를 통해 동기화를 수행하면 된다.</p>
-<div class="highlight"><pre><span></span>$ ./sync-cmd -c &lt;configuration_file.xml&gt;
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>$ ./sync-cmd -c &lt;configuration_file.xml&gt;
+</code></pre></div>
 
 <p>위와 같이 실행하면 비교만 하고, 실제로 동기화는 하지 않는 dry-run으로 실행되고,</p>
-<div class="highlight"><pre><span></span>$ ./sync-cmd -a -c &lt;configuration_file.xml&gt;
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>$ ./sync-cmd -a -c &lt;configuration_file.xml&gt;
+</code></pre></div>
 
 <p><code>-a</code> 옵션을 추가해야 실제 동기화가 이뤄진다. 현재는 위 명령을 cron에 넣어 5분 마다 동기화 하도록 설정해두었다.</p><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 <footer class="post-info-footer">
