@@ -1,5 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2020-03-03T00:00:00+09:00</updated><entry><title>Implementation of a Clipping Indicator</title><link href="https://lqez.github.io/blog/implementation-of-a-clipping-indicator.html" rel="alternate"></link><published>2020-03-03T00:00:00+09:00</published><updated>2020-03-03T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2020-03-03:/blog/implementation-of-a-clipping-indicator.html</id><summary type="html">&lt;p&gt;&lt;img alt="Plus mark is used for clipping indicator in Apple Keynote" src="./images/2020-03/keynote-clipping.png" title="애플 키노트의 선택 핸들과 함께 표시된 클리핑 표시자"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="https://lqez.github.io/blog/" rel="alternate"></link><link href="https://lqez.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>https://lqez.github.io/blog/</id><updated>2021-12-03T00:00:00+09:00</updated><entry><title>CTO는 어떻게 뽑을까</title><link href="https://lqez.github.io/blog/how-to-hire-cto.html" rel="alternate"></link><published>2021-12-03T00:00:00+09:00</published><updated>2021-12-03T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2021-12-03:/blog/how-to-hire-cto.html</id><summary type="html">&lt;p&gt;스타트업에서 최고 기술 책임자, CTO의 역할에 대한 글은 비교적 쉽게 찾아볼 수 있다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.popit.kr/%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%97%90%EC%84%9C-cto%EC%9D%98-%EC%97%AD%ED%95%A0/"&gt;스타트업에서 CTO의 역할, Jeon Hosang&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.mrlatte.net/blog/2020/01/13/startup-cto.html"&gt;스타트업에 …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;스타트업에서 최고 기술 책임자, CTO의 역할에 대한 글은 비교적 쉽게 찾아볼 수 있다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.popit.kr/%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%97%90%EC%84%9C-cto%EC%9D%98-%EC%97%AD%ED%95%A0/"&gt;스타트업에서 CTO의 역할, Jeon Hosang&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.mrlatte.net/blog/2020/01/13/startup-cto.html"&gt;스타트업에서 CTO의 역할, Jong-Ha Ahn&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://brunch.co.kr/@leehosung/40"&gt;스타트업에서 CTO의 일, 이호성&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.mimul.com/blog/what-does-a-cto-do/"&gt;CTO는 무엇을 해야하나?, Amr Awadallah (번역 Minul)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;하지만 다른 책임급 직책과 마찬가지로 어떤 과정을 통해 이 역할을 맡게 되며, 어디서 어떤 방식으로 길러지는지, 또 어떻게 채용할 수 있는지에 대해 다룬 글은 찾아보기 힘들다.&lt;/p&gt;
+&lt;p&gt;우선 현재 일하고 있는 CTO들은 어떤 사람인지 살펴보자.&lt;/p&gt;
+&lt;p&gt;250명 이상의 CTO가 답한 2020년의 한 설문 조사 리포트&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;에 따르면, 78% 이상의 응답자는 CTO가 되기 전 &lt;strong&gt;5년 이상의 경력&lt;/strong&gt;이 있었으며,
+그중 절반 이상은 10년 이상의 업계 경력을 쌓은 뒤에야 CTO가 되었다 한다.
+평균적으로 &lt;strong&gt;최소 2개 이상의 직무&lt;/strong&gt;를 경험했으며, CTO가 되기 전 &lt;strong&gt;근무한 회사는 3곳&lt;/strong&gt;이 중윗값이었다.
+CTO를 대상으로 한 다른 통계&lt;sup id="fnref:2"&gt;&lt;a class="footnote-ref" href="#fn:2"&gt;2&lt;/a&gt;&lt;/sup&gt;에서는 &lt;strong&gt;64%가 대졸, 21%는 석사 학위&lt;/strong&gt;를, 그리고 박사에 해당하는 학위자는 5%로 나타났다.&lt;/p&gt;
+&lt;p&gt;이런 통계를 통해 현업에 종사 중인 CTO의 대략적인 나이나 경력은 추정할 수 있지만, 주변에서 가장 궁금해하는 질문에 답하기는 여전히 어렵다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;CTO는 외부에서 채용하는 게 낫나요? 어떻게 뽑나요?&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;지난 몇 년간 이 질문을 다양한 분야의 여러 사람에게 들어왔다. 사람들을 온/오프라인으로 만나며 비슷한 답이 계속되는 것 같아, 나눴던 이야기를 정리해보고자 이 글을 시작했다.
+결론부터 얘기하자면 이런 류의 질문이 &lt;strong&gt;늘 그러하듯 정답은 없고, 각자의 사정에 맞춰&lt;/strong&gt; 다르게 행동해야 한다고 생각한다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id="_1"&gt;꼭 있어야 할까&lt;/h4&gt;
+&lt;p&gt;주로 &lt;strong&gt;“왜 CTO가 필요하다고 생각하나요?”&lt;/strong&gt;를 가장 먼저 물었고, 다음과 같은 답이 많았다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CTO가 없으니까 &lt;strong&gt;개발이 더딘 것 같다&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;CTO가 없으니까 개발자 &lt;strong&gt;구인이 안되는 것 같다&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;CTO가 없으니까 개발팀이 &lt;strong&gt;발전 방향을 못 잡는 것 같다&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;문제의 원인은 단지 CTO가 없어서가 아니라 해당 업무의 담당자가 부족하거나 관리자들이 너무 바빠서가 아니었을까.
+CTO가 있다고 해도 혼자서 이 문제를 해결할 수는 없으며, 건전한 조직을 형성하여 점진적으로 낫게 만드는 &lt;strong&gt;과정의 시작점&lt;/strong&gt;은 될 수 있다고 생각한다.&lt;/p&gt;
+&lt;p&gt;그러므로 프로그래머를 포함한 &lt;strong&gt;개발팀이 회사의 핵심 조직&lt;/strong&gt;이 되며, 이 &lt;strong&gt;조직의 성장이 매출 성장과 직결&lt;/strong&gt;되는 구조, 또는 이러한 계획이 있는 상태에서 &lt;strong&gt;중장기적인 목표&lt;/strong&gt;를 가지고 있을 때 비로소 CTO가 필요하며 제 역할을 할 수 있다고 생각한다. 이는 최소 요건으로, 이 조건에 부합하지 않는 조직에서의 CTO는 대부분 유명무실하거나 개발 부문장의 역할에 그치며, 굳이 자리를 만들 필요가 없다 생각한다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://minorblend.com/cto-vs-vp-engineering/"&gt;#define CTO, Greg Brockman (번역 Ha-nyung Chung)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;물론 CMO, COO, 그 어떤 CXO도 마찬가지다.
+CMO가 있다 한들 제품과 서비스 제작에는 관여할 수 없게 떨어트려 놓고, 분기별 예산과 달성 목표만을 던져주며 ‘마케팅’이나 잘 해보라고 한다면 그 어떤 사람이 제 역할을 할 수 있을까?&lt;/p&gt;
+&lt;p&gt;임원이 제 역할을 하기 위해서는 &lt;strong&gt;담당 조직의 인력 구성과 인건비를 포함한 예산에 대한 충분한 권한과 책임&lt;/strong&gt;을 가지도록 하는 것이 기본이다.&lt;/p&gt;
+&lt;p&gt;앞서 나열했던 CTO의 역할에 대해 정리한 글에서도 언급하지만, 조직의 규모에 따라 CTO가 주로 해야 하는 일은 계속해서 달라진다.
+회사가 작을 때는 직접 많은 개발을 담당해야 하기도 하고, 조직의 성장에 따라 늘어나는 레거시를 감당하며 지속적인 구인과 사업 확장의 방향도 책임진다.
+제품과 서비스 개발의 기능 선택, 일정 관리에 대해 더 이상 대표 혼자 결정하는 것이 아니라 CTO의 의견과 결정을 구해야 한다.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;그리고 — 단편적으로 따져본다면 — 이런 일들은 누군가에게 꼭 CTO라는 직책을 부여해야만 가능한 것도 아니다.&lt;/em&gt;&lt;/p&gt;
+&lt;h4 id="_2"&gt;그래도 필요해&lt;/h4&gt;
+&lt;p&gt;그럼에도 불구하고 CTO가 필요하다 생각되면, 현재의 &lt;strong&gt;인력 구성과 조직 구조에서 어떤 갈증이 있는지 먼저 따져보자&lt;/strong&gt;.
+CTO가 없어서 할 수 없는 일, CTO가 있기에 할 수 있는 일이 따로 있다기보다는, &lt;strong&gt;기술 관점에서 사업을 바라보고 미래를 위한 의사 결정&lt;/strong&gt;을 함께, 또는 위임할 사람이 있다면 어떻게 달라질까 생각해보자.&lt;/p&gt;
+&lt;p&gt;하지만 CTO가 없기에 어떤 부분이 부족하고 문제가 있는지 따져보는 것조차 어렵다는 얘기도 들었다.
+심지어 스스로 개발 조직을 경험해보지 못한 관리자나 임원에게는 더 어려운 문제겠지만, 그럴수록 혼자 고민하지 말고 함께하고 있는 동료들과 스스럼없이 얘기를 나눠보면 개발 조직과 관련된 공감대를 형성하는 계기가 될 수도 있다.
+구성원이나 다른 회사의 지인에게 부탁해 CTO 또는 그에 따르는 역할을 담당하고 있는 사람을 소개받아 얘기를 나눠보는 것도 확실히 도움이 된다.&lt;/p&gt;
+&lt;p&gt;이런 고민과 생각의 시간을 거쳤다면, 자신과 회사에 도움이 될 CTO가 어떤 역량과 자세를 갖추고 있으면 좋을지 개략적으로나마 그림을 그릴 수 있게 된다.
+이에 맞춰 무작정 외부에서 찾으려 하지 말고, 현재 구성원 중에 맡길 수 있는 사람이 있는지 먼저 찾아보고, 대상자가 있다면 본인의 생각과 앞으로의 전략을 솔직하게 전달하고 의견을 들어보면 좋겠다.&lt;/p&gt;
+&lt;p&gt;개인적인 경험과 주변 사례를 살펴보았을 때, 창업 10년 미만, 직원 수 50명 이하의 조직에서는 &lt;strong&gt;개발 이력을 많이 알고, 동료와 의사소통 능력이 높으며 회사 사정에 밝은 재직자&lt;/strong&gt;가 CTO를 맡는 모습이 자연스럽고 좋다고 생각한다.
+규모가 작고 응집력이 높은 조직에서 갑자기 외부 인사를 채용했을 때 발생할 수 있는 문제도 피할 수 있기 때문이다.&lt;/p&gt;
+&lt;p&gt;이 과정에서 대상자가 직접 개발하는 시간이 줄고 다른 업무들이 계속 추가되며 스트레스를 받거나 능률이 떨어질 수 있으므로, 어느 날 갑자기 &lt;em&gt;“오늘부터 당신이 CTO입니다.”&lt;/em&gt; 라고 통보하는 것은 좋은 방법이 아니다. 대상자와 지속적인 1:1 미팅을 가지고 고민을 나누는 시간을 가지며, 역할을 바꿔가더라도 서로 만족하며 일할 수 있는 사람인지 알아가면 좋겠다. 충분히 잘 해낼 수 있을 것으로 보이는 사람이 직책이 주는 부담감 때문에 맡기를 꺼린다면, 이렇게 시작해보면 어떨까.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;“일단 임시 CTO로 1년만 해봅시다”.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://medium.com/hwintegral-consulting-cto/what-an-interim-cto-does-9a38c4eb4908"&gt;What an Interim/Fractional CTO does, Jonathan Holloway&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.softkraft.co/how-to-hire-interim-cto-for-your-startup/"&gt;How To Hire An Interim CTO For Your Startup, Błażej Kosmowski&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://muchtrans.com/translations/techie-tech-lead-my-5-biggest-mistakes.ko.html"&gt;개발자에서 개발팀장이 되기까지 겪은 다섯가지 큰 실수, Peter Gillard-Moss&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이 기간에는 모든 역할을 다 해주기를 바라지 말고, 개발팀 편성과 프로세스 정립 등 제한적인 영역에서 스스로 담금질할 수 있도록 주변에서 배려하고 도와줄 필요가 있다. 1년이 지난 후에는 임시 CTO에 머무르지 않고, 앞으로 사업의 방향을 함께 고민할 수 있는 파트너로 성장할 수 있으리라 생각한다.&lt;/p&gt;
+&lt;h4 id="_3"&gt;하지만 어떻게 뽑을까&lt;/h4&gt;
+&lt;p&gt;이제까지 개발을 외부에 맡겨 계속해온 경우, 또는 사정상 개발팀을 새로 꾸려야 하는 상황이거나, 기업의 규모에 따라 어쩔 수 없는 &lt;em&gt;어른의 사정&lt;/em&gt;이 있는 경우에는 외부에서 CTO 대상자를 찾아 채용해야 하는데, 다른 프로그래머나 개발 조직의 인원을 채용할 때와 비교하면 조금 더 장기적인 부문을 고려한 접근이 필요하다.&lt;/p&gt;
+&lt;p&gt;CTO가 제 역할을 다해 조직을 성장시키고 제품을 향상시키기 위해서는 긴 시간과 충분한 자원이 필요하므로 다음과 같은 기준으로 판단해보면 좋겠다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;현재의 기술 스택을 맞출 필요는 없다&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;기술 스택은 기업과 서비스의 성장에 따라 달라질 수 밖에 없다.&lt;/li&gt;
+&lt;li&gt;어떤 기술을 가졌는가 보다, 시장의 변화를 읽고 유연하게 대처할 수 있는지가 중요하다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;개발을 가장 잘하는 사람일 필요는 없다&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;개발하는 능력이 뛰어나다면, 그 역할을 주는 편이 차라리 낫다.&lt;/li&gt;
+&lt;li&gt;목표를 달성하기 위해 무엇을 개발해야 하는지, 어떤 자원이 필요할지 찾아내는 사람.&lt;/li&gt;
+&lt;li&gt;오히려 개발을 잘 하는 사람들을 끌어모을 수 있는 소프트 스킬&lt;sup id="fnref:3"&gt;&lt;a class="footnote-ref" href="#fn:3"&gt;3&lt;/a&gt;&lt;/sup&gt;과 인품이 더 귀하다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;CXO는 회사 규모가 작을 때는 해당 일을 직접 하는 사람, 성장하면 해당 부문을 책임지는 사람, 더 성장하면 특정한 기준으로 사업적인 판단을 내리는 사람이라고 봤을 때, 현재 규모에 맞춰 현실적인 문제들도 기꺼이 맡아야 하므로 “나는 CTO니까 직접 개발하지는 않겠어”와 같은 자세를 가진 사람은 회사의 규모가 성장한다 하더라도 적합한 인재가 아님은 분명하다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;다음과 같은 것들이 스타트업이 가질 수 있는 유효한 전략이라고 생각한다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;사업의 목표와 계획, 그리고 고민을 담은 자료를 준비하자&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;투자를 받기 위해 투자유치(IR) 자료를 만들듯, CTO 대상자를 위한 문서를 준비한다.&lt;/li&gt;
+&lt;li&gt;당장 해결해야 하는 과제보다는, 비전과 미션, 앞으로의 계획을 설명하자.&lt;/li&gt;
+&lt;li&gt;대상자가 가진 이력과 경험을 회사의 사업 분야에 어떻게 적용할 수 있는지 설명하자.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;현재 받고 있을 대우보다 더 큰 미래를 보여주자&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;당장 지금 받고 있는 것보다 더 높은 연봉과 스톡 옵션을 주기는 어렵다. (줄 수 있다면 제안하자)&lt;/li&gt;
+&lt;li&gt;다른 곳에서 경험하지 못할 색다른 경험과 더 넓은 업무를 통해 성장하기를 원하는 목마른 이를 찾자.&lt;/li&gt;
+&lt;li&gt;더 나은 대우도, 더 많은 권한도, 더 나은(최소한 다른) 경험도 줄 수 없다면, 사실 사업 자체를 되돌아볼 필요가 있다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;구인 서비스에만 맡기지 말고, 적극적으로 찾자&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;(100% 동의하지는 않지만) 정말 뛰어난 사람은 채용 시장에 나오지 않는다고 한다.&lt;/li&gt;
+&lt;li&gt;대규모 투자를 받은 기업은 많은 사람을 채용하기도 하지만, 성장통을 겪느라 많은 사람이 나오기도 한다.&lt;/li&gt;
+&lt;li&gt;비슷한 사업 분야에서만 찾아보지 말자. 완전히 다른 분야에서 넘어올 사람도 있을 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;함께할 사람을 찾을 때 꼭 멀리서만, 알려진 곳에서만 찾으려 하지 말자. 학연과 지연, 그리고 동원 가능한 모든 수단과 채널을 통해 어떤 사업을 하는지 항상 얘기하고 성과를 흘리고 다녀도 먼저 연락이 오는 경우는 드물다. 한번 만나 잘 얘기가 되지 않았다 해서 실망하지 말고, 계속해서 연락하고 지내며 다른 사람이라도 소개해달라 요청하자.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://mysetting.io/slides/contrast-and-vector"&gt;사람을 찾고 함께 성장하는 길, 박현우&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="_4"&gt;그리고,&lt;/h4&gt;
+&lt;p&gt;스타트업에서의 평균 근속 년수는 어차피 짧다. 아무리 장기적인 안목으로 사람을 찾는다고 해도, 모든 사람이 10년씩 함께할 거라 가정하지 말자. 기업과 서비스의 성장에 따라 구성원이 함께 성장하고 역할을 자연스럽게 바꿔 갈 수 있으면 더할 나위 없이 좋겠지만, 초기에 크게 이바지했던 사람이 나중에는 제 역할을 하지 못하고 발목을 잡는 경우도 종종 있다. 임원이라고 해도 다르지 않다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://m.etnews.com/20191121000186"&gt;퇴사율 높고 근속연수 짧고… 팍팍한 스타트업, 전자신문&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.enewstoday.co.kr/news/articleView.html?idxno=1361069"&gt;스타트업 떠나는 직원, 일반 기업보다 ‘4배’ 더 많다, 이뉴스투데이&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;조직의 성장에 따라 특정 직무 종사자에게 요구되는 역할은 지속적으로 달라지기 마련이다. 수백 명 조직의 CTO를 경험했던 사람도 작은 스타트업으로 오면 모든 것을 새롭게 배우고 다르게 행하는 과정에서 시행착오를 겪듯, 네 명의 개발 조직을 잘 이끌었던 사람도 열 명, 스무 명으로 성장하는 과정에서 어긋날 수 있음을 인지하고 받아들이는 과정이 필요하다.&lt;/p&gt;
+&lt;p&gt;이 과정에서 부족한 부분이 있다 하더라도 개인의 탓으로만 돌리지 말고, 함께 더 나아지는 방법을 찾아나가는 것이 건전하다고 생각한다. CTO를 했던 사람이 다시 프로그래머나 더 작은 조직의 매니저로 돌아가는 것도 이상한 일이 아니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://brunch.co.kr/@leehosung/54"&gt;CTO가 CTO를 뽑습니다, 이호성&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;마지막으로, 가장 효과적인 구인 수단은 &lt;strong&gt;좋은 제품&lt;/strong&gt;이라고 생각한다. &lt;/p&gt;
+&lt;p&gt;당장은 평범하다 못해 부족한 부분이 있더라도 성장 가능성이 있는 시장에 일찍 진입해 &lt;strong&gt;시기적으로 매력적&lt;/strong&gt;이던가, 아니면 이미 많은 스타트업이 진출해 있지만 그 중에서도 &lt;strong&gt;단연 돋보이는 기능&lt;/strong&gt;을 하나라도 가지고 있어 앞으로의 생존과 성장 가능성이 큰 경우, 혹은 이미 충분히 성숙한 시장이지만 대기업이 &lt;strong&gt;인수할 대상&lt;/strong&gt;으로 보일만 한 새롭고 독특한 틈새 서비스를 만들고 있다면 구인에 분명히 도움이 된다.&lt;/p&gt;
+&lt;p&gt;개발자 한 명도 뽑기 어려운데 CTO는 어떻게 뽑냐는 분들에게는 다음의 점검 목록을 제안해본다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;회사 홈페이지가 있습니까?&lt;/li&gt;
+&lt;li&gt;홈페이지에 현재 주요 업무, 제품이 잘 소개되어 있습니까?&lt;/li&gt;
+&lt;li&gt;홈페이지에 구인 진행중인 공고의 목록이 있습니까?&lt;/li&gt;
+&lt;li&gt;구인 공고에 해당 직무의 소개와 요구 사항이 충분히 적혀 있습니까?&lt;/li&gt;
+&lt;li&gt;구인 공고에 최소 연봉이나 스톡 옵션에 대한 설명이 있습니까?&lt;/li&gt;
+&lt;li&gt;위의 모든 내용이 스마트폰에서도 무리 없이 확인이 가능합니까?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CTO가 꼭 필요합니까?&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;div class="footnote"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;&lt;a href="https://www.stxnext.com/cto-survey-2020-report/"&gt;The Global CTO Survey 2020 Report, STX Next&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:2"&gt;
+&lt;p&gt;&lt;a href="https://www.zippia.com/chief-technology-officer-jobs/demographics/"&gt;CHIEF TECHNOLOGY OFFICER Demographics And Statistics In The US, Zippia&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:3"&gt;
+&lt;p&gt;&lt;a href="https://muchtrans.com/translations/10xdeveloper.ko.html"&gt;Muchtrans: 10배 뛰어난 개발자 되기&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="2021-12"></category><category term="CTO"></category></entry><entry><title>Implementation of a Clipping Indicator</title><link href="https://lqez.github.io/blog/implementation-of-a-clipping-indicator.html" rel="alternate"></link><published>2020-03-03T00:00:00+09:00</published><updated>2020-03-03T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.github.io,2020-03-03:/blog/implementation-of-a-clipping-indicator.html</id><summary type="html">&lt;p&gt;&lt;img alt="Plus mark is used for clipping indicator in Apple Keynote" src="./images/2020-03/keynote-clipping.png" title="애플 키노트의 선택 핸들과 함께 표시된 클리핑 표시자"&gt;&lt;/p&gt;
 &lt;h4 id="clipping-indicator"&gt;Clipping Indicator&lt;/h4&gt;
 &lt;p&gt;&lt;a href="https://www.apple.com/keynote/"&gt;애플 키노트&lt;/a&gt; 앱은 개체의 크기보다 많은 문자열이 포함되면, 개체의 아래쪽에 &lt;code&gt;[+]&lt;/code&gt; 기호를 표시해 전체 문자열이 화면에 표시 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Plus mark is used for clipping indicator in Apple Keynote" src="./images/2020-03/keynote-clipping.png" title="애플 키노트의 선택 핸들과 함께 표시된 클리핑 표시자"&gt;&lt;/p&gt;
 &lt;h4 id="clipping-indicator"&gt;Clipping Indicator&lt;/h4&gt;

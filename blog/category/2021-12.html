@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Sync LDAP to Google Apps account via GADS</title>
+    <title>Feature creep designer - 2021-12</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=0.82, minimum-scale=0.82" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta property="og:url" content="https://lqez.github.io/blog/sync-ldap-to-google-apps-account-via-gads.html"/>
-    <meta property="og:title" content="Sync LDAP to Google Apps account via GADS"/>
-    <meta property="og:image" content="https://lqez.github.io/blog/images/icons/fcd.png"/>
 
     <link rel="stylesheet" href="https://lqez.github.io/blog/theme/css/main.css" type="text/css" />
     <link href="https://lqez.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Feature creep designer Atom Feed" />
@@ -30,95 +27,38 @@
         <h1><a href="https://lqez.github.io/blog/">Feature creep designer </a></h1>
         <h2 id="greeting">Happy day.</h2>
     </header><!-- /#banner -->
-<section id="content" class="body">
-  <article>
-    <header>
-      <h1 class="entry-title">
-        <a href="https://lqez.github.io/blog/sync-ldap-to-google-apps-account-via-gads.html" rel="bookmark"
-           title="Permalink to Sync LDAP to Google Apps account via GADS">Sync LDAP to Google Apps account via GADS</a></h1>
-    </header>
-
-    <div class="entry-content">
+        
+        
+            <section id="content" class="body">
+                <ol id="posts-list" class="hfeed" start="4">
+        <li><article class="hentry">    
+            <header>
+                <h1 class="entry-title"><a href="https://lqez.github.io/blog/how-to-hire-cto.html" rel="bookmark"
+                       title="Permalink to CTO는 어떻게 뽑을까">CTO는 어떻게 뽑을까</a></h1>
+            </header>
+            
+            <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2013-02-26T00:00:00+09:00">
-                2013-02-26
+        <abbr class="published" title="2021-12-03T00:00:00+09:00">
+                2021-12-03
         </abbr>
 
-</footer><!-- /.post-info -->      <p>Google은 - 친절하게도 - Google Apps 계정을 외부 서버와 동기화할 수 있는 기능을 제공할 뿐 아니라, 이를 위한 도구도 배포하고 있다.</p>
+</footer><!-- /.post-info -->            <p>스타트업에서 최고 기술 책임자, CTO의 역할에 대한 글은 비교적 쉽게 찾아볼 수 있다.</p>
 <ul>
-<li><a href="http://support.google.com/a/bin/answer.py?answer=172212">Google Apps Migration for Microsoft Exchange</a></li>
-<li><a href="http://support.google.com/a/bin/answer.py?answer=106368">Google Apps Directory Sync</a></li>
-<li><a href="http://support.google.com/a/bin/answer.py?answer=2611842">Google Apps Password Sync</a></li>
-</ul>
-<p>스마트스터디는 사내 계정을 이미 LDAP으로 통합 운용중이라서, Google Apps Directory Sync(이하 GADS)를 선택하였다.</p>
-<ul>
-<li><a href="http://www.google.com/support/enterprise/static/gapps/docs/admin/en/gads/admin/">Google Apps Directory Sync Administration Guide(in PDF)</a></li>
-</ul>
-<p>GADS는 단방향 즉, LDAP에서 GADS로의 동기화만을 제공한다. 동기화 가능한 항목은 아래와 같다.</p>
-<ul>
-<li>Organizational Units</li>
-<li>Users Accounts</li>
-<li>Groups</li>
-<li>User Profiles</li>
-<li>Shared Contacts</li>
-<li>Calendar Resources</li>
-</ul>
-<p>GADS Configuration Tool은 자바를 이용한 GUI로 작성되어 있는데, 현재는 Windows / Linux 용만 제공된다. 이 툴을 통해 설정한 내용은 XML로 저장되고, 이 파일은 플랫폼 무관하게 사용할 수 있으므로, 일단 가상 머신의 Windows로 설정을 완료한 후에, 설정 파일을 복사하여 Linux에서 사용하였다.</p>
-<p><img alt="Screen Shot of GADS" src="./images/gads_01.png"></p>
-<p>Linux용 GADS는 커맨드라인에서 설치하면 동의항목이 HTML로 출력되지만, 계속 엔터키를 입력해 넘기며 진행하면 설치가 가능하다.
-root 계정으로 설치하는 경우에 /usr/local/GoogleAppsDirSync 에 설치가 되고, 이 디렉토리 아래에 있는 <code>sync-cmd</code> 쉘 스크립트를 통해 동기화를 수행하면 된다.</p>
-<div class="highlight"><pre><span></span><code>$ ./sync-cmd -c &lt;configuration_file.xml&gt;
-</code></pre></div>
-
-<p>위와 같이 실행하면 비교만 하고, 실제로 동기화는 하지 않는 dry-run으로 실행되고,</p>
-<div class="highlight"><pre><span></span><code>$ ./sync-cmd -a -c &lt;configuration_file.xml&gt;
-</code></pre></div>
-
-<p><code>-a</code> 옵션을 추가해야 실제 동기화가 이뤄진다. 현재는 위 명령을 cron에 넣어 5분 마다 동기화 하도록 설정해두었다.</p><script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-<footer class="post-info-footer">
-        <p>
-        In <a href="https://lqez.github.io/blog/category/2013-02.html">2013-02</a>. 
-        </p>
-<p>tags: <a href="https://lqez.github.io/blog/tag/ldap.html" class="tag">ldap</a><a href="https://lqez.github.io/blog/tag/google.html" class="tag">google</a><a href="https://lqez.github.io/blog/tag/gads.html" class="tag">gads</a><a href="https://lqez.github.io/blog/tag/sync.html" class="tag">sync</a></p></footer><!-- /.post-info -->    </div><!-- /.entry-content -->
-    <div class="fb-comments" data-href="https://lqez.github.io/blog/sync-ldap-to-google-apps-account-via-gads.html" data-width="100%"  data-num-posts="10"></div>
-    <!-- add anchor to headings -->
-    <script>
-    const headers = document.querySelectorAll('h2[id], h3[id]');
-    for(var i = 0; i < headers.length; i++) {
-      const node = headers[i];
-      const anchor = document.createElement("a");
-      anchor.className = "pilcrow";
-      anchor.text = "\xb6";
-      anchor.href = "#" + node.id;
-      node.appendChild(anchor);
-    };
-    </script>
-    <!-- img title to figcaption -->
-    <script>
-    window.addEventListener('load', function () {
-      const imgNodes = document.querySelectorAll('img[title]');
-      for(var i = 0; i < imgNodes.length; i++) {
-        const node = imgNodes[i];
-        const para = node.parentElement;
-        const figure = document.createElement('figure');
-        const figcaption = document.createElement('figcaption');
-        figcaption.innerHTML = node.getAttribute('title');
-        figure.append(para.removeChild(node));
-        figure.append(figcaption);
-
-        para.append(figure);
-      };
-    });
-    </script>
-  </article>
-</section>
+<li><a href="https://www.popit.kr/%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%97%90%EC%84%9C-cto%EC%9D%98-%EC%97%AD%ED%95%A0/">스타트업에서 CTO의 역할, Jeon Hosang</a></li>
+<li><a href="https://www.mrlatte.net/blog/2020/01/13/startup-cto.html">스타트업에 …</a></li></ul>
+            <a class="readmore" href="https://lqez.github.io/blog/how-to-hire-cto.html">read more</a>
+            </div><!-- /.entry-content -->
+        </article></li>
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
     <section id="extras" class="body">
     </section><!-- /#extras -->
 
     <footer id="contentinfo" class="body">
     <!--
         <nav><ul>
-            <li class="active"><a href="https://lqez.github.io/blog/category/2013-02.html">2013-02</a></li>
+            <li ><a href="https://lqez.github.io/blog/category/2013-02.html">2013-02</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2013-04.html">2013-04</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2013-05.html">2013-05</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2013-08.html">2013-08</a></li>
@@ -144,7 +84,7 @@ root 계정으로 설치하는 경우에 /usr/local/GoogleAppsDirSync 에 설치
             <li ><a href="https://lqez.github.io/blog/category/2019-09.html">2019-09</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2019-10.html">2019-10</a></li>
             <li ><a href="https://lqez.github.io/blog/category/2020-03.html">2020-03</a></li>
-            <li ><a href="https://lqez.github.io/blog/category/2021-12.html">2021-12</a></li>
+            <li class="active"><a href="https://lqez.github.io/blog/category/2021-12.html">2021-12</a></li>
             <li ><a href="https://lqez.github.io/blog/category/uncategorized.html">Uncategorized</a></li>
         </ul></nav>
         -->

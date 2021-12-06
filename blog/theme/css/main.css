@@ -35,13 +35,9 @@ html, body {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 900;
   line-height: 1.2;
-  margin-top: 10%;
-  margin-bottom: 3%;
+  margin-top: 5%;
+  margin-bottom: 2%;
   word-break: keep-all;
-}
-
-h4, h5, h6 {
-  margin: 8% 0 2%;
 }
 
 h1 {font-size: 3.2em}
@@ -59,7 +55,7 @@ a img {border: 0px; text-decoration: none;}
 
 /* Paragraphs */
 p {line-height:1.825; word-break: break-all;}
-p + p {margin-top: 1.5em;}
+p + p {margin-top: 1.2em;}
 
 strong, b {font-weight: 700;}
 em, i {font-style: italic;}
@@ -67,8 +63,8 @@ em, i {font-style: italic;}
 /* Lists */
 article ul {
   list-style: none;
-  padding: 0.5em 1em 0.5em 1.5em;
-  margin: 0em 0 0.5em 0;
+  padding: 0.25em 1em 0.5em 1.5em;
+  margin: 0 0 0.25em;
 }
 
 article ol {
@@ -79,7 +75,7 @@ article ol {
 article ul li:before {
   content: "•";
   color: #676767;
-  font-size: 8pt;
+  font-size: 10pt;
   padding-right: 10px;
   margin-left: -16px;
   position: absolute;
@@ -91,7 +87,7 @@ article li {
 }
 
 article ul ul li:before {
-  content: "–";
+  content: "—";
   color: #878787;
   position: absolute;
 }
@@ -140,11 +136,21 @@ dd {margin-left: 1.5em;}
 blockquote {
   padding: 20px 30px 20px;
   font-style: normal;
-  background: #f4f6f8;
-  margin: 20px 0;
+  background: #f4f4f4;
+  margin: 5px 0 20px;
   border: 1px solid #eee;
+  font-size: 90%;
   border-radius: 3px;
-  font-style: italic;
+}
+
+blockquote h1,
+blockquote h2,
+blockquote h3,
+blockquote h4,
+blockquote h5,
+blockquote h6 {
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 address p {
@@ -520,8 +526,10 @@ h6 + div.highlight > pre {
 }
 
 .footnote-ref {
-  vertical-align: super;
   font-size: 10pt;
+  padding: 0 2px;
+  top: -5px;
+  position: relative;
 }
 
 h2 a.pilcrow,
