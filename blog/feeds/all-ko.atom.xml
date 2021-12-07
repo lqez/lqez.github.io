@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="https://lqez.dev/blog/" rel="alternate"></link><link href="https://lqez.dev/blog/feeds/all-ko.atom.xml" rel="self"></link><id>https://lqez.dev/blog/</id><updated>2021-12-03T00:00:00+09:00</updated><entry><title>CTO는 어떻게 뽑을까</title><link href="https://lqez.dev/blog/how-to-hire-cto.html" rel="alternate"></link><published>2021-12-03T00:00:00+09:00</published><updated>2021-12-03T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.dev,2021-12-03:/blog/how-to-hire-cto.html</id><summary type="html">&lt;p&gt;스타트업에서 최고 기술 책임자, CTO의 역할에 대한 글은 비교적 쉽게 찾아볼 수 있다.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Feature creep designer</title><link href="https://lqez.dev/blog/" rel="alternate"></link><link href="https://lqez.dev/blog/feeds/all-ko.atom.xml" rel="self"></link><id>https://lqez.dev/blog/</id><updated>2021-12-03T00:00:00+09:00</updated><entry><title>CTO를 어떻게 뽑을까</title><link href="https://lqez.dev/blog/how-to-hire-cto.html" rel="alternate"></link><published>2021-12-03T00:00:00+09:00</published><updated>2021-12-03T00:00:00+09:00</updated><author><name></name></author><id>tag:lqez.dev,2021-12-03:/blog/how-to-hire-cto.html</id><summary type="html">&lt;p&gt;스타트업에서 최고 기술 책임자, CTO의 역할에 대한 글은 비교적 쉽게 찾아볼 수 있다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://www.popit.kr/%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%97%90%EC%84%9C-cto%EC%9D%98-%EC%97%AD%ED%95%A0/"&gt;스타트업에서 CTO의 역할, Jeon Hosang&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.mrlatte.net/blog/2020/01/13/startup-cto.html"&gt;스타트업에 …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;스타트업에서 최고 기술 책임자, CTO의 역할에 대한 글은 비교적 쉽게 찾아볼 수 있다.&lt;/p&gt;
@@ -9,7 +9,7 @@
 &lt;li&gt;&lt;a href="https://brunch.co.kr/@leehosung/40"&gt;스타트업에서 CTO의 일, 이호성&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.mimul.com/blog/what-does-a-cto-do/"&gt;CTO는 무엇을 해야하나?, Amr Awadallah (번역 Minul)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;하지만 다른 책임급 직책과 마찬가지로 어떤 과정을 통해 이 역할을 맡게 되며, 어디서 어떤 방식으로 길러지는지, 또 어떻게 채용할 수 있는지에 대해 다룬 글은 찾아보기 힘들다.&lt;/p&gt;
+&lt;p&gt;하지만 다른 임원급 직책과 마찬가지로 어떤 과정을 통해 이 역할을 맡게 되며, 또 어떻게 채용할 수 있는지에 대해 다룬 글은 찾아보기 힘들다.&lt;/p&gt;
 &lt;p&gt;우선 현재 일하고 있는 CTO들은 어떤 사람인지 살펴보자.&lt;/p&gt;
 &lt;p&gt;250명 이상의 CTO가 답한 2020년의 한 설문 조사 리포트&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;에 따르면, 78% 이상의 응답자는 CTO가 되기 전 &lt;strong&gt;5년 이상의 경력&lt;/strong&gt;이 있었으며,
 그중 절반 이상은 10년 이상의 업계 경력을 쌓은 뒤에야 CTO가 되었다 한다.
