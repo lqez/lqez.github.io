@@ -1,17 +1,19 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:400,900|Roboto+Slab:400,700');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css');
 
 * {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
-*:lang(ko) { h1, h2, h3 { word-break: keep-all; } }
+*:lang(ko) {
+  word-break: keep-all;
+}
 
 body {
   margin: 0;
   padding: 0;
   background: #F8F8FA;
-  font-family: "Roboto Slab", serif;
+  font-family: "Pretendard", sans-serif;
   font-size: 1.12rem;
   color: #303037;
 }
@@ -55,8 +57,7 @@ body {
 }
 
 .title h1 {
-  font-family: "Lato", sans-serif;
-  font-weight: 900;
+  font-weight: 700;
   font-size: 4em;
   margin-bottom: 0.25em;
 }
