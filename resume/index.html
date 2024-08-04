@@ -140,13 +140,74 @@
   .item h5 {
     margin: 0 0 0.3em;
   }
+
+  @media print {
+    @page {
+      size: A4;
+    }
+
+    * {
+      color: black !important;
+    }
+
+    body {
+      padding: 0;
+    }
+
+    article {
+      border: 0;
+    }
+
+    h2, h3, h4, h5 { 
+      margin: 0.2em 0 0.5em 0;
+    }
+
+    p {
+      margin: 0.5em 0;
+      line-height: 1.75;
+    }
+
+    .noprint {
+      display: none;
+    }
+
+    .part {
+      padding: 0 0 0 1.5em;
+    }
+
+    .item {
+      display: none;
+    }
+
+    span {
+      font-size: 90%;
+    }
+
+    section {
+      page-break-after: always;
+    }
+
+    section#talk {
+      li p {
+        display: none;
+      }
+    }
+
+    section.nobreak {
+      page-break-after: auto;
+    }
+
+    hr, #signature {
+      display: none;
+    }
+  }
   </style>
 </head>
 
 <body>
 <article>
 <section id="name">
-  <img id="portrait" src="img/lqez-profile.jpg">
+  <img id="portrait" src="img/lqez-profile.jpg" class="noprint">
   <h1>
     박현우
   </h1>
@@ -162,7 +223,7 @@
   <ul>
     <li>이메일: <a href="mailto:ez@zerobased.co">ez@zerobased.co</a></li>
     <li>전화번호: +82-10-3489-5002</li>
-    <li>링크:
+    <li class="noprint">링크:
       <a href="https://lqez.dev/blog">Blog</a>
       /
       <a href="https://www.linkedin.com/in/lqez/">LinkedIn</a>
@@ -282,7 +343,7 @@
 </section>
 
 
-<section id="education">
+<section id="education" class="nobreak">
   <h2>학력</h2>
   <h3>컴퓨터·산업공학과 학사<span>Computer Science and Engineering</span></h3>
   <p>연세대학교, 2000~2009</p>
@@ -412,7 +473,7 @@
 
 <hr>
 
-<section id="skill">
+<section id="skill" class="nobreak">
   <h2>보유 기술</h2>
   <h4>프로그래밍 언어</h4>
   <p>Python, JavaScript</p>
@@ -436,7 +497,7 @@
 
 </article>
 
-<section id="signature">
+<section id="signature" class="noprint">
   <p>위 내용은 사실과 다름이 없음을 확인합니다.</p>
   <p>박 현우</p>
 </section>
