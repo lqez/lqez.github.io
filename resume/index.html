@@ -1,9 +1,10 @@
-<html>
+<!DOCTYPE html>
+<html lang="ko">
 
 <head>
   <title>Resume of Park Hyunwoo</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="initial-scale=0.9" />
+  <meta name="viewport" content="initial-scale=0.9">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -28,7 +29,7 @@
     margin: 0 auto;
   }
 
-  section {
+  section, footer {
     max-width: 45rem;
     margin: 0 auto;
     padding: 1em;
@@ -140,13 +141,72 @@
   .item h5 {
     margin: 0 0 0.3em;
   }
+
+  @media print {
+    @page {
+      size: A4;
+    }
+
+    * {
+      color: black !important;
+    }
+
+    body {
+      padding: 0;
+    }
+
+    article {
+      border: 0;
+    }
+
+    h2, h3, h4, h5 { 
+      margin: 0.2em 0 0.5em 0;
+    }
+
+    p {
+      margin: 0.5em 0;
+      line-height: 1.75;
+    }
+
+    .noprint {
+      display: none;
+    }
+
+    .part {
+      padding: 0 0 0 1.5em;
+    }
+
+    .item {
+      display: none;
+    }
+
+    span {
+      font-size: 90%;
+    }
+
+    section {
+      page-break-after: always;
+    }
+
+    section#talk li p {
+      display: none;
+    }
+
+    section.nobreak {
+      page-break-after: auto;
+    }
+
+    hr, #signature {
+      display: none;
+    }
+  }
   </style>
 </head>
 
 <body>
 <article>
 <section id="name">
-  <img id="portrait" src="img/lqez-profile.jpg">
+  <img id="portrait" src="img/lqez-profile.jpg" class="noprint" alt="Portrait of Park Hyunwoo">
   <h1>
     박현우
   </h1>
@@ -161,8 +221,8 @@
   <br>
   <ul>
     <li>이메일: <a href="mailto:ez@zerobased.co">ez@zerobased.co</a></li>
-    <li>전화번호: +82-10-3489-5002</li>
-    <li>링크:
+    <li>전화번호: <a href="tel:+82-10-3489-5002">+82-10-3489-5002</a></li>
+    <li class="noprint">링크:
       <a href="https://lqez.dev/blog">Blog</a>
       /
       <a href="https://www.linkedin.com/in/lqez/">LinkedIn</a>
@@ -194,21 +254,21 @@
     오픈소스 프로젝트 개발과 기여, 영상 콘텐츠 기획과 촬영을 진행하고 있습니다.
     </p>
     <div class="item">
-      <img src="img/thumb-onedaydev.jpg">
+      <img src="img/thumb-onedaydev.jpg" alt="A thumbnail image of One day dev">
       <div>
         <h5><a href="https://one-day.dev/">하루개발 (One day dev)</a></h5>
         <span>딱 하루, 낯선 회사에서 일하며 다른 사람과 조직은 어떻게 일하는지, 새로운 환경을 경험해보며 관찰하여 영상과 글로 남기고 있습니다.</span>
       </div>
     </div>
     <div class="item">
-      <img src="img/thumb-muchtrans.png">
+      <img src="img/thumb-muchtrans.png" alt="A thumbnail image of Muchtrans">
       <div>
         <h5><a href="https://muchtrans.com/">Muchtrans</a></h5>
         <span>문서의 번역본을 원본과 함께 보여줘 더 나은 번역을 함께 할 수 있도록 합니다. 이력을 Git으로 저장해 누가 어떻게 번역했는지 기록하고 관리합니다.</span>
       </div>
     </div>
     <div class="item">
-      <img src="img/thumb-veryslide.png">
+      <img src="img/thumb-veryslide.png" alt="A thumbnail image of Veryslide">
       <div>
         <h5><a href="https://github.com/zerobased-co/veryslide">Veryslide</a></h5>
         <span>모던 자바스크립트 생태계를 공부하며 웹 기반 슬라이드 편집기를 만들었습니다. 스타트업 얼라이언스에서 <a href="https://brunch.co.kr/@startupalliance/263">스타트업 맵</a>을 자동으로 생성하는데 사용했습니다. </span>
@@ -222,14 +282,14 @@
     <h4>공동대표<span>2017</span></h4>
     <p>보유 IP의 활용을 극대화하기 위해 다국어/다문화 영상 콘텐츠 제작 확대와 제품 생산, 국내외 라이센싱을 진행하고 지속적인 성장을 위한 조직 개편 등을 담당하였습니다.</p>
     <div class="item">
-      <img src="img/thumb-bemyb2017.jpg">
+      <img src="img/thumb-bemyb2017.jpg" alt="A thumbnail image of the conference">
       <div>
         <h5><a href="https://platum.kr/archives/92986">스타트업을 위한 브랜딩 노하우</a></h5>
         <span>브랜드 커뮤니티 비마이비에서 주최한 &lt;스타트업 브랜드 컨퍼런스 2017&gt;에서 소프트웨어 엔지니어 출신으로 핑크퐁 브랜딩을 담당하며 어떻게 ‘시각적 비용 최적화’를 했는지에 대해 발표했습니다.</span>
       </div>
     </div>
     <div class="item">
-      <img src="img/thumb-globalhrforum2017.jpg">
+      <img src="img/thumb-globalhrforum2017.jpg" alt="A thumbnail image of the conference">
       <div>
         <h5><a href="https://www.hankyung.com/economy/article/2017110213471">스타트업 경험은 인생을 바꾼다</a></h5>
         <span>&lt;글로벌 인재포럼 2017&gt;에서 김봉진 우아한형제들 대표, 황희승 잡플래닛 대표와 함께 기복이 심하고 시장의 변동에 흔들리기 쉬운 스타트업 창업과 운영 과정에서의 어려움과 경험을 이야기했습니다.</span>
@@ -238,14 +298,14 @@
     <h4>부사장 &amp; 브랜드 책임자<span>2015~2017</span></h4>
     <p>회사와 제품의 리브랜딩과 함께 디지털로만 존재하던 콘텐츠를 도서, 완구, 학습 용품 등 다양한 실제 제품으로 만들어 고객의 접점을 늘리고 매출을 다각화하였습니다.</p>
     <div class="item">
-      <img src="img/thumb-pinkfong2016.jpg">
+      <img src="img/thumb-pinkfong2016.jpg" alt="A thumbnail image of the interview">
       <div>
         <h5><a href="https://it.chosun.com/news/articleView.html?idxno=2016121485001">유튜브 달군 핑크퐁, 인기비결요?</a></h5>
         <span>핑크퐁 브랜드를 어떻게 시작하고 발전시켰으며, 글로벌 채널에서 성공하는 콘텐츠를 만들기 위해 타겟 플랫폼에 깊은 이해와 문화별 시장 분석이 중요하다는 점을 이야기했습니다.</span>
       </div>
     </div>
     <div class="item">
-      <img src="img/thumb-platum2016.jpg">
+      <img src="img/thumb-platum2016.jpg" alt="A thumbnail image of the interview">
       <div>
         <h5><a href="https://platum.kr/archives/62236">1억명의 어린이들과 함께 한다</a></h5>
         <span>1억 시청자를 향한 최고의 콘텐츠를 만들기 위해 어떻게 노력해 왔는지, 좋은 회사를 되기보단 다른 회사가 되기 위해 노력해 온 과정에 대해 플래텀과 인터뷰했습니다.</span>
@@ -254,14 +314,14 @@
     <h4>공동창업 &amp; 기술 책임자<span>2010~2015</span></h4>
     <p>다양한 앱과 웹 서비스를 만들어 기존의 콘텐츠를 모바일 환경에 걸맞게 재생산하고, 새로운 콘텐츠를 빠르고 비용 효율적으로 만들어낼 수 있는 조직과 파이프라인을 구축하였습니다.</p>
     <div class="item">
-      <img src="img/thumb-gametech2013.jpg">
+      <img src="img/thumb-gametech2013.jpg" alt="A thumbnail image of the conference">
       <div>
         <h5><a href="https://zdnet.co.kr/view/?no=20130704160801">하둡보다 몽고DB 추천하는 이유</a></h5>
         <span>메가뉴스·게임스팟코리아가 주최한 &lt;게임테크2013 컨퍼런스&gt;에서 수백 개의 앱을 만들고 서비스하는 과정에서 MongoDB로 구축한 로그 보관, 분석 시스템에 대해 강연했습니다.</span>
       </div>
     </div>
     <div class="item">
-      <img src="img/thumb-kcd2013.jpg">
+      <img src="img/thumb-kcd2013.jpg" alt="A thumbnail image of the conference">
       <div>
         <h5><a href="https://zdnet.co.kr/view/?no=20130704081813">어떤 개발자가 되고 싶으세요?</a></h5>
         <span>&lt;제3회 대한민국커뮤니티데이&gt;에서 다른 오픈소스 커미터들과 함께 ‘오픈소스 커미터, 과연 개발자의 미래인가’를 주제로 오픈소스 프로젝트 개발 경험과 의견을 나누는 토론회에 참석했습니다.</span>
@@ -282,7 +342,7 @@
 </section>
 
 
-<section id="education">
+<section id="education" class="nobreak">
   <h2>학력</h2>
   <h3>컴퓨터·산업공학과 학사<span>Computer Science and Engineering</span></h3>
   <p>연세대학교, 2000~2009</p>
@@ -412,7 +472,7 @@
 
 <hr>
 
-<section id="skill">
+<section id="skill" class="nobreak">
   <h2>보유 기술</h2>
   <h4>프로그래밍 언어</h4>
   <p>Python, JavaScript</p>
@@ -436,10 +496,10 @@
 
 </article>
 
-<section id="signature">
+<footer id="signature" class="noprint">
   <p>위 내용은 사실과 다름이 없음을 확인합니다.</p>
   <p>박 현우</p>
-</section>
+</footer>
 
 </body>
 </html>
