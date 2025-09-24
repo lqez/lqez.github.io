@@ -133,8 +133,88 @@
       sun.shadow.mapSize.set(2048, 2048);
       scene.add(sun);
 
+      // ----- 야간 스팟라이트 -----
+      const spotlights = [];
+      const lightBillboards = [];
+      const spotlightData = [];
+
+      // 빌보드용 텍스처 생성 (원형 그라데이션)
+      const canvas = document.createElement('canvas');
+      canvas.width = 64;
+      canvas.height = 64;
+      const ctx = canvas.getContext('2d');
+      const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+      gradient.addColorStop(0, 'rgba(255, 244, 230, 1.0)');
+      gradient.addColorStop(0.4, 'rgba(255, 244, 230, 0.8)');
+      gradient.addColorStop(0.8, 'rgba(255, 244, 230, 0.2)');
+      gradient.addColorStop(1, 'rgba(255, 244, 230, 0.0)');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 64, 64);
+      
+      const billboardTexture = new THREE.CanvasTexture(canvas);
+
+      function createRandomSpotlights() {
+        // 기존 라이트 제거
+        spotlights.forEach(light => {
+          scene.remove(light);
+        });
+        lightBillboards.forEach(billboard => {
+          scene.remove(billboard);
+        });
+        spotlights.length = 0;
+        lightBillboards.length = 0;
+        spotlightData.length = 0;
+
+        const count = Math.floor(Math.random() * 15) + 5;
+        const flagCenter = { x: 1.5, z: 0 };
+
+        for (let i = 0; i < count; i++) {
+          // 타원형 궤도 파라미터
+          const radiusX = Math.random() * 6 + 4; // 4-10
+          const radiusZ = Math.random() * 4 + 3; // 3-7
+          const initialAngle = Math.random() * Math.PI * 2;
+          const rotationSpeed = (Math.random() * 0.002 + 0.0005) * (Math.random() > 0.5 ? 1 : -1); // 랜덤 방향
+          
+          // 포인트라이트 범위 랜덤
+          const distance = Math.random() * 8 + 4; // 4-12
+          const intensity = Math.random() * 1.5 + 0.5; // 0.5-2.0
+
+          const pointLight = new THREE.PointLight(0xfff4e6, intensity, distance);
+          pointLight.visible = false;
+          
+          scene.add(pointLight);
+          spotlights.push(pointLight);
+
+          // 빌보드 생성 (크기를 조명 강도/거리에 따라 조절)
+          const billboardSize = (intensity / 2.0) * (distance / 12) * 0.8 + 0.2; // 0.2-0.8 범위
+          const billboardGeometry = new THREE.PlaneGeometry(billboardSize, billboardSize);
+          const billboardMaterial = new THREE.MeshBasicMaterial({
+            map: billboardTexture,
+            transparent: true,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false,
+            color: 0xfff4e6,
+            opacity: Math.min(intensity / 2.0, 1.0) // 강도에 따른 투명도
+          });
+          const billboard = new THREE.Mesh(billboardGeometry, billboardMaterial);
+          billboard.visible = false;
+          scene.add(billboard);
+          lightBillboards.push(billboard);
+
+          // 궤도 데이터 저장
+          spotlightData.push({
+            radiusX,
+            radiusZ,
+            angle: initialAngle,
+            rotationSpeed,
+            centerX: flagCenter.x,
+            centerZ: flagCenter.z
+          });
+        }
+      }
+
       const ground = new THREE.Mesh(
-        new THREE.PlaneGeometry(40, 40),
+        new THREE.PlaneGeometry(40, 40, 100, 100),
         new THREE.MeshStandardMaterial({ color: 0xf1f5ff, roughness: 0.95, metalness: 0.05 })
       );
       ground.rotation.x = -Math.PI / 2;
@@ -370,6 +450,7 @@
         stiffness: 0.9,
         glossiness: 0.4,
         aspect: 1,
+        isNight: false,
       };
 
       let currentPoleHeight = poleHeightDefault;
@@ -422,6 +503,43 @@
         params.aspect = aspect;
         rebuildCloth(aspect);
         applyPoleHeight(currentPoleHeight);
+      }
+
+      function toggleDayNight(isNight) {
+        params.isNight = isNight;
+        
+        if (isNight) {
+          // 야간 설정
+          scene.background = new THREE.Color(0x0a0f1c);
+          scene.children.find(child => child.isAmbientLight).intensity = 0.2;
+          sun.intensity = 0.3;
+          sun.color.setHex(0x4a6fa5);
+          ground.material.color.setHex(0x1a1f2e);
+          
+          // 랜덤 포인트라이트 생성 및 켜기
+          createRandomSpotlights();
+          spotlights.forEach(light => {
+            light.visible = true;
+          });
+          lightBillboards.forEach(billboard => {
+            billboard.visible = true;
+          });
+        } else {
+          // 주간 설정
+          scene.background = new THREE.Color(0xbfd4fb);
+          scene.children.find(child => child.isAmbientLight).intensity = 0.6;
+          sun.intensity = 2.2;
+          sun.color.setHex(0xffffff);
+          ground.material.color.setHex(0xf1f5ff);
+          
+          // 포인트라이트 끄기
+          spotlights.forEach(light => {
+            light.visible = false;
+          });
+          lightBillboards.forEach(billboard => {
+            billboard.visible = false;
+          });
+        }
       }
 
       rebuildCloth(params.aspect);
@@ -534,6 +652,33 @@
         requestAnimationFrame(animate);
         const delta = Math.min(clock.getDelta(), 0.033);
         simulate(delta * 1.5);
+        
+        // 포인트라이트 회전 애니메이션
+        if (params.isNight && spotlightData.length > 0) {
+          spotlightData.forEach((data, i) => {
+            data.angle += data.rotationSpeed;
+            
+            const x = data.centerX + Math.cos(data.angle) * data.radiusX;
+            const z = data.centerZ + Math.sin(data.angle) * data.radiusZ;
+            
+            if (spotlights[i]) {
+              spotlights[i].position.set(x, 0.15, z);
+            }
+            
+            if (lightBillboards[i]) {
+              lightBillboards[i].position.set(x, 0.1, z);
+              lightBillboards[i].lookAt(camera.position);
+            }
+          });
+        }
+        
+        // 빌보드가 카메라를 향하도록 회전 (회전하지 않는 것들)
+        lightBillboards.forEach(billboard => {
+          if (!params.isNight || spotlightData.length === 0) {
+            billboard.lookAt(camera.position);
+          }
+        });
+        
         controls.update();
         renderer.render(scene, camera);
       }
@@ -569,6 +714,10 @@
         .add(params, 'glossiness', 0, 1, 0.01)
         .name('광택')
         .onChange(applyGloss);
+      gui
+        .add(params, 'isNight')
+        .name('야간 모드')
+        .onChange(toggleDayNight);
     </script>
   </body>
 </html>
