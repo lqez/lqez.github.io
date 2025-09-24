@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fabric Flag Simulation</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        color: #111;
+        background: #cbe2ff;
+      }
+
+      canvas {
+        display: block;
+      }
+
+      #info {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        padding: 10px 14px;
+        background: rgba(255, 255, 255, 0.88);
+        border-radius: 8px;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+        max-width: 280px;
+        line-height: 1.45;
+        font-size: 14px;
+        z-index: 5;
+      }
+
+      #texture-panel {
+        position: absolute;
+        bottom: 16px;
+        left: 16px;
+        padding: 10px 14px;
+        background: rgba(255, 255, 255, 0.88);
+        border-radius: 8px;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        z-index: 5;
+      }
+
+      #texture-panel label {
+        font-weight: 600;
+      }
+
+      #texture-panel input[type='file'] {
+        font-size: 12px;
+        max-width: 160px;
+      }
+
+      #texture-panel button {
+        border: none;
+        background: #3b82f6;
+        color: #fff;
+        padding: 6px 10px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      #texture-panel button:disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="info">
+      <strong>깃발 시뮬레이터</strong>
+    </div>
+
+    <div id="texture-panel">
+      <label for="textureFile">텍스처</label>
+      <input type="file" id="textureFile" accept="image/*" />
+      <button id="clearTexture" type="button">제거</button>
+    </div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+          "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+
+    <script type="module">
+      import * as THREE from 'three';
+      import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+      import GUI from 'https://cdn.jsdelivr.net/npm/lil-gui@0.19/+esm';
+
+      // ----- 기본 장면 -----
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(0xbfd4fb);
+
+      const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 200);
+      camera.position.set(0.5, 3.0, 6.5);
+      
+
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 2.05;
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      document.body.appendChild(renderer.domElement);
+
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.08;
+      controls.minDistance = 1.0;
+      controls.maxDistance = 10.0;
+      controls.target.set(1.5, 1, -2);
+
+      scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+      const sun = new THREE.DirectionalLight(0xffffff, 2.2);
+      sun.position.set(-4, 6, 3);
+      sun.castShadow = true;
+      sun.shadow.mapSize.set(2048, 2048);
+      scene.add(sun);
+
+      const ground = new THREE.Mesh(
+        new THREE.PlaneGeometry(40, 40),
+        new THREE.MeshStandardMaterial({ color: 0xf1f5ff, roughness: 0.95, metalness: 0.05 })
+      );
+      ground.rotation.x = -Math.PI / 2;
+      ground.receiveShadow = true;
+      scene.add(ground);
+
+      // ----- 깃대 -----
+      const flagGroup = new THREE.Group();
+      scene.add(flagGroup);
+
+      const poleRadius = 0.035;
+      const poleHeightDefault = 4.0;
+
+      const poleMaterial = new THREE.MeshStandardMaterial({ color: 0x6b737c, metalness: 0.55, roughness: 0.3 });
+      const pole = new THREE.Mesh(new THREE.CylinderGeometry(poleRadius, poleRadius, poleHeightDefault, 24), poleMaterial);
+      pole.castShadow = true;
+      pole.receiveShadow = true;
+      pole.position.set(0, poleHeightDefault / 2, 0);
+      flagGroup.add(pole);
+
+      const finial = new THREE.Mesh(new THREE.SphereGeometry(poleRadius * 1.4, 24, 16), poleMaterial);
+      finial.castShadow = true;
+      finial.position.set(0, poleHeightDefault + poleRadius * 0.4, 0);
+      flagGroup.add(finial);
+
+      // ----- 깃발 지오메트리 -----
+      const clothWidth = 2.7;
+      const clothHeight = 1.4;
+      const segmentsX = 64;
+      const segmentsY = 64;
+      let restDistanceX = clothWidth / segmentsX;
+      const restDistanceY = clothHeight / segmentsY;
+
+      const flagGeometry = new THREE.PlaneGeometry(clothWidth, clothHeight, segmentsX, segmentsY);
+      flagGeometry.translate(clothWidth / 2 + poleRadius * 1.05, poleHeightDefault - poleRadius * 0.1, 0);
+
+      const baseFlagColor = new THREE.Color(0xcf1d27);
+      const flagMaterial = new THREE.MeshStandardMaterial({
+        color: baseFlagColor.clone(),
+        side: THREE.DoubleSide,
+        roughness: 0.55,
+        metalness: 0.25,
+      });
+
+      const flagMesh = new THREE.Mesh(flagGeometry, flagMaterial);
+      flagMesh.castShadow = true;
+      flagMesh.receiveShadow = true;
+      flagMesh.frustumCulled = false;
+      flagGroup.add(flagMesh);
+
+      // ----- 질감 업로더 -----
+      const textureInput = document.getElementById('textureFile');
+      const clearTextureBtn = document.getElementById('clearTexture');
+      const textureLoader = new THREE.TextureLoader();
+      let currentTexture = null;
+      let currentObjectURL = null;
+
+      const applyTexture = (url, isObjectUrl = false) => {
+        if (currentTexture) {
+          currentTexture.dispose();
+          currentTexture = null;
+        }
+        if (currentObjectURL) {
+          URL.revokeObjectURL(currentObjectURL);
+          currentObjectURL = null;
+        }
+        if (!url) {
+          flagMaterial.map = null;
+          flagMaterial.needsUpdate = true;
+          flagMaterial.color.copy(baseFlagColor);
+          clearTextureBtn.disabled = true;
+          return;
+        }
+
+        textureLoader.load(
+          url,
+          (tex) => {
+            tex.colorSpace = THREE.SRGBColorSpace;
+            tex.wrapS = THREE.ClampToEdgeWrapping;
+            tex.wrapT = THREE.ClampToEdgeWrapping;
+            tex.anisotropy = Math.min(renderer.capabilities.getMaxAnisotropy(), 8);
+            flagMaterial.map = tex;
+             flagMaterial.color.set(0xffffff);
+            flagMaterial.needsUpdate = true;
+            currentTexture = tex;
+            if (isObjectUrl) currentObjectURL = url;
+            clearTextureBtn.disabled = false;
+          },
+          undefined,
+          () => {
+            console.warn('텍스처를 불러오지 못했습니다.');
+            if (isObjectUrl) URL.revokeObjectURL(url);
+            clearTextureBtn.disabled = true;
+          }
+        );
+      };
+
+      if (textureInput) {
+        textureInput.addEventListener('change', (event) => {
+          const file = event.target.files?.[0];
+          if (!file) {
+            applyTexture(null);
+            return;
+          }
+          applyTexture(URL.createObjectURL(file), true);
+        });
+      }
+
+      if (clearTextureBtn) {
+        clearTextureBtn.addEventListener('click', () => {
+          if (textureInput) textureInput.value = '';
+          applyTexture(null);
+        });
+        clearTextureBtn.disabled = true;
+      }
+
+      // ----- 간단한 베를레 통합 Cloth -----
+      const totalParticles = (segmentsX + 1) * (segmentsY + 1);
+      const particles = new Array(totalParticles);
+      const particleNormals = Array.from({ length: totalParticles }, () => new THREE.Vector3());
+      const constraints = [];
+      const windForce = new THREE.Vector3();
+      const GRAVITY = 9.82 / 3.0;
+      const gravity = new THREE.Vector3(0, -GRAVITY, 0);
+      const rotatedGravity = new THREE.Vector3();
+
+      class Particle {
+        constructor(x, y, z, mass = 1) {
+          this.position = new THREE.Vector3(x, y, z);
+          this.previous = this.position.clone();
+          this.original = this.position.clone();
+          this.acceleration = new THREE.Vector3(0, 0, 0);
+          this.mass = mass;
+          this.invMass = mass > 0 ? 1 / mass : 0;
+        }
+
+        addForce(force) {
+          if (this.invMass === 0) return;
+          this.acceleration.x += force.x * this.invMass;
+          this.acceleration.y += force.y * this.invMass;
+          this.acceleration.z += force.z * this.invMass;
+        }
+
+        integrate(timesq) {
+          if (this.invMass === 0) {
+            this.position.copy(this.original);
+            this.previous.copy(this.original);
+            this.acceleration.set(0, 0, 0);
+            return;
+          }
+          const newPos = this.position
+            .clone()
+            .sub(this.previous)
+            .multiplyScalar(0.96)
+            .add(this.position)
+            .add(this.acceleration.clone().multiplyScalar(timesq));
+
+          this.previous.copy(this.position);
+          this.position.copy(newPos);
+          this.acceleration.set(0, 0, 0);
+        }
+      }
+
+      function particleIndex(x, y) {
+        return x + y * (segmentsX + 1);
+      }
+
+      function satisfyConstraint(p1, p2, distance) {
+        const diff = p2.position.clone().sub(p1.position);
+        const currentDist = diff.length();
+        if (currentDist === 0) return;
+        const correction = diff.multiplyScalar(1 - distance / currentDist);
+        const correctionHalf = correction.multiplyScalar(0.5);
+        if (p1.invMass !== 0) p1.position.add(correctionHalf);
+        if (p2.invMass !== 0) p2.position.sub(correctionHalf);
+      }
+      let currentAspect = 1;
+
+      let currentAngleRad = 0;
+
+      function rebuildCloth(aspect = currentAspect) {
+        currentAspect = aspect;
+        restDistanceX = (clothWidth * currentAspect) / segmentsX;
+
+        const startX = poleRadius * 1.05;
+        const startY = currentPoleHeight - poleRadius * 0.1;
+
+        for (let y = 0; y <= segmentsY; y++) {
+          for (let x = 0; x <= segmentsX; x++) {
+            const index = particleIndex(x, y);
+            const posX = startX + x * restDistanceX;
+            const posY = startY - y * restDistanceY;
+            const mass = x === 0 ? 0 : 1;
+            particles[index] = new Particle(posX, posY, 0, mass);
+          }
+        }
+
+        constraints.length = 0;
+        const diagRest = Math.hypot(restDistanceX, restDistanceY);
+        const bendRestX = restDistanceX * 2;
+        const bendRestY = restDistanceY * 2;
+
+        const addConstraint = (x1, y1, x2, y2, dist) => {
+          constraints.push({
+            p1: particles[particleIndex(x1, y1)],
+            p2: particles[particleIndex(x2, y2)],
+            distance: dist,
+          });
+        };
+
+        for (let y = 0; y <= segmentsY; y++) {
+          for (let x = 0; x <= segmentsX; x++) {
+            if (x < segmentsX) addConstraint(x, y, x + 1, y, restDistanceX);
+            if (y < segmentsY) addConstraint(x, y, x, y + 1, restDistanceY);
+            if (x < segmentsX && y < segmentsY) {
+              addConstraint(x, y, x + 1, y + 1, diagRest);
+              addConstraint(x + 1, y, x, y + 1, diagRest);
+            }
+            if (x < segmentsX - 1) addConstraint(x, y, x + 2, y, bendRestX);
+            if (y < segmentsY - 1) addConstraint(x, y, x, y + 2, bendRestY);
+          }
+        }
+
+        computeParticleNormals();
+        updateFlagGeometry();
+      }
+
+      // ----- 시뮬레이션 파라미터 -----
+      const params = {
+        angle: -20,
+        poleHeight: poleHeightDefault,
+        wind: 40,
+        stiffness: 0.9,
+        glossiness: 0.4,
+        aspect: 1,
+      };
+
+      let currentPoleHeight = poleHeightDefault;
+
+      function applyPoleHeight(height) {
+        pole.scale.y = height / poleHeightDefault;
+        pole.position.y = height / 2;
+        finial.position.y = height + poleRadius * 0.4;
+
+        const prevTop = currentPoleHeight - poleRadius * 0.1;
+        const newTop = height - poleRadius * 0.1;
+        const offset = newTop - prevTop;
+
+        for (let y = 0; y <= segmentsY; y++) {
+          for (let x = 0; x <= segmentsX; x++) {
+            const p = particles[particleIndex(x, y)];
+            p.position.y += offset;
+            p.previous.y += offset;
+            p.original.y += offset;
+          }
+        }
+
+        currentPoleHeight = height;
+        computeParticleNormals();
+        updateFlagGeometry();
+      }
+
+      function rotateAroundPole(vector, cos, sin) {
+        const pivotX = poleRadius * 1.05;
+        const pivotZ = 0;
+        const x = vector.x - pivotX;
+        const z = vector.z - pivotZ;
+        vector.x = pivotX + x * cos + z * sin;
+        vector.z = pivotZ - x * sin + z * cos;
+      }
+
+      function applyAngle(angleDeg) {
+        params.angle = angleDeg;
+        const newAngle = THREE.MathUtils.degToRad(angleDeg);
+        
+        flagGroup.rotation.set(0, 0, newAngle);
+      }
+
+      function applyGloss(value) {
+        flagMaterial.roughness = THREE.MathUtils.lerp(0.9, 0.2, value);
+        flagMaterial.metalness = THREE.MathUtils.lerp(0.05, 0.6, value);
+      }
+
+      function applyAspect(aspect) {
+        params.aspect = aspect;
+        rebuildCloth(aspect);
+        applyPoleHeight(currentPoleHeight);
+      }
+
+      rebuildCloth(params.aspect);
+      applyPoleHeight(params.poleHeight);
+      applyAngle(params.angle);
+      applyGloss(params.glossiness);
+
+      // ----- 업데이트 루프 -----
+      const tmpForce = new THREE.Vector3();
+      const windDirection = new THREE.Vector3();
+
+      function simulate(delta) {
+        const timeSq = delta * delta;
+
+        windDirection.set(1, 0.1 * Math.sin(performance.now() * 0.0012), 0.4).normalize();
+        const gust = Math.sin(performance.now() * 0.0015) * 0.6 + Math.cos(performance.now() * 0.0011) * 0.4;
+        const windStrength = params.wind * (1 + gust * 0.35);
+        windForce.copy(windDirection).multiplyScalar(windStrength);
+
+        const angleRad = THREE.MathUtils.degToRad(params.angle);
+        rotatedGravity.copy(gravity);
+        rotatedGravity.applyAxisAngle(new THREE.Vector3(0, 0, 1), -angleRad);
+
+        computeParticleNormals();
+
+        for (let i = 0; i < totalParticles; i++) {
+          const particle = particles[i];
+          particle.addForce(rotatedGravity);
+          const normal = particleNormals[i];
+          const pressure = normal.dot(windForce);
+          if (pressure > 0) {
+            tmpForce.copy(normal).multiplyScalar(pressure * 0.5);
+            particle.addForce(tmpForce);
+          }
+          particle.integrate(timeSq);
+        }
+
+        const iterations = Math.round(THREE.MathUtils.lerp(4, 22, params.stiffness));
+        for (let iter = 0; iter < iterations; iter++) {
+          for (const { p1, p2, distance } of constraints) satisfyConstraint(p1, p2, distance);
+          for (let y = 0; y <= segmentsY; y++) {
+            const p = particles[particleIndex(0, y)];
+            p.position.copy(p.original);
+            p.previous.copy(p.original);
+          }
+        }
+
+        updateFlagGeometry();
+      }
+
+      function computeParticleNormals() {
+        for (const normal of particleNormals) normal.set(0, 0, 0);
+
+        const v1 = new THREE.Vector3();
+        const v2 = new THREE.Vector3();
+        const faceNormal = new THREE.Vector3();
+
+        for (let y = 0; y < segmentsY; y++) {
+          for (let x = 0; x < segmentsX; x++) {
+            const ia = particleIndex(x, y);
+            const ib = particleIndex(x + 1, y);
+            const ic = particleIndex(x, y + 1);
+            const id = particleIndex(x + 1, y + 1);
+
+            accumulateNormal(ia, ib, ic, v1, v2, faceNormal);
+            accumulateNormal(ic, ib, id, v1, v2, faceNormal);
+          }
+        }
+
+        for (const normal of particleNormals) {
+          if (normal.lengthSq() > 0) normal.normalize();
+          else normal.set(0, 0, 1);
+        }
+      }
+
+      function accumulateNormal(ia, ib, ic, v1, v2, faceNormal) {
+        const pa = particles[ia];
+        const pb = particles[ib];
+        const pc = particles[ic];
+        v1.subVectors(pb.position, pa.position);
+        v2.subVectors(pc.position, pa.position);
+        faceNormal.crossVectors(v2, v1);
+        particleNormals[ia].add(faceNormal);
+        particleNormals[ib].add(faceNormal);
+        particleNormals[ic].add(faceNormal);
+      }
+
+      function updateFlagGeometry() {
+        const posAttr = flagGeometry.attributes.position;
+
+        for (let y = 0; y <= segmentsY; y++) {
+          for (let x = 0; x <= segmentsX; x++) {
+            const p = particles[particleIndex(x, y)];
+            const index = (x + y * (segmentsX + 1)) * 3;
+            posAttr.array[index] = p.position.x;
+            posAttr.array[index + 1] = p.position.y;
+            posAttr.array[index + 2] = p.position.z;
+          }
+        }
+        posAttr.needsUpdate = true;
+        flagGeometry.computeVertexNormals();
+      }
+
+      computeParticleNormals();
+      updateFlagGeometry();
+
+      const clock = new THREE.Clock();
+
+      function animate() {
+        requestAnimationFrame(animate);
+        const delta = Math.min(clock.getDelta(), 0.033);
+        simulate(delta * 1.5);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+
+      animate();
+
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+
+      const gui = new GUI();
+      gui
+        .add(params, 'angle', -45, 45, 1)
+        .name('깃발 각도')
+        .onChange(applyAngle);
+      gui
+        .add(params, 'poleHeight', 2, 5, 0.1)
+        .name('깃대 높이')
+        .onChange(applyPoleHeight);
+      gui
+        .add(params, 'wind', 0, 200, 1)
+        .name('바람 세기');
+      gui
+        .add(params, 'stiffness', 0, 1, 0.01)
+        .name('뻣뻣함');
+      gui
+        .add(params, 'aspect', 0.6, 1.6, 0.05)
+        .name('가로/세로 비율')
+        .onChange(applyAspect);
+      gui
+        .add(params, 'glossiness', 0, 1, 0.01)
+        .name('광택')
+        .onChange(applyGloss);
+    </script>
+  </body>
+</html>
