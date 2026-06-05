@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<title>Tilt Car Test</title>
+<style>
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #111;
+    touch-action: none;
+    font-family: system-ui, sans-serif;
+  }
+
+  #info {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    color: #fff;
+    background: rgba(0,0,0,.55);
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.4;
+    white-space: pre;
+    z-index: 10;
+  }
+
+  #car {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 96px;
+    height: 64px;
+    transform: translate(-50%, -50%) rotate(0deg);
+    transform-origin: center;
+    z-index: 5;
+  }
+
+  #recalibrate {
+    position: fixed;
+    left: 50%;
+    bottom: 28px;
+    transform: translateX(-50%);
+    padding: 14px 22px;
+    border: 0;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 700;
+    background: #ffd400;
+    color: #111;
+    z-index: 10;
+  }
+</style>
+</head>
+<body>
+  <div id="info">x: 0.00&#10;y: 0.00&#10;dir: -</div>
+
+  <svg id="car" viewBox="0 0 120 80" aria-label="car">
+    <!-- shadow -->
+    <ellipse cx="60" cy="68" rx="42" ry="7" fill="rgba(0,0,0,.35)" />
+
+    <!-- body -->
+    <rect x="22" y="18" width="76" height="44" rx="14" fill="#ffd400" stroke="#111" stroke-width="5"/>
+
+    <!-- front -->
+    <path d="M88 26 L108 40 L88 54 Z" fill="#ffd400" stroke="#111" stroke-width="5" stroke-linejoin="round"/>
+
+    <!-- windshield -->
+    <rect x="58" y="25" width="22" height="30" rx="5" fill="#fff6a0" stroke="#111" stroke-width="4"/>
+
+    <!-- wheels -->
+    <circle cx="34" cy="18" r="8" fill="#222"/>
+    <circle cx="34" cy="62" r="8" fill="#222"/>
+    <circle cx="84" cy="18" r="8" fill="#222"/>
+    <circle cx="84" cy="62" r="8" fill="#222"/>
+
+    <!-- nose mark -->
+    <circle cx="96" cy="40" r="4" fill="#111"/>
+  </svg>
+
+  <button id="recalibrate">현재 자세로 리캘리브레이션</button>
+
+<script>
+let beta = 0;   // 앞뒤 기울기
+let gamma = 0;  // 좌우 기울기
+
+let baseBeta = 0;
+let baseGamma = 0;
+
+let ready = false;
+
+const info = document.getElementById('info');
+const car = document.getElementById('car');
+const button = document.getElementById('recalibrate');
+
+function normalizeAngle(deg) {
+  return ((deg % 360) + 360) % 360;
+}
+
+function snapTo8Direction(x, y) {
+  const magnitude = Math.hypot(x, y);
+
+  if (magnitude < 2.5) {
+    return null;
+  }
+
+  // 화면 좌표 기준:
+  // x: 오른쪽 +
+  // y: 아래 +
+  const rad = Math.atan2(y, x);
+  const deg = normalizeAngle(rad * 180 / Math.PI);
+
+  // 8방향 = 45도 단위
+  return Math.round(deg / 45) * 45;
+}
+
+async function requestPermissionIfNeeded() {
+  if (
+    typeof DeviceOrientationEvent !== 'undefined' &&
+    typeof DeviceOrientationEvent.requestPermission === 'function'
+  ) {
+    const result = await DeviceOrientationEvent.requestPermission();
+    if (result !== 'granted') {
+      info.textContent = '센서 권한 거부됨';
+      return false;
+    }
+  }
+
+  return true;
+}
+
+async function recalibrate() {
+  const ok = await requestPermissionIfNeeded();
+  if (!ok) return;
+
+  baseBeta = beta;
+  baseGamma = gamma;
+  ready = true;
+}
+
+window.addEventListener('deviceorientation', (e) => {
+  beta = e.beta ?? 0;
+  gamma = e.gamma ?? 0;
+});
+
+button.addEventListener('click', recalibrate);
+
+function loop() {
+  const x = gamma - baseGamma;
+  const y = beta - baseBeta;
+
+  const snapped = snapTo8Direction(x, y);
+
+  if (ready && snapped !== null) {
+    car.style.transform =
+      `translate(-50%, -50%) rotate(${snapped}deg)`;
+  }
+
+  info.textContent =
+    `x: ${x.toFixed(2)}\n` +
+    `y: ${y.toFixed(2)}\n` +
+    `dir: ${snapped === null ? '-' : snapped + '°'}`;
+
+  requestAnimationFrame(loop);
+}
+
+loop();
+</script>
+</body>
+</html>
