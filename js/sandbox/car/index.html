@@ -6,54 +6,25 @@
 <title>City Car</title>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{width:100%;height:100%;overflow:hidden;background:#0d1117;font-family:system-ui,sans-serif;touch-action:none}
+  html,body{width:100%;height:100%;overflow:hidden;background:#87ceeb;font-family:system-ui,sans-serif;touch-action:none}
   #c{display:block;width:100%;height:100%}
-
   #overlay{
-    position:fixed;inset:0;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    background:rgba(0,0,0,.78);z-index:20;
+    position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    background:rgba(0,0,0,.72);z-index:20;
   }
-  #overlay h1{
-    color:#ffd400;font-size:clamp(2rem,7vw,4rem);
-    font-weight:900;letter-spacing:4px;margin-bottom:10px;text-shadow:0 2px 20px rgba(255,212,0,.5);
-  }
-  #overlay p{
-    color:#aaa;font-size:clamp(.8rem,2.5vw,.95rem);
-    margin-bottom:36px;text-align:center;max-width:300px;line-height:1.8;
-  }
-  #startBtn{
-    padding:16px 56px;border:none;border-radius:999px;
-    font-size:clamp(1rem,3vw,1.25rem);font-weight:800;
-    background:#ffd400;color:#111;cursor:pointer;
-    box-shadow:0 4px 28px rgba(255,212,0,.45);
-    transition:transform .1s,box-shadow .1s;
-  }
-  #startBtn:active{transform:scale(.95);box-shadow:0 2px 14px rgba(255,212,0,.3)}
-
-  #hud{
-    position:fixed;top:12px;right:12px;
-    color:#fff;background:rgba(0,0,0,.6);
-    padding:8px 14px;border-radius:10px;
-    font-size:13px;line-height:1.8;white-space:pre;
-    z-index:10;display:none;font-variant-numeric:tabular-nums;
-  }
-  #recalBtn{
-    position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
-    padding:12px 28px;border:none;border-radius:999px;
-    font-size:14px;font-weight:700;
-    background:rgba(255,212,0,.92);color:#111;
-    cursor:pointer;z-index:10;display:none;
-    box-shadow:0 2px 12px rgba(0,0,0,.4);
-  }
+  #overlay h1{color:#ffd400;font-size:clamp(2rem,7vw,4rem);font-weight:900;letter-spacing:4px;margin-bottom:10px;text-shadow:0 2px 20px rgba(255,212,0,.5);}
+  #overlay p{color:#ccc;font-size:clamp(.8rem,2.5vw,.95rem);margin-bottom:36px;text-align:center;max-width:300px;line-height:1.8;}
+  #startBtn{padding:16px 56px;border:none;border-radius:999px;font-size:clamp(1rem,3vw,1.25rem);font-weight:800;background:#ffd400;color:#111;cursor:pointer;box-shadow:0 4px 28px rgba(255,212,0,.45);transition:transform .1s,box-shadow .1s;}
+  #startBtn:active{transform:scale(.95)}
+  #hud{position:fixed;top:12px;right:12px;color:#fff;background:rgba(0,0,0,.55);padding:8px 14px;border-radius:10px;font-size:14px;line-height:1.8;white-space:pre;z-index:10;display:none;font-variant-numeric:tabular-nums;}
+  #recalBtn{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);padding:12px 28px;border:none;border-radius:999px;font-size:14px;font-weight:700;background:rgba(255,212,0,.92);color:#111;cursor:pointer;z-index:10;display:none;box-shadow:0 2px 12px rgba(0,0,0,.4);}
 </style>
 </head>
 <body>
 <canvas id="c"></canvas>
-
 <div id="overlay">
   <h1>CITY CAR</h1>
-  <p>기기를 앞뒤로 기울여 가속/감속,<br>좌우로 기울여 조향하세요.<br>데스크탑에서는 방향키(↑↓←→) 또는 WASD로 조종할 수 있습니다.<br><br>모바일 시작 시 센서 접근 허용이 필요합니다.</p>
+  <p>기기를 앞뒤로 기울여 가속/감속,<br>좌우로 기울여 조향하세요.<br>데스크탑: 방향키(↑↓←→) 또는 WASD<br><br>모바일 시작 시 센서 접근 허용이 필요합니다.</p>
   <button id="startBtn">GAME START</button>
 </div>
 <div id="hud"></div>
@@ -64,348 +35,433 @@
 import * as THREE from 'three';
 
 // ─── constants ───────────────────────────────────────────────────────────────
-const TILE    = 12;        // world units per tile (≈1 car length)
-const MAP_W   = 128;
-const MAP_H   = 128;
-const HALF_W  = MAP_W / 2;
-const HALF_H  = MAP_H / 2;
-const T = { ROAD:0, BUILDING:1, PARK:2, WATER:3, BRIDGE:4 };
+const TILE   = 12;
+const MAP_W  = 128, MAP_H = 128;
+const HALF_W = MAP_W/2, HALF_H = MAP_H/2;
+const T = {ROAD:0, BUILDING:1, PARK:2, WATER:3, BRIDGE:4};
 
-// ─── deterministic rng ───────────────────────────────────────────────────────
+// ─── rng ─────────────────────────────────────────────────────────────────────
 let _s = 0xdeadbeef;
 function rng() {
-  _s = Math.imul(_s ^ (_s >>> 16), 0x45d9f3b);
-  _s = Math.imul(_s ^ (_s >>> 16), 0x45d9f3b);
-  _s ^= _s >>> 16;
-  return (_s >>> 0) / 0xffffffff;
+  _s = Math.imul(_s^(_s>>>16),0x45d9f3b);
+  _s = Math.imul(_s^(_s>>>16),0x45d9f3b);
+  _s ^= _s>>>16;
+  return (_s>>>0)/0xffffffff;
 }
 
 // ─── map ─────────────────────────────────────────────────────────────────────
-const tileMap  = new Uint8Array(MAP_W * MAP_H).fill(T.BUILDING);
-const waterMrk = new Uint8Array(MAP_W * MAP_H);
-const bldgH    = new Uint8Array(MAP_W * MAP_H);
+const tileMap  = new Uint8Array(MAP_W*MAP_H).fill(T.BUILDING);
+const waterMrk = new Uint8Array(MAP_W*MAP_H);
+const bldgH    = new Uint8Array(MAP_W*MAP_H);
 
-function mi(x, y)  { return y * MAP_W + x; }
-
-function fillRect(x0, y0, w, h, val, buf = tileMap) {
-  for (let dy = 0; dy < h; dy++)
-    for (let dx = 0; dx < w; dx++) {
-      const x = x0+dx, y = y0+dy;
-      if (x >= 0 && x < MAP_W && y >= 0 && y < MAP_H)
-        buf[mi(x, y)] = val;
-    }
+function mi(x,y){return y*MAP_W+x;}
+function fillRect(x0,y0,w,h,val,buf=tileMap){
+  for(let dy=0;dy<h;dy++) for(let dx=0;dx<w;dx++){
+    const x=x0+dx,y=y0+dy;
+    if(x>=0&&x<MAP_W&&y>=0&&y<MAP_H)buf[mi(x,y)]=val;
+  }
 }
 
-function buildMap() {
-  // Water rivers
-  for (let i = 0; i < 5; i++) {
-    const horiz = rng() < 0.5;
-    if (horiz) {
-      const wy = 12 + Math.floor(rng() * (MAP_H - 24));
-      const ww = 2 + Math.floor(rng() * 3);
-      fillRect(0, wy, MAP_W, ww, T.WATER);
-      fillRect(0, wy, MAP_W, ww, 1, waterMrk);
-    } else {
-      const wx = 12 + Math.floor(rng() * (MAP_W - 24));
-      const ww = 2 + Math.floor(rng() * 3);
-      fillRect(wx, 0, ww, MAP_H, T.WATER);
-      fillRect(wx, 0, ww, MAP_H, 1, waterMrk);
+function buildMap(){
+  for(let i=0;i<5;i++){
+    if(rng()<0.5){
+      const wy=12+Math.floor(rng()*(MAP_H-24));
+      const ww=2+Math.floor(rng()*3);
+      fillRect(0,wy,MAP_W,ww,T.WATER); fillRect(0,wy,MAP_W,ww,1,waterMrk);
+    }else{
+      const wx=12+Math.floor(rng()*(MAP_W-24));
+      const ww=2+Math.floor(rng()*3);
+      fillRect(wx,0,ww,MAP_H,T.WATER); fillRect(wx,0,ww,MAP_H,1,waterMrk);
     }
   }
-
-  // Horizontal roads
-  for (let y = 6; y < MAP_H - 6; ) {
-    const w = [1,1,2,2,2,3,4][Math.floor(rng()*7)];
-    fillRect(0, y, MAP_W, w, T.ROAD);
-    y += 6 + Math.floor(rng() * 14);
+  for(let y=6;y<MAP_H-6;){
+    const w=[1,1,2,2,2,3,4][Math.floor(rng()*7)];
+    fillRect(0,y,MAP_W,w,T.ROAD);
+    y+=6+Math.floor(rng()*14);
   }
-  // Vertical roads
-  for (let x = 6; x < MAP_W - 6; ) {
-    const w = [1,1,2,2,2,3,4][Math.floor(rng()*7)];
-    fillRect(x, 0, w, MAP_H, T.ROAD);
-    x += 6 + Math.floor(rng() * 14);
+  for(let x=6;x<MAP_W-6;){
+    const w=[1,1,2,2,2,3,4][Math.floor(rng()*7)];
+    fillRect(x,0,w,MAP_H,T.ROAD);
+    x+=6+Math.floor(rng()*14);
   }
-
-  // Guaranteed cross at center
-  fillRect(HALF_W-1, 0, 3, MAP_H, T.ROAD);
-  fillRect(0, HALF_H-1, MAP_W, 3, T.ROAD);
-
-  // Bridges where road meets water
-  for (let i = 0; i < MAP_W * MAP_H; i++)
-    if (tileMap[i] === T.ROAD && waterMrk[i]) tileMap[i] = T.BRIDGE;
-
-  // Parks
-  for (let i = 0; i < 20; i++) {
-    const px = 4 + Math.floor(rng() * (MAP_W - 14));
-    const py = 4 + Math.floor(rng() * (MAP_H - 14));
-    const pw = 3 + Math.floor(rng() * 8);
-    const ph = 3 + Math.floor(rng() * 8);
-    let ok = true;
-    loop: for (let dy = 0; dy < ph; dy++)
-      for (let dx = 0; dx < pw; dx++)
-        if (tileMap[mi(px+dx, py+dy)] !== T.BUILDING) { ok = false; break loop; }
-    if (ok) fillRect(px, py, pw, ph, T.PARK);
+  fillRect(HALF_W-1,0,3,MAP_H,T.ROAD);
+  fillRect(0,HALF_H-1,MAP_W,3,T.ROAD);
+  for(let i=0;i<MAP_W*MAP_H;i++)
+    if(tileMap[i]===T.ROAD&&waterMrk[i])tileMap[i]=T.BRIDGE;
+  for(let i=0;i<20;i++){
+    const px=4+Math.floor(rng()*(MAP_W-14)),py=4+Math.floor(rng()*(MAP_H-14));
+    const pw=3+Math.floor(rng()*8),ph=3+Math.floor(rng()*8);
+    let ok=true;
+    loop:for(let dy=0;dy<ph;dy++) for(let dx=0;dx<pw;dx++)
+      if(tileMap[mi(px+dx,py+dy)]!==T.BUILDING){ok=false;break loop;}
+    if(ok)fillRect(px,py,pw,ph,T.PARK);
   }
-
-  // Large landmark buildings (uniform tall footprints)
-  for (let i = 0; i < 30; i++) {
-    const bx = 4 + Math.floor(rng() * (MAP_W - 14));
-    const by = 4 + Math.floor(rng() * (MAP_H - 14));
-    const bw = 3 + Math.floor(rng() * 5);
-    const bh = 3 + Math.floor(rng() * 5);
-    const ht = 6 + Math.floor(rng() * 5);
-    let ok = true;
-    loop: for (let dy = 0; dy < bh; dy++)
-      for (let dx = 0; dx < bw; dx++)
-        if (tileMap[mi(bx+dx, by+dy)] !== T.BUILDING) { ok = false; break loop; }
-    if (ok)
-      for (let dy = 0; dy < bh; dy++)
-        for (let dx = 0; dx < bw; dx++)
-          bldgH[mi(bx+dx, by+dy)] = ht;
+  for(let i=0;i<30;i++){
+    const bx=4+Math.floor(rng()*(MAP_W-14)),by=4+Math.floor(rng()*(MAP_H-14));
+    const bw=3+Math.floor(rng()*5),bh=3+Math.floor(rng()*5);
+    const ht=6+Math.floor(rng()*5);
+    let ok=true;
+    loop:for(let dy=0;dy<bh;dy++) for(let dx=0;dx<bw;dx++)
+      if(tileMap[mi(bx+dx,by+dy)]!==T.BUILDING){ok=false;break loop;}
+    if(ok) for(let dy=0;dy<bh;dy++) for(let dx=0;dx<bw;dx++)
+      bldgH[mi(bx+dx,by+dy)]=ht;
   }
-
-  // Random building heights
-  for (let i = 0; i < MAP_W * MAP_H; i++)
-    if (tileMap[i] === T.BUILDING && bldgH[i] === 0)
-      bldgH[i] = 1 + Math.floor(rng() * 7);
+  for(let i=0;i<MAP_W*MAP_H;i++)
+    if(tileMap[i]===T.BUILDING&&bldgH[i]===0)
+      bldgH[i]=1+Math.floor(rng()*7);
 }
-
 buildMap();
 
-// ─── coord helpers ───────────────────────────────────────────────────────────
-function tileCenter(tx, ty) {
-  return { x: (tx - HALF_W + 0.5) * TILE, z: (ty - HALF_H + 0.5) * TILE };
+// ─── coord ───────────────────────────────────────────────────────────────────
+function tileCenter(tx,ty){return{x:(tx-HALF_W+0.5)*TILE,z:(ty-HALF_H+0.5)*TILE};}
+function tileAt(wx,wz){
+  const tx=Math.floor(wx/TILE+HALF_W), ty=Math.floor(wz/TILE+HALF_H);
+  if(tx<0||tx>=MAP_W||ty<0||ty>=MAP_H)return T.BUILDING;
+  return tileMap[mi(tx,ty)];
 }
-function tileAt(wx, wz) {
-  const tx = Math.floor(wx / TILE + HALF_W);
-  const ty = Math.floor(wz / TILE + HALF_H);
-  if (tx < 0 || tx >= MAP_W || ty < 0 || ty >= MAP_H) return T.BUILDING;
-  return tileMap[mi(tx, ty)];
-}
-function passable(wx, wz) {
-  const t = tileAt(wx, wz);
-  return t === T.ROAD || t === T.BRIDGE;
-}
+function passable(wx,wz){const t=tileAt(wx,wz);return t===T.ROAD||t===T.BRIDGE;}
 
 // ─── renderer ────────────────────────────────────────────────────────────────
 const canvas   = document.getElementById('c');
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
-renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+const renderer = new THREE.WebGLRenderer({canvas,antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type    = THREE.PCFSoftShadowMap;
 
-const scene  = new THREE.Scene();
-scene.background = new THREE.Color(0x0d1117);
-scene.fog = new THREE.Fog(0x0d1117, 280, 520);
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x87ceeb);
+scene.fog = new THREE.Fog(0x87ceeb, 200, 440);
 
-const camera = new THREE.PerspectiveCamera(48, 1, 1, 700);
+const camera = new THREE.PerspectiveCamera(55,1,1,600);
 
 // ─── lighting ────────────────────────────────────────────────────────────────
-scene.add(new THREE.AmbientLight(0x99aabb, 0.7));
-scene.add(new THREE.HemisphereLight(0x334466, 0x223322, 0.5));
-
-const sun = new THREE.DirectionalLight(0xfff5cc, 1.3);
-sun.position.set(120, 220, 90);
+scene.add(new THREE.AmbientLight(0xffffff, 2.2));
+scene.add(new THREE.HemisphereLight(0x99ccff, 0x66aa44, 1.2));
+const sun = new THREE.DirectionalLight(0xfff0cc, 2.0);
+sun.position.set(100,200,80);
 sun.castShadow = true;
-sun.shadow.mapSize.set(2048, 2048);
-Object.assign(sun.shadow.camera, { left:-220, right:220, top:220, bottom:-220, near:1, far:800 });
+sun.shadow.mapSize.set(2048,2048);
+Object.assign(sun.shadow.camera,{left:-250,right:250,top:250,bottom:-250,near:1,far:800});
 scene.add(sun);
 
-// ─── instanced scene geometry ─────────────────────────────────────────────────
+// ─── scene geometry ──────────────────────────────────────────────────────────
 const cnt = new Array(5).fill(0);
-for (let i = 0; i < MAP_W * MAP_H; i++) cnt[tileMap[i]]++;
+for(let i=0;i<MAP_W*MAP_H;i++)cnt[tileMap[i]]++;
 
-const flatGeo  = new THREE.BoxGeometry(TILE, 0.5, TILE);
-const bldgBase = new THREE.BoxGeometry(TILE * 0.84, 1, TILE * 0.84);
+const flatGeo  = new THREE.BoxGeometry(TILE,0.5,TILE);
+const bldgBase = new THREE.BoxGeometry(TILE*0.84,1,TILE*0.84);
 
-const matRoad   = new THREE.MeshLambertMaterial({ color: 0x38384a });
-const matBridge = new THREE.MeshLambertMaterial({ color: 0x6b5a3e });
-const matPark   = new THREE.MeshLambertMaterial({ color: 0x2d5a27 });
-const matWater  = new THREE.MeshLambertMaterial({ color: 0x1a3a5c });
+const matRoad   = new THREE.MeshToonMaterial({color:0x555566});
+const matBridge = new THREE.MeshToonMaterial({color:0x997755});
+const matPark   = new THREE.MeshToonMaterial({color:0x55bb44});
+const matWater  = new THREE.MeshToonMaterial({color:0x3399dd});
 
-const BLDG_COLORS = [0x4a5568, 0x2d3748, 0x55395a, 0x2a4a3a, 0x4a3a2a, 0x3a4a6a];
+const BLDG_COLORS = [0xff8844,0x4499ee,0xffcc33,0x44bb77,0xff55aa,0xaa77ee];
 const bldgCnt = new Array(6).fill(0);
-for (let i = 0; i < MAP_W * MAP_H; i++)
-  if (tileMap[i] === T.BUILDING) bldgCnt[i % 6]++;
+for(let i=0;i<MAP_W*MAP_H;i++) if(tileMap[i]===T.BUILDING)bldgCnt[i%6]++;
 
-function iMesh(geo, mat, n) {
-  const m = new THREE.InstancedMesh(geo, mat, Math.max(1, n));
-  m.castShadow = m.receiveShadow = true;
-  scene.add(m); return m;
+function iMesh(geo,mat,n){
+  const m=new THREE.InstancedMesh(geo,mat,Math.max(1,n));
+  m.castShadow=m.receiveShadow=true;
+  scene.add(m);return m;
 }
 
-const mRoad   = iMesh(flatGeo,  matRoad,   cnt[T.ROAD]);
-const mBridge = iMesh(flatGeo,  matBridge, cnt[T.BRIDGE]);
-const mPark   = iMesh(flatGeo,  matPark,   cnt[T.PARK]);
-const mWater  = iMesh(flatGeo,  matWater,  cnt[T.WATER]);
-const mBldgs  = BLDG_COLORS.map((c, i) =>
-  iMesh(bldgBase, new THREE.MeshLambertMaterial({ color: c }), bldgCnt[i])
+const mRoad   = iMesh(flatGeo, matRoad,   cnt[T.ROAD]);
+const mBridge = iMesh(flatGeo, matBridge, cnt[T.BRIDGE]);
+const mPark   = iMesh(flatGeo, matPark,   cnt[T.PARK]);
+const mWater  = iMesh(flatGeo, matWater,  cnt[T.WATER]);
+const mBldgs  = BLDG_COLORS.map((c,i)=>
+  iMesh(bldgBase, new THREE.MeshToonMaterial({color:c}), bldgCnt[i])
 );
 
-// Ground
 const gnd = new THREE.Mesh(
-  new THREE.PlaneGeometry(MAP_W * TILE, MAP_H * TILE),
-  new THREE.MeshLambertMaterial({ color: 0x1a1a28 })
+  new THREE.PlaneGeometry(MAP_W*TILE,MAP_H*TILE),
+  new THREE.MeshToonMaterial({color:0xaa9966})
 );
-gnd.rotation.x = -Math.PI / 2;
-gnd.position.y = -0.1;
-gnd.receiveShadow = true;
+gnd.rotation.x=-Math.PI/2; gnd.position.y=-0.1; gnd.receiveShadow=true;
 scene.add(gnd);
 
 const D = new THREE.Object3D();
-const bi = [0,0,0,0,0,0];
-let ri=0, bri=0, pi=0, wi=0;
+const bi=[0,0,0,0,0,0];
+let ri=0,bri=0,pi=0,wi=0;
 
-for (let ty = 0; ty < MAP_H; ty++) {
-  for (let tx = 0; tx < MAP_W; tx++) {
-    const id = mi(tx, ty);
-    const tp = tileMap[id];
-    const {x, z} = tileCenter(tx, ty);
-    D.rotation.set(0, 0, 0);
-
-    if (tp === T.ROAD) {
-      D.position.set(x, 0.25, z); D.scale.set(1,1,1); D.updateMatrix();
-      mRoad.setMatrixAt(ri++, D.matrix);
-    } else if (tp === T.BRIDGE) {
-      D.position.set(x, 0.25, z); D.scale.set(1,1,1); D.updateMatrix();
-      mBridge.setMatrixAt(bri++, D.matrix);
-    } else if (tp === T.PARK) {
-      D.position.set(x, 0.2, z); D.scale.set(1,1,1); D.updateMatrix();
-      mPark.setMatrixAt(pi++, D.matrix);
-    } else if (tp === T.WATER) {
-      D.position.set(x, -0.15, z); D.scale.set(1,1,1); D.updateMatrix();
-      mWater.setMatrixAt(wi++, D.matrix);
-    } else if (tp === T.BUILDING) {
-      const ci = id % 6;
-      const h  = Math.max(1, bldgH[id]);
-      const bh = h * TILE * 0.55;
-      D.position.set(x, bh/2 + 0.4, z);
-      D.scale.set(1, bh, 1); D.updateMatrix();
-      mBldgs[ci].setMatrixAt(bi[ci]++, D.matrix);
-    }
+for(let ty=0;ty<MAP_H;ty++) for(let tx=0;tx<MAP_W;tx++){
+  const id=mi(tx,ty), tp=tileMap[id];
+  const {x,z}=tileCenter(tx,ty);
+  D.rotation.set(0,0,0);
+  if(tp===T.ROAD){
+    D.position.set(x,0.25,z);D.scale.set(1,1,1);D.updateMatrix();
+    mRoad.setMatrixAt(ri++,D.matrix);
+  }else if(tp===T.BRIDGE){
+    D.position.set(x,0.25,z);D.scale.set(1,1,1);D.updateMatrix();
+    mBridge.setMatrixAt(bri++,D.matrix);
+  }else if(tp===T.PARK){
+    D.position.set(x,0.2,z);D.scale.set(1,1,1);D.updateMatrix();
+    mPark.setMatrixAt(pi++,D.matrix);
+  }else if(tp===T.WATER){
+    D.position.set(x,-0.15,z);D.scale.set(1,1,1);D.updateMatrix();
+    mWater.setMatrixAt(wi++,D.matrix);
+  }else if(tp===T.BUILDING){
+    const ci=id%6, h=Math.max(1,bldgH[id]), bh=h*TILE*0.55;
+    D.position.set(x,bh/2+0.4,z);D.scale.set(1,bh,1);D.updateMatrix();
+    mBldgs[ci].setMatrixAt(bi[ci]++,D.matrix);
   }
 }
+[mRoad,mBridge,mPark,mWater,...mBldgs].forEach(m=>m.instanceMatrix.needsUpdate=true);
 
-[mRoad, mBridge, mPark, mWater, ...mBldgs].forEach(m => {
-  m.instanceMatrix.needsUpdate = true;
-});
-
-// Road lane markers (dashes on wide roads) — center-line planes
-const dashGeo = new THREE.PlaneGeometry(TILE * 0.06, TILE * 0.3);
-const dashMat = new THREE.MeshBasicMaterial({ color: 0xffffff, opacity: 0.35, transparent: true });
-const dashPositions = [];
-for (let ty = 0; ty < MAP_H; ty++) {
-  for (let tx = 0; tx < MAP_W; tx++) {
-    if (tileMap[mi(tx, ty)] !== T.ROAD) continue;
-    // only place dash if both neighbors same type (middle of a road stretch)
-    if (tx > 0 && tx < MAP_W-1 &&
-        tileMap[mi(tx-1, ty)] === T.ROAD &&
-        tileMap[mi(tx+1, ty)] === T.ROAD &&
-        ty > 0 && tileMap[mi(tx, ty-1)] !== T.ROAD) {
-      dashPositions.push(tileCenter(tx, ty));
-    }
-  }
+const dashGeo = new THREE.PlaneGeometry(TILE*0.06,TILE*0.3);
+const dashMat = new THREE.MeshBasicMaterial({color:0xffffff,opacity:0.45,transparent:true});
+const dashPos = [];
+for(let ty=0;ty<MAP_H;ty++) for(let tx=0;tx<MAP_W;tx++){
+  if(tileMap[mi(tx,ty)]!==T.ROAD)continue;
+  if(tx>0&&tx<MAP_W-1&&tileMap[mi(tx-1,ty)]===T.ROAD&&tileMap[mi(tx+1,ty)]===T.ROAD&&
+     ty>0&&tileMap[mi(tx,ty-1)]!==T.ROAD)
+    dashPos.push(tileCenter(tx,ty));
 }
-if (dashPositions.length > 0) {
-  const dm = new THREE.InstancedMesh(dashGeo, dashMat, dashPositions.length);
-  dashPositions.forEach(({x,z}, i) => {
-    D.rotation.set(-Math.PI/2, 0, 0);
-    D.position.set(x, 0.52, z);
-    D.scale.set(1,1,1);
-    D.updateMatrix();
-    dm.setMatrixAt(i, D.matrix);
+if(dashPos.length>0){
+  const dm=new THREE.InstancedMesh(dashGeo,dashMat,dashPos.length);
+  dashPos.forEach(({x,z},i)=>{
+    D.rotation.set(-Math.PI/2,0,0);D.position.set(x,0.52,z);D.scale.set(1,1,1);D.updateMatrix();
+    dm.setMatrixAt(i,D.matrix);
   });
-  dm.instanceMatrix.needsUpdate = true;
-  scene.add(dm);
+  dm.instanceMatrix.needsUpdate=true; scene.add(dm);
 }
 
-// ─── car ─────────────────────────────────────────────────────────────────────
-const carGroup = new THREE.Group();
+// ─── car + character: cartoon 3D top-view vehicle ───────────────────────────
+// Car faces local +X direction. carVisual child handles roll.
+const carGroup  = new THREE.Group();
+const carVisual = new THREE.Group();
+carGroup.add(carVisual);
 scene.add(carGroup);
 
-const yMat  = new THREE.MeshLambertMaterial({ color: 0xffd400 });
-const wMat  = new THREE.MeshLambertMaterial({ color: 0x111111 });
-const glMat = new THREE.MeshLambertMaterial({ color: 0xc8e8ff, transparent:true, opacity:.75 });
+const R = TILE * 0.24;
 
-// Body
-const body = new THREE.Mesh(new THREE.BoxGeometry(TILE*.65, TILE*.22, TILE*.4), yMat);
-body.position.y = TILE*.11 + .4;
-body.castShadow = true;
-carGroup.add(body);
+// materials
+const redMat    = new THREE.MeshToonMaterial({ color: 0xd71920 });
+const darkRedMat= new THREE.MeshToonMaterial({ color: 0x8f1016 });
+const blackMat  = new THREE.MeshToonMaterial({ color: 0x151515 });
+const tireMat   = new THREE.MeshToonMaterial({ color: 0x050505 });
+const metalMat  = new THREE.MeshToonMaterial({ color: 0xd9d9d9 });
+const whiteMat  = new THREE.MeshToonMaterial({ color: 0xffffff });
+const skinMat   = new THREE.MeshToonMaterial({ color: 0xffd1a6 });
+const glassMat  = new THREE.MeshToonMaterial({ color: 0xffffff, transparent: true, opacity: 0.45 });
+const eyeMat    = new THREE.MeshBasicMaterial({ color: 0x111111 });
+const stripeMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
 
-// Cabin
-const cab = new THREE.Mesh(new THREE.BoxGeometry(TILE*.3, TILE*.18, TILE*.35), glMat);
-cab.position.set(TILE*.04, TILE*.24 + .4, 0);
-cab.castShadow = true;
-carGroup.add(cab);
+function addBox(parent, size, pos, mat, cast = true) {
+  const mesh = new THREE.Mesh(new THREE.BoxGeometry(size[0], size[1], size[2]), mat);
+  mesh.position.set(pos[0], pos[1], pos[2]);
+  mesh.castShadow = cast; mesh.receiveShadow = true;
+  parent.add(mesh); return mesh;
+}
+function addSphere(parent, radius, pos, scale, mat, seg = 16) {
+  const mesh = new THREE.Mesh(new THREE.SphereGeometry(radius, seg, Math.max(8, seg * 0.7)), mat);
+  mesh.position.set(pos[0], pos[1], pos[2]);
+  mesh.scale.set(scale[0], scale[1], scale[2]);
+  mesh.castShadow = true; mesh.receiveShadow = true;
+  parent.add(mesh); return mesh;
+}
+function addCylinder(parent, radiusTop, radiusBottom, height, pos, rot, mat, seg = 16) {
+  const mesh = new THREE.Mesh(new THREE.CylinderGeometry(radiusTop, radiusBottom, height, seg), mat);
+  mesh.position.set(pos[0], pos[1], pos[2]);
+  mesh.rotation.set(rot[0], rot[1], rot[2]);
+  mesh.castShadow = true; mesh.receiveShadow = true;
+  parent.add(mesh); return mesh;
+}
 
-// Wheels
-const wGeo = new THREE.CylinderGeometry(TILE*.08, TILE*.08, TILE*.07, 12);
-[[ TILE*.27, .4,  TILE*.22],
- [ TILE*.27, .4, -TILE*.22],
- [-TILE*.27, .4,  TILE*.22],
- [-TILE*.27, .4, -TILE*.22]].forEach(([wx,wy,wz]) => {
-  const w = new THREE.Mesh(wGeo, wMat);
-  w.rotation.x = Math.PI/2; w.position.set(wx,wy,wz);
-  w.castShadow = true; carGroup.add(w);
+// ── vehicle body ──────────────────────────────────────────────────────────────
+addBox(carVisual, [R*2.9, R*0.52, R*2.15], [0, R*0.48+0.32, 0], redMat);
+
+addCylinder(carVisual, R*0.42, R*0.42, R*2.35,
+  [R*1.65, R*0.45+0.28, 0], [Math.PI/2, 0, 0], redMat, 20);
+
+[-R*0.55, R*0.55].forEach(z =>
+  addBox(carVisual, [R*0.12, R*0.12, R*0.28], [R*1.66, R*0.86, z], stripeMat, false));
+
+addBox(carVisual, [R*1.12, R*0.70, R*1.50], [-R*0.62, R*0.95+0.32, 0], darkRedMat);
+addBox(carVisual, [R*0.34, R*1.55, R*1.55], [-R*1.14, R*1.65+0.32, 0], redMat);
+
+[-R*0.82, R*0.82].forEach(z =>
+  addCylinder(carVisual, R*0.08, R*0.08, R*1.95,
+    [-R*0.82, R*1.72+0.32, z], [0, 0, 0], metalMat, 12));
+
+addSphere(carVisual, R*0.72, [R*0.72, R*0.92+0.32, 0], [1.25, 0.46, 0.95], redMat);
+addSphere(carVisual, R*0.56, [-R*0.10, R*1.20+0.32, 0], [0.95, 0.34, 0.78], glassMat);
+
+// ── wheels ────────────────────────────────────────────────────────────────────
+const wheelMeshes = [];
+const wheelRadius = R * 0.46;
+const wheelWidth  = R * 0.36;
+const wR_ = wheelRadius; // alias used by tick() for spin rate
+const wheelGeo = new THREE.CylinderGeometry(wheelRadius, wheelRadius, wheelWidth, 18);
+
+[
+  [ R*0.85, wheelRadius+0.15,  R*1.15],
+  [ R*0.85, wheelRadius+0.15, -R*1.15],
+  [-R*1.05, wheelRadius+0.15,  R*1.15],
+  [-R*1.05, wheelRadius+0.15, -R*1.15],
+].forEach(([wx, wy, wz]) => {
+  const wheel = new THREE.Mesh(wheelGeo, tireMat);
+  wheel.rotation.x = Math.PI / 2;
+  wheel.position.set(wx, wy, wz);
+  wheel.castShadow = true; wheel.receiveShadow = true;
+  carVisual.add(wheel);
+  wheelMeshes.push(wheel);
+
+  const hub = new THREE.Mesh(
+    new THREE.CylinderGeometry(wheelRadius*0.42, wheelRadius*0.42, wheelWidth*1.05, 14),
+    metalMat
+  );
+  hub.rotation.x = Math.PI / 2;
+  hub.position.copy(wheel.position);
+  hub.castShadow = true;
+  carVisual.add(hub);
 });
 
-// Headlights
-const hlGeo = new THREE.BoxGeometry(TILE*.05, TILE*.05, TILE*.04);
-const hlMat = new THREE.MeshBasicMaterial({ color: 0xffffcc });
-[-TILE*.14, TILE*.14].forEach(tz => {
-  const hl = new THREE.Mesh(hlGeo, hlMat);
-  hl.position.set(TILE*.33, TILE*.13+.4, tz);
-  carGroup.add(hl);
-});
+// ── character ─────────────────────────────────────────────────────────────────
+const character = new THREE.Group();
+character.position.set(R*0.35, R*1.05+0.32, -R*0.95);
+character.rotation.y = -0.18;
+carVisual.add(character);
 
-// Tail lights
-const tlMat = new THREE.MeshBasicMaterial({ color: 0xff2222 });
-[-TILE*.14, TILE*.14].forEach(tz => {
-  const tl = new THREE.Mesh(new THREE.BoxGeometry(TILE*.04, TILE*.05, TILE*.04), tlMat);
-  tl.position.set(-TILE*.33, TILE*.13+.4, tz);
-  carGroup.add(tl);
-});
+addBox(character, [R*0.55, R*0.75, R*0.36], [0, R*0.12, 0], whiteMat);
+addSphere(character, R*0.42, [R*0.10, R*0.78, 0], [1.0, 1.05, 0.92], skinMat, 18);
+addSphere(character, R*0.45, [R*0.03, R*0.94, 0], [1.05, 0.55, 1.0], redMat, 18);
 
-const { x: sx, z: sz } = tileCenter(HALF_W, HALF_H);
+const helmetSpike = new THREE.Mesh(new THREE.ConeGeometry(R*0.25, R*0.45, 4), redMat);
+helmetSpike.position.set(R*0.05, R*1.22, -R*0.03);
+helmetSpike.rotation.z = -Math.PI / 5;
+helmetSpike.castShadow = true;
+character.add(helmetSpike);
+
+[[R*0.34, R*0.82, -R*0.17], [R*0.34, R*0.82, R*0.17]].forEach(pos =>
+  addSphere(character, R*0.055, pos, [1, 1, 1], eyeMat, 8));
+
+[[R*0.30, R*0.25, -R*0.30, 0.45], [R*0.30, R*0.25, R*0.30, -0.45]].forEach(([x, y, z, rz]) =>
+  addCylinder(character, R*0.08, R*0.08, R*0.52, [x, y, z], [Math.PI/2, 0, rz], skinMat, 10));
+
+addSphere(character, R*0.18, [R*0.48, R*0.18, -R*0.47], [1.1, 0.9, 1.0], redMat, 12);
+addSphere(character, R*0.18, [R*0.48, R*0.18,  R*0.47], [1.1, 0.9, 1.0], redMat, 12);
+
+[[-R*0.12, -R*0.38, -R*0.14], [-R*0.12, -R*0.38, R*0.14]].forEach(pos =>
+  addBox(character, [R*0.18, R*0.55, R*0.18], pos, redMat));
+
+[[R*0.08, -R*0.70, -R*0.15], [R*0.08, -R*0.70, R*0.15]].forEach(pos =>
+  addBox(character, [R*0.34, R*0.16, R*0.22], pos, redMat));
+
+// ── spawn ─────────────────────────────────────────────────────────────────────
+const {x:sx, z:sz} = tileCenter(HALF_W, HALF_H);
 carGroup.position.set(sx, 0, sz);
 
-// ─── physics ─────────────────────────────────────────────────────────────────
-let speed     = 0;
-const MAX_FWD = 22;   // m/s ≈ 79 km/h
-const MAX_REV = 8;
-const ACCEL   = 12;
-const DRAG    = 1.8;  // exponential drag coefficient
-const BOUNCE  = 0.32;
+// ─── particles ───────────────────────────────────────────────────────────────
+const PCOUNT=60, SCOUNT=35;
+const pebbleGeo = new THREE.DodecahedronGeometry(0.24,0);
+const smokeGeo  = new THREE.SphereGeometry(0.42,6,5);
+const pebbleMat = new THREE.MeshToonMaterial({color:0x998866});
 
-const CAR_HL = TILE * 0.33; // half-length collision
-const CAR_HW = TILE * 0.20; // half-width collision
+const pebbleMeshes = Array.from({length:PCOUNT},()=>{
+  const m=new THREE.Mesh(pebbleGeo,pebbleMat); m.visible=false; scene.add(m); return m;
+});
+const smokeMeshes = Array.from({length:SCOUNT},()=>{
+  const m=new THREE.Mesh(smokeGeo,
+    new THREE.MeshBasicMaterial({color:0xddddcc,transparent:true,opacity:0}));
+  m.visible=false; scene.add(m); return m;
+});
+
+const pData = Array.from({length:PCOUNT},()=>({active:false,vx:0,vy:0,vz:0,life:0,maxLife:0.6}));
+const sData = Array.from({length:SCOUNT},()=>({active:false,vx:0,vy:0,vz:0,life:0,maxLife:1.0}));
+let pHead=0, sHead=0;
+
+function spawnEffects(x,z,fwX,fwZ,spd){
+  if(spd<5)return;
+  const rx=x-fwX*CAR_HL*0.8, rz=z-fwZ*CAR_HL*0.8;
+  const px=-fwZ, pz=fwX; // perpendicular
+
+  for(let i=0;i<2;i++){
+    const idx=pHead%PCOUNT; pHead++;
+    const p=pData[idx], m=pebbleMeshes[idx];
+    const lat=(Math.random()-0.5)*3;
+    const bs=4+Math.random()*10;
+    p.active=true;
+    p.vx=-fwX*bs+px*lat; p.vy=4+Math.random()*12; p.vz=-fwZ*bs+pz*lat;
+    p.life=1.0; p.maxLife=0.35+Math.random()*0.3;
+    m.position.set(rx+px*lat*0.3+(Math.random()-0.5)*0.5, 0.3, rz+pz*lat*0.3+(Math.random()-0.5)*0.5);
+    m.rotation.set(Math.random()*6,Math.random()*6,Math.random()*6);
+    m.visible=true;
+  }
+
+  const sidx=sHead%SCOUNT; sHead++;
+  const s=sData[sidx], sm=smokeMeshes[sidx];
+  s.active=true;
+  s.vx=-fwX*(1+Math.random()); s.vy=0.5+Math.random()*1.2; s.vz=-fwZ*(1+Math.random());
+  s.life=1.0; s.maxLife=0.8+Math.random()*0.5;
+  sm.position.set(rx,0.6,rz); sm.scale.setScalar(1);
+  sm.material.opacity=0.55; sm.visible=true;
+}
+
+function updateParticles(dt){
+  for(let i=0;i<PCOUNT;i++){
+    const p=pData[i]; if(!p.active)continue;
+    p.life-=dt/p.maxLife;
+    if(p.life<=0){p.active=false;pebbleMeshes[i].visible=false;continue;}
+    const m=pebbleMeshes[i];
+    m.position.x+=p.vx*dt; m.position.y+=p.vy*dt; m.position.z+=p.vz*dt;
+    p.vy-=22*dt;
+    m.rotation.x+=p.vx*dt*3; m.rotation.z+=p.vz*dt*3;
+    if(m.position.y<0.15){
+      m.position.y=0.15; p.vy*=-0.25; p.vx*=0.55; p.vz*=0.55;
+    }
+  }
+  for(let i=0;i<SCOUNT;i++){
+    const s=sData[i]; if(!s.active)continue;
+    s.life-=dt/s.maxLife;
+    if(s.life<=0){s.active=false;smokeMeshes[i].visible=false;continue;}
+    const m=smokeMeshes[i];
+    m.position.x+=s.vx*dt; m.position.y+=s.vy*dt; m.position.z+=s.vz*dt;
+    m.scale.setScalar(1+(1-s.life)*3);
+    m.material.opacity=s.life*0.48;
+  }
+}
+
+// ─── physics ─────────────────────────────────────────────────────────────────
+let speed = 0;
+const CONST_SPEED = 55; // constant driving speed (world units/s)
+const ACCEL = 500;      // near-instant start
+const DECEL = 350;      // near-instant stop
+
+const CAR_HL = TILE*0.48;
+const CAR_HW = TILE*0.34;
+
+let carRoll=0, carRollVel=0;
+let particleTimer=0;
+let wheelAngle=0;
+
+// Pac-Man style: car visually rotates to face world direction
+let targetRotY = 0;
+const ROT_SPEED = 18;  // rad/s visual turn speed
+let prevRotY = 0;
 
 // ─── keyboard ────────────────────────────────────────────────────────────────
-const keys = {};
-window.addEventListener('keydown', e => {
-  if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code)) e.preventDefault();
-  keys[e.code] = true;
+const keys={};
+window.addEventListener('keydown',e=>{
+  if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code))e.preventDefault();
+  keys[e.code]=true;
 });
-window.addEventListener('keyup', e => { keys[e.code] = false; });
+window.addEventListener('keyup',e=>{keys[e.code]=false;});
 
 // ─── sensor ──────────────────────────────────────────────────────────────────
-let rawBeta=0, rawGamma=0, baseBeta=0, baseGamma=0;
-let sensorOk = false, gameOn = false;
+let rawBeta=0,rawGamma=0,baseBeta=0,baseGamma=0;
+let sensorOk=false, gameOn=false;
+window.addEventListener('deviceorientation',e=>{rawBeta=e.beta??0;rawGamma=e.gamma??0;});
 
-window.addEventListener('deviceorientation', e => {
-  rawBeta  = e.beta  ?? 0;
-  rawGamma = e.gamma ?? 0;
-});
-
-async function reqSensor() {
-  if (typeof DeviceOrientationEvent?.requestPermission === 'function') {
-    const r = await DeviceOrientationEvent.requestPermission();
-    return r === 'granted';
+async function reqSensor(){
+  if(typeof DeviceOrientationEvent?.requestPermission==='function'){
+    const r=await DeviceOrientationEvent.requestPermission();
+    return r==='granted';
   }
   return true;
 }
-function calibrate() { baseBeta = rawBeta; baseGamma = rawGamma; sensorOk = true; }
+function calibrate(){baseBeta=rawBeta;baseGamma=rawGamma;sensorOk=true;}
 
 // ─── ui ──────────────────────────────────────────────────────────────────────
 const overlay  = document.getElementById('overlay');
@@ -413,133 +469,156 @@ const startBtn = document.getElementById('startBtn');
 const hud      = document.getElementById('hud');
 const recalBtn = document.getElementById('recalBtn');
 
-startBtn.addEventListener('click', async () => {
-  const ok = await reqSensor();
-  if (!ok) { alert('센서 권한이 필요합니다.'); return; }
+startBtn.addEventListener('click',async()=>{
+  const ok=await reqSensor();
+  if(!ok){alert('센서 권한이 필요합니다.');return;}
   calibrate();
-  overlay.style.display  = 'none';
-  hud.style.display      = 'block';
-  recalBtn.style.display = 'block';
-  gameOn = true;
+  overlay.style.display='none'; hud.style.display='block'; recalBtn.style.display='block';
+  gameOn=true;
 });
-recalBtn.addEventListener('click', calibrate);
+recalBtn.addEventListener('click',calibrate);
 
 // ─── resize ──────────────────────────────────────────────────────────────────
-function onResize() {
-  const w = innerWidth, h = innerHeight;
-  renderer.setSize(w, h);
-  camera.aspect = w / h;
-  camera.updateProjectionMatrix();
+function onResize(){
+  const w=innerWidth,h=innerHeight;
+  renderer.setSize(w,h); camera.aspect=w/h; camera.updateProjectionMatrix();
 }
-window.addEventListener('resize', onResize);
+window.addEventListener('resize',onResize);
 onResize();
 
-// ─── camera ──────────────────────────────────────────────────────────────────
-const CAM_H       = 88;   // height above ground
-const CAM_BEHIND  = 38;   // world units behind car
-const CAM_LOOK_FW = 14;   // look-at offset ahead of car
-const CAM_LERP    = 0.055;
+// ─── camera (fixed world direction) ──────────────────────────────────────────
+// Camera always sits in +Z direction from car, never rotates with car
+const CAM_H=95, CAM_Z=58;
+camera.position.set(sx,CAM_H,sz+CAM_Z);
+camera.lookAt(sx,0,sz);
 
-// Init camera at center looking down
-camera.position.set(sx, CAM_H, sz + CAM_BEHIND);
-camera.lookAt(sx, 0, sz - CAM_LOOK_FW);
+// ─── helpers ─────────────────────────────────────────────────────────────────
+// Collision box aligned to movement direction (ndX,ndZ), not visual facing
+function cornersForDir(px,pz,ndX,ndZ){
+  const rpX=-ndZ, rpZ=ndX;
+  return[
+    [px+ndX*CAR_HL+rpX*CAR_HW, pz+ndZ*CAR_HL+rpZ*CAR_HW],
+    [px+ndX*CAR_HL-rpX*CAR_HW, pz+ndZ*CAR_HL-rpZ*CAR_HW],
+    [px-ndX*CAR_HL+rpX*CAR_HW, pz-ndZ*CAR_HL+rpZ*CAR_HW],
+    [px-ndX*CAR_HL-rpX*CAR_HW, pz-ndZ*CAR_HL-rpZ*CAR_HW],
+  ];
+}
 
 // ─── loop ────────────────────────────────────────────────────────────────────
-let last = performance.now();
+let last=performance.now();
 
-function tick() {
+function tick(){
   requestAnimationFrame(tick);
-  const now = performance.now();
-  const dt  = Math.min((now - last) / 1000, 0.05);
-  last = now;
+  const now=performance.now();
+  const dt=Math.min((now-last)/1000,0.05);
+  last=now;
 
-  if (gameOn && sensorOk) {
-    // Keyboard: each direction key = 20° equivalent tilt, diagonals work naturally
-    const KB = 20;
-    const kbFwd  = (keys['ArrowUp']   || keys['KeyW'] ? KB : 0)
-                 - (keys['ArrowDown'] || keys['KeyS'] ? KB : 0);
-    const kbSide = (keys['ArrowRight']|| keys['KeyD'] ? KB : 0)
-                 - (keys['ArrowLeft'] || keys['KeyA'] ? KB : 0);
+  if(gameOn&&sensorOk){
+    // ── Pac-Man style: arrow keys / tilt = absolute world direction ──────────
+    let moveX=0, moveZ=0;
 
-    // Merge sensor + keyboard (on desktop sensor stays 0, keyboard takes over)
-    const tiltFwd  = (rawBeta  - baseBeta)  + kbFwd;
-    const tiltSide = (rawGamma - baseGamma) + kbSide;
+    // Keyboard: each key = cardinal world direction
+    if(keys['ArrowUp']   ||keys['KeyW']) moveZ-=1;
+    if(keys['ArrowDown'] ||keys['KeyS']) moveZ+=1;
+    if(keys['ArrowRight']||keys['KeyD']) moveX+=1;
+    if(keys['ArrowLeft'] ||keys['KeyA']) moveX-=1;
 
-    // Throttle from forward tilt
-    const FD = 3, SD = 3;
-    let throttle = 0;
-    if (tiltFwd >  FD) throttle =  (tiltFwd  - FD) / 22;
-    if (tiltFwd < -FD) throttle = -((-tiltFwd) - FD) / 32;
-    throttle = Math.max(-0.5, Math.min(1, throttle));
-
-    speed += throttle * ACCEL * dt;
-    speed *= Math.exp(-DRAG * dt);
-    speed  = Math.max(-MAX_REV, Math.min(MAX_FWD, speed));
-
-    // Steering — only effective when moving
-    if (Math.abs(speed) > 0.4) {
-      let steer = 0;
-      if (Math.abs(tiltSide) > SD)
-        steer = (tiltSide - Math.sign(tiltSide) * SD) / 35;
-      steer = Math.max(-1, Math.min(1, steer));
-      const grip = Math.min(1, Math.abs(speed) / 6);
-      carGroup.rotation.y -= steer * Math.sign(speed) * 1.8 * grip * dt;
+    // Sensor: dominant tilt axis → world direction
+    const tiltFwd  = rawBeta  - baseBeta;
+    const tiltSide = rawGamma - baseGamma;
+    const FD=8;
+    if(Math.abs(tiltFwd)>Math.abs(tiltSide)){
+      if(tiltFwd<-FD) moveZ-=1;
+      else if(tiltFwd>FD) moveZ+=1;
+    }else{
+      if(tiltSide<-FD) moveX-=1;
+      else if(tiltSide>FD) moveX+=1;
     }
 
-    // Forward direction from car rotation
-    const ry  = carGroup.rotation.y;
-    const fwX = Math.sin(ry), fwZ = Math.cos(ry);
-    const rtX = Math.cos(ry), rtZ = -Math.sin(ry);
+    // Normalize (handles diagonal if both axes pressed)
+    const mLen=Math.sqrt(moveX*moveX+moveZ*moveZ);
+    const anyDir=mLen>0.01;
+    const ndX=anyDir?moveX/mLen:0;
+    const ndZ=anyDir?moveZ/mLen:0;
 
-    const nx = carGroup.position.x + fwX * speed * dt;
-    const nz = carGroup.position.z + fwZ * speed * dt;
-
-    // 4-corner collision
-    const corners = [
-      [nx + rtX*CAR_HW + fwX*CAR_HL, nz + rtZ*CAR_HW + fwZ*CAR_HL],
-      [nx - rtX*CAR_HW + fwX*CAR_HL, nz - rtZ*CAR_HW + fwZ*CAR_HL],
-      [nx + rtX*CAR_HW - fwX*CAR_HL, nz + rtZ*CAR_HW - fwZ*CAR_HL],
-      [nx - rtX*CAR_HW - fwX*CAR_HL, nz - rtZ*CAR_HW - fwZ*CAR_HL],
-    ];
-
-    const hit = corners.some(([cx,cz]) => !passable(cx, cz));
-
-    if (hit) {
-      speed *= -BOUNCE;
-      carGroup.rotation.y += (Math.random() - 0.5) * 0.25;
-    } else {
-      carGroup.position.x = nx;
-      carGroup.position.z = nz;
+    // ── speed: near-instant, constant while key held ──────────────────────────
+    if(anyDir){
+      speed=Math.min(speed+ACCEL*dt, CONST_SPEED);
+    }else{
+      speed=Math.max(0, speed-DECEL*dt);
     }
 
-    // Camera follows behind car
-    const tgtX = carGroup.position.x - fwX * CAM_BEHIND;
-    const tgtZ = carGroup.position.z - fwZ * CAM_BEHIND;
-    const lkX  = carGroup.position.x + fwX * CAM_LOOK_FW;
-    const lkZ  = carGroup.position.z + fwZ * CAM_LOOK_FW;
+    // ── car visually rotates to face movement direction ───────────────────────
+    // Car nose is at local +X. Ry(θ) maps local +X to world (cos θ, 0, -sin θ).
+    // To face (ndX, ndZ): cos θ = ndX, -sin θ = ndZ → θ = atan2(-ndZ, ndX)
+    if(anyDir) targetRotY=Math.atan2(-ndZ,ndX);
+    prevRotY=carGroup.rotation.y;
+    let diff=targetRotY-carGroup.rotation.y;
+    while(diff>Math.PI)  diff-=Math.PI*2;
+    while(diff<-Math.PI) diff+=Math.PI*2;
+    carGroup.rotation.y+=Math.sign(diff)*Math.min(Math.abs(diff), ROT_SPEED*dt);
 
-    camera.position.x += (tgtX - camera.position.x) * CAM_LERP * 60 * dt;
-    camera.position.y  = CAM_H;
-    camera.position.z += (tgtZ - camera.position.z) * CAM_LERP * 60 * dt;
-    camera.lookAt(lkX, 0, lkZ);
+    // ── cartoon roll: lean from angular velocity ──────────────────────────────
+    const angVel=(carGroup.rotation.y-prevRotY)/Math.max(dt,0.001);
+    const targetRoll=-angVel*0.026;
+    carRollVel+=(targetRoll-carRoll)*18*dt;
+    carRollVel*=Math.exp(-10*dt);
+    carRoll+=carRollVel*dt;
+    carVisual.rotation.x=carRoll;
 
-    // HUD
-    const kmh    = (Math.abs(speed) * 3.6).toFixed(0).padStart(3);
-    const dir    = speed > 0.5 ? '▲' : speed < -0.5 ? '▼' : '■';
-    const kbAny  = kbFwd !== 0 || kbSide !== 0;
-    const inputLine = kbAny
-      ? `KB ${kbFwd>0?'↑':kbFwd<0?'↓':' '} ${kbSide<0?'←':kbSide>0?'→':' '}`
-      : `↕${(rawBeta-baseBeta).toFixed(1).padStart(5)}° ↔${(rawGamma-baseGamma).toFixed(1).padStart(5)}°`;
-    hud.textContent = `${dir} ${kmh} km/h\n${inputLine}`;
+    // ── wheel spin ────────────────────────────────────────────────────────────
+    // rotation.y (after fixed rotation.x=PI/2) spins around world Z = correct axle
+    wheelAngle-=speed*dt/wR_;
+    wheelMeshes.forEach(w=>w.rotation.y=wheelAngle);
 
-  } else if (!gameOn) {
-    // Idle orbit camera
-    const t = now / 9000;
-    camera.position.set(Math.sin(t)*90, 75, Math.cos(t)*90);
-    camera.lookAt(0, 0, 0);
+    // ── movement in world direction + smooth wall slide ───────────────────────
+    if(anyDir&&speed>0.1){
+      const nx=carGroup.position.x+ndX*speed*dt;
+      const nz=carGroup.position.z+ndZ*speed*dt;
+
+      const fullHit=cornersForDir(nx,nz,ndX,ndZ).some(([cx,cz])=>!passable(cx,cz));
+      if(!fullHit){
+        carGroup.position.x=nx;
+        carGroup.position.z=nz;
+      }else{
+        // Slide: try moving only along X or only along Z
+        const hitX=cornersForDir(nx,carGroup.position.z,ndX,ndZ).some(([cx,cz])=>!passable(cx,cz));
+        const hitZ=cornersForDir(carGroup.position.x,nz,ndX,ndZ).some(([cx,cz])=>!passable(cx,cz));
+        if(!hitX)       carGroup.position.x=nx;
+        else if(!hitZ)  carGroup.position.z=nz;
+        // else: full stop at wall (Pac-Man style – no bounce)
+        else speed=0;
+      }
+    }
+
+    // ── particles ─────────────────────────────────────────────────────────────
+    particleTimer+=dt;
+    if(particleTimer>0.055&&speed>4){
+      particleTimer=0;
+      spawnEffects(carGroup.position.x,carGroup.position.z,ndX,ndZ,speed);
+    }
+    updateParticles(dt);
+
+    // ── fixed-direction camera: follows XZ position, constant world-Z offset ──
+    const tgtX=carGroup.position.x;
+    const tgtZ=carGroup.position.z+CAM_Z;
+    camera.position.x+=(tgtX-camera.position.x)*7*dt;
+    camera.position.y =CAM_H;
+    camera.position.z+=(tgtZ-camera.position.z)*7*dt;
+    camera.lookAt(carGroup.position.x,0,carGroup.position.z);
+
+    // ── hud ───────────────────────────────────────────────────────────────────
+    const kmh=(speed*3.6).toFixed(0).padStart(3);
+    const dirArrow=moveX>0?'→':moveX<0?'←':moveZ<0?'↑':moveZ>0?'↓':'■';
+    hud.textContent=`${dirArrow} ${kmh} km/h`;
+
+  }else if(!gameOn){
+    const t=now/9000;
+    camera.position.set(Math.sin(t)*100,85,Math.cos(t)*100);
+    camera.lookAt(0,0,0);
   }
 
-  renderer.render(scene, camera);
+  renderer.render(scene,camera);
 }
 
 tick();
