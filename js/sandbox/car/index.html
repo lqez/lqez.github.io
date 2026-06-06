@@ -48,10 +48,26 @@
 <div id="hud"></div>
 <button id="recalBtn">리캘리브레이션</button>
 <div id="joystick"><div id="stick"></div></div>
+<div id="errBox" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(180,0,0,.95);color:#fff;padding:20px;font-size:12px;white-space:pre-wrap;overflow:auto;font-family:monospace;"></div>
+<script>
+(function(){
+  function show(msg){var b=document.getElementById('errBox');if(b){b.style.display='block';b.textContent+=(b.textContent?'\n':'')+msg;}}
+  window.onerror=function(msg,src,line,col,err){show('[ERR] '+msg+'\n  '+src+':'+line+':'+col+(err&&err.stack?'\n'+err.stack:''));return false;};
+  window.addEventListener('unhandledrejection',function(e){var r=e.reason;show('[PROMISE] '+(r&&r.stack?r.stack:r));});
+})();
+</script>
 <script type="importmap">{"imports":{
   "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/",
+  "./js/scene.js":"./js/scene.js?v=4",
+  "./js/car.js":"./js/car.js?v=4",
+  "./js/input.js":"./js/input.js?v=4",
+  "./js/physics.js":"./js/physics.js?v=4",
+  "./js/state.js":"./js/state.js?v=4",
+  "./js/ui.js":"./js/ui.js?v=4",
+  "./js/constants.js":"./js/constants.js?v=4",
+  "./js/map.js":"./js/map.js?v=4"
 }}</script>
-<script type="module" src="js/main.js"></script>
+<script type="module" src="js/main.js?v=4"></script>
 </body>
 </html>
