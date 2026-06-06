@@ -53,7 +53,7 @@
 
 <div id="overlay">
   <h1>CITY CAR</h1>
-  <p>기기를 앞뒤로 기울여 가속/감속,<br>좌우로 기울여 조향하세요.<br><br>시작 시 센서 접근 허용이 필요합니다.</p>
+  <p>기기를 앞뒤로 기울여 가속/감속,<br>좌우로 기울여 조향하세요.<br>데스크탑에서는 방향키(↑↓←→) 또는 WASD로 조종할 수 있습니다.<br><br>모바일 시작 시 센서 접근 허용이 필요합니다.</p>
   <button id="startBtn">GAME START</button>
 </div>
 <div id="hud"></div>
@@ -381,6 +381,14 @@ const BOUNCE  = 0.32;
 const CAR_HL = TILE * 0.33; // half-length collision
 const CAR_HW = TILE * 0.20; // half-width collision
 
+// ─── keyboard ────────────────────────────────────────────────────────────────
+const keys = {};
+window.addEventListener('keydown', e => {
+  if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code)) e.preventDefault();
+  keys[e.code] = true;
+});
+window.addEventListener('keyup', e => { keys[e.code] = false; });
+
 // ─── sensor ──────────────────────────────────────────────────────────────────
 let rawBeta=0, rawGamma=0, baseBeta=0, baseGamma=0;
 let sensorOk = false, gameOn = false;
@@ -446,8 +454,16 @@ function tick() {
   last = now;
 
   if (gameOn && sensorOk) {
-    const tiltFwd  = rawBeta  - baseBeta;
-    const tiltSide = rawGamma - baseGamma;
+    // Keyboard: each direction key = 20° equivalent tilt, diagonals work naturally
+    const KB = 20;
+    const kbFwd  = (keys['ArrowUp']   || keys['KeyW'] ? KB : 0)
+                 - (keys['ArrowDown'] || keys['KeyS'] ? KB : 0);
+    const kbSide = (keys['ArrowRight']|| keys['KeyD'] ? KB : 0)
+                 - (keys['ArrowLeft'] || keys['KeyA'] ? KB : 0);
+
+    // Merge sensor + keyboard (on desktop sensor stays 0, keyboard takes over)
+    const tiltFwd  = (rawBeta  - baseBeta)  + kbFwd;
+    const tiltSide = (rawGamma - baseGamma) + kbSide;
 
     // Throttle from forward tilt
     const FD = 3, SD = 3;
@@ -508,12 +524,13 @@ function tick() {
     camera.lookAt(lkX, 0, lkZ);
 
     // HUD
-    const kmh = (Math.abs(speed) * 3.6).toFixed(0).padStart(3);
-    const dir  = speed > 0.5 ? '▲' : speed < -0.5 ? '▼' : '■';
-    hud.textContent =
-      `${dir} ${kmh} km/h\n` +
-      `↕ ${tiltFwd.toFixed(1).padStart(5)}°\n` +
-      `↔ ${tiltSide.toFixed(1).padStart(5)}°`;
+    const kmh    = (Math.abs(speed) * 3.6).toFixed(0).padStart(3);
+    const dir    = speed > 0.5 ? '▲' : speed < -0.5 ? '▼' : '■';
+    const kbAny  = kbFwd !== 0 || kbSide !== 0;
+    const inputLine = kbAny
+      ? `KB ${kbFwd>0?'↑':kbFwd<0?'↓':' '} ${kbSide<0?'←':kbSide>0?'→':' '}`
+      : `↕${(rawBeta-baseBeta).toFixed(1).padStart(5)}° ↔${(rawGamma-baseGamma).toFixed(1).padStart(5)}°`;
+    hud.textContent = `${dir} ${kmh} km/h\n${inputLine}`;
 
   } else if (!gameOn) {
     // Idle orbit camera
