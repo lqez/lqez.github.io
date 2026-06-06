@@ -30,9 +30,15 @@
 <div id="hud"></div>
 <button id="recalBtn">리캘리브레이션</button>
 
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
+<script type="importmap">{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+}}</script>
 <script type="module">
 import * as THREE from 'three';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass }     from 'three/addons/postprocessing/RenderPass.js';
+import { ShaderPass }     from 'three/addons/postprocessing/ShaderPass.js';
 
 // ─── constants ───────────────────────────────────────────────────────────────
 const TILE   = 12;
@@ -53,8 +59,16 @@ function rng() {
 const tileMap  = new Uint8Array(MAP_W*MAP_H).fill(T.BUILDING);
 const waterMrk = new Uint8Array(MAP_W*MAP_H);
 const bldgH    = new Uint8Array(MAP_W*MAP_H);
+const bldgStyle= new Uint8Array(MAP_W*MAP_H);
+const bldgW    = new Uint8Array(MAP_W*MAP_H);
+const bldgD    = new Uint8Array(MAP_W*MAP_H);
 
 function mi(x,y){return y*MAP_W+x;}
+function hash2(x,y){
+  let n=Math.imul(x+101,374761393)^Math.imul(y+211,668265263);
+  n=Math.imul(n^(n>>>13),1274126177);
+  return ((n^(n>>>16))>>>0)/0xffffffff;
+}
 function fillRect(x0,y0,w,h,val,buf=tileMap){
   for(let dy=0;dy<h;dy++) for(let dx=0;dx<w;dx++){
     const x=x0+dx,y=y0+dy;
@@ -74,16 +88,40 @@ function buildMap(){
       fillRect(wx,0,ww,MAP_H,T.WATER); fillRect(wx,0,ww,MAP_H,1,waterMrk);
     }
   }
-  for(let y=6;y<MAP_H-6;){
-    const w=[1,1,2,2,2,3,4][Math.floor(rng()*7)];
+  for(let y=4;y<MAP_H-4;){
+    const w=[1,1,1,2,2,3][Math.floor(rng()*6)];
     fillRect(0,y,MAP_W,w,T.ROAD);
-    y+=6+Math.floor(rng()*14);
+    y+=4+Math.floor(rng()*6);
   }
-  for(let x=6;x<MAP_W-6;){
-    const w=[1,1,2,2,2,3,4][Math.floor(rng()*7)];
+  for(let x=4;x<MAP_W-4;){
+    const w=[1,1,1,2,2,3][Math.floor(rng()*6)];
     fillRect(x,0,w,MAP_H,T.ROAD);
-    x+=6+Math.floor(rng()*14);
+    x+=4+Math.floor(rng()*6);
   }
+  fillRect(HALF_W-1,0,3,MAP_H,T.ROAD);
+  fillRect(0,HALF_H-1,MAP_W,3,T.ROAD);
+
+  for(let i=0;i<45;i++){
+    const horizontal=rng()<0.5;
+    const len=4+Math.floor(rng()*8);
+    const w=1+Math.floor(rng()*2);
+    const x=3+Math.floor(rng()*(MAP_W-6));
+    const y=3+Math.floor(rng()*(MAP_H-6));
+    if(Math.abs(x-HALF_W)<4&&Math.abs(y-HALF_H)<4)continue;
+    if(horizontal) fillRect(x,y,Math.min(len,MAP_W-x-2),w,T.BUILDING);
+    else fillRect(x,y,w,Math.min(len,MAP_H-y-2),T.BUILDING);
+  }
+
+  for(let i=0;i<120;i++){
+    const horizontal=rng()<0.5;
+    const len=8+Math.floor(rng()*18);
+    const w=1+Math.floor(rng()*2);
+    const x=2+Math.floor(rng()*(MAP_W-4));
+    const y=2+Math.floor(rng()*(MAP_H-4));
+    if(horizontal) fillRect(x,y,Math.min(len,MAP_W-x-1),w,T.ROAD);
+    else fillRect(x,y,w,Math.min(len,MAP_H-y-1),T.ROAD);
+  }
+
   fillRect(HALF_W-1,0,3,MAP_H,T.ROAD);
   fillRect(0,HALF_H-1,MAP_W,3,T.ROAD);
   for(let i=0;i<MAP_W*MAP_H;i++)
@@ -96,19 +134,39 @@ function buildMap(){
       if(tileMap[mi(px+dx,py+dy)]!==T.BUILDING){ok=false;break loop;}
     if(ok)fillRect(px,py,pw,ph,T.PARK);
   }
-  for(let i=0;i<30;i++){
-    const bx=4+Math.floor(rng()*(MAP_W-14)),by=4+Math.floor(rng()*(MAP_H-14));
-    const bw=3+Math.floor(rng()*5),bh=3+Math.floor(rng()*5);
-    const ht=6+Math.floor(rng()*5);
+  for(let i=0;i<85;i++){
+    const bx=3+Math.floor(rng()*(MAP_W-10)),by=3+Math.floor(rng()*(MAP_H-10));
+    const bw=2+Math.floor(rng()*4),bd=2+Math.floor(rng()*3);
     let ok=true;
-    loop:for(let dy=0;dy<bh;dy++) for(let dx=0;dx<bw;dx++)
-      if(tileMap[mi(bx+dx,by+dy)]!==T.BUILDING){ok=false;break loop;}
-    if(ok) for(let dy=0;dy<bh;dy++) for(let dx=0;dx<bw;dx++)
-      bldgH[mi(bx+dx,by+dy)]=ht;
+    loop:for(let dy=0;dy<bd;dy++) for(let dx=0;dx<bw;dx++){
+      const id=mi(bx+dx,by+dy);
+      if(tileMap[id]!==T.BUILDING||bldgW[id]!==0){ok=false;break loop;}
+    }
+    if(ok){
+      const anchor=mi(bx,by);
+      bldgW[anchor]=bw; bldgD[anchor]=bd;
+      for(let dy=0;dy<bd;dy++) for(let dx=0;dx<bw;dx++){
+        const id=mi(bx+dx,by+dy);
+        if(dx!==0||dy!==0)bldgW[id]=255;
+      }
+    }
   }
-  for(let i=0;i<MAP_W*MAP_H;i++)
-    if(tileMap[i]===T.BUILDING&&bldgH[i]===0)
-      bldgH[i]=1+Math.floor(rng()*3);
+  for(let ty=0;ty<MAP_H;ty++) for(let tx=0;tx<MAP_W;tx++){
+    const id=mi(tx,ty);
+    if(tileMap[id]!==T.BUILDING||bldgW[id]===255)continue;
+    if(bldgW[id]===0){bldgW[id]=1; bldgD[id]=1;}
+
+    const dx=(tx-HALF_W)/HALF_W, dy=(ty-HALF_H)/HALF_H;
+    const center=Math.max(0,1-Math.hypot(dx,dy));
+    const districtX=Math.floor(tx/16), districtY=Math.floor(ty/16);
+    const districtNoise=hash2(districtX,districtY);
+    const localNoise=hash2(tx,ty);
+    const big=bldgW[id]>1||bldgD[id]>1;
+    const base=2+Math.floor(center*6)+Math.floor(districtNoise*3);
+    const variation=Math.floor(localNoise*3);
+    bldgH[id]=Math.max(2,Math.min(12,base+variation+(big?2:0)));
+    bldgStyle[id]=(districtX*2+districtY*3+Math.floor(districtNoise*3))%6;
+  }
 }
 buildMap();
 
@@ -157,9 +215,10 @@ const matBridge = new THREE.MeshToonMaterial({color:0x997755});
 const matPark   = new THREE.MeshToonMaterial({color:0x55bb44});
 const matWater  = new THREE.MeshToonMaterial({color:0x3399dd});
 
-const BLDG_COLORS = [0xff8844,0x4499ee,0xffcc33,0x44bb77,0xff55aa,0xaa77ee];
+const BLDG_COLORS = [0xb8afa3,0x9ba7ad,0xa8a18f,0x8fa196,0xb0a4b8,0xaaa48d];
 const bldgCnt = new Array(6).fill(0);
-for(let i=0;i<MAP_W*MAP_H;i++) if(tileMap[i]===T.BUILDING)bldgCnt[i%6]++;
+for(let i=0;i<MAP_W*MAP_H;i++)
+  if(tileMap[i]===T.BUILDING&&bldgW[i]!==255)bldgCnt[bldgStyle[i]]++;
 
 function iMesh(geo,mat,n){
   const m=new THREE.InstancedMesh(geo,mat,Math.max(1,n));
@@ -203,8 +262,11 @@ for(let ty=0;ty<MAP_H;ty++) for(let tx=0;tx<MAP_W;tx++){
     D.position.set(x,-0.15,z);D.scale.set(1,1,1);D.updateMatrix();
     mWater.setMatrixAt(wi++,D.matrix);
   }else if(tp===T.BUILDING){
-    const ci=id%6, h=Math.max(1,bldgH[id]), bh=h*TILE*0.22;
-    D.position.set(x,bh/2+0.4,z);D.scale.set(1,bh,1);D.updateMatrix();
+    if(bldgW[id]===255)continue;
+    const ci=bldgStyle[id], h=Math.max(1,bldgH[id]), bh=h*TILE*0.22;
+    const fw=Math.max(1,bldgW[id]), fd=Math.max(1,bldgD[id]);
+    const bx=x+(fw-1)*TILE*0.5, bz=z+(fd-1)*TILE*0.5;
+    D.position.set(bx,bh/2+0.4,bz);D.scale.set(fw,bh,fd);D.updateMatrix();
     mBldgs[ci].setMatrixAt(bi[ci]++,D.matrix);
   }
 }
@@ -465,9 +527,39 @@ startBtn.addEventListener('click',async()=>{
 recalBtn.addEventListener('click',calibrate);
 
 // ─── resize ──────────────────────────────────────────────────────────────────
+// ─── post-processing: barrel distortion ──────────────────────────────────────
+const BarrelShader = {
+  uniforms: {
+    tDiffuse: { value: null },
+    k:        { value: 0.32 },  // barrel strength (0 = off, higher = more fisheye)
+  },
+  vertexShader: `
+    varying vec2 vUv;
+    void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }
+  `,
+  fragmentShader: `
+    uniform sampler2D tDiffuse;
+    uniform float k;
+    varying vec2 vUv;
+    void main(){
+      vec2 uv = vUv - 0.5;
+      float r2 = dot(uv, uv);
+      vec2 distorted = uv * (1.0 + k * r2);
+      // Normalize by max corner distortion so edges always reach screen bounds — no clipping
+      distorted /= (1.0 + k * 0.5);
+      gl_FragColor = texture2D(tDiffuse, distorted + 0.5);
+    }
+  `,
+};
+
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+composer.addPass(new ShaderPass(BarrelShader));
+
 function onResize(){
   const w=innerWidth,h=innerHeight;
   renderer.setSize(w,h);
+  composer.setSize(w,h);
   camera.aspect=w/h;
   camera.updateProjectionMatrix();
 }
@@ -475,7 +567,7 @@ window.addEventListener('resize',onResize);
 onResize();
 
 // ─── camera (position-slide perspective top view) ────────────────────────────
-const CAM_H=175;
+const CAM_H=190;
 const BASE_CAMERA_UP = new THREE.Vector3(0,0,-1);
 const CAMERA_POS_LEAD = 18;
 const cameraLead = new THREE.Vector3();
@@ -596,13 +688,11 @@ function tick(){
     if(wantX===0&&wantZ===0){
       const tiltFwd  = rawBeta  - baseBeta;
       const tiltSide = rawGamma - baseGamma;
-      const FD=8;
-      if(Math.abs(tiltFwd)>Math.abs(tiltSide)){
-        if(tiltFwd<-FD) { wantX=0; wantZ=-1; }
-        else if(tiltFwd>FD) { wantX=0; wantZ=1; }
-      }else{
-        if(tiltSide<-FD) { wantX=-1; wantZ=0; }
-        else if(tiltSide>FD) { wantX=1; wantZ=0; }
+      const FD = 15;
+      const afwd = Math.abs(tiltFwd), aside = Math.abs(tiltSide);
+      if(Math.max(afwd, aside) > FD){
+        if(afwd >= aside){ wantX=0; wantZ = tiltFwd>0 ? 1 : -1; }
+        else             { wantX = tiltSide>0 ? 1 : -1; wantZ=0; }
       }
     }
 
@@ -698,7 +788,7 @@ function tick(){
     setTopCamera(sx,sz);
   }
 
-  renderer.render(scene,camera);
+  composer.render();
 }
 
 tick();
