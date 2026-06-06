@@ -24,11 +24,6 @@
   #joystick{position:fixed;left:0;top:0;width:130px;height:130px;margin:-65px 0 0 -65px;border-radius:50%;border:2px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);z-index:12;pointer-events:none;opacity:0;transition:opacity .18s;}
   #joystick.on{opacity:1;}
   #stick{position:absolute;left:50%;top:50%;width:58px;height:58px;border-radius:50%;background:rgba(255,212,0,.9);box-shadow:0 2px 14px rgba(0,0,0,.5);transform:translate(-50%,-50%);will-change:transform;}
-  #gameOver{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,.82);z-index:25;}
-  #gameOver h2{color:#ffd400;font-size:clamp(2rem,6vw,3rem);font-weight:900;margin-bottom:12px;}
-  #gameOver .final{color:#fff;font-size:1.2rem;margin-bottom:8px;}
-  #gameOver .sub{color:#aaa;font-size:.9rem;margin-bottom:32px;}
-  #replayBtn{padding:14px 48px;border:none;border-radius:999px;font-size:1.1rem;font-weight:800;background:#ffd400;color:#111;cursor:pointer;}
 </style>
 </head>
 <body>
@@ -53,12 +48,6 @@
 <div id="hud"></div>
 <button id="recalBtn">리캘리브레이션</button>
 <div id="joystick"><div id="stick"></div></div>
-<div id="gameOver">
-  <h2>TIME UP!</h2>
-  <div class="final" id="goScore"></div>
-  <div class="sub" id="goCoins"></div>
-  <button id="replayBtn">다시 하기</button>
-</div>
 <script type="importmap">{"imports":{
   "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
   "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"

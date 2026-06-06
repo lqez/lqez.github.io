@@ -142,13 +142,9 @@ function tick(){
     cameraLead.lerp(targetCameraLead, 1-Math.exp(-2.4*dt));
     setTopCamera(tgtX,tgtZ);
 
-    // ── update game state (coins, timer) ─────────────────────────────────────
+    // ── update game state (timer) ─────────────────────────────────────────────
     if(_gState===GameState.PLAYING){
-      const result=updateState(dt, carGroup.position.x, carGroup.position.z);
-      if(result.coinCollected){
-        // brief visual feedback — ui handles overlay; just log for now
-        console.log('coin!');
-      }
+      updateState(dt);
 
       // HUD
       const _dirX=dirX, _dirZ=dirZ;
