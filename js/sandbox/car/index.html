@@ -17,18 +17,23 @@
   #startBtn{padding:16px 56px;border:none;border-radius:999px;font-size:clamp(1rem,3vw,1.25rem);font-weight:800;background:#ffd400;color:#111;cursor:pointer;box-shadow:0 4px 28px rgba(255,212,0,.45);transition:transform .1s,box-shadow .1s;}
   #startBtn:active{transform:scale(.95)}
   #hud{position:fixed;top:12px;right:12px;color:#fff;background:rgba(0,0,0,.55);padding:8px 14px;border-radius:10px;font-size:14px;line-height:1.8;white-space:pre;z-index:10;display:none;font-variant-numeric:tabular-nums;}
-  #recalBtn{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);padding:12px 28px;border:none;border-radius:999px;font-size:14px;font-weight:700;background:rgba(255,212,0,.92);color:#111;cursor:pointer;z-index:10;display:none;box-shadow:0 2px 12px rgba(0,0,0,.4);}
+  #recalBtn{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);padding:12px 28px;border:none;border-radius:999px;font-size:14px;font-weight:700;background:rgba(255,212,0,.92);color:#111;cursor:pointer;z-index:10;display:none;box-shadow:0 2px 12px rgba(0,0,0,.4);transition:opacity .35s;}
+  #recalBtn.faded{opacity:0;pointer-events:none;}
+  #joystick{position:fixed;left:0;top:0;width:130px;height:130px;margin:-65px 0 0 -65px;border-radius:50%;border:2px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);z-index:12;pointer-events:none;opacity:0;transition:opacity .18s;}
+  #joystick.on{opacity:1;}
+  #stick{position:absolute;left:50%;top:50%;width:58px;height:58px;border-radius:50%;background:rgba(255,212,0,.9);box-shadow:0 2px 14px rgba(0,0,0,.5);transform:translate(-50%,-50%);will-change:transform;}
 </style>
 </head>
 <body>
 <canvas id="c"></canvas>
 <div id="overlay">
   <h1>CITY CAR</h1>
-  <p>기기를 앞뒤로 기울여 가속/감속,<br>좌우로 기울여 조향하세요.<br>데스크탑: 방향키(↑↓←→) 또는 WASD<br><br>모바일 시작 시 센서 접근 허용이 필요합니다.</p>
+  <p>기기를 앞뒤·좌우로 기울여 방향을 바꾸세요.<br>화면을 0.5초 이상 누르면 가상 조이스틱이 나옵니다.<br>데스크탑: 방향키(↑↓←→) 또는 WASD<br><br>모바일 시작 시 센서 접근 허용이 필요합니다.</p>
   <button id="startBtn">GAME START</button>
 </div>
 <div id="hud"></div>
 <button id="recalBtn">리캘리브레이션</button>
+<div id="joystick"><div id="stick"></div></div>
 
 <script type="importmap">{"imports":{
   "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
@@ -771,6 +776,71 @@ async function startGame(){
 startBtn.addEventListener('click',startGame);
 recalBtn.addEventListener('click',calibrate);
 
+// ─── virtual joystick (touch hold 0.5s) ───────────────────────────────────────
+const joyEl   = document.getElementById('joystick');
+const stickEl = document.getElementById('stick');
+const JOY_R   = 48;              // max stick travel radius (px) & deadzone scale
+let joyVisible = false;          // joystick shown (button faded while true)
+let joyActive  = false;          // joystick currently driving (finger held >0.5s)
+let joyDX = 0, joyDY = 0;        // clamped stick offset from origin (px)
+let joyOX = 0, joyOY = 0;        // origin (touch start point)
+let touchId = null;              // tracked touch identifier
+let holdTimer = null, hideTimer = null;
+
+function showJoystick(x,y){
+  joyOX=x; joyOY=y; joyDX=0; joyDY=0;
+  joyEl.style.left=x+'px'; joyEl.style.top=y+'px';
+  stickEl.style.transform='translate(-50%,-50%)';
+  joyEl.classList.add('on');
+  recalBtn.classList.add('faded');   // fade out recalibrate while joystick is up
+  joyVisible=true; joyActive=true;
+}
+function moveStick(x,y){
+  let dx=x-joyOX, dy=y-joyOY;
+  const d=Math.hypot(dx,dy);
+  if(d>JOY_R){ dx=dx/d*JOY_R; dy=dy/d*JOY_R; }
+  joyDX=dx; joyDY=dy;
+  stickEl.style.transform=`translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`;
+}
+function hideJoystick(){
+  joyVisible=false;
+  joyEl.classList.remove('on');
+  recalBtn.classList.remove('faded'); // fade recalibrate back in (re-enables tilt)
+}
+
+const canvasEl=document.getElementById('c');
+canvasEl.addEventListener('touchstart',e=>{
+  if(!gameOn||touchId!==null) return;
+  const t=e.changedTouches[0];
+  touchId=t.identifier;
+  const x=t.clientX, y=t.clientY;
+  clearTimeout(hideTimer);                       // cancel pending fade-out
+  clearTimeout(holdTimer);
+  holdTimer=setTimeout(()=>showJoystick(x,y),500); // appears after 0.5s hold
+},{passive:false});
+
+canvasEl.addEventListener('touchmove',e=>{
+  if(touchId===null) return;
+  const t=[...e.changedTouches].find(c=>c.identifier===touchId);
+  if(!t) return;
+  if(joyActive){ e.preventDefault(); moveStick(t.clientX,t.clientY); }
+},{passive:false});
+
+function endTouch(e){
+  if(touchId===null) return;
+  if(![...e.changedTouches].some(c=>c.identifier===touchId)) return;
+  touchId=null;
+  clearTimeout(holdTimer);
+  if(joyActive){
+    joyActive=false; joyDX=0; joyDY=0;           // stop driving, keep visible
+    stickEl.style.transform='translate(-50%,-50%)';
+    clearTimeout(hideTimer);
+    hideTimer=setTimeout(hideJoystick,1000);     // disappears 1s after release
+  }
+}
+canvasEl.addEventListener('touchend',endTouch);
+canvasEl.addEventListener('touchcancel',endTouch);
+
 // ─── resize ──────────────────────────────────────────────────────────────────
 // ─── post-processing: barrel distortion ──────────────────────────────────────
 const BarrelShader = {
@@ -927,11 +997,20 @@ function tick(){
     else if(keys['ArrowRight']||keys['KeyD']) { wantX=1;  wantZ=0;  }
     else if(keys['ArrowLeft'] ||keys['KeyA']) { wantX=-1; wantZ=0;  }
 
-    // Sensor: dominant tilt axis (only when no key pressed)
-    if(wantX===0&&wantZ===0){
+    // Virtual joystick: dominant drag axis (only when no key pressed)
+    if(wantX===0&&wantZ===0 && joyActive){
+      const ax=Math.abs(joyDX), ay=Math.abs(joyDY);
+      if(Math.max(ax,ay) > 14){
+        if(ax>=ay){ wantX = joyDX>0 ? 1 : -1; wantZ=0; }
+        else      { wantZ = joyDY>0 ? 1 : -1; wantX=0; }
+      }
+    }
+
+    // Sensor: dominant tilt axis — only when no key/joystick and recalibrate button active
+    if(wantX===0&&wantZ===0 && !joyVisible){
       const tiltFwd  = rawBeta  - baseBeta;
       const tiltSide = rawGamma - baseGamma;
-      const FD = 15;
+      const FD = 8;
       const afwd = Math.abs(tiltFwd), aside = Math.abs(tiltSide);
       if(Math.max(afwd, aside) > FD){
         if(afwd >= aside){ wantX=0; wantZ = tiltFwd>0 ? 1 : -1; }
