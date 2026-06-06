@@ -172,6 +172,8 @@ buildMap();
 
 // ─── coord ───────────────────────────────────────────────────────────────────
 function tileCenter(tx,ty){return{x:(tx-HALF_W+0.5)*TILE,z:(ty-HALF_H+0.5)*TILE};}
+function tileCenterX(wx){return (Math.floor(wx/TILE+HALF_W)-HALF_W+0.5)*TILE;}
+function tileCenterZ(wz){return (Math.floor(wz/TILE+HALF_H)-HALF_H+0.5)*TILE;}
 function tileAt(wx,wz){
   const tx=Math.floor(wx/TILE+HALF_W), ty=Math.floor(wz/TILE+HALF_H);
   if(tx<0||tx>=MAP_W||ty<0||ty>=MAP_H)return T.BUILDING;
@@ -272,23 +274,260 @@ for(let ty=0;ty<MAP_H;ty++) for(let tx=0;tx<MAP_W;tx++){
 }
 [mRoad,mBridge,mPark,mWater,...mBldgs].forEach(m=>m.instanceMatrix.needsUpdate=true);
 
-const dashGeo = new THREE.PlaneGeometry(TILE*0.06,TILE*0.3);
-const dashMat = new THREE.MeshBasicMaterial({color:0xffffff,opacity:0.45,transparent:true});
-const dashPos = [];
-for(let ty=0;ty<MAP_H;ty++) for(let tx=0;tx<MAP_W;tx++){
-  if(tileMap[mi(tx,ty)]!==T.ROAD)continue;
-  if(tx>0&&tx<MAP_W-1&&tileMap[mi(tx-1,ty)]===T.ROAD&&tileMap[mi(tx+1,ty)]===T.ROAD&&
-     ty>0&&tileMap[mi(tx,ty-1)]!==T.ROAD)
-    dashPos.push(tileCenter(tx,ty));
+const roadMarkGeo = new THREE.PlaneGeometry(1,1);
+const roadDotGeo = new THREE.CircleGeometry(1,18);
+const MARK_Y = 0.535;
+const MARK_EDGE = TILE*0.08;
+const WHITE_LINE_W = TILE*0.055;
+const WHITE_DOT_R = WHITE_LINE_W*0.62;
+const YELLOW_LINE_W = TILE*0.07;
+const MIN_CENTER_LEN = 7;
+function makeQuarterArcGeometry(inner,outer,segments=14){
+  const verts=[];
+  for(let i=0;i<segments;i++){
+    const a0=(i/segments)*Math.PI/2, a1=((i+1)/segments)*Math.PI/2;
+    const i0=[Math.cos(a0)*inner,0,Math.sin(a0)*inner];
+    const o0=[Math.cos(a0)*outer,0,Math.sin(a0)*outer];
+    const i1=[Math.cos(a1)*inner,0,Math.sin(a1)*inner];
+    const o1=[Math.cos(a1)*outer,0,Math.sin(a1)*outer];
+    verts.push(...i0,...o0,...i1, ...o0,...o1,...i1);
+  }
+  const geo=new THREE.BufferGeometry();
+  geo.setAttribute('position',new THREE.Float32BufferAttribute(verts,3));
+  geo.computeVertexNormals();
+  return geo;
 }
-if(dashPos.length>0){
-  const dm=new THREE.InstancedMesh(dashGeo,dashMat,dashPos.length);
-  dashPos.forEach(({x,z},i)=>{
-    D.rotation.set(-Math.PI/2,0,0);D.position.set(x,0.52,z);D.scale.set(1,1,1);D.updateMatrix();
-    dm.setMatrixAt(i,D.matrix);
+const roadArcGeo = makeQuarterArcGeometry(
+  Math.max(0.01,MARK_EDGE-WHITE_LINE_W*0.5),
+  MARK_EDGE+WHITE_LINE_W*0.5
+);
+const roadWhiteMat = new THREE.MeshBasicMaterial({color:0xf7f4e8,opacity:0.82,transparent:true,depthWrite:false,side:THREE.DoubleSide});
+const roadYellowMat = new THREE.MeshBasicMaterial({color:0xffd84a,opacity:0.48,transparent:true,depthWrite:false,side:THREE.DoubleSide});
+const whiteMarks = [], whiteDots = [], whiteArcs = [], yellowMarks = [];
+
+function isRoadish(tx,ty){
+  if(tx<0||tx>=MAP_W||ty<0||ty>=MAP_H)return false;
+  const t=tileMap[mi(tx,ty)];
+  return t===T.ROAD||t===T.BRIDGE;
+}
+function isBuildingTile(tx,ty){
+  if(tx<0||tx>=MAP_W||ty<0||ty>=MAP_H)return true;
+  return tileMap[mi(tx,ty)]===T.BUILDING;
+}
+function addMark(list,x,z,w,d,rot=0){
+  list.push({x,z,w,d,rot});
+}
+function addDot(list,x,z,r){list.push({x,z,r});}
+function addArc(list,x,z,rot){list.push({x,z,rot});}
+function edgeX(ex){return (ex-HALF_W)*TILE;}
+function edgeZ(ey){return (ey-HALF_H)*TILE;}
+
+function addWhiteV(ex,start,end,roadSide){
+  const x=edgeX(ex)+roadSide*MARK_EDGE;
+  const z=(edgeZ(start)+edgeZ(end+1))*0.5;
+  addMark(whiteMarks,x,z,WHITE_LINE_W,(end-start+1)*TILE);
+  addDot(whiteDots,x,edgeZ(start),WHITE_DOT_R);
+  addDot(whiteDots,x,edgeZ(end+1),WHITE_DOT_R);
+}
+function addWhiteH(ey,start,end,roadSide){
+  const x=(edgeX(start)+edgeX(end+1))*0.5;
+  const z=edgeZ(ey)+roadSide*MARK_EDGE;
+  addMark(whiteMarks,x,z,(end-start+1)*TILE,WHITE_LINE_W);
+  addDot(whiteDots,edgeX(start),z,WHITE_DOT_R);
+  addDot(whiteDots,edgeX(end+1),z,WHITE_DOT_R);
+}
+
+for(let ex=0;ex<=MAP_W;ex++){
+  for(const roadSide of [-1,1]){
+    let start=-1;
+    for(let ty=0;ty<MAP_H;ty++){
+      const road=roadSide>0?isRoadish(ex,ty):isRoadish(ex-1,ty);
+      const wall=roadSide>0?isBuildingTile(ex-1,ty):isBuildingTile(ex,ty);
+      if(road&&wall){if(start<0)start=ty;}
+      else if(start>=0){addWhiteV(ex,start,ty-1,roadSide);start=-1;}
+    }
+    if(start>=0)addWhiteV(ex,start,MAP_H-1,roadSide);
+  }
+}
+
+for(let ey=0;ey<=MAP_H;ey++){
+  for(const roadSide of [-1,1]){
+    let start=-1;
+    for(let tx=0;tx<MAP_W;tx++){
+      const road=roadSide>0?isRoadish(tx,ey):isRoadish(tx,ey-1);
+      const wall=roadSide>0?isBuildingTile(tx,ey-1):isBuildingTile(tx,ey);
+      if(road&&wall){if(start<0)start=tx;}
+      else if(start>=0){addWhiteH(ey,start,tx-1,roadSide);start=-1;}
+    }
+    if(start>=0)addWhiteH(ey,start,MAP_W-1,roadSide);
+  }
+}
+
+for(let ey=1;ey<MAP_H;ey++) for(let ex=1;ex<MAP_W;ex++){
+  const x=edgeX(ex), z=edgeZ(ey);
+  const nwB=isBuildingTile(ex-1,ey-1), neB=isBuildingTile(ex,ey-1);
+  const swB=isBuildingTile(ex-1,ey),   seB=isBuildingTile(ex,ey);
+  const nwR=isRoadish(ex-1,ey-1), neR=isRoadish(ex,ey-1);
+  const swR=isRoadish(ex-1,ey),   seR=isRoadish(ex,ey);
+
+  if(nwB&&neR&&swR)addArc(whiteArcs,x,z,0);
+  if(neB&&nwR&&seR)addArc(whiteArcs,x,z,-Math.PI/2);
+  if(seB&&neR&&swR)addArc(whiteArcs,x,z,Math.PI);
+  if(swB&&nwR&&seR)addArc(whiteArcs,x,z,Math.PI/2);
+}
+
+function addYellowH(ey,start,end){
+  const x=(edgeX(start)+edgeX(end+1))*0.5;
+  addMark(yellowMarks,x,edgeZ(ey),(end-start+1)*TILE,YELLOW_LINE_W);
+}
+function addYellowV(ex,start,end){
+  const z=(edgeZ(start)+edgeZ(end+1))*0.5;
+  addMark(yellowMarks,edgeX(ex),z,YELLOW_LINE_W,(end-start+1)*TILE);
+}
+function roadWidthAcrossZ(tx,ey){
+  let up=0,down=0;
+  for(let y=ey-1;y>=0&&isRoadish(tx,y);y--)up++;
+  for(let y=ey;y<MAP_H&&isRoadish(tx,y);y++)down++;
+  return {up,down};
+}
+function roadWidthAcrossX(ex,ty){
+  let left=0,right=0;
+  for(let x=ex-1;x>=0&&isRoadish(x,ty);x--)left++;
+  for(let x=ex;x<MAP_W&&isRoadish(x,ty);x++)right++;
+  return {left,right};
+}
+
+for(let ey=1;ey<MAP_H;ey++){
+  let start=-1;
+  for(let tx=0;tx<MAP_W;tx++){
+    const {up,down}=roadWidthAcrossZ(tx,ey);
+    const twoLane=isRoadish(tx,ey-1)&&isRoadish(tx,ey)&&
+      up===down&&up+down>=2&&
+      isRoadish(tx-1,ey-1)&&isRoadish(tx+1,ey-1)&&
+      isRoadish(tx-1,ey)&&isRoadish(tx+1,ey);
+    if(twoLane){if(start<0)start=tx;}
+    else if(start>=0){
+      if(tx-start>=MIN_CENTER_LEN)addYellowH(ey,start,tx-1);
+      start=-1;
+    }
+  }
+  if(start>=0&&MAP_W-start>=MIN_CENTER_LEN)addYellowH(ey,start,MAP_W-1);
+}
+
+for(let ex=1;ex<MAP_W;ex++){
+  let start=-1;
+  for(let ty=0;ty<MAP_H;ty++){
+    const {left,right}=roadWidthAcrossX(ex,ty);
+    const twoLane=isRoadish(ex-1,ty)&&isRoadish(ex,ty)&&
+      left===right&&left+right>=2&&
+      isRoadish(ex-1,ty-1)&&isRoadish(ex-1,ty+1)&&
+      isRoadish(ex,ty-1)&&isRoadish(ex,ty+1);
+    if(twoLane){if(start<0)start=ty;}
+    else if(start>=0){
+      if(ty-start>=MIN_CENTER_LEN)addYellowV(ex,start,ty-1);
+      start=-1;
+    }
+  }
+  if(start>=0&&MAP_H-start>=MIN_CENTER_LEN)addYellowV(ex,start,MAP_H-1);
+}
+
+function wideRoadAt(tx,ty){
+  if(!isRoadish(tx,ty))return false;
+  let near=0;
+  for(let dy=-1;dy<=1;dy++) for(let dx=-1;dx<=1;dx++)
+    if(dx!==0||dy!==0)near+=isRoadish(tx+dx,ty+dy)?1:0;
+  const cross=(isRoadish(tx-1,ty)&&isRoadish(tx+1,ty))+
+              (isRoadish(tx,ty-1)&&isRoadish(tx,ty+1));
+  return near>=5||cross===2;
+}
+function drawSafetyZone(cx,cz,w,d){
+  const thick=TILE*0.075;
+  addMark(yellowMarks,cx,cz-d*0.5, w, thick);
+  addMark(yellowMarks,cx,cz+d*0.5, w, thick);
+  addMark(yellowMarks,cx-w*0.5,cz, thick, d);
+  addMark(yellowMarks,cx+w*0.5,cz, thick, d);
+
+  const stripes=Math.max(3,Math.floor(Math.min(w,d)/(TILE*0.38)));
+  const len=Math.min(w,d)*0.7;
+  for(let i=0;i<stripes;i++){
+    const t=stripes===1?0:i/(stripes-1);
+    addMark(yellowMarks,cx+(t-0.5)*w*0.68,cz,TILE*0.055,len,Math.PI/4);
+  }
+}
+
+const wideSeen = new Uint8Array(MAP_W*MAP_H);
+for(let ty=1;ty<MAP_H-1;ty++) for(let tx=1;tx<MAP_W-1;tx++){
+  const start=mi(tx,ty);
+  if(wideSeen[start]||!wideRoadAt(tx,ty))continue;
+
+  let minX=tx,maxX=tx,minY=ty,maxY=ty,count=0;
+  const stack=[[tx,ty]];
+  wideSeen[start]=1;
+  while(stack.length){
+    const [cx,cy]=stack.pop();
+    count++;
+    minX=Math.min(minX,cx); maxX=Math.max(maxX,cx);
+    minY=Math.min(minY,cy); maxY=Math.max(maxY,cy);
+    [[1,0],[-1,0],[0,1],[0,-1]].forEach(([dx,dy])=>{
+      const nx=cx+dx, ny=cy+dy;
+      if(nx<1||nx>=MAP_W-1||ny<1||ny>=MAP_H-1)return;
+      const id=mi(nx,ny);
+      if(wideSeen[id]||!wideRoadAt(nx,ny))return;
+      wideSeen[id]=1; stack.push([nx,ny]);
+    });
+  }
+
+  const cw=maxX-minX+1, cd=maxY-minY+1;
+  if(count<3||cw<2||cd<2)continue;
+  const c0=tileCenter(Math.floor((minX+maxX)/2),Math.floor((minY+maxY)/2));
+  const boxW=Math.min(TILE*3.2,Math.max(TILE*1.25,cw*TILE*0.62));
+  const boxD=Math.min(TILE*3.2,Math.max(TILE*1.25,cd*TILE*0.62));
+  drawSafetyZone(c0.x,c0.z,boxW,boxD);
+}
+
+function makeRoadMarks(list,mat){
+  if(list.length===0)return;
+  const mesh=new THREE.InstancedMesh(roadMarkGeo,mat,list.length);
+  list.forEach(({x,z,w,d,rot},i)=>{
+    D.rotation.set(-Math.PI/2,0,rot);
+    D.position.set(x,MARK_Y,z);
+    D.scale.set(w,d,1);
+    D.updateMatrix();
+    mesh.setMatrixAt(i,D.matrix);
   });
-  dm.instanceMatrix.needsUpdate=true; scene.add(dm);
+  mesh.instanceMatrix.needsUpdate=true;
+  scene.add(mesh);
 }
+function makeRoadDots(list,mat){
+  if(list.length===0)return;
+  const mesh=new THREE.InstancedMesh(roadDotGeo,mat,list.length);
+  list.forEach(({x,z,r},i)=>{
+    D.rotation.set(-Math.PI/2,0,0);
+    D.position.set(x,MARK_Y+0.002,z);
+    D.scale.set(r,r,1);
+    D.updateMatrix();
+    mesh.setMatrixAt(i,D.matrix);
+  });
+  mesh.instanceMatrix.needsUpdate=true;
+  scene.add(mesh);
+}
+function makeRoadArcs(list,mat){
+  if(list.length===0)return;
+  const mesh=new THREE.InstancedMesh(roadArcGeo,mat,list.length);
+  list.forEach(({x,z,rot},i)=>{
+    D.rotation.set(0,rot,0);
+    D.position.set(x,MARK_Y+0.004,z);
+    D.scale.set(1,1,1);
+    D.updateMatrix();
+    mesh.setMatrixAt(i,D.matrix);
+  });
+  mesh.instanceMatrix.needsUpdate=true;
+  scene.add(mesh);
+}
+makeRoadMarks(whiteMarks,roadWhiteMat);
+makeRoadArcs(whiteArcs,roadWhiteMat);
+makeRoadDots(whiteDots,roadWhiteMat);
+makeRoadMarks(yellowMarks,roadYellowMat);
 
 // ─── car + character: cartoon 3D top-view vehicle ───────────────────────────
 // Car faces local +X direction.
@@ -494,12 +733,13 @@ const keys={};
 window.addEventListener('keydown',e=>{
   if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code))e.preventDefault();
   keys[e.code]=true;
+  if(!gameOn)startGame();
 });
 window.addEventListener('keyup',e=>{keys[e.code]=false;});
 
 // ─── sensor ──────────────────────────────────────────────────────────────────
 let rawBeta=0,rawGamma=0,baseBeta=0,baseGamma=0;
-let sensorOk=false, gameOn=false;
+let sensorOk=false, gameOn=false, starting=false;
 window.addEventListener('deviceorientation',e=>{rawBeta=e.beta??0;rawGamma=e.gamma??0;});
 
 async function reqSensor(){
@@ -517,13 +757,18 @@ const startBtn = document.getElementById('startBtn');
 const hud      = document.getElementById('hud');
 const recalBtn = document.getElementById('recalBtn');
 
-startBtn.addEventListener('click',async()=>{
+async function startGame(){
+  if(gameOn||starting)return;
+  starting=true;
   const ok=await reqSensor();
-  if(!ok){alert('센서 권한이 필요합니다.');return;}
+  if(!ok){starting=false;alert('센서 권한이 필요합니다.');return;}
   calibrate();
+  Object.keys(keys).forEach(k=>keys[k]=false);
   overlay.style.display='none'; hud.style.display='block'; recalBtn.style.display='block';
   gameOn=true;
-});
+  starting=false;
+}
+startBtn.addEventListener('click',startGame);
 recalBtn.addEventListener('click',calibrate);
 
 // ─── resize ──────────────────────────────────────────────────────────────────
@@ -569,7 +814,7 @@ onResize();
 // ─── camera (position-slide perspective top view) ────────────────────────────
 const CAM_H=190;
 const BASE_CAMERA_UP = new THREE.Vector3(0,0,-1);
-const CAMERA_POS_LEAD = 18;
+const CAMERA_POS_LEAD = 32;
 const cameraLead = new THREE.Vector3();
 const targetCameraLead = new THREE.Vector3();
 const ZERO_CAMERA_LEAD = new THREE.Vector3();
@@ -648,15 +893,13 @@ function moveWithCollision(px,pz,ndX,ndZ,dt){
   if(clearForDir(nx,nz,ndX,ndZ))
     return {x:nx,z:nz,moved:true};
 
-  // Alignment assist: nudge perpendicular in small steps to slip past corner obstacles.
-  // Only allowed when the current position can also shift laterally (no wall beside us).
-  for(let n=TILE*0.08; n<=TILE*0.42; n+=TILE*0.08){
-    for(const s of [1,-1]){
-      const nnx=nx+rpX*s*n, nnz=nz+rpZ*s*n;
-      if(clearForDir(nnx,nnz,ndX,ndZ) && passable(px+rpX*s*n, pz+rpZ*s*n))
-        return {x:nnx,z:nnz,moved:true};
-    }
-  }
+  const maxAlign=Math.min(TILE*0.32,spd*0.9);
+  const alignX=rpX===0?0:Math.max(-maxAlign,Math.min(maxAlign,tileCenterX(px)-px));
+  const alignZ=rpZ===0?0:Math.max(-maxAlign,Math.min(maxAlign,tileCenterZ(pz)-pz));
+  if((alignX!==0||alignZ!==0)&&
+     passable(px+alignX,pz+alignZ)&&
+     clearForDir(nx+alignX,nz+alignZ,ndX,ndZ))
+    return {x:nx+alignX,z:nz+alignZ,moved:true};
 
   // Wall slide: fewer blocked corners + leading edge still open
   if(canMoveToward(px,pz,nx,nz,ndX,ndZ)){
