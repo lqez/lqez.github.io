@@ -94,14 +94,14 @@ function buildMap(){
     }
   }
   for(let y=4;y<MAP_H-4;){
-    const w=[1,1,1,2,2,3][Math.floor(rng()*6)];
+    const w=[1,1,2,2,3,4][Math.floor(rng()*6)];
     fillRect(0,y,MAP_W,w,T.ROAD);
-    y+=4+Math.floor(rng()*6);
+    y+=w+7+Math.floor(rng()*11);
   }
   for(let x=4;x<MAP_W-4;){
-    const w=[1,1,1,2,2,3][Math.floor(rng()*6)];
+    const w=[1,1,2,2,3,4][Math.floor(rng()*6)];
     fillRect(x,0,w,MAP_H,T.ROAD);
-    x+=4+Math.floor(rng()*6);
+    x+=w+7+Math.floor(rng()*11);
   }
   fillRect(HALF_W-1,0,3,MAP_H,T.ROAD);
   fillRect(0,HALF_H-1,MAP_W,3,T.ROAD);
@@ -117,9 +117,9 @@ function buildMap(){
     else fillRect(x,y,w,Math.min(len,MAP_H-y-2),T.BUILDING);
   }
 
-  for(let i=0;i<120;i++){
+  for(let i=0;i<55;i++){
     const horizontal=rng()<0.5;
-    const len=8+Math.floor(rng()*18);
+    const len=8+Math.floor(rng()*16);
     const w=1+Math.floor(rng()*2);
     const x=2+Math.floor(rng()*(MAP_W-4));
     const y=2+Math.floor(rng()*(MAP_H-4));
@@ -131,45 +131,70 @@ function buildMap(){
   fillRect(0,HALF_H-1,MAP_W,3,T.ROAD);
   for(let i=0;i<MAP_W*MAP_H;i++)
     if(tileMap[i]===T.ROAD&&waterMrk[i])tileMap[i]=T.BRIDGE;
-  for(let i=0;i<20;i++){
-    const px=4+Math.floor(rng()*(MAP_W-14)),py=4+Math.floor(rng()*(MAP_H-14));
-    const pw=3+Math.floor(rng()*8),ph=3+Math.floor(rng()*8);
+  // ── large solid parks (green blocks) ──────────────────────────────────────
+  for(let i=0;i<14;i++){
+    const px=4+Math.floor(rng()*(MAP_W-16)),py=4+Math.floor(rng()*(MAP_H-16));
+    const pw=4+Math.floor(rng()*9),ph=4+Math.floor(rng()*9);
     let ok=true;
     loop:for(let dy=0;dy<ph;dy++) for(let dx=0;dx<pw;dx++)
       if(tileMap[mi(px+dx,py+dy)]!==T.BUILDING){ok=false;break loop;}
     if(ok)fillRect(px,py,pw,ph,T.PARK);
   }
-  for(let i=0;i<85;i++){
-    const bx=3+Math.floor(rng()*(MAP_W-10)),by=3+Math.floor(rng()*(MAP_H-10));
-    const bw=2+Math.floor(rng()*4),bd=2+Math.floor(rng()*3);
-    let ok=true;
-    loop:for(let dy=0;dy<bd;dy++) for(let dx=0;dx<bw;dx++){
-      const id=mi(bx+dx,by+dy);
-      if(tileMap[id]!==T.BUILDING||bldgW[id]!==0){ok=false;break loop;}
-    }
-    if(ok){
-      const anchor=mi(bx,by);
-      bldgW[anchor]=bw; bldgD[anchor]=bd;
-      for(let dy=0;dy<bd;dy++) for(let dx=0;dx<bw;dx++){
-        const id=mi(bx+dx,by+dy);
-        if(dx!==0||dy!==0)bldgW[id]=255;
-      }
-    }
+
+  // ── scattered greenery in "green districts" (mixed building + park areas) ──
+  // Sprinkled BEFORE buildings so buildings grow around the greenery.
+  for(let ty=0;ty<MAP_H;ty++) for(let tx=0;tx<MAP_W;tx++){
+    const id=mi(tx,ty);
+    if(tileMap[id]!==T.BUILDING)continue;
+    const dX=Math.floor(tx/16), dY=Math.floor(ty/16);
+    if(hash2(dX+50,dY+90)<0.6)continue;          // ~40% of districts are green
+    // coarse + fine noise => parks cluster into patches instead of static dots
+    const patch=hash2((tx>>1)+7,(ty>>1)+3)*0.55 + hash2(tx,ty)*0.45;
+    if(patch>0.58) tileMap[id]=T.PARK;
   }
+
+  // ── greedy rectangle tiling: pack each building block with the biggest
+  //    footprint that fits, so multi-tile buildings dominate and lone 1x1
+  //    tiles remain only where a block is genuinely a single cell ────────────
+  const free=(x,y)=> x>=0&&y>=0&&x<MAP_W&&y<MAP_H&&
+                     tileMap[mi(x,y)]===T.BUILDING&&bldgW[mi(x,y)]===0;
+  function claim(bx,by){
+    if(!free(bx,by))return;
+    const MAXW=3+Math.floor(rng()*5);   // 3..7
+    const MAXD=3+Math.floor(rng()*4);   // 3..6
+    let w=0; while(w<MAXW&&free(bx+w,by))w++;
+    let d=1;
+    grow:while(d<MAXD){
+      for(let dx=0;dx<w;dx++) if(!free(bx+dx,by+d))break grow;
+      d++;
+    }
+    bldgW[mi(bx,by)]=w; bldgD[mi(bx,by)]=d;
+    for(let dy=0;dy<d;dy++) for(let dx=0;dx<w;dx++)
+      if(dx!==0||dy!==0) bldgW[mi(bx+dx,by+dy)]=255;
+  }
+  for(let ty=0;ty<MAP_H;ty++) for(let tx=0;tx<MAP_W;tx++) claim(tx,ty);
+
+  // ── height + style; remaining single tiles become rare 1x1 ────────────────
   for(let ty=0;ty<MAP_H;ty++) for(let tx=0;tx<MAP_W;tx++){
     const id=mi(tx,ty);
     if(tileMap[id]!==T.BUILDING||bldgW[id]===255)continue;
-    if(bldgW[id]===0){bldgW[id]=1; bldgD[id]=1;}
+    if(bldgW[id]===0){bldgW[id]=1; bldgD[id]=1;}   // rare lone tile
 
-    const dx=(tx-HALF_W)/HALF_W, dy=(ty-HALF_H)/HALF_H;
-    const center=Math.max(0,1-Math.hypot(dx,dy));
+    const fx=(tx-HALF_W)/HALF_W, fy=(ty-HALF_H)/HALF_H;
+    const center=Math.max(0,1-Math.hypot(fx,fy));
     const districtX=Math.floor(tx/16), districtY=Math.floor(ty/16);
     const districtNoise=hash2(districtX,districtY);
     const localNoise=hash2(tx,ty);
     const big=bldgW[id]>1||bldgD[id]>1;
-    const base=2+Math.floor(center*6)+Math.floor(districtNoise*3);
-    const variation=Math.floor(localNoise*3);
-    bldgH[id]=Math.max(2,Math.min(12,base+variation+(big?2:0)));
+    const area=bldgW[id]*bldgD[id];
+
+    // Dramatic spread: mostly low/mid, rare skyscraper districts that spike high
+    const dn4        = districtNoise*districtNoise*districtNoise*districtNoise;
+    const base       = 1 + center*6;                  // gentle downtown gradient
+    const tower      = dn4*30;                         // only top districts spike
+    const localSpike = localNoise*localNoise*11;       // per-building variation
+    const bigBonus   = big ? Math.min(area,16)*0.8 : 0;
+    bldgH[id]=Math.max(1,Math.min(28,Math.round(base+tower+localSpike+bigBonus)));
     bldgStyle[id]=(districtX*2+districtY*3+Math.floor(districtNoise*3))%6;
   }
 }
