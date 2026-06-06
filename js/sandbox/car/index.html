@@ -6,14 +6,16 @@
 <title>City Car</title>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{width:100%;height:100%;overflow:hidden;background:#87ceeb;font-family:system-ui,sans-serif;touch-action:none}
-  #c{display:block;width:100%;height:100%}
+  html,body{width:100%;height:100%;overflow:hidden;background:#87ceeb;font-family:system-ui,sans-serif;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;}
+  #c{display:block;width:100%;height:100%;-webkit-touch-callout:none;user-select:none;}
   #overlay{
     position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
     background:rgba(0,0,0,.72);z-index:20;
   }
   #overlay h1{color:#ffd400;font-size:clamp(2rem,7vw,4rem);font-weight:900;letter-spacing:4px;margin-bottom:10px;text-shadow:0 2px 20px rgba(255,212,0,.5);}
   #overlay p{color:#ccc;font-size:clamp(.8rem,2.5vw,.95rem);margin-bottom:36px;text-align:center;max-width:300px;line-height:1.8;}
+  .mapBtn{padding:18px 36px;border:2px solid rgba(255,212,0,.5);border-radius:16px;font-size:clamp(1rem,3vw,1.2rem);font-weight:800;background:rgba(255,212,0,.12);color:#ffd400;cursor:pointer;transition:background .15s,transform .1s;}
+  .mapBtn:hover,.mapBtn:active{background:rgba(255,212,0,.28);transform:scale(.97);}
   #startBtn{padding:16px 56px;border:none;border-radius:999px;font-size:clamp(1rem,3vw,1.25rem);font-weight:800;background:#ffd400;color:#111;cursor:pointer;box-shadow:0 4px 28px rgba(255,212,0,.45);transition:transform .1s,box-shadow .1s;}
   #startBtn:active{transform:scale(.95)}
   #hud{position:fixed;top:12px;right:12px;color:#fff;background:rgba(0,0,0,.55);padding:8px 14px;border-radius:10px;font-size:14px;line-height:1.8;white-space:pre;z-index:10;display:none;font-variant-numeric:tabular-nums;}
@@ -28,8 +30,20 @@
 <canvas id="c"></canvas>
 <div id="overlay">
   <h1>CITY CAR</h1>
-  <p>기기를 앞뒤·좌우로 기울여 방향을 바꾸세요.<br>화면을 0.5초 이상 누르면 가상 조이스틱이 나옵니다.<br>데스크탑: 방향키(↑↓←→) 또는 WASD<br><br>모바일 시작 시 센서 접근 허용이 필요합니다.</p>
-  <button id="startBtn">GAME START</button>
+  <div id="mapSelect">
+    <p style="color:#ccc;font-size:clamp(.8rem,2.5vw,.95rem);margin-bottom:20px;text-align:center;max-width:320px;line-height:1.8;">
+      도시를 선택하세요.<br>
+      <span style="font-size:.8em;color:#888;">기기 기울기·가상 조이스틱·방향키로 주행</span>
+    </p>
+    <div style="display:flex;gap:16px;margin-bottom:0;">
+      <button class="mapBtn" id="btnParis">🗼 Paris</button>
+      <button class="mapBtn" id="btnRandom">🎲 Random</button>
+    </div>
+  </div>
+  <div id="startPanel" style="display:none;flex-direction:column;align-items:center;gap:16px;">
+    <p id="startDesc" style="color:#ccc;font-size:.9rem;text-align:center;max-width:300px;line-height:1.8;"></p>
+    <button id="startBtn">GAME START</button>
+  </div>
 </div>
 <div id="hud"></div>
 <button id="recalBtn">리캘리브레이션</button>
@@ -67,6 +81,7 @@ const bldgH    = new Uint8Array(MAP_W*MAP_H);
 const bldgStyle= new Uint8Array(MAP_W*MAP_H);
 const bldgW    = new Uint8Array(MAP_W*MAP_H);
 const bldgD    = new Uint8Array(MAP_W*MAP_H);
+const parkShade= new Uint8Array(MAP_W*MAP_H);
 
 function mi(x,y){return y*MAP_W+x;}
 function hash2(x,y){
@@ -81,7 +96,10 @@ function fillRect(x0,y0,w,h,val,buf=tileMap){
   }
 }
 
-function buildMap(){
+function buildRandom(){
+  // reset RNG seed for deterministic maps
+  _s = 0xdeadbeef;
+
   for(let i=0;i<5;i++){
     if(rng()<0.5){
       const wy=12+Math.floor(rng()*(MAP_H-24));
@@ -131,37 +149,60 @@ function buildMap(){
   fillRect(0,HALF_H-1,MAP_W,3,T.ROAD);
   for(let i=0;i<MAP_W*MAP_H;i++)
     if(tileMap[i]===T.ROAD&&waterMrk[i])tileMap[i]=T.BRIDGE;
+
   // ── large solid parks (green blocks) ──────────────────────────────────────
   for(let i=0;i<14;i++){
     const px=4+Math.floor(rng()*(MAP_W-16)),py=4+Math.floor(rng()*(MAP_H-16));
     const pw=4+Math.floor(rng()*9),ph=4+Math.floor(rng()*9);
     let ok=true;
+    const shade=Math.floor(rng()*6);
     loop:for(let dy=0;dy<ph;dy++) for(let dx=0;dx<pw;dx++)
       if(tileMap[mi(px+dx,py+dy)]!==T.BUILDING){ok=false;break loop;}
-    if(ok)fillRect(px,py,pw,ph,T.PARK);
+    if(ok){
+      for(let dy=0;dy<ph;dy++) for(let dx=0;dx<pw;dx++){
+        const id=mi(px+dx,py+dy);
+        tileMap[id]=T.PARK;
+        parkShade[id]=shade;
+      }
+    }
   }
 
   // ── scattered greenery in "green districts" (mixed building + park areas) ──
-  // Sprinkled BEFORE buildings so buildings grow around the greenery.
   for(let ty=0;ty<MAP_H;ty++) for(let tx=0;tx<MAP_W;tx++){
     const id=mi(tx,ty);
     if(tileMap[id]!==T.BUILDING)continue;
     const dX=Math.floor(tx/16), dY=Math.floor(ty/16);
-    if(hash2(dX+50,dY+90)<0.6)continue;          // ~40% of districts are green
-    // coarse + fine noise => parks cluster into patches instead of static dots
+    if(hash2(dX+50,dY+90)<0.6)continue;
     const patch=hash2((tx>>1)+7,(ty>>1)+3)*0.55 + hash2(tx,ty)*0.45;
-    if(patch>0.58) tileMap[id]=T.PARK;
+    if(patch>0.58){
+      tileMap[id]=T.PARK;
+      parkShade[id]=Math.floor(hash2(tx>>2,ty>>2) * 6);
+    }
   }
 
-  // ── greedy rectangle tiling: pack each building block with the biggest
-  //    footprint that fits, so multi-tile buildings dominate and lone 1x1
-  //    tiles remain only where a block is genuinely a single cell ────────────
+  // ── larger guaranteed parks (8-18 tiles) ──────────────────────────────────
+  for(let i=0;i<8;i++){
+    const px=4+Math.floor(rng()*(MAP_W-22)), py=4+Math.floor(rng()*(MAP_H-22));
+    const pw=8+Math.floor(rng()*10), ph=8+Math.floor(rng()*10);
+    const shade=Math.floor(rng()*6);
+    let ok=true;
+    loop:for(let dy=0;dy<ph;dy++) for(let dx=0;dx<pw;dx++)
+      if(tileMap[mi(px+dx,py+dy)]!==T.BUILDING){ok=false;break loop;}
+    if(ok){
+      for(let dy=0;dy<ph;dy++) for(let dx=0;dx<pw;dx++){
+        const id=mi(px+dx,py+dy);
+        tileMap[id]=T.PARK; parkShade[id]=shade;
+      }
+    }
+  }
+
+  // ── greedy rectangle tiling ───────────────────────────────────────────────
   const free=(x,y)=> x>=0&&y>=0&&x<MAP_W&&y<MAP_H&&
                      tileMap[mi(x,y)]===T.BUILDING&&bldgW[mi(x,y)]===0;
   function claim(bx,by){
     if(!free(bx,by))return;
-    const MAXW=3+Math.floor(rng()*5);   // 3..7
-    const MAXD=3+Math.floor(rng()*4);   // 3..6
+    const MAXW=3+Math.floor(rng()*5);
+    const MAXD=3+Math.floor(rng()*4);
     let w=0; while(w<MAXW&&free(bx+w,by))w++;
     let d=1;
     grow:while(d<MAXD){
@@ -174,11 +215,11 @@ function buildMap(){
   }
   for(let ty=0;ty<MAP_H;ty++) for(let tx=0;tx<MAP_W;tx++) claim(tx,ty);
 
-  // ── height + style; remaining single tiles become rare 1x1 ────────────────
+  // ── height + style ────────────────────────────────────────────────────────
   for(let ty=0;ty<MAP_H;ty++) for(let tx=0;tx<MAP_W;tx++){
     const id=mi(tx,ty);
     if(tileMap[id]!==T.BUILDING||bldgW[id]===255)continue;
-    if(bldgW[id]===0){bldgW[id]=1; bldgD[id]=1;}   // rare lone tile
+    if(bldgW[id]===0){bldgW[id]=1; bldgD[id]=1;}
 
     const fx=(tx-HALF_W)/HALF_W, fy=(ty-HALF_H)/HALF_H;
     const center=Math.max(0,1-Math.hypot(fx,fy));
@@ -188,17 +229,125 @@ function buildMap(){
     const big=bldgW[id]>1||bldgD[id]>1;
     const area=bldgW[id]*bldgD[id];
 
-    // Dramatic spread: mostly low/mid, rare skyscraper districts that spike high
     const dn4        = districtNoise*districtNoise*districtNoise*districtNoise;
-    const base       = 1 + center*6;                  // gentle downtown gradient
-    const tower      = dn4*30;                         // only top districts spike
-    const localSpike = localNoise*localNoise*11;       // per-building variation
-    const bigBonus   = big ? Math.min(area,16)*0.8 : 0;
-    bldgH[id]=Math.max(1,Math.min(28,Math.round(base+tower+localSpike+bigBonus)));
+    const base       = 1 + center*3;
+    const tower      = dn4*14;
+    const localSpike = localNoise*localNoise*5;
+    const bigBonus   = big ? Math.min(area,16)*0.4 : 0;
+    bldgH[id]=Math.max(1,Math.min(18,Math.round(base+tower+localSpike+bigBonus)));
     bldgStyle[id]=(districtX*2+districtY*3+Math.floor(districtNoise*3))%6;
   }
 }
-buildMap();
+
+function buildParis(){
+  // Seine river
+  for(let y=74;y<=76;y++) for(let x=0;x<MAP_W;x++){
+    const id=mi(x,y);
+    tileMap[id]=T.WATER;
+    waterMrk[id]=1;
+  }
+
+  // Helper: set road tile
+  function road(x,y){
+    if(x<0||x>=MAP_W||y<0||y>=MAP_H)return;
+    tileMap[mi(x,y)]=T.ROAD;
+  }
+
+  // Major E-W boulevards
+  const ewBoulevards=[
+    [16,17],[28,29],[40,41],[52,54],[62,63],[80,81],[92,93],[104,105]
+  ];
+  for(const [y0,y1] of ewBoulevards)
+    for(let y=y0;y<=y1;y++) for(let x=0;x<MAP_W;x++) road(x,y);
+
+  // Major N-S avenues
+  const nsAvenues=[
+    [16,17],[28,29],[40,41],[52,54],[62,64],[74,75],[86,87],[98,99],[110,111]
+  ];
+  for(const [x0,x1] of nsAvenues)
+    for(let x=x0;x<=x1;x++) for(let y=0;y<MAP_H;y++) road(x,y);
+
+  // Smaller cross streets (1 wide)
+  const smallY=[22,34,46,57,69,86,98];
+  const smallX=[22,34,46,58,69,80,92,104];
+  for(const y of smallY) for(let x=0;x<MAP_W;x++) road(x,y);
+  for(const x of smallX) for(let y=0;y<MAP_H;y++) road(x,y);
+
+  // Central plaza (Arc de Triomphe area)
+  for(let y=49;y<=57;y++) for(let x=59;x<=68;x++) road(x,y);
+
+  // Convert road-over-water to bridge
+  for(let i=0;i<MAP_W*MAP_H;i++)
+    if(tileMap[i]===T.ROAD&&waterMrk[i])tileMap[i]=T.BRIDGE;
+
+  // Parks — only overwrite BUILDING tiles
+  function park(x0,y0,x1,y1){
+    const shade=(hash2(x0,y0)*6)|0;
+    for(let y=y0;y<=y1;y++) for(let x=x0;x<=x1;x++){
+      if(x<0||x>=MAP_W||y<0||y>=MAP_H)continue;
+      const id=mi(x,y);
+      if(tileMap[id]===T.BUILDING){
+        tileMap[id]=T.PARK;
+        parkShade[id]=shade;
+      }
+    }
+  }
+
+  // Large named parks
+  park(2,8,14,118);       // Bois de Boulogne
+  park(66,55,82,68);      // Tuileries Garden
+  park(42,84,58,100);     // Luxembourg Gardens
+  park(18,80,30,110);     // Champ de Mars
+  park(40,16,54,30);      // Parc Monceau
+  park(100,8,114,28);     // Parc de la Villette
+  park(94,84,112,100);    // Parc de Bercy
+  park(88,28,104,46);     // Buttes-Chaumont
+
+  // Small squares
+  park(32,62,35,65);
+  park(72,28,75,31);
+  park(46,68,49,71);
+
+  // Park shade for scattered tiles (already done per-block above)
+  // Apply per-4x4 block shade for park tiles not already shaded
+  for(let ty=0;ty<MAP_H;ty++) for(let tx=0;tx<MAP_W;tx++){
+    const id=mi(tx,ty);
+    if(tileMap[id]===T.PARK && parkShade[id]===0){
+      parkShade[id]=(hash2(Math.floor(tx/4),Math.floor(ty/4)*17)*6)|0;
+    }
+  }
+
+  // Greedy rectangle tiling for buildings
+  const free=(x,y)=> x>=0&&y>=0&&x<MAP_W&&y<MAP_H&&
+                     tileMap[mi(x,y)]===T.BUILDING&&bldgW[mi(x,y)]===0;
+  function claim(bx,by){
+    if(!free(bx,by))return;
+    const MAXW=3+Math.floor(hash2(bx*7+1,by*3+2)*5);
+    const MAXD=3+Math.floor(hash2(bx*3+5,by*7+9)*4);
+    let w=0; while(w<MAXW&&free(bx+w,by))w++;
+    let d=1;
+    grow:while(d<MAXD){
+      for(let dx=0;dx<w;dx++) if(!free(bx+dx,by+d))break grow;
+      d++;
+    }
+    bldgW[mi(bx,by)]=w; bldgD[mi(bx,by)]=d;
+    for(let dy=0;dy<d;dy++) for(let dx=0;dx<w;dx++)
+      if(dx!==0||dy!==0) bldgW[mi(bx+dx,by+dy)]=255;
+  }
+  for(let ty=0;ty<MAP_H;ty++) for(let tx=0;tx<MAP_W;tx++) claim(tx,ty);
+
+  // Height + style — Haussmann style, mostly low
+  for(let ty=0;ty<MAP_H;ty++) for(let tx=0;tx<MAP_W;tx++){
+    const id=mi(tx,ty);
+    if(tileMap[id]!==T.BUILDING||bldgW[id]===255)continue;
+    if(bldgW[id]===0){bldgW[id]=1; bldgD[id]=1;}
+    const big=bldgW[id]>1||bldgD[id]>1;
+    const hn=hash2(tx,ty);
+    const hd=hash2(Math.floor(tx/8)*8, Math.floor(ty/8)*8);
+    bldgH[id]=Math.max(2,Math.min(14,Math.round(3+hd*4+hn*2+(big?2:0))));
+    bldgStyle[id]=(Math.floor(tx/8)+Math.floor(ty/8)*3)%6;
+  }
+}
 
 // ─── coord ───────────────────────────────────────────────────────────────────
 function tileCenter(tx,ty){return{x:(tx-HALF_W+0.5)*TILE,z:(ty-HALF_H+0.5)*TILE};}
@@ -235,37 +384,7 @@ sun.shadow.mapSize.set(2048,2048);
 Object.assign(sun.shadow.camera,{left:-200,right:200,top:200,bottom:-200,near:1,far:500});
 scene.add(sun);
 
-// ─── scene geometry ──────────────────────────────────────────────────────────
-const cnt = new Array(5).fill(0);
-for(let i=0;i<MAP_W*MAP_H;i++)cnt[tileMap[i]]++;
-
-const flatGeo  = new THREE.BoxGeometry(TILE,0.5,TILE);
-const bldgBase = new THREE.BoxGeometry(TILE*0.84,1,TILE*0.84);
-
-const matRoad   = new THREE.MeshToonMaterial({color:0x555566});
-const matBridge = new THREE.MeshToonMaterial({color:0x997755});
-const matPark   = new THREE.MeshToonMaterial({color:0x55bb44});
-const matWater  = new THREE.MeshToonMaterial({color:0x3399dd});
-
-const BLDG_COLORS = [0xb8afa3,0x9ba7ad,0xa8a18f,0x8fa196,0xb0a4b8,0xaaa48d];
-const bldgCnt = new Array(6).fill(0);
-for(let i=0;i<MAP_W*MAP_H;i++)
-  if(tileMap[i]===T.BUILDING&&bldgW[i]!==255)bldgCnt[bldgStyle[i]]++;
-
-function iMesh(geo,mat,n){
-  const m=new THREE.InstancedMesh(geo,mat,Math.max(1,n));
-  m.castShadow=m.receiveShadow=true;
-  scene.add(m);return m;
-}
-
-const mRoad   = iMesh(flatGeo, matRoad,   cnt[T.ROAD]);
-const mBridge = iMesh(flatGeo, matBridge, cnt[T.BRIDGE]);
-const mPark   = iMesh(flatGeo, matPark,   cnt[T.PARK]);
-const mWater  = iMesh(flatGeo, matWater,  cnt[T.WATER]);
-const mBldgs  = BLDG_COLORS.map((c,i)=>
-  iMesh(bldgBase, new THREE.MeshToonMaterial({color:c}), bldgCnt[i])
-);
-
+// ─── ground plane (map-independent, created once) ────────────────────────────
 const gnd = new THREE.Mesh(
   new THREE.PlaneGeometry(MAP_W*TILE,MAP_H*TILE),
   new THREE.MeshToonMaterial({color:0xaa9966})
@@ -274,290 +393,358 @@ gnd.rotation.x=-Math.PI/2; gnd.position.y=-0.1; gnd.receiveShadow=true;
 scene.add(gnd);
 
 const D = new THREE.Object3D();
-const bi=[0,0,0,0,0,0];
-let ri=0,bri=0,pi=0,wi=0;
 
-for(let ty=0;ty<MAP_H;ty++) for(let tx=0;tx<MAP_W;tx++){
-  const id=mi(tx,ty), tp=tileMap[id];
-  const {x,z}=tileCenter(tx,ty);
-  D.rotation.set(0,0,0);
-  if(tp===T.ROAD){
-    D.position.set(x,0.25,z);D.scale.set(1,1,1);D.updateMatrix();
-    mRoad.setMatrixAt(ri++,D.matrix);
-  }else if(tp===T.BRIDGE){
-    D.position.set(x,0.25,z);D.scale.set(1,1,1);D.updateMatrix();
-    mBridge.setMatrixAt(bri++,D.matrix);
-  }else if(tp===T.PARK){
-    D.position.set(x,0.2,z);D.scale.set(1,1,1);D.updateMatrix();
-    mPark.setMatrixAt(pi++,D.matrix);
-  }else if(tp===T.WATER){
-    D.position.set(x,-0.15,z);D.scale.set(1,1,1);D.updateMatrix();
-    mWater.setMatrixAt(wi++,D.matrix);
-  }else if(tp===T.BUILDING){
-    if(bldgW[id]===255)continue;
-    const ci=bldgStyle[id], h=Math.max(1,bldgH[id]), bh=h*TILE*0.22;
-    const fw=Math.max(1,bldgW[id]), fd=Math.max(1,bldgD[id]);
-    const bx=x+(fw-1)*TILE*0.5, bz=z+(fd-1)*TILE*0.5;
-    D.position.set(bx,bh/2+0.4,bz);D.scale.set(fw,bh,fd);D.updateMatrix();
-    mBldgs[ci].setMatrixAt(bi[ci]++,D.matrix);
+// ─── module-level mesh refs (set by buildScene) ──────────────────────────────
+let mRoad, mBridge, mPark, mWater, mBldgs=[];
+
+// Park green palette
+const PARK_GREENS = [0x4a7a56,0x3d6b47,0x527a3a,0x466e40,0x3b6650,0x597848];
+
+function buildScene(mapType){
+  // Reset map arrays
+  tileMap.fill(T.BUILDING);
+  waterMrk.fill(0);
+  bldgH.fill(0); bldgStyle.fill(0);
+  bldgW.fill(0); bldgD.fill(0);
+  parkShade.fill(0);
+
+  // Remove old meshes from scene
+  if(mRoad)   scene.remove(mRoad);
+  if(mBridge) scene.remove(mBridge);
+  if(mPark)   scene.remove(mPark);
+  if(mWater)  scene.remove(mWater);
+  mBldgs.forEach(m=>scene.remove(m));
+  mBldgs=[];
+
+  if(mapType==='paris') buildParis();
+  else buildRandom();
+
+  // ─── scene geometry ───────────────────────────────────────────────────────
+  const cnt = new Array(5).fill(0);
+  for(let i=0;i<MAP_W*MAP_H;i++)cnt[tileMap[i]]++;
+
+  const flatGeo  = new THREE.BoxGeometry(TILE,0.5,TILE);
+  const bldgBase = new THREE.BoxGeometry(TILE*0.84,1,TILE*0.84);
+
+  const matRoad   = new THREE.MeshToonMaterial({color:0x555566});
+  const matBridge = new THREE.MeshToonMaterial({color:0x997755});
+  const matWater  = new THREE.MeshToonMaterial({color:0x3399dd});
+
+  const BLDG_COLORS = [0xb8afa3,0x9ba7ad,0xa8a18f,0x8fa196,0xb0a4b8,0xaaa48d];
+  const bldgCnt = new Array(6).fill(0);
+  for(let i=0;i<MAP_W*MAP_H;i++)
+    if(tileMap[i]===T.BUILDING&&bldgW[i]!==255)bldgCnt[bldgStyle[i]]++;
+
+  function iMesh(geo,mat,n){
+    const m=new THREE.InstancedMesh(geo,mat,Math.max(1,n));
+    m.castShadow=m.receiveShadow=true;
+    scene.add(m);return m;
   }
-}
-[mRoad,mBridge,mPark,mWater,...mBldgs].forEach(m=>m.instanceMatrix.needsUpdate=true);
 
-const roadMarkGeo = new THREE.PlaneGeometry(1,1);
-const roadDotGeo = new THREE.CircleGeometry(1,18);
-const MARK_Y = 0.535;
-const MARK_EDGE = TILE*0.08;
-const WHITE_LINE_W = TILE*0.055;
-const WHITE_DOT_R = WHITE_LINE_W*0.62;
-const YELLOW_LINE_W = TILE*0.07;
-const MIN_CENTER_LEN = 7;
-function makeQuarterArcGeometry(inner,outer,segments=14){
-  const verts=[];
-  for(let i=0;i<segments;i++){
-    const a0=(i/segments)*Math.PI/2, a1=((i+1)/segments)*Math.PI/2;
-    const i0=[Math.cos(a0)*inner,0,Math.sin(a0)*inner];
-    const o0=[Math.cos(a0)*outer,0,Math.sin(a0)*outer];
-    const i1=[Math.cos(a1)*inner,0,Math.sin(a1)*inner];
-    const o1=[Math.cos(a1)*outer,0,Math.sin(a1)*outer];
-    verts.push(...i0,...o0,...i1, ...o0,...o1,...i1);
-  }
-  const geo=new THREE.BufferGeometry();
-  geo.setAttribute('position',new THREE.Float32BufferAttribute(verts,3));
-  geo.computeVertexNormals();
-  return geo;
-}
-const roadArcGeo = makeQuarterArcGeometry(
-  Math.max(0.01,MARK_EDGE-WHITE_LINE_W*0.5),
-  MARK_EDGE+WHITE_LINE_W*0.5
-);
-const roadWhiteMat = new THREE.MeshBasicMaterial({color:0xf7f4e8,opacity:0.82,transparent:true,depthWrite:false,side:THREE.DoubleSide});
-const roadYellowMat = new THREE.MeshBasicMaterial({color:0xffd84a,opacity:0.48,transparent:true,depthWrite:false,side:THREE.DoubleSide});
-const whiteMarks = [], whiteDots = [], whiteArcs = [], yellowMarks = [];
+  mRoad   = iMesh(flatGeo, matRoad,   cnt[T.ROAD]);
+  mBridge = iMesh(flatGeo, matBridge, cnt[T.BRIDGE]);
+  mPark   = iMesh(flatGeo, new THREE.MeshToonMaterial({color:0xffffff}), Math.max(1,cnt[T.PARK]));
+  mWater  = iMesh(flatGeo, matWater,  cnt[T.WATER]);
+  mBldgs  = BLDG_COLORS.map((c,i)=>
+    iMesh(bldgBase, new THREE.MeshToonMaterial({color:c}), Math.max(1,bldgCnt[i]))
+  );
 
-function isRoadish(tx,ty){
-  if(tx<0||tx>=MAP_W||ty<0||ty>=MAP_H)return false;
-  const t=tileMap[mi(tx,ty)];
-  return t===T.ROAD||t===T.BRIDGE;
-}
-function isBuildingTile(tx,ty){
-  if(tx<0||tx>=MAP_W||ty<0||ty>=MAP_H)return true;
-  return tileMap[mi(tx,ty)]===T.BUILDING;
-}
-function addMark(list,x,z,w,d,rot=0){
-  list.push({x,z,w,d,rot});
-}
-function addDot(list,x,z,r){list.push({x,z,r});}
-function addArc(list,x,z,rot){list.push({x,z,rot});}
-function edgeX(ex){return (ex-HALF_W)*TILE;}
-function edgeZ(ey){return (ey-HALF_H)*TILE;}
+  const bi=[0,0,0,0,0,0];
+  let ri=0,bri=0,pi=0,wi=0;
 
-function addWhiteV(ex,start,end,roadSide){
-  const x=edgeX(ex)+roadSide*MARK_EDGE;
-  const z=(edgeZ(start)+edgeZ(end+1))*0.5;
-  addMark(whiteMarks,x,z,WHITE_LINE_W,(end-start+1)*TILE);
-  addDot(whiteDots,x,edgeZ(start),WHITE_DOT_R);
-  addDot(whiteDots,x,edgeZ(end+1),WHITE_DOT_R);
-}
-function addWhiteH(ey,start,end,roadSide){
-  const x=(edgeX(start)+edgeX(end+1))*0.5;
-  const z=edgeZ(ey)+roadSide*MARK_EDGE;
-  addMark(whiteMarks,x,z,(end-start+1)*TILE,WHITE_LINE_W);
-  addDot(whiteDots,edgeX(start),z,WHITE_DOT_R);
-  addDot(whiteDots,edgeX(end+1),z,WHITE_DOT_R);
-}
-
-for(let ex=0;ex<=MAP_W;ex++){
-  for(const roadSide of [-1,1]){
-    let start=-1;
-    for(let ty=0;ty<MAP_H;ty++){
-      const road=roadSide>0?isRoadish(ex,ty):isRoadish(ex-1,ty);
-      const wall=roadSide>0?isBuildingTile(ex-1,ty):isBuildingTile(ex,ty);
-      if(road&&wall){if(start<0)start=ty;}
-      else if(start>=0){addWhiteV(ex,start,ty-1,roadSide);start=-1;}
+  for(let ty=0;ty<MAP_H;ty++) for(let tx=0;tx<MAP_W;tx++){
+    const id=mi(tx,ty), tp=tileMap[id];
+    const {x,z}=tileCenter(tx,ty);
+    D.rotation.set(0,0,0);
+    if(tp===T.ROAD){
+      D.position.set(x,0.25,z);D.scale.set(1,1,1);D.updateMatrix();
+      mRoad.setMatrixAt(ri++,D.matrix);
+    }else if(tp===T.BRIDGE){
+      D.position.set(x,0.25,z);D.scale.set(1,1,1);D.updateMatrix();
+      mBridge.setMatrixAt(bri++,D.matrix);
+    }else if(tp===T.PARK){
+      D.position.set(x,0.2,z); D.scale.set(1,1,1); D.updateMatrix();
+      mPark.setMatrixAt(pi, D.matrix);
+      const shade = parkShade[id] % 6;
+      mPark.setColorAt(pi, new THREE.Color(PARK_GREENS[shade]));
+      pi++;
+    }else if(tp===T.WATER){
+      D.position.set(x,-0.15,z);D.scale.set(1,1,1);D.updateMatrix();
+      mWater.setMatrixAt(wi++,D.matrix);
+    }else if(tp===T.BUILDING){
+      if(bldgW[id]===255)continue;
+      const ci=bldgStyle[id], h=Math.max(1,bldgH[id]), bh=h*TILE*0.22;
+      const fw=Math.max(1,bldgW[id]), fd=Math.max(1,bldgD[id]);
+      const bx=x+(fw-1)*TILE*0.5, bz=z+(fd-1)*TILE*0.5;
+      D.position.set(bx,bh/2+0.4,bz);D.scale.set(fw,bh,fd);D.updateMatrix();
+      mBldgs[ci].setMatrixAt(bi[ci]++,D.matrix);
     }
-    if(start>=0)addWhiteV(ex,start,MAP_H-1,roadSide);
   }
-}
+  [mRoad,mBridge,mPark,mWater,...mBldgs].forEach(m=>m.instanceMatrix.needsUpdate=true);
+  if(mPark.instanceColor) mPark.instanceColor.needsUpdate=true;
 
-for(let ey=0;ey<=MAP_H;ey++){
-  for(const roadSide of [-1,1]){
+  // ─── road markings ────────────────────────────────────────────────────────
+  const roadMarkGeo = new THREE.PlaneGeometry(1,1);
+  const roadDotGeo = new THREE.CircleGeometry(1,18);
+  const MARK_Y = 0.535;
+  const MARK_EDGE = TILE*0.08;
+  const WHITE_LINE_W = TILE*0.055;
+  const WHITE_DOT_R = WHITE_LINE_W*0.62;
+  const YELLOW_LINE_W = TILE*0.07;
+  const MIN_CENTER_LEN = 7;
+  function makeQuarterArcGeometry(inner,outer,segments=14){
+    const verts=[];
+    for(let i=0;i<segments;i++){
+      const a0=(i/segments)*Math.PI/2, a1=((i+1)/segments)*Math.PI/2;
+      const i0=[Math.cos(a0)*inner,0,Math.sin(a0)*inner];
+      const o0=[Math.cos(a0)*outer,0,Math.sin(a0)*outer];
+      const i1=[Math.cos(a1)*inner,0,Math.sin(a1)*inner];
+      const o1=[Math.cos(a1)*outer,0,Math.sin(a1)*outer];
+      verts.push(...i0,...o0,...i1, ...o0,...o1,...i1);
+    }
+    const geo=new THREE.BufferGeometry();
+    geo.setAttribute('position',new THREE.Float32BufferAttribute(verts,3));
+    geo.computeVertexNormals();
+    return geo;
+  }
+  const roadArcGeo = makeQuarterArcGeometry(
+    Math.max(0.01,MARK_EDGE-WHITE_LINE_W*0.5),
+    MARK_EDGE+WHITE_LINE_W*0.5
+  );
+  const roadWhiteMat = new THREE.MeshBasicMaterial({color:0xf7f4e8,opacity:0.82,transparent:true,depthWrite:false,side:THREE.DoubleSide});
+  const roadYellowMat = new THREE.MeshBasicMaterial({color:0xffd84a,opacity:0.48,transparent:true,depthWrite:false,side:THREE.DoubleSide});
+  const whiteMarks = [], whiteDots = [], whiteArcs = [], yellowMarks = [];
+
+  function isRoadish(tx,ty){
+    if(tx<0||tx>=MAP_W||ty<0||ty>=MAP_H)return false;
+    const t=tileMap[mi(tx,ty)];
+    return t===T.ROAD||t===T.BRIDGE;
+  }
+  function isBuildingTile(tx,ty){
+    if(tx<0||tx>=MAP_W||ty<0||ty>=MAP_H)return true;
+    return tileMap[mi(tx,ty)]===T.BUILDING;
+  }
+  function addMark(list,x,z,w,d,rot=0){
+    list.push({x,z,w,d,rot});
+  }
+  function addDot(list,x,z,r){list.push({x,z,r});}
+  function addArc(list,x,z,rot){list.push({x,z,rot});}
+  function edgeX(ex){return (ex-HALF_W)*TILE;}
+  function edgeZ(ey){return (ey-HALF_H)*TILE;}
+
+  function addWhiteV(ex,start,end,roadSide){
+    const x=edgeX(ex)+roadSide*MARK_EDGE;
+    const z=(edgeZ(start)+edgeZ(end+1))*0.5;
+    addMark(whiteMarks,x,z,WHITE_LINE_W,(end-start+1)*TILE);
+    addDot(whiteDots,x,edgeZ(start),WHITE_DOT_R);
+    addDot(whiteDots,x,edgeZ(end+1),WHITE_DOT_R);
+  }
+  function addWhiteH(ey,start,end,roadSide){
+    const x=(edgeX(start)+edgeX(end+1))*0.5;
+    const z=edgeZ(ey)+roadSide*MARK_EDGE;
+    addMark(whiteMarks,x,z,(end-start+1)*TILE,WHITE_LINE_W);
+    addDot(whiteDots,edgeX(start),z,WHITE_DOT_R);
+    addDot(whiteDots,edgeX(end+1),z,WHITE_DOT_R);
+  }
+
+  for(let ex=0;ex<=MAP_W;ex++){
+    for(const roadSide of [-1,1]){
+      let start=-1;
+      for(let ty=0;ty<MAP_H;ty++){
+        const road=roadSide>0?isRoadish(ex,ty):isRoadish(ex-1,ty);
+        const wall=roadSide>0?isBuildingTile(ex-1,ty):isBuildingTile(ex,ty);
+        if(road&&wall){if(start<0)start=ty;}
+        else if(start>=0){addWhiteV(ex,start,ty-1,roadSide);start=-1;}
+      }
+      if(start>=0)addWhiteV(ex,start,MAP_H-1,roadSide);
+    }
+  }
+
+  for(let ey=0;ey<=MAP_H;ey++){
+    for(const roadSide of [-1,1]){
+      let start=-1;
+      for(let tx=0;tx<MAP_W;tx++){
+        const road=roadSide>0?isRoadish(tx,ey):isRoadish(tx,ey-1);
+        const wall=roadSide>0?isBuildingTile(tx,ey-1):isBuildingTile(tx,ey);
+        if(road&&wall){if(start<0)start=tx;}
+        else if(start>=0){addWhiteH(ey,start,tx-1,roadSide);start=-1;}
+      }
+      if(start>=0)addWhiteH(ey,start,MAP_W-1,roadSide);
+    }
+  }
+
+  for(let ey=1;ey<MAP_H;ey++) for(let ex=1;ex<MAP_W;ex++){
+    const x=edgeX(ex), z=edgeZ(ey);
+    const nwB=isBuildingTile(ex-1,ey-1), neB=isBuildingTile(ex,ey-1);
+    const swB=isBuildingTile(ex-1,ey),   seB=isBuildingTile(ex,ey);
+    const nwR=isRoadish(ex-1,ey-1), neR=isRoadish(ex,ey-1);
+    const swR=isRoadish(ex-1,ey),   seR=isRoadish(ex,ey);
+
+    if(nwB&&neR&&swR)addArc(whiteArcs,x,z,0);
+    if(neB&&nwR&&seR)addArc(whiteArcs,x,z,-Math.PI/2);
+    if(seB&&neR&&swR)addArc(whiteArcs,x,z,Math.PI);
+    if(swB&&nwR&&seR)addArc(whiteArcs,x,z,Math.PI/2);
+  }
+
+  function addYellowH(ey,start,end){
+    const x=(edgeX(start)+edgeX(end+1))*0.5;
+    addMark(yellowMarks,x,edgeZ(ey),(end-start+1)*TILE,YELLOW_LINE_W);
+  }
+  function addYellowV(ex,start,end){
+    const z=(edgeZ(start)+edgeZ(end+1))*0.5;
+    addMark(yellowMarks,edgeX(ex),z,YELLOW_LINE_W,(end-start+1)*TILE);
+  }
+  function roadWidthAcrossZ(tx,ey){
+    let up=0,down=0;
+    for(let y=ey-1;y>=0&&isRoadish(tx,y);y--)up++;
+    for(let y=ey;y<MAP_H&&isRoadish(tx,y);y++)down++;
+    return {up,down};
+  }
+  function roadWidthAcrossX(ex,ty){
+    let left=0,right=0;
+    for(let x=ex-1;x>=0&&isRoadish(x,ty);x--)left++;
+    for(let x=ex;x<MAP_W&&isRoadish(x,ty);x++)right++;
+    return {left,right};
+  }
+
+  for(let ey=1;ey<MAP_H;ey++){
     let start=-1;
     for(let tx=0;tx<MAP_W;tx++){
-      const road=roadSide>0?isRoadish(tx,ey):isRoadish(tx,ey-1);
-      const wall=roadSide>0?isBuildingTile(tx,ey-1):isBuildingTile(tx,ey);
-      if(road&&wall){if(start<0)start=tx;}
-      else if(start>=0){addWhiteH(ey,start,tx-1,roadSide);start=-1;}
+      const {up,down}=roadWidthAcrossZ(tx,ey);
+      const twoLane=isRoadish(tx,ey-1)&&isRoadish(tx,ey)&&
+        up===down&&up+down>=2&&
+        isRoadish(tx-1,ey-1)&&isRoadish(tx+1,ey-1)&&
+        isRoadish(tx-1,ey)&&isRoadish(tx+1,ey);
+      if(twoLane){if(start<0)start=tx;}
+      else if(start>=0){
+        if(tx-start>=MIN_CENTER_LEN)addYellowH(ey,start,tx-1);
+        start=-1;
+      }
     }
-    if(start>=0)addWhiteH(ey,start,MAP_W-1,roadSide);
+    if(start>=0&&MAP_W-start>=MIN_CENTER_LEN)addYellowH(ey,start,MAP_W-1);
   }
-}
 
-for(let ey=1;ey<MAP_H;ey++) for(let ex=1;ex<MAP_W;ex++){
-  const x=edgeX(ex), z=edgeZ(ey);
-  const nwB=isBuildingTile(ex-1,ey-1), neB=isBuildingTile(ex,ey-1);
-  const swB=isBuildingTile(ex-1,ey),   seB=isBuildingTile(ex,ey);
-  const nwR=isRoadish(ex-1,ey-1), neR=isRoadish(ex,ey-1);
-  const swR=isRoadish(ex-1,ey),   seR=isRoadish(ex,ey);
+  for(let ex=1;ex<MAP_W;ex++){
+    let start=-1;
+    for(let ty=0;ty<MAP_H;ty++){
+      const {left,right}=roadWidthAcrossX(ex,ty);
+      const twoLane=isRoadish(ex-1,ty)&&isRoadish(ex,ty)&&
+        left===right&&left+right>=2&&
+        isRoadish(ex-1,ty-1)&&isRoadish(ex-1,ty+1)&&
+        isRoadish(ex,ty-1)&&isRoadish(ex,ty+1);
+      if(twoLane){if(start<0)start=ty;}
+      else if(start>=0){
+        if(ty-start>=MIN_CENTER_LEN)addYellowV(ex,start,ty-1);
+        start=-1;
+      }
+    }
+    if(start>=0&&MAP_H-start>=MIN_CENTER_LEN)addYellowV(ex,start,MAP_H-1);
+  }
 
-  if(nwB&&neR&&swR)addArc(whiteArcs,x,z,0);
-  if(neB&&nwR&&seR)addArc(whiteArcs,x,z,-Math.PI/2);
-  if(seB&&neR&&swR)addArc(whiteArcs,x,z,Math.PI);
-  if(swB&&nwR&&seR)addArc(whiteArcs,x,z,Math.PI/2);
-}
+  function wideRoadAt(tx,ty){
+    if(!isRoadish(tx,ty))return false;
+    let near=0;
+    for(let dy=-1;dy<=1;dy++) for(let dx=-1;dx<=1;dx++)
+      if(dx!==0||dy!==0)near+=isRoadish(tx+dx,ty+dy)?1:0;
+    const cross=(isRoadish(tx-1,ty)&&isRoadish(tx+1,ty))+
+                (isRoadish(tx,ty-1)&&isRoadish(tx,ty+1));
+    return near>=5||cross===2;
+  }
+  function drawSafetyZone(cx,cz,w,d){
+    const thick=TILE*0.075;
+    addMark(yellowMarks,cx,cz-d*0.5, w, thick);
+    addMark(yellowMarks,cx,cz+d*0.5, w, thick);
+    addMark(yellowMarks,cx-w*0.5,cz, thick, d);
+    addMark(yellowMarks,cx+w*0.5,cz, thick, d);
 
-function addYellowH(ey,start,end){
-  const x=(edgeX(start)+edgeX(end+1))*0.5;
-  addMark(yellowMarks,x,edgeZ(ey),(end-start+1)*TILE,YELLOW_LINE_W);
-}
-function addYellowV(ex,start,end){
-  const z=(edgeZ(start)+edgeZ(end+1))*0.5;
-  addMark(yellowMarks,edgeX(ex),z,YELLOW_LINE_W,(end-start+1)*TILE);
-}
-function roadWidthAcrossZ(tx,ey){
-  let up=0,down=0;
-  for(let y=ey-1;y>=0&&isRoadish(tx,y);y--)up++;
-  for(let y=ey;y<MAP_H&&isRoadish(tx,y);y++)down++;
-  return {up,down};
-}
-function roadWidthAcrossX(ex,ty){
-  let left=0,right=0;
-  for(let x=ex-1;x>=0&&isRoadish(x,ty);x--)left++;
-  for(let x=ex;x<MAP_W&&isRoadish(x,ty);x++)right++;
-  return {left,right};
-}
-
-for(let ey=1;ey<MAP_H;ey++){
-  let start=-1;
-  for(let tx=0;tx<MAP_W;tx++){
-    const {up,down}=roadWidthAcrossZ(tx,ey);
-    const twoLane=isRoadish(tx,ey-1)&&isRoadish(tx,ey)&&
-      up===down&&up+down>=2&&
-      isRoadish(tx-1,ey-1)&&isRoadish(tx+1,ey-1)&&
-      isRoadish(tx-1,ey)&&isRoadish(tx+1,ey);
-    if(twoLane){if(start<0)start=tx;}
-    else if(start>=0){
-      if(tx-start>=MIN_CENTER_LEN)addYellowH(ey,start,tx-1);
-      start=-1;
+    const stripes=Math.max(3,Math.floor(Math.min(w,d)/(TILE*0.38)));
+    const len=Math.min(w,d)*0.7;
+    for(let i=0;i<stripes;i++){
+      const t=stripes===1?0:i/(stripes-1);
+      addMark(yellowMarks,cx+(t-0.5)*w*0.68,cz,TILE*0.055,len,Math.PI/4);
     }
   }
-  if(start>=0&&MAP_W-start>=MIN_CENTER_LEN)addYellowH(ey,start,MAP_W-1);
-}
 
-for(let ex=1;ex<MAP_W;ex++){
-  let start=-1;
-  for(let ty=0;ty<MAP_H;ty++){
-    const {left,right}=roadWidthAcrossX(ex,ty);
-    const twoLane=isRoadish(ex-1,ty)&&isRoadish(ex,ty)&&
-      left===right&&left+right>=2&&
-      isRoadish(ex-1,ty-1)&&isRoadish(ex-1,ty+1)&&
-      isRoadish(ex,ty-1)&&isRoadish(ex,ty+1);
-    if(twoLane){if(start<0)start=ty;}
-    else if(start>=0){
-      if(ty-start>=MIN_CENTER_LEN)addYellowV(ex,start,ty-1);
-      start=-1;
+  const wideSeen = new Uint8Array(MAP_W*MAP_H);
+  for(let ty=1;ty<MAP_H-1;ty++) for(let tx=1;tx<MAP_W-1;tx++){
+    const start=mi(tx,ty);
+    if(wideSeen[start]||!wideRoadAt(tx,ty))continue;
+
+    let minX=tx,maxX=tx,minY=ty,maxY=ty,count=0;
+    const stack=[[tx,ty]];
+    wideSeen[start]=1;
+    while(stack.length){
+      const [cx,cy]=stack.pop();
+      count++;
+      minX=Math.min(minX,cx); maxX=Math.max(maxX,cx);
+      minY=Math.min(minY,cy); maxY=Math.max(maxY,cy);
+      [[1,0],[-1,0],[0,1],[0,-1]].forEach(([dx,dy])=>{
+        const nx=cx+dx, ny=cy+dy;
+        if(nx<1||nx>=MAP_W-1||ny<1||ny>=MAP_H-1)return;
+        const id=mi(nx,ny);
+        if(wideSeen[id]||!wideRoadAt(nx,ny))return;
+        wideSeen[id]=1; stack.push([nx,ny]);
+      });
     }
+
+    const cw=maxX-minX+1, cd=maxY-minY+1;
+    if(count<3||cw<2||cd<2)continue;
+    const c0=tileCenter(Math.floor((minX+maxX)/2),Math.floor((minY+maxY)/2));
+    const boxW=Math.min(TILE*3.2,Math.max(TILE*1.25,cw*TILE*0.62));
+    const boxD=Math.min(TILE*3.2,Math.max(TILE*1.25,cd*TILE*0.62));
+    drawSafetyZone(c0.x,c0.z,boxW,boxD);
   }
-  if(start>=0&&MAP_H-start>=MIN_CENTER_LEN)addYellowV(ex,start,MAP_H-1);
-}
 
-function wideRoadAt(tx,ty){
-  if(!isRoadish(tx,ty))return false;
-  let near=0;
-  for(let dy=-1;dy<=1;dy++) for(let dx=-1;dx<=1;dx++)
-    if(dx!==0||dy!==0)near+=isRoadish(tx+dx,ty+dy)?1:0;
-  const cross=(isRoadish(tx-1,ty)&&isRoadish(tx+1,ty))+
-              (isRoadish(tx,ty-1)&&isRoadish(tx,ty+1));
-  return near>=5||cross===2;
-}
-function drawSafetyZone(cx,cz,w,d){
-  const thick=TILE*0.075;
-  addMark(yellowMarks,cx,cz-d*0.5, w, thick);
-  addMark(yellowMarks,cx,cz+d*0.5, w, thick);
-  addMark(yellowMarks,cx-w*0.5,cz, thick, d);
-  addMark(yellowMarks,cx+w*0.5,cz, thick, d);
-
-  const stripes=Math.max(3,Math.floor(Math.min(w,d)/(TILE*0.38)));
-  const len=Math.min(w,d)*0.7;
-  for(let i=0;i<stripes;i++){
-    const t=stripes===1?0:i/(stripes-1);
-    addMark(yellowMarks,cx+(t-0.5)*w*0.68,cz,TILE*0.055,len,Math.PI/4);
-  }
-}
-
-const wideSeen = new Uint8Array(MAP_W*MAP_H);
-for(let ty=1;ty<MAP_H-1;ty++) for(let tx=1;tx<MAP_W-1;tx++){
-  const start=mi(tx,ty);
-  if(wideSeen[start]||!wideRoadAt(tx,ty))continue;
-
-  let minX=tx,maxX=tx,minY=ty,maxY=ty,count=0;
-  const stack=[[tx,ty]];
-  wideSeen[start]=1;
-  while(stack.length){
-    const [cx,cy]=stack.pop();
-    count++;
-    minX=Math.min(minX,cx); maxX=Math.max(maxX,cx);
-    minY=Math.min(minY,cy); maxY=Math.max(maxY,cy);
-    [[1,0],[-1,0],[0,1],[0,-1]].forEach(([dx,dy])=>{
-      const nx=cx+dx, ny=cy+dy;
-      if(nx<1||nx>=MAP_W-1||ny<1||ny>=MAP_H-1)return;
-      const id=mi(nx,ny);
-      if(wideSeen[id]||!wideRoadAt(nx,ny))return;
-      wideSeen[id]=1; stack.push([nx,ny]);
+  function makeRoadMarks(list,mat){
+    if(list.length===0)return;
+    const mesh=new THREE.InstancedMesh(roadMarkGeo,mat,list.length);
+    list.forEach(({x,z,w,d,rot},i)=>{
+      D.rotation.set(-Math.PI/2,0,rot);
+      D.position.set(x,MARK_Y,z);
+      D.scale.set(w,d,1);
+      D.updateMatrix();
+      mesh.setMatrixAt(i,D.matrix);
     });
+    mesh.instanceMatrix.needsUpdate=true;
+    scene.add(mesh);
   }
+  function makeRoadDots(list,mat){
+    if(list.length===0)return;
+    const mesh=new THREE.InstancedMesh(roadDotGeo,mat,list.length);
+    list.forEach(({x,z,r},i)=>{
+      D.rotation.set(-Math.PI/2,0,0);
+      D.position.set(x,MARK_Y+0.002,z);
+      D.scale.set(r,r,1);
+      D.updateMatrix();
+      mesh.setMatrixAt(i,D.matrix);
+    });
+    mesh.instanceMatrix.needsUpdate=true;
+    scene.add(mesh);
+  }
+  function makeRoadArcs(list,mat){
+    if(list.length===0)return;
+    const mesh=new THREE.InstancedMesh(roadArcGeo,mat,list.length);
+    list.forEach(({x,z,rot},i)=>{
+      D.rotation.set(0,rot,0);
+      D.position.set(x,MARK_Y+0.004,z);
+      D.scale.set(1,1,1);
+      D.updateMatrix();
+      mesh.setMatrixAt(i,D.matrix);
+    });
+    mesh.instanceMatrix.needsUpdate=true;
+    scene.add(mesh);
+  }
+  makeRoadMarks(whiteMarks,roadWhiteMat);
+  makeRoadArcs(whiteArcs,roadWhiteMat);
+  makeRoadDots(whiteDots,roadWhiteMat);
+  makeRoadMarks(yellowMarks,roadYellowMat);
 
-  const cw=maxX-minX+1, cd=maxY-minY+1;
-  if(count<3||cw<2||cd<2)continue;
-  const c0=tileCenter(Math.floor((minX+maxX)/2),Math.floor((minY+maxY)/2));
-  const boxW=Math.min(TILE*3.2,Math.max(TILE*1.25,cw*TILE*0.62));
-  const boxD=Math.min(TILE*3.2,Math.max(TILE*1.25,cd*TILE*0.62));
-  drawSafetyZone(c0.x,c0.z,boxW,boxD);
+  // Car spawn
+  const {x:_sx, z:_sz} = tileCenter(HALF_W, HALF_H);
+  sx = _sx; sz = _sz;
+  carGroup.position.set(sx, 0, sz);
+  setTopCamera(sx, sz);
 }
-
-function makeRoadMarks(list,mat){
-  if(list.length===0)return;
-  const mesh=new THREE.InstancedMesh(roadMarkGeo,mat,list.length);
-  list.forEach(({x,z,w,d,rot},i)=>{
-    D.rotation.set(-Math.PI/2,0,rot);
-    D.position.set(x,MARK_Y,z);
-    D.scale.set(w,d,1);
-    D.updateMatrix();
-    mesh.setMatrixAt(i,D.matrix);
-  });
-  mesh.instanceMatrix.needsUpdate=true;
-  scene.add(mesh);
-}
-function makeRoadDots(list,mat){
-  if(list.length===0)return;
-  const mesh=new THREE.InstancedMesh(roadDotGeo,mat,list.length);
-  list.forEach(({x,z,r},i)=>{
-    D.rotation.set(-Math.PI/2,0,0);
-    D.position.set(x,MARK_Y+0.002,z);
-    D.scale.set(r,r,1);
-    D.updateMatrix();
-    mesh.setMatrixAt(i,D.matrix);
-  });
-  mesh.instanceMatrix.needsUpdate=true;
-  scene.add(mesh);
-}
-function makeRoadArcs(list,mat){
-  if(list.length===0)return;
-  const mesh=new THREE.InstancedMesh(roadArcGeo,mat,list.length);
-  list.forEach(({x,z,rot},i)=>{
-    D.rotation.set(0,rot,0);
-    D.position.set(x,MARK_Y+0.004,z);
-    D.scale.set(1,1,1);
-    D.updateMatrix();
-    mesh.setMatrixAt(i,D.matrix);
-  });
-  mesh.instanceMatrix.needsUpdate=true;
-  scene.add(mesh);
-}
-makeRoadMarks(whiteMarks,roadWhiteMat);
-makeRoadArcs(whiteArcs,roadWhiteMat);
-makeRoadDots(whiteDots,roadWhiteMat);
-makeRoadMarks(yellowMarks,roadYellowMat);
 
 // ─── car + character: cartoon 3D top-view vehicle ───────────────────────────
 // Car faces local +X direction.
@@ -659,9 +846,8 @@ const wheelGeo = new THREE.CylinderGeometry(wheelRadius, wheelRadius, wheelWidth
 });
 
 
-// ── spawn ─────────────────────────────────────────────────────────────────────
-const {x:sx, z:sz} = tileCenter(HALF_W, HALF_H);
-carGroup.position.set(sx, 0, sz);
+// ── spawn (module-level, set by buildScene) ───────────────────────────────────
+let sx = 0, sz = 0;
 
 // ─── particles ───────────────────────────────────────────────────────────────
 const PCOUNT=60, SCOUNT=35;
@@ -763,7 +949,7 @@ const keys={};
 window.addEventListener('keydown',e=>{
   if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code))e.preventDefault();
   keys[e.code]=true;
-  if(!gameOn)startGame();
+  if(!gameOn && selectedMap) startGame();
 });
 window.addEventListener('keyup',e=>{keys[e.code]=false;});
 
@@ -787,14 +973,34 @@ const startBtn = document.getElementById('startBtn');
 const hud      = document.getElementById('hud');
 const recalBtn = document.getElementById('recalBtn');
 
+let selectedMap = null;
+const mapSelectEl  = document.getElementById('mapSelect');
+const startPanelEl = document.getElementById('startPanel');
+const startDescEl  = document.getElementById('startDesc');
+
+document.getElementById('btnParis').addEventListener('click', () => {
+  selectedMap = 'paris';
+  mapSelectEl.style.display = 'none';
+  startDescEl.innerHTML = '🗼 파리 지도로 주행합니다.<br><small style="color:#888">모바일: 센서 접근 허용 필요</small>';
+  startPanelEl.style.display = 'flex';
+});
+document.getElementById('btnRandom').addEventListener('click', () => {
+  selectedMap = 'random';
+  mapSelectEl.style.display = 'none';
+  startDescEl.innerHTML = '🎲 랜덤 도시 지도로 주행합니다.<br><small style="color:#888">모바일: 센서 접근 허용 필요</small>';
+  startPanelEl.style.display = 'flex';
+});
+
 async function startGame(){
-  if(gameOn||starting)return;
+  if(gameOn||starting||!selectedMap)return;
   starting=true;
   const ok=await reqSensor();
   if(!ok){starting=false;alert('센서 권한이 필요합니다.');return;}
+  buildScene(selectedMap);
   calibrate();
   Object.keys(keys).forEach(k=>keys[k]=false);
   overlay.style.display='none'; hud.style.display='block'; recalBtn.style.display='block';
+  dirX=0; dirZ=-1; prevDirX=0; prevDirZ=-1;
   gameOn=true;
   starting=false;
 }
@@ -835,6 +1041,7 @@ function hideJoystick(){
 
 const canvasEl=document.getElementById('c');
 canvasEl.addEventListener('touchstart',e=>{
+  if(gameOn) e.preventDefault();
   if(!gameOn||touchId!==null) return;
   const t=e.changedTouches[0];
   touchId=t.identifier;
