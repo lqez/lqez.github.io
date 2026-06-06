@@ -1,6 +1,5 @@
-import { GameState, gameState, timeLeft, startRound, GAME_DURATION } from './state.js';
-import { sensorOk, calibrate, reqSensor, initJoystick } from './input.js';
-import { sx, sz, setTopCamera, cameraLead, ZERO_CAMERA_LEAD } from './scene.js';
+import { timeLeft, startRound } from './state.js';
+import { calibrate, reqSensor, initJoystick } from './input.js';
 import { CONST_SPEED } from './constants.js';
 
 export let gameOn = false;

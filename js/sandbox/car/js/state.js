@@ -21,6 +21,6 @@ export function startRound(mapType){
 export function updateState(dt){
   if(gameState!==GameState.PLAYING) return;
   timeLeft -= dt;
-  if(timeLeft<=0){ timeLeft=0; gameState=GameState.GAME_OVER; }
+  if(timeLeft<0.001){ timeLeft=0; gameState=GameState.GAME_OVER; }
 }
 
