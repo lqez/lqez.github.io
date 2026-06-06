@@ -108,7 +108,7 @@ function buildMap(){
   }
   for(let i=0;i<MAP_W*MAP_H;i++)
     if(tileMap[i]===T.BUILDING&&bldgH[i]===0)
-      bldgH[i]=1+Math.floor(rng()*7);
+      bldgH[i]=1+Math.floor(rng()*3);
 }
 buildMap();
 
@@ -132,16 +132,17 @@ const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x87ceeb);
 scene.fog = new THREE.Fog(0x87ceeb, 200, 440);
 
-const camera = new THREE.PerspectiveCamera(55,1,1,600);
+const camera = new THREE.PerspectiveCamera(42,1,1,700);
+camera.up.set(0,0,-1);
 
 // ─── lighting ────────────────────────────────────────────────────────────────
 scene.add(new THREE.AmbientLight(0xffffff, 2.2));
 scene.add(new THREE.HemisphereLight(0x99ccff, 0x66aa44, 1.2));
 const sun = new THREE.DirectionalLight(0xfff0cc, 2.0);
-sun.position.set(100,200,80);
+sun.position.set(60,90,50);
 sun.castShadow = true;
 sun.shadow.mapSize.set(2048,2048);
-Object.assign(sun.shadow.camera,{left:-250,right:250,top:250,bottom:-250,near:1,far:800});
+Object.assign(sun.shadow.camera,{left:-200,right:200,top:200,bottom:-200,near:1,far:500});
 scene.add(sun);
 
 // ─── scene geometry ──────────────────────────────────────────────────────────
@@ -202,7 +203,7 @@ for(let ty=0;ty<MAP_H;ty++) for(let tx=0;tx<MAP_W;tx++){
     D.position.set(x,-0.15,z);D.scale.set(1,1,1);D.updateMatrix();
     mWater.setMatrixAt(wi++,D.matrix);
   }else if(tp===T.BUILDING){
-    const ci=id%6, h=Math.max(1,bldgH[id]), bh=h*TILE*0.55;
+    const ci=id%6, h=Math.max(1,bldgH[id]), bh=h*TILE*0.22;
     D.position.set(x,bh/2+0.4,z);D.scale.set(1,bh,1);D.updateMatrix();
     mBldgs[ci].setMatrixAt(bi[ci]++,D.matrix);
   }
@@ -228,11 +229,19 @@ if(dashPos.length>0){
 }
 
 // ─── car + character: cartoon 3D top-view vehicle ───────────────────────────
-// Car faces local +X direction. carVisual child handles roll.
+// Car faces local +X direction.
 const carGroup  = new THREE.Group();
 const carVisual = new THREE.Group();
 carGroup.add(carVisual);
 scene.add(carGroup);
+
+const blobShadow = new THREE.Mesh(
+  new THREE.CircleGeometry(TILE * 0.55, 20),
+  new THREE.MeshBasicMaterial({color:0x000000, transparent:true, opacity:0.38, depthWrite:false})
+);
+blobShadow.rotation.x = -Math.PI / 2;
+blobShadow.position.y = 0.06;
+carGroup.add(blobShadow);
 
 const R = TILE * 0.24;
 
@@ -290,16 +299,16 @@ addSphere(carVisual, R*0.56, [-R*0.10, R*1.20+0.32, 0], [0.95, 0.34, 0.78], glas
 
 // ── wheels ────────────────────────────────────────────────────────────────────
 const wheelMeshes = [];
-const wheelRadius = R * 0.46;
-const wheelWidth  = R * 0.36;
+const wheelRadius = R * 0.70;
+const wheelWidth  = R * 0.52;
 const wR_ = wheelRadius; // alias used by tick() for spin rate
 const wheelGeo = new THREE.CylinderGeometry(wheelRadius, wheelRadius, wheelWidth, 18);
 
 [
-  [ R*0.85, wheelRadius+0.15,  R*1.15],
-  [ R*0.85, wheelRadius+0.15, -R*1.15],
-  [-R*1.05, wheelRadius+0.15,  R*1.15],
-  [-R*1.05, wheelRadius+0.15, -R*1.15],
+  [ R*0.85, wheelRadius+0.10,  R*1.22],
+  [ R*0.85, wheelRadius+0.10, -R*1.22],
+  [-R*1.05, wheelRadius+0.10,  R*1.22],
+  [-R*1.05, wheelRadius+0.10, -R*1.22],
 ].forEach(([wx, wy, wz]) => {
   const wheel = new THREE.Mesh(wheelGeo, tireMat);
   wheel.rotation.x = Math.PI / 2;
@@ -318,36 +327,6 @@ const wheelGeo = new THREE.CylinderGeometry(wheelRadius, wheelRadius, wheelWidth
   carVisual.add(hub);
 });
 
-// ── character ─────────────────────────────────────────────────────────────────
-const character = new THREE.Group();
-character.position.set(R*0.35, R*1.05+0.32, -R*0.95);
-character.rotation.y = -0.18;
-carVisual.add(character);
-
-addBox(character, [R*0.55, R*0.75, R*0.36], [0, R*0.12, 0], whiteMat);
-addSphere(character, R*0.42, [R*0.10, R*0.78, 0], [1.0, 1.05, 0.92], skinMat, 18);
-addSphere(character, R*0.45, [R*0.03, R*0.94, 0], [1.05, 0.55, 1.0], redMat, 18);
-
-const helmetSpike = new THREE.Mesh(new THREE.ConeGeometry(R*0.25, R*0.45, 4), redMat);
-helmetSpike.position.set(R*0.05, R*1.22, -R*0.03);
-helmetSpike.rotation.z = -Math.PI / 5;
-helmetSpike.castShadow = true;
-character.add(helmetSpike);
-
-[[R*0.34, R*0.82, -R*0.17], [R*0.34, R*0.82, R*0.17]].forEach(pos =>
-  addSphere(character, R*0.055, pos, [1, 1, 1], eyeMat, 8));
-
-[[R*0.30, R*0.25, -R*0.30, 0.45], [R*0.30, R*0.25, R*0.30, -0.45]].forEach(([x, y, z, rz]) =>
-  addCylinder(character, R*0.08, R*0.08, R*0.52, [x, y, z], [Math.PI/2, 0, rz], skinMat, 10));
-
-addSphere(character, R*0.18, [R*0.48, R*0.18, -R*0.47], [1.1, 0.9, 1.0], redMat, 12);
-addSphere(character, R*0.18, [R*0.48, R*0.18,  R*0.47], [1.1, 0.9, 1.0], redMat, 12);
-
-[[-R*0.12, -R*0.38, -R*0.14], [-R*0.12, -R*0.38, R*0.14]].forEach(pos =>
-  addBox(character, [R*0.18, R*0.55, R*0.18], pos, redMat));
-
-[[R*0.08, -R*0.70, -R*0.15], [R*0.08, -R*0.70, R*0.15]].forEach(pos =>
-  addBox(character, [R*0.34, R*0.16, R*0.22], pos, redMat));
 
 // ── spawn ─────────────────────────────────────────────────────────────────────
 const {x:sx, z:sz} = tileCenter(HALF_W, HALF_H);
@@ -374,29 +353,36 @@ let pHead=0, sHead=0;
 
 function spawnEffects(x,z,fwX,fwZ,spd){
   if(spd<5)return;
-  const rx=x-fwX*CAR_HL*0.8, rz=z-fwZ*CAR_HL*0.8;
-  const px=-fwZ, pz=fwX; // perpendicular
+  const px=-fwZ, pz=fwX; // perpendicular (local +Z in world)
+  const rCX=x-fwX*R*1.05, rCZ=z-fwZ*R*1.05;
 
-  for(let i=0;i<2;i++){
+  // rear-right and rear-left wheel world positions
+  const wpos=[
+    [rCX+px*R*1.22, rCZ+pz*R*1.22],
+    [rCX-px*R*1.22, rCZ-pz*R*1.22],
+  ];
+
+  for(const [wx,wz] of wpos){
     const idx=pHead%PCOUNT; pHead++;
     const p=pData[idx], m=pebbleMeshes[idx];
-    const lat=(Math.random()-0.5)*3;
+    const lat=(Math.random()-0.5)*2.5;
     const bs=4+Math.random()*10;
     p.active=true;
     p.vx=-fwX*bs+px*lat; p.vy=4+Math.random()*12; p.vz=-fwZ*bs+pz*lat;
     p.life=1.0; p.maxLife=0.35+Math.random()*0.3;
-    m.position.set(rx+px*lat*0.3+(Math.random()-0.5)*0.5, 0.3, rz+pz*lat*0.3+(Math.random()-0.5)*0.5);
+    m.position.set(wx+(Math.random()-0.5)*0.5, 0.3, wz+(Math.random()-0.5)*0.5);
     m.rotation.set(Math.random()*6,Math.random()*6,Math.random()*6);
     m.visible=true;
   }
 
+  // smoke from car body center
   const sidx=sHead%SCOUNT; sHead++;
   const s=sData[sidx], sm=smokeMeshes[sidx];
   s.active=true;
-  s.vx=-fwX*(1+Math.random()); s.vy=0.5+Math.random()*1.2; s.vz=-fwZ*(1+Math.random());
-  s.life=1.0; s.maxLife=0.8+Math.random()*0.5;
-  sm.position.set(rx,0.6,rz); sm.scale.setScalar(1);
-  sm.material.opacity=0.55; sm.visible=true;
+  s.vx=(Math.random()-0.5)*0.6; s.vy=0.6+Math.random()*1.0; s.vz=(Math.random()-0.5)*0.6;
+  s.life=1.0; s.maxLife=0.8+Math.random()*0.4;
+  sm.position.set(x,1.2,z); sm.scale.setScalar(0.9);
+  sm.material.opacity=0.42; sm.visible=true;
 }
 
 function updateParticles(dt){
@@ -424,22 +410,22 @@ function updateParticles(dt){
 }
 
 // ─── physics ─────────────────────────────────────────────────────────────────
-let speed = 0;
-const CONST_SPEED = 55; // constant driving speed (world units/s)
-const ACCEL = 500;      // near-instant start
-const DECEL = 350;      // near-instant stop
+const CONST_SPEED = 55; // always-on constant speed (world units/s)
 
 const CAR_HL = TILE*0.48;
 const CAR_HW = TILE*0.34;
 
-let carRoll=0, carRollVel=0;
 let particleTimer=0;
 let wheelAngle=0;
 
-// Pac-Man style: car visually rotates to face world direction
-let targetRotY = 0;
-const ROT_SPEED = 18;  // rad/s visual turn speed
-let prevRotY = 0;
+// Always-moving direction (world cardinal unit vector)
+let dirX = 0, dirZ = -1;          // start heading "up" (-Z = top of screen)
+let prevDirX = 0, prevDirZ = -1;  // direction before last turn (momentum preference)
+let turnBias = 1;                  // +1 = try right first, -1 = left first (tie-break)
+let stuckTimer = 0;               // time (s) spent unable to move forward
+
+let targetRotY = Math.atan2(-dirZ, dirX);
+const ROT_SPEED = 18;
 
 // ─── keyboard ────────────────────────────────────────────────────────────────
 const keys={};
@@ -481,16 +467,26 @@ recalBtn.addEventListener('click',calibrate);
 // ─── resize ──────────────────────────────────────────────────────────────────
 function onResize(){
   const w=innerWidth,h=innerHeight;
-  renderer.setSize(w,h); camera.aspect=w/h; camera.updateProjectionMatrix();
+  renderer.setSize(w,h);
+  camera.aspect=w/h;
+  camera.updateProjectionMatrix();
 }
 window.addEventListener('resize',onResize);
 onResize();
 
-// ─── camera (fixed world direction) ──────────────────────────────────────────
-// Camera always sits in +Z direction from car, never rotates with car
-const CAM_H=95, CAM_Z=58;
-camera.position.set(sx,CAM_H,sz+CAM_Z);
-camera.lookAt(sx,0,sz);
+// ─── camera (position-slide perspective top view) ────────────────────────────
+const CAM_H=175;
+const BASE_CAMERA_UP = new THREE.Vector3(0,0,-1);
+const CAMERA_POS_LEAD = 18;
+const cameraLead = new THREE.Vector3();
+const targetCameraLead = new THREE.Vector3();
+const ZERO_CAMERA_LEAD = new THREE.Vector3();
+function setTopCamera(x,z){
+  camera.position.set(x+cameraLead.x,CAM_H,z+cameraLead.z);
+  camera.up.copy(BASE_CAMERA_UP);
+  camera.lookAt(x,0,z);
+}
+setTopCamera(sx,sz);
 
 // ─── helpers ─────────────────────────────────────────────────────────────────
 // Collision box aligned to movement direction (ndX,ndZ), not visual facing
@@ -503,6 +499,81 @@ function cornersForDir(px,pz,ndX,ndZ){
     [px-ndX*CAR_HL-rpX*CAR_HW, pz-ndZ*CAR_HL-rpZ*CAR_HW],
   ];
 }
+function leadingPointsForDir(px,pz,ndX,ndZ){
+  const rpX=-ndZ, rpZ=ndX;
+  const noseX=px+ndX*CAR_HL, noseZ=pz+ndZ*CAR_HL;
+  return[
+    [noseX+rpX*CAR_HW, noseZ+rpZ*CAR_HW],
+    [noseX-rpX*CAR_HW, noseZ-rpZ*CAR_HW],
+    [noseX, noseZ],
+  ];
+}
+function blockedCornersForDir(px,pz,ndX,ndZ){
+  return cornersForDir(px,pz,ndX,ndZ).filter(([cx,cz])=>!passable(cx,cz));
+}
+function clearForDir(px,pz,ndX,ndZ){
+  return blockedCornersForDir(px,pz,ndX,ndZ).length===0;
+}
+function leadingClearForDir(px,pz,ndX,ndZ){
+  return leadingPointsForDir(px,pz,ndX,ndZ).every(([cx,cz])=>passable(cx,cz));
+}
+function canMoveToward(px,pz,nx,nz,ndX,ndZ){
+  if(clearForDir(nx,nz,ndX,ndZ))return true;
+  const currentHits=blockedCornersForDir(px,pz,ndX,ndZ).length;
+  const nextHits=blockedCornersForDir(nx,nz,ndX,ndZ).length;
+  return currentHits>0&&nextHits<=currentHits&&leadingClearForDir(nx,nz,ndX,ndZ);
+}
+function pushFromWalls(px,pz,ndX,ndZ,dt){
+  const hits=blockedCornersForDir(px,pz,ndX,ndZ);
+  if(hits.length===0)return {x:px,z:pz};
+
+  let pushX=0, pushZ=0;
+  hits.forEach(([cx,cz])=>{
+    pushX+=px-cx;
+    pushZ+=pz-cz;
+  });
+  const len=Math.hypot(pushX,pushZ);
+  if(len<0.001)return {x:px,z:pz};
+
+  const step=Math.min(TILE*0.22, CONST_SPEED*dt*0.85);
+  const ux=pushX/len, uz=pushZ/len;
+  for(const mul of [1,0.6,0.35]){
+    const tx=px+ux*step*mul;
+    const tz=pz+uz*step*mul;
+    if(clearForDir(tx,tz,ndX,ndZ))return {x:tx,z:tz};
+    const nextHits=blockedCornersForDir(tx,tz,ndX,ndZ).length;
+    if(nextHits<=hits.length&&leadingClearForDir(tx,tz,ndX,ndZ))
+      return {x:tx,z:tz};
+  }
+  return {x:px,z:pz};
+}
+function moveWithCollision(px,pz,ndX,ndZ,dt){
+  const spd=CONST_SPEED*dt;
+  const rpX=-ndZ, rpZ=ndX;
+  const nx=px+ndX*spd, nz=pz+ndZ*spd;
+
+  // Fully clear — move straight
+  if(clearForDir(nx,nz,ndX,ndZ))
+    return {x:nx,z:nz,moved:true};
+
+  // Alignment assist: nudge perpendicular in small steps to slip past corner obstacles.
+  // Only allowed when the current position can also shift laterally (no wall beside us).
+  for(let n=TILE*0.08; n<=TILE*0.42; n+=TILE*0.08){
+    for(const s of [1,-1]){
+      const nnx=nx+rpX*s*n, nnz=nz+rpZ*s*n;
+      if(clearForDir(nnx,nnz,ndX,ndZ) && passable(px+rpX*s*n, pz+rpZ*s*n))
+        return {x:nnx,z:nnz,moved:true};
+    }
+  }
+
+  // Wall slide: fewer blocked corners + leading edge still open
+  if(canMoveToward(px,pz,nx,nz,ndX,ndZ)){
+    const pushed=pushFromWalls(nx,nz,ndX,ndZ,dt);
+    return {x:pushed.x,z:pushed.z,moved:true};
+  }
+
+  return {x:px,z:pz,moved:false};
+}
 
 // ─── loop ────────────────────────────────────────────────────────────────────
 let last=performance.now();
@@ -514,108 +585,117 @@ function tick(){
   last=now;
 
   if(gameOn&&sensorOk){
-    // ── Pac-Man style: arrow keys / tilt = absolute world direction ──────────
-    let moveX=0, moveZ=0;
+    // ── player steers: key/tilt = desired direction, accepted only if passable ─
+    let wantX=0, wantZ=0;
+    if     (keys['ArrowUp']   ||keys['KeyW']) { wantX=0;  wantZ=-1; }
+    else if(keys['ArrowDown'] ||keys['KeyS']) { wantX=0;  wantZ=1;  }
+    else if(keys['ArrowRight']||keys['KeyD']) { wantX=1;  wantZ=0;  }
+    else if(keys['ArrowLeft'] ||keys['KeyA']) { wantX=-1; wantZ=0;  }
 
-    // Keyboard: each key = cardinal world direction
-    if(keys['ArrowUp']   ||keys['KeyW']) moveZ-=1;
-    if(keys['ArrowDown'] ||keys['KeyS']) moveZ+=1;
-    if(keys['ArrowRight']||keys['KeyD']) moveX+=1;
-    if(keys['ArrowLeft'] ||keys['KeyA']) moveX-=1;
-
-    // Sensor: dominant tilt axis → world direction
-    const tiltFwd  = rawBeta  - baseBeta;
-    const tiltSide = rawGamma - baseGamma;
-    const FD=8;
-    if(Math.abs(tiltFwd)>Math.abs(tiltSide)){
-      if(tiltFwd<-FD) moveZ-=1;
-      else if(tiltFwd>FD) moveZ+=1;
-    }else{
-      if(tiltSide<-FD) moveX-=1;
-      else if(tiltSide>FD) moveX+=1;
+    // Sensor: dominant tilt axis (only when no key pressed)
+    if(wantX===0&&wantZ===0){
+      const tiltFwd  = rawBeta  - baseBeta;
+      const tiltSide = rawGamma - baseGamma;
+      const FD=8;
+      if(Math.abs(tiltFwd)>Math.abs(tiltSide)){
+        if(tiltFwd<-FD) { wantX=0; wantZ=-1; }
+        else if(tiltFwd>FD) { wantX=0; wantZ=1; }
+      }else{
+        if(tiltSide<-FD) { wantX=-1; wantZ=0; }
+        else if(tiltSide>FD) { wantX=1; wantZ=0; }
+      }
     }
 
-    // Normalize (handles diagonal if both axes pressed)
-    const mLen=Math.sqrt(moveX*moveX+moveZ*moveZ);
-    const anyDir=mLen>0.01;
-    const ndX=anyDir?moveX/mLen:0;
-    const ndZ=anyDir?moveZ/mLen:0;
-
-    // ── speed: near-instant, constant while key held ──────────────────────────
-    if(anyDir){
-      speed=Math.min(speed+ACCEL*dt, CONST_SPEED);
-    }else{
-      speed=Math.max(0, speed-DECEL*dt);
+    // Apply player steer when the new direction's leading edge is clear
+    if((wantX!==0||wantZ!==0)&&(wantX!==dirX||wantZ!==dirZ)){
+      const wnx=carGroup.position.x+wantX*CONST_SPEED*dt;
+      const wnz=carGroup.position.z+wantZ*CONST_SPEED*dt;
+      if(leadingClearForDir(wnx,wnz,wantX,wantZ)){
+        prevDirX=dirX; prevDirZ=dirZ;
+        dirX=wantX; dirZ=wantZ;
+        stuckTimer=0;
+      }
     }
 
-    // ── car visually rotates to face movement direction ───────────────────────
-    // Car nose is at local +X. Ry(θ) maps local +X to world (cos θ, 0, -sin θ).
-    // To face (ndX, ndZ): cos θ = ndX, -sin θ = ndZ → θ = atan2(-ndZ, ndX)
-    if(anyDir) targetRotY=Math.atan2(-ndZ,ndX);
-    prevRotY=carGroup.rotation.y;
+    // ── always move; auto-turn on wall hit ───────────────────────────────────
+    const move=moveWithCollision(carGroup.position.x,carGroup.position.z,dirX,dirZ,dt);
+
+    if(move.moved){
+      carGroup.position.x=move.x;
+      carGroup.position.z=move.z;
+      stuckTimer=0;
+    }else{
+      stuckTimer+=dt;
+
+      const rX=-dirZ, rZ=dirX, lX=dirZ, lZ=-dirX, bX=-dirX, bZ=-dirZ;
+
+      // prevDir is useful only when it isn't current dir or its reverse
+      const prevIsUseful=(prevDirX!==dirX||prevDirZ!==dirZ)
+                        &&(prevDirX!==bX   ||prevDirZ!==bZ);
+
+      let tries;
+      if(stuckTimer>0.4){
+        // Stuck in dead-end (ㄷ-shape etc): force reverse to break the loop
+        tries=[[bX,bZ],[rX,rZ],[lX,lZ]];
+        stuckTimer=0;
+      }else if(prevIsUseful){
+        // Natural momentum: prefer the direction we came from before the last turn
+        const sides=turnBias>0?[[rX,rZ],[lX,lZ]]:[[lX,lZ],[rX,rZ]];
+        tries=[[prevDirX,prevDirZ],...sides,[bX,bZ]];
+      }else{
+        tries=turnBias>0?[[rX,rZ],[lX,lZ],[bX,bZ]]:[[lX,lZ],[rX,rZ],[bX,bZ]];
+      }
+
+      for(const [tx,tz] of tries){
+        const tnx=carGroup.position.x+tx*CONST_SPEED*dt;
+        const tnz=carGroup.position.z+tz*CONST_SPEED*dt;
+        if(leadingClearForDir(tnx,tnz,tx,tz)){
+          const turnMove=moveWithCollision(carGroup.position.x,carGroup.position.z,tx,tz,dt);
+          if(!turnMove.moved)continue;
+          prevDirX=dirX; prevDirZ=dirZ;
+          dirX=tx; dirZ=tz;
+          carGroup.position.x=turnMove.x;
+          carGroup.position.z=turnMove.z;
+          turnBias*=-1;
+          stuckTimer=0;
+          break;
+        }
+      }
+    }
+
+    // ── visual rotation toward current direction ──────────────────────────────
+    targetRotY=Math.atan2(-dirZ, dirX);
     let diff=targetRotY-carGroup.rotation.y;
     while(diff>Math.PI)  diff-=Math.PI*2;
     while(diff<-Math.PI) diff+=Math.PI*2;
     carGroup.rotation.y+=Math.sign(diff)*Math.min(Math.abs(diff), ROT_SPEED*dt);
 
-    // ── cartoon roll: lean from angular velocity ──────────────────────────────
-    const angVel=(carGroup.rotation.y-prevRotY)/Math.max(dt,0.001);
-    const targetRoll=-angVel*0.026;
-    carRollVel+=(targetRoll-carRoll)*18*dt;
-    carRollVel*=Math.exp(-10*dt);
-    carRoll+=carRollVel*dt;
-    carVisual.rotation.x=carRoll;
-
     // ── wheel spin ────────────────────────────────────────────────────────────
-    // rotation.y (after fixed rotation.x=PI/2) spins around world Z = correct axle
-    wheelAngle-=speed*dt/wR_;
+    wheelAngle-=CONST_SPEED*dt/wR_;
     wheelMeshes.forEach(w=>w.rotation.y=wheelAngle);
-
-    // ── movement in world direction + smooth wall slide ───────────────────────
-    if(anyDir&&speed>0.1){
-      const nx=carGroup.position.x+ndX*speed*dt;
-      const nz=carGroup.position.z+ndZ*speed*dt;
-
-      const fullHit=cornersForDir(nx,nz,ndX,ndZ).some(([cx,cz])=>!passable(cx,cz));
-      if(!fullHit){
-        carGroup.position.x=nx;
-        carGroup.position.z=nz;
-      }else{
-        // Slide: try moving only along X or only along Z
-        const hitX=cornersForDir(nx,carGroup.position.z,ndX,ndZ).some(([cx,cz])=>!passable(cx,cz));
-        const hitZ=cornersForDir(carGroup.position.x,nz,ndX,ndZ).some(([cx,cz])=>!passable(cx,cz));
-        if(!hitX)       carGroup.position.x=nx;
-        else if(!hitZ)  carGroup.position.z=nz;
-        // else: full stop at wall (Pac-Man style – no bounce)
-        else speed=0;
-      }
-    }
 
     // ── particles ─────────────────────────────────────────────────────────────
     particleTimer+=dt;
-    if(particleTimer>0.055&&speed>4){
+    if(particleTimer>0.055){
       particleTimer=0;
-      spawnEffects(carGroup.position.x,carGroup.position.z,ndX,ndZ,speed);
+      spawnEffects(carGroup.position.x,carGroup.position.z,dirX,dirZ,CONST_SPEED);
     }
     updateParticles(dt);
 
-    // ── fixed-direction camera: follows XZ position, constant world-Z offset ──
+    // ── position-slide perspective top-view camera ────────────────────────────
     const tgtX=carGroup.position.x;
-    const tgtZ=carGroup.position.z+CAM_Z;
-    camera.position.x+=(tgtX-camera.position.x)*7*dt;
-    camera.position.y =CAM_H;
-    camera.position.z+=(tgtZ-camera.position.z)*7*dt;
-    camera.lookAt(carGroup.position.x,0,carGroup.position.z);
+    const tgtZ=carGroup.position.z;
+    targetCameraLead.set(-dirX*CAMERA_POS_LEAD,0,-dirZ*CAMERA_POS_LEAD);
+    cameraLead.lerp(targetCameraLead, 1-Math.exp(-2.4*dt));
+    setTopCamera(tgtX,tgtZ);
 
     // ── hud ───────────────────────────────────────────────────────────────────
-    const kmh=(speed*3.6).toFixed(0).padStart(3);
-    const dirArrow=moveX>0?'→':moveX<0?'←':moveZ<0?'↑':moveZ>0?'↓':'■';
-    hud.textContent=`${dirArrow} ${kmh} km/h`;
+    const dirArrow=dirX>0?'→':dirX<0?'←':dirZ<0?'↑':'↓';
+    hud.textContent=`${dirArrow} ${(CONST_SPEED*3.6).toFixed(0)} km/h`;
 
   }else if(!gameOn){
-    const t=now/9000;
-    camera.position.set(Math.sin(t)*100,85,Math.cos(t)*100);
-    camera.lookAt(0,0,0);
+    cameraLead.lerp(ZERO_CAMERA_LEAD, 1-Math.exp(-2.4*dt));
+    setTopCamera(sx,sz);
   }
 
   renderer.render(scene,camera);
