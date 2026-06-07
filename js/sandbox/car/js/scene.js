@@ -339,53 +339,86 @@ export function buildScene(mapType){
     if(start>=0&&MAP_H-start>=MIN_CENTER_LEN)addYellowV(ex,start,MAP_H-1);
   }
 
-  function wideRoadAt(tx,ty){
-    return isRoadish(tx,ty)&&
-      isRoadish(tx-1,ty)&&isRoadish(tx+1,ty)&&
-      isRoadish(tx,ty-1)&&isRoadish(tx,ty+1);
-  }
-  function drawSafetyZone(cx,cz,w,d){
-    const thick=TILE*0.075;
-    addMark(yellowMarks,cx,cz-d*0.5, w, thick);
-    addMark(yellowMarks,cx,cz+d*0.5, w, thick);
-    addMark(yellowMarks,cx-w*0.5,cz, thick, d);
-    addMark(yellowMarks,cx+w*0.5,cz, thick, d);
-
-    const stripes=Math.max(3,Math.floor(Math.min(w,d)/(TILE*0.38)));
-    const len=Math.min(w,d)*0.7;
-    for(let i=0;i<stripes;i++){
-      const t=stripes===1?0:i/(stripes-1);
-      addMark(yellowMarks,cx+(t-0.5)*w*0.68,cz,TILE*0.055,len,Math.PI/4);
+  // ─── safety zones: maximal road rectangles ≥ 3×3 ─────────────────────────────
+  {
+    const szH=new Int32Array(MAP_W), szRects=[];
+    for(let ty=0;ty<MAP_H;ty++){
+      for(let tx=0;tx<MAP_W;tx++) szH[tx]=isRoadish(tx,ty)?szH[tx]+1:0;
+      const stk=[];
+      for(let tx=0;tx<=MAP_W;tx++){
+        const ch=tx<MAP_W?szH[tx]:0; let sx=tx;
+        while(stk.length&&stk[stk.length-1].h>ch){
+          const {x,h:rh}=stk.pop(); const w=tx-x;
+          if(w>=3&&rh>=3) szRects.push({tx1:x,ty1:ty-rh+1,tx2:tx-1,ty2:ty,area:w*rh});
+          sx=x;
+        }
+        stk.push({x:sx,h:ch});
+      }
     }
-  }
-
-  const wideSeen = new Uint8Array(MAP_W*MAP_H);
-  for(let ty=1;ty<MAP_H-1;ty++) for(let tx=1;tx<MAP_W-1;tx++){
-    const start=mi(tx,ty);
-    if(wideSeen[start]||!wideRoadAt(tx,ty))continue;
-
-    let minX=tx,maxX=tx,minY=ty,maxY=ty,count=0;
-    const stack=[[tx,ty]];
-    wideSeen[start]=1;
-    while(stack.length){
-      const [cx,cy]=stack.pop();
-      count++;
-      minX=Math.min(minX,cx); maxX=Math.max(maxX,cx);
-      minY=Math.min(minY,cy); maxY=Math.max(maxY,cy);
-      [[1,0],[-1,0],[0,1],[0,-1]].forEach(([dx,dy])=>{
-        const nx=cx+dx, ny=cy+dy;
-        if(nx<1||nx>=MAP_W-1||ny<1||ny>=MAP_H-1)return;
-        const id=mi(nx,ny);
-        if(wideSeen[id]||!wideRoadAt(nx,ny))return;
-        wideSeen[id]=1; stack.push([nx,ny]);
+    szRects.sort((a,b)=>b.area-a.area);
+    const szCov=new Uint8Array(MAP_W*MAP_H), szSel=[];
+    for(const r of szRects){
+      let ok=true;
+      outer: for(let y=r.ty1;y<=r.ty2;y++)
+        for(let x=r.tx1;x<=r.tx2;x++) if(szCov[mi(x,y)]){ok=false;break outer;}
+      if(ok){
+        szSel.push(r);
+        for(let y=r.ty1;y<=r.ty2;y++) for(let x=r.tx1;x<=r.tx2;x++) szCov[mi(x,y)]=1;
+      }
+    }
+    const BT=TILE*0.09, CR=TILE*0.4, HL=TILE*0.5, HW=TILE*0.065, HG=TILE*0.58;
+    const szBM=[], szBA=[], szHM=[];
+    const szArcGeo=makeQuarterArcGeometry(Math.max(0.01,CR-BT*0.5),CR+BT*0.5);
+    const szMat=new THREE.MeshBasicMaterial({color:0xffffff,opacity:0.85,transparent:true,depthWrite:false,side:THREE.DoubleSide});
+    for(const {tx1,ty1,tx2,ty2} of szSel){
+      const p1=tileCenter(tx1,ty1),p2=tileCenter(tx2,ty2);
+      const wL=p1.x-TILE*0.5,wR=p2.x+TILE*0.5,wT=p1.z-TILE*0.5,wB=p2.z+TILE*0.5;
+      const wW=wR-wL,wD=wB-wT,cx=(wL+wR)*0.5,cz=(wT+wB)*0.5;
+      const iW=wW-CR*2,iD=wD-CR*2;
+      if(iW<=0||iD<=0)continue;
+      // border sides
+      szBM.push({x:cx,z:wT,w:iW,d:BT,rot:0});
+      szBM.push({x:cx,z:wB,w:iW,d:BT,rot:0});
+      szBM.push({x:wL,z:cz,w:BT,d:iD,rot:0});
+      szBM.push({x:wR,z:cz,w:BT,d:iD,rot:0});
+      // rounded corners: NW, NE, SE, SW
+      szBA.push({x:wL+CR,z:wT+CR,rot:Math.PI});
+      szBA.push({x:wR-CR,z:wT+CR,rot:-Math.PI/2});
+      szBA.push({x:wR-CR,z:wB-CR,rot:0});
+      szBA.push({x:wL+CR,z:wB-CR,rot:Math.PI/2});
+      // inward hatching on all 4 sides
+      const d45=HL*0.5*Math.SQRT1_2;
+      const nX=Math.max(1,Math.round(iW/HG)), nZ=Math.max(1,Math.round(iD/HG));
+      for(let i=0;i<nX;i++){
+        const hx=wL+CR+(i+0.5)*iW/nX;
+        szHM.push({x:hx,z:wT+BT+d45,w:HW,d:HL,rot:Math.PI/4});
+        szHM.push({x:hx,z:wB-BT-d45,w:HW,d:HL,rot:Math.PI/4});
+      }
+      for(let i=0;i<nZ;i++){
+        const hz=wT+CR+(i+0.5)*iD/nZ;
+        szHM.push({x:wL+BT+d45,z:hz,w:HW,d:HL,rot:Math.PI/4});
+        szHM.push({x:wR-BT-d45,z:hz,w:HW,d:HL,rot:Math.PI/4});
+      }
+    }
+    function makeSzMarks(list){
+      if(!list.length)return null;
+      const mesh=new THREE.InstancedMesh(roadMarkGeo,szMat,list.length);
+      list.forEach(({x,z,w,d,rot=0},i)=>{
+        D.rotation.set(-Math.PI/2,0,rot);D.position.set(x,MARK_Y+0.006,z);
+        D.scale.set(w,d,1);D.updateMatrix();mesh.setMatrixAt(i,D.matrix);
       });
+      mesh.instanceMatrix.needsUpdate=true;scene.add(mesh);return mesh;
     }
-
-    const cw=maxX-minX+1, cd=maxY-minY+1;
-    const c0=tileCenter(Math.floor((minX+maxX)/2),Math.floor((minY+maxY)/2));
-    const boxW=Math.min(TILE*3.2,Math.max(TILE*1.25,cw*TILE*0.62));
-    const boxD=Math.min(TILE*3.2,Math.max(TILE*1.25,cd*TILE*0.62));
-    drawSafetyZone(c0.x,c0.z,boxW,boxD);
+    function makeSzArcs(list){
+      if(!list.length)return null;
+      const mesh=new THREE.InstancedMesh(szArcGeo,szMat,list.length);
+      list.forEach(({x,z,rot},i)=>{
+        D.rotation.set(0,rot,0);D.position.set(x,MARK_Y+0.008,z);
+        D.scale.set(1,1,1);D.updateMatrix();mesh.setMatrixAt(i,D.matrix);
+      });
+      mesh.instanceMatrix.needsUpdate=true;scene.add(mesh);return mesh;
+    }
+    [makeSzMarks(szBM),makeSzMarks(szHM),makeSzArcs(szBA)].forEach(m=>{if(m)markMeshes.push(m);});
   }
 
   function makeRoadMarks(list,mat){
