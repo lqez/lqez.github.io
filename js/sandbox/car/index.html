@@ -24,6 +24,8 @@
   #joystick{position:fixed;left:0;top:0;width:130px;height:130px;margin:-65px 0 0 -65px;border-radius:50%;border:2px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);z-index:12;pointer-events:none;opacity:0;transition:opacity .18s;}
   #joystick.on{opacity:1;}
   #stick{position:absolute;left:50%;top:50%;width:58px;height:58px;border-radius:50%;background:rgba(255,212,0,.9);box-shadow:0 2px 14px rgba(0,0,0,.5);transform:translate(-50%,-50%);will-change:transform;}
+  #returnBtn{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);padding:18px 52px;border:none;border-radius:999px;font-size:clamp(1rem,3vw,1.25rem);font-weight:800;background:#ffd400;color:#111;cursor:pointer;z-index:15;display:none;box-shadow:0 4px 28px rgba(255,212,0,.55);transition:transform .1s;}
+  #returnBtn:active{transform:translate(-50%,-50%) scale(.95)}
 </style>
 </head>
 <body>
@@ -48,6 +50,7 @@
 <div id="hud"></div>
 <button id="recalBtn">리캘리브레이션</button>
 <div id="joystick"><div id="stick"></div></div>
+<button id="returnBtn">돌아가기</button>
 <div id="errBox" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(180,0,0,.95);color:#fff;padding:20px;font-size:12px;white-space:pre-wrap;overflow:auto;font-family:monospace;"></div>
 <script>
 (function(){

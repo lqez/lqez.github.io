@@ -102,7 +102,7 @@ const wheelGeo = new THREE.CylinderGeometry(wheelRadius, wheelRadius, wheelWidth
 });
 
 // ─── particles ───────────────────────────────────────────────────────────────
-const PCOUNT=60, SCOUNT=35;
+const PCOUNT=60, SCOUNT=70;
 const pebbleGeo = new THREE.DodecahedronGeometry(0.24,0);
 const smokeGeo  = new THREE.SphereGeometry(0.42,6,5);
 const pebbleMat = new THREE.MeshToonMaterial({color:0x998866});
@@ -144,14 +144,16 @@ export function spawnEffects(x,z,fwX,fwZ,spd){
     m.visible=true;
   }
 
-  // smoke from car body center
-  const sidx=sHead%SCOUNT; sHead++;
-  const s=sData[sidx], sm=smokeMeshes[sidx];
-  s.active=true;
-  s.vx=(Math.random()-0.5)*0.6; s.vy=0.6+Math.random()*1.0; s.vz=(Math.random()-0.5)*0.6;
-  s.life=1.0; s.maxLife=0.8+Math.random()*0.4;
-  sm.position.set(x,1.2,z); sm.scale.setScalar(0.9);
-  sm.material.opacity=0.42; sm.visible=true;
+  // smoke: 2 puffs per spawn, wide free drift
+  for(let si=0;si<2;si++){
+    const sidx=sHead%SCOUNT; sHead++;
+    const s=sData[sidx], sm=smokeMeshes[sidx];
+    s.active=true;
+    s.vx=(Math.random()-0.5)*4.0; s.vy=0.2+Math.random()*0.5; s.vz=(Math.random()-0.5)*4.0;
+    s.life=1.0; s.maxLife=1.8+Math.random()*1.2;
+    sm.position.set(x+(Math.random()-0.5)*1.5,1.2,z+(Math.random()-0.5)*1.5);
+    sm.scale.setScalar(0.9); sm.material.opacity=0.35; sm.visible=true;
+  }
 }
 
 export function updateParticles(dt){
@@ -173,7 +175,7 @@ export function updateParticles(dt){
     if(s.life<=0){s.active=false;smokeMeshes[i].visible=false;continue;}
     const m=smokeMeshes[i];
     m.position.x+=s.vx*dt; m.position.y+=s.vy*dt; m.position.z+=s.vz*dt;
-    m.scale.setScalar(1+(1-s.life)*3);
-    m.material.opacity=s.life*0.48;
+    m.scale.setScalar(1+(1-s.life)*6);
+    m.material.opacity=s.life*0.35;
   }
 }

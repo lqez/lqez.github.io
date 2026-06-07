@@ -217,9 +217,10 @@ export function buildScene(mapType){
     const t=tileMap[mi(tx,ty)];
     return t===T.ROAD||t===T.BRIDGE;
   }
-  function isBuildingTile(tx,ty){
+  function isWallTile(tx,ty){
     if(tx<0||tx>=MAP_W||ty<0||ty>=MAP_H)return true;
-    return tileMap[mi(tx,ty)]===T.BUILDING;
+    const t=tileMap[mi(tx,ty)];
+    return t!==T.ROAD&&t!==T.BRIDGE;
   }
   function addMark(list,x,z,w,d,rot=0){
     list.push({x,z,w,d,rot});
@@ -249,7 +250,7 @@ export function buildScene(mapType){
       let start=-1;
       for(let ty=0;ty<MAP_H;ty++){
         const road=roadSide>0?isRoadish(ex,ty):isRoadish(ex-1,ty);
-        const wall=roadSide>0?isBuildingTile(ex-1,ty):isBuildingTile(ex,ty);
+        const wall=roadSide>0?isWallTile(ex-1,ty):isWallTile(ex,ty);
         if(road&&wall){if(start<0)start=ty;}
         else if(start>=0){addWhiteV(ex,start,ty-1,roadSide);start=-1;}
       }
@@ -262,7 +263,7 @@ export function buildScene(mapType){
       let start=-1;
       for(let tx=0;tx<MAP_W;tx++){
         const road=roadSide>0?isRoadish(tx,ey):isRoadish(tx,ey-1);
-        const wall=roadSide>0?isBuildingTile(tx,ey-1):isBuildingTile(tx,ey);
+        const wall=roadSide>0?isWallTile(tx,ey-1):isWallTile(tx,ey);
         if(road&&wall){if(start<0)start=tx;}
         else if(start>=0){addWhiteH(ey,start,tx-1,roadSide);start=-1;}
       }
@@ -272,8 +273,8 @@ export function buildScene(mapType){
 
   for(let ey=1;ey<MAP_H;ey++) for(let ex=1;ex<MAP_W;ex++){
     const x=edgeX(ex), z=edgeZ(ey);
-    const nwB=isBuildingTile(ex-1,ey-1), neB=isBuildingTile(ex,ey-1);
-    const swB=isBuildingTile(ex-1,ey),   seB=isBuildingTile(ex,ey);
+    const nwB=isWallTile(ex-1,ey-1), neB=isWallTile(ex,ey-1);
+    const swB=isWallTile(ex-1,ey),   seB=isWallTile(ex,ey);
     const nwR=isRoadish(ex-1,ey-1), neR=isRoadish(ex,ey-1);
     const swR=isRoadish(ex-1,ey),   seR=isRoadish(ex,ey);
 
@@ -339,13 +340,9 @@ export function buildScene(mapType){
   }
 
   function wideRoadAt(tx,ty){
-    if(!isRoadish(tx,ty))return false;
-    let near=0;
-    for(let dy=-1;dy<=1;dy++) for(let dx=-1;dx<=1;dx++)
-      if(dx!==0||dy!==0)near+=isRoadish(tx+dx,ty+dy)?1:0;
-    const cross=(isRoadish(tx-1,ty)&&isRoadish(tx+1,ty))+
-                (isRoadish(tx,ty-1)&&isRoadish(tx,ty+1));
-    return near>=5||cross===2;
+    return isRoadish(tx,ty)&&
+      isRoadish(tx-1,ty)&&isRoadish(tx+1,ty)&&
+      isRoadish(tx,ty-1)&&isRoadish(tx,ty+1);
   }
   function drawSafetyZone(cx,cz,w,d){
     const thick=TILE*0.075;
@@ -385,7 +382,6 @@ export function buildScene(mapType){
     }
 
     const cw=maxX-minX+1, cd=maxY-minY+1;
-    if(count<3||cw<2||cd<2)continue;
     const c0=tileCenter(Math.floor((minX+maxX)/2),Math.floor((minY+maxY)/2));
     const boxW=Math.min(TILE*3.2,Math.max(TILE*1.25,cw*TILE*0.62));
     const boxD=Math.min(TILE*3.2,Math.max(TILE*1.25,cd*TILE*0.62));

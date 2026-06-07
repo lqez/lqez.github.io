@@ -4,7 +4,7 @@ import { CONST_SPEED } from './constants.js';
 
 export let gameOn = false;
 
-let overlay, startBtn, hud, recalBtn;
+let overlay, startBtn, hud, recalBtn, returnBtn;
 let mapSelectEl, startPanelEl, startDescEl;
 let selectedMap = null;
 let starting = false;
@@ -42,6 +42,8 @@ export function initUI(){
   // Init joystick (pass canvas and recalBtn)
   const canvasEl = document.getElementById('c');
   initJoystick(canvasEl, recalBtn, ()=>gameOn);
+  returnBtn = document.getElementById('returnBtn');
+  returnBtn.addEventListener('click', returnToMenu);
 }
 
 export async function startGame(){
@@ -66,6 +68,11 @@ export function updateHUD(dirArrow){
 export function showGameOver(){
   hud.style.display='none';
   recalBtn.style.display='none';
+  returnBtn.style.display='block';
+}
+
+function returnToMenu(){
+  returnBtn.style.display='none';
   gameOn=false;
   selectedMap=null;
   mapSelectEl.style.display='flex';

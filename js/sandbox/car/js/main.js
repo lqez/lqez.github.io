@@ -34,42 +34,44 @@ function tick(){
   const _gState   = gameState;
 
   if(_gameOn && _sensorOk){
-    // ── player steers: key/tilt = desired direction ───────────────────────────
-    let wantX=0, wantZ=0;
-    if     (keys['ArrowUp']   ||keys['KeyW']) { wantX=0;  wantZ=-1; }
-    else if(keys['ArrowDown'] ||keys['KeyS']) { wantX=0;  wantZ=1;  }
-    else if(keys['ArrowRight']||keys['KeyD']) { wantX=1;  wantZ=0;  }
-    else if(keys['ArrowLeft'] ||keys['KeyA']) { wantX=-1; wantZ=0;  }
+    // ── player steers: key/tilt = desired direction (playing only) ──────────────
+    if(_gState===GameState.PLAYING){
+      let wantX=0, wantZ=0;
+      if     (keys['ArrowUp']   ||keys['KeyW']) { wantX=0;  wantZ=-1; }
+      else if(keys['ArrowDown'] ||keys['KeyS']) { wantX=0;  wantZ=1;  }
+      else if(keys['ArrowRight']||keys['KeyD']) { wantX=1;  wantZ=0;  }
+      else if(keys['ArrowLeft'] ||keys['KeyA']) { wantX=-1; wantZ=0;  }
 
-    // Virtual joystick: dominant drag axis (only when no key pressed)
-    if(wantX===0&&wantZ===0 && joyActive){
-      const ax=Math.abs(joyDX), ay=Math.abs(joyDY);
-      if(Math.max(ax,ay) > 14){
-        if(ax>=ay){ wantX = joyDX>0 ? 1 : -1; wantZ=0; }
-        else      { wantZ = joyDY>0 ? 1 : -1; wantX=0; }
+      // Virtual joystick: dominant drag axis (only when no key pressed)
+      if(wantX===0&&wantZ===0 && joyActive){
+        const ax=Math.abs(joyDX), ay=Math.abs(joyDY);
+        if(Math.max(ax,ay) > 14){
+          if(ax>=ay){ wantX = joyDX>0 ? 1 : -1; wantZ=0; }
+          else      { wantZ = joyDY>0 ? 1 : -1; wantX=0; }
+        }
       }
-    }
 
-    // Sensor: dominant tilt axis — only when no key/joystick and recalibrate button active
-    if(wantX===0&&wantZ===0 && !joyVisible){
-      const tiltFwd  = rawBeta  - baseBeta;
-      const tiltSide = rawGamma - baseGamma;
-      const FD = 8;
-      const afwd = Math.abs(tiltFwd), aside = Math.abs(tiltSide);
-      if(Math.max(afwd, aside) > FD){
-        if(afwd >= aside){ wantX=0; wantZ = tiltFwd>0 ? 1 : -1; }
-        else             { wantX = tiltSide>0 ? 1 : -1; wantZ=0; }
+      // Sensor: dominant tilt axis — only when no key/joystick and recalibrate button active
+      if(wantX===0&&wantZ===0 && !joyVisible){
+        const tiltFwd  = rawBeta  - baseBeta;
+        const tiltSide = rawGamma - baseGamma;
+        const FD = 8;
+        const afwd = Math.abs(tiltFwd), aside = Math.abs(tiltSide);
+        if(Math.max(afwd, aside) > FD){
+          if(afwd >= aside){ wantX=0; wantZ = tiltFwd>0 ? 1 : -1; }
+          else             { wantX = tiltSide>0 ? 1 : -1; wantZ=0; }
+        }
       }
-    }
 
-    // Apply player steer when the new direction's leading edge is clear
-    if((wantX!==0||wantZ!==0)&&(wantX!==dirX||wantZ!==dirZ)){
-      const wnx=carGroup.position.x+wantX*CONST_SPEED*dt;
-      const wnz=carGroup.position.z+wantZ*CONST_SPEED*dt;
-      if(leadingClearForDir(wnx,wnz,wantX,wantZ)){
-        setPrevDir(dirX,dirZ);
-        setDir(wantX,wantZ);
-        setStuckTimer(0);
+      // Apply player steer when the new direction's leading edge is clear
+      if((wantX!==0||wantZ!==0)&&(wantX!==dirX||wantZ!==dirZ)){
+        const wnx=carGroup.position.x+wantX*CONST_SPEED*dt;
+        const wnz=carGroup.position.z+wantZ*CONST_SPEED*dt;
+        if(leadingClearForDir(wnx,wnz,wantX,wantZ)){
+          setPrevDir(dirX,dirZ);
+          setDir(wantX,wantZ);
+          setStuckTimer(0);
+        }
       }
     }
 
