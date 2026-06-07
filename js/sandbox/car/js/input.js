@@ -47,11 +47,13 @@ function moveStick(x,y){
   stickEl.style.transform=`translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`;
 }
 function fadeOutJoystick(){
-  // Begin a 1s CSS fade-out (base transition:opacity 1s), then remove.
-  joyEl.classList.remove('on');
-  if(recalBtnRef) recalBtnRef.classList.remove('faded');
+  // Stay fully visible for 1s, then begin a 1s CSS fade-out, then remove.
   clearTimeout(hideTimer);
-  hideTimer=setTimeout(()=>{ joyVisible=false; }, 1000);
+  hideTimer=setTimeout(()=>{
+    joyEl.classList.remove('on');                       // start 1s CSS fade-out
+    if(recalBtnRef) recalBtnRef.classList.remove('faded');
+    hideTimer=setTimeout(()=>{ joyVisible=false; }, 1000);
+  }, 1000);
 }
 
 let recalBtnRef = null;
