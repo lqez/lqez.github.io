@@ -4,40 +4,27 @@ import { CONST_SPEED } from './constants.js';
 
 export let gameOn = false;
 
-let overlay, startBtn, hud, recalBtn, returnBtn;
-let mapSelectEl, startPanelEl, startDescEl;
+let overlay, hud, recalBtn, returnBtn;
+let mapSelectEl;
 let selectedMap = null;
 let starting = false;
 
 export function initUI(){
   overlay    = document.getElementById('overlay');
-  startBtn   = document.getElementById('startBtn');
   hud        = document.getElementById('hud');
   recalBtn   = document.getElementById('recalBtn');
   mapSelectEl   = document.getElementById('mapSelect');
-  startPanelEl  = document.getElementById('startPanel');
-  startDescEl   = document.getElementById('startDesc');
 
   document.getElementById('btnParis').addEventListener('click', () => {
     selectedMap = 'paris';
-    mapSelectEl.style.display = 'none';
-    startDescEl.innerHTML = '🗼 파리 지도로 주행합니다.<br><small style="color:#888">모바일: 센서 접근 허용 필요</small>';
-    startPanelEl.style.display = 'flex';
+    startGame();
   });
   document.getElementById('btnRandom').addEventListener('click', () => {
     selectedMap = 'random';
-    mapSelectEl.style.display = 'none';
-    startDescEl.innerHTML = '🎲 랜덤 도시 지도로 주행합니다.<br><small style="color:#888">모바일: 센서 접근 허용 필요</small>';
-    startPanelEl.style.display = 'flex';
+    startGame();
   });
 
-  startBtn.addEventListener('click', startGame);
   recalBtn.addEventListener('click', calibrate);
-
-  // Keyboard shortcut: any key starts if map selected
-  window.addEventListener('keydown', e=>{
-    if(!gameOn && selectedMap) startGame();
-  });
 
   // Init joystick (pass canvas and recalBtn)
   const canvasEl = document.getElementById('c');
@@ -76,6 +63,5 @@ function returnToMenu(){
   gameOn=false;
   selectedMap=null;
   mapSelectEl.style.display='flex';
-  startPanelEl.style.display='none';
   overlay.style.display='flex';
 }
