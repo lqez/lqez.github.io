@@ -52,8 +52,7 @@ export function resetMap(){
 
 // ─── buildRandom ─────────────────────────────────────────────────────────────
 export function buildRandom(){
-  // reset RNG seed for deterministic maps
-  _s = 0xdeadbeef;
+  _s = (Date.now() ^ (Math.random() * 0xffffffff)) >>> 0;
 
   for(let i=0;i<5;i++){
     if(rng()<0.5){
