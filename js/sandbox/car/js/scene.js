@@ -339,7 +339,7 @@ export function buildScene(mapType){
     if(start>=0&&MAP_H-start>=MIN_CENTER_LEN)addYellowV(ex,start,MAP_H-1);
   }
 
-  // ─── safety zones: maximal road rectangles ≥ 3×3 ─────────────────────────────
+  // ─── safety zones: road intersections (≥2×2) or open squares (≥5×5) ─────────
   {
     const szH=new Int32Array(MAP_W), szRects=[];
     for(let ty=0;ty<MAP_H;ty++){
@@ -349,7 +349,9 @@ export function buildScene(mapType){
         const ch=tx<MAP_W?szH[tx]:0; let sx=tx;
         while(stk.length&&stk[stk.length-1].h>ch){
           const {x,h:rh}=stk.pop(); const w=tx-x;
-          if(w>=3&&rh>=3) szRects.push({tx1:x,ty1:ty-rh+1,tx2:tx-1,ty2:ty,area:w*rh});
+          const isIntersection = w>=2&&rh>=2;
+          const isOpenSquare   = Math.min(w,rh)>=5;
+          if(isIntersection||isOpenSquare) szRects.push({tx1:x,ty1:ty-rh+1,tx2:tx-1,ty2:ty,area:w*rh});
           sx=x;
         }
         stk.push({x:sx,h:ch});

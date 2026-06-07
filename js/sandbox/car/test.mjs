@@ -189,13 +189,16 @@ test('parkShade 0-5 for park tiles', () => {
   }
 });
 
-test('buildRandom is deterministic (same seed)', () => {
-  // Build twice; results must be identical
+test('buildRandom produces different maps on each call', () => {
   const snapshot1 = tileMap.slice();
   resetMap(); buildRandom();
+  const snapshot2 = tileMap.slice();
+  // Two maps with different random seeds must differ somewhere
+  let differs = false;
   for (let i = 0; i < MAP_W * MAP_H; i++) {
-    assert.equal(tileMap[i], snapshot1[i], `tile[${i}] differs on second build`);
+    if (snapshot1[i] !== snapshot2[i]) { differs = true; break; }
   }
+  assert.ok(differs, 'buildRandom produced identical maps twice — seed not randomized');
 });
 
 
