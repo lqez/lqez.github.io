@@ -31,10 +31,11 @@ let touchId = null;
 let holdTimer = null, hideTimer = null;
 
 function showJoystick(x,y){
+  clearTimeout(hideTimer);          // cancel any pending fade-out cleanup
   joyOX=x; joyOY=y; joyDX=0; joyDY=0;
   joyEl.style.left=x+'px'; joyEl.style.top=y+'px';
   stickEl.style.transform='translate(-50%,-50%)';
-  joyEl.classList.add('on');
+  joyEl.classList.add('on');        // instant activation (transition:0s)
   if(recalBtnRef) recalBtnRef.classList.add('faded');
   joyVisible=true; joyActive=true;
 }
@@ -45,10 +46,12 @@ function moveStick(x,y){
   joyDX=dx; joyDY=dy;
   stickEl.style.transform=`translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`;
 }
-function hideJoystick(){
-  joyVisible=false;
+function fadeOutJoystick(){
+  // Begin a 1s CSS fade-out (base transition:opacity 1s), then remove.
   joyEl.classList.remove('on');
   if(recalBtnRef) recalBtnRef.classList.remove('faded');
+  clearTimeout(hideTimer);
+  hideTimer=setTimeout(()=>{ joyVisible=false; }, 1000);
 }
 
 let recalBtnRef = null;
@@ -66,7 +69,6 @@ export function initJoystick(canvasEl, recalBtn, gameOnGetter){
     const t=e.changedTouches[0];
     touchId=t.identifier;
     const x=t.clientX, y=t.clientY;
-    clearTimeout(hideTimer);
     clearTimeout(holdTimer);
     holdTimer=setTimeout(()=>showJoystick(x,y),500);
   },{passive:false});
@@ -86,8 +88,7 @@ export function initJoystick(canvasEl, recalBtn, gameOnGetter){
     if(joyActive){
       joyActive=false; joyDX=0; joyDY=0;
       stickEl.style.transform='translate(-50%,-50%)';
-      clearTimeout(hideTimer);
-      hideTimer=setTimeout(hideJoystick,1000);
+      fadeOutJoystick();
     }
   }
   canvasEl.addEventListener('touchend',endTouch);

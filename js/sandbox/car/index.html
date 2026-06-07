@@ -21,8 +21,8 @@
   #hud{position:fixed;top:12px;right:12px;color:#fff;background:rgba(0,0,0,.55);padding:8px 14px;border-radius:10px;font-size:14px;line-height:1.8;white-space:pre;z-index:10;display:none;font-variant-numeric:tabular-nums;}
   #recalBtn{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);padding:12px 28px;border:none;border-radius:999px;font-size:14px;font-weight:700;background:rgba(255,212,0,.92);color:#111;cursor:pointer;z-index:10;display:none;box-shadow:0 2px 12px rgba(0,0,0,.4);transition:opacity .35s;}
   #recalBtn.faded{opacity:0;pointer-events:none;}
-  #joystick{position:fixed;left:0;top:0;width:130px;height:130px;margin:-65px 0 0 -65px;border-radius:50%;border:2px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);z-index:12;pointer-events:none;opacity:0;transition:opacity .18s;}
-  #joystick.on{opacity:1;}
+  #joystick{position:fixed;left:0;top:0;width:130px;height:130px;margin:-65px 0 0 -65px;border-radius:50%;border:2px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);z-index:12;pointer-events:none;opacity:0;transition:opacity 1s;}
+  #joystick.on{opacity:1;transition:opacity 0s;}
   #stick{position:absolute;left:50%;top:50%;width:58px;height:58px;border-radius:50%;background:rgba(255,212,0,.9);box-shadow:0 2px 14px rgba(0,0,0,.5);transform:translate(-50%,-50%);will-change:transform;}
   #returnBtn{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);padding:18px 52px;border:none;border-radius:999px;font-size:clamp(1rem,3vw,1.25rem);font-weight:800;background:#ffd400;color:#111;cursor:pointer;z-index:15;display:none;box-shadow:0 4px 28px rgba(255,212,0,.55);transition:transform .1s;}
   #returnBtn:active{transform:translate(-50%,-50%) scale(.95)}
