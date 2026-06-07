@@ -16,8 +16,6 @@
   #overlay p{color:#ccc;font-size:clamp(.8rem,2.5vw,.95rem);margin-bottom:36px;text-align:center;max-width:300px;line-height:1.8;}
   .mapBtn{padding:18px 36px;border:2px solid rgba(255,212,0,.5);border-radius:16px;font-size:clamp(1rem,3vw,1.2rem);font-weight:800;background:rgba(255,212,0,.12);color:#ffd400;cursor:pointer;transition:background .15s,transform .1s;}
   .mapBtn:hover,.mapBtn:active{background:rgba(255,212,0,.28);transform:scale(.97);}
-  #startBtn{padding:16px 56px;border:none;border-radius:999px;font-size:clamp(1rem,3vw,1.25rem);font-weight:800;background:#ffd400;color:#111;cursor:pointer;box-shadow:0 4px 28px rgba(255,212,0,.45);transition:transform .1s,box-shadow .1s;}
-  #startBtn:active{transform:scale(.95)}
   #hud{position:fixed;top:12px;right:12px;color:#fff;background:rgba(0,0,0,.55);padding:8px 14px;border-radius:10px;font-size:14px;line-height:1.8;white-space:pre;z-index:10;display:none;font-variant-numeric:tabular-nums;}
   #recalBtn{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);padding:12px 28px;border:none;border-radius:999px;font-size:14px;font-weight:700;background:rgba(255,212,0,.92);color:#111;cursor:pointer;z-index:10;display:none;box-shadow:0 2px 12px rgba(0,0,0,.4);transition:opacity .35s;}
   #recalBtn.faded{opacity:0;pointer-events:none;}
@@ -41,10 +39,6 @@
       <button class="mapBtn" id="btnParis">🗼 Paris</button>
       <button class="mapBtn" id="btnRandom">🎲 Random</button>
     </div>
-  </div>
-  <div id="startPanel" style="display:none;flex-direction:column;align-items:center;gap:16px;">
-    <p id="startDesc" style="color:#ccc;font-size:.9rem;text-align:center;max-width:300px;line-height:1.8;"></p>
-    <button id="startBtn">GAME START</button>
   </div>
 </div>
 <div id="hud"></div>
