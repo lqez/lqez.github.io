@@ -339,7 +339,7 @@ export function buildScene(mapType){
     if(start>=0&&MAP_H-start>=MIN_CENTER_LEN)addYellowV(ex,start,MAP_H-1);
   }
 
-  // ─── safety zones: road intersections (≥2×2) or open squares (≥5×5) ─────────
+  // ─── safety zones: road intersections (≥2×2, ratio ≤3:1) or open squares (≥5×5, ratio ≤2:1) ──
   {
     const szH=new Int32Array(MAP_W), szRects=[];
     for(let ty=0;ty<MAP_H;ty++){
@@ -349,8 +349,9 @@ export function buildScene(mapType){
         const ch=tx<MAP_W?szH[tx]:0; let sx=tx;
         while(stk.length&&stk[stk.length-1].h>ch){
           const {x,h:rh}=stk.pop(); const w=tx-x;
-          const isIntersection = w>=2&&rh>=2;
-          const isOpenSquare   = Math.min(w,rh)>=5;
+          const mn=Math.min(w,rh), mx=Math.max(w,rh);
+          const isIntersection = mn>=2 && mx<=mn*3;
+          const isOpenSquare   = mn>=5 && mx<=mn*2;
           if(isIntersection||isOpenSquare) szRects.push({tx1:x,ty1:ty-rh+1,tx2:tx-1,ty2:ty,area:w*rh});
           sx=x;
         }
@@ -385,9 +386,9 @@ export function buildScene(mapType){
       szBM.push({x:wR,z:cz,w:BT,d:iD,rot:0});
       // rounded corners: NW, NE, SE, SW
       szBA.push({x:wL+CR,z:wT+CR,rot:Math.PI});
-      szBA.push({x:wR-CR,z:wT+CR,rot:-Math.PI/2});
+      szBA.push({x:wR-CR,z:wT+CR,rot:Math.PI/2});
       szBA.push({x:wR-CR,z:wB-CR,rot:0});
-      szBA.push({x:wL+CR,z:wB-CR,rot:Math.PI/2});
+      szBA.push({x:wL+CR,z:wB-CR,rot:-Math.PI/2});
       // inward hatching on all 4 sides
       const d45=HL*0.5*Math.SQRT1_2;
       const nX=Math.max(1,Math.round(iW/HG)), nZ=Math.max(1,Math.round(iD/HG));
