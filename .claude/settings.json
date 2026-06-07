@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=$(jq -r '.tool_input.file_path // empty'); case \"$f\" in *js/sandbox/car/js/*.js) idx=\"$CLAUDE_PROJECT_DIR/js/sandbox/car/index.html\"; cur=$(grep -oE '\\?v=[0-9]+' \"$idx\" | grep -oE '[0-9]+' | sort -n | tail -1); next=$((cur+1)); sed -i -E \"s/\\?v=[0-9]+/?v=$next/g\" \"$idx\";; esac 2>/dev/null || true",
+            "statusMessage": "Bumping car cache-busting version"
+          }
+        ]
+      }
+    ]
+  }
+}
