@@ -25,6 +25,8 @@
   #stick{position:absolute;left:50%;top:50%;width:58px;height:58px;border-radius:50%;background:rgba(255,212,0,.9);box-shadow:0 2px 14px rgba(0,0,0,.5);transform:translate(-50%,-50%);will-change:transform;}
   #returnBtn{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);padding:18px 52px;border:none;border-radius:999px;font-size:clamp(1rem,3vw,1.25rem);font-weight:800;background:#ffd400;color:#111;cursor:pointer;z-index:15;display:none;box-shadow:0 4px 28px rgba(255,212,0,.55);transition:transform .1s;}
   #returnBtn:active{transform:translate(-50%,-50%) scale(.95)}
+  #minimap{position:fixed;bottom:16px;left:16px;width:80px;height:80px;border-radius:50%;border:1.5px solid rgba(180,210,255,.28);box-shadow:0 4px 18px rgba(0,0,60,.5),inset 0 1px 3px rgba(255,255,255,.15);z-index:10;display:none;background:rgba(0,0,0,.42);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+  #gameOverMsg{position:fixed;top:38%;left:50%;transform:translate(-50%,-50%);padding:14px 30px;border-radius:14px;background:rgba(0,0,0,.62);color:#fff;font-size:clamp(1rem,3.5vw,1.4rem);font-weight:800;text-align:center;z-index:15;display:none;white-space:nowrap;box-shadow:0 4px 24px rgba(0,0,0,.5);}
 </style>
 </head>
 <body>
@@ -41,11 +43,14 @@
       <button class="mapBtn" id="btnRandom">🎲 Random</button>
     </div>
   </div>
+  <div id="version" style="margin-top:20px;color:#444;font-size:0.68rem;font-family:monospace;letter-spacing:1px;"></div>
 </div>
 <div id="hud"></div>
 <button id="recalBtn">리캘리브레이션</button>
 <div id="joystick"><div id="stick"></div></div>
+<div id="gameOverMsg"></div>
 <button id="returnBtn">돌아가기</button>
+<canvas id="minimap"></canvas>
 <div id="errBox" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(180,0,0,.95);color:#fff;padding:20px;font-size:12px;white-space:pre-wrap;overflow:auto;font-family:monospace;"></div>
 <script>
 (function(){
@@ -54,18 +59,6 @@
   window.addEventListener('unhandledrejection',function(e){var r=e.reason;show('[PROMISE] '+(r&&r.stack?r.stack:r));});
 })();
 </script>
-<script type="importmap">{"imports":{
-  "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/",
-  "./js/scene.js":"./js/scene.js?v=10",
-  "./js/car.js":"./js/car.js?v=10",
-  "./js/input.js":"./js/input.js?v=10",
-  "./js/physics.js":"./js/physics.js?v=10",
-  "./js/state.js":"./js/state.js?v=10",
-  "./js/ui.js":"./js/ui.js?v=10",
-  "./js/constants.js":"./js/constants.js?v=10",
-  "./js/map.js":"./js/map.js?v=10"
-}}</script>
-<script type="module" src="js/main.js?v=10"></script>
+<script type="module" src="./assets/main.js"></script>
 </body>
 </html>
